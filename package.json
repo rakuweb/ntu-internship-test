@@ -8,7 +8,8 @@
     "lint": "next lint",
     "export": "next build && next export",
     "test": "jest",
-    "format": "prettier --write ./src"
+    "format": "prettier --write ./src",
+    "generate": "hygen component new"
   },
   "dependencies": {
     "next": "12.0.10",
@@ -25,6 +26,7 @@
     "eslint-config-prettier": "^8.4.0",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "hygen": "^6.1.0",
     "prettier": "^2.5.1",
     "typescript": "4.5.5"
   }
