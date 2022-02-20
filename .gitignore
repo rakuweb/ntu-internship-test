@@ -38,3 +38,5 @@ yarn-error.log*
 
 # image
 /public/dev/
+/public/sitemap.xml
+/public/robots.txt
