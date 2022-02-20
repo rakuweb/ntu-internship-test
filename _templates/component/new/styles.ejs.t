@@ -5,7 +5,7 @@ unless_exists: true
 
 // import layer
 import { css } from '@emotion/react';
-import { mq } from '~/constants/styles';
+import { mq } from 'constants/styles';
 
 // style layer
 const styles = css``;
