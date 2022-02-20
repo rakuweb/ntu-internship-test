@@ -9,7 +9,8 @@
     "export": "next build && next export",
     "test": "jest",
     "format": "prettier --write ./src",
-    "generate": "hygen component new"
+    "generate": "hygen component new",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.8.3",
@@ -34,6 +35,7 @@
     "husky": "^7.0.4",
     "hygen": "^6.1.0",
     "lint-staged": "^12.3.4",
+    "next-sitemap": "^2.4.3",
     "prettier": "^2.5.1",
     "typescript": "4.5.5"
   },
