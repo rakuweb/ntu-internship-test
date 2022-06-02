@@ -12,7 +12,8 @@
     "generate": "hygen component new",
     "postbuild": "next-sitemap",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "gen:theme-typings": "chakra-cli tokens ./src/lib/theme/index.ts"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.8.3",
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
+    "@chakra-ui/cli": "^2.0.0",
     "@storybook/addon-actions": "^6.4.19",
     "@storybook/addon-essentials": "^6.4.19",
     "@storybook/addon-interactions": "^6.4.19",
