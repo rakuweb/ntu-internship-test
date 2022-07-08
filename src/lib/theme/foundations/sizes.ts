@@ -1,5 +1,4 @@
 import { spacing } from './spacing';
-import { calculateSizesBy2xl } from '../utils';
 
 const container = {};
 
