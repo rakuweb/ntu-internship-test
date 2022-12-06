@@ -31,6 +31,7 @@ export const LiffProvider: FC<
   const didLoadRef = useRef(false);
   const [_liff, setLiffSDK] = useState<Liff | undefined>();
   const [liff, setLiff] = useState<Liff | undefined>();
+
   // Load LIFF SDK
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -38,6 +39,7 @@ export const LiffProvider: FC<
     didLoadRef.current = true;
     import('@line/liff').then((data: any) => setLiffSDK(data));
   }, []);
+
   // init Liff
   useEffect(() => {
     if (!_liff) return;
@@ -56,6 +58,7 @@ export const LiffProvider: FC<
         setLiff(_liff);
       });
   }, [_liff, mock, liffId]);
+
   return (
     <LiffContext.Provider
       value={{
