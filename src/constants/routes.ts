@@ -3,10 +3,17 @@ export const routes = {
   home: '/',
   index: '/',
   register: '/register',
+  registerComplete: '/register/complete',
   privacyPolicy: '/privacy-policy',
   termsOfService: '/terms-of-service',
   thanks: '/thanks',
+  apiRegister: '/api/register',
 };
+
+export const apiRoutes = {
+  register: `/auth/local/register`,
+  signin: `/auth/local`,
+}
 
 export type NavItem = { name: string; link: string; isExternal?: boolean };
 
