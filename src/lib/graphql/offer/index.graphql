@@ -1,0 +1,10 @@
+query getOfferByID($id: ID) {
+  offer(id: $id) {
+    data {
+      id
+      attributes {
+        title
+      }
+    }
+  }
+}

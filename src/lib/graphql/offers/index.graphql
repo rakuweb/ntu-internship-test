@@ -1,0 +1,10 @@
+query getOffers {
+  offers(pagination: {limit: 15}) {
+    data {
+      id
+      attributes {
+        title
+      }
+    }
+  }
+}
