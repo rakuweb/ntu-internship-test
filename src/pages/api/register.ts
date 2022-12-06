@@ -3,7 +3,8 @@ import fetch from 'node-fetch';
 import { v4 as uuidv4 } from 'uuid';
 
 import { parseAuthorization } from 'lib/apollo/parse';
-import { API_URL, REGISTER_API_KEY } from '~/constants/env';
+import { API_URL, WRITE_API_KEY } from 'constants/env';
+import { apiRoutes } from 'constants/routes';
 
 // type Data = {
 //   name?: string;
@@ -21,9 +22,20 @@ type Data = {
   message?: string;
 };
 
+export const gradeList = {
+  大学1年生: 'B1',
+  大学2年生: 'B2',
+  大学3年生: 'B3',
+  大学4年生: 'B4',
+  大学5年生: 'B5',
+  大学6年生: 'B6',
+  大学院1年生: 'M1',
+  大学院2年生: 'M2',
+};
+
 const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   const method = req.method;
-  const url = `${API_URL}/contacts`;
+  const url = `${API_URL}${apiRoutes.register}`;
 
   switch (method) {
     case 'POST': {
@@ -45,16 +57,31 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
         //   return;
         // }
 
-        const body = { data: { ...data, line_id: uuidv4() } };
+        const body = {
+          data: {
+            username: data.name,
+            email: data.email,
+            // confirmed: false,
+            // blocked: false,
+            grade: gradeList[data.grade],
+            phone: data.phone,
+            will_start_working: data.willStartWorking,
+            is_interested_in_internship: data.isInterestedInInternship,
+            line_id: data.lineId,
+            department: data.department,
+            password: data.password,
+          },
+        };
         const response = await fetch(url, {
           method: 'POST',
-          body: JSON.stringify(body),
+          body: JSON.stringify(body.data),
           headers: {
             'Content-type': 'application/json',
-            Authorization: parseAuthorization(REGISTER_API_KEY),
+            // Authorization: parseAuthorization(WRITE_API_KEY),
           },
         });
         const result = await response.json();
+        console.log(result);
 
         if (result?.error?.status === 403) {
           res.status(403).end();
