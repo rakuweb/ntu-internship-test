@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -13,20 +17,58 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true,
     "baseUrl": "./",
     "paths": {
-      "components/*": ["src/components/*"],
-      "pages/*": ["src/pages/*"],
-      "features/*": ["src/features/*"],
-      "lib/*": ["src/lib/*"],
-      "hooks/*": ["src/hooks/*"],
-      "constants/*": ["src/constants/*"],
-      "types/*": ["src/types/*"],
-      "tests/*": ["src/__tests__/*"]
+      "~/*": [
+        "src/*"
+      ],
+      "atoms/*": [
+        "src/components/atoms/*"
+      ],
+      "molecules/*": [
+        "src/components/molecules/*"
+      ],
+      "organisms/*": [
+        "src/components/organisms/*"
+      ],
+      "templates/*": [
+        "src/components/templates/*"
+      ],
+      "pages/*": [
+        "src/pages/*"
+      ],
+      "lib/*": [
+        "src/lib/*"
+      ],
+      "features/*": [
+        "src/features/*"
+      ],
+      "contexts/*": [
+        "src/contexts/*"
+      ],
+      "constants/*": [
+        "src/constants/*"
+      ],
+      "types/*": [
+        "src/types/*"
+      ],
+      "tests/*": [
+        "src/__tests__/*"
+      ]
     },
-    "typeRoots": ["src/types", "node_modules/@types"]
+    "typeRoots": [
+      "src/types",
+      "node_modules/@types"
+    ],
+    "incremental": true,
+    "jsxImportSource": "@emotion/react",
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "./.eslintrc.js"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
