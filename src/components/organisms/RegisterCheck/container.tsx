@@ -11,6 +11,8 @@ import { registerFormState } from 'features/registerForm/atoms';
 import { useBoundStore } from 'lib/store';
 import { RegisterFormSchema } from '~/features/registerForm/schema';
 import { routes } from '~/constants/routes';
+import { ORIGIN_URL } from '~/constants/env';
+import { useLiff } from 'contexts/LineAuthContext';
 
 // type layer
 export type ContainerProps = PresenterProps;
@@ -20,11 +22,11 @@ export const Container: FC<ContainerProps> = ({ ...props }) => {
   // const setFormProgress = useSetRecoilState(formProgressState);
   // const [{ isChecked, ...formData }, setRegisterForm] =
   //   useRecoilState(registerFormState);
+  const apiUrl = `${ORIGIN_URL}${routes.apiRegister}`;
   const {
     setIsChecked,
     setIsSending,
     startSending,
-    finishSending,
     successSending,
     ...remain
   } = useBoundStore((state) => ({
@@ -43,6 +45,7 @@ export const Container: FC<ContainerProps> = ({ ...props }) => {
   }));
   const { reset } = useFormContext<RegisterFormSchema>();
   const router = useRouter();
+  const { liff } = useLiff();
 
   const handleClick = async () => {
     // if (!executeRecaptcha) {
@@ -53,10 +56,13 @@ export const Container: FC<ContainerProps> = ({ ...props }) => {
     startSending();
 
     try {
+      const profile = await liff.getProfile();
       const registerData = {
         ...remain,
+        lineId: profile.userId,
+        password: `Test1234`,
       };
-      await axios.post('/api/contact', {
+      await axios.post(apiUrl, {
         ...registerData,
         // recaptcha: token,
       });
@@ -64,7 +70,7 @@ export const Container: FC<ContainerProps> = ({ ...props }) => {
       reset();
       successSending();
 
-      router.push(routes.thanks);
+      router.push(routes.registerComplete);
       window.scroll({ top: 0 });
     } catch (err) {
       console.error(err);
