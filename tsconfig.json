@@ -58,6 +58,7 @@
     },
     "typeRoots": [
       "src/types",
+      "src/types/gql",
       "node_modules/@types"
     ],
     "incremental": true,
