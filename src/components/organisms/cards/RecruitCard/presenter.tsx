@@ -2,6 +2,7 @@
 import { VFC } from 'react';
 import { css } from '@emotion/react';
 import { Box, Image } from '@chakra-ui/react';
+import { InternalLink } from '~/components/links/InternalLink';
 
 import { mq } from '~/constants/styles';
 
@@ -10,56 +11,63 @@ export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+  const list = {
+    Link: `/offers/[id]1`,
+    Duties: `業務内容が入ります業務内容が入ります業務内容が入ります業務内容が入り`,
+    CompanyName: `株式会社○○○○`,
+    Occupation: `職種が入ります職種が入ります`,
+    Place: `場所が入ります場所が入ります場所が入ります場所が入ります`,
+    Pay: `○○○○円`,
+  };
+
   return (
-    <Box
-      _hover={{ boxShadow: `2xl` }}
-      transitionProperty={`box-shadow`}
-      transitionDuration="0.3s"
-      transitionTimingFunction="ease-in-out"
-      css={styles}
-    >
-      <div className="x001">
-        <div className="NEW-area">
-          <Image className="photo" src={`/dev/img/clip-1@1x.png`} />
-          <div className="NEW-box">NEW</div>
-        </div>
-
-        <div className="text">
-          <div className="text-2">
-            業務内容が入ります業務内容が入ります業務内容が入ります業務内容が入り
+    <InternalLink href={list.Link}>
+      <Box
+        _hover={{ boxShadow: `2xl` }}
+        transitionProperty={`box-shadow`}
+        transitionDuration="0.3s"
+        transitionTimingFunction="ease-in-out"
+        css={styles}
+      >
+        <div className="x001">
+          <div className="NEW-area">
+            <Image className="photo" src={`/dev/img/clip-1@1x.png`} />
+            <div className="NEW-box">NEW</div>
           </div>
-          <div className="campanytext">株式会社○○○○</div>
 
-          <div className="termstext">
-            <Image className="icon" src={`/dev/img/人物アイコン.png`} />
-            職種
-            <div className="description">職種が入ります職種が入ります</div>
-          </div>
-          <div className="termstext">
-            <Image
-              className="icon"
-              width={29}
-              height={29}
-              src={`/dev/img/目的地アイコン2.png`}
-            />
-            場所
-            <div className="description">
-              場所が入ります場所が入ります場所が入ります場所が入ります
+          <div className="text">
+            <div className="text-2">{list.Duties}</div>
+            <div className="campanytext">{list.CompanyName}</div>
+
+            <div className="termstext">
+              <Image className="icon" src={`/dev/img/人物アイコン.png`} />
+              職種
+              <div className="description">{list.Occupation}</div>
+            </div>
+            <div className="termstext">
+              <Image
+                className="icon"
+                width={29}
+                height={29}
+                src={`/dev/img/目的地アイコン2.png`}
+              />
+              場所
+              <div className="description">{list.Place}</div>
+            </div>
+            <div className="paytext">
+              <Image
+                className="icon"
+                width={29}
+                height={29}
+                src={`/dev/img/シンプルな円袋のアイコン.png`}
+              />
+              時給
+              <div className="description">{list.Pay}</div>
             </div>
           </div>
-          <div className="paytext">
-            <Image
-              className="icon"
-              width={29}
-              height={29}
-              src={`/dev/img/シンプルな円袋のアイコン.png`}
-            />
-            時給
-            <div className="description">○○○○円</div>
-          </div>
         </div>
-      </div>
-    </Box>
+      </Box>
+    </InternalLink>
   );
 };
 

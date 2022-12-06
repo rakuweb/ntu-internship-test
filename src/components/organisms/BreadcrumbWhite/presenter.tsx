@@ -2,18 +2,22 @@
 import { VFC } from 'react';
 import { css } from '@emotion/react';
 import { mq } from '~/constants/styles';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 // type layer
-export type PresenterProps = Record<string, unknown>;
+export type PresenterProps = Record<string, string>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = ({ title }) => {
   return (
     <div css={styles}>
       <section className="breadcrumb">
         <p className="breadcrumb__container">
-          <a className="breadcrumb__container__link" href="#">HOME</a>
-          <a className="breadcrumb__container__link" href="#">新着情報</a>
+          <a className="breadcrumb__container__link" href="#">
+            HOME
+          </a>
+          <KeyboardArrowRightIcon className="breadcrumb__icon_container" />
+          <a className="breadcrumb__container__link">{title}</a>
         </p>
       </section>
     </div>
@@ -22,8 +26,8 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
 // styles
 const styles = css`
   .breadcrumb {
-    background-color: #FFF;
-    display: flex; 
+    background-color: #fff;
+    display: none;
     width: 100vw;
     justify-content: center;
     padding: 24px 0 24px;
@@ -34,7 +38,6 @@ const styles = css`
     font-family: var(--font-family-yugothic-medium);
     color: #003968;
     width: calc(100% - 32px);
-    line-height: 1.7;
   }
 
   .breadcrumb__container__link:hover {
@@ -43,11 +46,20 @@ const styles = css`
 
   ${mq[2]} {
     .breadcrumb {
+      display: flex;
       padding: 32px 0 0;
     }
 
     .breadcrumb__container {
       width: 1200px;
+    }
+
+    .breadcrumb__icon_container {
+      font-size: 20px;
+      font-family: var(--font-family-yugothic-medium);
+      color: #003968;
+      padding: 0 0 3px 0;
+      vertical-align: middle;
     }
   }
 `;
