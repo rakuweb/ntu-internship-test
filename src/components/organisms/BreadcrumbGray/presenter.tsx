@@ -5,7 +5,7 @@ import { mq } from '~/constants/styles';
 
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 // type layer
-export type PresenterProps = Record<string, unknown>;
+export type PresenterProps = Record<string, string>;
 
 // presenter
 export const Presenter: VFC<PresenterProps> = ({ title }) => {
@@ -17,9 +17,7 @@ export const Presenter: VFC<PresenterProps> = ({ title }) => {
             HOME
             <KeyboardArrowRightIcon className="breadcrumb__icon_container" />
           </a>
-          <a className="breadcrumb__container__link" href="#">
-            {title}
-          </a>
+          <a className="breadcrumb__container__link">{title}</a>
         </p>
       </section>
     </div>
@@ -47,8 +45,8 @@ const styles = css`
     font-size: 20px;
     font-family: var(--font-family-yugothic-medium);
     color: #003968;
-    line-height: 1.7;
     padding: 0 0 3px 0;
+    vertical-align: middle;
   }
 
   .breadcrumb__container__link:hover {
