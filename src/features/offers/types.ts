@@ -18,3 +18,19 @@ export type OffersSlice = {
 
   setOffers: (entity: OfferEntity[]) => void;
 };
+
+export type OfferSlice = {
+  id: string;
+  title: string;
+  occupation: string;
+  place: string;
+  hourlyWage: string;
+  description: string;
+  aboutJob: string;
+  recruitmentNumber: number;
+  requiredSkills: string;
+  recruitmentTerms: string;
+  image?: ImageType,
+  companyName: string;
+  managerName: string;
+}

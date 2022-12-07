@@ -4,11 +4,6 @@ import { persist } from 'zustand/middleware';
 import { FormProgressSlice } from './types';
 import { createFormProgressSlice } from './slice';
 
-export const useFormProgressStore = create<FormProgressSlice>()(
-  persist(
-    (...a) => ({
-      ...createFormProgressSlice(...a),
-    }),
-    { name: `form_progress-store` }
-  )
-);
+export const useFormProgressStore = create<FormProgressSlice>((...a) => ({
+  ...createFormProgressSlice(...a),
+}));

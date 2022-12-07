@@ -8,7 +8,11 @@ export const routes = {
   privacyPolicy: '/privacy-policy',
   termsOfService: '/terms-of-service',
   thanks: '/thanks',
+  registered: '/register/registered',
+  authenticated: '/register/authenticated',
+
   apiRegister: '/api/register',
+  apiAccount: '/api/account',
 };
 
 export const apiRoutes = {

@@ -17,3 +17,4 @@ export const selectRegisterFormFunctions = (state: RegisterFormSlice) => ({
   finishSending: state.finishSending,
   successSending: state.successSending,
 });
+export const selectSetEmail = (state: RegisterFormSlice) => state.setEmail;

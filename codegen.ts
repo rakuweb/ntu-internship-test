@@ -2,7 +2,7 @@ import type { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
   overwrite: true,
-  schema: 'http://localhost:1337/gql',
+  schema: 'https://management.nottheuniversity.com/gql',
   documents: 'src/**/*.graphql',
   generates: {
     'src/types/gql/': {

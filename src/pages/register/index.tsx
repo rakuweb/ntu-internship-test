@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { NextPage, InferGetStaticPropsType } from 'next/types';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import axios from 'axios';
+import { useRouter } from 'next/router';
 
 import { Index as Form } from 'templates/Register';
 import { Index as Check } from 'templates/Register/RegisterCheck';
@@ -17,6 +19,8 @@ import {
 } from '~/features/registerForm/schema';
 import { useLiff } from 'contexts/LineAuthContext';
 import { routes } from 'constants/routes';
+import { useAccountStore } from 'features/account/hooks';
+import { selectSetAccount } from 'features/account/selectors';
 
 // type layer
 // type Props = InferGetStaticPropsType<typeof getStaticProps>;
@@ -34,6 +38,8 @@ export const Index: NextPage = () => {
   const progress = useFormProgressStore((state) => state.progress);
   const [isClient, setIsClient] = useState(false);
   const { liff } = useLiff();
+  const router = useRouter();
+  const setAccount = useAccountStore(selectSetAccount);
 
   useEffect(() => {
     setIsClient(true);
@@ -42,10 +48,35 @@ export const Index: NextPage = () => {
   useEffect(() => {
     if (!liff) return;
     if (!liff.isLoggedIn()) {
-    liff.login() //{ redirectUri: redirectUri });
-      const profile = liff.getProfile();
+      liff.login(); //{ redirectUri: redirectUri });
     }
   }, [liff]);
+
+  useEffect(() => {
+    if (!liff || !liff.isLoggedIn()) return;
+    const url = `${ORIGIN_URL}${routes.apiAccount}`;
+
+    const handler = async () => {
+      const profile = await liff.getProfile();
+
+      const res = await axios.get(url, {
+        params: {
+          lineId: profile.userId,
+        },
+      });
+
+      const { exist } = res.data;
+      if (exist) {
+        const { email, username } = res.data;
+        setAccount({ email: email as string, username: username as string });
+
+        router.push(routes.registered);
+        window.scroll({ top: 0 });
+      }
+    };
+
+    handler();
+  }, [liff, liff?.isLoggedIn]);
 
   const message = () => {
     if (isClient) {

@@ -28,11 +28,38 @@ export const Index: NextPage<Props> = ({ data }) => {
   const [isClient, setIsClient] = useState(false);
   const router = useRouter();
   const setOffers = useOffersStore(selectSetOffers);
-  const currentPage = useOffersStore(selectCurrentPage);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  useEffect(() => {
+    const handler = async (page: number) => {
+      const apolloClient = initializeApollo();
+      try {
+        const { data } = await apolloClient.query<GetOffersQuery>({
+          query: GetOffersDocument,
+          variables: { page: page },
+        });
+
+        setOffers((data?.offers?.data as OfferEntity[]) ?? []);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    if (!router?.query?.page) {
+      setOffers((data?.offers?.data as OfferEntity[]) ?? []);
+    }
+
+    const page = Number(router.query.page as string);
+
+    if (page === 1) {
+      setOffers((data?.offers?.data as OfferEntity[]) ?? []);
+    } else {
+      handler(page);
+    }
+  }, [router?.query?.page]);
 
   if (router.isFallback) {
     return <></>;
@@ -40,8 +67,6 @@ export const Index: NextPage<Props> = ({ data }) => {
   if (!data) {
     return <></>;
   }
-
-  currentPage === 1 && setOffers((data?.offers?.data as OfferEntity[]) ?? []);
 
   const message = () => {
     if (isClient) {

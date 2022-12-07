@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://sample.com</loc><lastmod>2022-12-07T04:58:47.810Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://sample.com/clinics/comments</loc><lastmod>2022-12-07T04:58:47.810Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://sample.com/clinics/faq</loc><lastmod>2022-12-07T04:58:47.810Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://sample.com/clinics/form</loc><lastmod>2022-12-07T04:58:47.810Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://sample.com/clinics/map</loc><lastmod>2022-12-07T04:58:47.810Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://sample.com/clinics/staff</loc><lastmod>2022-12-07T04:58:47.810Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://sample.com/clinics/top</loc><lastmod>2022-12-07T04:58:47.810Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://sample.com/clinics/vr</loc><lastmod>2022-12-07T04:58:47.810Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://sample.com/consultation</loc><lastmod>2022-12-07T04:58:47.810Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://sample.com/consultation/detail</loc><lastmod>2022-12-07T04:58:47.810Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://sample.com/dictionary</loc><lastmod>2022-12-07T04:58:47.810Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://sample.com/disease</loc><lastmod>2022-12-07T04:58:47.810Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://sample.com/news</loc><lastmod>2022-12-07T04:58:47.810Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://sample.com/register</loc><lastmod>2022-12-07T04:58:47.810Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://sample.com/register/check</loc><lastmod>2022-12-07T04:58:47.810Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://sample.com/register/complete</loc><lastmod>2022-12-07T04:58:47.810Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://sample.com/service</loc><lastmod>2022-12-07T04:58:47.810Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://sample.com</loc><lastmod>2022-12-07T23:26:05.571Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://sample.com/news</loc><lastmod>2022-12-07T23:26:05.571Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://sample.com/offers</loc><lastmod>2022-12-07T23:26:05.572Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://sample.com/register</loc><lastmod>2022-12-07T23:26:05.572Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://sample.com/register/authenticated</loc><lastmod>2022-12-07T23:26:05.572Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://sample.com/register/check</loc><lastmod>2022-12-07T23:26:05.572Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://sample.com/register/complete</loc><lastmod>2022-12-07T23:26:05.572Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://sample.com/register/registered</loc><lastmod>2022-12-07T23:26:05.572Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://sample.com/offers/1</loc><lastmod>2022-12-07T23:26:05.572Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://sample.com/offers/2</loc><lastmod>2022-12-07T23:26:05.572Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>

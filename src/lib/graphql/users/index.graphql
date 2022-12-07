@@ -1,0 +1,11 @@
+query getUsersByLineId($lineId: String) {
+  usersPermissionsUsers(filters: {line_id: {eq: $lineId}}) {
+    data {
+      id
+      attributes {
+        username
+        email
+      }
+    }
+  }
+}

@@ -41,7 +41,6 @@ export const Container: FC<ContainerProps> = ({ ...props }) => {
       const registerData = {
         ...formItem,
         lineId: profile.userId,
-        password: `Test1234`,
       };
       await axios.post(apiUrl, {
         ...registerData,
@@ -55,7 +54,13 @@ export const Container: FC<ContainerProps> = ({ ...props }) => {
       window.scroll({ top: 0 });
     } catch (err) {
       console.error(err);
-      alert('正常に送信できませんでした。時間をおいてもう一度お試しください。');
+      if (err.response.status === 500) {
+        alert(`登録済みのメールアドレスが使用されています。`);
+      } else {
+        alert(
+          '正常に送信できませんでした。時間をおいてもう一度お試しください。'
+        );
+      }
     } finally {
       setIsChecked(false);
       setIsSending(false);

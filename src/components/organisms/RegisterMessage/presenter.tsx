@@ -2,22 +2,26 @@
 import { FC } from 'react';
 import { css } from '@emotion/react';
 import { mq } from '~/constants/styles';
+import { Box } from '@chakra-ui/react';
 
 // type layer
-export type PresenterProps = Record<string, unknown>;
+export type PresenterProps = { title: string; message: string };
 
 // presenter
-export const Presenter: FC<PresenterProps> = ({ ...props }) => {
+export const Presenter: FC<PresenterProps> = ({ title, message, ...props }) => {
   return (
     <div css={styles}>
       <section className="form">
         <div className="form__container">
-          <h1 className="h1">送信が完了しました。</h1>
+          <h1 className="h1">{title}</h1>
           <div className="form__container__item">
-            <p className="form__container__item__left">
-              メッセージが入ります。メッセージが入ります。メッセージが入ります。メッセージが入ります。メッセージが入ります。
-              メッセージが入
-            </p>
+            <Box
+              className="form__container__item__left"
+              whiteSpace={`break-spaces`}
+              as={`p`}
+            >
+              {message}
+            </Box>
           </div>
           <div className="form__container__button">
             <a href="#" className="form__container__button__submit">

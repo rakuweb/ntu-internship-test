@@ -22,6 +22,7 @@ export const createRegisterFormSlice: StateCreator<
   updateFormData: (data) => set(() => ({ ...data })),
   setIsChecked: (isChecked) => set(() => ({ isChecked: isChecked })),
   setIsSending: (isSending) => set(() => ({ isSending })),
+  setEmail: (email) => set(() => ({ email })),
   startSending: () => set(() => ({ isSending: true })),
   successSending: () => set(() => ({ isComplete: true })),
   finishSending: () => set(() => ({ isSending: false })),

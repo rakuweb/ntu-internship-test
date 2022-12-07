@@ -1,17 +1,19 @@
 // import layer
-import { VFC } from 'react';
+import { FC } from 'react';
 import NextLink, { LinkProps as NextLinkProps } from 'next/link';
 
 import {
   Link as ChakraLink,
   LinkProps as ChakraLinkProps,
+  Box,
+  BoxProps,
 } from '@chakra-ui/react';
 
 // type layer
-export type PresenterProps = ChakraLinkProps & NextLinkProps;
+export type PresenterProps = BoxProps & NextLinkProps;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({
+export const Presenter: FC<PresenterProps> = ({
   children,
   href,
   as,
@@ -34,12 +36,14 @@ export const Presenter: VFC<PresenterProps> = ({
       prefetch={prefetch}
       locale={locale}
     >
-      <ChakraLink
+      <Box
+        w={`auto`}
+        h={`auto`}
         _hover={{ cursor: 'pointer', color: `gray`, textDecoration: 'none' }}
         {...props}
       >
         {children}
-      </ChakraLink>
+      </Box>
     </NextLink>
   );
 };

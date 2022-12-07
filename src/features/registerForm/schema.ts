@@ -36,7 +36,7 @@ export type RegisterFormSchema = {
 };
 
 export const registerFormSchema = yup.object().shape({
-  name: yup.string().required('入力されていません。'),
+  name: yup.string().required('入力されていません。').min(3, '3文字以上入力して下さい。'),
   grade: yup
     .string()
     .oneOf([...gradeList], '学年を選択してください。')

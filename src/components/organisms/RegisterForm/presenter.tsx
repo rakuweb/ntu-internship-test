@@ -1,5 +1,5 @@
 // import layer
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Input, Select, Button, Box, Switch, Flex } from '@chakra-ui/react';
 import { useFormContext } from 'react-hook-form';
 
@@ -8,6 +8,9 @@ import { styles } from './styles';
 import { routes } from '~/constants/routes';
 import { InternalLink } from '~/components/molecules/links/InternalLink';
 import { RegisterFormSchema } from '~/features/registerForm/schema';
+import { useLiff } from 'contexts/LineAuthContext';
+import { useRegisterFormStore } from 'features/registerForm/hooks';
+import { selectSetEmail } from 'features/registerForm/selectors';
 
 // type layer
 export type DataProps = { onClick: () => void };
@@ -22,6 +25,20 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
     setValue,
     formState: { errors },
   } = useFormContext<RegisterFormSchema>();
+  const { liff } = useLiff();
+  const setEmail = useRegisterFormStore(selectSetEmail);
+  const [inputDisabled, setInputDisabled] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (liff?.isLoggedIn()) {
+      const profile = liff.getDecodedIDToken();
+      if (profile?.email) {
+        setEmail(profile.email);
+        setValue('email', profile?.email);
+        setInputDisabled(true);
+      }
+    }
+  }, [liff?.isLoggedIn, liff]);
 
   return (
     <div css={styles}>
@@ -111,6 +128,7 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
                 h={{ base: `40px` }}
                 border={`solid 1px #251714`}
                 placeholder=""
+                disabled={inputDisabled}
                 {...register('email', { required: true })}
               />
               {errors?.email?.message && (
@@ -150,16 +168,16 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
           </div>
 
           <div className="form__container__item">
-            <Flex align={`center`}  className="form__container__item__left">
+            <Flex align={`center`} className="form__container__item__left">
               就職予定ですか？
-            <Switch ml={`0.5rem`} {...register('willStartWorking')}/>
+              <Switch ml={`0.5rem`} {...register('willStartWorking')} />
             </Flex>
           </div>
 
           <div className="form__container__item">
-            <Flex align={`center`}  className="form__container__item__left">
+            <Flex align={`center`} className="form__container__item__left">
               インターンシップに興味がありますか？
-            <Switch ml={`0.5rem`} {...register('isInterestedInInternship')}/>
+              <Switch ml={`0.5rem`} {...register('isInterestedInInternship')} />
             </Flex>
           </div>
 

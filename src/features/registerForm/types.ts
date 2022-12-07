@@ -13,6 +13,7 @@ export type RegisterFormSlice = {
   updateFormData: (data: RegisterFormSchema) => void;
   setIsChecked: (isChecked: boolean) => void;
   setIsSending: (isSending: boolean) => void;
+  setEmail: (email: string) => void;
   startSending: () => void;
   successSending: () => void;
   finishSending: () => void;

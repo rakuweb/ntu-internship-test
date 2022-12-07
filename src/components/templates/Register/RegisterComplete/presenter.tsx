@@ -3,10 +3,10 @@ import { FC } from 'react';
 import { Box } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
-import { Header } from 'organisms/headers/Header';
-import { Footer } from 'organisms/footers/Footer';
+import { Header } from 'components/headers/Header';
+import { Footer } from 'components/footers/Footer';
 import { mq } from '~/constants/styles';
-import { RegisterComplete } from '~/components/organisms/RegisterComplete';
+import { RegisterMessage } from '~/components/organisms/RegisterMessage';
 import { StepBar } from '~/components/organisms/StepBar';
 
 // type layer
@@ -14,13 +14,17 @@ export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps> = () => {
+  const title = `アカウント申請が完了しました`;
+  const message = `Not The Universityの学生アカウントの登録を受け付けました。
+ご登録いただいたメールアドレスへ認証メールを送信しましたのでご確認ください。`;
+
   return (
     <>
       <Header />
       <Box as={`main`} css={styles}>
         <section className="clinics-tab"></section>
         <StepBar current={2} />
-        <RegisterComplete />
+        <RegisterMessage title={title} message={message} />
       </Box>
       <Footer />
     </>

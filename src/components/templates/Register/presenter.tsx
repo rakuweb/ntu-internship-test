@@ -3,8 +3,8 @@ import { FC } from 'react';
 import { Box } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
-import { Header } from 'organisms/headers/Header';
-import { Footer } from 'organisms/footers/Footer';
+import { Header } from 'components/headers/Header';
+import { Footer } from 'components/footers/Footer';
 import { mq } from '~/constants/styles';
 import { RegisterForm } from '~/components/organisms/RegisterForm';
 import { StepBar } from '~/components/organisms/StepBar';

@@ -25,8 +25,6 @@ export const Index: NextPage = () => {
     if (isClient) {
       return (
         <>
-          <SeoComponent canonical={CANONICAL_URL} {...seo} />
-          <Template />
         </>
       );
     } else {

@@ -20,6 +20,7 @@ import { apiRoutes } from 'constants/routes';
 
 type Data = {
   message?: string;
+  error?: string;
 };
 
 export const gradeList = {
@@ -81,13 +82,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
           },
         });
         const result = await response.json();
-        console.log(result);
 
-        if (result?.error?.status === 403) {
-          res.status(403).end();
+       if (result?.error?.status === 403) {
+          res.status(403).json({ error: result?.error?.message });
           return;
         } else if (result?.error?.status === 500) {
-          res.status(500).end();
+          res.status(500).json({ error: result?.error?.message });
           return;
         } else if (result?.data === null) {
           res.status(result?.error?.status ?? 403).end();
