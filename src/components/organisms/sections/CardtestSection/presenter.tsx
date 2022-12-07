@@ -3,7 +3,7 @@ import { VFC } from 'react';
 import { Box, Stack } from '@chakra-ui/react';
 
 import { ImageTitle } from '~/components/molecules/titles/ImageTitle';
-import { RecruitCard } from '~/components/organisms/cards/RecruitCard';
+import { OfferCard } from 'features/offers/OfferCard';
 import { InterviewCard } from '../../cards/InterviewCard';
 import { BlueButton } from '~/components/molecules/buttons/BlueButton';
 import { InternalLink } from 'molecules/links/InternalLink';
@@ -98,7 +98,14 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
           base: `28rem`,
         }}
       >
-        <RecruitCard />
+        <OfferCard
+        title={`test募集です。`}
+          companyName={`test`}
+          occupation={`test`}
+          place={`test`}
+          hourlyWage={`1000円`}
+          id={`000`}
+        />
         <InterviewCard />
       </Stack>
       <Box mx={`auto`} mt={`2.5rem`} w={{ lg: `fit-content` }}>

@@ -4,7 +4,32 @@ query getOfferByID($id: ID) {
       id
       attributes {
         title
+        createdBy {
+          lastname
+          firstname
+          id
+        }
+        occupation
+        hourly_wage
+        place
+        recruitment_number
+        description
+        about_job
+        required_skills
+        recruitment_terms
+        image {
+          data {
+            id
+            attributes {
+              width
+              height
+              url
+              alternativeText
+            }
+          }
+        }
       }
     }
   }
 }
+

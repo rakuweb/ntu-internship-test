@@ -69,7 +69,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
             is_interested_in_internship: data.isInterestedInInternship,
             line_id: data.lineId,
             department: data.department,
-            password: data.password,
+            password: data.lineId,
           },
         };
         const response = await fetch(url, {

@@ -3,6 +3,7 @@ import { DefaultSeoProps } from 'next-seo';
 
 // export layer
 export * from './routes';
+export { CANONICAL_URL } from './env';
 
 // consant layer
 // url
@@ -15,11 +16,11 @@ export const GRAPHQL_ENDPOINT =
 export const ORIGIN_URL =
   process.env.NEXT_PUBLIC_ORIGIN_URL ?? `http://localhost:3000`;
 export const FRONTEND_KEY = ``;
-export const CANONICAL_URL =
-  process.env.NEXT_PUBLIC_CANONICAL_URL ?? `http://localhost:3000`;
 export const GOOGLE_RECAPTCHA_FRONT =
   process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_FRONT ?? ``;
 export const RECAPTCHA_URL = `https://www.google.com/recaptcha/api/siteverify`;
+
+export const UPDATE_INTERVAL = 30;
 
 // default seo
 export const SEO: DefaultSeoProps = {

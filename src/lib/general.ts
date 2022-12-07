@@ -1,7 +1,7 @@
 // import layer
 import { NextSeoProps } from 'next-seo';
 
-import { CANONICAL_URL, MEDIA_ROOT_URL, ORIGIN_URL } from '~/constants';
+import { CANONICAL_URL, CMS_URL, ORIGIN_URL } from 'constants/env';
 
 // function layer
 export const parseAuthorization = (jwt: string): string => `Bearer ${jwt}`;
@@ -42,7 +42,7 @@ export const parseSeo = (
 export const removeBreakLine = (str: string): string =>
   str?.replace(/\r?\n/g, '');
 
-export const toCMSPath = (path: string): string => `${MEDIA_ROOT_URL}${path}`;
+export const toCMSPath = (path: string): string => `${CMS_URL}${path}`;
 
 export const zeroPadding = (num: number, len = 2): string => {
   return (Array(len).join('0') + String(num)).slice(-len);

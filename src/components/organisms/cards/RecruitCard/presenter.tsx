@@ -1,5 +1,5 @@
 // import layer
-import { VFC } from 'react';
+import { FC } from 'react';
 import { css } from '@emotion/react';
 import { Box, Image } from '@chakra-ui/react';
 import { InternalLink } from '~/components/links/InternalLink';
@@ -7,21 +7,22 @@ import { InternalLink } from '~/components/links/InternalLink';
 import { mq } from '~/constants/styles';
 
 // type layer
-export type PresenterProps = Record<string, unknown>;
+export type DataProps = {
+  link: string;
+  aboutJobs: string;
+  companyName: string;
+  occupation: string;
+  place: string;
+  hourlyWage: string;
+  isNew?: boolean;
+};
+export type PresenterProps = DataProps;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
-  const list = {
-    Link: `/offers/[id]1`,
-    Duties: `業務内容が入ります業務内容が入ります業務内容が入ります業務内容が入り`,
-    CompanyName: `株式会社○○○○`,
-    Occupation: `職種が入ります職種が入ります`,
-    Place: `場所が入ります場所が入ります場所が入ります場所が入ります`,
-    Pay: `○○○○円`,
-  };
-
+export const Presenter: FC<PresenterProps> = ({ ...props }) => {
+  const { link, aboutJobs, companyName, occupation, place, hourlyWage } = props;
   return (
-    <InternalLink href={list.Link}>
+    <InternalLink href={link}>
       <Box
         _hover={{ boxShadow: `2xl` }}
         transitionProperty={`box-shadow`}
@@ -36,13 +37,13 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
           </div>
 
           <div className="text">
-            <div className="text-2">{list.Duties}</div>
-            <div className="campanytext">{list.CompanyName}</div>
+            <div className="text-2">{aboutJobs}</div>
+            <div className="campanytext">{companyName}</div>
 
             <div className="termstext">
               <Image className="icon" src={`/dev/img/人物アイコン.png`} />
               職種
-              <div className="description">{list.Occupation}</div>
+              <div className="description">{occupation}</div>
             </div>
             <div className="termstext">
               <Image
@@ -52,7 +53,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
                 src={`/dev/img/目的地アイコン2.png`}
               />
               場所
-              <div className="description">{list.Place}</div>
+              <div className="description">{place}</div>
             </div>
             <div className="paytext">
               <Image
@@ -62,7 +63,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
                 src={`/dev/img/シンプルな円袋のアイコン.png`}
               />
               時給
-              <div className="description">{list.Pay}</div>
+              <div className="description">{hourlyWage}</div>
             </div>
           </div>
         </div>

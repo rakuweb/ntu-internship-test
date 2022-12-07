@@ -1,22 +1,20 @@
 // import layer
 import { useState, useEffect } from 'react';
 import { NextPage, InferGetStaticPropsType } from 'next/types';
-import { useRecoilValue } from 'recoil';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { Index as Form } from 'templates/Register';
 import { Index as Check } from 'templates/Register/RegisterCheck';
 import { SeoComponent } from 'organisms/SeoComponent';
-import { CANONICAL_URL } from '~/constants';
+import { CANONICAL_URL } from 'constants/env';
 import { ORIGIN_URL } from 'constants/env';
 import { parseSeo } from '~/lib';
-import { formProgressState } from 'features/formProgress/atoms';
+import { useFormProgressStore } from 'features/formProgress/hooks';
 import {
   RegisterFormSchema,
   registerFormSchema,
 } from '~/features/registerForm/schema';
-import { useBoundStore } from 'lib/store';
 import { useLiff } from 'contexts/LineAuthContext';
 import { routes } from 'constants/routes';
 
@@ -33,8 +31,7 @@ export const Index: NextPage = () => {
     defaultValues: { willStartWorking: false, isInterestedInInternship: false },
     resolver: yupResolver(registerFormSchema),
   });
-  // const { progress } = useRecoilValue(formProgressState);
-  const progress = useBoundStore((state) => state.progress);
+  const progress = useFormProgressStore((state) => state.progress);
   const [isClient, setIsClient] = useState(false);
   const { liff } = useLiff();
 
@@ -45,9 +42,8 @@ export const Index: NextPage = () => {
   useEffect(() => {
     if (!liff) return;
     if (!liff.isLoggedIn()) {
-      liff.login({ redirectUri: redirectUri });
+    liff.login() //{ redirectUri: redirectUri });
       const profile = liff.getProfile();
-      console.log(profile);
     }
   }, [liff]);
 

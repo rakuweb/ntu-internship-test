@@ -1,5 +1,5 @@
 // import layer
-import { VFC } from 'react';
+import { FC } from 'react';
 import { Box } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
@@ -13,13 +13,13 @@ import { StepBar } from '~/components/organisms/StepBar';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ current }) => {
+export const Presenter: FC<PresenterProps> = () => {
   return (
     <>
       <Header />
       <Box as={`main`} css={styles}>
         <section className="clinics-tab"></section>
-        <StepBar current="2" />
+        <StepBar current={2} />
         <RegisterComplete />
       </Box>
       <Footer />

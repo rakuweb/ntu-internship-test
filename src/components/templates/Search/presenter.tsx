@@ -6,7 +6,6 @@ import { css } from '@emotion/react';
 
 import { Header } from 'organisms/headers/Header';
 import { Footer } from 'organisms/footers/Footer';
-import { SearchIndex } from 'organisms/SearchIndex';
 import { ContactSection } from '~/components/organisms/sections/ContactSection';
 import { mq } from '~/constants/styles';
 import { BreadcrumbGray } from 'organisms/BreadcrumbGray';
@@ -38,7 +37,6 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
       <Header />
       <Box as={`main`} css={styles}>
         <BreadcrumbGray />
-        <SearchIndex />
         <ContactSection />
       </Box>
       <Footer />

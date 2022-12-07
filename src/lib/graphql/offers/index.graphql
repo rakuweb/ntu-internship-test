@@ -1,9 +1,55 @@
-query getOffers {
-  offers(pagination: {limit: 15}) {
+query getOffers($today: Date, $page: Int) {
+	offers(filters: {readline: {lte: $today}}, sort: "publishedAt:desc", pagination: { page: $page, pageSize:10}) {
     data {
       id
       attributes {
         title
+        place
+        hourly_wage
+      	occupation
+        createdBy {
+          id
+          firstname
+          lastname
+        }
+      }
+    }
+  }
+}
+
+query getOffersSortedWage($today: Date, $page: Int) {
+	offers(filters: {readline: {lte: $today}}, sort: "hourly_wage:desc", pagination: { page: $page, pageSize:10}) {
+    data {
+      id
+      attributes {
+        title
+        place
+        hourly_wage
+      	occupation
+        createdBy {
+          id
+          firstname
+          lastname
+        }
+      }
+    }
+  }
+}
+
+query getOffersSortedReadline($today: Date, $page: Int) {
+	offers(filters: {readline: {lte: $today}}, sort: "readline:asc", pagination: { page: $page, pageSize:10}) {
+    data {
+      id
+      attributes {
+        title
+        place
+        hourly_wage
+      	occupation
+        createdBy {
+          id
+          firstname
+          lastname
+        }
       }
     }
   }

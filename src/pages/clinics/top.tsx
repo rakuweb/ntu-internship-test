@@ -4,7 +4,7 @@ import { NextPage, InferGetStaticPropsType } from 'next/types';
 
 import { Top as Template } from 'templates/Clinics/Top';
 import { SeoComponent } from 'organisms/SeoComponent';
-import { CANONICAL_URL } from '~/constants';
+import { CANONICAL_URL } from 'constants/env';
 import { parseSeo } from '~/lib';
 
 // type layer

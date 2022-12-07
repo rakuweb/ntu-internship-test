@@ -1,7 +1,7 @@
 // import layer
-import { VFC } from 'react';
+import { FC } from 'react';
 import { css } from '@emotion/react';
-import { mq } from '~/constants/styles';
+import { mq } from 'constants/styles';
 import { Image } from 'atoms/Image';
 import { ClinicsContact } from '../ClinicsContact';
 
@@ -9,7 +9,7 @@ import { ClinicsContact } from '../ClinicsContact';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const list = {
     title: `株式会社ラクウェブのマーケターを募集します！`,
     campanyname: `株式会社ラクウェブ`,
@@ -317,8 +317,6 @@ const styles = css`
   }
 
   ${mq[2]} {
-    //
-
     .consultation-card-list__card {
       width: 1200px;
       padding: 50px 90px 50px 50px;

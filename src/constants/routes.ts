@@ -4,6 +4,7 @@ export const routes = {
   index: '/',
   register: '/register',
   registerComplete: '/register/complete',
+  offers: '/offers',
   privacyPolicy: '/privacy-policy',
   termsOfService: '/terms-of-service',
   thanks: '/thanks',

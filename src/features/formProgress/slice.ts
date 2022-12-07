@@ -1,10 +1,9 @@
 import { StateCreator } from 'zustand';
 
 import { FormProgressSlice } from './types';
-import { Slice } from 'lib/store';
 
 export const createFormProgressSlice: StateCreator<
-  Slice,
+  FormProgressSlice,
   [],
   [],
   FormProgressSlice

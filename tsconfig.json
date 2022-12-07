@@ -22,6 +22,9 @@
       "~/*": [
         "src/*"
       ],
+      "components/*": [
+        "src/components/*"
+      ],
       "atoms/*": [
         "src/components/atoms/*"
       ],
@@ -57,7 +60,6 @@
       ]
     },
     "typeRoots": [
-      "src/types",
       "src/types/gql",
       "node_modules/@types"
     ],

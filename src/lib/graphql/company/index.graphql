@@ -1,0 +1,26 @@
+query getRecruiterById($id: ID) {
+  company(id: $id) {
+    data {
+      id
+      attributes {
+       recruiter_image {
+        data {
+            id
+          attributes {
+              url
+              width
+              height
+              alternativeText
+            }
+          }
+        }
+        recruiter_introduction
+        createdBy {
+          id
+          firstname
+          lastname
+        }
+      }
+    }
+  }
+}

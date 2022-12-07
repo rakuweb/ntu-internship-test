@@ -1,10 +1,9 @@
 import { StateCreator } from 'zustand';
 
 import { RegisterFormSlice } from './types';
-import { Slice } from 'lib/store';
 
-export const createRegsiterFormSlice: StateCreator<
-  Slice,
+export const createRegisterFormSlice: StateCreator<
+  RegisterFormSlice,
   [],
   [],
   RegisterFormSlice
@@ -21,7 +20,7 @@ export const createRegsiterFormSlice: StateCreator<
   isInterestedInInternship: false,
 
   updateFormData: (data) => set(() => ({ ...data })),
-  setIsChecked: (isChecked) => set(() => ({ isChecked })),
+  setIsChecked: (isChecked) => set(() => ({ isChecked: isChecked })),
   setIsSending: (isSending) => set(() => ({ isSending })),
   startSending: () => set(() => ({ isSending: true })),
   successSending: () => set(() => ({ isComplete: true })),

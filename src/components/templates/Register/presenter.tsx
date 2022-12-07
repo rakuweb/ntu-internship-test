@@ -1,5 +1,5 @@
 // import layer
-import { VFC } from 'react';
+import { FC } from 'react';
 import { Box } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
@@ -8,18 +8,21 @@ import { Footer } from 'organisms/footers/Footer';
 import { mq } from '~/constants/styles';
 import { RegisterForm } from '~/components/organisms/RegisterForm';
 import { StepBar } from '~/components/organisms/StepBar';
+import { useFormProgressStore } from 'features/formProgress/hooks';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ isHidden }) => {
+export const Presenter: FC<PresenterProps> = ({ isHidden }) => {
+  const progress = useFormProgressStore((state) => state.progress);
+
   return (
     <Box display={isHidden ? 'none' : `initial`}>
       <Header />
       <Box as={`main`} css={styles}>
         <section className="clinics-tab"></section>
-        <StepBar />
+        <StepBar current={progress} />
         <RegisterForm />
       </Box>
       <Footer />

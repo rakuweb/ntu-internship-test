@@ -1,31 +1,21 @@
 // import layer
 import { FC, useState, useEffect } from 'react';
-import { useRecoilState } from 'recoil';
 import { Button, Checkbox } from '@chakra-ui/react';
 
 import { styles } from './styles';
-import { registerFormState } from 'features/registerForm/atoms';
-import { useBoundStore } from 'lib/store';
+import { useRegisterFormStore } from 'features/registerForm/hooks';
+import { useFormProgressStore } from 'features/formProgress/hooks';
+import { selectBackProgress } from 'features/formProgress/selectors';
 
 // type layer
-export type PresenterProps = { onClick: () => void };
+export type DataProps = { onClick: () => void };
+export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
-  // const [
-  //   {
-  //     name,
-  //     grade,
-  //     department,
-  //     email,
-  //     phone,
-  //     isInterestedInInternship,
-  //     willStartWorking,
-  //     isSending,
-  //     isChecked,
-  //   },
-  //   setRegisterForm,
-  // ] = useRecoilState(registerFormState);
+export const Presenter: FC<PresenterProps & DataProps> = ({
+  onClick,
+  ...props
+}) => {
   const {
     name,
     grade,
@@ -37,37 +27,12 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
     isSending,
     isChecked,
     setIsChecked,
-    backProgress,
-  } = useBoundStore((state) => ({
-    name: state.name,
-    grade: state.grade,
-    department: state.department,
-    email: state.email,
-    phone: state.phone,
-    isInterestedInInternship: state.isInterestedInInternship,
-    willStartWorking: state.willStartWorking,
-    isSending: state.isSending,
-    isChecked: state.isChecked,
-    setIsChecked: state.setIsChecked,
-    backProgress: state.backProgress,
-  }));
+  } = useRegisterFormStore();
+  const backProgress = useFormProgressStore(selectBackProgress);
   const [isCheckedPrivacyPolicy, setIsCheckedPrivacyPolicy] = useState(false);
   const [isCheckedStudent, setIsCheckedStudent] = useState(false);
 
-  const handleCheckedPrivacyPolicy = () => {
-    setIsCheckedPrivacyPolicy((prev) => !prev);
-  };
-  const handleCheckedStudent = () => {
-    setIsCheckedStudent((prev) => !prev);
-  };
-
   useEffect(() => {
-    // setRegisterForm((prev) => {
-    //   const isChecked = isCheckedPrivacyPolicy && isCheckedStudent;
-    //   const next = { ...prev, isChecked };
-    //
-    //   return next;
-    // });
     setIsChecked(isCheckedPrivacyPolicy && isCheckedStudent);
   }, [isCheckedPrivacyPolicy, isCheckedStudent]);
 

@@ -8,10 +8,10 @@ import { css } from '@emotion/react';
 const { Step } = Steps;
 
 // type layer
-export type Props = { current: number };
+export type PresenterProps = { current: number };
 
 // component
-export const Presenter: FC<Props> = ({ current }) => {
+export const Presenter: FC<PresenterProps> = ({ current }) => {
   const items = [
     {
       title: `予約`,
