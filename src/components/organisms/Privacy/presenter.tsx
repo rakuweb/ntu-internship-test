@@ -59,7 +59,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
             </div>
           ))}
           <p className="addressStyle">{address}</p>
-          <p className="dateStyle ">最終更新日: 2022年11月14日</p>
+          <p className="dateStyle ">最終更新日: 2022年12月8日</p>
         </div>
       </section>
     </div>

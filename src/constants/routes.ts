@@ -7,6 +7,7 @@ export const routes = {
   offers: '/offers',
   privacyPolicy: '/privacy-policy',
   termsOfService: '/terms-of-service',
+  terms: '/terms',
   thanks: '/thanks',
   registered: '/register/registered',
   authenticated: '/register/authenticated',
