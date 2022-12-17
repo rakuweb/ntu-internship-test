@@ -33,12 +33,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
           !data?.usersPermissionsUsers?.data ||
           data?.usersPermissionsUsers?.data.length !== 1
         ) {
-          res.status(200).json({ exist: false });
+          res
+            .status(200)
+            .json({ exist: false, email: undefined, username: undefined });
           return;
         }
         const { email, username } =
           data.usersPermissionsUsers.data[0].attributes;
 
+        if (!data?.usersPermissionsUsers?.data?.[0].attributes?.confirmed) {
+          res.status(200).json({ exist: false, email, username });
+        }
         res.status(200).json({ exist: true, email, username });
       } catch (err: any) {
         console.error(err);

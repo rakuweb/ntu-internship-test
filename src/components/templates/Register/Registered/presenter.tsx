@@ -1,12 +1,12 @@
 // import layer
 import { FC, useState, useEffect } from 'react';
-import { Box } from '@chakra-ui/react';
+import { Box, Center } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
 import { Header } from 'components/headers/Header';
 import { Footer } from 'components/footers/Footer';
 import { mq } from '~/constants/styles';
-import { RegisterMessage } from '~/components/organisms/RegisterMessage';
+import { RegisteredMessage } from '~/components/organisms/RegisteredMessage';
 import { useAccountStore } from 'features/account/hooks';
 import { selectAccount } from 'features/account/selectors';
 
@@ -15,21 +15,22 @@ export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps> = () => {
-  const title = `登録済みアカウントです`;
+  const title = `登録済みアカウント`;
   const [message, setMessage] = useState<string>('');
   const { username } = useAccountStore(selectAccount);
 
   useEffect(() => {
-    const next = `${username}様は、すでにアカウント登録されています。`;
+    const next = `${username}様のアカウントを表示しています。`;
     setMessage(next);
   }, [username]);
 
   return (
     <>
       <Header />
-      <Box as={`main`} css={styles}>
-        <section className="clinics-tab"></section>
-        <RegisterMessage title={title} message={message} />
+      <Box as={`main`} h={{ base: `50vh` }} css={styles}>
+      <Center h={`100%`} as={`section`}>
+          <RegisteredMessage title={title} message={message} />
+        </Center>
       </Box>
       <Footer />
     </>

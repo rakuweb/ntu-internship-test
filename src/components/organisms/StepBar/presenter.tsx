@@ -14,7 +14,7 @@ export type PresenterProps = { current: number };
 export const Presenter: FC<PresenterProps> = ({ current }) => {
   const items = [
     {
-      title: `予約`,
+      title: `入力`,
     },
     {
       title: `確認`,

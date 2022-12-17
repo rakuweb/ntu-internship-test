@@ -6,25 +6,22 @@ import { css } from '@emotion/react';
 import { Header } from 'components/headers/Header';
 import { Footer } from 'components/footers/Footer';
 import { mq } from '~/constants/styles';
-import { RegisterMessage } from '~/components/organisms/RegisterMessage';
-import { StepBar } from '~/components/organisms/StepBar';
+import { ConfirmMessage } from '~/components/organisms/ConfirmMessage';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps> = () => {
-  const title = `アカウント申請が完了しました`;
-  const message = `NOT THE UNIVERSITYの学生アカウントの登録を受け付けました。
-ご登録いただいたメールアドレスへ認証メールを送信しましたのでご確認ください。`;
+  const title = `メールアドレスの認証が完了していません`;
+  const message = `お客様はすでに登録済みですが、メール認証が完了していません。もう一度認証メールを送信しますか？`;
 
   return (
     <>
       <Header />
       <Box as={`main`} css={styles}>
         <section className="clinics-tab"></section>
-        <StepBar current={2} />
-        <RegisterMessage title={title} message={message} />
+        <ConfirmMessage title={title} message={message} />
       </Box>
       <Footer />
     </>

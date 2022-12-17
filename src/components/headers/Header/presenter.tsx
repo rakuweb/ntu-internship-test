@@ -9,6 +9,7 @@ import { styles } from './styles';
 import { Image } from 'atoms/Image';
 import { InternalLink } from 'molecules/links/InternalLink';
 import { routes } from '~/constants';
+import{ HP_URL } from 'constants/routes';
 import { HeaderMenu } from '../HeaderMenu';
 import { MenuDrawer } from '../MenuDrawer';
 
@@ -33,7 +34,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
       zIndex={`sticky`}
       as={`header`}
     >
-      <InternalLink href={routes.index}>
+      <InternalLink href={HP_URL}>
         <Box className="logo" w={`6rem`} as={`h1`}>
           <Image htmlWidth={136}  htmlHeight={70} src={`/logo-136x70.png`} />
         </Box>

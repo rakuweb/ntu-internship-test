@@ -4,10 +4,6 @@ import { css } from '@emotion/react';
 import { mq } from '~/constants/styles';
 import { Box } from '@chakra-ui/react';
 
-import { InternalLink } from 'components/links/InternalLink';
-import { routes } from 'constants/routes';
-import { HP_URL } from 'constants/routes';
-
 // type layer
 export type PresenterProps = { title: string; message: string };
 
@@ -22,18 +18,11 @@ export const Presenter: FC<PresenterProps> = ({ title, message, ...props }) => {
             <Box
               className="form__container__item__left"
               whiteSpace={`break-spaces`}
+              textAlign={`center`}
               as={`p`}
             >
               {message}
             </Box>
-          </div>
-          <div className="form__container__button">
-            <InternalLink
-              href={HP_URL}
-              className="form__container__button__submit"
-            >
-              TOPに戻る
-            </InternalLink>
           </div>
         </div>
       </section>

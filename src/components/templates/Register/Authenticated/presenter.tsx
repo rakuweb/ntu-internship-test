@@ -15,7 +15,7 @@ export type PresenterProps = Record<string, unknown>;
 export const Presenter: FC<PresenterProps> = () => {
   const title = `メールアドレスの認証が完了しました`;
   const message = `ご登録いただいたメールアドレスの認証が完了し、
-Not The Universityの学生アカウントの登録が完了しました。`;
+NOT THE UNIVERSITYの学生アカウントの登録が完了しました。`;
 
   return (
     <>

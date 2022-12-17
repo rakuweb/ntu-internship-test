@@ -2,7 +2,8 @@
 import { FC } from 'react';
 import { css } from '@emotion/react';
 import { mq } from '~/constants/styles';
-import { Box } from '@chakra-ui/react';
+import { Box, Button } from '@chakra-ui/react';
+import axios from 'axios'
 
 import { InternalLink } from 'components/links/InternalLink';
 import { routes } from 'constants/routes';
@@ -13,6 +14,21 @@ export type PresenterProps = { title: string; message: string };
 
 // presenter
 export const Presenter: FC<PresenterProps> = ({ title, message, ...props }) => {
+  const handleClick = () => {
+    axios
+  .post(`http://localhost:1337/auth/send-email-confirmation`, {
+    email: 'user@strapi.io',
+  })
+  .then(response => {
+    // Handle success.
+    console.log('Your user received an email');
+  })
+  .catch(error => {
+    // Handle error.
+    console.error('An error occured:', error.response);
+  });
+  };
+
   return (
     <div css={styles}>
       <section className="form">
@@ -28,12 +44,12 @@ export const Presenter: FC<PresenterProps> = ({ title, message, ...props }) => {
             </Box>
           </div>
           <div className="form__container__button">
-            <InternalLink
-              href={HP_URL}
+            <Button
+              onClick={() => handleClick()}
               className="form__container__button__submit"
             >
-              TOPに戻る
-            </InternalLink>
+              再送する
+            </Button>
           </div>
         </div>
       </section>

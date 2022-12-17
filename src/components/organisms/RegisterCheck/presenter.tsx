@@ -6,7 +6,7 @@ import { styles } from './styles';
 import { useRegisterFormStore } from 'features/registerForm/hooks';
 import { useFormProgressStore } from 'features/formProgress/hooks';
 import { selectBackProgress } from 'features/formProgress/selectors';
-import {routes} from 'constants/routes';
+import { routes } from 'constants/routes';
 import { InternalLink } from '~/components/links/InternalLink';
 
 // type layer
@@ -94,7 +94,13 @@ export const Presenter: FC<PresenterProps & DataProps> = ({
               borderColor={`gray.400`}
             />
             <label htmlFor="check" className="form__container__privacy__text">
-              <InternalLink href={routes.terms} className="form__container__privacy__text__link">
+              <InternalLink
+                href={routes.terms}
+                className="form__container__privacy__text__link"
+                display={`inline`}
+                textDecoration={`underline`}
+                color={`#003968`}
+              >
                 利用規約
               </InternalLink>
               に同意します。 <span className="red">*</span>

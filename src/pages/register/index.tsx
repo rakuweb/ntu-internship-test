@@ -65,14 +65,18 @@ export const Index: NextPage = () => {
         },
       });
 
-      const { exist } = res.data;
+      const { exist, username, email } = res.data;
       if (exist) {
         const { email, username } = res.data;
         setAccount({ email: email as string, username: username as string });
 
         router.push(routes.registered);
         window.scroll({ top: 0 });
-      }
+        } 
+      // else if (email) {
+      //   setAccount({ email: email as string, username: username as string });
+      //   router.push(routes.confirm);
+      // }
     };
 
     handler();

@@ -1,9 +1,8 @@
 // import layer
 import { useState, useEffect } from 'react';
 import { NextPage } from 'next/types';
-import { useRouter } from 'next/router';
 
-import { Index as Template } from '~/components/templates/Register/Registered';
+import { Index as Template } from '~/components/templates/Register/Confirm';
 import { SeoComponent } from 'organisms/SeoComponent';
 import { CANONICAL_URL } from 'constants/env';
 import { ORIGIN_URL } from 'constants/env';
@@ -19,9 +18,9 @@ export const Index: NextPage = () => {
   const title = ``; // eslint-disable-line
   const description = ``;
   const seo = parseSeo(title, description);
+  const redirectUri = `${ORIGIN_URL}${routes.register}`;
   const [isClient, setIsClient] = useState(false);
   const { liff } = useLiff();
-  const router = useRouter();
 
   useEffect(() => {
     setIsClient(true);
@@ -30,7 +29,7 @@ export const Index: NextPage = () => {
   useEffect(() => {
     if (!liff) return;
     if (!liff.isLoggedIn()) {
-      router.push(routes.register);
+      liff.login(); //{ redirectUri: redirectUri });
     }
   }, [liff]);
 
