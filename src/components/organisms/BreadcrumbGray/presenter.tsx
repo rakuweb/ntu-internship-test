@@ -1,14 +1,14 @@
 // import layer
-import { VFC } from 'react';
+import { FC } from 'react';
 import { css } from '@emotion/react';
 import { mq } from '~/constants/styles';
 
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 // type layer
-export type PresenterProps = Record<string, string>;
+export type PresenterProps = {title: string};
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ title }) => {
+export const Presenter: FC<PresenterProps> = ({ title }) => {
   return (
     <div css={styles}>
       <section className="breadcrumb">

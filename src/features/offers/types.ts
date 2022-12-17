@@ -1,5 +1,5 @@
 import { OfferEntity } from 'types/gql/graphql';
-import {ImageType} from 'lib/utils';
+import { ImageType } from 'lib/utils';
 
 export type OfferCard = {
   companyName: string;
@@ -9,7 +9,7 @@ export type OfferCard = {
   isNew?: boolean;
   id: string;
   title: string;
-  image?: ImageType,
+  image?: ImageType;
 };
 
 export type OffersSlice = {
@@ -19,7 +19,7 @@ export type OffersSlice = {
   setOffers: (entity: OfferEntity[]) => void;
 };
 
-export type OfferSlice = {
+export type OfferSliceData = {
   id: string;
   title: string;
   occupation: string;
@@ -30,7 +30,11 @@ export type OfferSlice = {
   recruitmentNumber: number;
   requiredSkills: string;
   recruitmentTerms: string;
-  image?: ImageType,
+  image?: ImageType;
   companyName: string;
   managerName: string;
-}
+};
+
+export type OfferSlice = OfferSliceData & {
+  setTarget: (entity: OfferEntity) => void;
+};

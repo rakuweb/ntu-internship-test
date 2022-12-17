@@ -2,10 +2,9 @@
 import { FC } from 'react';
 import { Box } from '@chakra-ui/react';
 
-import { Header } from 'organisms/headers/Header';
-import { Footer } from 'organisms/footers/Footer';
+import { Header } from 'components/headers/Header';
+import { Footer } from 'components/footers/Footer';
 import { OfferList } from 'features/offers/OfferList';
-import { ContactSection } from '~/components/organisms/sections/ContactSection';
 import { BreadcrumbGray } from 'organisms/BreadcrumbGray';
 import { styles } from './styles';
 
@@ -14,13 +13,13 @@ export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
+  const pageTitle = `オファー一覧`;
   return (
     <>
       <Header />
       <Box as={`main`} css={styles}>
-        <BreadcrumbGray />
+        <BreadcrumbGray title={pageTitle} />
         <OfferList />
-        <ContactSection />
       </Box>
       <Footer />
     </>

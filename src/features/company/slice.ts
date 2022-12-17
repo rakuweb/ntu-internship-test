@@ -1,6 +1,7 @@
 import { StateCreator } from 'zustand';
 
 import { RecruitManagerSlice } from './types';
+import { parseToRecruitManager } from './utils';
 
 export const createRecruitMangerSlice: StateCreator<
   RecruitManagerSlice,
@@ -11,4 +12,8 @@ export const createRecruitMangerSlice: StateCreator<
   id: '',
   image: undefined,
   introduction: '',
+  name: '',
+  companyName: '',
+
+  setRecruitManager: (entity) => set(() => parseToRecruitManager(entity)),
 });
