@@ -11,15 +11,21 @@ export const routes = {
   thanks: '/thanks',
   registered: '/register/registered',
   authenticated: '/register/authenticated',
+  confirm: '/register/confirm',
 
   apiRegister: '/api/register',
   apiAccount: '/api/account',
 };
 
+export const HP_URL = `https://nottheuniversity.com`;
+export const TWITTER_URL = `https://twitter.com/nottheuniv`;
+export const INSTAGRAM_URL = `https://www.instagram.com/nottheuniversity`;
+
 export const apiRoutes = {
   register: `/auth/local/register`,
   signin: `/auth/local`,
-}
+  signage: `/signage`,
+};
 
 export type NavItem = { name: string; link: string; isExternal?: boolean };
 

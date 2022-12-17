@@ -5,6 +5,7 @@ query getUsersByLineId($lineId: String) {
       attributes {
         username
         email
+        confirmed
       }
     }
   }

@@ -1,0 +1,27 @@
+query getCompanies {
+  companies {
+    data {
+      id
+      attributes {
+        recruiter_introduction
+        recruiter_image {
+          data {
+            id
+            attributes {
+              width
+              height
+              alternativeText
+              url
+              formats
+            }
+          }
+        }
+        createdBy {
+          firstname
+          lastname
+          id
+        }
+      }
+    }
+  }
+}
