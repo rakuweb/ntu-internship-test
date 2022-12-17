@@ -5,7 +5,7 @@ import { mq } from '~/constants/styles';
 
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 // type layer
-export type PresenterProps = {title: string};
+export type PresenterProps = {title?: string};
 
 // presenter
 export const Presenter: FC<PresenterProps> = ({ title }) => {
