@@ -8,9 +8,8 @@ import { mq } from '~/constants/styles';
 
 import { NewsId } from '~/components/organisms/NewsId';
 import { BreadcrumbGray } from 'organisms/BreadcrumbGray';
-import { ContactSection } from 'organisms/sections/ContactSection';
-import { Footer } from 'organisms/footers/Footer';
-import { Header } from 'organisms/headers/Header';
+import { Footer } from '~/components/footers/Footer';
+import { Header } from '~/components/headers/Header';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -27,7 +26,6 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
       <Box as={`main`} css={styles}>
         <BreadcrumbGray title={`ニュース`} />
         <NewsId />
-        <ContactSection />
       </Box>
       <Footer />
     </>

@@ -12,8 +12,8 @@ export type PresenterProps = Record<string, unknown>;
 // presenter
 export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
   const list = {
-    Link: `/news`,
-    Img: `/dev/img/clip-5@1x.png`,
+    Link: `/news/1`,
+    Img: `/images/newscard/clip-5@1x.png`,
     Date: `2022.12.06`,
     Category: `ニュース`,
     Title: `手磨きと電動歯ブラシのプラーク除去力を比較`,

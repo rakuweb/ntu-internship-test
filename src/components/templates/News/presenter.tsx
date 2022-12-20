@@ -3,9 +3,9 @@ import { VFC } from 'react';
 import { Box } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
-import { Header } from 'organisms/headers/Header';
+import { Footer } from '~/components/footers/Footer';
+import { Header } from '~/components/headers/Header';
 import { BreadcrumbWhite } from '~/components/organisms/BreadcrumbWhite';
-import { Footer } from 'organisms/footers/Footer';
 import { ContactSection } from '~/components/organisms/sections/ContactSection';
 import { NewsCard } from '~/components/organisms/cards/NewsCard';
 import { mq } from '~/constants/styles';
@@ -44,7 +44,6 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
           <NewsCard />
           <NewsCard />
         </section>
-        <ContactSection />
       </Box>
       <Footer />
     </>

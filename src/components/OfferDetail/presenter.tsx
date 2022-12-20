@@ -28,23 +28,31 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           </p>
           <div className="h3container">
             <h3 className="h3content">
-              <Image src="/dev/img/人がたアイコン.png" className="h3icon" />
+              <Image src="/images/offers/hitogataIcon.png" className="h3icon" />
               {list.occupation}
             </h3>
             <h3 className="h3content">
-              <Image src="/dev/img/お金アイコン.png" className="moneyicon" />
+              <Image src="/images/offers/okaneIcon.png" className="moneyicon" />
               {list.hourlyWage}
             </h3>
             <h3 className="h3content">
-              <Image src="/dev/img/場所アイコン.png" className="h3icon" />
+              <Image src="/images/offers/basyoIcon.png" className="h3icon" />
               {list.place}
             </h3>
             <h3 className="h3content">
-              <Image src="/dev/img/人数アイコン.png" className="peopleicon" />
+              <Image
+                src="/images/offers/ninzuuIcon.png"
+                className="peopleicon"
+              />
               {list.recruitmentNumber}
             </h3>
           </div>
-          <Image src="/dev/img/recruit-test.png" className="bigImg"></Image>
+          <Image
+            // cmsで使う用途
+            // src={list.image}
+            src="/images/offers/recruit-test.png"
+            className="bigImg"
+          ></Image>
           <h2 className="h2">
             インターンの概要
             <p className="internDescription">{list.description}</p>

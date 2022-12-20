@@ -14,8 +14,16 @@ export type PresenterProps = DataProps;
 
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
-  const { id, companyName, occupation, place, hourlyWage, isNew, title } =
-    props;
+  const {
+    id,
+    companyName,
+    occupation,
+    place,
+    hourlyWage,
+    isNew,
+    title,
+    image,
+  } = props;
   const href = `${routes.offers}/${id}`;
   return (
     <InternalLink href={href}>
@@ -29,17 +37,21 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         <div className="x001">
           {isNew && (
             <div className="NEW-area">
-              <Image className="photo" src={`/dev/img/clip-1@1x.png`} />
               <div className="NEW-box">NEW</div>
             </div>
           )}
-
+          <Image
+            className="photo"
+            // cmsで使う用途
+            // src={image}
+            src={`/images/offers/clip-1@1x.png`}
+          />
           <div className="text">
             <div className="text-2">{title}</div>
             <div className="campanytext">{companyName}</div>
 
             <div className="termstext">
-              <Image className="icon" src={`/dev/img/人物アイコン.png`} />
+              <Image className="icon" src={`/images/offers/zinbutuIcon.png`} />
               職種
               <div className="description">{occupation}</div>
             </div>
@@ -48,7 +60,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 className="icon"
                 width={29}
                 height={29}
-                src={`/dev/img/目的地アイコン2.png`}
+                src={`/images/offers/mokutekitiIcon.png`}
               />
               場所
               <div className="description">{place}</div>
@@ -58,7 +70,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 className="icon"
                 width={29}
                 height={29}
-                src={`/dev/img/シンプルな円袋のアイコン.png`}
+                src={`/images/offers/hukuroIkon.png`}
               />
               時給
               <div className="description">{hourlyWage}</div>

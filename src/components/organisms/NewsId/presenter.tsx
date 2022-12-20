@@ -37,7 +37,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
             </a>
           </div>
           <hr className="consultation-card-list__card__border" />
-          <Image src="/dev/img/recruit-test.png" className="Img"></Image>
+          <Image src="/images/offers/recruit-test.png" className="Img"></Image>
           <p className="consultation-card-list__card__description">
             {list.description}
           </p>
@@ -247,10 +247,6 @@ const styles = css`
     }
     .consultation-card-list__card__anser__description {
       padding: 0 0 0 32px;
-    }
-    //
-    .consultation-card-list {
-      margin: 0 0 -120px 0;
     }
   }
 `;
