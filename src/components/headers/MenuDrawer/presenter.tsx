@@ -62,7 +62,7 @@ export const Presenter: VFC<PresenterProps> = ({
                 w={`fit-content`}
                 h={{ base: `2.5rem` }}
                 bg={`var(--curious-blue)`}
-                ml={{ base: `1rem` }}
+                ml={{ base: `0.5rem` }}
                 _hover={{
                   bg: `var(--white)`,
                   '.text': { color: `var(--curious-blue)` },
@@ -76,8 +76,8 @@ export const Presenter: VFC<PresenterProps> = ({
                       src="/dev/img/arrow-@2x.png"
                     />
                   </Box>
-                  <Box color={`white`} className={`text`} ml={{ lg: `0.5rem` }}>
-                    ログイン
+                  <Box color={`white`} className={`text`} ml={{ lg: `0.4rem` }}>
+                    ログアウト
                   </Box>
                 </Flex>
               </HeaderMenuButton>

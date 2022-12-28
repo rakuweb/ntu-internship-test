@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { NextPage } from 'next/types';
 
-import { Index as Template } from '~/components/templates/Register/Authenticated';
+import { Index as Template } from '~/components/templates/Application/Authenticated';
 import { SeoComponent } from 'organisms/SeoComponent';
 import { CANONICAL_URL } from 'constants/env';
 import { ORIGIN_URL } from 'constants/env';

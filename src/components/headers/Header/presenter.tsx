@@ -9,7 +9,7 @@ import { styles } from './styles';
 import { Image } from 'atoms/Image';
 import { InternalLink } from 'molecules/links/InternalLink';
 import { routes } from '~/constants';
-import{ HP_URL } from 'constants/routes';
+import { HP_URL } from 'constants/routes';
 import { HeaderMenu } from '../HeaderMenu';
 import { MenuDrawer } from '../MenuDrawer';
 
@@ -29,105 +29,56 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
       css={styles}
       w={`100%`}
       h={{ base: `80px`, lg: `100px` }}
+      p={{ base: `0`, lg: `0 ${184 / 19.2}vw` }}
       position={{ base: `sticky` }}
       top={`0rem`}
       zIndex={`sticky`}
       as={`header`}
     >
-      <InternalLink href={HP_URL}>
-        <Box className="logo" w={`6rem`} as={`h1`}>
-          <Image htmlWidth={136}  htmlHeight={70} src={`/logo-136x70.png`} />
+      <Flex alignItems={'center'}>
+        <InternalLink href={HP_URL}>
+          <Box className="logo" as={`h1`}>
+            <Image htmlWidth={136} htmlHeight={70} src={`/logo-136x70.png`} />
+          </Box>
+        </InternalLink>
+        <InternalLink href="/offers">
+          <Box
+            display={{ base: `none`, lg: `block` }}
+            m={{ lg: `0 0 0 ${32 / 19.2}vw` }}
+            color="#444444"
+            fontWeight={'bold'}
+            fontSize={`14px`}
+          >
+            インターンを探す
+          </Box>
+        </InternalLink>
+      </Flex>
+
+      <Flex alignItems={'center'}>
+        <Box
+          m={{ lg: `0 ${20 / 19.2}vw 0 0` }}
+          display={{ base: `none`, lg: `block` }}
+          fontWeight="bold"
+          color="rgba(153,153, 153, 0.8)"
+          fontSize={`12px`}
+        >
+          採用担当者はこちら
         </Box>
-      </InternalLink>
-
-      <Box
-        className="g-navi yugothic-bold-midnight-blue-18px"
-        display={{ base: `none` }}
-      >
-        <InternalLink href={`#`}>
-          <div className="text-6">歯を知る</div>
-        </InternalLink>
-        <InternalLink href={`#`}>
-          <div className="text-5">歯科医院を調べる</div>
-        </InternalLink>
-        <InternalLink href={`#`}>
-          <div className="text-4">相談する</div>
-        </InternalLink>
-      </Box>
-
-      {/*
-      <div className="btn">
-        <InternalLink href={`#`}>
+        <Box display={{ base: `block`, lg: `none` }}>
+          <HeaderMenu isOpen={isOpen} onClick={onOpen} />
+        </Box>
+        <InternalLink href="/">
           <Box
-            className="view"
-            _hover={{
-              transition: `all 0.5s;`,
-              '.icon': {
-                color: `var(--mandy)`,
-              },
-              '.register-text': { color: `var(--mandy)` },
-            }}
+            display={{ base: `none`, lg: `block` }}
+            border="1px solid"
+            p={`${8 / 19.2}vw ${16 / 19.2}vw`}
+            color="#FF882F"
+            fontWeight={'600'}
           >
-            <Box>
-              <Box w={`fit-content`} mx={`auto`}>
-                <Icon
-                  className={`icon`}
-                  as={AiOutlineUser}
-                  color={`white`}
-                  fontSize={`2.5rem`}
-                  mx={`auto`}
-                // width={66}
-                // height={80}
-                // src="/dev/img/arrow-@2x.png"
-                />
-              </Box>
-              <Box
-                textAlign={`center`}
-                mt={`0.25rem`}
-                className="register-text yugothic-bold-white-14px"
-              >
-                会員登録
-              </Box>
-            </Box>
+            ログイン
           </Box>
         </InternalLink>
-        <InternalLink href={`#`}>
-          <Box
-            className="view-1"
-            _hover={{
-              transition: `all 0.5s;`,
-              '.icon': {
-                color: `var(--curious-blue)`,
-              },
-              '.login-text': { color: `var(--curious-blue)` },
-            }}
-          >
-            <Box>
-              <Box w={`fit-content`} mx={`auto`}>
-                <Icon
-                  className={`icon`}
-                  as={BiLogIn}
-                  color={`white`}
-                  fontSize={`2.5rem`}
-                  mx={`auto`}
-                // width={66}
-                // height={80}
-                // src="/dev/img/arrow-@2x.png"
-                />
-              </Box>
-              <Box
-                textAlign={`center`}
-                mt={`0.25rem`}
-                className="login-text yugothic-bold-white-14px"
-              >
-                ログイン
-              </Box>
-            </Box>
-          </Box>
-        </InternalLink>
-        <HeaderMenu isOpen={isOpen} onClick={onOpen} />
-      </div>
-      */}
+      </Flex>
 
       <MenuDrawer isOpen={isOpen} onClose={onClose} />
     </Flex>

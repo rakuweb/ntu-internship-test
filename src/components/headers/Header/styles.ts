@@ -42,7 +42,6 @@ export const styles = css`
     align-items: flex-start;
     justify-content: space-between;
     display: flex;
-    min-width: 240px;
   }
 
   .view {
@@ -144,11 +143,13 @@ export const styles = css`
     width: 40px;
   }
 
+  .Hmenu {
+    display: block;
+  }
   ${mq[2]} {
     .logo {
-      height: 42px;
+      height: 70px;
       vertical-align: middle;
-      margin-left: 1rem;
     }
 
     .g-navi {
@@ -179,7 +180,6 @@ export const styles = css`
     .btn {
       align-items: flex-start;
       display: flex;
-      min-width: 240px;
     }
 
     .view {
@@ -284,6 +284,9 @@ export const styles = css`
       margin-right: 8px;
       margin-top: 7px;
       width: 40px;
+    }
+    .Hmenu {
+      display: none;
     }
   }
 `;
