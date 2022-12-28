@@ -96,7 +96,7 @@ export const styles = css`
   }
 
   .termsContainer {
-    padding: 30px 0;
+    padding: 15px 0;
     border-top: solid 1px #707070;
     border-bottom: solid 1px #707070;
     display: flex;
@@ -106,8 +106,8 @@ export const styles = css`
   }
 
   .termsContainer2 {
-    margin: 30px 0 0 0;
-    padding: 0 0 30px 0;
+    margin: 15px 0 0 0;
+    padding: 0 0 15px 0;
     border-bottom: solid 1px #707070;
     display: flex;
     flex-direction: row;
@@ -132,6 +132,7 @@ export const styles = css`
     line-height: 1.3;
     padding: 12px 0 12px 0;
     font-size: 14px;
+    width: ${203 / 3.75}vw;
   }
 
   .contactBlank {
@@ -251,16 +252,16 @@ export const styles = css`
       margin: 24px 0 0 0;
       display: flex;
       flex-direction: row;
-      padding: 60px 0;
+      padding: 30px 0;
       font-weight: bold;
       color: #003968;
     }
 
     .termsContainer2 {
-      margin: 60px 0 0 0;
+      margin: 30px 0 0 0;
       display: flex;
       flex-direction: row;
-      padding: 0 0 60px 0;
+      padding: 0 0 30px 0;
       font-weight: bold;
       color: #003968;
     }
@@ -271,15 +272,16 @@ export const styles = css`
       line-height: 1.3;
       display: flex;
       vertical-align: top;
-      width: 100px;
+      width: 190px;
     }
 
     .termsMain {
       display: flex;
       margin: auto 0;
+      width: ${875 / 19.2}vw;
       white-space: pre-wrap;
       line-height: 1.3;
-      padding: 12px 0 12px 170px;
+      padding: 12px;
       font-size: 20px;
     }
 
@@ -331,4 +333,3 @@ export const styles = css`
     }
   }
 `;
-

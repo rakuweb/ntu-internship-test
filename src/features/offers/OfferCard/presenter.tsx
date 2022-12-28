@@ -91,12 +91,12 @@ const styles = css`
     box-shadow: -3.06e-16px 5px 10px #00417026;
     display: flex;
     flex-direction: column;
-    height: 410px;
+    height: 380px;
     width: 300px;
     padding: 0rem;
     ${mq[3]} {
-        height: 492px;
-        width: 360px;
+        height: 430px;
+        width: 320px;
       }
   }
 
@@ -147,7 +147,7 @@ const styles = css`
     color:#1E406B;
     ${mq[3]} {
       justify-content: space-between;
-      margin: 0 33px;
+      margin: 0 auto;
       width: 282px;
       font-family: 'yugothic';
       color:#1E406B;
@@ -159,16 +159,18 @@ const styles = css`
     line-height: 14px;
     white-space: pre-wrap;
     font-size: 14px;
-    margin: 28px 0;
+    height:28px;
+    margin: 18px 0;
     font-weight: bold;
     color:#1E406B;
     ${mq[3]} {
       line-height: 20px;
       white-space: pre-wrap;
       font-size: 16.5px;
-      margin: 33px 0;
+      margin: 12px 0;
       font-weight: bold;
       color:#1E406B;
+      height:40px;
     }
   }
 
