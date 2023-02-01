@@ -604,9 +604,11 @@ export const styles = css`
       }
 
       .recruit-card-container {
+        width: 100%;
         display: flex;
         flex-direction: row;
         margin: 50px auto 25px auto;
+        justify-content: space-between;
       }
       .test {
         margin: 0 50px;

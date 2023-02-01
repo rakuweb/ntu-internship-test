@@ -22,29 +22,37 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     <div css={styles}>
       <section className="consultation-card-list">
         <div className="consultation-card-list__card">
-          <p className="consultation-card-list__card__title">{list?.title}</p>
+          <p className="consultation-card-list__card__title">
+            {list?.title}
+            webエンジニアを募集!
+          </p>
           <p className="consultation-card-list__card__count">
             {manager.companyName}
+            株式会社ラクウェブ
           </p>
           <div className="h3container">
             <h3 className="h3content">
               <Image src="/images/offers/hitogataIcon.png" className="h3icon" />
               {list.occupation}
+              webエンジニア
             </h3>
             <h3 className="h3content">
               <Image src="/images/offers/okaneIcon.png" className="moneyicon" />
               {list.hourlyWage}
+              xxxxx円
             </h3>
             <h3 className="h3content">
               <Image src="/images/offers/basyoIcon.png" className="h3icon" />
               {list.place}
+              新潟県新潟市
             </h3>
             <h3 className="h3content">
               <Image
                 src="/images/offers/ninzuuIcon.png"
                 className="peopleicon"
               />
-              {list.recruitmentNumber}
+              {/* {list.recruitmentNumber} */}
+              2名
             </h3>
           </div>
           <Image
@@ -55,35 +63,66 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           ></Image>
           <h2 className="h2">
             インターンの概要
-            <p className="internDescription">{list.description}</p>
+            <p className="internDescription">
+              {list.description}
+              インターンの概要が入ります。インターンの概要が入ります。インターンの概要が入ります。インターンの概要が入ります。インターンの概要が入ります。
+              インターンの概要が入ります。インターンの概要が入ります。インターンの概要が入ります。インターンの概要が入ります。インターンの概要が入ります。インターンの概要が入ります。インターンの概要が入ります。インターンの概要が入ります。
+            </p>
           </h2>
           <div className="termsContainer">
             <p className="termsTitle">職種</p>
-            <p className="termsMain">{list.occupation}</p>
+            <p className="termsMain">
+              {list.occupation}
+              webエンジニア
+            </p>
           </div>
           <div className="termsContainer2">
             <p className="termsTitle">日給</p>
-            <p className="termsMain">{list.hourlyWage}</p>
+            <p className="termsMain">
+              {list.hourlyWage}
+              1万円
+            </p>
           </div>
           <div className="termsContainer2">
             <p className="termsTitle">勤務エリア</p>
-            <p className="termsMain">{list.place}</p>
+            <p className="termsMain">
+              {list.place}
+              新潟県新潟市中央区xxxx朱鷺メッセ
+            </p>
           </div>
           <div className="termsContainer2">
             <p className="termsTitle">業務内容</p>
-            <p className="termsMain">{list.aboutJob}</p>
+            <p className="termsMain">
+              {list.aboutJob}
+              {`業務内容が入ります業務内容が入ります業務内容が入ります業務内容が入ります
+業務内容が入ります業務内容が入ります業務内容が入ります業務内容が入ります業務内容が入ります
+
+業務内容が入ります業務内容が入ります業務内容が入ります`}
+            </p>
           </div>
           <div className="termsContainer2">
             <p className="termsTitle">募集人数</p>
-            <p className="termsMain">{list.recruitmentNumber}</p>
+            <p className="termsMain">
+              {/* {list.recruitmentNumber} */}
+              2名
+            </p>
           </div>
           <div className="termsContainer2">
             <p className="termsTitle">必須スキル</p>
-            <p className="termsMain">{list.requiredSkills}</p>
+            <p className="termsMain">
+              {list.requiredSkills}
+              {`reactに関する知識`}
+            </p>
           </div>
           <div className="termsContainer2">
             <p className="termsTitle">応募条件</p>
-            <p className="termsMain">{list.recruitmentTerms}</p>
+            <p className="termsMain">
+              {list.recruitmentTerms}
+              {`応募条件が入ります。
+応募条件が入ります。応募条件が入ります。
+応募条件が入ります。
+応募条件が入ります。応募条件が入ります。応募条件が入ります。`}
+            </p>
           </div>
           <div className="contactBlank">
             <OfferButton />
@@ -91,13 +130,32 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         </div>
         <p className="minTitle">会社概要</p>
         <div className="cardContainer">
-          {manager?.image && (
-            <Image src={manager.image.src} className="cardImg"></Image>
-          )}
+          {/* {manager?.image && (
+            <Image
+              // src={manager.image.src}
+              src={'/images/offers/clip-1@1x.png'}
+              className="cardImg"
+            ></Image>
+          )} */}
+          <Image
+            // src={manager.image.src}
+            src={'/images/offers/clip-1@1x.png'}
+            className="cardImg"
+          ></Image>
           <div className="cardTextContainer">
-            <p className="post">{manager.companyName}</p>
-            <p className="cardName">{manager.name}</p>
-            <p className="cardMain">{manager.introduction}</p>
+            <p className="post">
+              {manager.companyName}
+              株式会社ラクウェブ 取締役
+            </p>
+            <p className="cardName">{manager.name}山田 太郎</p>
+            <p className="cardMain">
+              {manager.introduction}
+              {` 企業情報が入ります。 企業情報が入ります。 企業情報が入ります。 企業情報が入ります。 企業情報が入ります。
+ 企業情報が入ります。 企業情報が入ります。 企業情報が入ります。 企業情報が入ります。 企業情報が入ります。
+ 
+ 企業情報が入ります。 企業情報が入ります。 企業情報が入ります。 企業情報が入ります。
+ 企業情報が入ります。 企業情報が入ります。 企業情報が入ります。 企業情報が入ります。 企業情報が入ります。 企業情報が入ります。`}
+            </p>
           </div>
         </div>
       </section>
