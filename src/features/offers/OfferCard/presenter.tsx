@@ -1,29 +1,21 @@
 // import layer
 import { FC } from 'react';
 import { css } from '@emotion/react';
-import { Box, Image } from '@chakra-ui/react';
+import { Box, Image, Flex } from '@chakra-ui/react';
 
 import { InternalLink } from '~/components/links/InternalLink';
 import { OfferCard } from '../types';
 import { mq } from '~/constants/styles';
 import { routes } from 'constants/routes';
+import { Labeltext } from './Labeltext';
 
 // type layer
 export type DataProps = OfferCard;
 export type PresenterProps = DataProps;
-
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
-  const {
-    id,
-    companyName,
-    occupation,
-    place,
-    hourlyWage,
-    isNew,
-    title,
-    image,
-  } = props;
+  const { id, companyName, occupation, place, hourlyWage, isNew, title } =
+    props;
   const href = `${routes.offers}/${id}`;
   return (
     <InternalLink href={href}>
@@ -35,45 +27,43 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         css={styles}
       >
         <div className="x001">
-          {isNew && (
+          {/* {isNew && (
             <div className="NEW-area">
               <div className="NEW-box">NEW</div>
             </div>
-          )}
+          )} */}
           <Image
             className="photo"
             // cmsで使う用途
             // src={image}
-            src={`/images/offers/clip-1@1x.png`}
+            src={`/images/offers/cardtest1.jpeg`}
           />
           <div className="text">
-            <div className="text-2">{title}</div>
             <div className="campanytext">{companyName}</div>
-
+            <div className="text-2">{title}</div>
             <div className="termstext">
-              <Image className="icon" src={`/images/offers/zinbutuIcon.png`} />
-              職種
-              <div className="description">{occupation}</div>
+              <Flex flexWrap={`wrap`} height={`48px`}>
+                <Labeltext labeltext={occupation}></Labeltext>
+                <Labeltext labeltext={occupation}></Labeltext>
+              </Flex>
             </div>
             <div className="termstext">
               <Image
                 className="icon"
-                width={29}
-                height={29}
+                width={24}
+                height={24}
                 src={`/images/offers/mokutekitiIcon.png`}
               />
-              場所
-              <div className="description">{place}</div>
+              <div className="placetext">{place}</div>
             </div>
-            <div className="paytext">
+            <div className="pay">
               <Image
                 className="icon"
                 width={29}
                 height={29}
                 src={`/images/offers/hukuroIkon.png`}
               />
-              時給
-              <div className="description">{hourlyWage}</div>
+              <div className="placetext">{hourlyWage}</div>
             </div>
           </div>
         </div>
@@ -91,12 +81,13 @@ const styles = css`
     box-shadow: -3.06e-16px 5px 10px #00417026;
     display: flex;
     flex-direction: column;
-    height: 380px;
+    height: 350px;
     width: 300px;
     padding: 0rem;
+    margin-bottom:32px;
     ${mq[3]} {
-        height: 430px;
-        width: 320px;
+        height: 405px;
+        width: 368px;
       }
   }
 
@@ -141,97 +132,104 @@ const styles = css`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 0 28px;
-    width: 240px;
+    margin: 12px;
+    width: 276px;
     font-family: 'yugothic';
-    color:#1E406B;
+    color:#000000;
     ${mq[3]} {
       justify-content: space-between;
-      margin: 0 auto;
-      width: 282px;
+      margin: 20px auto;
+      width: 332px;
       font-family: 'yugothic';
-      color:#1E406B;
+    }
+  }
+
+  .campanytext {
+    font-size: 14px;
+    font-weight: bold;
+    line-height:1.3em;
+    ${mq[3]} {
+      font-size: 14px;
     }
   }
 
   .text-2 {
     letter-spacing: 0;
-    line-height: 14px;
     white-space: pre-wrap;
-    font-size: 14px;
-    height:28px;
-    margin: 18px 0;
+    font-size: 18px;
     font-weight: bold;
-    color:#1E406B;
+    color:#000000;
+    line-height:1.3em;
+    margin-bottom:8px;
+    height:47px;
+    overflow:hidden;
     ${mq[3]} {
-      line-height: 20px;
       white-space: pre-wrap;
-      font-size: 16.5px;
-      margin: 12px 0;
+   
       font-weight: bold;
-      color:#1E406B;
-      height:40px;
     }
   }
 
-  .campanytext {
-    text-align: end;
-    font-size: 14px;
-    font-weight: bold;
-    border-bottom: 1px solid #9d9d9e;
-    padding-bottom: 7px;
-    ${mq[3]} {
-      font-size: 16px;
-      padding-bottom: 8px;
-    }
-  }
 
   .icon{
     width:20px;
     height:20px;
-    margin-right:17px;
+    margin-right:4px;
     ${mq[3]} {
       width:24px;
     height:24px;
-      margin-right:20px;
     }
   }
+
+
   .termstext {
     display:flex;
     align-items: center;
     font-weight: bold;
-    font-size: 14px;
-    border-bottom: 1px solid #9d9d9e;
-    padding: 10px 0;
+    margin-bottom:8px;
     white-space: nowrap;
     ${mq[3]} {
-      font-size: 16px;
-      border-bottom: 1px solid #9d9d9e;
-      padding: 12px 0;
+      // border-bottom: 1px solid #9d9d9e;
+    
     }
   }
 
-  .paytext {
+  .pay {
     display:flex;
     align-items: center;
     font-weight: bold;
-    font-size: 14px;
-    padding: 10px 0;
     white-space: nowrap;
     ${mq[3]} {
-      font-size: 16px;
-      padding: 12px 0;
+    }
+  }
+
+  .paytext{
+    font-size: 11px;
+    font-weight: bold;
+    white-space: pre-wrap;
+    ${mq[3]} {
+      font-size: 20px;
+      white-space: pre-wrap;
+    }
+  }
+
+
+  .placetext{
+    font-size: 12px;
+    font-weight: 500;
+    white-space: pre-wrap;
+    ${mq[3]} {
+      font-size: 12px;
+      white-space: pre-wrap;
     }
   }
 
   .description {
     font-size: 11px;
     font-weight: 500;
-    margin-left: 17px;
     white-space: pre-wrap;
     ${mq[3]} {
       font-size: 13px;
-      margin-left: 20px;
       white-space: pre-wrap;
     }
   }

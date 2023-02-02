@@ -21,66 +21,76 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Flex
-      justify={`space-between`}
-      align={`center`}
-      backgroundColor="var(--white)"
-      boxShadow={`-1.84e-16px 3px 7px #00000026;`}
-      css={styles}
+    <Box
       w={`100%`}
-      h={{ base: `80px`, lg: `100px` }}
-      p={{ base: `0`, lg: `0 ${184 / 19.2}vw` }}
-      position={{ base: `sticky` }}
-      top={`0rem`}
-      zIndex={`sticky`}
-      as={`header`}
+      bg={`#f5f5f5`}
+      pt={{ base: `${10 / 3.75}vw`, lg: `${15 / 19.2}vw` }}
+      px={{ base: `${20 / 3.75}vw`, lg: `${40 / 19.2}vw` }}
     >
-      <Flex alignItems={'center'}>
-        <InternalLink href={HP_URL}>
-          <Box className="logo" as={`h1`}>
-            <Image htmlWidth={136} htmlHeight={70} src={`/logo-136x70.png`} />
-          </Box>
-        </InternalLink>
-        <InternalLink href="/offers">
-          <Box
-            display={{ base: `none`, lg: `block` }}
-            m={{ lg: `0 0 0 ${32 / 19.2}vw` }}
-            color="#444444"
-            fontWeight={'bold'}
-            fontSize={`14px`}
-          >
-            インターンを探す
-          </Box>
-        </InternalLink>
-      </Flex>
+      <Flex
+        justify={`space-between`}
+        align={`center`}
+        backgroundColor={{ base: `#f5f5f5`, lg: 'var(--white)' }}
+        boxShadow={{ lg: `0px 0px 20px #00000026;` }}
+        borderRadius={{ lg: `${50 / 19.2}vw` }}
+        css={styles}
+        w={`100%`}
+        maxWidth={`1530px`}
+        h={{ base: `80px`, lg: `100px` }}
+        p={{ base: `0`, lg: `0 ${40 / 19.2}vw` }}
+        mx={`auto`}
+        position={{ lg: `sticky` }}
+        top={`0rem`}
+        zIndex={`sticky`}
+        as={`header`}
+      >
+        <Flex alignItems={'center'}>
+          <InternalLink href={HP_URL}>
+            <Box className="logo" as={`h1`}>
+              <Image htmlWidth={136} htmlHeight={70} src={`/logo-136x70.png`} />
+            </Box>
+          </InternalLink>
+          <InternalLink href="/offers">
+            <Box
+              display={{ base: `none`, lg: `block` }}
+              m={{ lg: `0 0 0 ${40 / 19.2}vw` }}
+              color="#444444"
+              fontWeight={'bold'}
+              fontSize={`14px`}
+            >
+              インターンを探す
+            </Box>
+          </InternalLink>
+        </Flex>
 
-      <Flex alignItems={'center'}>
-        <Box
-          m={{ lg: `0 ${20 / 19.2}vw 0 0` }}
-          display={{ base: `none`, lg: `block` }}
-          fontWeight="bold"
-          color="rgba(153,153, 153, 0.8)"
-          fontSize={`12px`}
-        >
-          採用担当者はこちら
-        </Box>
-        <Box display={{ base: `block`, lg: `none` }}>
-          <HeaderMenu isOpen={isOpen} onClick={onOpen} />
-        </Box>
-        <InternalLink href="/">
+        <Flex alignItems={'center'}>
           <Box
+            m={{ lg: `0 ${40 / 19.2}vw 0 0` }}
             display={{ base: `none`, lg: `block` }}
-            border="1px solid"
-            p={`${8 / 19.2}vw ${16 / 19.2}vw`}
-            color="#FF882F"
-            fontWeight={'600'}
+            fontWeight="bold"
+            color="rgba(153,153, 153, 0.8)"
+            fontSize={`12px`}
           >
-            ログイン
+            採用担当者はこちら
           </Box>
-        </InternalLink>
-      </Flex>
+          <Box display={{ base: `block`, lg: `none` }}>
+            <HeaderMenu isOpen={isOpen} onClick={onOpen} />
+          </Box>
+          <InternalLink href="/">
+            <Box
+              display={{ base: `none`, lg: `block` }}
+              border="1px solid"
+              p={`${8 / 19.2}vw ${16 / 19.2}vw`}
+              color="#FF882F"
+              fontWeight={'600'}
+            >
+              ログイン
+            </Box>
+          </InternalLink>
+        </Flex>
 
-      <MenuDrawer isOpen={isOpen} onClose={onClose} />
-    </Flex>
+        <MenuDrawer isOpen={isOpen} onClose={onClose} />
+      </Flex>
+    </Box>
   );
 };

@@ -5,7 +5,7 @@ import { mq } from '~/constants/styles';
 // styles
 export const styles = css`
   .search {
-    background-color: #f0f3f5;
+    background-color: #f5f5f5;
     font-family: var(--font-family-yugothic-medium);
     width: 100vw;
   }
@@ -15,7 +15,6 @@ export const styles = css`
     flex-direction: column;
     justify-content: space-between;
     margin: 0 auto;
-    padding: 30px 0;
     width: 80%;
   }
 
@@ -30,20 +29,12 @@ export const styles = css`
   }
 
   .search-title__container__title {
-    font-size: 32px;
-    color: #1978bb;
-    margin: 16px 0 30px 0;
+    font-size: 20px;
+    color: #444444;
+    font-weight: bold;
+    margin: 30px 0;
     width: fit-content;
     text-align: center;
-  }
-
-  .search-title__container__title::after {
-    background-color: #1978bb;
-    content: '';
-    display: block;
-    margin-top: 5px;
-    height: 2px;
-    width: 100%;
   }
 
   .search-filter__container {
@@ -490,21 +481,30 @@ export const styles = css`
   }
 
   .recruit-card-area {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    margin: 0 auto;
+    // display: flex;
+    // flex-direction: column;
+    // width: 300px;
+    // margin: 0 auto;
   }
 
   .recruit-card-container {
-    margin: 50px 0 0 0;
+    margin: 0px 0 0 0;
   }
 
   .test {
     margin: 50px 0;
   }
 
+  .flexwidth {
+    width: 100%;
+  }
+
   ${mq[2]} {
+    .search-title__container__title {
+      font-size: 40px;
+      margin: 30px 0;
+    }
+
     .search__container {
       width: 950px;
     }
@@ -589,6 +589,10 @@ export const styles = css`
       margin: 0 25px;
     }
 
+    .flexwidth {
+      width: 50%;
+    }
+
     ${mq[3]} {
       .search__container {
         width: 1180px;
@@ -607,7 +611,7 @@ export const styles = css`
         width: 100%;
         display: flex;
         flex-direction: row;
-        margin: 50px auto 25px auto;
+        margin: 0px auto 25px auto;
         justify-content: space-between;
       }
       .test {

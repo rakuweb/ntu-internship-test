@@ -19,42 +19,48 @@ export const Presenter: VFC<PresenterProps> = ({
   ...props
 }) => {
   return (
-    <Flex
-      className={`${isOpen ? `open` : ``}`}
-      bg={`var(--midnight-blue)`}
-      css={styles}
-      w={`80px`}
-      h={`80px`}
-      direction={`column`}
-      justify={`center`}
-      align={`center`}
-      onClick={onClick}
-      transition={`all 0.5s;`}
-      _hover={{
-        bg: `var(--white)`,
-        '.toggle_btn > .menu-line': {
-          bg: `var(--midnight-blue)`,
-        },
-        '.menu-text': {
-          color: `var(--midnight-blue)`,
-          transition: `all 0.5s;`,
-        },
-      }}
-    >
-      <div className={`toggle_btn`} css={isOpen ? openStyle : ''}>
-        <Span className={`menu-line`} />
-        <Span className={`menu-line`} />
-        <Span className={`menu-line`} />
-      </div>
+    <Box>
+      <Flex
+        className={`${isOpen ? `open` : ``}`}
+        boxShadow={{ base: `0px 0px 20px #00000026;` }}
+        bg={`white`}
+        css={styles}
+        w={`45px`}
+        h={`45px`}
+        direction={`column`}
+        justify={`center`}
+        align={`center`}
+        onClick={onClick}
+        transition={`all 0.5s;`}
+        borderRadius={`100%`}
+        _hover={{
+          bg: `var(--white)`,
+          '.toggle_btn > .menu-line': {
+            bg: `var(--midnight-blue)`,
+          },
+          '.menu-text': {
+            color: `var(--midnight-blue)`,
+            transition: `all 0.5s;`,
+          },
+        }}
+      >
+        <div className={`toggle_btn`} css={isOpen ? openStyle : ''}>
+          <Span className={`menu-line`} />
+          <Span className={`menu-line`} />
+          <Span className={`menu-line`} />
+        </div>
+      </Flex>
       <Box
         textAlign={`center`}
         mt={`0.7rem`}
         mx={`auto`}
+        fontSize={`11px`}
+        color={`#444444`}
         className="menu-text yugothic-bold-white-14px"
       >
-        {isOpen ? `閉じる` : `メニュー`}
+        {isOpen ? <Box color={`white`}>閉じる</Box> : `メニュー`}
       </Box>
-    </Flex>
+    </Box>
   );
 };
 
@@ -68,7 +74,7 @@ const styles = css`
   .toggle_btn {
     display: block;
     position: relative;
-    width: 30px;
+    width: 20px;
     height: 30px;
     transition: all 0.5s;
     margin-left: auto;
@@ -79,20 +85,23 @@ const styles = css`
     display: block;
     position: absolute;
     left: 0;
-    width: 30px;
-    height: 2px;
-    background-color: var(--white);
-    border-radius: 4px;
+    width: 20px;
+    height: 3px;
+    background-color: #444444;
+    border-radius: 9px;
     transition: all 0.5s;
   }
   .toggle_btn span:nth-child(1) {
     top: 4px;
+    width: 100%;
   }
   .toggle_btn span:nth-child(2) {
     top: 14px;
+    width: 100%;
   }
   .toggle_btn span:nth-child(3) {
     bottom: 4px;
+    width: 50%;
   }
   .toggle_btn span:hover {
     color: var(--curious-blue);
@@ -110,10 +119,10 @@ const openStyle = css`
   }
 
   span:nth-child(2) {
-    opacity: 0;
+    -webkit-transform: translateY(0px) rotate(315deg);
+    transform: translateY(0px) rotate(315deg);
   }
   span:nth-child(3) {
-    -webkit-transform: translateY(-10px) rotate(315deg);
-    transform: translateY(-10px) rotate(315deg);
+    opacity: 0;
   }
 `;
