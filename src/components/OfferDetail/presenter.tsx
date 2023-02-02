@@ -22,39 +22,26 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     <div css={styles}>
       <section className="consultation-card-list">
         <div className="consultation-card-list__card">
-          <p className="consultation-card-list__card__title">
-            {list?.title}
-            webエンジニアを募集!
-          </p>
-          <p className="consultation-card-list__card__count">
+          <p className="companyName">
             {manager.companyName}
-            株式会社ラクウェブ
+            ソリマチ株式会社
           </p>
-          <div className="h3container">
-            <h3 className="h3content">
-              <Image src="/images/offers/hitogataIcon.png" className="h3icon" />
-              {list.occupation}
-              webエンジニア
-            </h3>
-            <h3 className="h3content">
-              <Image src="/images/offers/okaneIcon.png" className="moneyicon" />
-              {list.hourlyWage}
-              xxxxx円
-            </h3>
-            <h3 className="h3content">
-              <Image src="/images/offers/basyoIcon.png" className="h3icon" />
-              {list.place}
-              新潟県新潟市
-            </h3>
-            <h3 className="h3content">
-              <Image
-                src="/images/offers/ninzuuIcon.png"
-                className="peopleicon"
-              />
-              {/* {list.recruitmentNumber} */}
-              2名
-            </h3>
-          </div>
+          <p className="jobtitle">
+            {list?.title}
+            Pythonとレゴマインドストームを使ったプログラミング体験
+          </p>
+
+          <h3 className="h3content">
+            <Image src="/images/offers/okaneIcon.png" className="moneyicon" />
+            {list.hourlyWage}
+            xxxxx円
+          </h3>
+          <h3 className="h3content">
+            <Image src="/images/offers/basyoIcon.png" className="h3icon" />
+            {list.place}
+            新潟県新潟市
+          </h3>
+
           <Image
             // cmsで使う用途
             // src={list.image}

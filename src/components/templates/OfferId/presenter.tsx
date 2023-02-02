@@ -20,7 +20,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   return (
     <>
       <Header />
-      <BreadcrumbGray title={pagetitle} />
+      {/* <BreadcrumbGray title={pagetitle} /> */}
       <OfferDetail />
       <Footer />
     </>

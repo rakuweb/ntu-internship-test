@@ -19,8 +19,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     <Box m={`0 4px 4px 0`}>
       <InternalLink href={href}>
         <Box
-          bg={`blue`}
-          // bg={`#a1cff4`}
+          bg={`#21D4FD`}
           color={`white`}
           p={`4px 12px`}
           fontSize={`12px`}

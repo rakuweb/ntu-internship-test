@@ -81,7 +81,8 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
               display={{ base: `none`, lg: `block` }}
               border="1px solid"
               p={`${8 / 19.2}vw ${16 / 19.2}vw`}
-              color="#FF882F"
+              color="white"
+              backgroundImage={`linear-gradient(19deg, #21D4FD 0%, #B721FF 100%)`}
               fontWeight={'600'}
             >
               ログイン

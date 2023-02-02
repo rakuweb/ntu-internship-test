@@ -4,7 +4,7 @@ import { mq } from 'constants/styles';
 // styles
 export const styles = css`
   .consultation-card-list {
-    background-color: #f0f3f5;
+    background-color: #f5f5f5;
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -24,7 +24,7 @@ export const styles = css`
     margin-bottom: 24px;
   }
 
-  .consultation-card-list__card__title {
+  .jobtitle {
     padding: 0 0 0;
     width: 100%;
     font-size: 20px;
@@ -33,12 +33,12 @@ export const styles = css`
     line-height: 1.3em;
   }
 
-  .consultation-card-list__card__count {
-    color: #003968;
+  .companyName {
+    color: #000000;
     font-size: 12px;
+    font-weight: 700;
     padding: 0;
     width: fit-content;
-    border-bottom: 1px solid #000000;
     margin: 15px 0 0 0;
   }
 
@@ -186,19 +186,18 @@ export const styles = css`
 
   ${mq[2]} {
     .consultation-card-list__card {
-      width: 1200px;
-      padding: 50px 90px 50px 50px;
+      width: 760px;
+      padding: 40px;
     }
 
-    .consultation-card-list__card__title {
-      padding: 0;
-      font-size: 32px;
+    .jobtitle {
+      margin-bottom: 16px;
+      font-size: 24px;
     }
 
-    .consultation-card-list__card__count {
-      padding: 0 0 0 0;
-      margin: 21px 0 21px 0;
-      font-size: 20px;
+    .companyName {
+      margin-bottom: 12px;
+      font-size: 18px;
     }
 
     .h2 {
