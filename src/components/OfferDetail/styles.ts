@@ -10,7 +10,7 @@ export const styles = css`
     flex-direction: column;
     align-items: center;
     font-family: 'Noto Sans JP', sans-serif;
-    padding: 32px 0 64px;
+    padding: 40px 0 0;
   }
 
   .consultation-card-list__card {
@@ -19,33 +19,55 @@ export const styles = css`
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    border-radius: 10px;
+    border-radius: 20px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 24px;
+  }
+
+  .subsection {
+    width: calc(100% - 32px);
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    font-family: 'Noto Sans JP', sans-serif;
   }
 
   .jobtitle {
-    padding: 0 0 0;
+    margin-bottom:16px;
     width: 100%;
-    font-size: 20px;
-    color: #003968;
+    font-size: 24px;
+    color: #000000;
     font-weight: bold;
     line-height: 1.3em;
   }
 
   .companyName {
     color: #000000;
-    font-size: 12px;
+    font-size: 18px;
     font-weight: 700;
-    padding: 0;
     width: fit-content;
-    margin: 15px 0 0 0;
+    margin: 0 0 12px 0;
   }
 
-  .h2 {
-    font-size: 20px;
-    font-weight: bold;
-    color: #003968;
+  .termstext {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    font-size: 12px;
+  }
+
+  .placetext {
+    font-size: 12px;
+    font-weight: 400;
+    white-space: pre-wrap;
+    margin-left: 12px;
+    ${mq[3]} {
+      font-size: 16px;
+      white-space: pre-wrap;
+    }
   }
 
   .internDescription {
@@ -57,72 +79,43 @@ export const styles = css`
     margin: 15px 0;
   }
 
-  .h3container {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .h3content {
-    display: flex;
-    flex-direction: colmun;
-    font-size: 13px;
-    font-weight: bold;
-    color: #003968;
-    margin: 15px 0 0 0;
-    align-items: center;
-    width: 50%;
-  }
-
-  .h3icon {
-    max-width: 12px;
-    object-fit: scale-down;
-    margin: 0 16px 0 0;
-  }
-
-  .peopleicon {
-    max-height: 14px;
-    object-fit: scale-down;
-    margin: 0 16px 0 0;
-  }
-
-  .moneyicon {
-    max-height: 14px;
-    object-fit: scale-down;
-    margin: 0 19px 0 4px;
-  }
-
   .bigImg {
-    margin: 30px 0;
+    margin-bottom: 28px;
+    border-radius: 20px;
   }
 
   .termsContainer {
-    padding: 15px 0;
-    border-top: solid 1px #707070;
-    border-bottom: solid 1px #707070;
+  border-bottom: solid 1px #707070;
     display: flex;
     flex-direction: row;
-    font-weight: bold;
-    color: #003968;
+    color: #000000;
   }
 
   .termsContainer2 {
-    margin: 15px 0 0 0;
-    padding: 0 0 15px 0;
+    margin: 24px 0 0 0;
+    padding: 0 0 10px 0;
     border-bottom: solid 1px #707070;
     display: flex;
-    flex-direction: row;
-    font-weight: bold;
-    color: #003968;
+    flex-direction: roww
+    color: #000000;
+  }
+
+  .termsContainer3 {
+    margin: 24px 0 0 0;
+    display: flex;
+    flex-direction: roww
+    color: #000000;
   }
 
   .termsTitle {
-    padding: 12px 0;
+    padding: 0px 0;
     font-size: 14px;
     line-height: 1.3;
     display: flex;
     vertical-align: top;
     min-width: 100px;
     white-space: nowrap;
+    font-weight:700;
   }
 
   .termsMain {
@@ -130,7 +123,7 @@ export const styles = css`
     margin: auto 0;
     white-space: pre-wrap;
     line-height: 1.3;
-    padding: 12px 0 12px 0;
+    padding: 0px 0 10px 0;
     font-size: 14px;
     width: ${203 / 3.75}vw;
   }
@@ -144,23 +137,6 @@ export const styles = css`
     color: #003968;
     font-size: 20px;
     font-weight: bold;
-  }
-
-  .cardContainer {
-    width: 91%;
-    padding: 30px;
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    color: #003968;
-    font-size: 14px;
-  }
-
-  .cardTextContainer {
-    display: flex;
-    flex-direction: column;
   }
 
   .cardImg {
@@ -190,6 +166,11 @@ export const styles = css`
       padding: 40px;
     }
 
+    .subsection {
+      width: 760px;
+      padding: 40px;
+    }
+
     .jobtitle {
       margin-bottom: 16px;
       font-size: 24px;
@@ -200,42 +181,8 @@ export const styles = css`
       font-size: 18px;
     }
 
-    .h2 {
-      font-size: 23px;
-      font-weight: bold;
-      color: #003968;
-      margin: 0 0 0 0;
-    }
-
-    .h3content {
-      display: flex;
-      flex-direction: row;
-      font-size: 20px;
-      font-weight: bold;
-      color: #003968;
-      margin: 24px 0 0 0;
-      width: 50%;
-    }
-
-    .h3icon {
-      max-width: 15%;
-      padding: 0 22px;
-      margin: 0;
-    }
-    .peopleicon {
-      max-height: 100%;
-      margin: 0 20px 0 0;
-    }
-
-    .moneyicon {
-      max-height: 100%;
-      padding: 0 28px 0 6px;
-      margin: 0;
-    }
-
     .bigImg {
-      margin: 45px 0 45px 0;
-      padding: 0 0 0 7px;
+      margin-bottom: 28px;
     }
 
     .internDescription {
@@ -248,26 +195,30 @@ export const styles = css`
     }
 
     .termsContainer {
-      margin: 24px 0 0 0;
       display: flex;
       flex-direction: row;
-      padding: 30px 0;
-      font-weight: bold;
-      color: #003968;
+      padding: 0px 0;a
     }
 
     .termsContainer2 {
-      margin: 30px 0 0 0;
+      margin: 24px 0 0 0;
       display: flex;
       flex-direction: row;
-      padding: 0 0 30px 0;
-      font-weight: bold;
-      color: #003968;
+      padding: 0 0 10px 0;
+      color: #000000;
     }
 
+    .termsContainer3 {
+      margin: 24px 0 0 0;
+      display: flex;
+      flex-direction: row;
+    }
+
+
+    
+
     .termsTitle {
-      padding: 12px 0;
-      font-size: 20px;
+      padding: 0px 0;
       line-height: 1.3;
       display: flex;
       vertical-align: top;
@@ -280,8 +231,7 @@ export const styles = css`
       width: ${875 / 19.2}vw;
       white-space: pre-wrap;
       line-height: 1.3;
-      padding: 12px;
-      font-size: 20px;
+      padding: 0 0 10px 0;
     }
 
     //

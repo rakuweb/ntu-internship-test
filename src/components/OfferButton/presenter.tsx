@@ -12,7 +12,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
     <div css={styles}>
       <section className="clinics-button">
         <a href="#" className="clinics-button__button">
-          応募する
+          エントリーする
         </a>
       </section>
     </div>
@@ -24,12 +24,11 @@ const styles = css`
     display: flex;
     font-family: 'Noto Sans JP';
     justify-content: center;
-    margin: 48px 0;
   }
 
   .clinics-button__button {
     align-items: center;
-    background-color: #2194e5;
+    background-image: linear-gradient(19deg, #21d4fd 0%, #b721ff 100%);
     border-radius: 8px;
     color: #fff;
     display: flex;
@@ -38,6 +37,8 @@ const styles = css`
     height: 50px;
     justify-content: center;
     width: calc(100% - 32px);
+    font-weight: bold;
+    letter-spacing: 2px;
   }
 
   .clinics-button__button:hover {
@@ -51,7 +52,6 @@ const styles = css`
 
   ${mq[2]} {
     .clinics-button {
-      margin: 48px 0;
     }
 
     .clinics-button__button {

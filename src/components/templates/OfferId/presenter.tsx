@@ -4,6 +4,8 @@ import { FC } from 'react';
 import { OfferDetail } from 'components/OfferDetail';
 import { BreadcrumbGray } from 'organisms/BreadcrumbGray';
 import { Footer } from 'components/footers/Footer';
+import { Footer2 } from '~/components/footers/Footer2';
+import { Footer3 } from '~/components/footers/Footer3';
 import { Header } from 'components/headers/Header';
 
 import 'swiper/css';
@@ -22,7 +24,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       <Header />
       {/* <BreadcrumbGray title={pagetitle} /> */}
       <OfferDetail />
-      <Footer />
+      {/* <Footer2 /> */}
+      <Footer3 />
     </>
   );
 };
