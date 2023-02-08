@@ -26,17 +26,20 @@ export const createTargetOfferSlice: StateCreator<
 > = (set) => ({
   id: '',
   title: '',
-  occupation: '',
+  jobType: '',
+  categories: [],
   place: '',
   hourlyWage: '',
   description: '',
   aboutJob: '',
-  recruitmentNumber: 1,
-  requiredSkills: '',
+  target: '',
+  gainedSkills: [],
   recruitmentTerms: '',
   image: undefined,
   companyName: '',
-  managerName: '',
+  mission: '',
+  logo: undefined,
+  qualification: '',
 
   setTarget: (entity) => {
     const result = parseToTarget(entity);

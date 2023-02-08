@@ -9,3 +9,9 @@ export const selectTarget = (state: OfferSlice) => {
   return remain;
 };
 export const selectSetTarget = (state: OfferSlice) => state.setTarget;
+
+export const selectBreadCrumbItem = (state: OfferSlice) => {
+  const result = { jobTitle: state.title, companyName: state.companyName };
+
+  return result;
+};

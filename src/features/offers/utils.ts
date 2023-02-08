@@ -1,5 +1,5 @@
 import { OfferEntity } from 'types/gql/graphql';
-import { OfferCard,  OfferSliceData } from './types';
+import { OfferCard, OfferSliceData } from './types';
 import { parseDate, parseImage } from 'lib/utils';
 
 export const parseToOffers = (data: OfferEntity[]): OfferCard[] => {
@@ -12,7 +12,17 @@ export const parseToOffers = (data: OfferEntity[]): OfferCard[] => {
       image: offer?.image?.data?.attributes?.url
         ? parseImage(offer.image.data.attributes)
         : undefined,
-      occupation: offer.occupation,
+      categories:
+        offer?.job_categories?.data?.map((category) => ({
+          id: category.id,
+          name: category?.attributes?.name ?? '',
+          enName: category?.attributes?.en_name ?? '',
+        })) ?? [],
+      // offer.job_categories?.data?.map((category) => ({
+      //   id: category.id,
+      //   name: category?.attributes?.name ?? '',
+      //   enName: category?.attributes?.en_name ?? '',
+      // })) ?? [],
       place: offer.place,
       hourlyWage: offer.hourly_wage,
     };
@@ -21,7 +31,7 @@ export const parseToOffers = (data: OfferEntity[]): OfferCard[] => {
   return result;
 };
 
-export const parseToTarget = (entity: OfferEntity): OfferSliceData => {
+export const parseToTarget = (entity: OfferEntity): Partial<OfferSliceData> => {
   const offer = entity?.attributes;
   const result = {
     title: offer.title,
@@ -30,15 +40,21 @@ export const parseToTarget = (entity: OfferEntity): OfferSliceData => {
     image: offer?.image?.data?.attributes?.url
       ? parseImage(offer.image.data.attributes)
       : undefined,
-    occupation: offer.occupation,
+    jobType: offer.job_type,
+    categories:
+      offer?.job_categories?.data?.map((category) => ({
+        id: category.id,
+        name: category?.attributes?.name ?? '',
+        enName: category?.attributes?.en_name ?? '',
+      })) ?? [],
     place: offer.place,
+    target: offer?.target ?? '',
     hourlyWage: offer.hourly_wage,
     description: offer.description,
     aboutJob: offer.about_job,
-    recruitmentNumber: offer.recruitment_number,
-    requiredSkills: offer.required_skills,
+    gainedSkills: offer.gained_skills?.map((skill) => skill.name) ?? [],
     recruitmentTerms: offer.recruitment_terms,
-    managerName: offer.createdBy.firstname,
+    qualification: offer?.qualification ?? '',
   };
 
   return result;

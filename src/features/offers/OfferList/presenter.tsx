@@ -1,19 +1,31 @@
 // import layer
-import { FC, useState, useEffect } from 'react';
-import { Box, Flex } from '@chakra-ui/react';
+import { FC, useState } from 'react';
+import { Box, Grid } from '@chakra-ui/react';
+import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
+import { Navigation, Autoplay } from 'swiper';
 
-import { OfferCard, OfferCardProps } from 'features/offers/OfferCard';
+import { OfferCard } from 'features/offers/OfferCard';
 import { selectOfferList } from 'features/offers/selectors';
 import { useOffersStore } from 'features/offers/hooks';
 import { styles } from './styles';
-import { AddAlarmSharp } from '@mui/icons-material';
 import { Image } from 'components/Image';
+import { breakpointsByPx } from '~/constants/styles';
+import {
+  selectAdvertisements,
+  useAdvertisementsStore,
+} from 'features/advertisements';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/autoplay';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
+  const advertisements = useAdvertisementsStore(selectAdvertisements);
+  const offers = useOffersStore(selectOfferList);
   // const list = useOffersStore(selectOfferList);
   // const [offerList, setOfferList] = useState<OfferCardProps[][]>([]);
 
@@ -27,6 +39,32 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
 
   //   setOfferList(next);
   // }, [list]);
+  const [index, setIndex] = useState<number>(0);
+
+  const swiperProps: SwiperProps = {
+    modules: [Navigation, Autoplay],
+
+    loop: true,
+    centeredSlides: true,
+    navigation: true,
+    autoplay: true,
+    slidesPerView: 1,
+    spaceBetween: 16,
+    breakpoints: {
+      // [breakpointsByPx[0]]: {},
+      // [breakpointsByPx[1]]: {},
+      [breakpointsByPx[2]]: {
+        centeredSlides: true,
+        slidesPerView: 1,
+        spaceBetween: 40,
+      },
+      // [breakpointsByPx[3]]: {},
+      // [breakpointsByPx[4]]: {},
+    },
+    onSlideChange: (swiper) => {
+      setIndex(swiper.realIndex);
+    },
+  };
 
   return (
     <Box css={styles}>
@@ -34,22 +72,105 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         // pb={{ base: `${80 / 3.75}vw`, lg: `${120 / 19.2}vw` }}
         className="search"
       >
-        <div className="search__container">
+        <Box className="search__container" position={`relative`}>
           <Box
             // border={`1px solid`}
             mx={`auto`}
             overflow={`hidden`}
             borderRadius={{ base: `${20 / 3.75}vw`, lg: `${50 / 19.2}vw` }}
             mt={`30px`}
+            w={`100%`}
+            sx={{
+              '.swiper-button-next': {
+                right: {
+                  base: `0.5rem`,
+                  lg: `1rem`,
+                },
+                mt: {
+                  base: `initial`,
+                  lg: `calc(0px - (var(--swiper-navigation-size)/ 2))`,
+                },
+                transform: { base: `translateY(-50%)`, lg: `initial` },
+                backgroundColor: `var(--white)`,
+                borderWidth: `2px`,
+                borderStyle: `solid`,
+                borderRadius: `50%`,
+                borderColor: `#21d4fd`,
+                // borderColor: `var(--navy-blue)`,
+                width: { base: `1.5rem`, lg: `44px` },
+                height: { base: `1.5rem`, lg: `44px` },
+                textAlign: `center`,
+                verticalAlign: `middle`,
+                ':after': {
+                  fontSize: { base: `0.75rem`, lg: `1.5rem` },
+                  color: `#21d4fd`,
+                  // color: `var(--navy-blue)`,
+                  fontWeight: `bold`,
+                },
+                ':hover': {
+                  cursor: `pointer`,
+                  filter: `opacity(50%)`,
+                  transition: `all .3s`,
+                },
+              },
+              '.swiper-button-prev': {
+                left: {
+                  base: `0.5rem`,
+                  lg: `1rem`,
+                },
+                mt: {
+                  base: `initial`,
+                  lg: `calc(0px - (var(--swiper-navigation-size)/ 2))`,
+                },
+                transform: { base: `translateY(-50%)`, lg: `initial` },
+                backgroundColor: `var(--white)`,
+                borderWidth: `2px`,
+                borderStyle: `solid`,
+                borderRadius: `50%`,
+                borderColor: `#21d4fd`,
+                // borderColor: `var(--navy-blue)`,
+                width: { base: `1.5rem`, lg: `44px` },
+                height: { base: `1.5rem`, lg: `44px` },
+                textAlign: `center`,
+                verticalAlign: `middle`,
+                ':after': {
+                  fontSize: { base: `0.75rem`, lg: `1.5rem` },
+                  color: `#21d4fd`,
+                  // color: `var(--navy-blue)`,
+                  fontWeight: `bold`,
+                },
+                ':hover': {
+                  cursor: `pointer`,
+                  filter: `opacity(50%)`,
+                  transition: `all .3s`,
+                },
+              },
+            }}
           >
-            <Image
-              image={{
-                src: '/images/offers/kokoutest.png',
-                width: 1584,
-                height: 396,
-                alt: ``,
-              }}
-            />
+            <Swiper {...swiperProps}>
+              {advertisements.map((ad) => (
+                <SwiperSlide key={ad.id}>
+                  <Box
+                  // w={{ base: `100%` }}
+                  // maxW={{
+                  //   lg: `520px`,
+                  //   xl: `700px`,
+                  //   '2xl': 'initial',
+                  // }}
+                  // h={`auto`}
+                  // position={`relative`}
+                  >
+                    <Image
+                      w={`100%`}
+                      image={{
+                        ...ad.image,
+                        layout: `responsive`,
+                      }}
+                    />
+                  </Box>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </Box>
           {/*<OfferSidebar />*/}
           <div className="search-title__container">
@@ -83,79 +204,20 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             </div>
           </div> */}
           <section className="recruit-card-area">
-            {/* {offerList.map((cards) => (
-              <div key={cards[0].title} className="recruit-card-container">
-                <OfferCard {...cards[0]} />
-                {cards.length > 1 && (
-                  <div className="test">
-                    <OfferCard {...cards[1]} />
-                  </div>
-                )}
-                {cards.length > 2 && <OfferCard {...cards[2]} />}
-              </div>
-            ))} */}
             {/* <div className="recruit-card-container"> */}
-            <Flex flexWrap={`wrap`} justifyContent={`space-between`}>
-              <OfferCard
-                id={`1`}
-                companyName={`ソリマチ株式会社`}
-                occupation={`フロントエンドエンジニア`}
-                place={`東京都 品川区 東五反田3-18-6 反町第8ビル`}
-                hourlyWage={`時給1000円`}
-                isNew={true}
-                title={`Pythonとレゴマインドストームを使ったプログラミング体験`}
-              />
-              <OfferCard
-                id={`1`}
-                companyName={`TRUNK株式会社`}
-                occupation={`バックエンドエンジニア`}
-                place={`東京都 渋谷区神南 1-9-4 NCビル3F B号`}
-                hourlyWage={`未定`}
-                isNew={true}
-                title={`ワークスクールのコンテンツを作りたいひと募集！`}
-              />
-              <OfferCard
-                id={`1`}
-                companyName={`バレットグループ株式会社`}
-                occupation={`営業`}
-                place={`東京都 新宿区新宿5-15-5 新宿三光町ビル 4F`}
-                hourlyWage={`日給1万円`}
-                isNew={true}
-                title={`第２弾【活躍社員からのFBあり】就活にも役立つ企画提案型[営業]インターンシップ！`}
-              />
-              {/* </div> */}
+            <Grid
+              templateColumns={{ base: `repeat(1,1fr)`, lg: `repeat(3,1fr)` }}
+              rowGap={{ lg: `38px` }}
+              columnGap={{ lg: `32px` }}
+            >
+              {offers.map((offer) => (
+                <OfferCard key={offer.id} {...offer} />
+              ))}
               {/* <div className="recruit-card-container"> */}
-              <OfferCard
-                id={`1`}
-                companyName={`バレットグループ株式会社`}
-                occupation={`WEBディレクター`}
-                place={`東京都 新宿区新宿5-15-5 新宿三光町ビル 4F`}
-                hourlyWage={`未定`}
-                isNew={true}
-                title={`第１弾【活躍社員からのFBあり】就活にも役立つ企画考案型[マーケティング]インターンシップ！`}
-              />
-              <OfferCard
-                id={`1`}
-                companyName={`バレットクラブ株式会社`}
-                occupation={`WEBマーケター`}
-                place={`東京都 新宿区新宿5-15-5 新宿三光町ビル 4F`}
-                hourlyWage={`時給1050円`}
-                isNew={true}
-                title={`web広告新規事業2人目社員に！営業〜マーケティングまで学ぶ長期インターン`}
-              />
-              <OfferCard
-                id={`1`}
-                companyName={`株式会社エウレカ`}
-                occupation={`iosエンジニア`}
-                place={`東京都 港区三田 1-4-1 住友不動産麻布十番ビル4階`}
-                hourlyWage={`時給1300円`}
-                isNew={true}
-                title={`地方学生歓迎！実務でインターンを経験したい学生エンジニアをWanted`}
-              />
-            </Flex>
+            </Grid>
             {/* </div> */}
           </section>
-        </div>
+        </Box>
       </Box>
     </Box>
   );

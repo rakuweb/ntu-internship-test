@@ -2,20 +2,21 @@
 import { VFC } from 'react';
 import { css } from '@emotion/react';
 import { mq } from '~/constants/styles';
+import { Box, BoxProps } from '@chakra-ui/react';
 
 // type layer
-export type PresenterProps = Record<string, unknown>;
+export type PresenterProps = BoxProps;
 
 // presenter
 export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
   return (
-    <div css={styles}>
+    <Box css={styles} {...props}>
       <section className="clinics-button">
         <a href="#" className="clinics-button__button">
           エントリーする
         </a>
       </section>
-    </div>
+    </Box>
   );
 };
 // styles

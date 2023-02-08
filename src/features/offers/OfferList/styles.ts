@@ -577,6 +577,7 @@ export const styles = css`
       display: flex;
       flex-direction: column;
       width: 950px;
+      margin-bottom: 32px;
     }
 
     .recruit-card-container {

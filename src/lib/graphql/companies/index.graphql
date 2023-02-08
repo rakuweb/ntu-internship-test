@@ -3,23 +3,40 @@ query getCompanies {
     data {
       id
       attributes {
-        recruiter_introduction
-        recruiter_image {
+        mission
+        name
+        createdBy {
+          id
+          firstname
+          lastname
+        }
+        description
+        address
+        mission
+        company_id
+        cover_image {
           data {
             id
             attributes {
               width
               height
-              alternativeText
-              url
               formats
+              url
+              alternativeText
             }
           }
         }
-        createdBy {
-          firstname
-          lastname
-          id
+        logo {
+          data {
+            id
+            attributes {
+              width
+              height
+              formats
+              url
+              alternativeText
+            }
+          }
         }
       }
     }

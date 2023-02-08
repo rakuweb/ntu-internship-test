@@ -3,6 +3,16 @@ import { mq } from 'constants/styles';
 
 // styles
 export const styles = css`
+  .icon{
+    width:1rem;
+    height:1rem;
+    margin-right:4px;
+    ${mq[3]} {
+      width:20px;
+    height:20px;
+    }
+  }
+
   .consultation-card-list {
     background-color: #f5f5f5;
     width: 100vw;

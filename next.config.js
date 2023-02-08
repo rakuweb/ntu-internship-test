@@ -3,4 +3,7 @@ module.exports = {
   compiler: {
     emotion: true,
   },
+  images: {
+    domains: ['management.nottheuniversity.com'],
+  },
 };

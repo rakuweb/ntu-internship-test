@@ -22,6 +22,16 @@ export const getYearAndMonth = (
   return result;
 };
 
+export const getTodayString = (): string => {
+  const today: Date = new Date();
+  const year = today.getFullYear();
+  const month = ('0' + (today.getMonth() + 1)).slice(-2);
+  const date = ('0' + today.getDate()).slice(-2);
+  const result = `${year}-${month}-${date}`;
+
+  return result;
+};
+
 export const parseStartDateTime = (year: number, month: number): Date => {
   const result = new Date(year, month - 1);
 
@@ -56,8 +66,8 @@ export const parseEndDate = (year: number, month: number): string => {
 
 // for image
 export type ImageType = {
-  width?: string | number;
-  height?: string | number;
+  width: number;
+  height: number;
   alt: string;
   src: string;
   srcSet: string;
@@ -65,8 +75,8 @@ export type ImageType = {
 
 export const parseImage = (image: UploadFile): ImageType => {
   const res = {
-    width: image.width ?? undefined,
-    height: image.height ?? undefined,
+    width: Number(image.width) ?? undefined,
+    height: Number(image.height) ?? undefined,
     alt: image.alternativeText ?? '',
     src: parseImageUrl(image.url ?? ``),
     srcSet: parseSrcSet(image.formats),
@@ -77,11 +87,9 @@ export const parseImage = (image: UploadFile): ImageType => {
 
 export const parseSrcSet = (formats: any): string =>
   formats
-    ? `${formats.xsmall ? `${parseImageUrl(formats.xsmall.url)} 375w,` : ``}${
-        formats.small ? `${parseImageUrl(formats.small.url)} 500w,` : ``
-      }${formats.medium ? `${parseImageUrl(formats.medium.url)} 768w,` : ``}${
-        formats.large ? `${parseImageUrl(formats.large.url)} 1000w` : ``
-      }${formats.xlarge ? `${parseImageUrl(formats.xlarge.url)} 3000w` : ``}`
+    ? `${formats.xsmall ? `${parseImageUrl(formats.xsmall.url)} 375w,` : ``}${formats.small ? `${parseImageUrl(formats.small.url)} 500w,` : ``
+    }${formats.medium ? `${parseImageUrl(formats.medium.url)} 768w,` : ``}${formats.large ? `${parseImageUrl(formats.large.url)} 1000w` : ``
+    }${formats.xlarge ? `${parseImageUrl(formats.xlarge.url)} 3000w` : ``}`
     : ``;
 
 export const parseImageUrl = (path: string): string => toCMSPath(path);

@@ -1,22 +1,35 @@
-query getOfferByID($id: ID) {
+query getOfferById($id: ID) {
   offer(id: $id) {
     data {
       id
       attributes {
         title
-        createdBy {
-          lastname
-          firstname
-          id
-        }
-        occupation
-        hourly_wage
         place
-        recruitment_number
+        hourly_wage
         description
         about_job
-        required_skills
         recruitment_terms
+        target
+        qualification
+        job_type
+        gained_skills {
+          id
+          name
+        }
+        job_categories {
+          data {
+            id
+            attributes {
+              name
+              en_name
+            }
+          }
+        }
+        createdBy {
+          id
+          firstname
+          lastname
+        }
         image {
           data {
             id
@@ -25,6 +38,7 @@ query getOfferByID($id: ID) {
               height
               url
               alternativeText
+              formats
             }
           }
         }
@@ -33,3 +47,10 @@ query getOfferByID($id: ID) {
   }
 }
 
+query getOfferPaths($today: Date) {
+  offers(sort: "publishedAt:desc", filters: { deadline: { gte: $today } }) {
+    data {
+      id
+    }
+  }
+}

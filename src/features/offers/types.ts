@@ -1,9 +1,11 @@
 import { OfferEntity } from 'types/gql/graphql';
 import { ImageType } from 'lib/utils';
 
+export type Category = { id: string; name: string; enName: string };
+
 export type OfferCard = {
   companyName: string;
-  occupation: string;
+  categories: Category[];
   place: string;
   hourlyWage: string;
   isNew?: boolean;
@@ -22,17 +24,20 @@ export type OffersSlice = {
 export type OfferSliceData = {
   id: string;
   title: string;
-  occupation: string;
+  jobType: string;
+  categories: Category[];
   place: string;
   hourlyWage: string;
   description: string;
   aboutJob: string;
-  recruitmentNumber: number;
-  requiredSkills: string;
+  gainedSkills: string[];
   recruitmentTerms: string;
   image?: ImageType;
   companyName: string;
-  managerName: string;
+  mission: string;
+  logo: ImageType;
+  target: string;
+  qualification: string;
 };
 
 export type OfferSlice = OfferSliceData & {

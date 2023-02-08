@@ -47,10 +47,15 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
         <Flex alignItems={'center'}>
           <InternalLink href={HP_URL}>
             <Box className="logo" as={`h1`}>
-              <Image htmlWidth={136} htmlHeight={70} src={`/logo-136x70.png`} />
+              <Image
+                htmlWidth={136}
+                htmlHeight={70}
+                src={`/svg/ntu-job.svg`}
+              // src={`/logo-136x70.png`}
+              />
             </Box>
           </InternalLink>
-          <InternalLink href="/offers">
+          <InternalLink href={routes.home}>
             <Box
               display={{ base: `none`, lg: `block` }}
               m={{ lg: `0 0 0 ${40 / 19.2}vw` }}
@@ -58,7 +63,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
               fontWeight={'bold'}
               fontSize={`14px`}
             >
-              インターンを探す
+              新潟大学生専用のアルバイト求人サイト
             </Box>
           </InternalLink>
         </Flex>
@@ -76,7 +81,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
           <Box display={{ base: `block`, lg: `none` }}>
             <HeaderMenu isOpen={isOpen} onClick={onOpen} />
           </Box>
-          <InternalLink href="/">
+          <InternalLink href={routes.signin}>
             <Box
               display={{ base: `none`, lg: `block` }}
               borderRadius={`20px`}

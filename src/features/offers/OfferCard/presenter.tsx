@@ -14,11 +14,15 @@ export type DataProps = OfferCard;
 export type PresenterProps = DataProps;
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
-  const { id, companyName, occupation, place, hourlyWage, isNew, title } =
+  const { id, companyName, categories, place, hourlyWage, isNew, title } =
     props;
   const href = `${routes.offers}/${id}`;
+
   return (
-    <InternalLink href={href}>
+    <InternalLink
+      // _hover={{ cursor: `pointer`, color: `` }}
+      href={href}
+    >
       <Box
         _hover={{ boxShadow: `2xl` }}
         transitionProperty={`box-shadow`}
@@ -36,32 +40,39 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             className="photo"
             // cmsで使う用途
             // src={image}
-            src={`/images/offers/cardtest1.jpeg`}
+            src={`/images/offers/cover.png`}
           />
           <div className="text">
             <div className="campanytext">{companyName}</div>
             <div className="text-2">{title}</div>
-            <div className="termstext">
-              <Flex flexWrap={`wrap`} height={`48px`}>
-                <Labeltext labeltext={occupation}></Labeltext>
-                <Labeltext labeltext={occupation}></Labeltext>
-              </Flex>
-            </div>
+            {categories.length !== 0 && (
+              <div className="termstext">
+                <Flex flexWrap={`wrap`} height={`48px`}>
+                  {categories.map((category) => (
+                    <Labeltext
+                      key={category.id}
+                      labeltext={category.name}
+                    ></Labeltext>
+                  ))}
+                </Flex>
+              </div>
+            )}
             <div className="termstext">
               <Image
                 className="icon"
                 width={24}
                 height={24}
-                src={`/images/offers/mokutekitiIcon.png`}
+                src={`/svg/map-marker.svg`}
               />
               <div className="placetext">{place}</div>
             </div>
             <div className="pay">
               <Image
                 className="icon"
-                width={29}
-                height={29}
-                src={`/images/offers/hukuroIkon.png`}
+                width={24}
+                height={24}
+                src={`/svg/money.svg`}
+              // src={`/images/offers/hukuroIkon.png`}
               />
               <div className="placetext">{hourlyWage}</div>
             </div>
@@ -81,12 +92,15 @@ const styles = css`
     box-shadow: -3.06e-16px 5px 10px #00417026;
     display: flex;
     flex-direction: column;
-    height: 350px;
+    height: 376px;
     width: 300px;
     padding: 0rem;
     margin-bottom:32px;
+    ${mq[2]} {
+        margin-bottom:0px;
+    }
     ${mq[3]} {
-        height: 405px;
+        height: 435px;
         width: 368px;
       }
   }
@@ -120,11 +134,13 @@ const styles = css`
 
   .photo {
     width: 100%;
-    height: 150px;
+    height: 176px;
+    /*height: 150px;*/
     object-fit: cover;
     border-radius: 10px 10px 0 0;
     ${mq[3]} {
-    height: 180px;
+    height: 215px;
+    /*height: 180px;*/
     }
   }
 
@@ -172,12 +188,12 @@ const styles = css`
 
 
   .icon{
-    width:20px;
-    height:20px;
+    width:1rem;
+    height:1rem;
     margin-right:4px;
     ${mq[3]} {
-      width:24px;
-    height:24px;
+      width:20px;
+    height:20px;
     }
   }
 

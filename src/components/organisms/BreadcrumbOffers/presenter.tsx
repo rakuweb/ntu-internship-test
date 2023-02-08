@@ -4,6 +4,7 @@ import { css } from '@emotion/react';
 import { mq } from '~/constants/styles';
 
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import { InternalLink } from '~/components/links/InternalLink';
 // type layer
 export type PresenterProps = { title?: string };
 
@@ -13,10 +14,10 @@ export const Presenter: FC<PresenterProps> = ({ title }) => {
     <div css={styles}>
       <section className="breadcrumb">
         <p className="breadcrumb__container">
-          <a className="breadcrumb__container__link" href="#">
+          <InternalLink className="breadcrumb__container__link" href="/" display={`inline`}>
             HOME
             <KeyboardArrowRightIcon className="breadcrumb__icon_container" />
-          </a>
+          </InternalLink>
           <a className="breadcrumb__container__link">{title}</a>
         </p>
       </section>

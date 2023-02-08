@@ -98,14 +98,16 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
           base: `28rem`,
         }}
       >
+      {/*
         <OfferCard
         title={`test募集です。`}
           companyName={`test`}
-          occupation={`test`}
+          // occupation={`test`}
           place={`test`}
           hourlyWage={`1000円`}
           id={`000`}
         />
+      */}
         <InterviewCard />
       </Stack>
       <Box mx={`auto`} mt={`2.5rem`} w={{ lg: `fit-content` }}>

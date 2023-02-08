@@ -12,6 +12,8 @@ export const routes = {
   registered: '/register/registered',
   authenticated: '/register/authenticated',
   confirm: '/register/confirm',
+  signin: '/signin',
+  signinFailed: '/signin/failed',
 
   apiRegister: '/api/register',
   apiAccount: '/api/account',

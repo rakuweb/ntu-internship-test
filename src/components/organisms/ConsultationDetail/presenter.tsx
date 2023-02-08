@@ -7,8 +7,8 @@ import { ClinicsContact } from '../ClinicsContact';
 
 import { useTargetOfferStore } from 'features/offers/hooks';
 import { selectTarget } from 'features/offers/selectors';
-import { useRecruitManagerStore } from 'features/company/hooks';
-import { selectRecruitManager } from 'features/company/selectors';
+// import { useRecruitManagerStore } from 'features/company/hooks';
+// import { selectRecruitManager } from 'features/company/selectors';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
@@ -16,7 +16,7 @@ export type PresenterProps = Record<string, unknown>;
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const list = useTargetOfferStore(selectTarget);
-  const manager = useRecruitManagerStore(selectRecruitManager);
+  // const manager = useRecruitManagerStore(selectRecruitManager);
   //   const list = {
   //     title: `株式会社ラクウェブのマーケターを募集します！`,
   //     campanyname: `株式会社ラクウェブ`,
@@ -62,6 +62,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   //   };
 
   return (
+      <>
+      {/*
     <div css={styles}>
       <section className="consultation-card-list">
         <div className="consultation-card-list__card">
@@ -137,6 +139,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         </div>
       </section>
     </div>
+      */}
+      </>
   );
 };
 

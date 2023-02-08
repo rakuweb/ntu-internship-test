@@ -1,14 +1,17 @@
 import { ImageType } from 'lib/utils';
 import { CompanyEntity } from 'types/gql/graphql';
 
-export type RecruitManagerSliceData = {
+export type CompanySliceData = {
   id: string;
-  image?: ImageType;
-  introduction: string;
+  coverImage?: ImageType;
+  description: string;
   name: string;
   companyName: string;
+  mission: string;
+  logo: ImageType;
+  companyId: string;
 };
 
-export type RecruitManagerSlice = RecruitManagerSliceData & {
-  setRecruitManager: (entity: CompanyEntity) => void;
+export type CompanySlice = CompanySliceData & {
+  setCompanyItem: (entity: CompanyEntity) => void;
 };

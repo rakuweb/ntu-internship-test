@@ -1,90 +1,129 @@
 query getOffersAll($today: Date) {
-  offers(
-    filters: { readline: { lte: $today } }
-    sort: "publishedAt:desc"
-    pagination: { limit: -1 }
-  ) {
+  offers(sort: "publishedAt:desc", filters: { deadline: { gte: $today } }) {
     data {
       id
       attributes {
         title
         place
         hourly_wage
-        occupation
+        job_categories {
+          data {
+            id
+            attributes {
+              name
+              en_name
+            }
+          }
+        }
         createdBy {
           id
           firstname
           lastname
+        }
+        image {
+          data {
+            id
+            attributes {
+              width
+              height
+              url
+              alternativeText
+              formats
+            }
+          }
         }
       }
     }
   }
 }
 
-query getOffers($today: Date, $page: Int) {
-  offers(
-    filters: { readline: { lte: $today } }
-    sort: "publishedAt:desc"
-    pagination: { page: $page, pageSize: 10 }
-  ) {
-    data {
-      id
-      attributes {
-        title
-        place
-        hourly_wage
-        occupation
-        createdBy {
-          id
-          firstname
-          lastname
-        }
-      }
-    }
-  }
-}
+# query getOffers($today: Date, $page: Int) {
+#   offers(
+#     filters: { deadline: { lte: $today } }
+#     sort: "publishedAt:desc"
+#     pagination: { page: $page, pageSize: 10 }
+#   ) {
+#     data {
+#       id
+#       attributes {
+#         title
+#         place
+#         hourly_wage
+#         occupation
+#         createdBy {
+#           id
+#           firstname
+#           lastname
+#         }
+#       }
+#     }
+#   }
+# }
+#
+# query getOffersSortedWage($today: Date, $page: Int) {
+#   offers(
+#     filters: { deadline: { lte: $today } }
+#     sort: "hourly_wage:desc"
+#     pagination: { page: $page, pageSize: 10 }
+#   ) {
+#     data {
+#       id
+#       attributes {
+#         title
+#         place
+#         hourly_wage
+#         occupation
+#         createdBy {
+#           id
+#           firstname
+#           lastname
+#         }
+#       }
+#     }
+#   }
+# }
+#
+# query getOffersSortedDeadline($today: Date, $page: Int) {
+#   offers(
+#     filters: { deadline: { lte: $today } }
+#     sort: "deadline:asc"
+#     pagination: { page: $page, pageSize: 10 }
+#   ) {
+#     data {
+#       id
+#       attributes {
+#         title
+#         place
+#         hourly_wage
+#         occupation
+#         createdBy {
+#           id
+#           firstname
+#           lastname
+#         }
+#       }
+#     }
+#   }
+# }
 
-query getOffersSortedWage($today: Date, $page: Int) {
-  offers(
-    filters: { readline: { lte: $today } }
-    sort: "hourly_wage:desc"
-    pagination: { page: $page, pageSize: 10 }
-  ) {
+query getAdvertisements {
+  advertisements(sort: "updatedAt:desc") {
     data {
       id
       attributes {
-        title
-        place
-        hourly_wage
-        occupation
-        createdBy {
-          id
-          firstname
-          lastname
+        creative {
+          data {
+            id
+            attributes {
+              width
+              height
+              formats
+              alternativeText
+              url
+            }
+          }
         }
-      }
-    }
-  }
-}
-
-query getOffersSortedReadline($today: Date, $page: Int) {
-  offers(
-    filters: { readline: { lte: $today } }
-    sort: "readline:asc"
-    pagination: { page: $page, pageSize: 10 }
-  ) {
-    data {
-      id
-      attributes {
-        title
-        place
-        hourly_wage
-        occupation
-        createdBy {
-          id
-          firstname
-          lastname
-        }
+        publishedAt
       }
     }
   }

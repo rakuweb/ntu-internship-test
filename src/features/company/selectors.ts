@@ -1,9 +1,9 @@
-import { RecruitManagerSlice } from './types';
+import { CompanySlice } from './types';
 
-export const selectSetRecruitManager = (state: RecruitManagerSlice) =>
-  state.setRecruitManager;
-export const selectRecruitManager = (state: RecruitManagerSlice) => {
-  const { setRecruitManager, ...remain } = state;
+export const selectSetCompanyItem = (state: CompanySlice) =>
+  state.setCompanyItem;
+export const selectCompany = (state: CompanySlice) => {
+  const { setCompanyItem, ...remain } = state;
 
   return remain;
 };

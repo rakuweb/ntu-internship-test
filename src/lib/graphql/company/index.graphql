@@ -3,7 +3,7 @@ query getRecruiterById($id: ID) {
     data {
       id
       attributes {
-       recruiter_image {
+       cover_image {
         data {
             id
           attributes {
@@ -14,7 +14,6 @@ query getRecruiterById($id: ID) {
             }
           }
         }
-        recruiter_introduction
         createdBy {
           id
           firstname

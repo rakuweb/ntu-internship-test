@@ -1,8 +1,8 @@
 import create from 'zustand';
 
-import { RecruitManagerSlice } from './types';
-import { createRecruitMangerSlice } from './slice';
+import { CompanySlice } from './types';
+import { createCompanySlice } from './slice';
 
-export const useRecruitManagerStore = create<RecruitManagerSlice>((...a) => ({
-  ...createRecruitMangerSlice(...a),
+export const useCompanyStore = create<CompanySlice>((...a) => ({
+  ...createCompanySlice(...a),
 }));
