@@ -24,6 +24,7 @@ import {
   useAdvertisementsStore,
 } from 'features/advertisements';
 import { getTodayString } from 'lib/utils';
+import Head from 'next/head';
 
 // type layer
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
@@ -55,6 +56,14 @@ export const Index: NextPage<Props> = ({ data, adData }) => {
     if (isClient) {
       return (
         <>
+          <Head>
+            <title>Not the University求人情報</title>
+            <meta name="description">
+              Not the
+              University新潟大学生向けのアルバイト情報・インターン情報を掲載します。
+            </meta>
+            <link rel="icon" href="/svg/ntu-job.svg"></link>
+          </Head>
           <SeoComponent canonical={CANONICAL_URL} {...seo} />
           <Template />
         </>

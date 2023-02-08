@@ -24,12 +24,13 @@ import {
   CompanyEntity,
   GetOfferPathsQuery,
   GetOfferPathsDocument,
-  UploadFile
+  UploadFile,
 } from 'types/gql/graphql';
 import { initializeApollo } from 'lib/apollo/client';
 import { selectSetTarget, useTargetOfferStore } from 'features/offers';
 import { selectSetCompanyItem, useCompanyStore } from '~/features/company';
 import { parseImage } from '~/lib/utils';
+import Head from 'next/head';
 
 // type layer
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
@@ -38,8 +39,11 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 export const Index: NextPage<Props> = ({ data, company }) => {
   const title = data?.offer?.data?.attributes?.title ?? ``; // eslint-disable-line
   const description = data?.offer?.data?.attributes?.description ?? ``;
-  const ogp = data?.offer?.data?.attributes?.image?.data?.attributes ?
-    parseImage(data.offer.data.attributes.image?.data?.attributes as UploadFile) : undefined;
+  const ogp = data?.offer?.data?.attributes?.image?.data?.attributes
+    ? parseImage(
+        data.offer.data.attributes.image?.data?.attributes as UploadFile
+      )
+    : undefined;
   const seo = parseSeo(title, description, undefined, ogp);
   const [isClient, setIsClient] = useState(false);
   const setTarget = useTargetOfferStore(selectSetTarget);
@@ -84,10 +88,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
     const paths = data?.offers?.data
       ? data.offers.data.map((item) => ({
-        params: {
-          id: item?.id,
-        },
-      }))
+          params: {
+            id: item?.id,
+          },
+        }))
       : [];
 
     return {
