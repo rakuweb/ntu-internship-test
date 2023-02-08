@@ -62,7 +62,6 @@ export const Index: NextPage<Props> = ({ data, adData }) => {
               Not the
               University新潟大学生向けのアルバイト情報・インターン情報を掲載します。
             </meta>
-            <link rel="icon" href="/svg/ntu-job.svg"></link>
           </Head>
           <SeoComponent canonical={CANONICAL_URL} {...seo} />
           <Template />

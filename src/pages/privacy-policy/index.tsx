@@ -6,6 +6,7 @@ import { Index as Template } from 'templates/PrivacyPolicy';
 import { SeoComponent } from 'organisms/SeoComponent';
 import { CANONICAL_URL } from '~/constants';
 import { parseSeo } from '~/lib';
+import Head from 'next/head';
 
 // type layer
 // type Props = InferGetStaticPropsType<typeof getStaticProps>;
@@ -25,6 +26,12 @@ export const Index: NextPage = () => {
     if (isClient) {
       return (
         <>
+          <Head>
+            <title>プライバシーポリシー</title>
+            <meta name="description">
+              Not the Universityのプライパシーポリシーです。
+            </meta>
+          </Head>
           <SeoComponent canonical={CANONICAL_URL} {...seo} />
           <Template />
         </>
