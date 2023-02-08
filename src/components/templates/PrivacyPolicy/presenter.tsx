@@ -6,7 +6,7 @@ import { css } from '@emotion/react';
 
 import { mq } from '~/constants/styles';
 
-import { BreadcrumbGray } from 'organisms/BreadcrumbGray';
+import { BreadcrumbOffers } from '~/components/organisms/BreadcrumbOffers';
 import { Footer } from '~/components/footers/Footer';
 import { Header } from '~/components/headers/Header';
 import { Privacy } from '~/components/organisms/Privacy';
@@ -24,7 +24,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
     <>
       <Header />
       <Box as={`main`} css={styles}>
-        <BreadcrumbGray title={`プライバシーポリシー`} />
+        <BreadcrumbOffers title={`プライバシーポリシー`} />
         <Privacy />
       </Box>
       <Footer />

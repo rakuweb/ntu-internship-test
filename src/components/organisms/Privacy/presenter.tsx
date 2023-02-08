@@ -14,8 +14,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
   const list = [
     {
       title: `第1条　法令・規範の遵守について`, // eslint-disable-line
-      statements: `当社は個人情報の取り扱いに関する法令、国が定める指針、その他の規範を常に最新状態に維持するとともにこれを遵守いたします。
-  `,
+      statements: `当社は個人情報の取り扱いに関する法令、国が定める指針、その他の規範を常に最新状態に維持するとともにこれを遵守いたします。`,
     },
     {
       title: `第2条　個人情報の取得について`, // eslint-disable-line
@@ -49,17 +48,19 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
   return (
     <div css={styles}>
       <section className="container">
-        <h1 className="h1Style">プライバシーポリシー</h1>
-        <p className="FirstSentence">{firstsentence}</p>
-        <div className="listStyle">
-          {list.map((list) => (
-            <div key={list.title}>
-              <h2 className="h2Style">{list.title}</h2>
-              <p className="stateStyle">{list.statements}</p>
-            </div>
-          ))}
-          <p className="addressStyle">{address}</p>
-          <p className="dateStyle ">最終更新日: 2022年12月8日</p>
+        <div className="xlcontainer">
+          <h1 className="h1Style">プライバシーポリシー</h1>
+          <p className="FirstSentence">{firstsentence}</p>
+          <div className="listStyle">
+            {list.map((list) => (
+              <div key={list.title}>
+                <h2 className="h2Style">{list.title}</h2>
+                <p className="stateStyle">{list.statements}</p>
+              </div>
+            ))}
+            <p className="addressStyle">{address}</p>
+            <p className="dateStyle ">最終更新日: 2022年12月8日</p>
+          </div>
         </div>
       </section>
     </div>
@@ -68,12 +69,14 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
 // styles
 const styles = css`
   .container {
-    background-color: #f0f3f5;
+    background-color: #f5f5f5;
     width: 100vw;
     align-items: center;
     font-family: 'Noto Sans JP', sans-serif;
     margin: 0 0 -20px 0;
     padding: 32px 10px 64px;
+    display: flex;
+    flex-direction: column;
   }
 
   .h1Style {
@@ -121,5 +124,52 @@ const styles = css`
     font-size: ${12 / 3.75}vw;
     line-height: 2em;
     letter-spacing: 0.2em;
+  }
+
+  ${mq[2]} {
+    .container {
+      // padding: 32px 0px 64px;
+    }
+    .xlcontainer {
+      width: ${1180 / 19.2}vw;
+    }
+
+    .h1Style {
+      font-size: ${40 / 19.2}vw;
+      margin-bottom: ${32 / 19.2}vw;
+    }
+
+    .FirstSentence {
+      margin-top: 5vw;
+      font-size: ${22 / 19.2}vw;
+    }
+
+    .h2Style {
+      margin-top: 5vw;
+      font-size: ${32 / 19.2}vw;
+    }
+
+    .stateStyle {
+      margin-top: 2vw;
+      font-size: ${22 / 19.2}vw;
+      line-height: 2em;
+      letter-spacing: 0.2em;
+      white-space: pre-wrap;
+    }
+
+    .addressStyle {
+      margin-top: 5vw;
+      font-size: ${22 / 19.2}vw;
+      line-height: 2em;
+      letter-spacing: 0.2em;
+      white-space: pre-wrap;
+    }
+
+    .dateStyle {
+      text-align: right;
+      font-size: ${22 / 19.2}vw;
+      line-height: 2em;
+      letter-spacing: 0.2em;
+    }
   }
 `;
