@@ -14,8 +14,16 @@ export type DataProps = OfferCard;
 export type PresenterProps = DataProps;
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
-  const { id, companyName, categories, place, hourlyWage, isNew, title } =
-    props;
+  const {
+    id,
+    companyName,
+    categories,
+    place,
+    hourlyWage,
+    isNew,
+    title,
+    image,
+  } = props;
   const href = `${routes.offers}/${id}`;
 
   return (
@@ -36,12 +44,15 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               <div className="NEW-box">NEW</div>
             </div>
           )} */}
-          <Image
-            className="photo"
-            // cmsで使う用途
-            // src={image}
-            src={`/images/offers/cover.png`}
-          />
+          {image?.src && (
+            <Image
+              className="photo"
+              // cmsで使う用途
+              // src={image}
+              // src={`/images/offers/cover.png`}
+              {...image}
+            />
+          )}
           <div className="text">
             <div className="campanytext">{companyName}</div>
             <div className="text-2">{title}</div>
