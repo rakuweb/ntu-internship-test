@@ -40,3 +40,4 @@ yarn-error.log*
 /public/dev/
 /public/sitemap.xml
 /public/robots.txt
+public/sitemap-0.xml
