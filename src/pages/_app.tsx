@@ -9,7 +9,7 @@ import { RecoilRoot } from 'recoil';
 import { SEO } from '~/constants';
 import theme from '~/lib/theme';
 import { global, guide } from '~/constants/styles';
-import { LiffProvider, generateEnv } from 'contexts/LineAuthContext';
+import { LiffProvider, generateEnv } from 'contexts/LineAuthContextInternship';
 // import { GoogleAnalytics } from 'organisms/GoogleAnalytics';
 // import usePageView from '~/hooks/usePageView';
 
@@ -25,7 +25,6 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
     */}
       <DefaultSeo {...SEO} />
       <ChakraProvider theme={theme}>
-        <NextSeo noindex={true} nofollow={true} />
         <Global
           styles={css`
             ${global};

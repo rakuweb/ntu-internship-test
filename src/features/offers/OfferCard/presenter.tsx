@@ -55,7 +55,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           )}
           <div className="text">
             <div className="campanytext">{companyName}</div>
-            <div className="text-2">{title}</div>
+            <h2 className="text-2">{title}</h2>
             {categories.length !== 0 && (
               <div className="termstext">
                 <Flex flexWrap={`wrap`} height={`48px`}>

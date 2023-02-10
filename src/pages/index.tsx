@@ -4,7 +4,7 @@ import type { NextPage, InferGetStaticPropsType, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 
 import { Offers as Template } from 'templates/Offers';
-import { SeoComponent } from 'organisms/SeoComponent';
+import { SeoComponent } from 'components/seo/SeoComponent';
 import { CANONICAL_URL } from 'constants/env';
 import { parseSeo } from '~/lib';
 import {
@@ -31,8 +31,8 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 export const Index: NextPage<Props> = ({ data, adData }) => {
   const router = useRouter();
-  const title = ``; // eslint-disable-line
-  const description = ``;
+  const title = `新大生向け求人情報一覧 | NOT THE UNIVERSITY FOR JOB`; // eslint-disable-line
+  const description = `NOT THE UNIVERSITYでしかお届けできない新大生向けの求人を紹介します。アルバイトからインターンシップまで他では体験できない求人情報ばかりを掲載しています。`;
   const seo = parseSeo(title, description);
   const [isClient, setIsClient] = useState(false);
   const setOffers = useOffersStore(selectSetOffers);

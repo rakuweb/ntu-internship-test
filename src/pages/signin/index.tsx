@@ -6,8 +6,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
-import { Index as Form } from 'templates/Register';
-import { Index as Check } from 'templates/Register/RegisterCheck';
 import { SeoComponent } from 'organisms/SeoComponent';
 import { CANONICAL_URL } from 'constants/env';
 import { ORIGIN_URL } from 'constants/env';
@@ -21,6 +19,7 @@ import { useLiff } from 'contexts/LineAuthContextInternship';
 import { routes } from 'constants/routes';
 import { useAccountStore } from 'features/account/hooks';
 import { selectSetAccount } from 'features/account/selectors';
+import { Index as Authenticating } from 'components/templates/Register/Authenticating';
 
 // type layer
 // type Props = InferGetStaticPropsType<typeof getStaticProps>;
@@ -81,7 +80,11 @@ export const Index: NextPage = () => {
 
   const message = () => {
     if (isClient) {
-      return <></>;
+      return (
+        <>
+          <Authenticating />
+        </>
+      );
     } else {
       return <></>;
     }

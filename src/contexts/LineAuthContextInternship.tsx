@@ -79,6 +79,9 @@ export const generateEnv = () => {
       mock = false;
       break;
     case 'development':
+      liffId = LIFF_ID_INTERNSHIP ?? '';
+      mock = false;
+      break;
     case 'test':
       liffId = 'dummyId';
       mock = true;
