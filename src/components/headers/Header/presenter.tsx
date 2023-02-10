@@ -45,13 +45,13 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
         as={`header`}
       >
         <Flex alignItems={'center'}>
-          <InternalLink href={HP_URL}>
+          <InternalLink href={routes.home}>
             <Box className="logo" as={`h1`}>
               <Image
                 htmlWidth={136}
                 htmlHeight={70}
                 src={`/svg/ntu-job.svg`}
-              // src={`/logo-136x70.png`}
+                // src={`/logo-136x70.png`}
               />
             </Box>
           </InternalLink>
