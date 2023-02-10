@@ -141,7 +141,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
     <div css={styles}>
       <section className="container">
         <div className="xlcontainer">
-          <h1 className="h1Style">プライバシーポリシー</h1>
+          <h1 className="h1Style">利用規約</h1>
           <p className="FirstSentence">{firstsentence}</p>
           <div className="listStyle">
             {list.map((list) => (
@@ -151,7 +151,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
               </div>
             ))}
             <p className="addressStyle">{address}</p>
-            <p className="dateStyle ">最終更新日: 2022年12月8日</p>
+            <p className="dateStyle ">最終更新日: 2023年2月10日</p>
           </div>
         </div>
       </section>

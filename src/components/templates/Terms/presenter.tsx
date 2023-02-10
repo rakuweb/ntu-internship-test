@@ -7,7 +7,7 @@ import { css } from '@emotion/react';
 import { mq } from '~/constants/styles';
 
 import { BreadcrumbOffers } from '~/components/organisms/BreadcrumbOffers';
-import { Footer } from '~/components/footers/Footer';
+import { Footer3 } from '~/components/footers/Footer3';
 import { Header } from '~/components/headers/Header';
 import { TermContent } from '~/components/organisms/TermContent';
 
@@ -27,7 +27,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
         <BreadcrumbOffers title={`利用規約`} />
         <TermContent />
       </Box>
-      <Footer />
+      <Footer3 />
     </>
   );
 };

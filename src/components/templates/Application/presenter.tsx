@@ -4,7 +4,7 @@ import { Box } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
 import { Header } from 'components/headers/Header';
-import { Footer } from 'components/footers/Footer';
+import { Footer3 } from 'components/footers/Footer3';
 import { mq } from '~/constants/styles';
 import { RegisterForm } from '~/components/organisms/RegisterForm';
 import { StepBar } from '~/components/organisms/StepBar';
@@ -25,7 +25,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden }) => {
         <StepBar current={progress} />
         <RegisterForm />
       </Box>
-      <Footer />
+      <Footer3 />
     </Box>
   );
 };

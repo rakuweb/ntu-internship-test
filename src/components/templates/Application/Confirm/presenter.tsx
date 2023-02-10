@@ -4,7 +4,7 @@ import { Box } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
 import { Header } from 'components/headers/Header';
-import { Footer } from 'components/footers/Footer';
+import { Footer3 } from 'components/footers/Footer3';
 import { mq } from '~/constants/styles';
 import { ConfirmMessage } from '~/components/organisms/ConfirmMessage';
 
@@ -23,7 +23,7 @@ export const Presenter: FC<PresenterProps> = () => {
         <section className="clinics-tab"></section>
         <ConfirmMessage title={title} message={message} />
       </Box>
-      <Footer />
+      <Footer3 />
     </>
   );
 };

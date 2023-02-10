@@ -64,7 +64,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           fontSize={{ base: `${12 / 3.75}vw`, lg: `${12 / 19.2}vw` }}
           m={`0 auto`}
         >
-          Copyright © 2022 NOT THE UNIVERSITY
+          Copyright © 2023 NOT THE UNIVERSITY
         </Flex>
       </Box>
     </Box>

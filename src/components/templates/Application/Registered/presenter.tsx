@@ -4,7 +4,7 @@ import { Box, Center } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
 import { Header } from 'components/headers/Header';
-import { Footer } from 'components/footers/Footer';
+import { Footer3 } from 'components/footers/Footer3';
 import { mq } from '~/constants/styles';
 import { RegisteredMessage } from '~/components/organisms/RegisteredMessage';
 import { useAccountStore } from 'features/account/hooks';
@@ -28,11 +28,11 @@ export const Presenter: FC<PresenterProps> = () => {
     <>
       <Header />
       <Box as={`main`} h={{ base: `50vh` }} css={styles}>
-      <Center h={`100%`} as={`section`}>
+        <Center h={`100%`} as={`section`}>
           <RegisteredMessage title={title} message={message} />
         </Center>
       </Box>
-      <Footer />
+      <Footer3 />
     </>
   );
 };

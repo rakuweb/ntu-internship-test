@@ -144,7 +144,6 @@ const styles = css`
     }
 
     .form__container__item__left {
-      width: 160px;
     }
 
     .form__container__item__left {
