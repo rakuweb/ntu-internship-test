@@ -6,7 +6,6 @@ export const routes = {
   registerComplete: '/register/complete',
   offers: '/offers',
   privacyPolicy: '/privacy-policy',
-  termsOfService: '/terms-of-service',
   terms: '/terms',
   thanks: '/thanks',
   registered: '/register/registered',
@@ -33,10 +32,10 @@ export type NavItem = { name: string; link: string; isExternal?: boolean };
 
 export const navItems: NavItem[] = [
   { name: 'HOME', link: routes.home },
-  { name: `新着情報`, link: routes.home },
-  { name: `お問い合わせ`, link: routes.home },
+  // { name: `新着情報`, link: routes.home },
+  // { name: `お問い合わせ`, link: routes.home },
+  { name: `利用規約`, link: routes.terms },
   { name: `プライバシーポリシー`, link: routes.privacyPolicy },
-  { name: `利用規約`, link: routes.termsOfService },
-  { name: `公式Instagram`, link: routes.home, isExternal: true },
-  { name: `公式Twitter`, link: routes.home, isExternal: true },
+  { name: `公式Instagram`, link: INSTAGRAM_URL, isExternal: true },
+  { name: `公式Twitter`, link: TWITTER_URL, isExternal: true },
 ];

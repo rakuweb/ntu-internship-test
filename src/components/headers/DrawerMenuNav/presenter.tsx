@@ -21,6 +21,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
             w={`fit-content`}
             href={navItem.link}
             key={navItem.name}
+            isExternal
           >
             <Text
               _hover={{ color: `var(--curious-blue)` }}

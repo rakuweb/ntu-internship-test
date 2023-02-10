@@ -15,6 +15,8 @@ import { HeaderMenu } from '../HeaderMenu';
 import { Image } from 'atoms/Image';
 import { HeaderMenuButton } from 'components/organisms/buttons/HeaderMenuButton';
 import { DrawerMenuNav } from '../DrawerMenuNav';
+import { InternalLink } from '~/components/links/InternalLink';
+import { routes } from '~/constants';
 
 // type layer
 export type PresenterProps = Partial<DrawerProps> & {
@@ -36,28 +38,35 @@ export const Presenter: VFC<PresenterProps> = ({
           <Flex align={`center`}>
             <HeaderMenu isOpen={isOpen} onClick={onClose} />
             <Flex ml={{ base: `1rem` }} align={`center`}>
-              <HeaderMenuButton
-                w={`fit-content`}
-                h={{ base: `2.5rem` }}
-                bg={`var(--mandy)`}
-                _hover={{
-                  bg: `var(--white)`,
-                  '.text': { color: `var(--mandy)` },
-                }}
-              >
-                <Flex align={`center`}>
-                  <Box w={`1.5rem`}>
-                    <Image
-                      width={66}
-                      height={80}
-                      src="/dev/img/arrow-@2x.png"
-                    />
-                  </Box>
-                  <Box color={`white`} className={`text`} ml={{ lg: `0.5rem` }}>
-                    ログイン
-                  </Box>
-                </Flex>
-              </HeaderMenuButton>
+              <InternalLink href={routes.signin}>
+                <HeaderMenuButton
+                  w={`fit-content`}
+                  h={{ base: `2.5rem` }}
+                  bg={`var(--mandy)`}
+                  _hover={{
+                    bg: `var(--white)`,
+                    '.text': { color: `var(--mandy)` },
+                  }}
+                >
+                  <Flex align={`center`}>
+                    <Box w={`1.5rem`}>
+                      <Image
+                        width={66}
+                        height={80}
+                        src="/dev/img/arrow-@2x.png"
+                      />
+                    </Box>
+                    <Box
+                      color={`white`}
+                      className={`text`}
+                      ml={{ lg: `0.5rem` }}
+                    >
+                      ログイン
+                    </Box>
+                  </Flex>
+                </HeaderMenuButton>
+              </InternalLink>
+              {/*
               <HeaderMenuButton
                 w={`fit-content`}
                 h={{ base: `2.5rem` }}
@@ -81,6 +90,7 @@ export const Presenter: VFC<PresenterProps> = ({
                   </Box>
                 </Flex>
               </HeaderMenuButton>
+                */}
             </Flex>
           </Flex>
         </DrawerHeader>

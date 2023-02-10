@@ -3,8 +3,6 @@ import { FC } from 'react';
 import { Box } from '@chakra-ui/react';
 
 import { Header } from 'components/headers/Header';
-import { Footer } from 'components/footers/Footer';
-import { Footer2 } from '~/components/footers/Footer2';
 import { Footer3 } from '~/components/footers/Footer3';
 import { OfferList } from 'features/offers/OfferList';
 import { styles } from './styles';

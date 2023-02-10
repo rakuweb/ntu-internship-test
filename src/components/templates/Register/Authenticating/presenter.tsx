@@ -26,7 +26,12 @@ export const Presenter: FC<PresenterProps> = () => {
   return (
     <>
       <Header />
-      <Box as={`main`} h={{ base: `50vh` }} css={styles}>
+      <Box
+        as={`main`}
+        h={{ base: `50vh`, lg: `calc(${60 - 193 / 19.2}vh)` }}
+        css={styles}
+      bg={`#f5f5f5`}
+      >
         <Center h={`100%`} as={`section`}>
           <RegisteredMessage title={title} message={message} />
         </Center>

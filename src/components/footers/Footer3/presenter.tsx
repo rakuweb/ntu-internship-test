@@ -4,7 +4,7 @@ import { Box, Stack, Flex } from '@chakra-ui/react';
 
 import { Image } from 'components/Image';
 import { InternalLink } from 'components/links/InternalLink';
-import { HP_URL, INSTAGRAM_URL, TWITTER_URL } from 'constants/routes';
+import { HP_URL, INSTAGRAM_URL, TWITTER_URL, routes } from 'constants/routes';
 import { ExternalLink } from 'components/links/ExternalLink';
 import { addApolloState } from '../../../lib/apollo/client';
 
@@ -34,7 +34,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               </InternalLink>
             </Box>
             <Box m={{ base: `0 auto`, lg: `0` }}>
-              <InternalLink href="/">
+              <InternalLink href={routes.terms}>
                 <Box
                   m={{
                     base: `0 0 ${16 / 3.75}vw 0`,
@@ -46,7 +46,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               </InternalLink>
             </Box>
             <Box m={{ base: `0 auto`, lg: `0` }}>
-              <InternalLink href="/privacy-policy">
+              <InternalLink href={routes.privacyPolicy}>
                 <Box m={{ lg: `0 0 0 ${14 / 19.2}vw` }}>
                   プライバシーポリシー
                 </Box>
