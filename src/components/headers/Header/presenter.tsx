@@ -1,23 +1,20 @@
 // import layer
-import { VFC } from 'react';
-import { Box, Flex, Icon } from '@chakra-ui/react';
+import { FC } from 'react';
+import { Box, BoxProps, Flex } from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/react';
-import { BiLogIn } from 'react-icons/bi';
-import { AiOutlineUser } from 'react-icons/ai';
 
 import { styles } from './styles';
 import { Image } from 'atoms/Image';
-import { InternalLink } from 'molecules/links/InternalLink';
+import { InternalLink } from 'components/links/InternalLink';
 import { routes } from '~/constants';
-import { HP_URL } from 'constants/routes';
 import { HeaderMenu } from '../HeaderMenu';
 import { MenuDrawer } from '../MenuDrawer';
 
 // type layer
-export type PresenterProps = Record<string, unknown>;
+export type PresenterProps = BoxProps;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -26,6 +23,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
       bg={`#f5f5f5`}
       pt={{ base: `${10 / 3.75}vw`, lg: `${15 / 19.2}vw` }}
       px={{ base: `${20 / 3.75}vw`, lg: `${40 / 19.2}vw` }}
+      {...props}
     >
       <Flex
         justify={`space-between`}
@@ -46,12 +44,11 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
       >
         <Flex alignItems={'center'}>
           <InternalLink href={routes.home}>
-            <Box className="logo" as={`h1`}>
+            <Box w={{ base: `${136 / 16}rem` }} className="logo" as={`h1`}>
               <Image
-                htmlWidth={136}
-                htmlHeight={70}
+                htmlWidth={267}
+                htmlHeight={150}
                 src={`/svg/ntu-job.svg`}
-                // src={`/logo-136x70.png`}
               />
             </Box>
           </InternalLink>

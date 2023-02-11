@@ -9,7 +9,7 @@ import { mq } from '~/constants/styles';
 import { ConsultationIndex } from 'organisms/ConsultationIndex';
 import { ContactSection } from 'organisms/sections/ContactSection';
 import { Footer } from 'organisms/footers/Footer';
-import { Header } from 'organisms/headers/Header';
+import { Header } from 'components/headers/Header';
 
 import 'swiper/css';
 import 'swiper/css/navigation';

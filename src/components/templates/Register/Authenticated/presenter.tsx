@@ -4,7 +4,7 @@ import { Box } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
 import { Header } from 'components/headers/Header';
-import { Footer3 } from 'components/footers/Footer3';
+import { Footer } from 'components/footers/Footer';
 import { mq } from '~/constants/styles';
 import { RegisterMessage } from '~/components/organisms/RegisterMessage';
 
@@ -24,7 +24,7 @@ NOT THE UNIVERSITYの学生アカウントの登録が完了しました。`;
         <section className="clinics-tab"></section>
         <RegisterMessage title={title} message={message} />
       </Box>
-      <Footer3 />
+      <Footer />
     </>
   );
 };

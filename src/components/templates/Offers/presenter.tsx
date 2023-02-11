@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { Box } from '@chakra-ui/react';
 
 import { Header } from 'components/headers/Header';
-import { Footer3 } from '~/components/footers/Footer3';
+import { Footer } from 'components/footers/Footer';
 import { OfferList } from 'features/offers/OfferList';
 import { styles } from './styles';
 import { BreadcrumbOffers } from '~/components/organisms/BreadcrumbOffers';
@@ -12,7 +12,7 @@ import { BreadcrumbOffers } from '~/components/organisms/BreadcrumbOffers';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: FC<PresenterProps> = ({ ...props }) => {
+export const Presenter: FC<PresenterProps> = () => {
   const pageTitle = `求人一覧`;
   return (
     <>
@@ -21,8 +21,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         <BreadcrumbOffers title={pageTitle} />
         <OfferList />
       </Box>
-      {/* <Footer2 /> */}
-      <Footer3 />
+      <Footer />
     </>
   );
 };

@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { Box } from '@chakra-ui/react';
 
 import { Header } from 'components/headers/Header';
-import { Footer3 } from '~/components/footers/Footer3';
+import { Footer } from '~/components/footers/Footer';
 
 import { InternalLink } from 'components/links/InternalLink';
 import { TopButton } from '~/components/TopButtom';
@@ -55,7 +55,7 @@ export const Presenter: FC<PresenterProps> = () => {
           </InternalLink>
         </Box>
       </Box>
-      <Footer3 />
+      <Footer />
     </>
   );
 };

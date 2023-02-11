@@ -5,7 +5,7 @@ import { ConsultationDetail } from 'organisms/ConsultationDetail';
 import { BreadcrumbGray } from 'organisms/BreadcrumbGray';
 import { ContactSection } from 'organisms/sections/ContactSection';
 import { Footer } from 'organisms/footers/Footer';
-import { Header } from 'organisms/headers/Header';
+import { Header } from 'components/headers/Header';
 
 import 'swiper/css';
 import 'swiper/css/navigation';

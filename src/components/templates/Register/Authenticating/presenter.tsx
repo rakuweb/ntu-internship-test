@@ -4,11 +4,9 @@ import { Box, Center } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
 import { Header } from 'components/headers/Header';
-import { Footer } from 'components/footers/Footer';
+import { Footer } from 'components/footers/OldFooter';
 import { mq } from '~/constants/styles';
 import { RegisteredMessage } from '~/components/organisms/RegisteredMessage';
-import { useAccountStore } from 'features/account/hooks';
-import { selectAccount } from 'features/account/selectors';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

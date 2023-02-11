@@ -3,7 +3,7 @@ import { VFC } from 'react';
 import { Box } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
-import { Header } from 'organisms/headers/Header';
+import { Header } from 'components/headers/Header';
 import { Footer } from 'organisms/footers/Footer';
 import { ContactSection } from '~/components/organisms/sections/ContactSection';
 import { mq } from '~/constants/styles';

@@ -1,8 +1,6 @@
 // import layer
 import { useState, useEffect } from 'react';
-import { NextPage, InferGetStaticPropsType } from 'next/types';
-import { FormProvider, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { NextPage } from 'next/types';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
@@ -10,11 +8,6 @@ import { SeoComponent } from 'organisms/SeoComponent';
 import { CANONICAL_URL } from 'constants/env';
 import { ORIGIN_URL } from 'constants/env';
 import { parseSeo } from '~/lib';
-import { useFormProgressStore } from 'features/formProgress/hooks';
-import {
-  RegisterFormSchema,
-  registerFormSchema,
-} from '~/features/registerForm/schema';
 import { useLiff } from 'contexts/LineAuthContextInternship';
 import { routes } from 'constants/routes';
 import { useAccountStore } from 'features/account/hooks';

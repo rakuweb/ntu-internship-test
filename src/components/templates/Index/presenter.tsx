@@ -3,7 +3,7 @@ import { VFC } from 'react';
 import dynamic from 'next/dynamic';
 import { Box } from '@chakra-ui/react';
 
-import { Header } from 'organisms/headers/Header';
+import { Header } from 'components/headers/Header';
 import { Footer } from 'organisms/footers/Footer';
 import { ConsultationSection } from '~/components/organisms/sections/ConsultationSection';
 import { NewArticleSection } from '~/components/organisms/sections/NewArticleSection';

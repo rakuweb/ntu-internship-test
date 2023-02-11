@@ -72,11 +72,7 @@ export const Index: NextPage = () => {
 
         router.push(routes.registered);
         window.scroll({ top: 0 });
-        } 
-      // else if (email) {
-      //   setAccount({ email: email as string, username: username as string });
-      //   router.push(routes.confirm);
-      // }
+      }
     };
 
     handler();

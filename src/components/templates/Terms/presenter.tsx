@@ -1,13 +1,9 @@
 // import layer
-// import layer
-import { VFC } from 'react';
+import { FC } from 'react';
 import { Box } from '@chakra-ui/react';
-import { css } from '@emotion/react';
-
-import { mq } from '~/constants/styles';
 
 import { BreadcrumbOffers } from '~/components/organisms/BreadcrumbOffers';
-import { Footer3 } from '~/components/footers/Footer3';
+import { Footer } from '~/components/footers/Footer';
 import { Header } from '~/components/headers/Header';
 import { TermContent } from '~/components/organisms/TermContent';
 
@@ -19,18 +15,15 @@ import 'swiper/css/autoplay';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: FC<PresenterProps> = () => {
   return (
     <>
       <Header />
-      <Box as={`main`} css={styles}>
+      <Box as={`main`}>
         <BreadcrumbOffers title={`利用規約`} />
         <TermContent />
       </Box>
-      <Footer3 />
+      <Footer />
     </>
   );
 };
-
-// styles
-const styles = css``;

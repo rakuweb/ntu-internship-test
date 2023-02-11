@@ -17,14 +17,12 @@ import {
 } from 'types/gql/graphql';
 import { initializeApollo } from 'lib/apollo/client';
 import { UPDATE_INTERVAL } from '~/constants';
-import { useOffersStore } from 'features/offers/hooks';
-import { selectSetOffers, selectCurrentPage } from 'features/offers/selectors';
+import { selectSetOffers, useOffersStore } from 'features/offers';
 import {
   selectSetAdvertisements,
   useAdvertisementsStore,
 } from 'features/advertisements';
 import { getTodayString } from 'lib/utils';
-import Head from 'next/head';
 
 // type layer
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
@@ -56,13 +54,6 @@ export const Index: NextPage<Props> = ({ data, adData }) => {
     if (isClient) {
       return (
         <>
-          <Head>
-            <title>Not the University求人情報</title>
-            <meta name="description">
-              Not the
-              University新潟大学生向けのアルバイト情報・インターン情報を掲載します。
-            </meta>
-          </Head>
           <SeoComponent canonical={CANONICAL_URL} {...seo} />
           <Template />
         </>
@@ -105,6 +96,6 @@ export const getStaticProps: GetStaticProps<{
       revalidate: UPDATE_INTERVAL,
     };
   } finally {
-    console.log('get pages/offers static props');
+    console.log('get pages/home static props');
   }
 };

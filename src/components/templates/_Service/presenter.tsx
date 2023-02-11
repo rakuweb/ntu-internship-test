@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import { Box } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
-import { Header } from 'organisms/headers/Header';
+// import { Header } from 'organisms/headers/Header';
 import { Footer } from 'organisms/footers/Footer';
 import { ConsultationSection } from '~/components/organisms/sections/ConsultationSection';
 import { NewArticleSection } from '~/components/organisms/sections/NewArticleSection';
@@ -55,7 +55,9 @@ export type PresenterProps = Record<string, unknown>;
 export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
   return (
     <>
+    {/*
       <Header />
+    */}
       <Box as={`main`} css={styles}>
         <section className="page-title">
           <h1 className="page-title__text">

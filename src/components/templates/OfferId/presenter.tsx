@@ -2,7 +2,7 @@
 import { FC } from 'react';
 
 import { OfferDetail } from 'components/OfferDetail';
-import { Footer3 } from '~/components/footers/Footer3';
+import { Footer } from '~/components/footers/Footer';
 import { Header } from 'components/headers/Header';
 import { BreadcrumbOfferId } from '~/components/organisms/BreadcrumbOfferId';
 import { useTargetOfferStore, selectBreadCrumbItem } from 'features/offers';
@@ -15,7 +15,7 @@ import 'swiper/css/autoplay';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: FC<PresenterProps> = ({ ...props }) => {
+export const Presenter: FC<PresenterProps> = () => {
   const { jobTitle, companyName } = useTargetOfferStore(selectBreadCrumbItem);
   const pageTitles = [companyName, jobTitle];
 
@@ -23,10 +23,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     <>
       <Header />
       <BreadcrumbOfferId titles={pageTitles} />
-      {/* <BreadcrumbGray title={pagetitle} /> */}
       <OfferDetail />
-      {/* <Footer2 /> */}
-      <Footer3 />
+      <Footer />
     </>
   );
 };
