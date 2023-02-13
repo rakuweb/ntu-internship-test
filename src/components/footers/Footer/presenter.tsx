@@ -20,6 +20,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       pb={{ base: `${40 / 3.75}vw`, lg: `${24 / 19.2}vw` }}
       mx={`auto`}
       as={`footer`}
+      fontFamily={`'yugothic', 'Zen Kaku Gothic New','Hiragino Sans'`}
     >
       <Box>
         <Box color="rgba(0, 0, 0, 0.4)">
@@ -57,7 +58,6 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         <Flex
           justifyContent={`center`}
           color={`rgba(0, 0, 0, 0.4)`}
-          font-family={`var(--font-family-yugothic-medium)`}
           font-weight={500}
           letter-spacing={`0.6px`}
           white-space={`nowrap`}

@@ -40,6 +40,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         position={{ lg: `sticky` }}
         top={`0rem`}
         zIndex={`sticky`}
+        fontFamily={`'Zen Kaku Gothic New',
+        'Hiragino Sans'`}
         as={`header`}
       >
         <Flex alignItems={'center'}>

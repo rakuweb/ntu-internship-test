@@ -17,19 +17,20 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const href = `${routes.offers}/${id}`;
   return (
     <Box m={`0 4px 4px 0`}>
-      <InternalLink href={href}>
-        <Box
-          bg={`#21D4FD`}
-          color={`white`}
-          p={`4px 12px`}
-          fontSize={`12px`}
-          borderRadius={{ base: `4px`, lg: `5px` }}
-          fontWeight={`400`}
-          {...props}
-        >
-          {labeltext}
-        </Box>
-      </InternalLink>
+      {/* <InternalLink href={href}> */}
+      <Box
+        bg={`#21D4FD`}
+        color={`white`}
+        border={`1px solid`}
+        p={`4px 12px`}
+        fontSize={`12px`}
+        borderRadius={{ base: `4px`, lg: `5px` }}
+        fontWeight={`400`}
+        {...props}
+      >
+        {labeltext}
+      </Box>
+      {/* </InternalLink> */}
     </Box>
   );
 };

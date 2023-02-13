@@ -117,6 +117,15 @@ export const styles = css`
     color: #000000;
   }
 
+  .termsContaineroccupation{
+    margin: 24px 0 0 0;
+    padding: 0 0 15px 0;
+    border-bottom: solid 1px #707070;
+    display: flex;
+    flex-direction: roww
+    color: #000000;
+  }
+
   .termsTitle {
     padding: 0px 0;
     font-size: 14px;
@@ -126,6 +135,18 @@ export const styles = css`
     min-width: 100px;
     white-space: nowrap;
     font-weight:700;
+  }
+
+  .termsTitleoccupation{
+    padding: 0px 0;
+    font-size: 14px;
+    line-height: 1.3;
+    display: flex;
+    vertical-align: top;
+    min-width: 100px;
+    white-space: nowrap;
+    font-weight:700;
+    margin-top:5px;
   }
 
   .termsMain {
@@ -224,6 +245,14 @@ export const styles = css`
       flex-direction: row;
     }
 
+    .termsContaineroccupation{
+      margin: 24px 0 0 0;
+      padding: 0 0 15px 0;
+      display: flex;
+      flex-direction: roww
+      color: #000000;
+    }
+
 
     
 
@@ -233,6 +262,14 @@ export const styles = css`
       display: flex;
       vertical-align: top;
       width: 190px;
+    }
+
+    .termsTitleoccupation{
+      padding: 0px 0;
+      line-height: 1.3;
+      display: flex;
+      vertical-align: middle;
+      width: 121px;
     }
 
     .termsMain {

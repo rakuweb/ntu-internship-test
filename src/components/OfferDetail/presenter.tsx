@@ -23,6 +23,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const list = useTargetOfferStore(selectTarget);
   const company = useCompanyStore(selectCompany);
 
+  // const label = list.categories[0];
+
   return (
     <div css={styles}>
       <section className="consultation-card-list">
@@ -37,6 +39,9 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 labeltext={category.name}
               ></Labeltext>
             ))}
+            {/* {list.gainedSkills.map((text) => (
+              <Labeltext2 key={text} labeltext={text} />
+            ))} */}
             {/*
             <Labeltext labeltext={labeltext[1]}></Labeltext>
           */}
@@ -62,9 +67,11 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           </h3>
 
           <Image {...list.image} className="bigImg" />
-          <InternalLink href={routes.signin}>
-            <OfferButton />
-          </InternalLink>
+          <Box w={{ base: `100%`, lg: `fit-content` }} mx={`auto`}>
+            <InternalLink href={routes.signin}>
+              <OfferButton />
+            </InternalLink>
+          </Box>
         </div>
       </section>
 
@@ -83,7 +90,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           fontWeight={`700`}
           mb={{ base: `24px` }}
         >
-          インターンシップ概要
+          アルバイト概要
         </Box>
         <div className="subsection">
           <Box whiteSpace={`pre-wrap`} fontSize={`14px`} lineHeight={`21px`}>
@@ -106,7 +113,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           fontSize={{ base: `18px`, lg: `25px` }}
           fontWeight={`700`}
         >
-          長期インターンシップで任せたいこと
+          任せたいこと
         </Box>
         <div className="subsection">
           <Box whiteSpace={`pre-wrap`} fontSize={`14px`} lineHeight={`21px`}>
@@ -150,9 +157,11 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           </>
         )}
         <Box mt={`78px`}>
-          <InternalLink href={routes.signin}>
-            <OfferButton />
-          </InternalLink>
+          <Box w={{ base: `100%`, lg: `fit-content` }} mx={`auto`}>
+            <InternalLink href={routes.signin}>
+              <OfferButton />
+            </InternalLink>
+          </Box>
         </Box>
       </Box>
 
@@ -195,6 +204,10 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               <p className="termsTitle">勤務条件</p>
               <p className="termsMain">{list.recruitmentTerms}</p>
             </div>
+            {/* <div className="termsContaineroccupation">
+              <p className="termsTitleoccupation">職種</p>
+              <Labeltext labeltext={label.name} />
+            </div> */}
             <div className="termsContainer2">
               <p className="termsTitle">職種</p>
               <p className="termsMain">{list.jobType}</p>
@@ -205,6 +218,13 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             </div>
           </Box>
         </div>
+        <Box mt={`78px`}>
+          <Box w={{ base: `100%`, lg: `fit-content` }} mx={`auto`}>
+            <InternalLink href={routes.signin}>
+              <OfferButton />
+            </InternalLink>
+          </Box>
+        </Box>
         <Box
           w={`100vw`}
           bg={`#f5f5f5`}
@@ -220,9 +240,9 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     {...company.logo}
                     htmlWidth={company.logo.width}
                     htmlHeight={company.logo.height}
-                  // width={84}
-                  // height={84}
-                  // src={`/images/offers/trunkicon.jpeg`}
+                    // width={84}
+                    // height={84}
+                    // src={`/images/offers/trunkicon.jpeg`}
                   />
                 </Box>
                 <Box fontSize={{ base: `24px` }} fontWeight={`700`} mb={`8px`}>

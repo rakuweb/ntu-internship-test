@@ -34,8 +34,10 @@ export const guide = css`
     --font-size-xxxl: 32px;
 
     --font-family-roboto: 'Roboto', Helvetica;
-    --font-family-yugothic-bold: 'YuGothic-Bold', Helvetica;
-    --font-family-yugothic-medium: 'YuGothic-Medium', Helvetica;
+    --font-family-yugothic-bold: 'YuGothic-Bold', 'Zen Kaku Gothic New',
+      'Hiragino Sans', Helvetica;
+    --font-family-yugothic-medium: 'YuGothic-Medium', 'Zen Kaku Gothic New',
+      'Hiragino Sans', Helvetica;
   }
   .yugothic-medium-curious-blue-16px {
     color: var(--curious-blue);

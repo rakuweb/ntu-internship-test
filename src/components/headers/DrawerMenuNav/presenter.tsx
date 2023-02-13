@@ -27,7 +27,8 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
               _hover={{ color: `var(--curious-blue)` }}
               w={`fit-content`}
               fontSize={{ lg: `1rem` }}
-              color={`white`}
+              color={`#444444`}
+              className="menu-text yugothic-bold-white-14px"
             >
               {navItem.name}
             </Text>
@@ -43,7 +44,8 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
               _hover={{ color: `var(--curious-blue)` }}
               w={`fit-content`}
               fontSize={{ lg: `1rem` }}
-              color={`white`}
+              color={`#444444`}
+              className="menu-text yugothic-bold-white-14px"
             >
               {navItem.name}
             </Text>

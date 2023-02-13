@@ -23,7 +23,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
 const styles = css`
   .clinics-button {
     display: flex;
-    font-family: 'Noto Sans JP';
+    font-family: 'Noto Sans JP', 'Hiragino Sans';
     justify-content: center;
   }
 

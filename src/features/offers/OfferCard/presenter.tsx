@@ -83,7 +83,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 width={24}
                 height={24}
                 src={`/svg/money.svg`}
-              // src={`/images/offers/hukuroIkon.png`}
+                // src={`/images/offers/hukuroIkon.png`}
               />
               <div className="placetext">{hourlyWage}</div>
             </div>
@@ -130,7 +130,7 @@ const styles = css`
     align-items: center;
     width:52px;
     height:29px;
-    font-family: 'yugothic';
+    font-family:'yugothic', 'Zen Kaku Gothic New','Hiragino Sans';
     font-weight:bold;
     font-size:14px;
     color:#ffffff;
@@ -161,13 +161,12 @@ const styles = css`
     justify-content: space-between;
     margin: 12px;
     width: 276px;
-    font-family: 'yugothic';
+    font-family:'yugothic', 'Zen Kaku Gothic New','Hiragino Sans';
     color:#000000;
     ${mq[3]} {
       justify-content: space-between;
       margin: 20px auto;
       width: 332px;
-      font-family: 'yugothic';
     }
   }
 
@@ -192,7 +191,6 @@ const styles = css`
     overflow:hidden;
     ${mq[3]} {
       white-space: pre-wrap;
-   
       font-weight: bold;
     }
   }

@@ -58,7 +58,7 @@ export const Presenter: VFC<PresenterProps> = ({
         color={`#444444`}
         className="menu-text yugothic-bold-white-14px"
       >
-        {isOpen ? <Box color={`white`}>閉じる</Box> : `メニュー`}
+        {isOpen ? <Box color={`#4444444`}>閉じる</Box> : `メニュー`}
       </Box>
     </Box>
   );

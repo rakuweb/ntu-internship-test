@@ -33,8 +33,8 @@ export const Presenter: VFC<PresenterProps> = ({
   return (
     <Drawer size={`sm`} isOpen={isOpen} onClose={onClose} {...props}>
       <DrawerOverlay />
-      <DrawerContent bg={`var(--midnight-blue)`}>
-        <DrawerHeader bg={`var(--midnight-blue)`} opacity={1}>
+      <DrawerContent bg={`#f5f5f5`}>
+        <DrawerHeader bg={`#f5f5f5`} opacity={1}>
           <Flex align={`center`}>
             <HeaderMenu isOpen={isOpen} onClick={onClose} />
             <Flex ml={{ base: `1rem` }} align={`center`}>
@@ -42,24 +42,18 @@ export const Presenter: VFC<PresenterProps> = ({
                 <HeaderMenuButton
                   w={`fit-content`}
                   h={{ base: `2.5rem` }}
-                  bg={`var(--mandy)`}
+                  backgroundImage={`linear-gradient(19deg, #21d4fd 0%, #b721ff 100%)`}
                   _hover={{
                     bg: `var(--white)`,
                     '.text': { color: `var(--mandy)` },
                   }}
                 >
                   <Flex align={`center`}>
-                    <Box w={`1.5rem`}>
-                      <Image
-                        width={66}
-                        height={80}
-                        src="/dev/img/arrow-@2x.png"
-                      />
-                    </Box>
                     <Box
                       color={`white`}
-                      className={`text`}
                       ml={{ lg: `0.5rem` }}
+                      fontFamily={`'Zen Kaku Gothic New',
+        'Hiragino Sans'`}
                     >
                       ログイン
                     </Box>
