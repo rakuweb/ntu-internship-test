@@ -50,30 +50,6 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     }
   };
 
-  useEffect(() => {
-    if (!liff) return;
-    if (!username && liff.isLoggedIn()) {
-      const url = `${ORIGIN_URL}${routes.apiAccount}`;
-
-      const handler = async () => {
-        const profile = await liff.getProfile();
-
-        const res = await axios.get(url, {
-          params: {
-            lineId: profile.userId,
-          },
-        });
-
-        const { exist, username, email } = res.data;
-        if (exist) {
-          const { email, username } = res.data;
-          setAccount({ email: email as string, username: username as string });
-        }
-      };
-      handler();
-    }
-  }, [liff, username]);
-
   // useEffect(() => {
   //   if (!liff || !liff.isLoggedIn()) return;
   //   const url = `${ORIGIN_URL}${routes.apiAccount}`;

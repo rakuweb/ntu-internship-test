@@ -3,7 +3,7 @@ import { FC, useState, useEffect } from 'react';
 import { Box, Center } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
-import { Header } from 'components/headers/Header';
+import { SigninHeader as Header } from 'components/headers/SigninHeader';
 import { Footer } from 'components/footers/OldFooter';
 import { mq } from '~/constants/styles';
 import { RegisteredMessage } from '~/components/organisms/RegisteredMessage';
@@ -28,7 +28,7 @@ export const Presenter: FC<PresenterProps> = () => {
         as={`main`}
         h={{ base: `50vh`, lg: `calc(${60 - 193 / 19.2}vh)` }}
         css={styles}
-      bg={`#f5f5f5`}
+        bg={`#f5f5f5`}
       >
         <Center h={`100%`} as={`section`}>
           <RegisteredMessage title={title} message={message} />
