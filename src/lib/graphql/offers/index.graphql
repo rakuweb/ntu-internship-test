@@ -6,6 +6,15 @@ query getOffersAll($today: Date) {
         title
         place
         hourly_wage
+        job_points {
+          data {
+            id
+            attributes {
+              name
+              en_name
+            }
+          }
+        }
         job_categories {
           data {
             id

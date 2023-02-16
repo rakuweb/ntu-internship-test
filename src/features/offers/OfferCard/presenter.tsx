@@ -8,6 +8,7 @@ import { OfferCard } from '../types';
 import { mq } from '~/constants/styles';
 import { routes } from 'constants/routes';
 import { Labeltext } from './Labeltext';
+import { Image as NImage } from 'components/images/Image';
 
 // type layer
 export type DataProps = OfferCard;
@@ -45,12 +46,12 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             </div>
           )} */}
           {image?.src && (
-            <Image
+            <NImage
               className="photo"
               // cmsで使う用途
               // src={image}
               // src={`/images/offers/cover.png`}
-              {...image}
+              image={{ ...image }}
             />
           )}
           <div className="text">
@@ -83,7 +84,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 width={24}
                 height={24}
                 src={`/svg/money.svg`}
-                // src={`/images/offers/hukuroIkon.png`}
+              // src={`/images/offers/hukuroIkon.png`}
               />
               <div className="placetext">{hourlyWage}</div>
             </div>

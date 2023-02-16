@@ -206,7 +206,11 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           <section className="recruit-card-area">
             {/* <div className="recruit-card-container"> */}
             <Grid
-              templateColumns={{ base: `repeat(1,1fr)`, lg: `repeat(3,1fr)` }}
+              templateColumns={{
+                base: `repeat(1,1fr)`,
+                md: `repeat(2,1fr)`,
+                lg: `repeat(3,1fr)`,
+              }}
               rowGap={{ lg: `38px` }}
               columnGap={{ lg: `32px` }}
             >

@@ -2,6 +2,8 @@
 import { FC } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import { Image } from 'atoms/Image';
+import { Image as NImage } from 'components/images/Image';
+import { useRouter } from 'next/router';
 
 import { OfferButton } from 'components/OfferButton';
 import { Labeltext } from '~/features/offers/OfferCard/Labeltext';
@@ -9,42 +11,50 @@ import { Labeltext2 } from './Labeltext2';
 
 import { selectCompany, useCompanyStore } from 'features/company';
 import { useTargetOfferStore, selectTarget } from 'features/offers';
+import { useLiff } from 'contexts/LineAuthContextInternship';
 
 import { styles } from './styles';
-import colors from '../../lib/theme/foundations/colors';
 import { InternalLink } from '../links/InternalLink';
 import { routes } from 'constants/routes';
+import { useAccountStore, selectSetPrevPath } from 'features/account';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
-  const list = useTargetOfferStore(selectTarget);
+  const offer = useTargetOfferStore(selectTarget);
   const company = useCompanyStore(selectCompany);
+  const { liff } = useLiff();
+  const setPrevPath = useAccountStore(selectSetPrevPath);
+  const formUrl = `https://docs.google.com/forms/d/e/1FAIpQLSfWgORsIK6vVlPVXMSQ5ObZiB46Ih1gmMhgUbdbJDIIJ5iqKg/viewform`;
 
-  // const label = list.categories[0];
+  const signin = () => {
+    if (!liff) return;
+    if (!liff.isLoggedIn()) {
+      formUrl && setPrevPath(decodeURI(formUrl));
+      window.localStorage.setItem('prevUrl', formUrl);
+      liff.login(); //{ redirectUri: redirectUri });
+    }
+  };
 
   return (
     <div css={styles}>
       <section className="consultation-card-list">
         <div className="consultation-card-list__card">
-          <p className="companyName">{list.companyName}</p>
-          <p className="jobtitle">{list?.title}</p>
+          <p className="companyName">{offer.companyName}</p>
+          <p className="jobtitle">{offer?.title}</p>
 
           <Flex flexWrap={`wrap`} mb={{ lg: `20px` }}>
-            {list.categories.map((category) => (
+            {offer.categories.map((category) => (
               <Labeltext
                 key={category.id}
                 labeltext={category.name}
               ></Labeltext>
             ))}
-            {/* {list.gainedSkills.map((text) => (
-              <Labeltext2 key={text} labeltext={text} />
-            ))} */}
-            {/*
-            <Labeltext labeltext={labeltext[1]}></Labeltext>
-          */}
+            {offer.points.map((point) => (
+              <Labeltext2 key={point.id} labeltext={point.name} />
+            ))}
           </Flex>
 
           <h3 className="termstext">
@@ -54,7 +64,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               height={24}
               src={`/svg/map-marker.svg`}
             />
-            <div className="placetext">{list.place}</div>
+            <div className="placetext">{offer.place}</div>
           </h3>
           <h3 className="termstext">
             <Image
@@ -63,14 +73,15 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               height={24}
               src={`/svg/money.svg`}
             />
-            <div className="placetext">{list.hourlyWage}</div>
+            <div className="placetext">{offer.hourlyWage}</div>
           </h3>
 
-          <Image {...list.image} className="bigImg" />
+          <NImage image={{ ...offer.image }} className="bigImg" />
+          {/*
+          <Image {...offer.image} className="bigImg" />
+          */}
           <Box w={{ base: `100%`, lg: `fit-content` }} mx={`auto`}>
-            <InternalLink href={routes.signin}>
-              <OfferButton />
-            </InternalLink>
+            <OfferButton onClick={() => signin()} />
           </Box>
         </div>
       </section>
@@ -94,7 +105,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         </Box>
         <div className="subsection">
           <Box whiteSpace={`pre-wrap`} fontSize={`14px`} lineHeight={`21px`}>
-            {list.description}
+            {offer.description}
           </Box>
         </div>
       </Box>
@@ -117,7 +128,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         </Box>
         <div className="subsection">
           <Box whiteSpace={`pre-wrap`} fontSize={`14px`} lineHeight={`21px`}>
-            {list.aboutJob}
+            {offer.aboutJob}
           </Box>
         </div>
       </Box>
@@ -128,7 +139,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         pt={`40px`}
         fontFamily={`'Noto Sans JP', sans-serif`}
       >
-        {list?.gainedSkills.length !== 0 && (
+        {offer?.points.length !== 0 && (
           <>
             <Box
               as={`h2`}
@@ -148,8 +159,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 lineHeight={`21px`}
               >
                 <Flex flexWrap={`wrap`}>
-                  {list.gainedSkills.map((text) => (
-                    <Labeltext2 key={text} labeltext={text} />
+                  {offer.points.map((point) => (
+                    <Labeltext2 key={point.id} labeltext={point.name} />
                   ))}
                 </Flex>
               </Box>
@@ -158,9 +169,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         )}
         <Box mt={`78px`}>
           <Box w={{ base: `100%`, lg: `fit-content` }} mx={`auto`}>
-            <InternalLink href={routes.signin}>
-              <OfferButton />
-            </InternalLink>
+            <OfferButton onClick={() => signin()} />
           </Box>
         </Box>
       </Box>
@@ -186,43 +195,47 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           <Box whiteSpace={`pre-wrap`} fontSize={`14px`} lineHeight={`21px`}>
             <div className="termsContainer">
               <p className="termsTitle">給与</p>
-              <p className="termsMain">{list.hourlyWage}</p>
+              <p className="termsMain">{offer.hourlyWage}</p>
             </div>
             <div className="termsContainer2">
               <p className="termsTitle">対象学年</p>
-              <p className="termsMain">{list.target}</p>
+              <p className="termsMain">{offer.target}</p>
             </div>
             <div className="termsContainer2">
               <p className="termsTitle">応募資格</p>
-              <p className="termsMain">{list.qualification}</p>
+              <p className="termsMain">{offer.qualification}</p>
             </div>
             <div className="termsContainer2">
               <p className="termsTitle">業務内容</p>
-              <p className="termsMain">{list.aboutJob}</p>
+              <p className="termsMain">{offer.aboutJob}</p>
             </div>
             <div className="termsContainer2">
               <p className="termsTitle">勤務条件</p>
-              <p className="termsMain">{list.recruitmentTerms}</p>
+              <p className="termsMain">{offer.recruitmentTerms}</p>
             </div>
-            {/* <div className="termsContaineroccupation">
+            <div className="termsContaineroccupation">
               <p className="termsTitleoccupation">職種</p>
-              <Labeltext labeltext={label.name} />
-            </div> */}
+              <Flex>
+                {offer?.categories.map((category) => (
+                  <Labeltext key={category.id} labeltext={category.name} />
+                ))}
+              </Flex>
+            </div>
+            {/*
             <div className="termsContainer2">
               <p className="termsTitle">職種</p>
-              <p className="termsMain">{list.jobType}</p>
+              <p className="termsMain">{offer.jobType}</p>
             </div>
+            */}
             <div className="termsContainer3">
               <p className="termsTitle">勤務地</p>
-              <p className="termsMain">{list.place}</p>
+              <p className="termsMain">{offer.place}</p>
             </div>
           </Box>
         </div>
         <Box mt={`78px`}>
           <Box w={{ base: `100%`, lg: `fit-content` }} mx={`auto`}>
-            <InternalLink href={routes.signin}>
-              <OfferButton />
-            </InternalLink>
+            <OfferButton onClick={() => signin()} />
           </Box>
         </Box>
         <Box
@@ -240,9 +253,9 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     {...company.logo}
                     htmlWidth={company.logo.width}
                     htmlHeight={company.logo.height}
-                    // width={84}
-                    // height={84}
-                    // src={`/images/offers/trunkicon.jpeg`}
+                  // width={84}
+                  // height={84}
+                  // src={`/images/offers/trunkicon.jpeg`}
                   />
                 </Box>
                 <Box fontSize={{ base: `24px` }} fontWeight={`700`} mb={`8px`}>

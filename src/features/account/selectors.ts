@@ -5,3 +5,6 @@ export const selectAccount = (state: AccountSlice) => ({
   email: state.email,
 });
 export const selectSetAccount = (state: AccountSlice) => state.setAccount;
+export const selectSignout = (state: AccountSlice) => state.signout;
+export const selectSetPrevPath = (state: AccountSlice) => state.setPrevPath;
+export const selectPrevPath = (state: AccountSlice) => state.prevPath;

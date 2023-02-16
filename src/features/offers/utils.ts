@@ -18,11 +18,12 @@ export const parseToOffers = (data: OfferEntity[]): OfferCard[] => {
           name: category?.attributes?.name ?? '',
           enName: category?.attributes?.en_name ?? '',
         })) ?? [],
-      // offer.job_categories?.data?.map((category) => ({
-      //   id: category.id,
-      //   name: category?.attributes?.name ?? '',
-      //   enName: category?.attributes?.en_name ?? '',
-      // })) ?? [],
+      points:
+        offer?.job_points?.data?.map((point) => ({
+          id: point.id,
+          name: point?.attributes?.name ?? '',
+          enName: point?.attributes?.en_name ?? '',
+        })) ?? [],
       place: offer.place,
       hourlyWage: offer.hourly_wage,
     };
@@ -40,19 +41,25 @@ export const parseToTarget = (entity: OfferEntity): Partial<OfferSliceData> => {
     image: offer?.image?.data?.attributes?.url
       ? parseImage(offer.image.data.attributes)
       : undefined,
-    jobType: offer.job_type,
+    // jobType: offer.job_type,
     categories:
       offer?.job_categories?.data?.map((category) => ({
         id: category.id,
         name: category?.attributes?.name ?? '',
         enName: category?.attributes?.en_name ?? '',
       })) ?? [],
+    points:
+      offer?.job_points?.data?.map((point) => ({
+        id: point.id,
+        name: point?.attributes?.name ?? '',
+        enName: point?.attributes?.en_name ?? '',
+      })) ?? [],
     place: offer.place,
     target: offer?.target ?? '',
     hourlyWage: offer.hourly_wage,
     description: offer.description,
     aboutJob: offer.about_job,
-    gainedSkills: offer.gained_skills?.map((skill) => skill.name) ?? [],
+    // gainedSkills: offer.gained_skills?.map((skill) => skill.name) ?? [],
     recruitmentTerms: offer.recruitment_terms,
     qualification: offer?.qualification ?? '',
   };

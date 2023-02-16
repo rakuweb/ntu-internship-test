@@ -11,10 +11,14 @@ query getOfferById($id: ID) {
         recruitment_terms
         target
         qualification
-        job_type
-        gained_skills {
-          id
-          name
+        job_points {
+          data {
+            id
+            attributes {
+              name
+              en_name
+            }
+          }
         }
         job_categories {
           data {

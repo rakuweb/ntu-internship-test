@@ -27,6 +27,7 @@ export const createTargetOfferSlice: StateCreator<
   id: '',
   title: '',
   jobType: '',
+  points: [],
   categories: [],
   place: '',
   hourlyWage: '',

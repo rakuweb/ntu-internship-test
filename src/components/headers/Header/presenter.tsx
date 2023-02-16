@@ -1,7 +1,9 @@
 // import layer
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { Box, BoxProps, Flex } from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/react';
+import axios from 'axios';
+import { useRouter } from 'next/router';
 
 import { styles } from './styles';
 import { Image } from 'atoms/Image';
@@ -9,6 +11,15 @@ import { InternalLink } from 'components/links/InternalLink';
 import { routes } from '~/constants';
 import { HeaderMenu } from '../HeaderMenu';
 import { MenuDrawer } from '../MenuDrawer';
+import {
+  useAccountStore,
+  selectAccount,
+  selectSignout,
+  selectSetAccount,
+  selectSetPrevPath,
+} from 'features/account';
+import { useLiff } from 'contexts/LineAuthContextInternship';
+import { ORIGIN_URL } from 'constants/env';
 
 // type layer
 export type PresenterProps = BoxProps;
@@ -16,6 +27,61 @@ export type PresenterProps = BoxProps;
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { email, username } = useAccountStore(selectAccount);
+  const _signout = useAccountStore(selectSignout);
+  const setAccount = useAccountStore(selectSetAccount);
+  const setPrevPath = useAccountStore(selectSetPrevPath);
+  const { liff } = useLiff();
+  const router = useRouter();
+
+  const signout = () => {
+    _signout();
+    window.localStorage.removeItem('prevUrl');
+    liff.logout();
+  };
+
+  const signin = () => {
+    if (!liff) return;
+    if (!liff.isLoggedIn()) {
+      const prevPath = router?.asPath;
+      prevPath && setPrevPath(decodeURI(prevPath));
+      window.localStorage.setItem('prevUrl', prevPath);
+      liff.login(); //{ redirectUri: redirectUri });
+    }
+  };
+
+  useEffect(() => {
+    if (!liff) return;
+    if (!username && liff.isLoggedIn()) {
+      liff.logout();
+    }
+  }, [liff, username]);
+
+  // useEffect(() => {
+  //   if (!liff || !liff.isLoggedIn()) return;
+  //   const url = `${ORIGIN_URL}${routes.apiAccount}`;
+  //
+  //   const handler = async () => {
+  //     const profile = await liff.getProfile();
+  //
+  //     const res = await axios.get(url, {
+  //       params: {
+  //         lineId: profile.userId,
+  //       },
+  //     });
+  //
+  //     const { exist, username, email } = res.data;
+  //     if (exist) {
+  //       const { email, username } = res.data;
+  //       setAccount({ email: email as string, username: username as string });
+  //     } else {
+  //       router.push(routes.signinFailed);
+  //       window.scroll({ top: 0 });
+  //     }
+  //   };
+  //
+  //   handler();
+  // }, [liff, liff?.isLoggedIn]);
 
   return (
     <Box
@@ -80,7 +146,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           <Box display={{ base: `block`, lg: `none` }}>
             <HeaderMenu isOpen={isOpen} onClick={onOpen} />
           </Box>
-          <InternalLink href={routes.signin}>
+          {username ? (
             <Box
               display={{ base: `none`, lg: `block` }}
               borderRadius={`20px`}
@@ -88,10 +154,39 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               color="white"
               backgroundImage={`linear-gradient(19deg, #21D4FD 0%, #B721FF 100%)`}
               fontWeight={'600'}
+              onClick={() => signout()}
+              transition={`all .3s`}
+              _hover={{
+                cursor: 'pointer',
+                filter: `opacity(50%)`,
+                textDecoration: 'none',
+              }}
             >
+              ログアウト
+            </Box>
+          ) : (
+            <Box
+              display={{ base: `none`, lg: `block` }}
+              borderRadius={`20px`}
+              p={`${8 / 19.2}vw ${16 / 19.2}vw`}
+              color="white"
+              backgroundImage={`linear-gradient(19deg, #21D4FD 0%, #B721FF 100%)`}
+              fontWeight={'600'}
+              onClick={signin}
+              transition={`all .3s`}
+              _hover={{
+                cursor: 'pointer',
+                filter: `opacity(50%)`,
+                textDecoration: 'none',
+              }}
+            >
+              {/*
+            <InternalLink href={routes.signin}>
+            </InternalLink>
+              */}
               ログイン
             </Box>
-          </InternalLink>
+          )}
         </Flex>
 
         <MenuDrawer isOpen={isOpen} onClose={onClose} />

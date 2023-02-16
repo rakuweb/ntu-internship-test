@@ -11,7 +11,11 @@ import { parseSeo } from '~/lib';
 import { useLiff } from 'contexts/LineAuthContextInternship';
 import { routes } from 'constants/routes';
 import { useAccountStore } from 'features/account/hooks';
-import { selectSetAccount } from 'features/account/selectors';
+import {
+  selectSetAccount,
+  selectPrevPath,
+  selectSetPrevPath,
+} from 'features/account/selectors';
 import { Index as Authenticating } from 'components/templates/Register/Authenticating';
 
 // type layer
@@ -25,17 +29,19 @@ export const Index: NextPage = () => {
   const { liff } = useLiff();
   const router = useRouter();
   const setAccount = useAccountStore(selectSetAccount);
+  const prevPath = useAccountStore(selectPrevPath);
+  const setPrevPath = useAccountStore(selectSetPrevPath);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  useEffect(() => {
-    if (!liff) return;
-    if (!liff.isLoggedIn()) {
-      liff.login(); //{ redirectUri: redirectUri });
-    }
-  }, [liff]);
+  // useEffect(() => {
+  //   if (!liff) return;
+  //   if (!liff.isLoggedIn()) {
+  //     liff.login(); //{ redirectUri: redirectUri });
+  //   }
+  // }, [liff]);
 
   useEffect(() => {
     if (!liff || !liff.isLoggedIn()) return;
@@ -54,10 +60,17 @@ export const Index: NextPage = () => {
       if (exist) {
         const { email, username } = res.data;
         setAccount({ email: email as string, username: username as string });
+        const nextPath = prevPath.slice();
+        setPrevPath('');
+        const lsNextPath = window.localStorage.getItem('prevUrl');
 
-        // router.push(routes.registered);
-        // window.scroll({ top: 0 });
-        window.location.href = `https://docs.google.com/forms/d/e/1FAIpQLSfWgORsIK6vVlPVXMSQ5ObZiB46Ih1gmMhgUbdbJDIIJ5iqKg/viewform`;
+        console.log('aaaaa', lsNextPath);
+        if (lsNextPath.startsWith('https')) {
+          window.location.href = lsNextPath;
+        } else {
+          nextPath ? router.push(nextPath) : router.push(lsNextPath);
+          window.scroll({ top: 0 });
+        }
       } else {
         router.push(routes.signinFailed);
         window.scroll({ top: 0 });

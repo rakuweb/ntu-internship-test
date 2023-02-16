@@ -10,12 +10,19 @@ export type PresenterProps = BoxProps;
 // presenter
 export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
   return (
-    <Box css={styles} {...props}>
-      <section className="clinics-button">
-        <a href="#" className="clinics-button__button">
-          エントリーする
-        </a>
-      </section>
+    <Box
+      transition={`all .3s`}
+      _hover={{
+        cursor: 'pointer',
+        filter: `opacity(50%)`,
+        textDecoration: 'none',
+      }}
+      css={styles}
+      {...props}
+    >
+      <Box className="clinics-button">
+        <Box className="clinics-button__button">エントリーする</Box>
+      </Box>
     </Box>
   );
 };
