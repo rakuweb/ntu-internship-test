@@ -24,74 +24,72 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     isNew,
     title,
     image,
+    deadline,
   } = props;
   const href = `${routes.offers}/${id}`;
 
   return (
-    <InternalLink
-      // _hover={{ cursor: `pointer`, color: `` }}
-      href={href}
+    <Box
+      transitionProperty={`box-shadow`}
+      transitionDuration="0.3s"
+      transitionTimingFunction="ease-in-out"
+      css={styles}
     >
-      <Box
-        _hover={{ boxShadow: `2xl` }}
-        transitionProperty={`box-shadow`}
-        transitionDuration="0.3s"
-        transitionTimingFunction="ease-in-out"
-        css={styles}
-      >
-        <div className="x001">
-          {/* {isNew && (
+      <div className="x001">
+        {/* {isNew && (
             <div className="NEW-area">
               <div className="NEW-box">NEW</div>
             </div>
           )} */}
-          {image?.src && (
-            <NImage
-              className="photo"
-              // cmsで使う用途
-              // src={image}
-              // src={`/images/offers/cover.png`}
-              image={{ ...image }}
-            />
-          )}
-          <div className="text">
-            <div className="campanytext">{companyName}</div>
-            <h2 className="text-2">{title}</h2>
-            {categories.length !== 0 && (
-              <div className="termstext">
-                <Flex flexWrap={`wrap`} height={{ base: `40px`, lg: `48px` }}>
-                  {categories.map((category) => (
-                    <Labeltext
-                      key={category.id}
-                      labeltext={category.name}
-                    ></Labeltext>
-                  ))}
-                </Flex>
-              </div>
-            )}
+        <div className="dead-area">
+          <div className="dead-box">募集終了</div>
+        </div>
+        {image?.src && (
+          <NImage
+            className="photo"
+            // cmsで使う用途
+            // src={image}
+            // src={`/images/offers/cover.png`}
+            image={{ ...image }}
+          />
+        )}
+        <div className="text">
+          <div className="campanytext">{companyName}</div>
+          <h2 className="text-2">{title}</h2>
+          {categories.length !== 0 && (
             <div className="termstext">
-              <Image
-                className="icon"
-                width={24}
-                height={24}
-                src={`/svg/map-marker.svg`}
-              />
-              <div className="placetext">{place}</div>
+              <Flex flexWrap={`wrap`} height={{ base: `40px`, lg: `48px` }}>
+                {categories.map((category) => (
+                  <Labeltext
+                    key={category.id}
+                    labeltext={category.name}
+                  ></Labeltext>
+                ))}
+              </Flex>
             </div>
-            <div className="pay">
-              <Image
-                className="icon"
-                width={24}
-                height={24}
-                src={`/svg/money.svg`}
-                // src={`/images/offers/hukuroIkon.png`}
-              />
-              <div className="placetext">{hourlyWage}</div>
-            </div>
+          )}
+          <div className="termstext">
+            <Image
+              className="icon"
+              width={24}
+              height={24}
+              src={`/svg/map-marker.svg`}
+            />
+            <div className="placetext">{place}</div>
+          </div>
+          <div className="pay">
+            <Image
+              className="icon"
+              width={24}
+              height={24}
+              src={`/svg/money.svg`}
+              // src={`/images/offers/hukuroIkon.png`}
+            />
+            <div className="placetext">{hourlyWage}</div>
           </div>
         </div>
-      </Box>
-    </InternalLink>
+      </div>
+    </Box>
   );
 };
 
@@ -117,55 +115,32 @@ const styles = css`
       }
   }
 
-  .NEW-area{
-    position:relative;
-z-index:10;
-  }
-
-  .NEW-box{
-    position:absolute;
-    top:0;
-    left:0;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    width:52px;
-    height:29px;
-    font-family:'yugothic', 'Zen Kaku Gothic New','Hiragino Sans';
-    font-weight:bold;
-    font-size:14px;
-    color:#ffffff;
-    background-color:#D6322C;
-    ${mq[3]} {
-      width:62px;
-      height:34px;
-      font-size:20px;
-      }
-  }
-
   .dead-area{
     position:relative;
 z-index:10;
+
   }
 
   .dead-box{
     position:absolute;
-    top:0;
-    left:0;
+    height: 166px;
+    width:300px;
+    left:50%;
     display:flex;
+    transform: translate(-50%);
     justify-content: center;
     align-items: center;
-    width:52px;
-    height:29px;
     font-family:'yugothic', 'Zen Kaku Gothic New','Hiragino Sans';
     font-weight:bold;
     font-size:14px;
-    color:#ffffff;
-    background-color:#D6322C;
+    color:red;
+    letter-spacing: 5px;
+    background-color:rgba(0,0,0,0.6);
+    border-radius: 10px 10px 0 0;
+    overflow:hidden;
     ${mq[3]} {
-      width:62px;
-      height:34px;
-      font-size:20px;
+      height: 210px;
+      width:368px;
       }
   }
 
@@ -175,6 +150,7 @@ z-index:10;
     /*height: 150px;*/
     object-fit: cover;
     border-radius: 10px 10px 0 0;
+    overflow:hidden;
     ${mq[3]} {
     height: 215px;
     /*height: 180px;*/

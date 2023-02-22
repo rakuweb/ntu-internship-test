@@ -14,6 +14,7 @@ export type OfferCard = {
   title: string;
   image?: ImageType;
   points: Point[];
+  deadline: any;
 };
 
 export type OffersSlice = {
@@ -27,6 +28,7 @@ export type OfferSliceData = {
   id: string;
   title: string;
   jobType: string;
+  deadline: any;
   points: Point[];
   categories: Category[];
   place: string;

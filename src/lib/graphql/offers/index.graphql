@@ -1,11 +1,12 @@
-query getOffersAll($today: Date) {
-  offers(sort: "publishedAt:desc", filters: { deadline: { gte: $today } }) {
+query getOffersAll {
+  offers(sort: "publishedAt:desc") {
     data {
       id
       attributes {
         title
         place
         hourly_wage
+        deadline
         job_points {
           data {
             id
