@@ -43,8 +43,17 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           )} */}
         <div className="dead-area">
           <div className="dead-box">募集終了</div>
+          {image?.src && (
+            <NImage
+              className="photo"
+              // cmsで使う用途
+              // src={image}
+              // src={`/images/offers/cover.png`}
+              image={{ ...image }}
+            />
+          )}
         </div>
-        {image?.src && (
+        {/* {image?.src && (
           <NImage
             className="photo"
             // cmsで使う用途
@@ -52,7 +61,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             // src={`/images/offers/cover.png`}
             image={{ ...image }}
           />
-        )}
+        )} */}
         <div className="text">
           <div className="campanytext">{companyName}</div>
           <h2 className="text-2">{title}</h2>
@@ -108,22 +117,21 @@ const styles = css`
     margin-bottom:32px;
     ${mq[2]} {
         margin-bottom:0px;
+        height: 400px;
     }
     ${mq[3]} {
-        height: 435px;
+        height: 436.5px;
         width: 368px;
       }
   }
 
   .dead-area{
     position:relative;
-z-index:10;
-
   }
 
   .dead-box{
     position:absolute;
-    height: 166px;
+    height: 100%;
     width:300px;
     left:50%;
     display:flex;
@@ -138,21 +146,21 @@ z-index:10;
     background-color:rgba(0,0,0,0.6);
     border-radius: 10px 10px 0 0;
     overflow:hidden;
+    z-index:10;
     ${mq[3]} {
-      height: 210px;
       width:368px;
       }
   }
 
   .photo {
     width: 100%;
-    height: 176px;
+    height: auto;
     /*height: 150px;*/
     object-fit: cover;
     border-radius: 10px 10px 0 0;
     overflow:hidden;
     ${mq[3]} {
-    height: 215px;
+    height: auto;
     /*height: 180px;*/
     }
   }

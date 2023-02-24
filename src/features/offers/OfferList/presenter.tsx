@@ -48,7 +48,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const month = monthMap[monthNum];
   const date = currentDate.getDate();
   const today = `${year}-${month}-${date}`;
-  // const today = `${year}-03-01`;
+  // const today = `${year}-02-01`;
 
   // const list = useOffersStore(selectOfferList);
   // const [offerList, setOfferList] = useState<OfferCardProps[][]>([]);

@@ -110,6 +110,7 @@ const styles = css`
     margin-bottom:32px;
     ${mq[2]} {
         margin-bottom:0px;
+        height: 400px;
     }
     ${mq[3]} {
         height: 435px;
@@ -143,31 +144,6 @@ z-index:10;
       }
   }
 
-  .dead-area{
-    position:relative;
-z-index:10;
-  }
-
-  .dead-box{
-    position:absolute;
-    top:0;
-    left:0;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    width:52px;
-    height:29px;
-    font-family:'yugothic', 'Zen Kaku Gothic New','Hiragino Sans';
-    font-weight:bold;
-    font-size:14px;
-    color:#ffffff;
-    background-color:#D6322C;
-    ${mq[3]} {
-      width:62px;
-      height:34px;
-      font-size:20px;
-      }
-  }
 
   .photo {
     width: 100%;
@@ -175,6 +151,7 @@ z-index:10;
     /*height: 150px;*/
     object-fit: cover;
     border-radius: 10px 10px 0 0;
+    overflow:hidden;
     ${mq[3]} {
     height: 215px;
     /*height: 180px;*/
@@ -217,7 +194,6 @@ z-index:10;
     overflow:hidden;
     ${mq[3]} {
       white-space: pre-wrap;
-      font-weight: bold;
     }
   }
 
