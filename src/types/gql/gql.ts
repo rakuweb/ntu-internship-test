@@ -13,6 +13,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel-plugin for production.
  */
 const documents = {
+    "query getadvertisementArticles {\n  advertisementArticle(id: 1) {\n    data {\n      id\n      attributes {\n        title\n        body\n        image {\n          data {\n            id\n            attributes {\n              width\n              height\n              url\n              alternativeText\n              formats\n            }\n          }\n        }\n      }\n    }\n  }\n}": types.GetadvertisementArticlesDocument,
     "query getCompanies {\n  companies {\n    data {\n      id\n      attributes {\n        mission\n        name\n        createdBy {\n          id\n          firstname\n          lastname\n        }\n        description\n        address\n        mission\n        company_id\n        cover_image {\n          data {\n            id\n            attributes {\n              width\n              height\n              formats\n              url\n              alternativeText\n            }\n          }\n        }\n        logo {\n          data {\n            id\n            attributes {\n              width\n              height\n              formats\n              url\n              alternativeText\n            }\n          }\n        }\n      }\n    }\n  }\n}": types.GetCompaniesDocument,
     "query getRecruiterById($id: ID) {\n  company(id: $id) {\n    data {\n      id\n      attributes {\n        cover_image {\n          data {\n            id\n            attributes {\n              url\n              width\n              height\n              alternativeText\n            }\n          }\n        }\n        createdBy {\n          id\n          firstname\n          lastname\n        }\n      }\n    }\n  }\n}": types.GetRecruiterByIdDocument,
     "query getNewsById($id: ID) {\n  news(id: $id) {\n    data {\n      id\n      attributes {\n        title\n        date\n      }\n    }\n  }\n}": types.GetNewsByIdDocument,
@@ -23,6 +24,10 @@ const documents = {
     "query getUsersByLineId($lineId: String) {\n  usersPermissionsUsers(filters: {line_id: {eq: $lineId}}) {\n    data {\n      id\n      attributes {\n        username\n        email\n        confirmed\n      }\n    }\n  }\n}": types.GetUsersByLineIdDocument,
 };
 
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "query getadvertisementArticles {\n  advertisementArticle(id: 1) {\n    data {\n      id\n      attributes {\n        title\n        body\n        image {\n          data {\n            id\n            attributes {\n              width\n              height\n              url\n              alternativeText\n              formats\n            }\n          }\n        }\n      }\n    }\n  }\n}"): (typeof documents)["query getadvertisementArticles {\n  advertisementArticle(id: 1) {\n    data {\n      id\n      attributes {\n        title\n        body\n        image {\n          data {\n            id\n            attributes {\n              width\n              height\n              url\n              alternativeText\n              formats\n            }\n          }\n        }\n      }\n    }\n  }\n}"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
