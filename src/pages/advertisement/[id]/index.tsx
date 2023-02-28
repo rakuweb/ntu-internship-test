@@ -1,6 +1,11 @@
 // import layer
 import { useState, useEffect } from 'react';
-import { NextPage, InferGetStaticPropsType, GetStaticProps } from 'next/types';
+import {
+  NextPage,
+  InferGetStaticPropsType,
+  GetStaticProps,
+  GetStaticPaths,
+} from 'next/types';
 import { useRouter } from 'next/router';
 
 import { Index as Template } from 'templates/AdvertisementId';
@@ -11,6 +16,8 @@ import {
   GetadvertisementArticlesDocument,
   GetadvertisementArticlesQuery,
   AdvertisementArticleEntity,
+  GetadvertisementArticlePathsDocument,
+  GetadvertisementArticlePathsQuery,
 } from '~/types/gql/graphql';
 import { initializeApollo } from 'lib/apollo/client';
 import { UPDATE_INTERVAL } from '~/constants';
@@ -44,6 +51,8 @@ export const Index: NextPage<Props> = (data) => {
     return <></>;
   }
 
+  console.log(data);
+
   data?.advertisementArticle?.data &&
     setAdvertisementArticle(
       data.advertisementArticle.data as AdvertisementArticleEntity
@@ -72,6 +81,31 @@ export const Index: NextPage<Props> = (data) => {
 };
 
 export default Index;
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const apolloClient = initializeApollo();
+  try {
+    const { data } =
+      await apolloClient.query<GetadvertisementArticlePathsQuery>({
+        query: GetadvertisementArticlePathsDocument,
+      });
+
+    const paths = data?.advertisementArticles?.data
+      ? data.advertisementArticles.data.map((item) => ({
+          params: {
+            id: item?.id,
+          },
+        }))
+      : [];
+
+    return {
+      paths,
+      fallback: true,
+    };
+  } finally {
+    console.log('get pages/advertisement/[id] paths');
+  }
+};
 
 export const getStaticProps: GetStaticProps<{
   data: GetadvertisementArticlesQuery;
