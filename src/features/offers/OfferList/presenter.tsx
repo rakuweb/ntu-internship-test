@@ -18,6 +18,7 @@ import {
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
+import { OfferCardDead } from '../OfferCardDead';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
@@ -26,6 +27,29 @@ export type PresenterProps = Record<string, unknown>;
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const advertisements = useAdvertisementsStore(selectAdvertisements);
   const offers = useOffersStore(selectOfferList);
+
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const monthNum = currentDate.getMonth();
+  const monthMap = [
+    '01',
+    '02',
+    '03',
+    '04',
+    '05',
+    '06',
+    '07',
+    '08',
+    '09',
+    '10',
+    '11',
+    '12',
+  ];
+  const month = monthMap[monthNum];
+  const date = currentDate.getDate();
+  const today = `${year}-${month}-${date}`;
+  // const today = `${year}-02-01`;
+
   // const list = useOffersStore(selectOfferList);
   // const [offerList, setOfferList] = useState<OfferCardProps[][]>([]);
 
@@ -214,8 +238,23 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               rowGap={{ lg: `38px` }}
               columnGap={{ lg: `32px` }}
             >
-              {offers.map((offer) => (
+              {/* {offers.map((offer) => (
                 <OfferCard key={offer.id} {...offer} />
+              ))} */}
+              {/* {offers.map((offer) => (
+                <OfferCardDead key={offer.id} {...offer} />
+              ))} */}
+
+              {offers.map((offer) => (
+                <div key={offer.id}>
+                  {(() => {
+                    if (offer.deadline >= today) {
+                      return <OfferCard {...offer} />;
+                    } else {
+                      return <OfferCardDead {...offer} />;
+                    }
+                  })()}
+                </div>
               ))}
               {/* <div className="recruit-card-container"> */}
             </Grid>

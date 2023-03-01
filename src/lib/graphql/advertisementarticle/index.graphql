@@ -1,0 +1,31 @@
+query getadvertisementArticles {
+  advertisementArticle(id: 1) {
+    data {
+      id
+      attributes {
+        title
+        body
+        image {
+          data {
+            id
+            attributes {
+              width
+              height
+              url
+              alternativeText
+              formats
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+query getadvertisementArticlePaths {
+  advertisementArticles {
+    data {
+      id
+    }
+  }
+}

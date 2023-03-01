@@ -9,6 +9,7 @@ export const parseToOffers = (data: OfferEntity[]): OfferCard[] => {
       title: offer.title,
       companyName: offer.createdBy.lastname,
       id: entity.id,
+      deadline: offer.deadline,
       image: offer?.image?.data?.attributes?.url
         ? parseImage(offer.image.data.attributes)
         : undefined,
@@ -62,6 +63,7 @@ export const parseToTarget = (entity: OfferEntity): Partial<OfferSliceData> => {
     // gainedSkills: offer.gained_skills?.map((skill) => skill.name) ?? [],
     recruitmentTerms: offer.recruitment_terms,
     qualification: offer?.qualification ?? '',
+    deadline: offer.deadline,
   };
 
   return result;

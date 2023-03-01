@@ -1,6 +1,12 @@
 import { parseImage } from '~/lib/utils';
-import { AdvertisementEntity } from 'types/gql/graphql';
-import { AdvertisementsSliceData } from './types';
+import {
+  AdvertisementEntity,
+  AdvertisementArticleEntity,
+} from 'types/gql/graphql';
+import {
+  AdvertisementsSliceData,
+  AdvertisementArticleSliceData,
+} from './types';
 
 export const parseToAdvertisements = (
   entities: AdvertisementEntity[]
@@ -18,4 +24,18 @@ export const parseToAdvertisements = (
     return result;
   });
   return { list: advertisements };
+};
+
+export const parseToAdvertisementArticle = (
+  entity: AdvertisementArticleEntity
+): Partial<AdvertisementArticleSliceData> => {
+  const result = {
+    id: entity.id,
+    title: entity?.attributes.title,
+    body: entity?.attributes.body,
+    image: entity.attributes.image.data.attributes?.url
+      ? parseImage(entity.attributes.image.data.attributes)
+      : undefined,
+  };
+  return result;
 };
