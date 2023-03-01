@@ -40,13 +40,20 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     liff.logout();
   };
 
-  const signin = () => {
+  const signin = async () => {
     if (!liff) return;
     if (!liff.isLoggedIn()) {
       const prevPath = router?.asPath;
       prevPath && setPrevPath(decodeURI(prevPath));
       window.localStorage.setItem('prevUrl', prevPath);
       liff.login(); //{ redirectUri: redirectUri });
+    } else {
+      if (!username) {
+        const prevPath = router?.asPath;
+        prevPath && setPrevPath(decodeURI(prevPath));
+        window.localStorage.setItem('prevUrl', prevPath);
+        router.push(routes.signin);
+      }
     }
   };
 
@@ -72,33 +79,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       };
       handler();
     }
-  }, [liff, username]);
-
-  // useEffect(() => {
-  //   if (!liff || !liff.isLoggedIn()) return;
-  //   const url = `${ORIGIN_URL}${routes.apiAccount}`;
-  //
-  //   const handler = async () => {
-  //     const profile = await liff.getProfile();
-  //
-  //     const res = await axios.get(url, {
-  //       params: {
-  //         lineId: profile.userId,
-  //       },
-  //     });
-  //
-  //     const { exist, username, email } = res.data;
-  //     if (exist) {
-  //       const { email, username } = res.data;
-  //       setAccount({ email: email as string, username: username as string });
-  //     } else {
-  //       router.push(routes.signinFailed);
-  //       window.scroll({ top: 0 });
-  //     }
-  //   };
-  //
-  //   handler();
-  // }, [liff, liff?.isLoggedIn]);
+  }, [liff, username, liff?.isLoggedIn()]);
 
   return (
     <Box
@@ -197,10 +178,6 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 textDecoration: 'none',
               }}
             >
-              {/*
-            <InternalLink href={routes.signin}>
-            </InternalLink>
-              */}
               ログイン
             </Box>
           )}

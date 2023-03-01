@@ -35,6 +35,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       formUrl && setPrevPath(decodeURI(formUrl));
       window.localStorage.setItem('prevUrl', formUrl);
       liff.login(); //{ redirectUri: redirectUri });
+    } else {
+      window.location.href = formUrl;
     }
   };
 

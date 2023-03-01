@@ -64,7 +64,6 @@ export const Index: NextPage = () => {
         setPrevPath('');
         const lsNextPath = window.localStorage.getItem('prevUrl');
 
-        console.log('aaaaa', lsNextPath);
         if (lsNextPath.startsWith('https')) {
           window.location.href = lsNextPath;
         } else {
@@ -82,7 +81,7 @@ export const Index: NextPage = () => {
     };
 
     handler();
-  }, [liff, liff?.isLoggedIn]);
+  }, [liff, liff?.isLoggedIn()]);
 
   const message = () => {
     if (isClient) {
