@@ -81,8 +81,6 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     }
   }, [liff, username, liff?.isLoggedIn()]);
 
-  console.log(username);
-
   return (
     <Box
       w={`100%`}
