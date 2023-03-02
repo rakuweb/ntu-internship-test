@@ -81,6 +81,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     }
   }, [liff, username, liff?.isLoggedIn()]);
 
+  console.log(username);
+
   return (
     <Box
       w={`100%`}
@@ -126,10 +128,6 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               fontWeight={'bold'}
               fontSize={`14px`}
             >
-              {/* 高野翔実
-              <Box as={`span`} fontWeight={`500`}>
-                さん ようこそ！
-              </Box> */}
               新潟大学生専用のアルバイト求人サイト
             </Box>
           </InternalLink>
@@ -137,14 +135,43 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
 
         <Flex alignItems={'center'}>
           <Box
-            m={{ lg: `0 ${40 / 19.2}vw 0 0` }}
             display={{ base: `none`, lg: `block` }}
             fontWeight="bold"
             color="rgba(153,153, 153, 0.8)"
             fontSize={`12px`}
+            mr={{ lg: `${40 / 19.2}vw` }}
+            mt={{ lg: `${2 / 19.2}vw` }}
           >
             採用担当者はこちら
           </Box>
+          {username ? (
+            <Box
+              display={`none`}
+              mr={{ lg: ` ${30 / 19.2}vw` }}
+              color="#444444"
+              fontWeight={'bold'}
+              fontSize={`14px`}
+            >
+              高野翔実
+              <Box as={`span`} fontWeight={`500`}>
+                さん ようこそ！
+              </Box>
+            </Box>
+          ) : (
+            <Box
+              display={{ base: `none`, lg: `block` }}
+              mr={{ lg: ` ${30 / 19.2}vw` }}
+              color="#444444"
+              fontWeight={'bold'}
+              fontSize={`14px`}
+            >
+              高野翔実
+              <Box as={`span`} fontWeight={`500`}>
+                さん ようこそ！
+              </Box>
+            </Box>
+          )}
+
           <Box display={{ base: `block`, lg: `none` }}>
             <HeaderMenu isOpen={isOpen} onClick={onOpen} />
           </Box>
