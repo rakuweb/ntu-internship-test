@@ -1,5 +1,5 @@
 // import layer
-import { VFC } from 'react';
+import { VFC, useEffect } from 'react';
 import {
   Drawer,
   DrawerProps,
@@ -10,6 +10,19 @@ import {
   Flex,
   Box,
 } from '@chakra-ui/react';
+
+import axios from 'axios';
+import { useRouter } from 'next/router';
+
+import {
+  useAccountStore,
+  selectAccount,
+  selectSignout,
+  selectSetAccount,
+  selectSetPrevPath,
+} from 'features/account';
+import { useLiff } from 'contexts/LineAuthContextInternship';
+import { ORIGIN_URL } from 'constants/env';
 
 import { HeaderMenu } from '../HeaderMenu';
 import { Image } from 'atoms/Image';
@@ -30,6 +43,60 @@ export const Presenter: VFC<PresenterProps> = ({
   onClose,
   ...props
 }) => {
+  const { email, username } = useAccountStore(selectAccount);
+  const _signout = useAccountStore(selectSignout);
+  const setAccount = useAccountStore(selectSetAccount);
+  const setPrevPath = useAccountStore(selectSetPrevPath);
+  const { liff } = useLiff();
+  const router = useRouter();
+
+  const signout = () => {
+    _signout();
+    window.localStorage.removeItem('prevUrl');
+    liff.logout();
+  };
+
+  const signin = async () => {
+    if (!liff) return;
+    if (!liff.isLoggedIn()) {
+      const prevPath = router?.asPath;
+      prevPath && setPrevPath(decodeURI(prevPath));
+      window.localStorage.setItem('prevUrl', prevPath);
+      liff.login(); //{ redirectUri: redirectUri });
+    } else {
+      if (!username) {
+        const prevPath = router?.asPath;
+        prevPath && setPrevPath(decodeURI(prevPath));
+        window.localStorage.setItem('prevUrl', prevPath);
+        router.push(routes.signin);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (!liff) return;
+    if (!username && liff.isLoggedIn()) {
+      const url = `${ORIGIN_URL}${routes.apiAccount}`;
+
+      const handler = async () => {
+        const profile = await liff.getProfile();
+
+        const res = await axios.get(url, {
+          params: {
+            lineId: profile.userId,
+          },
+        });
+
+        const { exist, username, email } = res.data;
+        if (exist) {
+          const { email, username } = res.data;
+          setAccount({ email: email as string, username: username as string });
+        }
+      };
+      handler();
+    }
+  }, [liff, username, liff?.isLoggedIn()]);
+
   return (
     <Drawer size={`sm`} isOpen={isOpen} onClose={onClose} {...props}>
       <DrawerOverlay />
@@ -38,8 +105,9 @@ export const Presenter: VFC<PresenterProps> = ({
           <Flex align={`center`}>
             <HeaderMenu isOpen={isOpen} onClick={onClose} />
             <Flex ml={{ base: `1rem` }} align={`center`}>
-              {/* <InternalLink href={routes.signin}>
+              {username ? (
                 <HeaderMenuButton
+                  onClick={() => signout()}
                   w={`fit-content`}
                   h={{ base: `2.5rem` }}
                   backgroundImage={`linear-gradient(19deg, #21d4fd 0%, #b721ff 100%)`}
@@ -52,36 +120,34 @@ export const Presenter: VFC<PresenterProps> = ({
                     <Box
                       color={`white`}
                       ml={{ lg: `0.5rem` }}
-                      fontFamily={`'Zen Kaku Gothic New',
-        'Hiragino Sans'`}
-                    >
-                      ログイン
-                    </Box>
-                  </Flex>
-                </HeaderMenuButton>
-              </InternalLink> */}
-              <InternalLink href={routes.signin}>
-                <HeaderMenuButton
-                  w={`fit-content`}
-                  h={{ base: `2.5rem` }}
-                  backgroundImage={`linear-gradient(19deg, #21d4fd 0%, #b721ff 100%)`}
-                  _hover={{
-                    bg: `var(--white)`,
-                    '.text': { color: `var(--mandy)` },
-                  }}
-                >
-                  <Flex align={`center`}>
-                    <Box
-                      color={`white`}
-                      ml={{ lg: `0.5rem` }}
-                      fontFamily={`'Zen Kaku Gothic New',
-        'Hiragino Sans'`}
+                      fontFamily={`'Zen Kaku Gothic New','Hiragino Sans'`}
                     >
                       ログアウト
                     </Box>
                   </Flex>
                 </HeaderMenuButton>
-              </InternalLink>
+              ) : (
+                <HeaderMenuButton
+                  w={`fit-content`}
+                  h={{ base: `2.5rem` }}
+                  onClick={signin}
+                  backgroundImage={`linear-gradient(19deg, #21d4fd 0%, #b721ff 100%)`}
+                  _hover={{
+                    bg: `var(--white)`,
+                    '.text': { color: `var(--mandy)` },
+                  }}
+                >
+                  <Flex align={`center`}>
+                    <Box
+                      color={`white`}
+                      ml={{ lg: `0.5rem` }}
+                      fontFamily={`'Zen Kaku Gothic New','Hiragino Sans'`}
+                    >
+                      ログイン
+                    </Box>
+                  </Flex>
+                </HeaderMenuButton>
+              )}
             </Flex>
           </Flex>
         </DrawerHeader>
