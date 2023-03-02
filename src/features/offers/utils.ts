@@ -64,6 +64,7 @@ export const parseToTarget = (entity: OfferEntity): Partial<OfferSliceData> => {
     recruitmentTerms: offer.recruitment_terms,
     qualification: offer?.qualification ?? '',
     deadline: offer.deadline,
+    formUrl: offer?.form_url ?? '',
   };
 
   return result;

@@ -6,7 +6,6 @@ import {
   GetStaticPaths,
   GetStaticProps,
 } from 'next/types';
-import { ParsedUrlQuery } from 'node:querystring';
 
 import { Top as Template } from 'templates/OfferId';
 import { SeoComponent } from 'organisms/SeoComponent';
@@ -14,8 +13,6 @@ import { CANONICAL_URL } from 'constants/env';
 import { UPDATE_INTERVAL } from '~/constants';
 import { parseSeo } from '~/lib';
 import {
-  GetOffersAllQuery,
-  GetOffersAllDocument,
   GetOfferByIdQuery,
   GetOfferByIdDocument,
   GetCompaniesQuery,
@@ -30,7 +27,6 @@ import { initializeApollo } from 'lib/apollo/client';
 import { selectSetTarget, useTargetOfferStore } from 'features/offers';
 import { selectSetCompanyItem, useCompanyStore } from '~/features/company';
 import { parseImage } from '~/lib/utils';
-import Head from 'next/head';
 
 // type layer
 type Props = InferGetStaticPropsType<typeof getStaticProps>;

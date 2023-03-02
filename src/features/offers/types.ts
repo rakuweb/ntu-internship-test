@@ -43,6 +43,7 @@ export type OfferSliceData = {
   logo: ImageType;
   target: string;
   qualification: string;
+  formUrl: string;
 };
 
 export type OfferSlice = OfferSliceData & {

@@ -27,16 +27,15 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const company = useCompanyStore(selectCompany);
   const { liff } = useLiff();
   const setPrevPath = useAccountStore(selectSetPrevPath);
-  const formUrl = `https://docs.google.com/forms/d/e/1FAIpQLSfWgORsIK6vVlPVXMSQ5ObZiB46Ih1gmMhgUbdbJDIIJ5iqKg/viewform`;
 
   const signin = () => {
     if (!liff) return;
     if (!liff.isLoggedIn()) {
-      formUrl && setPrevPath(decodeURI(formUrl));
-      window.localStorage.setItem('prevUrl', formUrl);
+      offer?.formUrl && setPrevPath(decodeURI(offer.formUrl));
+      window.localStorage.setItem('prevUrl', offer?.formUrl);
       liff.login(); //{ redirectUri: redirectUri });
     } else {
-      window.location.href = formUrl;
+      window.location.href = offer.formUrl;
     }
   };
 

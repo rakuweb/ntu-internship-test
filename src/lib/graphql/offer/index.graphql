@@ -3,6 +3,7 @@ query getOfferById($id: ID) {
     data {
       id
       attributes {
+        form_url
         title
         place
         hourly_wage
