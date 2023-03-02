@@ -6,4 +6,12 @@ export const selectAdvertisements = (state: AdvertisementsSlice) => state.list;
 
 export const selectSetAdvertisementArticle = (
   state: AdvertisementArticleSlice
-) => state;
+) => state.setAdvertisementArticle;
+
+export const selectAdvertisementArticle = (
+  state: AdvertisementArticleSlice
+) => {
+  const { setAdvertisementArticle, ...remain } = state;
+
+  return remain;
+};

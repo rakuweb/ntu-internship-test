@@ -1,5 +1,4 @@
 import { ImageType } from 'lib/utils';
-import { AdvertisementEntity } from 'types/gql/graphql';
 import { AdvertisementArticleEntity } from 'types/gql/graphql';
 
 export type Advertisement = {
@@ -12,22 +11,14 @@ export type AdvertisementsSliceData = {
 };
 
 export type AdvertisementsSlice = AdvertisementsSliceData & {
-  setAdvertisements: (entities: AdvertisementEntity[]) => void;
-};
-
-///////////////////////////////////////
-export type AdvertisementArticle = {
-  id: string;
-  title: string;
-  body: string;
-  image?: ImageType;
+  setAdvertisements: (entities: AdvertisementArticleEntity[]) => void;
 };
 
 export type AdvertisementArticleSliceData = {
   id: string;
   title: string;
   body: string;
-  image?: ImageType;
+  image: ImageType;
 };
 
 export type AdvertisementArticleSlice = AdvertisementArticleSliceData & {

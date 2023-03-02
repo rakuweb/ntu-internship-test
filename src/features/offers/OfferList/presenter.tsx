@@ -19,6 +19,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
 import { OfferCardDead } from '../OfferCardDead';
+import { InternalLink } from 'components/links/InternalLink';
+import { routes } from '~/constants';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
@@ -174,24 +176,26 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             <Swiper {...swiperProps}>
               {advertisements.map((ad) => (
                 <SwiperSlide key={ad.id}>
-                  <Box
-                  // w={{ base: `100%` }}
-                  // maxW={{
-                  //   lg: `520px`,
-                  //   xl: `700px`,
-                  //   '2xl': 'initial',
-                  // }}
-                  // h={`auto`}
-                  // position={`relative`}
-                  >
-                    <Image
-                      w={`100%`}
-                      image={{
-                        ...ad.image,
-                        layout: `responsive`,
-                      }}
-                    />
-                  </Box>
+                  <InternalLink href={`${routes.advertisements}/${ad.id}`}>
+                    <Box
+                    // w={{ base: `100%` }}
+                    // maxW={{
+                    //   lg: `520px`,
+                    //   xl: `700px`,
+                    //   '2xl': 'initial',
+                    // }}
+                    // h={`auto`}
+                    // position={`relative`}
+                    >
+                      <Image
+                        w={`100%`}
+                        image={{
+                          ...ad.image,
+                          layout: `responsive`,
+                        }}
+                      />
+                    </Box>
+                  </InternalLink>
                 </SwiperSlide>
               ))}
             </Swiper>

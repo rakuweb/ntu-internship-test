@@ -1,15 +1,14 @@
 import { parseImage } from '~/lib/utils';
-import {
-  AdvertisementEntity,
-  AdvertisementArticleEntity,
-} from 'types/gql/graphql';
+import markdownToHtml from 'zenn-markdown-html';
+
+import { AdvertisementArticleEntity } from 'types/gql/graphql';
 import {
   AdvertisementsSliceData,
   AdvertisementArticleSliceData,
 } from './types';
 
 export const parseToAdvertisements = (
-  entities: AdvertisementEntity[]
+  entities: AdvertisementArticleEntity[]
 ): AdvertisementsSliceData => {
   const advertisements = entities.map((entity) => {
     const ad = entity?.attributes;
@@ -17,8 +16,7 @@ export const parseToAdvertisements = (
     const result = {
       id: entity?.id,
       image:
-        ad?.creative?.data?.attributes &&
-        parseImage(ad.creative.data.attributes),
+        ad?.banner?.data?.attributes && parseImage(ad.banner.data.attributes),
     };
 
     return result;
@@ -32,7 +30,9 @@ export const parseToAdvertisementArticle = (
   const result = {
     id: entity.id,
     title: entity?.attributes.title,
-    body: entity?.attributes.body,
+    body: entity?.attributes?.body
+      ? markdownToHtml(entity.attributes.body)
+      : '',
     image: entity.attributes.image.data.attributes?.url
       ? parseImage(entity.attributes.image.data.attributes)
       : undefined,
