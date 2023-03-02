@@ -1,5 +1,30 @@
-query getadvertisementArticles {
-  advertisementArticle(id: 1) {
+query getAdvertisementArticles {
+  advertisementArticles(sort: "publishedAt:desc") {
+    data {
+      id
+      attributes {
+        title
+        banner {
+          data {
+            id
+            attributes {
+              width
+              height
+              url
+              alternativeText
+              formats
+            }
+          }
+        }
+        publishedAt
+        updatedAt
+      }
+    }
+  }
+}
+
+query getAdvertisementArticleId($id: ID) {
+  advertisementArticle(id: $id) {
     data {
       id
       attributes {
@@ -17,6 +42,20 @@ query getadvertisementArticles {
             }
           }
         }
+        banner {
+          data {
+            id
+            attributes {
+              width
+              height
+              url
+              alternativeText
+              formats
+            }
+          }
+        }
+        publishedAt
+        updatedAt
       }
     }
   }
