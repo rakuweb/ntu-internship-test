@@ -112,12 +112,13 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       >
         <Flex alignItems={'center'}>
           <InternalLink href={routes.home}>
-            <Box w={{ base: `${136 / 16}rem` }} className="logo" as={`h1`}>
-              <Image
-                htmlWidth={267}
-                htmlHeight={150}
-                src={`/svg/ntu-job.svg`}
-              />
+            <Box
+              pt={{ lg: `8px` }}
+              w={{ base: `${136 / 16}rem` }}
+              className="logo"
+              as={`h1`}
+            >
+              <Image htmlWidth={136} htmlHeight={59} src={`/svg/NTU-FJ.svg`} />
             </Box>
           </InternalLink>
           <InternalLink href={routes.home}>

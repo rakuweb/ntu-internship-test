@@ -6,22 +6,18 @@ export default class Document extends NextDocument {
       <Html lang={`ja-JP`}>
         <Head>
           <link rel="icon" href="/favicons/favicon.ico" />
-          <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href="/svg/ntu-job.svg"
-          />
+          <link rel="apple-touch-icon" sizes="180x180" href="/svg/NTU-FJ.svg" />
           <link
             rel="icon"
             type="image/png"
             sizes="32x32"
-            href="/svg/ntu-job.svg"
+            href="/svg/NTU-FJ.svg"
           />
           <link
             rel="icon"
             type="image/png"
             sizes="16x16"
-            href="/svg/ntu-job.svg"
+            href="/svg/NTU-FJ.svg"
           />
           {/* <link
             rel="mask-icon"
