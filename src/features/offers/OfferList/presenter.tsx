@@ -45,8 +45,44 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     '11',
     '12',
   ];
+
+  const dayNum = currentDate.getDate();
+  const dayMap = [
+    '01',
+    '02',
+    '03',
+    '04',
+    '05',
+    '06',
+    '07',
+    '08',
+    '09',
+    '10',
+    '11',
+    '12',
+    '13',
+    '14',
+    '15',
+    '16',
+    '17',
+    '18',
+    '19',
+    '20',
+    '21',
+    '22',
+    '23',
+    '24',
+    '25',
+    '26',
+    '27',
+    '28',
+    '29',
+    '30',
+    '31',
+  ];
+
   const month = monthMap[monthNum];
-  const date = currentDate.getDate();
+  const date = dayMap[dayNum];
   const today = `${year}-${month}-${date}`;
   // const today = `${year}-02-01`;
 
