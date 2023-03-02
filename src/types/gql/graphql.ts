@@ -32,6 +32,7 @@ export type Advertisement = {
 
 export type AdvertisementArticle = {
   __typename?: 'AdvertisementArticle';
+  banner: UploadFileEntityResponse;
   body?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['DateTime']>;
   image?: Maybe<UploadFileEntityResponse>;
@@ -70,6 +71,7 @@ export type AdvertisementArticleFiltersInput = {
 };
 
 export type AdvertisementArticleInput = {
+  banner?: InputMaybe<Scalars['ID']>;
   body?: InputMaybe<Scalars['String']>;
   image?: InputMaybe<Scalars['ID']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
@@ -992,6 +994,7 @@ export type Offer = {
   deadline: Scalars['Date'];
   description: Scalars['String'];
   end_at?: Maybe<Scalars['Date']>;
+  form_url: Scalars['String'];
   hourly_wage: Scalars['String'];
   image: UploadFileEntityResponse;
   job_categories?: Maybe<JobCategoryRelationResponseCollection>;
@@ -1045,6 +1048,7 @@ export type OfferFiltersInput = {
   deadline?: InputMaybe<DateFilterInput>;
   description?: InputMaybe<StringFilterInput>;
   end_at?: InputMaybe<DateFilterInput>;
+  form_url?: InputMaybe<StringFilterInput>;
   hourly_wage?: InputMaybe<StringFilterInput>;
   id?: InputMaybe<IdFilterInput>;
   job_categories?: InputMaybe<JobCategoryFiltersInput>;
@@ -1067,6 +1071,7 @@ export type OfferInput = {
   deadline?: InputMaybe<Scalars['Date']>;
   description?: InputMaybe<Scalars['String']>;
   end_at?: InputMaybe<Scalars['Date']>;
+  form_url?: InputMaybe<Scalars['String']>;
   hourly_wage?: InputMaybe<Scalars['String']>;
   image?: InputMaybe<Scalars['ID']>;
   job_categories?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
