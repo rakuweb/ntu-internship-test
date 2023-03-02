@@ -1,6 +1,6 @@
 // import layer
 import { VFC } from 'react';
-import { Stack, StackProps } from '@chakra-ui/react';
+import { Stack, StackProps, Box } from '@chakra-ui/react';
 
 import { navItems } from '~/constants';
 import { InternalLink } from '~/components/molecules/links/InternalLink';
@@ -52,6 +52,18 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
           </InternalLink>
         )
       )}
+      <Text
+        _hover={{ color: `var(--curious-blue)` }}
+        w={`fit-content`}
+        fontSize={{ lg: `1rem` }}
+        color={`#444444`}
+        className="menu-text yugothic-bold-white-14px"
+      >
+        高野翔実
+        <Box as={`span`} fontWeight={`500`}>
+          さん ようこそ！
+        </Box>
+      </Text>
     </Stack>
   );
 };

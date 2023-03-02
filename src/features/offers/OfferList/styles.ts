@@ -500,6 +500,10 @@ export const styles = css`
   }
 
   ${mq[2]} {
+    .search {
+      padding-top: 30px;
+    }
+
     .search-title__container__title {
       font-size: 40px;
       margin: 30px 0;
@@ -595,6 +599,10 @@ export const styles = css`
     }
 
     ${mq[3]} {
+      .search {
+        padding-top: 30px;
+      }
+
       .search__container {
         width: 1180px;
       }

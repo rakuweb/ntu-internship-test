@@ -145,6 +145,10 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               fontWeight={'bold'}
               fontSize={`14px`}
             >
+              {/* 高野翔実
+              <Box as={`span`} fontWeight={`500`}>
+                さん ようこそ！
+              </Box> */}
               新潟大学生専用のアルバイト求人サイト
             </Box>
           </InternalLink>
@@ -163,7 +167,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           <Box display={{ base: `block`, lg: `none` }}>
             <HeaderMenu isOpen={isOpen} onClick={onOpen} />
           </Box>
-          {username ? (
+          {/* {username ? (
             <Box
               display={{ base: `none`, lg: `block` }}
               borderRadius={`20px`}
@@ -196,14 +200,32 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 filter: `opacity(50%)`,
                 textDecoration: 'none',
               }}
-            >
-              {/*
+            > */}
+          {/*
             <InternalLink href={routes.signin}>
             </InternalLink>
               */}
-              ログイン
+          {/* ログイン
             </Box>
-          )}
+          )} */}
+
+          <Box
+            display={{ base: `none`, lg: `block` }}
+            borderRadius={`20px`}
+            p={`${8 / 19.2}vw ${16 / 19.2}vw`}
+            color="white"
+            backgroundImage={`linear-gradient(19deg, #21D4FD 0%, #B721FF 100%)`}
+            fontWeight={'600'}
+            onClick={() => signout()}
+            transition={`all .3s`}
+            _hover={{
+              cursor: 'pointer',
+              filter: `opacity(50%)`,
+              textDecoration: 'none',
+            }}
+          >
+            ログアウト
+          </Box>
         </Flex>
 
         <MenuDrawer isOpen={isOpen} onClose={onClose} />

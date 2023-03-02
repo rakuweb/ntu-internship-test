@@ -23,10 +23,10 @@ export const Presenter: FC<PresenterProps> = () => {
 
   return (
     <>
-      <Box display={{ base: `block`, lg: `none` }}>
-        <Header />
-      </Box>
-      <BreadcrumbOffers title={pageTitle} />
+      {/* <Box display={{ base: `block`, lg: `none` }}> */}
+      <Header />
+      {/* </Box> */}
+      {/* <BreadcrumbOffers title={pageTitle} /> */}
       <AdvertisementDetail />
       <Footer />
     </>

@@ -28,7 +28,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
 
   return (
     <div css={styles}>
-      <Box w={`100%`} bg={`#f5f5f5`}>
+      {/* <Box w={`100%`} bg={`#f5f5f5`}>
         <div className="search__container">
           <Box
             mx={`auto`}
@@ -49,14 +49,14 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             />
           </Box>
         </div>
-      </Box>
+      </Box> */}
       <section className="consultation-card-list">
         <div className="consultation-card-list__card">
           <h1 className="jobtitle">{`長期休みにおすすめの求人`}</h1>
 
           {/* <NImage image={{ ...offer.image }} className="bigImg" /> */}
           <Image
-            mb={{ base: ``, lg: `${50 / 19.2}vw` }}
+            mb={{ base: `${16 / 3.75}vw`, lg: `${16 / 19.2}vw` }}
             image={{
               width: 680,
               height: 400,
@@ -64,20 +64,25 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               alt: ``,
             }}
           />
-          <h2 className="h2">{`NOT THE UNIVERSITYとは`}</h2>
           <Box whiteSpace={`pre-wrap`} fontSize={`14px`} lineHeight={`21px`}>
-            {`NOT THE UNIVERSITYは大学内にある少し変わったコワーキングスペース.CAFEROOMでは、今日もたくさんの学生と企業が各々の時間を過ごします．
+            {`前置きの文章の、ダミーテキストです。
+前置きの文章の、ダミーテキストです。
+`}
+            <h2 className="h2">{`NOT THE UNIVERSITYとは`}</h2>
+            <Box whiteSpace={`pre-wrap`} fontSize={`14px`} lineHeight={`21px`}>
+              {`NOT THE UNIVERSITYは大学内にある少し変わったコワーキングスペース.CAFEROOMでは、今日もたくさんの学生と企業が各々の時間を過ごします．
 コーヒーを飲みながら、なにげない会話を楽しむ人やレポートに集中する人．
 ときには、企業の人と話をする人や、起業を目指して頑張っている人の姿も．
 そう、ここは縛りから開放されたあなたの居場所．自由な時間を過ごす場所.
 
 
 `}
-          </Box>
-          <h2 className="h2">{`サブタイトルが入ります`}</h2>
-          <Box whiteSpace={`pre-wrap`} fontSize={`14px`} lineHeight={`21px`}>
-            {`ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト
+            </Box>
+            <h2 className="h2">{`サブタイトルが入ります`}</h2>
+            <Box whiteSpace={`pre-wrap`} fontSize={`14px`} lineHeight={`21px`}>
+              {`ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト
 `}
+            </Box>
           </Box>
         </div>
       </section>

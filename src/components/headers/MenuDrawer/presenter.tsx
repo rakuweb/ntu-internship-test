@@ -38,7 +38,7 @@ export const Presenter: VFC<PresenterProps> = ({
           <Flex align={`center`}>
             <HeaderMenu isOpen={isOpen} onClick={onClose} />
             <Flex ml={{ base: `1rem` }} align={`center`}>
-              <InternalLink href={routes.signin}>
+              {/* <InternalLink href={routes.signin}>
                 <HeaderMenuButton
                   w={`fit-content`}
                   h={{ base: `2.5rem` }}
@@ -59,32 +59,29 @@ export const Presenter: VFC<PresenterProps> = ({
                     </Box>
                   </Flex>
                 </HeaderMenuButton>
+              </InternalLink> */}
+              <InternalLink href={routes.signin}>
+                <HeaderMenuButton
+                  w={`fit-content`}
+                  h={{ base: `2.5rem` }}
+                  backgroundImage={`linear-gradient(19deg, #21d4fd 0%, #b721ff 100%)`}
+                  _hover={{
+                    bg: `var(--white)`,
+                    '.text': { color: `var(--mandy)` },
+                  }}
+                >
+                  <Flex align={`center`}>
+                    <Box
+                      color={`white`}
+                      ml={{ lg: `0.5rem` }}
+                      fontFamily={`'Zen Kaku Gothic New',
+        'Hiragino Sans'`}
+                    >
+                      ログアウト
+                    </Box>
+                  </Flex>
+                </HeaderMenuButton>
               </InternalLink>
-              {/*
-              <HeaderMenuButton
-                w={`fit-content`}
-                h={{ base: `2.5rem` }}
-                bg={`var(--curious-blue)`}
-                ml={{ base: `0.5rem` }}
-                _hover={{
-                  bg: `var(--white)`,
-                  '.text': { color: `var(--curious-blue)` },
-                }}
-              >
-                <Flex align={`center`}>
-                  <Box w={`1.5rem`}>
-                    <Image
-                      width={66}
-                      height={80}
-                      src="/dev/img/arrow-@2x.png"
-                    />
-                  </Box>
-                  <Box color={`white`} className={`text`} ml={{ lg: `0.4rem` }}>
-                    ログアウト
-                  </Box>
-                </Flex>
-              </HeaderMenuButton>
-                */}
             </Flex>
           </Flex>
         </DrawerHeader>

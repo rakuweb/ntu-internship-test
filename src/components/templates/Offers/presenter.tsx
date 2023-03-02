@@ -18,7 +18,7 @@ export const Presenter: FC<PresenterProps> = () => {
     <>
       <Header />
       <Box as={`main`} css={styles}>
-        <BreadcrumbOffers title={pageTitle} />
+        {/* <BreadcrumbOffers title={pageTitle} /> */}
         <OfferList />
       </Box>
       <Footer />

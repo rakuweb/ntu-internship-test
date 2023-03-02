@@ -70,7 +70,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
 
     loop: true,
     centeredSlides: true,
-    navigation: true,
+    // navigation: true,
     autoplay: true,
     slidesPerView: 1,
     spaceBetween: 16,
