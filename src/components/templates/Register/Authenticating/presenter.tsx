@@ -17,7 +17,7 @@ export const Presenter: FC<PresenterProps> = () => {
   const [message, setMessage] = useState<string>('');
 
   useEffect(() => {
-    const next = `会員情報を照会していいます。しばらくお待ちください。認証が成功すると申し込みフォームへ移動します。`;
+    const next = `会員情報を照会していいます。しばらくお待ちください。`;
     setMessage(next);
   }, []);
 
