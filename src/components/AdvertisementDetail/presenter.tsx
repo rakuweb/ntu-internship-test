@@ -1,34 +1,27 @@
 // import layer
 import { FC } from 'react';
-import { Box, Flex } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
 import { Image } from 'components/Image';
-// import { Image } from 'atoms/Image';
-import { Image as NImage } from 'components/images/Image';
-import { useRouter } from 'next/router';
-
-import { selectCompany, useCompanyStore } from 'features/company';
-import { useTargetOfferStore, selectTarget } from 'features/offers';
-import { useLiff } from 'contexts/LineAuthContextInternship';
 
 import { styles } from './styles';
-import { InternalLink } from '../links/InternalLink';
-import { routes } from 'constants/routes';
-import { useAccountStore, selectSetPrevPath } from 'features/account';
+import {
+  useAdvertisementArticleStore,
+  selectAdvertisementArticle,
+} from 'features/advertisements';
+
+import 'zenn-content-css';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
-  const offer = useTargetOfferStore(selectTarget);
-  const company = useCompanyStore(selectCompany);
-  const { liff } = useLiff();
-  const setPrevPath = useAccountStore(selectSetPrevPath);
+  const target = useAdvertisementArticleStore(selectAdvertisementArticle);
 
   return (
     <div css={styles}>
-      {/* <Box w={`100%`} bg={`#f5f5f5`}>
+      {/* 広告 <Box w={`100%`} bg={`#f5f5f5`}>
         <div className="search__container">
           <Box
             mx={`auto`}
@@ -52,11 +45,10 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       </Box> */}
       <section className="consultation-card-list">
         <div className="consultation-card-list__card">
-          <h1 className="jobtitle">{`長期休みにおすすめの求人`}</h1>
+          <h1 className="jobtitle">{target.title}</h1>
 
-          {/* <NImage image={{ ...offer.image }} className="bigImg" /> */}
           <Image
-            mb={{ base: `${16 / 3.75}vw`, lg: `${16 / 19.2}vw` }}
+            mb={{ base: `${16 / 3.75}vw`, lg: `${32 / 19.2}vw` }}
             image={{
               width: 680,
               height: 400,
@@ -64,26 +56,64 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               alt: ``,
             }}
           />
-          <Box whiteSpace={`pre-wrap`} fontSize={`14px`} lineHeight={`21px`}>
-            {`前置きの文章の、ダミーテキストです。
-前置きの文章の、ダミーテキストです。
-`}
-            <h2 className="h2">{`NOT THE UNIVERSITYとは`}</h2>
-            <Box whiteSpace={`pre-wrap`} fontSize={`14px`} lineHeight={`21px`}>
-              {`NOT THE UNIVERSITYは大学内にある少し変わったコワーキングスペース.CAFEROOMでは、今日もたくさんの学生と企業が各々の時間を過ごします．
-コーヒーを飲みながら、なにげない会話を楽しむ人やレポートに集中する人．
-ときには、企業の人と話をする人や、起業を目指して頑張っている人の姿も．
-そう、ここは縛りから開放されたあなたの居場所．自由な時間を過ごす場所.
 
-
-`}
-            </Box>
-            <h2 className="h2">{`サブタイトルが入ります`}</h2>
-            <Box whiteSpace={`pre-wrap`} fontSize={`14px`} lineHeight={`21px`}>
-              {`ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト
-`}
-            </Box>
-          </Box>
+          <Box
+            className={`znc yugothic-medium`}
+            color={`#003968`}
+            dangerouslySetInnerHTML={{ __html: target.body }}
+            as={`article`}
+            sx={{
+              '& > hr': {
+                borderTop: `1px solid #257fbf`,
+              },
+              '& > h2': {
+                marginTop: { base: '16px', lg: '16px' },
+                marginBottom: { base: '11px', lg: `16px` },
+                width: '100%',
+                fontSize: { base: '18px', lg: '20px' },
+                color: '#000000',
+                fontWeight: 'bold',
+                lineHeight: '1.3em',
+                borderBottom: `initial`,
+              },
+              '& > h3': {
+                fontSize: { base: '13px', lg: `18px` },
+                marginTop: { base: '15px', lg: `0` },
+                marginBottom: { lg: `20px` },
+                color: '#000000',
+              },
+              '& > p': {
+                fontSize: {
+                  base: `14px`,
+                  lg: `14px`,
+                },
+                color: '#000000',
+                fontWeight: 400,
+                lineHeight: { base: `1.5em`, lg: `1.5em` },
+                margin: { base: `15px 0`, lg: 0 },
+              },
+              '& > p > a': {
+                fontSize: { base: `11px`, lg: `16px` },
+                fontWeight: 400,
+                lineHeight: `1.2em`,
+                textDecorationLine: 'underline',
+                color: `#003968`,
+                mr: `0`,
+                ml: `auto`,
+                display: `block`,
+                width: `fit-content`,
+                textAlign: `right`,
+                ':hover': {
+                  filter: `opacity(50%)`,
+                  transition: `all .3s`,
+                },
+              },
+              '& > p > img:not(.emoji)': {
+                marginY: { lg: `30px` },
+                w: { base: `100%` },
+              },
+            }}
+          />
         </div>
       </section>
     </div>

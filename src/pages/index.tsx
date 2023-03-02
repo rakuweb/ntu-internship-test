@@ -11,9 +11,9 @@ import {
   GetOffersAllQuery,
   GetOffersAllDocument,
   OfferEntity,
-  GetAdvertisementsQuery,
-  GetAdvertisementsDocument,
-  AdvertisementEntity,
+  GetAdvertisementArticlesQuery,
+  AdvertisementArticleEntity,
+  GetAdvertisementArticlesDocument,
 } from 'types/gql/graphql';
 import { initializeApollo } from 'lib/apollo/client';
 import { UPDATE_INTERVAL } from '~/constants';
@@ -47,8 +47,10 @@ export const Index: NextPage<Props> = ({ data, adData }) => {
   }
 
   data?.offers?.data && setOffers(data.offers.data as OfferEntity[]);
-  adData?.advertisements?.data &&
-    setAdvertisements(adData.advertisements.data as AdvertisementEntity[]);
+  adData?.advertisementArticles?.data &&
+    setAdvertisements(
+      adData.advertisementArticles.data as AdvertisementArticleEntity[]
+    );
 
   const message = () => {
     if (isClient) {
@@ -70,7 +72,7 @@ export default Index;
 
 export const getStaticProps: GetStaticProps<{
   data: GetOffersAllQuery;
-  adData: GetAdvertisementsQuery;
+  adData: GetAdvertisementArticlesQuery;
 }> = async () => {
   const apolloClient = initializeApollo();
   try {
@@ -78,9 +80,10 @@ export const getStaticProps: GetStaticProps<{
       query: GetOffersAllDocument,
       variables: { today: getTodayString() },
     });
-    const { data: adData } = await apolloClient.query<GetAdvertisementsQuery>({
-      query: GetAdvertisementsDocument,
-    });
+    const { data: adData } =
+      await apolloClient.query<GetAdvertisementArticlesQuery>({
+        query: GetAdvertisementArticlesDocument,
+      });
 
     return {
       props: { data, adData },

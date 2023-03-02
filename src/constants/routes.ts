@@ -13,6 +13,7 @@ export const routes = {
   confirm: '/register/confirm',
   signin: '/signin',
   signinFailed: '/signin/failed',
+  advertisements: '/advertisements',
 
   apiRegister: '/api/register',
   apiAccount: '/api/account',
