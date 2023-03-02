@@ -146,30 +146,19 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           </Box>
           {username ? (
             <Box
-              display={`none`}
-              mr={{ lg: ` ${30 / 19.2}vw` }}
-              color="#444444"
-              fontWeight={'bold'}
-              fontSize={`14px`}
-            >
-              高野翔実
-              <Box as={`span`} fontWeight={`500`}>
-                さん ようこそ！
-              </Box>
-            </Box>
-          ) : (
-            <Box
               display={{ base: `none`, lg: `block` }}
               mr={{ lg: ` ${30 / 19.2}vw` }}
               color="#444444"
               fontWeight={'bold'}
               fontSize={`14px`}
             >
-              高野翔実
+              {username}
               <Box as={`span`} fontWeight={`500`}>
                 さん ようこそ！
               </Box>
             </Box>
+          ) : (
+            <Box display={`none`} />
           )}
 
           <Box display={{ base: `block`, lg: `none` }}>
