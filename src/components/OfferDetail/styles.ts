@@ -249,7 +249,7 @@ export const styles = css`
       margin: 24px 0 0 0;
       padding: 0 0 15px 0;
       display: flex;
-      flex-direction: roww
+      flex-direction: row;
       color: #000000;
     }
 
@@ -269,7 +269,7 @@ export const styles = css`
       line-height: 1.3;
       display: flex;
       vertical-align: middle;
-      width: 121px;
+      width: 190px;
     }
 
     .termsMain {

@@ -216,7 +216,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             </div>
             <div className="termsContaineroccupation">
               <p className="termsTitleoccupation">職種</p>
-              <Flex>
+              <Flex flexWrap={`wrap`} w={{ lg: `${875 / 19.2}vw` }}>
                 {offer?.categories.map((category) => (
                   <Labeltext key={category.id} labeltext={category.name} />
                 ))}
@@ -254,9 +254,9 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     {...company.logo}
                     htmlWidth={company.logo.width}
                     htmlHeight={company.logo.height}
-                  // width={84}
-                  // height={84}
-                  // src={`/images/offers/trunkicon.jpeg`}
+                    // width={84}
+                    // height={84}
+                    // src={`/images/offers/trunkicon.jpeg`}
                   />
                 </Box>
                 <Box fontSize={{ base: `24px` }} fontWeight={`700`} mb={`8px`}>
