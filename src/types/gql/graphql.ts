@@ -33,11 +33,11 @@ export type Advertisement = {
 export type AdvertisementArticle = {
   __typename?: 'AdvertisementArticle';
   banner: UploadFileEntityResponse;
-  body?: Maybe<Scalars['String']>;
+  body: Scalars['String'];
   createdAt?: Maybe<Scalars['DateTime']>;
-  image?: Maybe<UploadFileEntityResponse>;
+  image: UploadFileEntityResponse;
   publishedAt?: Maybe<Scalars['DateTime']>;
-  title?: Maybe<Scalars['String']>;
+  title: Scalars['String'];
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
@@ -1845,14 +1845,14 @@ export type UsersPermissionsUserRelationResponseCollection = {
 export type GetAdvertisementArticlesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAdvertisementArticlesQuery = { __typename?: 'Query', advertisementArticles?: { __typename?: 'AdvertisementArticleEntityResponseCollection', data: Array<{ __typename?: 'AdvertisementArticleEntity', id?: string | null, attributes?: { __typename?: 'AdvertisementArticle', title?: string | null, publishedAt?: any | null, updatedAt?: any | null, banner: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, url: string, alternativeText?: string | null, formats?: any | null } | null } | null } } | null }> } | null };
+export type GetAdvertisementArticlesQuery = { __typename?: 'Query', advertisementArticles?: { __typename?: 'AdvertisementArticleEntityResponseCollection', data: Array<{ __typename?: 'AdvertisementArticleEntity', id?: string | null, attributes?: { __typename?: 'AdvertisementArticle', title: string, publishedAt?: any | null, updatedAt?: any | null, banner: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, url: string, alternativeText?: string | null, formats?: any | null } | null } | null } } | null }> } | null };
 
 export type GetAdvertisementArticleIdQueryVariables = Exact<{
   id?: InputMaybe<Scalars['ID']>;
 }>;
 
 
-export type GetAdvertisementArticleIdQuery = { __typename?: 'Query', advertisementArticle?: { __typename?: 'AdvertisementArticleEntityResponse', data?: { __typename?: 'AdvertisementArticleEntity', id?: string | null, attributes?: { __typename?: 'AdvertisementArticle', title?: string | null, body?: string | null, publishedAt?: any | null, updatedAt?: any | null, image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, url: string, alternativeText?: string | null, formats?: any | null } | null } | null } | null, banner: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, url: string, alternativeText?: string | null, formats?: any | null } | null } | null } } | null } | null } | null };
+export type GetAdvertisementArticleIdQuery = { __typename?: 'Query', advertisementArticle?: { __typename?: 'AdvertisementArticleEntityResponse', data?: { __typename?: 'AdvertisementArticleEntity', id?: string | null, attributes?: { __typename?: 'AdvertisementArticle', title: string, body: string, publishedAt?: any | null, updatedAt?: any | null, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, url: string, alternativeText?: string | null, formats?: any | null } | null } | null }, banner: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, url: string, alternativeText?: string | null, formats?: any | null } | null } | null } } | null } | null } | null };
 
 export type GetadvertisementArticlePathsQueryVariables = Exact<{ [key: string]: never; }>;
 

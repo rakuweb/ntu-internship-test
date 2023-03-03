@@ -242,32 +242,42 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         <Box
           w={`100vw`}
           bg={`#f5f5f5`}
-          pt={`40px`}
+          pt={
+            company?.logo?.src && company?.mission && company?.companyName
+              ? `40px`
+              : `78px`
+          }
           fontFamily={`'Noto Sans JP', sans-serif`}
         >
-          <Box pb={`40px`}>
-            <div className="subsection">
-              <Flex direction={`column`} alignItems={`center`}>
-                <Box width={{ base: `84px` }}>
-                  <Image
-                    mb={`8px`}
-                    {...company.logo}
-                    htmlWidth={company.logo.width}
-                    htmlHeight={company.logo.height}
+          {company?.logo?.src && company?.mission && company?.companyName && (
+            <Box pb={`40px`}>
+              <div className="subsection">
+                <Flex direction={`column`} alignItems={`center`}>
+                  <Box width={{ base: `84px` }}>
+                    <Image
+                      mb={`8px`}
+                      {...company.logo}
+                      htmlWidth={company.logo.width}
+                      htmlHeight={company.logo.height}
                     // width={84}
                     // height={84}
                     // src={`/images/offers/trunkicon.jpeg`}
-                  />
-                </Box>
-                <Box fontSize={{ base: `24px` }} fontWeight={`700`} mb={`8px`}>
-                  {company.companyName}
-                </Box>
-                <Box fontSize={{ base: `12px` }} lineHeight={`18px`}>
-                  {company.mission}
-                </Box>
-              </Flex>
-            </div>
-          </Box>
+                    />
+                  </Box>
+                  <Box
+                    fontSize={{ base: `24px` }}
+                    fontWeight={`700`}
+                    mb={`8px`}
+                  >
+                    {company.companyName}
+                  </Box>
+                  <Box fontSize={{ base: `12px` }} lineHeight={`18px`}>
+                    {company.mission}
+                  </Box>
+                </Flex>
+              </div>
+            </Box>
+          )}
         </Box>
       </Box>
     </div>
