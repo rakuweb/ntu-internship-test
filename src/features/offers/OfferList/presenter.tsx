@@ -2,7 +2,7 @@
 import { FC, useState } from 'react';
 import { Box, Grid } from '@chakra-ui/react';
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay } from 'swiper';
+import { Navigation, Autoplay, EffectFade } from 'swiper';
 
 import { OfferCard } from 'features/offers/OfferCard';
 import { selectOfferList } from 'features/offers/selectors';
@@ -18,6 +18,7 @@ import {
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
+import 'swiper/css/effect-fade';
 import { OfferCardDead } from '../OfferCardDead';
 import { InternalLink } from 'components/links/InternalLink';
 import { routes } from '~/constants';
@@ -104,28 +105,34 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const [index, setIndex] = useState<number>(0);
 
   const swiperProps: SwiperProps = {
-    modules: [Navigation, Autoplay],
-
+    modules: [Navigation, Autoplay, EffectFade],
     loop: true,
-    centeredSlides: true,
+    speed: 2000,
+    effect: 'fade',
+    fadeEffect: {
+      crossFade: true,
+    },
+    // speed: 800,
+    // loop: true,
+    // centeredSlides: true,
     // navigation: true,
     autoplay: true,
-    slidesPerView: 1,
-    spaceBetween: 16,
+    // slidesPerView: 1,
+    // spaceBetween: 16,
     breakpoints: {
       // [breakpointsByPx[0]]: {},
       // [breakpointsByPx[1]]: {},
-      [breakpointsByPx[2]]: {
-        centeredSlides: true,
-        slidesPerView: 1,
-        spaceBetween: 40,
-      },
+      // [breakpointsByPx[2]]: {
+      //   centeredSlides: true,
+      //   slidesPerView: 1,
+      //   spaceBetween: 40,
+      // },
       // [breakpointsByPx[3]]: {},
       // [breakpointsByPx[4]]: {},
     },
-    onSlideChange: (swiper) => {
-      setIndex(swiper.realIndex);
-    },
+    // onSlideChange: (swiper) => {
+    //   setIndex(swiper.realIndex);
+    // },
   };
 
   return (
@@ -142,72 +149,72 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             borderRadius={{ base: `${20 / 3.75}vw`, lg: `${50 / 19.2}vw` }}
             mt={`30px`}
             w={`100%`}
-            sx={{
-              '.swiper-button-next': {
-                right: {
-                  base: `0.5rem`,
-                  lg: `1rem`,
-                },
-                mt: {
-                  base: `initial`,
-                  lg: `calc(0px - (var(--swiper-navigation-size)/ 2))`,
-                },
-                transform: { base: `translateY(-50%)`, lg: `initial` },
-                backgroundColor: `var(--white)`,
-                borderWidth: `2px`,
-                borderStyle: `solid`,
-                borderRadius: `50%`,
-                borderColor: `#21d4fd`,
-                // borderColor: `var(--navy-blue)`,
-                width: { base: `1.5rem`, lg: `44px` },
-                height: { base: `1.5rem`, lg: `44px` },
-                textAlign: `center`,
-                verticalAlign: `middle`,
-                ':after': {
-                  fontSize: { base: `0.75rem`, lg: `1.5rem` },
-                  color: `#21d4fd`,
-                  // color: `var(--navy-blue)`,
-                  fontWeight: `bold`,
-                },
-                ':hover': {
-                  cursor: `pointer`,
-                  filter: `opacity(50%)`,
-                  transition: `all .3s`,
-                },
-              },
-              '.swiper-button-prev': {
-                left: {
-                  base: `0.5rem`,
-                  lg: `1rem`,
-                },
-                mt: {
-                  base: `initial`,
-                  lg: `calc(0px - (var(--swiper-navigation-size)/ 2))`,
-                },
-                transform: { base: `translateY(-50%)`, lg: `initial` },
-                backgroundColor: `var(--white)`,
-                borderWidth: `2px`,
-                borderStyle: `solid`,
-                borderRadius: `50%`,
-                borderColor: `#21d4fd`,
-                // borderColor: `var(--navy-blue)`,
-                width: { base: `1.5rem`, lg: `44px` },
-                height: { base: `1.5rem`, lg: `44px` },
-                textAlign: `center`,
-                verticalAlign: `middle`,
-                ':after': {
-                  fontSize: { base: `0.75rem`, lg: `1.5rem` },
-                  color: `#21d4fd`,
-                  // color: `var(--navy-blue)`,
-                  fontWeight: `bold`,
-                },
-                ':hover': {
-                  cursor: `pointer`,
-                  filter: `opacity(50%)`,
-                  transition: `all .3s`,
-                },
-              },
-            }}
+            // sx={{
+            //   '.swiper-button-next': {
+            //     right: {
+            //       base: `0.5rem`,
+            //       lg: `1rem`,
+            //     },
+            //     mt: {
+            //       base: `initial`,
+            //       lg: `calc(0px - (var(--swiper-navigation-size)/ 2))`,
+            //     },
+            //     transform: { base: `translateY(-50%)`, lg: `initial` },
+            //     backgroundColor: `var(--white)`,
+            //     borderWidth: `2px`,
+            //     borderStyle: `solid`,
+            //     borderRadius: `50%`,
+            //     borderColor: `#21d4fd`,
+            //     // borderColor: `var(--navy-blue)`,
+            //     width: { base: `1.5rem`, lg: `44px` },
+            //     height: { base: `1.5rem`, lg: `44px` },
+            //     textAlign: `center`,
+            //     verticalAlign: `middle`,
+            //     ':after': {
+            //       fontSize: { base: `0.75rem`, lg: `1.5rem` },
+            //       color: `#21d4fd`,
+            //       // color: `var(--navy-blue)`,
+            //       fontWeight: `bold`,
+            //     },
+            //     ':hover': {
+            //       cursor: `pointer`,
+            //       filter: `opacity(50%)`,
+            //       transition: `all .3s`,
+            //     },
+            //   },
+            //   '.swiper-button-prev': {
+            //     left: {
+            //       base: `0.5rem`,
+            //       lg: `1rem`,
+            //     },
+            //     mt: {
+            //       base: `initial`,
+            //       lg: `calc(0px - (var(--swiper-navigation-size)/ 2))`,
+            //     },
+            //     transform: { base: `translateY(-50%)`, lg: `initial` },
+            //     backgroundColor: `var(--white)`,
+            //     borderWidth: `2px`,
+            //     borderStyle: `solid`,
+            //     borderRadius: `50%`,
+            //     borderColor: `#21d4fd`,
+            //     // borderColor: `var(--navy-blue)`,
+            //     width: { base: `1.5rem`, lg: `44px` },
+            //     height: { base: `1.5rem`, lg: `44px` },
+            //     textAlign: `center`,
+            //     verticalAlign: `middle`,
+            //     ':after': {
+            //       fontSize: { base: `0.75rem`, lg: `1.5rem` },
+            //       color: `#21d4fd`,
+            //       // color: `var(--navy-blue)`,
+            //       fontWeight: `bold`,
+            //     },
+            //     ':hover': {
+            //       cursor: `pointer`,
+            //       filter: `opacity(50%)`,
+            //       transition: `all .3s`,
+            //     },
+            //   },
+            // }}
           >
             <Swiper {...swiperProps}>
               {advertisements.map((ad) => (
