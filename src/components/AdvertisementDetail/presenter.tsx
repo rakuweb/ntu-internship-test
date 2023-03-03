@@ -50,10 +50,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           <Image
             mb={{ base: `${16 / 3.75}vw`, lg: `${32 / 19.2}vw` }}
             image={{
-              width: 680,
-              height: 400,
-              src: `/images/offers/cover.png`,
-              alt: ``,
+              ...target.image,
             }}
           />
 
