@@ -29,7 +29,7 @@ export const styles = css`
   }
 
   .search-title__container__title {
-    font-size: 20px;
+    font-size: clamp(20px, ${20 / 3.75}vw, 30px);
     color: #444444;
     font-weight: bold;
     margin: 30px 0;

@@ -295,9 +295,17 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 <div key={offer.id}>
                   {(() => {
                     if (offer.deadline >= today) {
-                      return <OfferCard {...offer} />;
+                      return (
+                        <Box m={`0 auto`} w={`fit-content`}>
+                          <OfferCard {...offer} />
+                        </Box>
+                      );
                     } else {
-                      return <OfferCardDead {...offer} />;
+                      return (
+                        <Box m={`0 auto`} w={`fit-content`}>
+                          <OfferCardDead {...offer} />
+                        </Box>
+                      );
                     }
                   })()}
                 </div>

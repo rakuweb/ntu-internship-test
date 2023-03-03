@@ -47,6 +47,7 @@ const styles = css`
     width: calc(100% - 32px);
     font-weight: bold;
     letter-spacing: 2px;
+    width: 260px;
   }
 
   .clinics-button__button:hover {
