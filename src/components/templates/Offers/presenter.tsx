@@ -16,7 +16,7 @@ export const Presenter: FC<PresenterProps> = () => {
   const pageTitle = `求人一覧`;
   return (
     <>
-      <Header />
+      <Header isTop />
       <Box as={`main`} css={styles}>
         {/* <BreadcrumbOffers title={pageTitle} /> */}
         <OfferList />

@@ -14,8 +14,6 @@ import { useTargetOfferStore, selectTarget } from 'features/offers';
 import { useLiff } from 'contexts/LineAuthContextInternship';
 
 import { styles } from './styles';
-import { InternalLink } from '../links/InternalLink';
-import { routes } from 'constants/routes';
 import { useAccountStore, selectSetPrevPath } from 'features/account';
 
 // type layer
@@ -44,7 +42,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       <section className="consultation-card-list">
         <div className="consultation-card-list__card">
           <p className="companyName">{offer.companyName}</p>
-          <p className="jobtitle">{offer?.title}</p>
+          <h1 className="jobtitle">{offer?.title}</h1>
 
           <Flex flexWrap={`wrap`} mb={{ lg: `20px` }}>
             {offer.categories.map((category) => (

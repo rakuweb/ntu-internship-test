@@ -22,10 +22,10 @@ import { useLiff } from 'contexts/LineAuthContextInternship';
 import { ORIGIN_URL } from 'constants/env';
 
 // type layer
-export type PresenterProps = BoxProps;
+export type PresenterProps = BoxProps & { isTop?: boolean };
 
 // presenter
-export const Presenter: FC<PresenterProps> = ({ ...props }) => {
+export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { email, username } = useAccountStore(selectAccount);
   const _signout = useAccountStore(selectSignout);
@@ -114,7 +114,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               pt={{ lg: `8px` }}
               w={{ base: `${136 / 16}rem` }}
               className="logo"
-              as={`h1`}
+              as={isTop ? `h1` : `div`}
             >
               <Image htmlWidth={136} htmlHeight={59} src={`/svg/NTU-FJ.svg`} />
             </Box>
