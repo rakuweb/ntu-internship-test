@@ -23,6 +23,8 @@ export const Presenter: FC<PresenterProps> = () => {
         as={`main`}
         bg={`#f5f5f5`}
         p={{ base: `${137 / 3.75}vw 0 ${160 / 3.75}vw 0`, lg: `0` }}
+        fontFamily={`'Zen Kaku Gothic New',
+        'Hiragino Sans'`}
       >
         <Box
           as={`h1`}
