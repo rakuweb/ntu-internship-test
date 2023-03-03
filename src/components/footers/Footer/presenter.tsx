@@ -61,7 +61,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           font-weight={500}
           letter-spacing={`0.6px`}
           white-space={`nowrap`}
-          fontSize={{ base: `${12 / 3.75}vw`, lg: `${12 / 19.2}vw` }}
+          fontSize={`12px`}
           m={`0 auto`}
         >
           Copyright © 2023 NOT THE UNIVERSITY

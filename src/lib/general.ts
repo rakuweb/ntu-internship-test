@@ -2,7 +2,7 @@
 import { NextSeoProps } from 'next-seo';
 
 import { CANONICAL_URL, CMS_URL, ORIGIN_URL } from 'constants/env';
-import { ImageType } from 'lib/utils'
+import { ImageType } from 'lib/utils';
 
 // function layer
 export const parseAuthorization = (jwt: string): string => `Bearer ${jwt}`;
@@ -15,7 +15,7 @@ export const parseSeo = (
   title: string,
   description: string,
   route?: string,
-  ogp?: ImageType,
+  ogp?: ImageType
 ): NextSeoProps => {
   const res: NextSeoProps = {
     title: title,
@@ -26,7 +26,7 @@ export const parseSeo = (
       description: removeBreakLine(description),
       images: [
         {
-          url: ogp?.src ?? `${ORIGIN_URL}/img/ogp.png`,
+          url: ogp?.src ?? `${ORIGIN_URL}/ogp.jpg`,
           width: ogp?.width ?? 1200,
           height: ogp?.height ?? 630,
           alt: ogp?.alt ?? '',
