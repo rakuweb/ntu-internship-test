@@ -164,7 +164,7 @@ z-index:10;
     justify-content: space-between;
     margin: 12px;
     width: 276px;
-    font-family:'yugothic', 'Zen Kaku Gothic New','Hiragino Sans';
+    font-family:yugothic, 'Zen Kaku Gothic New','ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro','Hiragino Sans';
     color:#000000;
     ${mq[3]} {
       justify-content: space-between;

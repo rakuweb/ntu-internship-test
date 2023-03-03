@@ -112,27 +112,25 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     fadeEffect: {
       crossFade: true,
     },
-    // speed: 800,
-    // loop: true,
     // centeredSlides: true,
     // navigation: true,
     autoplay: true,
-    // slidesPerView: 1,
-    // spaceBetween: 16,
+    slidesPerView: 1,
+    spaceBetween: 16,
     breakpoints: {
       // [breakpointsByPx[0]]: {},
       // [breakpointsByPx[1]]: {},
-      // [breakpointsByPx[2]]: {
-      //   centeredSlides: true,
-      //   slidesPerView: 1,
-      //   spaceBetween: 40,
-      // },
+      [breakpointsByPx[2]]: {
+        centeredSlides: true,
+        slidesPerView: 1,
+        spaceBetween: 40,
+      },
       // [breakpointsByPx[3]]: {},
       // [breakpointsByPx[4]]: {},
     },
-    // onSlideChange: (swiper) => {
-    //   setIndex(swiper.realIndex);
-    // },
+    onSlideChange: (swiper) => {
+      setIndex(swiper.realIndex);
+    },
   };
 
   return (
@@ -143,10 +141,11 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       >
         <Box className="search__container" position={`relative`}>
           <Box
-            // border={`1px solid`}
             mx={`auto`}
-            overflow={`hidden`}
             borderRadius={{ base: `${20 / 3.75}vw`, lg: `${50 / 19.2}vw` }}
+            overflow={`hidden`}
+            position={`relative`}
+            zIndex={`1`}
             mt={`30px`}
             w={`100%`}
             // sx={{
