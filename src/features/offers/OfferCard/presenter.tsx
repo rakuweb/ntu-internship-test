@@ -59,7 +59,11 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             <h2 className="text-2">{title}</h2>
             {categories.length !== 0 && (
               <div className="termstext">
-                <Flex flexWrap={`wrap`} height={{ base: `40px`, lg: `48px` }}>
+                <Flex
+                  flexWrap={`wrap`}
+                  height={{ base: `48px`, lg: `48px` }}
+                  overflow={`hidden`}
+                >
                   {categories.map((category) => (
                     <Labeltext
                       key={category.id}
@@ -104,7 +108,7 @@ const styles = css`
     box-shadow: -3.06e-16px 5px 10px #00417026;
     display: flex;
     flex-direction: column;
-    height: 376px;
+    height: 390px;
     width: 300px;
     padding: 0rem;
     margin-bottom:32px;
@@ -113,7 +117,7 @@ const styles = css`
         height: 400px;
     }
     ${mq[3]} {
-        height: 435px;
+        height: 440px;
         width: 368px;
       }
   }
@@ -213,11 +217,12 @@ z-index:10;
     display:flex;
     align-items: center;
     font-weight: bold;
+    margin-top:8px;
     margin-bottom:8px;
     white-space: nowrap;
     ${mq[3]} {
       // border-bottom: 1px solid #9d9d9e;
-    
+      margin-top:0px;
     }
   }
 
