@@ -88,9 +88,9 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 width={24}
                 height={24}
                 src={`/svg/money.svg`}
-                // src={`/images/offers/hukuroIkon.png`}
+              // src={`/images/offers/hukuroIkon.png`}
               />
-              <div className="placetext">{hourlyWage}</div>
+              <div className="paytext">{hourlyWage}</div>
             </div>
           </div>
         </div>
@@ -108,7 +108,7 @@ const styles = css`
     box-shadow: -3.06e-16px 5px 10px #00417026;
     display: flex;
     flex-direction: column;
-    height: 390px;
+    height: 398px;
     width: 300px;
     padding: 0rem;
     margin-bottom:32px;
@@ -181,6 +181,9 @@ z-index:10;
     font-size: 14px;
     font-weight: bold;
     line-height:1.3em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     ${mq[3]} {
       font-size: 14px;
     }
@@ -236,12 +239,14 @@ z-index:10;
   }
 
   .paytext{
-    font-size: 11px;
-    font-weight: bold;
-    white-space: pre-wrap;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     ${mq[3]} {
-      font-size: 20px;
-      white-space: pre-wrap;
+      font-size: 12px;
+      white-space: nowrap;
     }
   }
 
@@ -250,6 +255,10 @@ z-index:10;
     font-size: 12px;
     font-weight: 500;
     white-space: pre-wrap;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
     ${mq[3]} {
       font-size: 12px;
       white-space: pre-wrap;
