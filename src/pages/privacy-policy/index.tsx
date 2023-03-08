@@ -26,18 +26,24 @@ export const Index: NextPage = () => {
     if (isClient) {
       return (
         <>
-          <Head>
-            <title>プライバシーポリシー</title>
-            <meta name="description">
-              Not the Universityのプライパシーポリシーです。
-            </meta>
-          </Head>
-          <SeoComponent canonical={CANONICAL_URL} {...seo} />
+          <SeoComponent
+            canonical={CANONICAL_URL}
+            title={title}
+            description={description}
+          />
           <Template />
         </>
       );
     } else {
-      return <></>;
+      return (
+        <>
+          <SeoComponent
+            canonical={CANONICAL_URL}
+            title={title}
+            description={description}
+          />
+        </>
+      );
     }
   };
 

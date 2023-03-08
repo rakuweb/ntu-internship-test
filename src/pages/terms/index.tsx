@@ -30,12 +30,25 @@ export const Index: NextPage = () => {
             <title>利用規約</title>
             <meta name="description">Not the Universityの利用規約です。</meta>
           </Head>
-          <SeoComponent canonical={CANONICAL_URL} {...seo} />
+          <SeoComponent
+            canonical={CANONICAL_URL}
+            title={title}
+            description={description}
+          />
           <Template />
         </>
       );
     } else {
-      return <></>;
+      return (
+        <>
+          {' '}
+          <SeoComponent
+            canonical={CANONICAL_URL}
+            title={title}
+            description={description}
+          />
+        </>
+      );
     }
   };
 
