@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 
 import { Offers as Template } from 'templates/Offers';
 import { SeoComponent } from 'components/seo/SeoComponent';
-import { CANONICAL_URL } from 'constants/env';
+import { CANONICAL_URL, ORIGIN_URL } from 'constants/env';
 import { parseSeo } from '~/lib';
 import {
   GetOffersAllQuery,
@@ -29,9 +29,21 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 export const Index: NextPage<Props> = ({ data, adData }) => {
   const router = useRouter();
-  const title = `新大生向け求人情報一覧 | NOT THE UNIVERSITY FOR JOB`; // eslint-disable-line
-  const description = `NOT THE UNIVERSITYでしかお届けできない新大生向けの求人を紹介します。アルバイトからインターンシップまで他では体験できない求人情報ばかりを掲載しています。`;
-  const seo = parseSeo(title, description);
+  const title = `For job（新大生向けアルバイト）|  NOT THE UNIVERSITY`; // eslint-disable-line
+  const description = `For jobは、新大生向けのアルバイトからインターンシップまで掲載しております。他では体験できない求人や高時給アルバイトもあります。`;
+  const openGraph = {
+    type: 'website',
+    title: title,
+    description: description,
+    images: [
+      {
+        url: `${ORIGIN_URL}/ogp.jpg`,
+        width: 1200,
+        height: 630,
+      },
+    ],
+  };
+  // const seo = parseSeo(title, description);
   const [isClient, setIsClient] = useState(false);
   const setOffers = useOffersStore(selectSetOffers);
   const setAdvertisements = useAdvertisementsStore(selectSetAdvertisements);
@@ -60,6 +72,7 @@ export const Index: NextPage<Props> = ({ data, adData }) => {
             canonical={CANONICAL_URL}
             title={title}
             description={description}
+            openGraph={openGraph}
           />
           <Template />
         </>
@@ -72,6 +85,7 @@ export const Index: NextPage<Props> = ({ data, adData }) => {
             canonical={CANONICAL_URL}
             title={title}
             description={description}
+            openGraph={openGraph}
           />
         </>
       );

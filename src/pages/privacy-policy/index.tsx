@@ -4,7 +4,7 @@ import { NextPage, InferGetStaticPropsType } from 'next/types';
 
 import { Index as Template } from 'templates/PrivacyPolicy';
 import { SeoComponent } from 'organisms/SeoComponent';
-import { CANONICAL_URL } from '~/constants';
+import { CANONICAL_URL, ORIGIN_URL } from '~/constants';
 import { parseSeo } from '~/lib';
 import Head from 'next/head';
 
@@ -13,9 +13,21 @@ import Head from 'next/head';
 
 // component layer
 export const Index: NextPage = () => {
-  const title = ``; // eslint-disable-line
-  const description = ``;
+  const title = `プライバシーポリシー | NOT THE UNIVERSITY FOR JOB`; // eslint-disable-line
+  const description = `NOT THE UNIVERSITY FOR JOBのプライバシーポリシーです。`;
   const seo = parseSeo(title, description);
+  const openGraph = {
+    type: 'website',
+    title: title,
+    description: description,
+    images: [
+      {
+        url: `${ORIGIN_URL}/ogp.jpg`,
+        width: 1200,
+        height: 630,
+      },
+    ],
+  };
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -30,6 +42,7 @@ export const Index: NextPage = () => {
             canonical={CANONICAL_URL}
             title={title}
             description={description}
+            openGraph={openGraph}
           />
           <Template />
         </>
@@ -41,6 +54,7 @@ export const Index: NextPage = () => {
             canonical={CANONICAL_URL}
             title={title}
             description={description}
+            openGraph={openGraph}
           />
         </>
       );

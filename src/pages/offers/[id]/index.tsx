@@ -6,10 +6,10 @@ import {
   GetStaticPaths,
   GetStaticProps,
 } from 'next/types';
-
+import { Image as NImage } from 'components/images/Image';
 import { Top as Template } from 'templates/OfferId';
 import { SeoComponent } from 'organisms/SeoComponent';
-import { CANONICAL_URL } from 'constants/env';
+import { CANONICAL_URL, ORIGIN_URL } from 'constants/env';
 import { UPDATE_INTERVAL } from '~/constants';
 import { parseSeo } from '~/lib';
 import {
@@ -41,6 +41,13 @@ export const Index: NextPage<Props> = ({ data, company }) => {
       )
     : undefined;
   const seo = parseSeo(title, description, undefined, ogp);
+  const imageurl = data?.offer?.data?.attributes?.image?.data?.attributes;
+  const openGraph = {
+    type: 'website',
+    title: title,
+    description: description,
+    images: [data.offer.data.attributes.image?.data?.attributes as UploadFile],
+  };
   const [isClient, setIsClient] = useState(false);
   const setTarget = useTargetOfferStore(selectSetTarget);
   const setComapanyItem = useCompanyStore(selectSetCompanyItem);
@@ -64,6 +71,7 @@ export const Index: NextPage<Props> = ({ data, company }) => {
             canonical={CANONICAL_URL}
             title={title}
             description={description}
+            openGraph={openGraph}
           />
           <Template />
         </>
@@ -75,6 +83,7 @@ export const Index: NextPage<Props> = ({ data, company }) => {
             canonical={CANONICAL_URL}
             title={title}
             description={description}
+            // openGraph={openGraph}
           />
         </>
       );
