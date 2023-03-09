@@ -90,14 +90,12 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 margin: { base: `15px 0`, lg: 0 },
               },
               '& > p > a': {
-                fontSize: { base: `11px`, lg: `16px` },
+                fontSize: { base: `11px`, lg: `14px` },
                 fontWeight: 400,
                 lineHeight: `1.2em`,
                 textDecorationLine: 'underline',
                 color: `#003968`,
-                mr: `0`,
-                ml: `auto`,
-                display: `block`,
+                display: `inline`,
                 width: `fit-content`,
                 textAlign: `right`,
                 ':hover': {

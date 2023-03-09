@@ -41,12 +41,19 @@ export const Index: NextPage<Props> = ({ data, company }) => {
       )
     : undefined;
   const seo = parseSeo(title, description, undefined, ogp);
-  const imageurl = data?.offer?.data?.attributes?.image?.data?.attributes;
+  const imageurl = data?.offer?.data?.attributes?.image?.data?.attributes.url;
+  const cmsurl = `https://management.nottheuniversity.com`;
   const openGraph = {
     type: 'website',
     title: title,
     description: description,
-    images: [data.offer.data.attributes.image?.data?.attributes as UploadFile],
+    images: [
+      {
+        url: `${cmsurl}${imageurl}`,
+        width: 1200,
+        height: 630,
+      },
+    ],
   };
   const [isClient, setIsClient] = useState(false);
   const setTarget = useTargetOfferStore(selectSetTarget);
@@ -83,7 +90,7 @@ export const Index: NextPage<Props> = ({ data, company }) => {
             canonical={CANONICAL_URL}
             title={title}
             description={description}
-            // openGraph={openGraph}
+            openGraph={openGraph}
           />
         </>
       );
