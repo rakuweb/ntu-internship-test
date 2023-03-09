@@ -68,12 +68,24 @@ export const Index: NextPage<Props> = ({ data }) => {
               
             </meta> */}
           </Head>
-          <SeoComponent canonical={CANONICAL_URL} {...seo} />
+          <SeoComponent
+            canonical={CANONICAL_URL}
+            title={title}
+            description={description}
+          />
           <Template />
         </>
       );
     } else {
-      return <></>;
+      return (
+        <>
+          <SeoComponent
+            canonical={CANONICAL_URL}
+            title={title}
+            description={description}
+          />
+        </>
+      );
     }
   };
 
@@ -92,10 +104,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
     const paths = data?.advertisementArticles?.data
       ? data.advertisementArticles.data.map((item) => ({
-        params: {
-          id: item?.id,
-        },
-      }))
+          params: {
+            id: item?.id,
+          },
+        }))
       : [];
 
     return {

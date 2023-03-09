@@ -82,7 +82,11 @@ export const Index: NextPage = () => {
     if (isClient) {
       return (
         <>
-          <SeoComponent canonical={CANONICAL_URL} {...seo} />
+          <SeoComponent
+            canonical={CANONICAL_URL}
+            title={title}
+            description={description}
+          />
           <FormProvider {...methods}>
             <Form isHidden={progress !== 0} />
             <Check isHidden={progress !== 1} />
@@ -90,7 +94,16 @@ export const Index: NextPage = () => {
         </>
       );
     } else {
-      return <></>;
+      return (
+        <>
+          {' '}
+          <SeoComponent
+            canonical={CANONICAL_URL}
+            title={title}
+            description={description}
+          />
+        </>
+      );
     }
   };
 

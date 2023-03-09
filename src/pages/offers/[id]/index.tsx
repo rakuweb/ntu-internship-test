@@ -6,10 +6,10 @@ import {
   GetStaticPaths,
   GetStaticProps,
 } from 'next/types';
-
+import { Image as NImage } from 'components/images/Image';
 import { Top as Template } from 'templates/OfferId';
 import { SeoComponent } from 'organisms/SeoComponent';
-import { CANONICAL_URL } from 'constants/env';
+import { CANONICAL_URL, ORIGIN_URL } from 'constants/env';
 import { UPDATE_INTERVAL } from '~/constants';
 import { parseSeo } from '~/lib';
 import {
@@ -41,6 +41,20 @@ export const Index: NextPage<Props> = ({ data, company }) => {
       )
     : undefined;
   const seo = parseSeo(title, description, undefined, ogp);
+  const imageurl = data?.offer?.data?.attributes?.image?.data?.attributes.url;
+  const cmsurl = `https://management.nottheuniversity.com`;
+  const openGraph = {
+    type: 'website',
+    title: title,
+    description: description,
+    images: [
+      {
+        url: `${cmsurl}${imageurl}`,
+        width: 1200,
+        height: 630,
+      },
+    ],
+  };
   const [isClient, setIsClient] = useState(false);
   const setTarget = useTargetOfferStore(selectSetTarget);
   const setComapanyItem = useCompanyStore(selectSetCompanyItem);
@@ -60,12 +74,26 @@ export const Index: NextPage<Props> = ({ data, company }) => {
     if (isClient) {
       return (
         <>
-          <SeoComponent canonical={CANONICAL_URL} {...seo} />
+          <SeoComponent
+            canonical={CANONICAL_URL}
+            title={title}
+            description={description}
+            openGraph={openGraph}
+          />
           <Template />
         </>
       );
     } else {
-      return <></>;
+      return (
+        <>
+          <SeoComponent
+            canonical={CANONICAL_URL}
+            title={title}
+            description={description}
+            openGraph={openGraph}
+          />
+        </>
+      );
     }
   };
 

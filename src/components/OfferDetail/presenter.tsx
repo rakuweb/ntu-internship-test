@@ -257,9 +257,9 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                       {...company.logo}
                       htmlWidth={company.logo.width}
                       htmlHeight={company.logo.height}
-                    // width={84}
-                    // height={84}
-                    // src={`/images/offers/trunkicon.jpeg`}
+                      // width={84}
+                      // height={84}
+                      // src={`/images/offers/trunkicon.jpeg`}
                     />
                   </Box>
                   <Box

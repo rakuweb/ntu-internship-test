@@ -4,18 +4,29 @@ import { NextPage, InferGetStaticPropsType } from 'next/types';
 
 import { Index as Template } from 'templates/Terms';
 import { SeoComponent } from 'organisms/SeoComponent';
-import { CANONICAL_URL } from '~/constants';
+import { CANONICAL_URL, ORIGIN_URL } from '~/constants';
 import { parseSeo } from '~/lib';
-import Head from 'next/head';
 
 // type layer
 // type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 // component layer
 export const Index: NextPage = () => {
-  const title = ``; // eslint-disable-line
-  const description = ``;
+  const title = `利用規約 | NOT THE UNIVERSITY FOR JOB`; // eslint-disable-line
+  const description = `NOT THE UNIVERSITY FOR JOBの利用規約です。`;
   const seo = parseSeo(title, description);
+  const openGraph = {
+    type: 'website',
+    title: title,
+    description: description,
+    images: [
+      {
+        url: `${ORIGIN_URL}/ogp.jpg`,
+        width: 1200,
+        height: 630,
+      },
+    ],
+  };
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -26,16 +37,27 @@ export const Index: NextPage = () => {
     if (isClient) {
       return (
         <>
-          <Head>
-            <title>利用規約</title>
-            <meta name="description">Not the Universityの利用規約です。</meta>
-          </Head>
-          <SeoComponent canonical={CANONICAL_URL} {...seo} />
+          <SeoComponent
+            canonical={CANONICAL_URL}
+            title={title}
+            description={description}
+            openGraph={openGraph}
+          />
           <Template />
         </>
       );
     } else {
-      return <></>;
+      return (
+        <>
+          {' '}
+          <SeoComponent
+            canonical={CANONICAL_URL}
+            title={title}
+            description={description}
+            openGraph={openGraph}
+          />
+        </>
+      );
     }
   };
 

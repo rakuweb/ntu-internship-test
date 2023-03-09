@@ -36,12 +36,25 @@ export const Index: NextPage = () => {
     if (isClient) {
       return (
         <>
-          <SeoComponent canonical={CANONICAL_URL} {...seo} />
+          <SeoComponent
+            canonical={CANONICAL_URL}
+            title={title}
+            description={description}
+          />
           <Template />
         </>
       );
     } else {
-      return <></>;
+      return (
+        <>
+          {' '}
+          <SeoComponent
+            canonical={CANONICAL_URL}
+            title={title}
+            description={description}
+          />
+        </>
+      );
     }
   };
 
