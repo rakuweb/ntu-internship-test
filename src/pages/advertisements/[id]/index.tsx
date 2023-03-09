@@ -34,14 +34,28 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 // component layer
 export const Index: NextPage<Props> = ({ data }) => {
   const router = useRouter();
-  const title = ``; // eslint-disable-line
-  const description = ``;
+  const title = data?.advertisementArticle?.data.attributes.title; // eslint-disable-line
+  const description = `${title}のページです。皆様に有益な情報を掲載しています。`;
+  const cmsurl = `https://management.nottheuniversity.com`;
+  const imageurl =
+    data?.advertisementArticle?.data.attributes.image.data.attributes.url;
+  const openGraph = {
+    type: 'website',
+    title: title,
+    description: description,
+    images: [
+      {
+        url: `${cmsurl}${imageurl}`,
+        width: 1200,
+        height: 630,
+      },
+    ],
+  };
   const seo = parseSeo(title, description);
   const [isClient, setIsClient] = useState(false);
   const setAdvertisementArticle = useAdvertisementArticleStore(
     selectSetAdvertisementArticle
   );
-
   useEffect(() => {
     setIsClient(true);
   }, []);
@@ -62,16 +76,11 @@ export const Index: NextPage<Props> = ({ data }) => {
     if (isClient) {
       return (
         <>
-          <Head>
-            <title>広告記事</title>
-            {/* <meta name="description">
-              
-            </meta> */}
-          </Head>
           <SeoComponent
             canonical={CANONICAL_URL}
             title={title}
             description={description}
+            openGraph={openGraph}
           />
           <Template />
         </>
@@ -83,6 +92,7 @@ export const Index: NextPage<Props> = ({ data }) => {
             canonical={CANONICAL_URL}
             title={title}
             description={description}
+            openGraph={openGraph}
           />
         </>
       );
