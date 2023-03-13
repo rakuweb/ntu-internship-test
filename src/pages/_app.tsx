@@ -10,7 +10,7 @@ import { SEO } from '~/constants';
 import theme from '~/lib/theme';
 import { global, guide } from '~/constants/styles';
 import { LiffProvider, generateEnv } from 'contexts/LineAuthContextInternship';
-// import { GoogleAnalytics } from 'organisms/GoogleAnalytics';
+import { GoogleAnalytics } from '~/components/GoogleAnalytics';
 // import usePageView from '~/hooks/usePageView';
 
 // component layer
@@ -20,9 +20,8 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
 
   return (
     <>
-      {/*
       <GoogleAnalytics />
-    */}
+
       <DefaultSeo {...SEO} />
       <ChakraProvider theme={theme}>
         <Global
