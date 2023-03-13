@@ -116,7 +116,7 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
               className="logo"
               as={isTop ? `h1` : `div`}
             >
-              <Image htmlWidth={136} htmlHeight={59} src={`/svg/NTU-FJ.svg`} />
+              <Image htmlWidth={136} htmlHeight={59} src={`/svg/forjob.svg`} />
             </Box>
           </InternalLink>
           <InternalLink href={routes.home}>
