@@ -9,5 +9,5 @@ export type PresenterProps = NextSeoProps;
 
 // presenter
 export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
-  return <NextSeo {...SEO} noindex={true} nofollow={true} {...props} />;
+  return <NextSeo {...SEO} {...props} />;
 };
