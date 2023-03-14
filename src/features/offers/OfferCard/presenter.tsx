@@ -8,6 +8,7 @@ import { OfferCard } from '../types';
 import { mq } from '~/constants/styles';
 import { routes } from 'constants/routes';
 import { Labeltext } from './Labeltext';
+import { Labeltext2 } from '~/components/OfferDetail/Labeltext2';
 import { Image as NImage } from 'components/images/Image';
 
 // type layer
@@ -24,6 +25,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     isNew,
     title,
     image,
+    points,
   } = props;
   const href = `${routes.offers}/${id}`;
 
@@ -65,10 +67,10 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   overflow={`hidden`}
                 >
                   {categories.map((category) => (
-                    <Labeltext
-                      key={category.id}
-                      labeltext={category.name}
-                    ></Labeltext>
+                    <Labeltext key={category.id} labeltext={category.name} />
+                  ))}
+                  {points.map((point) => (
+                    <Labeltext2 key={point.id} labeltext={point.name} />
                   ))}
                 </Flex>
               </div>
@@ -88,7 +90,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 width={24}
                 height={24}
                 src={`/svg/money.svg`}
-              // src={`/images/offers/hukuroIkon.png`}
+                // src={`/images/offers/hukuroIkon.png`}
               />
               <div className="paytext">{hourlyWage}</div>
             </div>
