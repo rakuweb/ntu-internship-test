@@ -127,7 +127,7 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
               fontWeight={'bold'}
               fontSize={`14px`}
             >
-              新潟大学生専用のアルバイト求人サイト
+              新大生のための求人サイト
             </Box>
           </InternalLink>
         </Flex>

@@ -201,6 +201,10 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               <p className="termsMain">{offer.target}</p>
             </div>
             <div className="termsContainer2">
+              <p className="termsTitle">募集人数</p>
+              <p className="termsMain">{offer.people}</p>
+            </div>
+            <div className="termsContainer2">
               <p className="termsTitle">応募資格</p>
               <p className="termsMain">{offer.qualification}</p>
             </div>
@@ -213,7 +217,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               <p className="termsMain">{offer.recruitmentTerms}</p>
             </div>
             <div className="termsContaineroccupation">
-              <p className="termsTitleoccupation">職種</p>
+              <p className="termsTitleoccupation">雇用形態</p>
               <Flex flexWrap={`wrap`} w={{ lg: `${875 / 19.2}vw` }}>
                 {offer?.categories.map((category) => (
                   <Labeltext key={category.id} labeltext={category.name} />

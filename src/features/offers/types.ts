@@ -44,6 +44,7 @@ export type OfferSliceData = {
   target: string;
   qualification: string;
   formUrl: string;
+  people: string;
 };
 
 export type OfferSlice = OfferSliceData & {

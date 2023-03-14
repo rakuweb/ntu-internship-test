@@ -70,6 +70,8 @@ export const Index: NextPage<Props> = ({ data, company }) => {
   setTarget(data?.offer?.data as OfferEntity);
   company.length > 0 && company[0]?.attributes && setComapanyItem(company[0]);
 
+  console.log(data?.offer?.data?.attributes);
+
   const message = () => {
     if (isClient) {
       return (
