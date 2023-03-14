@@ -16,6 +16,8 @@ import { useLiff } from 'contexts/LineAuthContextInternship';
 import { styles } from './styles';
 import { useAccountStore, selectSetPrevPath } from 'features/account';
 
+import 'zenn-content-css';
+
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
@@ -103,9 +105,60 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           アルバイト概要
         </Box>
         <div className="subsection">
-          <Box whiteSpace={`pre-wrap`} fontSize={`14px`} lineHeight={`21px`}>
-            {offer.description}
-          </Box>
+          <Box
+            className={`znc yugothic-medium`}
+            dangerouslySetInnerHTML={{ __html: offer.jobDescription }}
+            as={`article`}
+            sx={{
+              '& > hr': {
+                borderTop: `1px solid #257fbf`,
+              },
+              '& > h2': {
+                marginTop: { base: '16px', lg: '16px' },
+                marginBottom: { base: '11px', lg: `16px` },
+                width: '100%',
+                fontSize: { base: '18px', lg: '20px' },
+                color: '#000000',
+                fontWeight: 'bold',
+                lineHeight: '1.3em',
+                borderBottom: `initial`,
+              },
+              '& > h3': {
+                fontSize: { base: '13px', lg: `18px` },
+                marginTop: { base: '15px', lg: `0` },
+                marginBottom: { lg: `20px` },
+                color: '#000000',
+              },
+              '& > p': {
+                fontSize: {
+                  base: `14px`,
+                  lg: `14px`,
+                },
+                color: '#000000',
+                fontWeight: 400,
+                lineHeight: { base: `1.5em`, lg: `1.5em` },
+                margin: { base: `15px 0`, lg: 0 },
+              },
+              '& > p > a': {
+                fontSize: { base: `11px`, lg: `14px` },
+                fontWeight: 400,
+                lineHeight: `1.2em`,
+                textDecorationLine: 'underline',
+                color: `#003968`,
+                display: `inline`,
+                width: `fit-content`,
+                textAlign: `right`,
+                ':hover': {
+                  filter: `opacity(50%)`,
+                  transition: `all .3s`,
+                },
+              },
+              '& > p > img:not(.emoji)': {
+                marginY: { lg: `30px` },
+                w: { base: `100%` },
+              },
+            }}
+          />
         </div>
       </Box>
 

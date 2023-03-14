@@ -1,6 +1,7 @@
 import { OfferEntity } from 'types/gql/graphql';
 import { OfferCard, OfferSliceData } from './types';
 import { parseDate, parseImage } from 'lib/utils';
+import markdownToHtml from 'zenn-markdown-html';
 
 export const parseToOffers = (data: OfferEntity[]): OfferCard[] => {
   const result = data.map((entity) => {
@@ -66,6 +67,9 @@ export const parseToTarget = (entity: OfferEntity): Partial<OfferSliceData> => {
     deadline: offer.deadline,
     formUrl: offer?.form_url ?? '',
     people: offer.people,
+    jobDescription: offer.job_description
+      ? markdownToHtml(offer.job_description)
+      : '',
   };
 
   return result;

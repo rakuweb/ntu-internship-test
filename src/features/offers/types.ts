@@ -45,6 +45,7 @@ export type OfferSliceData = {
   qualification: string;
   formUrl: string;
   people: string;
+  jobDescription: string;
 };
 
 export type OfferSlice = OfferSliceData & {

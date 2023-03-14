@@ -13,6 +13,7 @@ query getOfferById($id: ID) {
         target
         qualification
         people
+        job_description
         job_points {
           data {
             id
