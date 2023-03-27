@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:proxy": "next dev & local-ssl-proxy --key localhost-key.pem --cert localhost.pem --source 3001 --target 3000",
     "build": "next build",
     "start": "next start -p 3003",
     "lint": "next lint",
@@ -58,6 +59,7 @@
     "@storybook/addon-essentials": "^6.4.13",
     "@storybook/addon-links": "^6.4.13",
     "@storybook/react": "^6.4.13",
+    "@svgr/webpack": "^7.0.0",
     "@types/gtag.js": "^0.0.12",
     "@types/react": "^18.0.26",
     "@types/three": "^0.146.0",
@@ -73,6 +75,7 @@
     "firebase-tools": "^11.24.0",
     "hygen": "^6.1.0",
     "lint-staged": "^13.0.4",
+    "local-ssl-proxy": "^2.0.5",
     "next-sitemap": "^3.1.32",
     "prettier": "^2.3.2",
     "storybook-addon-next-router": "^4.0.1",
