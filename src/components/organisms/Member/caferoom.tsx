@@ -2,14 +2,14 @@ import { Box, Heading, Text } from '@chakra-ui/react';
 
 const Caferoom = () => {
   return (
-    <Box>
+    <Box pt={'50px'}>
       <Heading fontSize={'19px'} textAlign={'center'}>
         CAFE ROOM
       </Heading>
       <Box
         bgColor={'white'}
         w={'333px'}
-        m={'auto'}
+        m={'20px auto auto'}
         borderRadius={'50'}
         display={'flex'}
         alignItems={'center'}
@@ -20,12 +20,13 @@ const Caferoom = () => {
           今月の来店数
         </Text>
         <Text
-          fontWeight={'bold'}
+          fontWeight={'900'}
           fontFamily={"'Noto Sans JP', sans-serif"}
           textAlign={'center'}
+          fontSize={'23px'}
         >
           2
-          <Box fontSize={'10px'} color={'#707070'}>
+          <Box fontSize={'10px'} color={'#707070'} fontWeight={'normal'}>
             （今までに2回ご来店）
           </Box>
         </Text>
@@ -33,7 +34,7 @@ const Caferoom = () => {
       <Box
         bgColor={'white'}
         w={'333px'}
-        m={'auto'}
+        m={'20px auto auto'}
         borderRadius={'50'}
         display={'flex'}
         alignItems={'center'}
@@ -44,17 +45,24 @@ const Caferoom = () => {
           カフェランク
         </Text>
         <Text
-          fontWeight={'bold'}
+          fontWeight={'900'}
           fontFamily={"'Noto Sans JP', sans-serif"}
           textAlign={'center'}
+          fontSize={'23px'}
         >
           White
-          <Box fontSize={'10px'} color={'#707070'}>
+          <Box fontSize={'10px'} color={'#707070'} fontWeight={'normal'}>
             （あと32回でブラック）
           </Box>
         </Text>
       </Box>
-      <Text textAlign={'center'} fontSize={'10px'}>
+      <Text
+        textAlign={'center'}
+        fontSize={'10px'}
+        color={'#707070'}
+        fontWeight={'normal'}
+        mt={'15px'}
+      >
         ※カフェランクの特典に関してはスタッフにご確認ください※
       </Text>
     </Box>

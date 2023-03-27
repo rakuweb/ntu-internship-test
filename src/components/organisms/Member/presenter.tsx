@@ -19,16 +19,17 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
         maxWidth={'768px'}
         m={'auto'}
         h={'auto'}
-        p={'50px 0'}
+        p={'50px 0 100px'}
         bgColor={'#F4F4F4'}
       >
         <MenberLogo className="logo" />
         <Heading
           as={'h1'}
           fontFamily={"'Noto Sans JP', sans-serif"}
-          fontSize={{ base: '2vw' }}
+          fontSize={{ base: '2vw', md: '15px' }}
           color={'#707070'}
           textAlign={'center'}
+          p={{ md: '30px' }}
         >
           NOT THE UNIVERSITY FREE会員
         </Heading>
