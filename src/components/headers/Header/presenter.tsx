@@ -165,9 +165,6 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
             <Box display={`none`} />
           )}
 
-          <Box display={{ base: `block`, lg: `none` }}>
-            <HeaderMenu isOpen={isOpen} onClick={onOpen} />
-          </Box>
           {username ? (
             <Box
               display={{ base: `none`, lg: `block` }}
@@ -183,6 +180,7 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
                 filter: `opacity(50%)`,
                 textDecoration: 'none',
               }}
+              mr={{ lg: '50px' }}
             >
               ログアウト
             </Box>
@@ -201,6 +199,7 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
                 filter: `opacity(50%)`,
                 textDecoration: 'none',
               }}
+              mr={{ lg: '50px' }}
             >
               ログイン
             </Box>
@@ -223,6 +222,9 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
           >
             ログアウト
           </Box> */}
+          <Box display={{ base: `block`, lg: `block` }}>
+            <HeaderMenu isOpen={isOpen} onClick={onOpen} />
+          </Box>
         </Flex>
 
         <MenuDrawer isOpen={isOpen} onClose={onClose} />
