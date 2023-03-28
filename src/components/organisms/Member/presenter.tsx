@@ -26,10 +26,10 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
         <Heading
           as={'h1'}
           fontFamily={"'Noto Sans JP', sans-serif"}
-          fontSize={{ base: '2vw', md: '15px' }}
+          fontSize={{ base: '15px' }}
           color={'#707070'}
           textAlign={'center'}
-          p={{ md: '30px' }}
+          p={{ base: '30px' }}
         >
           NOT THE UNIVERSITY FREE会員
         </Heading>

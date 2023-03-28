@@ -3,7 +3,11 @@ import { Box, Heading, Text } from '@chakra-ui/react';
 const Caferoom = () => {
   return (
     <Box pt={'50px'}>
-      <Heading fontSize={'19px'} textAlign={'center'}>
+      <Heading
+        fontSize={'19px'}
+        textAlign={'center'}
+        fontFamily={"'Noto Sans JP', sans-serif"}
+      >
         CAFE ROOM
       </Heading>
       <Box
@@ -24,6 +28,7 @@ const Caferoom = () => {
           fontFamily={"'Noto Sans JP', sans-serif"}
           textAlign={'center'}
           fontSize={'23px'}
+          lineHeight={'1.4'}
         >
           2
           <Box fontSize={'10px'} color={'#707070'} fontWeight={'normal'}>
@@ -49,6 +54,7 @@ const Caferoom = () => {
           fontFamily={"'Noto Sans JP', sans-serif"}
           textAlign={'center'}
           fontSize={'23px'}
+          lineHeight={'1.4'}
         >
           White
           <Box fontSize={'10px'} color={'#707070'} fontWeight={'normal'}>
