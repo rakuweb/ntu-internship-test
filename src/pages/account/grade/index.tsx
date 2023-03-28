@@ -1,47 +1,57 @@
 // import layer
 import { useState, useEffect } from 'react';
 import { NextPage } from 'next/types';
+import { FormProvider, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
+import { Index as Form } from 'templates/Register/Grade';
+import { Index as Check } from 'templates/Register/RegisterGradeCheck';
 import { SeoComponent } from 'organisms/SeoComponent';
 import { CANONICAL_URL } from 'constants/env';
 import { ORIGIN_URL } from 'constants/env';
 import { parseSeo } from '~/lib';
-import { useLiff } from 'contexts/LineAuthContextInternship';
-import { routes } from 'constants/routes';
-import { useAccountStore } from 'features/account/hooks';
+import { useFormProgressStore } from 'features/formProgress/hooks';
 import {
+  RegisterGradeFormSchema,
+  registerGradeFormSchema,
+} from '~/features/registerForm/schema';
+import { useLiff } from 'contexts/LineAuthContext';
+import { routes } from 'constants/routes';
+import {
+  useAccountStore,
   selectSetAccount,
-  selectPrevPath,
-  selectSetPrevPath,
-} from 'features/account/selectors';
-import { Index as Authenticating } from 'components/templates/Register/Authenticating';
+  selectAccount,
+} from 'features/account';
 
 // type layer
-// type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 // component layer
 export const Index: NextPage = () => {
   const title = ``; // eslint-disable-line
   const description = ``;
+  const seo = parseSeo(title, description);
+  const methods = useForm<RegisterGradeFormSchema>({
+    resolver: yupResolver(registerGradeFormSchema),
+  });
+  const progress = useFormProgressStore((state) => state.progress);
   const [isClient, setIsClient] = useState(false);
   const { liff } = useLiff();
   const router = useRouter();
   const setAccount = useAccountStore(selectSetAccount);
-  const prevPath = useAccountStore(selectPrevPath);
-  const setPrevPath = useAccountStore(selectSetPrevPath);
+  const account = useAccountStore(selectAccount);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
-  // useEffect(() => {
-  //   if (!liff) return;
-  //   if (!liff.isLoggedIn()) {
-  //     liff.login(); //{ redirectUri: redirectUri });
-  //   }
-  // }, [liff]);
+  useEffect(() => {
+    if (!liff) return;
+    if (!liff.isLoggedIn()) {
+      liff.login();
+    }
+  }, [liff]);
 
   useEffect(() => {
     if (!liff || !liff.isLoggedIn()) return;
@@ -56,7 +66,7 @@ export const Index: NextPage = () => {
         },
       });
 
-      const { exist } = res.data;
+      const { exist, username, email } = res.data;
       if (exist) {
         const { email, username, grade, studentId } = res.data;
         setAccount({
@@ -65,34 +75,26 @@ export const Index: NextPage = () => {
           grade: grade as string,
           studentId: studentId as string,
         });
-        const nextPath = prevPath.slice();
-        setPrevPath('');
-        const lsNextPath = window.localStorage.getItem('prevUrl');
 
-        if (lsNextPath.startsWith('https')) {
-          window.location.href = lsNextPath;
-        } else {
-          nextPath ? router.push(nextPath) : router.push(lsNextPath);
-          window.scroll({ top: 0 });
-        }
-      } else {
-        router.push(routes.signinFailed);
+        router.push(routes.registered);
         window.scroll({ top: 0 });
       }
-      // else if (email) {
-      //   setAccount({ email: email as string, username: username as string });
-      //   router.push(routes.confirm);
-      // }
     };
 
     handler();
-  }, [liff, liff?.isLoggedIn()]);
+  }, [liff, liff?.isLoggedIn]);
+
+  // if (!liff?.isLoggedIn() || !account.username) router.push(routes.home);
 
   const message = () => {
     if (isClient) {
       return (
         <>
-          <Authenticating />
+          <SeoComponent canonical={CANONICAL_URL} {...seo} />
+          <FormProvider {...methods}>
+            <Form isHidden={progress !== 0} />
+            <Check isHidden={progress !== 1} />
+          </FormProvider>
         </>
       );
     } else {

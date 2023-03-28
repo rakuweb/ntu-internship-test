@@ -15,6 +15,8 @@ type Data = {
   exist: boolean;
   email?: string;
   username?: string;
+  grade?: string;
+  studentId?: string;
 };
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
@@ -38,13 +40,23 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
             .json({ exist: false, email: undefined, username: undefined });
           return;
         }
-        const { email, username } =
-          data.usersPermissionsUsers.data[0].attributes;
+        const {
+          email,
+          username,
+          grade,
+          student: {
+            data: { id },
+          },
+        } = data.usersPermissionsUsers.data[0].attributes;
 
         if (!data?.usersPermissionsUsers?.data?.[0].attributes?.confirmed) {
-          res.status(200).json({ exist: false, email, username });
+          res
+            .status(200)
+            .json({ exist: false, email, username, grade, studentId: id });
         }
-        res.status(200).json({ exist: true, email, username });
+        res
+          .status(200)
+          .json({ exist: true, email, username, grade, studentId: id });
       } catch (err: any) {
         console.error(err);
         res.status(403).end();

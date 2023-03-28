@@ -67,8 +67,13 @@ export const Index: NextPage = () => {
 
       const { exist, username, email } = res.data;
       if (exist) {
-        const { email, username } = res.data;
-        setAccount({ email: email as string, username: username as string });
+        const { email, username, grade, studentId } = res.data;
+        setAccount({
+          email: email as string,
+          username: username as string,
+          grade: grade as string,
+          studentId: studentId as string,
+        });
 
         router.push(routes.registered);
         window.scroll({ top: 0 });

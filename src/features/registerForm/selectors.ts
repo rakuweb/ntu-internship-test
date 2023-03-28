@@ -1,4 +1,4 @@
-import { RegisterFormSlice } from './types';
+import { RegisterFormSlice, RegisterGradeFormSlice } from './types';
 
 export const selectRegisterFormItem = (state: RegisterFormSlice) => ({
   name: state.name,
@@ -18,3 +18,19 @@ export const selectRegisterFormFunctions = (state: RegisterFormSlice) => ({
   successSending: state.successSending,
 });
 export const selectSetEmail = (state: RegisterFormSlice) => state.setEmail;
+
+/// for grade
+export const selectRegisterGradeFormItem = (state: RegisterGradeFormSlice) => ({
+  grade: state.grade,
+  toReceiveJobInfo: state.toReceiveJobInfo,
+});
+
+export const selectRegisterGradeFormFunctions = (
+  state: RegisterGradeFormSlice
+) => ({
+  setIsChecked: state.setIsChecked,
+  setIsSending: state.setIsSending,
+  startSending: state.startSending,
+  finishSending: state.finishSending,
+  successSending: state.successSending,
+});

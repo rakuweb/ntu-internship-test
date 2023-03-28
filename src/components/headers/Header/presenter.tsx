@@ -71,10 +71,15 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
           },
         });
 
-        const { exist, username, email } = res.data;
+        const { exist } = res.data;
         if (exist) {
-          const { email, username } = res.data;
-          setAccount({ email: email as string, username: username as string });
+          const { email, username, studentId, grade } = res.data;
+          setAccount({
+            email: email as string,
+            username: username as string,
+            studentId,
+            grade,
+          });
         }
       };
       handler();

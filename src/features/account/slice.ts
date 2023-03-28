@@ -11,6 +11,8 @@ export const createAccountSlice: StateCreator<
   username: '',
   email: '',
   prevPath: '',
+  studentId: '',
+  grade: '',
 
   setAccount: (props) => set(() => ({ ...props })),
   signout: () => set({ username: '', email: '' }),

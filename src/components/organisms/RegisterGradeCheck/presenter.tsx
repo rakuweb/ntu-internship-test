@@ -3,11 +3,12 @@ import { FC, useState, useEffect } from 'react';
 import { Button, Checkbox } from '@chakra-ui/react';
 
 import { styles } from './styles';
-import { useRegisterFormStore } from 'features/registerForm/hooks';
+import { useRegisterGradeFormStore } from 'features/registerForm/hooks';
 import { useFormProgressStore } from 'features/formProgress/hooks';
 import { selectBackProgress } from 'features/formProgress/selectors';
 import { routes } from 'constants/routes';
 import { InternalLink } from '~/components/links/InternalLink';
+import axios from 'axios';
 
 // type layer
 export type DataProps = { onClick: () => void };
@@ -18,69 +19,41 @@ export const Presenter: FC<PresenterProps & DataProps> = ({
   onClick,
   ...props
 }) => {
-  const {
-    name,
-    grade,
-    department,
-    email,
-    phone,
-    isInterestedInInternship,
-    willStartWorking,
-    isSending,
-    isChecked,
-    setIsChecked,
-  } = useRegisterFormStore();
+  const { grade, setIsChecked, toReceiveJobInfo } = useRegisterGradeFormStore();
   const backProgress = useFormProgressStore(selectBackProgress);
   const [isCheckedPrivacyPolicy, setIsCheckedPrivacyPolicy] = useState(false);
-  const [isCheckedStudent, setIsCheckedStudent] = useState(false);
 
   useEffect(() => {
-    setIsChecked(isCheckedPrivacyPolicy && isCheckedStudent);
-  }, [isCheckedPrivacyPolicy, isCheckedStudent]);
+    setIsChecked(isCheckedPrivacyPolicy);
+  }, [isCheckedPrivacyPolicy]);
+  // useEffect(() => {
+  //   const postData = async () => {
+  //     const data = { grade };
+  //     try {
+  //       await axios.post('/api/update', data);
+  //       alert('送信が完了しました。');
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+  //   postData();
+  // }, []);
 
   return (
     <div css={styles}>
       <section className="form">
         <form className="form__container">
           <h1 className="h1">送信内容の確認</h1>
-          <div className="form__container__item">
-            <p className="form__container__item__left">名前:</p>
-            <div className="form__container__item__right">{name}</div>
-          </div>
 
           <div className="form__container__item">
             <p className="form__container__item__left">学年:</p>
             <div className="form__container__item__right">{grade}</div>
           </div>
 
-          <div className="form__container__item">
-            <p className="form__container__item__left">学部:</p>
-            <div className="form__container__item__right">{department}</div>
-          </div>
-
           <div className="form__container__item__address">
-            <p className="form__container__item__left">メールアドレス:</p>
-            <div className="form__container__item__address__right">{email}</div>
-          </div>
-
-          <div className="form__container__item">
-            <p className="form__container__item__left">電話番号:</p>
-            <div className="form__container__item__right">{phone}</div>
-          </div>
-
-          <div className="form__container__item">
-            <p className="form__container__item__left">就職予定ですか？:</p>
-            <div className="form__container__item__right">
-              {willStartWorking ? `はい` : `いいえ`}
-            </div>
-          </div>
-
-          <div className="form__container__address">
-            <p className="form__container__item__left">
-              インターンシップに興味がありますか？ :
-            </p>
+            <p className="form__container__item__left">バイト情報を受信する:</p>
             <div className="form__container__item__address__right">
-              {isInterestedInInternship ? `はい` : `いいえ`}
+              {toReceiveJobInfo ? 'はい' : 'いいえ'}
             </div>
           </div>
 
@@ -107,24 +80,6 @@ export const Presenter: FC<PresenterProps & DataProps> = ({
             </label>
           </div>
 
-          <div className="form__container__student">
-            <Checkbox
-              // type="checkbox"
-              id="studentcheck"
-              name="studentcheckbox"
-              className="form__container__privacy__checkbox"
-              isChecked={isCheckedStudent}
-              onChange={(e) => setIsCheckedStudent(e.target.checked)}
-              borderColor={`gray.400`}
-            />
-            <label
-              htmlFor="studentcheck"
-              className="form__container__privacy__text"
-            >
-              私は新潟大学生です。<span className="red">*</span>
-            </label>
-          </div>
-
           <div className="form__container__button">
             <Button
               onClick={backProgress}
@@ -133,10 +88,9 @@ export const Presenter: FC<PresenterProps & DataProps> = ({
               戻る
             </Button>
             <Button
-              // onClick={onClick}
+              onClick={onClick}
               className="form__container__button__submit"
-              // isDisabled={isSending || !isChecked}
-              // isLoading={isSending}
+              disabled={!isCheckedPrivacyPolicy}
             >
               送信
             </Button>

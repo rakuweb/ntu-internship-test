@@ -14,6 +14,7 @@ export const gradeList = [
   '博士2年生',
   '博士3年生',
   '博士4年生',
+  '卒業生',
 ];
 export const departmentList = [
   '人文学部',
@@ -40,7 +41,10 @@ export type RegisterFormSchema = {
 };
 
 export const registerFormSchema = yup.object().shape({
-  name: yup.string().required('入力されていません。').min(3, '3文字以上入力して下さい。'),
+  name: yup
+    .string()
+    .required('入力されていません。')
+    .min(3, '3文字以上入力して下さい。'),
   grade: yup
     .string()
     .oneOf([...gradeList], '学年を選択してください。')
@@ -66,4 +70,22 @@ export const registerFormSchema = yup.object().shape({
     .required('入力されていません。'),
   willStartWorking: yup.bool(),
   isInterestedInInternship: yup.bool(),
+  reception: yup.bool(),
+  graduation: yup.bool(),
+});
+
+export type RegisterGradeFormSchema = {
+  grade: string;
+  toReceiveJobInfo: boolean;
+};
+
+export const registerGradeFormSchema = yup.object().shape({
+  grade: yup
+    .string()
+    .oneOf([...gradeList], '学年を選択してください。')
+    .transform((value, originalValue) =>
+      String(originalValue).trim() === '' ? '' : value
+    ),
+  reception: yup.bool(),
+  graduation: yup.bool(),
 });

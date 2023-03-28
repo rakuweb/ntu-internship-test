@@ -13,10 +13,12 @@ export const routes = {
   confirm: '/register/confirm',
   signin: '/signin',
   signinFailed: '/signin/failed',
+  updateComplete: '/account/grade/complete',
   advertisements: '/advertisements',
 
   apiRegister: '/api/register',
   apiAccount: '/api/account',
+  apiUpdateGrade: '/api/update/grade',
 };
 
 export const HP_URL = `https://nottheuniversity.com`;

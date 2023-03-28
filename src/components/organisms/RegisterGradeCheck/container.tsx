@@ -5,37 +5,42 @@ import axios from 'axios';
 import { useFormContext } from 'react-hook-form';
 
 import { Presenter, PresenterProps } from './presenter';
-import { useRegisterFormStore } from 'features/registerForm/hooks';
 import {
-  selectRegisterFormItem,
-  selectRegisterFormFunctions,
-} from 'features/registerForm/selectors';
-import { RegisterFormSchema } from '~/features/registerForm/schema';
+  useRegisterGradeFormStore,
+  selectRegisterGradeFormFunctions,
+  selectRegisterGradeFormItem,
+  RegisterGradeFormSchema,
+} from 'features/registerForm';
 import { routes } from '~/constants/routes';
 import { ORIGIN_URL } from '~/constants/env';
 import { useLiff } from 'contexts/LineAuthContext';
+import { selectAccount, useAccountStore } from '~/features/account';
 
 // type layer
 export type ContainerProps = PresenterProps;
 
 // container
 export const Container: FC<ContainerProps> = ({ ...props }) => {
-  const apiUrl = `${ORIGIN_URL}${routes.apiRegister}`;
+  const apiUrl = `${ORIGIN_URL}${routes.apiUpdateGrade}`;
   const { setIsChecked, setIsSending, startSending, successSending } =
-    useRegisterFormStore(selectRegisterFormFunctions);
-  const formItem = useRegisterFormStore(selectRegisterFormItem);
-  const { reset } = useFormContext<RegisterFormSchema>();
+    useRegisterGradeFormStore(selectRegisterGradeFormFunctions);
+  const { grade, toReceiveJobInfo } = useRegisterGradeFormStore(
+    selectRegisterGradeFormItem
+  );
+  const { studentId } = useAccountStore(selectAccount);
+  const { reset } = useFormContext<RegisterGradeFormSchema>();
   const router = useRouter();
   const { liff } = useLiff();
 
   const handleClick = async () => {
     startSending();
-
     try {
-      const profile = await liff.getProfile();
+      // const profile = await liff.getProfile();
       const registerData = {
-        ...formItem,
-        lineId: profile.userId,
+        grade,
+        to_receive_job_info: toReceiveJobInfo,
+        lineId: 'aaaaaaa', // profile.userId,
+        id: 1,
       };
       await axios.post(apiUrl, {
         ...registerData,
@@ -45,17 +50,11 @@ export const Container: FC<ContainerProps> = ({ ...props }) => {
       reset();
       successSending();
 
-      router.push(routes.registerComplete);
+      router.push(routes.updateComplete);
       window.scroll({ top: 0 });
     } catch (err) {
       console.error(err);
-      if (err.response.status === 500) {
-        alert(`登録済みのメールアドレスが使用されています。`);
-      } else {
-        alert(
-          '正常に送信できませんでした。時間をおいてもう一度お試しください。'
-        );
-      }
+      alert('正常に送信できませんでした。時間をおいてもう一度お試しください。');
     } finally {
       setIsChecked(false);
       setIsSending(false);

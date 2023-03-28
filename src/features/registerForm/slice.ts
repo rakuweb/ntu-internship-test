@@ -1,6 +1,6 @@
 import { StateCreator } from 'zustand';
 
-import { RegisterFormSlice } from './types';
+import { RegisterFormSlice, RegisterGradeFormSlice } from './types';
 
 export const createRegisterFormSlice: StateCreator<
   RegisterFormSlice,
@@ -23,6 +23,26 @@ export const createRegisterFormSlice: StateCreator<
   setIsChecked: (isChecked) => set(() => ({ isChecked: isChecked })),
   setIsSending: (isSending) => set(() => ({ isSending })),
   setEmail: (email) => set(() => ({ email })),
+  startSending: () => set(() => ({ isSending: true })),
+  successSending: () => set(() => ({ isComplete: true })),
+  finishSending: () => set(() => ({ isSending: false })),
+});
+
+export const createRegisterGradeFormSlice: StateCreator<
+  RegisterGradeFormSlice,
+  [],
+  [],
+  RegisterGradeFormSlice
+> = (set) => ({
+  isChecked: false,
+  isSending: false,
+  isComplete: false,
+  grade: '',
+  toReceiveJobInfo: true,
+
+  updateFormData: (data) => set(() => ({ ...data })),
+  setIsChecked: (isChecked) => set(() => ({ isChecked: isChecked })),
+  setIsSending: (isSending) => set(() => ({ isSending })),
   startSending: () => set(() => ({ isSending: true })),
   successSending: () => set(() => ({ isComplete: true })),
   finishSending: () => set(() => ({ isSending: false })),

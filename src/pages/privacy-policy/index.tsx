@@ -2,7 +2,8 @@
 import { useState, useEffect } from 'react';
 import { NextPage, InferGetStaticPropsType } from 'next/types';
 
-import { Index as Template } from 'templates/PrivacyPolicy';
+// import { Index as Template } from 'templates/PrivacyPolicy';
+import { Index as Template } from 'templates/Register/Failed';
 import { SeoComponent } from 'organisms/SeoComponent';
 import { CANONICAL_URL, ORIGIN_URL } from '~/constants';
 import { parseSeo } from '~/lib';

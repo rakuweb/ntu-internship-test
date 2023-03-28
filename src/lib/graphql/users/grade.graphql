@@ -1,0 +1,24 @@
+query getGrade($id: ID) {
+  usersPermissionsUser(id: $id) {
+    data {
+      id
+      attributes {
+        grade
+      }
+    }
+  }
+}
+
+mutation updpateGrade($id: ID!, $grade: String, $to_receive_job_info: Boolean) {
+  updateStudent(
+    id: $id
+    data: { grade_jp: $grade, to_receive_job_info: $to_receive_job_info }
+  ) {
+    data {
+      id
+      attributes {
+        grade_jp
+      }
+    }
+  }
+}
