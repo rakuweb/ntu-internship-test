@@ -1,9 +1,98 @@
 import { Box, Heading, Text } from '@chakra-ui/react';
-import Ntu from '../../../../public/svg/ntucard.svg';
 import { css } from '@emotion/react';
+import useSound from 'use-sound';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+
+import { useStudentStore, selectStudent } from 'features/student';
+import { routes } from '~/constants/routes';
+import { ORIGIN_URL } from '~/constants/env';
+
+import Ntu from '../../../../public/svg/ntucard.svg';
+// import sound from '../../../../public/music/card.mp3';
+
+const formatDate = (_date: Date): string => {
+  const date = new Date(_date);
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+
+  return `${year}/${month}/${day}`;
+};
 
 const Card = () => {
-  return (
+  const [loaded, setLoaded] = useState<boolean>(true);
+  const student = useStudentStore(selectStudent);
+  const [play] = useSound('/music/card.mp3', {
+    onend: () => {
+      console.log('Sound ended');
+    },
+  });
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!loaded) return;
+    play();
+  }, [loaded]);
+
+  useEffect(() => {
+    if (!student?.username || !student?.grade || !student?.gradeUpdatedAt)
+      return;
+
+    const timeoutId = setTimeout(function() {
+      setLoaded(true);
+    }, 1000 * 1);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [student]);
+
+  // useEffect(() => {
+  //   if (!student?.id) return;
+  //   if (!loaded) return;
+  //   const apiUrl = `${ORIGIN_URL}${routes.apitVisitCount}`;
+  //
+  //   const handler = async () => {
+  //     try {
+  //       await axios.post(apiUrl, student.id);
+  //     } catch (err) {
+  //       console.error(err);
+  //     }
+  //   };
+  //
+  //   handler();
+  // }, [loaded, student?.id]);
+
+  const gradeList = {
+    大学1年生: '1st',
+    大学2年生: '2nd',
+    大学3年生: '3rd',
+    大学4年生: '4th',
+    大学5年生: '5th',
+    大学6年生: '6th',
+    修士1年生: 'Master1',
+    修士2年生: 'Master2',
+    博士1年生: 'Doctor1',
+    博士2年生: 'Doctor2',
+    博士3年生: 'Doctor3',
+    博士4年生: 'Doctor4',
+    大学１年生: '1st',
+    大学２年生: '2nd',
+    大学３年生: '3rd',
+    大学４年生: '4th',
+    大学５年生: '5th',
+    大学６年生: '6th',
+    修士１年生: 'Master1',
+    修士２年生: 'Master2',
+    博士１年生: 'Doctor1',
+    博士２年生: 'Doctor2',
+    博士３年生: 'Doctor3',
+    博士４年生: 'Doctor4',
+    卒業生: 'OB・OG',
+  };
+
+  return loaded ? (
     <Box w={'333px'} m={'auto'} css={styles}>
       <Box
         h={'195px'}
@@ -17,8 +106,8 @@ const Card = () => {
         background={
           'linear-gradient(135deg, #b8751e 0%, #ffce08 37%, #e1ce08 63%, #c0a683 100%)'
         }
-        // background={'linear-gradient(#545454, #000000)'}
-        // background={'linear-gradient(135deg,#21D4FD, #B721FF)'}
+      // background={'linear-gradient(#545454, #000000)'}
+      // background={'linear-gradient(135deg,#21D4FD, #B721FF)'}
       >
         <Box h={'195px'} className={'card'}>
           <Text
@@ -61,7 +150,7 @@ const Card = () => {
               alignItems={'flex-end'}
               color={'white'}
             >
-              大橋乃々華
+              {student.username}
               <Text as={'span'} fontSize={'12px'}>
                 様
               </Text>
@@ -82,7 +171,7 @@ const Card = () => {
               fontWeight={'bold'}
               fontFamily={"'Noto Sans JP', sans-serif"}
             >
-              3rd Student
+              {gradeList[student.grade]} Student
             </Text>
             <Text fontSize={'9px'} fontFamily={"'Noto Sans JP', sans-serif"}>
               Member ID:
@@ -92,7 +181,7 @@ const Card = () => {
               fontWeight={'bold'}
               fontFamily={"'Noto Sans JP', sans-serif"}
             >
-              3isdijsa78
+              {student.id}
             </Text>
           </Box>
         </Box>
@@ -106,9 +195,11 @@ const Card = () => {
         pt={'10px'}
         fontWeight={'normal'}
       >
-        更新日：2023/03/12
+        更新日：{formatDate(student.gradeUpdatedAt)}
       </Heading>
     </Box>
+  ) : (
+    <></>
   );
 };
 

@@ -1,4 +1,4 @@
-import create from 'zustand';
+import { create } from 'zustand';
 
 import { AdvertisementsSlice } from './types';
 import { createAdvertisementsSlice } from './slice';

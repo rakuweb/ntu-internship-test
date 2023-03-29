@@ -12,7 +12,7 @@ import {
   gradeList,
   RegisterGradeFormSchema,
 } from 'features/registerForm';
-import { useAccountStore, selectAccount } from 'features/account';
+import { useStudentStore, selectStudent } from 'features/student';
 
 // type layer
 export type DataProps = { onClick: () => void };
@@ -27,8 +27,9 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
     setValue,
     formState: { errors },
   } = useFormContext<RegisterGradeFormSchema>();
-  const { grade } = useAccountStore(selectAccount);
+  const { grade } = useStudentStore(selectStudent);
   const { toReceiveJobInfo } = watch();
+  console.log(grade);
 
   return (
     <div css={styles}>

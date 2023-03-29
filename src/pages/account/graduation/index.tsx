@@ -2,20 +2,13 @@ import { useState, useEffect } from 'react';
 import { NextPage } from 'next/types';
 import { useRouter } from 'next/router';
 
-import { Index as Template } from '~/components/templates/Register/RegisterGradeComplete';
+import { Graduation as Template } from '~/components/templates/Graduation';
 import { SeoComponent } from 'organisms/SeoComponent';
 import { CANONICAL_URL } from '~/constants';
 import { parseSeo } from '~/lib';
-import { useLiff } from 'contexts/LineAuthContext';
-import { routes } from 'constants/routes';
-import {
-  useStudentStore,
-  selectStudentId,
-  selectSetStudent,
-  selectStudent,
-} from 'features/student';
 
 // type layer
+// type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 // component layer
 export const Index: NextPage = () => {
@@ -23,32 +16,34 @@ export const Index: NextPage = () => {
   const description = ``;
   const seo = parseSeo(title, description);
   const [isClient, setIsClient] = useState(false);
-  const { liff } = useLiff();
-  const router = useRouter();
-  const student = useStudentStore(selectStudent);
 
   useEffect(() => {
     setIsClient(true);
-  }, []);
-
-  useEffect(() => {
-    const timeoutId = setTimeout(function() {
-      router.push(routes.signinCafeonly);
-    }, 1000 * 1);
-
-    return () => clearTimeout(timeoutId);
   }, []);
 
   const message = () => {
     if (isClient) {
       return (
         <>
-          <SeoComponent canonical={CANONICAL_URL} {...seo} />
+          <SeoComponent
+            canonical={CANONICAL_URL}
+            title={title}
+            description={description}
+          />
           <Template />
         </>
       );
     } else {
-      return <></>;
+      return (
+        <>
+          {' '}
+          <SeoComponent
+            canonical={CANONICAL_URL}
+            title={title}
+            description={description}
+          />
+        </>
+      );
     }
   };
 

@@ -1,36 +1,37 @@
 import { useState, useEffect } from 'react';
-import { NextPage, InferGetStaticPropsType } from 'next/types';
+import { NextPage } from 'next/types';
 import { useRouter } from 'next/router';
 
 import { Index as Template } from '~/components/templates/Member';
 import { SeoComponent } from 'organisms/SeoComponent';
 import { CANONICAL_URL } from '~/constants';
 import { parseSeo } from '~/lib';
-import { useLiff } from 'contexts/LineAuthContext';
 import { routes } from 'constants/routes';
+import { useStudentStore, selectStudent } from 'features/student';
 
 // type layer
-// type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 // component layer
 export const Index: NextPage = () => {
+  console.log('account/card');
   const title = ``; // eslint-disable-line
   const description = ``;
   const seo = parseSeo(title, description);
   const [isClient, setIsClient] = useState(false);
-  const { liff } = useLiff();
   const router = useRouter();
+  const student = useStudentStore(selectStudent);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
   useEffect(() => {
-    if (!liff) return;
-    if (!liff.isLoggedIn()) {
-      router.push(routes.register);
+    if (!student?.id || !student?.gradeUpdatedAt) {
+      router.push(routes.signinCafeonly);
+    } else if (student.grade === '卒業生') {
+      router.push(routes.accountGraduation);
     }
-  }, [liff]);
+  }, []);
 
   const message = () => {
     if (isClient) {

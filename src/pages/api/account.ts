@@ -17,6 +17,7 @@ type Data = {
   username?: string;
   grade?: string;
   studentId?: string;
+  gradeUpdatedAt?: string;
 };
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
@@ -45,18 +46,37 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
           username,
           grade,
           student: {
-            data: { id },
+            data: {
+              id,
+              attributes: {
+                line_id,
+                to_receive_job_info,
+                grade_jp,
+                grade_updated_at,
+                name,
+              },
+            },
           },
         } = data.usersPermissionsUsers.data[0].attributes;
 
         if (!data?.usersPermissionsUsers?.data?.[0].attributes?.confirmed) {
-          res
-            .status(200)
-            .json({ exist: false, email, username, grade, studentId: id });
+          res.status(200).json({
+            exist: false,
+            email,
+            username,
+            grade: grade_jp,
+            studentId: id,
+            gradeUpdatedAt: grade_updated_at,
+          });
         }
-        res
-          .status(200)
-          .json({ exist: true, email, username, grade, studentId: id });
+        res.status(200).json({
+          exist: true,
+          email,
+          username,
+          grade: grade_jp,
+          studentId: id,
+          gradeUpdatedAt: grade_updated_at,
+        });
       } catch (err: any) {
         console.error(err);
         res.status(403).end();

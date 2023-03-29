@@ -8,7 +8,6 @@ import { useFormProgressStore } from 'features/formProgress/hooks';
 import { selectBackProgress } from 'features/formProgress/selectors';
 import { routes } from 'constants/routes';
 import { InternalLink } from '~/components/links/InternalLink';
-import axios from 'axios';
 
 // type layer
 export type DataProps = { onClick: () => void };
@@ -19,13 +18,15 @@ export const Presenter: FC<PresenterProps & DataProps> = ({
   onClick,
   ...props
 }) => {
-  const { grade, setIsChecked, toReceiveJobInfo } = useRegisterGradeFormStore();
+  const { grade, setIsChecked, toReceiveJobInfo, isChecked } =
+    useRegisterGradeFormStore();
   const backProgress = useFormProgressStore(selectBackProgress);
   const [isCheckedPrivacyPolicy, setIsCheckedPrivacyPolicy] = useState(false);
 
   useEffect(() => {
     setIsChecked(isCheckedPrivacyPolicy);
   }, [isCheckedPrivacyPolicy]);
+
   // useEffect(() => {
   //   const postData = async () => {
   //     const data = { grade };
@@ -90,7 +91,7 @@ export const Presenter: FC<PresenterProps & DataProps> = ({
             <Button
               onClick={onClick}
               className="form__container__button__submit"
-              disabled={!isCheckedPrivacyPolicy}
+              isDisabled={!isChecked}
             >
               送信
             </Button>

@@ -15,10 +15,15 @@ export const routes = {
   signinFailed: '/signin/failed',
   updateComplete: '/account/grade/complete',
   advertisements: '/advertisements',
+  accountGrade: '/account/grade',
+  accountCard: '/account/card',
+  signinCafeonly: '/signin/cafeonly',
+  accountGraduation: '/account/graduation',
 
   apiRegister: '/api/register',
   apiAccount: '/api/account',
   apiUpdateGrade: '/api/update/grade',
+  apitVisitCount: '/api/visit/count',
 };
 
 export const HP_URL = `https://nottheuniversity.com`;
@@ -29,6 +34,7 @@ export const apiRoutes = {
   register: `/auth/local/register`,
   signin: `/auth/local`,
   signage: `/signage`,
+  students: `/students`,
 };
 
 export type NavItem = { name: string; link: string; isExternal?: boolean };

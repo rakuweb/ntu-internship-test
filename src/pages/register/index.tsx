@@ -20,7 +20,14 @@ import {
 import { useLiff } from 'contexts/LineAuthContext';
 import { routes } from 'constants/routes';
 import { useAccountStore } from 'features/account/hooks';
-import { selectSetAccount } from 'features/account/selectors';
+import { selectSetAccount, selectAccount } from 'features/account/selectors';
+import { GetStudentByIdQuery, GetStudentByIdDocument } from 'types/gql/graphql';
+import { initializeApollo } from 'lib/apollo/client';
+import {
+  useStudentStore,
+  selectStudentId,
+  selectSetStudent,
+} from 'features/student';
 
 // type layer
 // type Props = InferGetStaticPropsType<typeof getStaticProps>;
@@ -40,6 +47,9 @@ export const Index: NextPage = () => {
   const { liff } = useLiff();
   const router = useRouter();
   const setAccount = useAccountStore(selectSetAccount);
+  const { studentId } = useAccountStore(selectAccount);
+  const apolloClient = initializeApollo();
+  const setStudent = useStudentStore(selectSetStudent);
 
   useEffect(() => {
     setIsClient(true);

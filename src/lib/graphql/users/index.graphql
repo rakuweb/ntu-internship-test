@@ -10,6 +10,14 @@ query getUsersByLineId($lineId: String) {
         student {
           data {
             id
+            attributes {
+              line_id
+              to_receive_job_info
+              grade_jp
+              department_jp
+              grade_updated_at
+              name
+            }
           }
         }
       }

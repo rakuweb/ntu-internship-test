@@ -133,10 +133,10 @@ export const Presenter: FC<PresenterProps & DataProps> = ({
               戻る
             </Button>
             <Button
-              // onClick={onClick}
+              onClick={onClick}
               className="form__container__button__submit"
-              // isDisabled={isSending || !isChecked}
-              // isLoading={isSending}
+              isDisabled={isSending || !isChecked}
+              isLoading={isSending}
             >
               送信
             </Button>

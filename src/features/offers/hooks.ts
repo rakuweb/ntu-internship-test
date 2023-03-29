@@ -1,4 +1,4 @@
-import create from 'zustand';
+import { create } from 'zustand';
 
 import { OffersSlice, OfferSlice } from './types';
 import { createOffersSlice, createTargetOfferSlice } from './slice';

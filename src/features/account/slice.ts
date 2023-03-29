@@ -13,8 +13,10 @@ export const createAccountSlice: StateCreator<
   prevPath: '',
   studentId: '',
   grade: '',
+  lineId: '',
 
   setAccount: (props) => set(() => ({ ...props })),
   signout: () => set({ username: '', email: '' }),
   setPrevPath: (props) => set(() => ({ prevPath: props })),
+  setLineId: (id) => set(() => ({ lineId: id })),
 });

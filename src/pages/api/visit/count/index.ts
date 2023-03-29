@@ -2,9 +2,6 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import { initializeApollo } from 'lib/apollo/client';
 import { UpdpateGradeMutation, UpdpateGradeDocument } from 'types/gql/graphql';
-import axios from 'axios';
-import { API_URL, CMS_URL } from '~/constants/env';
-import { apiRoutes, routes } from '~/constants';
 
 export type RequestProps = {
   grade: string;
@@ -25,12 +22,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         const updatedAt = `${now.getFullYear()}-${(now.getMonth() + 1)
           .toString()
           .padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')}`;
-        // const resp = await axios.put(`${API_URL}${apiRoutes.students}/${id}`, {
-        //   id,
-        //   grade,
-        //   to_receive_job_info,
-        //   updated_at: updatedAt,
-        // });
+        console.log(updatedAt);
         const { data } = await apolloClient.mutate<UpdpateGradeMutation>({
           mutation: UpdpateGradeDocument,
           variables: {
@@ -43,13 +35,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
         res.status(200).json({
           exist: true,
-          // grade: resp.data.grade_jp,
           grade: data?.updateStudent?.data?.attributes?.grade_jp,
-          // studentId: resp.data?.id,
           studentId: data?.updateStudent?.data?.id,
-          gradeUpdatedAt:
-            data?.updateStudent?.data?.attributes?.grade_updated_at,
-          username: data?.updateStudent?.data?.attributes?.name,
         });
       } catch (err: any) {
         console.error(err);

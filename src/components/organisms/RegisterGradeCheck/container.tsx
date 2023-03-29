@@ -13,8 +13,8 @@ import {
 } from 'features/registerForm';
 import { routes } from '~/constants/routes';
 import { ORIGIN_URL } from '~/constants/env';
-import { useLiff } from 'contexts/LineAuthContext';
 import { selectAccount, useAccountStore } from '~/features/account';
+import { useStudentStore } from 'features/student';
 
 // type layer
 export type ContainerProps = PresenterProps;
@@ -27,24 +27,30 @@ export const Container: FC<ContainerProps> = ({ ...props }) => {
   const { grade, toReceiveJobInfo } = useRegisterGradeFormStore(
     selectRegisterGradeFormItem
   );
-  const { studentId } = useAccountStore(selectAccount);
+  const { studentId, lineId } = useAccountStore(selectAccount);
   const { reset } = useFormContext<RegisterGradeFormSchema>();
   const router = useRouter();
-  const { liff } = useLiff();
+  const { setStudent } = useStudentStore();
 
   const handleClick = async () => {
     startSending();
     try {
-      // const profile = await liff.getProfile();
       const registerData = {
         grade,
         to_receive_job_info: toReceiveJobInfo,
-        lineId: 'aaaaaaa', // profile.userId,
-        id: 1,
+        lineId: lineId,
+        id: studentId,
       };
-      await axios.post(apiUrl, {
+      const response = await axios.post(apiUrl, {
         ...registerData,
         // recaptcha: token,
+      });
+      const studentData = response.data;
+      setStudent({
+        grade: studentData.grade,
+        id: studentData.id,
+        gradeUpdatedAt: new Date(studentData.gradeUpdatedAt),
+        username: studentData.username,
       });
 
       reset();

@@ -4,6 +4,7 @@ export type AccountSlice = {
   prevPath: string;
   grade: string;
   studentId: string;
+  lineId: string;
 
   setAccount: (props: {
     username: string;
@@ -13,4 +14,5 @@ export type AccountSlice = {
   }) => void;
   signout: () => void;
   setPrevPath: (props: string) => void;
+  setLineId: (id: string) => void;
 };

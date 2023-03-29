@@ -7,10 +7,12 @@ import {
   useRef,
   useState,
 } from 'react';
-import { Liff } from '@line/liff';
+import { liff as __liff } from '@line/liff';
 import { LiffMockPlugin } from '@line/liff-mock';
 
-import {LIFF_ID} from 'constants/env';
+import { LIFF_ID } from 'constants/env';
+
+export type Liff = typeof __liff;
 
 const LiffContext = createContext<{
   liff?: Liff;
@@ -37,7 +39,7 @@ export const LiffProvider: FC<
     if (typeof window === 'undefined') return;
     if (didLoadRef.current === true) return;
     didLoadRef.current = true;
-    import('@line/liff').then((data: any) => setLiffSDK(data));
+    import('@line/liff').then((data: any) => setLiffSDK(data?.liff));
   }, []);
 
   // init Liff
@@ -84,6 +86,5 @@ export const generateEnv = () => {
       mock = true;
       break;
   }
-  return {liffId, mock};
+  return { liffId, mock };
 };
-

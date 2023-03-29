@@ -1,5 +1,5 @@
 // import layer
-import { VFC } from 'react';
+import { FC } from 'react';
 import { css } from '@emotion/react';
 import { mq } from '~/constants/styles';
 import { Box, Heading, Text } from '@chakra-ui/react';
@@ -11,7 +11,7 @@ import Caferoom from './caferoom';
 export type PresenterProps = Record<string, string>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   return (
     <Box css={styles} bgColor={'#F4F4F4'}>
       <Box
@@ -40,6 +40,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
     </Box>
   );
 };
+
 // styles
 const styles = css`
   .box {
