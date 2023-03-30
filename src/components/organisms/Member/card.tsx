@@ -16,8 +16,25 @@ const formatDate = (_date: Date): string => {
   return `${year}/${month}/${day}`;
 };
 
+const rankList = [
+  { background: 'linear-gradient(#545454, #000000)', count: 50, name: '#fff' },
+  {
+    background:
+      'linear-gradient(135deg, #b8751e 0%, #ffce08 37%, #e1ce08 63%, #c0a683 100%)',
+    count: 10,
+    name: '#fff',
+  },
+  { background: 'linear-gradient(#6494ed, #125dea)', count: 3, name: '#fff' },
+  { background: '#eaeaea', count: 1, name: '#000' },
+];
+
 const Card = () => {
-  const [loaded, setLoaded] = useState<boolean>(false);
+  const [loaded, setLoaded] = useState<boolean>(true);
+  const [target, setTarget] = useState({
+    background: '#eaeaea',
+    count: 1,
+    name: '#000',
+  });
   const student = useStudentStore(selectStudent);
   const [play] = useSound('/music/card.mp3', {
     onend: () => {
@@ -33,6 +50,10 @@ const Card = () => {
   useEffect(() => {
     if (!student?.username || !student?.grade || !student?.gradeUpdatedAt)
       return;
+
+    const rank = rankList.find(({ count }) => student.totalVisitCount >= count);
+
+    rank && setTarget(rank);
 
     const timeoutId = setTimeout(function() {
       setLoaded(true);
@@ -78,13 +99,14 @@ const Card = () => {
         borderRadius={'20'}
         position={'relative'}
         boxShadow={'0px 4px 1px rgba(0, 0, 0, 0.1)'}
-        // background={'#eaeaea'}
-        // #eaeaeaの時のみ名前とGrade,IDを黒にする
+        background={target.background}
+      // background={'#eaeaea'}
+      // #eaeaeaの時のみ名前とGrade,IDを黒にする
 
-        // background={'linear-gradient(#6494ed, #125dea)'}
-        background={
-          'linear-gradient(135deg, #b8751e 0%, #ffce08 37%, #e1ce08 63%, #c0a683 100%)'
-        }
+      // background={'linear-gradient(#6494ed, #125dea)'}
+      // background={
+      //   'linear-gradient(135deg, #b8751e 0%, #ffce08 37%, #e1ce08 63%, #c0a683 100%)'
+      // }
       // background={'linear-gradient(#545454, #000000)'}
       // background={'linear-gradient(135deg,#21D4FD, #B721FF)'}
       >
@@ -127,10 +149,11 @@ const Card = () => {
               letterSpacing={'3px'}
               display={'flex'}
               alignItems={'flex-end'}
-              color={'white'}
+              color={target.name}
+            // color={'white'}
             >
               {student.username}
-              <Text as={'span'} fontSize={'12px'}>
+              <Text as={'span'} fontSize={'12px'} color={target.name}>
                 様
               </Text>
             </Heading>
@@ -149,6 +172,7 @@ const Card = () => {
               fontSize={'10px'}
               fontWeight={'bold'}
               fontFamily={"'Noto Sans JP', sans-serif"}
+              color={target.name}
             >
               {gradeList[student.grade]} Student
             </Text>
@@ -159,6 +183,7 @@ const Card = () => {
               fontSize={'10px'}
               fontWeight={'bold'}
               fontFamily={"'Noto Sans JP', sans-serif"}
+              color={target.name}
             >
               {student.id}
             </Text>
