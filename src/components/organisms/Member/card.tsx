@@ -1,6 +1,5 @@
 import { Box, Heading, Text } from '@chakra-ui/react';
 import { css } from '@emotion/react';
-import useSound from 'use-sound';
 import { useEffect, useState } from 'react';
 
 import { useStudentStore, selectStudent } from 'features/student';
@@ -36,17 +35,20 @@ const Card = () => {
     name: '#000',
   });
   const student = useStudentStore(selectStudent);
-  const [play] = useSound('/music/card.mp3', {
-    onend: () => {
-      console.log('Sound ended');
-    },
-  });
 
   useEffect(() => {
     if (!loaded) return;
 
     if (document) {
-      (document.getElementById('btn_audio') as HTMLAudioElement).play();
+      if (
+        rankList.map((rank) => rank.count).includes(student.totalVisitCount)
+      ) {
+        (
+          document.getElementById('btn_levelup_audio') as HTMLAudioElement
+        ).play();
+      } else {
+        (document.getElementById('btn_audio') as HTMLAudioElement).play();
+      }
     }
     // play();
   }, [loaded]);
@@ -98,6 +100,9 @@ const Card = () => {
 
   return loaded ? (
     <Box w={'333px'} m={'auto'} css={styles}>
+      <audio id={'btn_levelup_audio'}>
+        <source src={'/music/levelup.mp3'} type={`audio/mp3`} />
+      </audio>
       <audio id={'btn_audio'}>
         <source src={'/music/card.mp3'} type={`audio/mp3`} />
       </audio>
