@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { NextPage, InferGetStaticPropsType } from 'next/types';
 import { useRouter } from 'next/router';
 
-import { Index as Template } from '~/components/templates/Member2';
+import { Index as Template } from '~/components/templates/MemberCardOnly';
 import { SeoComponent } from 'organisms/SeoComponent';
 import { CANONICAL_URL } from '~/constants';
 import { parseSeo } from '~/lib';

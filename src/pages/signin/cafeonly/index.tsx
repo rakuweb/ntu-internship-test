@@ -11,22 +11,17 @@ import { parseSeo } from '~/lib';
 import { useLiff } from 'contexts/LineAuthContextInternship';
 import { routes } from 'constants/routes';
 import { useAccountStore } from 'features/account/hooks';
-import {
-  selectSetAccount,
-  selectPrevPath,
-  selectSetPrevPath,
-  selectSetLineId,
-} from 'features/account/selectors';
+import { selectSetAccount, selectSetLineId } from 'features/account/selectors';
 import { Index as Authenticating } from 'components/templates/Register/Authenticating';
 import {
   useStudentStore,
-  selectSetStudentId,
   selectSetStudent,
   selectStudent,
 } from 'features/student';
 
 // type layer
 
+const CAFE_ENTRY_QUERY = 'admissionapplication';
 // component layer
 export const Index: NextPage = () => {
   const title = ``; // eslint-disable-line
@@ -39,13 +34,23 @@ export const Index: NextPage = () => {
   const setStudent = useStudentStore(selectSetStudent);
   const student = useStudentStore(selectStudent);
   const [connected, setConnected] = useState<boolean>(false);
+  const [query, setQuery] = useState<string>(null);
 
   useEffect(() => {
+    if (!router?.query) return;
+
+    setQuery(router.query.cafeonly as string);
     setIsClient(true);
-  }, []);
+  }, [router, router?.query?.cafeonly]);
 
   useEffect(() => {
-    if (!isClient) return;
+    if (query === null) return;
+
+    if (query === '' || typeof query === undefined) {
+      router.push(routes.signin);
+      return;
+    }
+
     const signin = async () => {
       if (!liff) return;
       if (!liff.isLoggedIn()) {
@@ -54,12 +59,14 @@ export const Index: NextPage = () => {
     };
 
     signin();
-  }, [isClient, liff]);
+  }, [isClient, liff, query]);
 
   // アカウント確認
   useEffect(() => {
     // line ログイン
     if (!liff || !liff.isLoggedIn()) return;
+    if (query === null) return;
+    if (!query) router.push(routes.signin);
 
     const url = `${ORIGIN_URL}${routes.apiAccount}`;
     // 非同期関数 useEffect対策
@@ -117,7 +124,11 @@ export const Index: NextPage = () => {
     if (student?.id && !student?.gradeUpdatedAt) {
       router.push(routes.accountGrade);
     } else if (student?.id && student?.gradeUpdatedAt) {
-      router.push(routes.accountCard);
+      if (query === CAFE_ENTRY_QUERY) {
+        router.push(routes.accountCard);
+      } else {
+        router.push(routes.signinMembercard);
+      }
     }
   }, [liff, liff?.isLoggedIn(), connected]);
 

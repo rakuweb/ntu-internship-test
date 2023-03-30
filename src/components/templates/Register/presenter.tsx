@@ -4,7 +4,7 @@ import { Box } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
 import { Header } from 'components/headers/Header';
-import { Footer } from 'components/footers/OldFooter';
+import { Footer } from 'components/footers/Footer';
 import { mq } from '~/constants/styles';
 import { RegisterForm } from '~/components/organisms/RegisterForm';
 import { StepBar } from '~/components/organisms/StepBar';

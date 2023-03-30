@@ -27,7 +27,7 @@ const rankList = [
   { background: '#eaeaea', count: 1, name: '#000' },
 ];
 
-const Card = () => {
+const Card = ({ noSound = false }: { noSound?: boolean }) => {
   const [loaded, setLoaded] = useState<boolean>(false);
   const [target, setTarget] = useState({
     background: '#eaeaea',
@@ -37,6 +37,7 @@ const Card = () => {
   const student = useStudentStore(selectStudent);
 
   useEffect(() => {
+    if (noSound) return;
     if (!loaded) return;
 
     if (document) {

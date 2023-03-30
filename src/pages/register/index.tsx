@@ -1,6 +1,6 @@
 // import layer
 import { useState, useEffect } from 'react';
-import { NextPage, InferGetStaticPropsType } from 'next/types';
+import { NextPage } from 'next/types';
 import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
@@ -21,13 +21,6 @@ import { useLiff } from 'contexts/LineAuthContext';
 import { routes } from 'constants/routes';
 import { useAccountStore } from 'features/account/hooks';
 import { selectSetAccount, selectAccount } from 'features/account/selectors';
-import { GetStudentByIdQuery, GetStudentByIdDocument } from 'types/gql/graphql';
-import { initializeApollo } from 'lib/apollo/client';
-import {
-  useStudentStore,
-  selectStudentId,
-  selectSetStudent,
-} from 'features/student';
 
 // type layer
 // type Props = InferGetStaticPropsType<typeof getStaticProps>;
@@ -37,7 +30,6 @@ export const Index: NextPage = () => {
   const title = ``; // eslint-disable-line
   const description = ``;
   const seo = parseSeo(title, description);
-  const redirectUri = `${ORIGIN_URL}${routes.register}`;
   const methods = useForm<RegisterFormSchema>({
     defaultValues: { willStartWorking: false, isInterestedInInternship: false },
     resolver: yupResolver(registerFormSchema),
@@ -47,9 +39,6 @@ export const Index: NextPage = () => {
   const { liff } = useLiff();
   const router = useRouter();
   const setAccount = useAccountStore(selectSetAccount);
-  const { studentId } = useAccountStore(selectAccount);
-  const apolloClient = initializeApollo();
-  const setStudent = useStudentStore(selectSetStudent);
 
   useEffect(() => {
     setIsClient(true);
@@ -85,7 +74,7 @@ export const Index: NextPage = () => {
           studentId: studentId as string,
         });
 
-        router.push(routes.registered);
+        router.push(routes.signinMembercard);
         window.scroll({ top: 0 });
       }
     };

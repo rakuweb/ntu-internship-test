@@ -18,8 +18,8 @@ export const Presenter: FC<PresenterProps> = () => {
       <Header />
       <Box as={`main`}>
         <BreadcrumbOffers title={`会員証`} />
-        <Box mt={{base: `2.5rem`}}>
-          <Card />
+        <Box mt={{ base: `2.5rem` }}>
+          <Card noSound />
         </Box>
       </Box>
       <Footer />

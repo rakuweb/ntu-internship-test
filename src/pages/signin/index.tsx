@@ -19,7 +19,6 @@ import {
 import { Index as Authenticating } from 'components/templates/Register/Authenticating';
 
 // type layer
-// type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 // component layer
 export const Index: NextPage = () => {
@@ -36,12 +35,12 @@ export const Index: NextPage = () => {
     setIsClient(true);
   }, []);
 
-  // useEffect(() => {
-  //   if (!liff) return;
-  //   if (!liff.isLoggedIn()) {
-  //     liff.login(); //{ redirectUri: redirectUri });
-  //   }
-  // }, [liff]);
+  useEffect(() => {
+    if (!liff) return;
+    if (!liff.isLoggedIn()) {
+      liff.login(); //{ redirectUri: redirectUri });
+    }
+  }, [liff]);
 
   useEffect(() => {
     if (!liff || !liff.isLoggedIn()) return;
@@ -69,11 +68,15 @@ export const Index: NextPage = () => {
         setPrevPath('');
         const lsNextPath = window.localStorage.getItem('prevUrl');
 
-        if (lsNextPath.startsWith('https')) {
+        if (lsNextPath?.startsWith('https')) {
           window.location.href = lsNextPath;
         } else {
-          nextPath ? router.push(nextPath) : router.push(lsNextPath);
-          window.scroll({ top: 0 });
+          if (nextPath) {
+            nextPath ? router.push(nextPath) : router.push(lsNextPath);
+            window.scroll({ top: 0 });
+          } else {
+            router.push(routes.signinMembercard);
+          }
         }
       } else {
         router.push(routes.signinFailed);

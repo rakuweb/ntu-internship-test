@@ -18,6 +18,7 @@ export const routes = {
   accountGrade: '/account/grade',
   accountCard: '/account/card',
   signinCafeonly: '/signin/cafeonly',
+  signinMembercard: '/signin/membercard',
   accountGraduation: '/account/graduation',
 
   apiRegister: '/api/register',
