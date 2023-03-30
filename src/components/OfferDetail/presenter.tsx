@@ -165,16 +165,16 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             justifyContent={'space-between'}
             pt={'0.5rem'}
           >
-            {[offer.simage1, offer.simage2, offer.simage3, offer.simage4].map(
-              (image, index) => (
+            {[offer.simage1, offer.simage2, offer.simage3, offer.simage4]
+              .filter(Boolean)
+              .map((image, index) => (
                 <NImage
                   key={`image-${index}`}
                   image={{ ...image }}
                   w={'49%'}
                   pt={'0.5rem'}
                 />
-              )
-            )}
+              ))}
           </Box>
         </div>
       </Box>
