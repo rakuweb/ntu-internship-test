@@ -20,11 +20,12 @@ const Caferoom = () => {
     const rank = rankList.find(({ count }) => student.totalVisitCount >= count);
 
     rank && setTarget(rank);
-    rank && setRemainCount(() => {
-      const result = rank.next - student.totalVisitCount;
+    rank &&
+      setRemainCount(() => {
+        const result = rank.next - student.totalVisitCount;
 
-      return result;
-    });
+        return result;
+      });
   }, [student]);
   console.log(target);
 
@@ -58,7 +59,12 @@ const Caferoom = () => {
           lineHeight={'1.4'}
         >
           {student.visitCountOfMonth}
-          <Box fontSize={'10px'} color={'#707070'} fontWeight={'normal'}>
+          <Box
+            fontSize={'10px'}
+            color={'#707070'}
+            fontWeight={'normal'}
+            w={'106px'}
+          >
             {`（今までに${student.totalVisitCount}回ご来店）`}
           </Box>
         </Text>
@@ -84,7 +90,12 @@ const Caferoom = () => {
           lineHeight={'1.4'}
         >
           {target?.color}
-          <Box fontSize={'10px'} color={'#707070'} fontWeight={'normal'}>
+          <Box
+            fontSize={'10px'}
+            color={'#707070'}
+            fontWeight={'normal'}
+            w={'106px'}
+          >
             {remainCount >= 0
               ? `（あと${remainCount}回で${target.nextColor}）`
               : ``}
