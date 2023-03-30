@@ -44,7 +44,11 @@ const Card = () => {
 
   useEffect(() => {
     if (!loaded) return;
-    play();
+
+    if (document) {
+      (document.getElementById('btn_audio') as HTMLAudioElement).play();
+    }
+    // play();
   }, [loaded]);
 
   useEffect(() => {
@@ -94,6 +98,9 @@ const Card = () => {
 
   return loaded ? (
     <Box w={'333px'} m={'auto'} css={styles}>
+      <audio id={'btn_audio'}>
+        <source src={'/music/card.mp3'} type={`audio/mp3`} />
+      </audio>
       <Box
         h={'195px'}
         borderRadius={'20'}
