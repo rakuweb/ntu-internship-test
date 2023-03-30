@@ -174,7 +174,7 @@ const Card = () => {
         pt={'10px'}
         fontWeight={'normal'}
       >
-        更新日：{formatDate(student.gradeUpdatedAt)}
+        登録日：{formatDate(student.registeredAt)}
       </Heading>
     </Box>
   ) : (

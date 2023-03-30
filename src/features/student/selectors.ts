@@ -7,6 +7,7 @@ export const selectStudent = (state: StudentSlice) => ({
   gradeUpdatedAt: state.gradeUpdatedAt,
   visitCountOfMonth: state.visitCountOfMonth,
   totalVisitCount: state.totalVisitCount,
+  registeredAt: state.registeredAt,
 });
 export const selectStudentId = (state: StudentSlice) => state.id;
 

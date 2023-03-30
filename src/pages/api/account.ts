@@ -18,6 +18,7 @@ type Data = {
   grade?: string;
   studentId?: string;
   gradeUpdatedAt?: string;
+  registeredAt?: string;
 };
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
@@ -54,6 +55,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
                 grade_jp,
                 grade_updated_at,
                 name,
+                registered_at,
               },
             },
           },
@@ -67,6 +69,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
             grade: grade_jp,
             studentId: id,
             gradeUpdatedAt: grade_updated_at,
+            registeredAt: registered_at,
           });
         }
         res.status(200).json({
@@ -76,6 +79,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
           grade: grade_jp,
           studentId: id,
           gradeUpdatedAt: grade_updated_at,
+          registeredAt: registered_at,
         });
       } catch (err: any) {
         console.error(err);

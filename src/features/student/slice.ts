@@ -8,12 +8,13 @@ export const createStudentSlice: StateCreator<
   [],
   StudentSlice
 > = (set) => ({
-  username: '熊澤隼斗',
-  id: '111111',
-  grade: '大学1年生',
+  username: '',
+  id: '',
+  grade: '',
   gradeUpdatedAt: new Date(), // undefined,
   visitCountOfMonth: 0,
   totalVisitCount: 0,
+  registeredAt: new Date(),
 
   setStudent: (props) => set(() => ({ ...props })),
   setStudentId: (id: string) => set(() => ({ id })),

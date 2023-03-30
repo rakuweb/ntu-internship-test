@@ -17,6 +17,7 @@ query getUsersByLineId($lineId: String) {
               department_jp
               grade_updated_at
               name
+              registered_at
             }
           }
         }

@@ -75,8 +75,14 @@ export const Index: NextPage = () => {
 
         const { exist } = res.data;
         if (exist) {
-          const { email, username, grade, studentId, gradeUpdatedAt } =
-            res.data;
+          const {
+            email,
+            username,
+            grade,
+            studentId,
+            gradeUpdatedAt,
+            registeredAt,
+          } = res.data;
           console.log(res.data);
           setLineId(profile.userId);
           setAccount({
@@ -90,6 +96,7 @@ export const Index: NextPage = () => {
             username: username,
             grade: grade,
             gradeUpdatedAt: gradeUpdatedAt ? new Date(gradeUpdatedAt) : null,
+            registeredAt: registeredAt ? new Date(registeredAt) : null,
           });
 
           setConnected(true);
