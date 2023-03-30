@@ -2,14 +2,10 @@ import { Box, Heading, Text } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 import useSound from 'use-sound';
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
 
 import { useStudentStore, selectStudent } from 'features/student';
-import { routes } from '~/constants/routes';
-import { ORIGIN_URL } from '~/constants/env';
 
 import Ntu from '../../../../public/svg/ntucard.svg';
-// import sound from '../../../../public/music/card.mp3';
 
 const formatDate = (_date: Date): string => {
   const date = new Date(_date);
@@ -28,7 +24,6 @@ const Card = () => {
       console.log('Sound ended');
     },
   });
-  const router = useRouter();
 
   useEffect(() => {
     if (!loaded) return;
@@ -47,22 +42,6 @@ const Card = () => {
       clearTimeout(timeoutId);
     };
   }, [student]);
-
-  // useEffect(() => {
-  //   if (!student?.id) return;
-  //   if (!loaded) return;
-  //   const apiUrl = `${ORIGIN_URL}${routes.apitVisitCount}`;
-  //
-  //   const handler = async () => {
-  //     try {
-  //       await axios.post(apiUrl, student.id);
-  //     } catch (err) {
-  //       console.error(err);
-  //     }
-  //   };
-  //
-  //   handler();
-  // }, [loaded, student?.id]);
 
   const gradeList = {
     大学1年生: '1st',

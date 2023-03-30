@@ -8,10 +8,6 @@ import { Footer } from '~/components/footers/Footer';
 import { Header } from '~/components/headers/Header';
 import Card from '../../../components/organisms/Member/card';
 
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/autoplay';
-
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
@@ -22,7 +18,9 @@ export const Presenter: FC<PresenterProps> = () => {
       <Header />
       <Box as={`main`}>
         <BreadcrumbOffers title={`会員証`} />
-        <Card />
+        <Box mt={{base: `2.5rem`}}>
+          <Card />
+        </Box>
       </Box>
       <Footer />
     </>

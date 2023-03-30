@@ -15,4 +15,8 @@ export type StudentSlice = {
     visitCountOfMonth?: number;
   }) => void;
   setStudentId: (id: string) => void;
+  setVisitCounts: (props: {
+    totalVisitCount: number;
+    visitCountOfMonth: number;
+  }) => void;
 };

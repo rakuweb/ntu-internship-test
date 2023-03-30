@@ -28,6 +28,22 @@ query getVisitCountsByStudentId($id: ID!) {
   }
 }
 
+query getVisitCountTotalByStudentId($id: ID!) {
+  visitCounts(
+    filters: { student: { id: { eq: $id } } }
+    pagination: { limit: -1 }
+  ) {
+    data {
+      id
+    }
+    meta {
+      pagination {
+        total
+      }
+    }
+  }
+}
+
 query getVisitCountsByStudentIdAndDates(
   $id: ID!
   $start_date: DateTime

@@ -12,3 +12,5 @@ export const selectStudentId = (state: StudentSlice) => state.id;
 
 export const selectSetStudent = (state: StudentSlice) => state.setStudent;
 export const selectSetStudentId = (state: StudentSlice) => state.setStudentId;
+export const selectSetVisitCounts = (state: StudentSlice) =>
+  state.setVisitCounts;

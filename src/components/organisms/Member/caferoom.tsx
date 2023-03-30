@@ -1,6 +1,33 @@
 import { Box, Heading, Text } from '@chakra-ui/react';
 
+import { useStudentStore, selectStudent } from 'features/student';
+import { useEffect, useState } from 'react';
+
+const rankList = [
+  { color: 'Black', count: 50, next: 0, nextColor: '' },
+  { color: 'Gold', count: 10, next: 50, nextColor: 'Black' },
+  { color: 'Blue', count: 3, next: 10, nextColor: 'Gold' },
+  { color: 'White', count: 1, next: 3, nextColor: 'Blue' },
+];
+
 const Caferoom = () => {
+  const student = useStudentStore(selectStudent);
+  const [remainCount, setRemainCount] = useState<number>(0);
+  const [target, setTarget] = useState(rankList[3]);
+
+  useEffect(() => {
+    if (!student?.id) return;
+    const rank = rankList.find(({ count }) => student.totalVisitCount >= count);
+
+    rank && setTarget(rank);
+    rank && setRemainCount(() => {
+      const result = rank.next - student.totalVisitCount;
+
+      return result;
+    });
+  }, [student]);
+  console.log(target);
+
   return (
     <Box pt={'50px'}>
       <Heading
@@ -30,9 +57,9 @@ const Caferoom = () => {
           fontSize={'23px'}
           lineHeight={'1.4'}
         >
-          2
+          {student.visitCountOfMonth}
           <Box fontSize={'10px'} color={'#707070'} fontWeight={'normal'}>
-            （今までに2回ご来店）
+            {`（今までに${student.totalVisitCount}回ご来店）`}
           </Box>
         </Text>
       </Box>
@@ -56,9 +83,11 @@ const Caferoom = () => {
           fontSize={'23px'}
           lineHeight={'1.4'}
         >
-          White
+          {target?.color}
           <Box fontSize={'10px'} color={'#707070'} fontWeight={'normal'}>
-            （あと32回でブラック）
+            {remainCount >= 0
+              ? `（あと${remainCount}回で${target.nextColor}）`
+              : ``}
           </Box>
         </Text>
       </Box>
