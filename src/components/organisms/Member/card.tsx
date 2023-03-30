@@ -29,7 +29,7 @@ const rankList = [
 ];
 
 const Card = () => {
-  const [loaded, setLoaded] = useState<boolean>(true);
+  const [loaded, setLoaded] = useState<boolean>(false);
   const [target, setTarget] = useState({
     background: '#eaeaea',
     count: 1,
@@ -163,7 +163,8 @@ const Card = () => {
             bottom={'10px'}
             left={'18px'}
             lineHeight={'1.4'}
-            color={'white'}
+            color={target.name}
+          // color={'white'}
           >
             <Text fontSize={'9px'} fontFamily={"'Noto Sans JP', sans-serif"}>
               Grade:
