@@ -17,7 +17,7 @@ const formatDate = (_date: Date): string => {
 };
 
 const Card = () => {
-  const [loaded, setLoaded] = useState<boolean>(true);
+  const [loaded, setLoaded] = useState<boolean>(false);
   const student = useStudentStore(selectStudent);
   const [play] = useSound('/music/card.mp3', {
     onend: () => {
