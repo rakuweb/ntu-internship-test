@@ -50,6 +50,7 @@ export type OfferSliceData = {
   formUrl: string;
   people: string;
   jobDescription: string;
+  aboutCompany: string;
 };
 
 export type OfferSlice = OfferSliceData & {

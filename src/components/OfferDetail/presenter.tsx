@@ -159,26 +159,106 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               },
             }}
           />
-          <Box
-            display={'flex'}
-            flexWrap={'wrap'}
-            justifyContent={'space-between'}
-            pt={'0.5rem'}
-          >
-            {[offer.simage1, offer.simage2, offer.simage3, offer.simage4]
-              .filter(Boolean)
-              .map((image, index) => (
-                <NImage
-                  key={`image-${index}`}
-                  image={{ ...image }}
-                  w={'49%'}
-                  pt={'0.5rem'}
-                />
-              ))}
-          </Box>
         </div>
       </Box>
+      {/* アルバイト概要 */}
+      <Box
+        w={`100vw`}
+        bg={`#f5f5f5`}
+        pt={`40px`}
+        fontFamily={`'Noto Sans JP', sans-serif`}
+      >
+        {offer.aboutCompany && (
+          <>
+            <Box
+              as={`h2`}
+              w={{ base: `100%`, lg: `760px` }}
+              m={{ base: `0 0 24px 0`, lg: `0 auto 24px auto` }}
+              px={{ base: ` 16px`, lg: `0` }}
+              fontSize={{ base: `18px`, lg: `25px` }}
+              fontWeight={`700`}
+              mb={{ base: `24px` }}
+            >
+              この会社について
+            </Box>
+            <div className="subsection">
+              <Box
+                className={`znc yugothic-medium`}
+                dangerouslySetInnerHTML={{ __html: offer.aboutCompany }}
+                as={`article`}
+                sx={{
+                  '& > hr': {
+                    borderTop: `1px solid #257fbf`,
+                  },
+                  '& > h2': {
+                    marginTop: { base: '16px', lg: '16px' },
+                    marginBottom: { base: '11px', lg: `16px` },
+                    width: '100%',
+                    fontSize: { base: '18px', lg: '20px' },
+                    color: '#000000',
+                    fontWeight: 'bold',
+                    lineHeight: '1.3em',
+                    borderBottom: `initial`,
+                  },
+                  '& > h3': {
+                    fontSize: { base: '13px', lg: `18px` },
+                    marginTop: { base: '15px', lg: `0` },
+                    marginBottom: { lg: `20px` },
+                    color: '#000000',
+                  },
+                  '& > p': {
+                    fontSize: {
+                      base: `14px`,
+                      lg: `14px`,
+                    },
+                    color: '#000000',
+                    fontWeight: 400,
+                    lineHeight: { base: `1.5em`, lg: `1.5em` },
+                    margin: { base: `15px 0`, lg: 0 },
+                  },
+                  '& > p > a': {
+                    fontSize: { base: `11px`, lg: `14px` },
+                    fontWeight: 400,
+                    lineHeight: `1.2em`,
+                    textDecorationLine: 'underline',
+                    color: `#003968`,
+                    display: `inline`,
+                    width: `fit-content`,
+                    textAlign: `right`,
+                    ':hover': {
+                      filter: `opacity(50%)`,
+                      transition: `all .3s`,
+                    },
+                  },
+                  '& > p > img:not(.emoji)': {
+                    marginY: { lg: `30px` },
+                    w: { base: `100%` },
+                  },
+                }}
+              />
+              <Box
+                display={'flex'}
+                flexWrap={'wrap'}
+                justifyContent={'space-between'}
+                pt={'0.5rem'}
+              >
+                {[offer.simage1, offer.simage2, offer.simage3, offer.simage4]
+                  .filter(Boolean)
+                  .map((image, index) => (
+                    <NImage
+                      key={`image-${index}`}
+                      image={{ ...image }}
+                      w={'49%'}
+                      pt={'0.5rem'}
+                    />
+                  ))}
+              </Box>
+            </div>
+          </>
+        )}
+      </Box>
 
+      {/* 企業概要 */}
       <Box
         w={`100vw`}
         bg={`#f5f5f5`}

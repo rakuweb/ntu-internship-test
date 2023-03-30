@@ -14,6 +14,7 @@ query getOfferById($id: ID) {
         qualification
         people
         job_description
+        about_company
         job_points {
           data {
             id
@@ -32,6 +33,7 @@ query getOfferById($id: ID) {
             }
           }
         }
+
         createdBy {
           id
           firstname

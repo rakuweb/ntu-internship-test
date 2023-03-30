@@ -83,6 +83,9 @@ export const parseToTarget = (entity: OfferEntity): Partial<OfferSliceData> => {
     jobDescription: offer.job_description
       ? markdownToHtml(offer.job_description)
       : '',
+    aboutCompany: offer.about_company
+      ? markdownToHtml(offer.about_company)
+      : '',
   };
 
   return result;

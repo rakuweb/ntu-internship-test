@@ -46,6 +46,7 @@ export const createTargetOfferSlice: StateCreator<
   formUrl: '',
   people: '',
   jobDescription: '',
+  aboutCompany: '',
   setTarget: (entity) => {
     const result = parseToTarget(entity);
     set(() => ({ ...result }));
