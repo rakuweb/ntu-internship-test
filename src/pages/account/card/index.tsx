@@ -19,7 +19,6 @@ import axios from 'axios';
 
 // component layer
 export const Index: NextPage = () => {
-  console.log('account/card');
   const title = ``; // eslint-disable-line
   const description = ``;
   const seo = parseSeo(title, description);
@@ -72,7 +71,6 @@ export const Index: NextPage = () => {
         const data = res.data;
         if (!data?.total === undefined || !data?.countsThisMonth === undefined)
           return;
-        console.log(data);
         setVisitCounts({
           totalVisitCount: data?.total ?? 0,
           visitCountOfMonth: data?.countsThisMonth ?? 0,

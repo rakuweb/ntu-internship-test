@@ -38,6 +38,10 @@ export type OfferSliceData = {
   gainedSkills: string[];
   recruitmentTerms: string;
   image?: ImageType;
+  simage1?: ImageType;
+  simage2?: ImageType;
+  simage3?: ImageType;
+  simage4?: ImageType;
   companyName: string;
   mission: string;
   logo: ImageType;

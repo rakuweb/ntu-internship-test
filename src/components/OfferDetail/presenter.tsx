@@ -15,7 +15,7 @@ import { useLiff } from 'contexts/LineAuthContextInternship';
 
 import { styles } from './styles';
 import { useAccountStore, selectSetPrevPath } from 'features/account';
-
+import { OfferEntity } from 'types/gql/graphql';
 import 'zenn-content-css';
 
 // type layer
@@ -159,6 +159,23 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               },
             }}
           />
+          <Box
+            display={'flex'}
+            flexWrap={'wrap'}
+            justifyContent={'space-between'}
+            pt={'0.5rem'}
+          >
+            {[offer.simage1, offer.simage2, offer.simage3, offer.simage4].map(
+              (image, index) => (
+                <NImage
+                  key={`image-${index}`}
+                  image={{ ...image }}
+                  w={'49%'}
+                  pt={'0.5rem'}
+                />
+              )
+            )}
+          </Box>
         </div>
       </Box>
 
@@ -277,6 +294,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 ))}
               </Flex>
             </div>
+
             {/*
             <div className="termsContainer2">
               <p className="termsTitle">職種</p>

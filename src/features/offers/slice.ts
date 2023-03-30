@@ -38,6 +38,7 @@ export const createTargetOfferSlice: StateCreator<
   gainedSkills: [],
   recruitmentTerms: '',
   image: undefined,
+  image2: undefined,
   companyName: '',
   mission: '',
   logo: undefined,

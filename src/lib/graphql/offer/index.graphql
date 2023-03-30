@@ -49,6 +49,18 @@ query getOfferById($id: ID) {
             }
           }
         }
+        gallery {
+          data {
+            id
+            attributes {
+              width
+              height
+              url
+              alternativeText
+              formats
+            }
+          }
+        }
       }
     }
   }

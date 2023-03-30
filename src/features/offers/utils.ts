@@ -36,12 +36,25 @@ export const parseToOffers = (data: OfferEntity[]): OfferCard[] => {
 
 export const parseToTarget = (entity: OfferEntity): Partial<OfferSliceData> => {
   const offer = entity?.attributes;
+
   const result = {
     title: offer.title,
     companyName: offer.createdBy.lastname,
     id: entity.id,
     image: offer?.image?.data?.attributes?.url
       ? parseImage(offer.image.data.attributes)
+      : undefined,
+    simage1: offer?.gallery?.data[0]?.attributes?.url
+      ? parseImage(offer.gallery.data[0].attributes)
+      : undefined,
+    simage2: offer?.gallery?.data[1]?.attributes?.url
+      ? parseImage(offer.gallery.data[1].attributes)
+      : undefined,
+    simage3: offer?.gallery?.data[2]?.attributes?.url
+      ? parseImage(offer.gallery.data[2].attributes)
+      : undefined,
+    simage4: offer?.gallery?.data[3]?.attributes?.url
+      ? parseImage(offer.gallery.data[3].attributes)
       : undefined,
     // jobType: offer.job_type,
     categories:

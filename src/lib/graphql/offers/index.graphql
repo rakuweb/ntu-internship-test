@@ -43,6 +43,18 @@ query getOffersAll {
             }
           }
         }
+        gallery {
+          data {
+            id
+            attributes {
+              width
+              height
+              url
+              alternativeText
+              formats
+            }
+          }
+        }
       }
     }
   }
