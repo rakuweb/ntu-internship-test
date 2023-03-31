@@ -23,17 +23,6 @@ type Data = {
   error?: string;
 };
 
-export const gradeList = {
-  大学1年生: 'B1',
-  大学2年生: 'B2',
-  大学3年生: 'B3',
-  大学4年生: 'B4',
-  大学5年生: 'B5',
-  大学6年生: 'B6',
-  大学院1年生: 'M1',
-  大学院2年生: 'M2',
-};
-
 const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   const method = req.method;
   const url = `${API_URL}${apiRoutes.register}`;
@@ -64,7 +53,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
             email: data.email,
             // confirmed: false,
             // blocked: false,
-            grade: gradeList[data.grade],
+            grade: data.grade,
             phone: data.phone,
             will_start_working: data.willStartWorking,
             is_interested_in_internship: data.isInterestedInInternship,
@@ -83,7 +72,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
         });
         const result = await response.json();
 
-       if (result?.error?.status === 403) {
+        if (result?.error?.status === 403) {
           res.status(403).json({ error: result?.error?.message });
           return;
         } else if (result?.error?.status === 500) {
@@ -94,7 +83,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
           return;
         }
 
-        res.status(200).json({ message: 'POST' });
+        res.status(200).json({ message: 'POST', ...result });
       } catch (err: any) {
         console.error(err);
         res.status(403).end();
