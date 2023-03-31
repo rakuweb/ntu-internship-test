@@ -15,7 +15,7 @@ export const styles = css`
 
   .consultation-card-list {
     background-color: #f5f5f5;
-    width: 100vw;
+    /* width: 100vw; */
     display: flex;
     flex-direction: column;
     align-items: center;
