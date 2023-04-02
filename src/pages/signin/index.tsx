@@ -15,7 +15,13 @@ import {
   selectSetAccount,
   selectPrevPath,
   selectSetPrevPath,
+  selectSetLineId,
 } from 'features/account/selectors';
+import {
+  useStudentStore,
+  selectSetStudent,
+  selectStudent,
+} from 'features/student';
 import { Index as Authenticating } from 'components/templates/Register/Authenticating';
 
 // type layer
@@ -25,9 +31,13 @@ export const Index: NextPage = () => {
   const title = ``; // eslint-disable-line
   const description = ``;
   const [isClient, setIsClient] = useState(false);
+  const [connected, setConnected] = useState<boolean>(false);
   const { liff } = useLiff();
   const router = useRouter();
   const setAccount = useAccountStore(selectSetAccount);
+  const setLineId = useAccountStore(selectSetLineId);
+  const setStudent = useStudentStore(selectSetStudent);
+  const student = useStudentStore(selectStudent);
   const prevPath = useAccountStore(selectPrevPath);
   const setPrevPath = useAccountStore(selectSetPrevPath);
 
@@ -47,49 +57,80 @@ export const Index: NextPage = () => {
     const url = `${ORIGIN_URL}${routes.apiAccount}`;
 
     const handler = async () => {
-      const profile = await liff.getProfile();
+      try {
+        const profile = await liff.getProfile();
 
-      const res = await axios.get(url, {
-        params: {
-          lineId: profile.userId,
-        },
-      });
-
-      const { exist } = res.data;
-      if (exist) {
-        const { email, username, grade, studentId } = res.data;
-        setAccount({
-          email: email as string,
-          username: username as string,
-          grade: grade as string,
-          studentId: studentId as string,
+        const res = await axios.get(url, {
+          params: {
+            lineId: profile.userId,
+          },
         });
-        const nextPath = prevPath.slice();
-        setPrevPath('');
-        const lsNextPath = window.localStorage.getItem('prevUrl');
+        setLineId(profile.userId);
 
-        if (lsNextPath?.startsWith('https')) {
-          window.location.href = lsNextPath;
+        const { exist } = res.data;
+        if (exist) {
+          const {
+            email,
+            username,
+            grade,
+            studentId,
+            gradeUpdatedAt,
+            registeredAt,
+          } = res.data;
+          setAccount({
+            email: email as string,
+            username: username as string,
+            grade: grade as string,
+            studentId: studentId as string,
+          });
+          setStudent({
+            id: studentId,
+            username: username,
+            grade: grade,
+            gradeUpdatedAt: gradeUpdatedAt ? new Date(gradeUpdatedAt) : null,
+            registeredAt: registeredAt ? new Date(registeredAt) : null,
+          });
+
+          setConnected(true);
         } else {
-          if (nextPath) {
-            nextPath ? router.push(nextPath) : router.push(lsNextPath);
-            window.scroll({ top: 0 });
-          } else {
-            router.push(routes.signinMembercard);
-          }
+          router.push(routes.register);
         }
-      } else {
+      } catch (err) {
+        console.error(err);
         router.push(routes.signinFailed);
         window.scroll({ top: 0 });
       }
-      // else if (email) {
-      //   setAccount({ email: email as string, username: username as string });
-      //   router.push(routes.confirm);
-      // }
     };
 
     handler();
   }, [liff, liff?.isLoggedIn()]);
+
+  useEffect(() => {
+    // api接続が完了したら
+    if (!connected) return;
+
+    if (student?.id && !student?.gradeUpdatedAt) {
+      router.push(`${routes.accountGrade}`);
+    }
+
+    const nextPath = prevPath.slice();
+    setPrevPath('');
+    const lsNextPath = window.localStorage.getItem('prevUrl')?.slice();
+    window.localStorage.removeItem('prevUrl');
+
+    if (lsNextPath?.startsWith('https')) {
+      // 下のページへ移動
+      window.location.href = lsNextPath;
+    } else {
+      if (nextPath) {
+        nextPath ? router.push(nextPath) : router.push(lsNextPath);
+        window.scroll({ top: 0 });
+      } else {
+        // それ以外はカードへ
+        router.push(routes.signinMembercard);
+      }
+    }
+  }, [liff, liff?.isLoggedIn(), connected]);
 
   const message = () => {
     if (isClient) {

@@ -36,9 +36,11 @@ export const Index: NextPage = () => {
   useEffect(() => {
     if (!student?.id || !student?.gradeUpdatedAt) return;
     if (student.grade === '卒業生') {
+      // 卒業生は使用不可
       router.push(routes.accountGraduation);
     }
 
+    // すでにvisit countしていたら
     if (counted) return;
     if (!isClient) return;
 
@@ -58,9 +60,7 @@ export const Index: NextPage = () => {
   useEffect(() => {
     if (connected) return;
     if (!student?.id || !student?.gradeUpdatedAt) return;
-
     if (!isClient) return;
-
     if (!counted) return;
 
     const handler = async () => {

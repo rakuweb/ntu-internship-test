@@ -50,10 +50,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             },
           });
 
-        // if (getData?.visitCounts?.meta?.pagination?.total > 0) {
-        //   res.status(201).end();
-        //   return;
-        // }
+        if (getData?.visitCounts?.meta?.pagination?.total > 0) {
+          res.status(201).end();
+          return;
+        }
 
         ///
         const { data } = await apolloClient.mutate<PostVisitCountMutation>({

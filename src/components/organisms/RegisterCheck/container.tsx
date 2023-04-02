@@ -13,7 +13,7 @@ import {
 import { RegisterFormSchema } from '~/features/registerForm/schema';
 import { routes } from '~/constants/routes';
 import { ORIGIN_URL } from '~/constants/env';
-import { useLiff } from 'contexts/LineAuthContext';
+import { useLiff } from 'contexts/LineAuthContextInternship';
 
 // type layer
 export type ContainerProps = PresenterProps;

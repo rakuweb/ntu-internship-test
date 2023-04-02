@@ -21,7 +21,6 @@ export type PresenterProps = DataProps & StyleProps;
 export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
   const {
     register,
-    watch,
     setValue,
     formState: { errors },
   } = useFormContext<RegisterFormSchema>();
@@ -39,6 +38,9 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
       }
     }
   }, [liff?.isLoggedIn, liff]);
+
+  setValue('toReceiveJobInfo', true);
+  setValue('isInterestedInInternship', true);
 
   return (
     <div css={styles}>
@@ -178,6 +180,13 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
             <Flex align={`center`} className="form__container__item__left">
               インターンシップに興味がありますか？
               <Switch ml={`0.5rem`} {...register('isInterestedInInternship')} />
+            </Flex>
+          </div>
+
+          <div className="form__container__item">
+            <Flex align={`center`} className="form__container__item__left">
+              バイト情報を受け取る<span className="red"> * </span>
+              <Switch ml={`0.5rem`} {...register('toReceiveJobInfo')} />
             </Flex>
           </div>
 

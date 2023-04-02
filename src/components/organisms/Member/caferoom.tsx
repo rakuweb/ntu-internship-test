@@ -27,7 +27,6 @@ const Caferoom = () => {
         return result;
       });
   }, [student]);
-  console.log(target);
 
   return (
     <Box pt={'50px'}>

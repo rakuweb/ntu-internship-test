@@ -29,7 +29,8 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
   } = useFormContext<RegisterGradeFormSchema>();
   const { grade } = useStudentStore(selectStudent);
   const { toReceiveJobInfo } = watch();
-  console.log(grade);
+
+  // setValue('toReceiveJobInfo', true)
 
   return (
     <div css={styles}>

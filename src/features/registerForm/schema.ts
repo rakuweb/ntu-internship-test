@@ -38,6 +38,7 @@ export type RegisterFormSchema = {
   email: string;
   willStartWorking: boolean;
   isInterestedInInternship: boolean;
+  toReceiveJobInfo: boolean;
 };
 
 export const registerFormSchema = yup.object().shape({
@@ -72,6 +73,7 @@ export const registerFormSchema = yup.object().shape({
   isInterestedInInternship: yup.bool(),
   reception: yup.bool(),
   graduation: yup.bool(),
+  toReceiveJobInfo: yup.bool(),
 });
 
 export type RegisterGradeFormSchema = {
@@ -88,4 +90,5 @@ export const registerGradeFormSchema = yup.object().shape({
     ),
   reception: yup.bool(),
   graduation: yup.bool(),
+  toReceiveJobInfo: yup.bool(),
 });

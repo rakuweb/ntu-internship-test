@@ -22,6 +22,8 @@ export const RECAPTCHA_URL = `https://www.google.com/recaptcha/api/siteverify`;
 
 export const UPDATE_INTERVAL = 30;
 
+export const CAFE_ENTRY_QUERY = 'admissionapplication';
+
 // default seo
 export const SEO: DefaultSeoProps = {
   title: '',

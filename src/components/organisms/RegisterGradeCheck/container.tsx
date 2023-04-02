@@ -15,6 +15,7 @@ import { routes } from '~/constants/routes';
 import { ORIGIN_URL } from '~/constants/env';
 import { selectAccount, useAccountStore } from '~/features/account';
 import { useStudentStore } from 'features/student';
+import { CAFE_ENTRY_QUERY } from '~/constants';
 
 // type layer
 export type ContainerProps = PresenterProps;
@@ -56,7 +57,12 @@ export const Container: FC<ContainerProps> = ({ ...props }) => {
       reset();
       successSending();
 
-      router.push(routes.updateComplete);
+      const query = router?.query?.cafeonly ?? null;
+      if (query === CAFE_ENTRY_QUERY) {
+        router.push(`${routes.updateComplete}?cafeonly=${CAFE_ENTRY_QUERY}`);
+      } else {
+        router.push(`${routes.updateComplete}`);
+      }
       window.scroll({ top: 0 });
     } catch (err) {
       console.error(err);

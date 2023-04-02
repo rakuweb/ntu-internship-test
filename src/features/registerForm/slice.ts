@@ -18,6 +18,7 @@ export const createRegisterFormSlice: StateCreator<
   email: '',
   willStartWorking: false,
   isInterestedInInternship: false,
+  toReceiveJobInfo: true,
 
   updateFormData: (data) => set(() => ({ ...data })),
   setIsChecked: (isChecked) => set(() => ({ isChecked: isChecked })),

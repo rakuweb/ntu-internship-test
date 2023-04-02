@@ -5,6 +5,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { parseAuthorization } from 'lib/apollo/parse';
 import { API_URL, WRITE_API_KEY } from 'constants/env';
 import { apiRoutes } from 'constants/routes';
+import { PostStudentMutation, PostStudentDocument } from 'types/gql/graphql';
+import { initializeApollo } from 'lib/apollo/client';
 
 // type Data = {
 //   name?: string;
@@ -26,6 +28,7 @@ type Data = {
 const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   const method = req.method;
   const url = `${API_URL}${apiRoutes.register}`;
+  const apolloClient = initializeApollo();
 
   switch (method) {
     case 'POST': {
@@ -51,8 +54,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
           data: {
             username: data.name,
             email: data.email,
-            // confirmed: false,
-            // blocked: false,
             grade: data.grade,
             phone: data.phone,
             will_start_working: data.willStartWorking,
@@ -72,6 +73,31 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
         });
         const result = await response.json();
 
+        // for student
+        if (result?.user?.id) {
+          const date = new Date(result.user.createdAt);
+          const createdAt = `${date.getFullYear()}-${(date.getMonth() + 1)
+            .toString()
+            .padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
+          const { data: studentData } =
+            await apolloClient.mutate<PostStudentMutation>({
+              mutation: PostStudentDocument,
+              variables: {
+                name: data.name,
+                user_id: result.user.id,
+                phone: data.phone,
+                will_start_working: data.willStartWorking,
+                is_interested_in_internship: data.isInterestedInInternship,
+                line_id: data.lineId,
+                grade_jp: data.grade,
+                department_jp: data.department,
+                registered_at: result.user.createdAt,
+                grade_updated_at: createdAt,
+                to_receive_job_info: data.toReceiveJobInfo,
+              },
+            });
+        }
+
         if (result?.error?.status === 403) {
           res.status(403).json({ error: result?.error?.message });
           return;
@@ -83,10 +109,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
           return;
         }
 
-        res.status(200).json({ message: 'POST', ...result });
+        return res.status(200).json({ message: 'POST', ...result });
       } catch (err: any) {
         console.error(err);
-        res.status(403).end();
+        return res.status(403).end();
       }
       break;
     }

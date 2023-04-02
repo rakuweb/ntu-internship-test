@@ -18,6 +18,7 @@ import {
 import { routes } from 'constants/routes';
 import { useAccountStore } from 'features/account';
 import { useStudentStore, selectStudent } from 'features/student';
+import { CAFE_ENTRY_QUERY } from '~/constants';
 
 // type layer
 
@@ -34,16 +35,26 @@ export const Index: NextPage = () => {
   const router = useRouter();
   const { lineId } = useAccountStore();
   const student = useStudentStore(selectStudent);
-  console.log(lineId);
-  console.log(student);
+  const [query, setQuery] = useState<string>(null);
 
   useEffect(() => {
+    if (!router?.query) return;
+
+    router.query?.cafeonly && setQuery(router.query.cafeonly as string);
     setIsClient(true);
-  }, []);
+  }, [router, router?.query?.cafeonly]);
 
   useEffect(() => {
-    if (!lineId || !student?.id) router.push(routes.signinCafeonly);
-  }, []);
+    if (!isClient) return;
+
+    if (!lineId || !student?.id) {
+      if (query === CAFE_ENTRY_QUERY) {
+        router.push(`${routes.signinCafeonly}?cafeonly=${CAFE_ENTRY_QUERY}`);
+      } else {
+        router.push(`${routes.signin}`);
+      }
+    }
+  }, [lineId, student, query]);
 
   const message = () => {
     if (isClient) {

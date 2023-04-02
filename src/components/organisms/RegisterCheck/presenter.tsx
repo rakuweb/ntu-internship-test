@@ -29,6 +29,7 @@ export const Presenter: FC<PresenterProps & DataProps> = ({
     isSending,
     isChecked,
     setIsChecked,
+    toReceiveJobInfo,
   } = useRegisterFormStore();
   const backProgress = useFormProgressStore(selectBackProgress);
   const [isCheckedPrivacyPolicy, setIsCheckedPrivacyPolicy] = useState(false);
@@ -81,6 +82,14 @@ export const Presenter: FC<PresenterProps & DataProps> = ({
             </p>
             <div className="form__container__item__address__right">
               {isInterestedInInternship ? `はい` : `いいえ`}
+            </div>
+          </div>
+          <div className="form__container__address">
+            <p className="form__container__item__left">
+            バイト情報を受け取る
+            </p>
+            <div className="form__container__item__address__right">
+              {toReceiveJobInfo ? `はい` : `いいえ`}
             </div>
           </div>
 

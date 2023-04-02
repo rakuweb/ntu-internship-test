@@ -17,10 +17,11 @@ import {
   RegisterFormSchema,
   registerFormSchema,
 } from '~/features/registerForm/schema';
-import { useLiff } from 'contexts/LineAuthContext';
+import { useLiff } from 'contexts/LineAuthContextInternship';
 import { routes } from 'constants/routes';
 import { useAccountStore } from 'features/account/hooks';
 import { selectSetAccount, selectAccount } from 'features/account/selectors';
+import { useStudentStore, selectSetStudent } from 'features/student';
 
 // type layer
 // type Props = InferGetStaticPropsType<typeof getStaticProps>;
@@ -39,6 +40,8 @@ export const Index: NextPage = () => {
   const { liff } = useLiff();
   const router = useRouter();
   const setAccount = useAccountStore(selectSetAccount);
+  const setStudent = useStudentStore(selectSetStudent);
+  const { lineId } = useAccountStore();
 
   useEffect(() => {
     setIsClient(true);
@@ -56,31 +59,45 @@ export const Index: NextPage = () => {
     const url = `${ORIGIN_URL}${routes.apiAccount}`;
 
     const handler = async () => {
-      const profile = await liff.getProfile();
+      const _lineId = lineId ?? (await liff.getProfile()).userId;
 
       const res = await axios.get(url, {
         params: {
-          lineId: profile.userId,
+          lineId: _lineId,
         },
       });
 
-      const { exist, username, email } = res.data;
+      const { exist } = res.data;
       if (exist) {
-        const { email, username, grade, studentId } = res.data;
+        const {
+          email,
+          username,
+          grade,
+          studentId,
+          gradeUpdatedAt,
+          registeredAt,
+        } = res.data;
         setAccount({
           email: email as string,
           username: username as string,
           grade: grade as string,
           studentId: studentId as string,
         });
+        setStudent({
+          id: studentId,
+          username: username,
+          grade: grade,
+          gradeUpdatedAt: gradeUpdatedAt ? new Date(gradeUpdatedAt) : null,
+          registeredAt: registeredAt ? new Date(registeredAt) : null,
+        });
 
-        router.push(routes.signinMembercard);
+        router.push(routes.signin);
         window.scroll({ top: 0 });
       }
     };
 
     handler();
-  }, [liff, liff?.isLoggedIn]);
+  }, [liff, liff?.isLoggedIn, isClient]);
 
   const message = () => {
     if (isClient) {

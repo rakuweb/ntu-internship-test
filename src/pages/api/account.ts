@@ -62,7 +62,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
         } = data.usersPermissionsUsers.data[0].attributes;
 
         if (!data?.usersPermissionsUsers?.data?.[0].attributes?.confirmed) {
-          res.status(200).json({
+          return res.status(200).json({
             exist: false,
             email,
             username,

@@ -18,10 +18,10 @@ import {
   selectSetStudent,
   selectStudent,
 } from 'features/student';
+import { CAFE_ENTRY_QUERY } from '~/constants';
 
 // type layer
 
-const CAFE_ENTRY_QUERY = 'admissionapplication';
 // component layer
 export const Index: NextPage = () => {
   const title = ``; // eslint-disable-line
@@ -39,17 +39,14 @@ export const Index: NextPage = () => {
   useEffect(() => {
     if (!router?.query) return;
 
-    setQuery(router.query.cafeonly as string);
+    setQuery((router?.query?.cafeonly as string) ?? '');
     setIsClient(true);
   }, [router, router?.query?.cafeonly]);
+  console.log('aaaa: ',query)
 
   useEffect(() => {
+    if (!isClient) return;
     if (query === null) return;
-
-    if (query === '' || typeof query === undefined) {
-      router.push(routes.signin);
-      return;
-    }
 
     const signin = async () => {
       if (!liff) return;
@@ -65,6 +62,7 @@ export const Index: NextPage = () => {
   useEffect(() => {
     // line ログイン
     if (!liff || !liff.isLoggedIn()) return;
+    if (!isClient) return;
     if (query === null) return;
     if (!query) router.push(routes.signin);
 
@@ -79,8 +77,10 @@ export const Index: NextPage = () => {
             lineId: profile.userId,
           },
         });
+        setLineId(profile.userId);
 
         const { exist } = res.data;
+        // アカウント作成済みか
         if (exist) {
           const {
             email,
@@ -90,8 +90,6 @@ export const Index: NextPage = () => {
             gradeUpdatedAt,
             registeredAt,
           } = res.data;
-          console.log(res.data);
-          setLineId(profile.userId);
           setAccount({
             email: email as string,
             username: username as string,
@@ -116,17 +114,20 @@ export const Index: NextPage = () => {
     };
 
     handler();
-  }, [liff, liff?.isLoggedIn()]);
+  }, [liff, liff?.isLoggedIn(), query]);
 
   useEffect(() => {
+    // api接続が完了したら
     if (!connected) return;
     // 学年更新をしているか確認
     if (student?.id && !student?.gradeUpdatedAt) {
-      router.push(routes.accountGrade);
+      router.push(`${routes.accountGrade}?cafeonly=${CAFE_ENTRY_QUERY}`);
     } else if (student?.id && student?.gradeUpdatedAt) {
       if (query === CAFE_ENTRY_QUERY) {
+        // QRコード経由だったら
         router.push(routes.accountCard);
       } else {
+        // それ以外
         router.push(routes.signinMembercard);
       }
     }

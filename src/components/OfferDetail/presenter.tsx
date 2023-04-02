@@ -434,9 +434,9 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                               {...company.logo}
                               htmlWidth={company.logo.width}
                               htmlHeight={company.logo.height}
-                              // width={84}
-                              // height={84}
-                              // src={`/images/offers/trunkicon.jpeg`}
+                            // width={84}
+                            // height={84}
+                            // src={`/images/offers/trunkicon.jpeg`}
                             />
                           </Box>
                           <Box
@@ -457,7 +457,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             </Box>
           </Box>
           {/* main */}
-          {/* sub */}
+
+          {/* sub 
           <Box
             minHeight={'300px'}
             w={{ base: ' calc(100% - 32px)', xl: '300px' }}
@@ -522,6 +523,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               </Link>
             </Box>
           </Box>
+              */}
         </Box>
       </Box>
     </div>
