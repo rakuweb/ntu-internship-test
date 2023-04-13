@@ -28,6 +28,7 @@ export const departmentList = [
   '工学部',
   '農学部',
   '創生学部',
+  '養護教諭特別別科',
 ];
 
 export type RegisterFormSchema = {
