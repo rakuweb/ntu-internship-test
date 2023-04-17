@@ -17,6 +17,7 @@ import { styles } from './styles';
 import { useAccountStore, selectSetPrevPath } from 'features/account';
 import { OfferEntity } from 'types/gql/graphql';
 import 'zenn-content-css';
+import { Span } from '../Span';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
@@ -434,9 +435,9 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                               {...company.logo}
                               htmlWidth={company.logo.width}
                               htmlHeight={company.logo.height}
-                            // width={84}
-                            // height={84}
-                            // src={`/images/offers/trunkicon.jpeg`}
+                              // width={84}
+                              // height={84}
+                              // src={`/images/offers/trunkicon.jpeg`}
                             />
                           </Box>
                           <Box
@@ -458,7 +459,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           </Box>
           {/* main */}
 
-          {/* sub 
+          {/* sub */}
           <Box
             minHeight={'300px'}
             w={{ base: ' calc(100% - 32px)', xl: '300px' }}
@@ -468,50 +469,71 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             borderRadius={'20px'}
             boxShadow={'0px 4px 8px rgba(0, 0, 0, 0.1)'}
             bgColor={'#fff'}
+            position={{ base: 'static', xl: 'sticky' }}
+            top={'20px'}
           >
             <Heading
               as={'h2'}
               fontSize={{ base: '16px', lg: '20px' }}
               pb={'15px'}
             >
-              プロトスター株式会社
+              {company.companyName}
             </Heading>
             <Box
               as="table"
               lineHeight={'2'}
               fontSize={{ base: '14px', lg: '16px' }}
+              fontFamily={`'Noto Sans JP', sans-serif`}
             >
-              <Box as="tr">
-                <Box as="th" w={'2em'}>
-                  <i className="fas fa-briefcase"></i>
+              {offer.categories.length > 0 && (
+                <Box as="tr">
+                  <Box as="th" w={'2em'}>
+                    <i className="fas fa-briefcase"></i>
+                  </Box>
+                  <Box as="td">
+                    {offer?.categories.map((category, idx) => (
+                      <Span key={category.name}>
+                        {idx > 0 ? '/' : ''}
+                        {category.name}
+                      </Span>
+                    ))}
+                  </Box>
                 </Box>
-                <Box as="td">マーケティング/広報</Box>
-              </Box>
-              <Box as="tr">
-                <Box as="th" w={'2em'}>
-                  <i className="fas fa-building"></i>
+              )}
+              {company.industryCategories.length > 0 && (
+                <Box as="tr">
+                  <Box as="th" w={'2em'}>
+                    <i className="fas fa-building"></i>
+                  </Box>
+                  <Box as="td">
+                    {company?.industryCategories.map((category, idx) => (
+                      <Span key={category.name}>
+                        {idx > 0 ? '/' : ''}
+                        {category.name}
+                      </Span>
+                    ))}
+                  </Box>
                 </Box>
-                <Box as="td">IT/ソフトウェア</Box>
-              </Box>
+              )}
               <Box as="tr">
                 <Box as="th" w={'2em'}>
                   <i className="fas fa-map-marker-alt"></i>
                 </Box>
-                <Box as="td">
-                  東京都中央区日本橋富沢町9-4 日本橋富沢町ビル 501
-                </Box>
+                <Box as="td">{company?.address}</Box>
               </Box>
             </Box>
             <Box
               border={'1px solid #ccc'}
-              height={'150px'}
               display={'flex'}
               alignItems={'center'}
               justifyContent={'center'}
               mt={'20px'}
-            >
-              googlemap
-            </Box>
+              w={{ lg: `${260 / 16}rem` }}
+              sx={{ iframe: { w: `100%` } }}
+              height={'150px'}
+              // h={`auto`}
+              dangerouslySetInnerHTML={{ __html: company?.mapUrl ?? '' }}
+            />
             <Box display={'flex'} justifyContent={'center'} pt={'20px'}>
               <Link
                 textAlign={'center'}
@@ -523,7 +545,6 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               </Link>
             </Box>
           </Box>
-              */}
         </Box>
       </Box>
     </div>

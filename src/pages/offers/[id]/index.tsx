@@ -6,10 +6,9 @@ import {
   GetStaticPaths,
   GetStaticProps,
 } from 'next/types';
-import { Image as NImage } from 'components/images/Image';
 import { Top as Template } from 'templates/OfferId';
 import { SeoComponent } from 'organisms/SeoComponent';
-import { CANONICAL_URL, ORIGIN_URL } from 'constants/env';
+import { CANONICAL_URL, CMS_URL } from 'constants/env';
 import { UPDATE_INTERVAL } from '~/constants';
 import { parseSeo } from '~/lib';
 import {
@@ -37,19 +36,18 @@ export const Index: NextPage<Props> = ({ data, company }) => {
   const description = data?.offer?.data?.attributes?.description ?? ``;
   const ogp = data?.offer?.data?.attributes?.image?.data?.attributes
     ? parseImage(
-        data.offer.data.attributes.image?.data?.attributes as UploadFile
-      )
+      data.offer.data.attributes.image?.data?.attributes as UploadFile
+    )
     : undefined;
   const seo = parseSeo(title, description, undefined, ogp);
   const imageurl = data?.offer?.data?.attributes?.image?.data?.attributes.url;
-  const cmsurl = `https://management.nottheuniversity.com`;
   const openGraph = {
     type: 'website',
     title: title,
     description: description,
     images: [
       {
-        url: `${cmsurl}${imageurl}`,
+        url: `${CMS_URL}${imageurl}`,
         width: 1200,
         height: 630,
       },
@@ -111,10 +109,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
     const paths = data?.offers?.data
       ? data.offers.data.map((item) => ({
-          params: {
-            id: item?.id,
-          },
-        }))
+        params: {
+          id: item?.id,
+        },
+      }))
       : [];
 
     return {

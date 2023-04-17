@@ -17,6 +17,10 @@ export const createCompanySlice: StateCreator<
   logo: undefined,
   mission: '',
   companyId: '',
+  establishmentDate: null,
+  industryCategories: [],
+  address: '',
+  mapUrl: '',
 
   setCompanyItem: (entity) => set(() => parseToCompanyItem(entity)),
 });

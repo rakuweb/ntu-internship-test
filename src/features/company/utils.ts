@@ -4,11 +4,11 @@ import { CompanySliceData } from './types';
 
 export const parseToCompanyItem = (entity: CompanyEntity): CompanySliceData => {
   const company = entity.attributes;
-  const result = {
+  const result: CompanySliceData = {
     id: entity?.id,
     name: company.createdBy.firstname,
     companyName: company.createdBy?.lastname,
-    image:
+    coverImage:
       company?.cover_image?.data?.attributes &&
       parseImage(company.cover_image.data.attributes),
     description: company.description,
@@ -17,6 +17,16 @@ export const parseToCompanyItem = (entity: CompanyEntity): CompanySliceData => {
       parseImage(company.logo.data.attributes),
     mission: company?.mission ?? '',
     companyId: company?.company_id ?? '',
+    establishmentDate: company?.establishment_date
+      ? new Date(company.establishment_date)
+      : null,
+    industryCategories:
+      company?.industry_categories?.data?.map((category) => ({
+        name: category.attributes?.name ?? '',
+        enName: category?.attributes?.en_name,
+      })) ?? [],
+    address: company?.address,
+    mapUrl: company?.map_url ?? '',
   };
 
   return result;

@@ -14,7 +14,11 @@ export const Presenter: FC<PresenterProps> = ({ titles }) => {
     <div css={styles}>
       <section className="breadcrumb">
         <p className="breadcrumb__container">
-          <InternalLink className="breadcrumb__container__link" href="/" display={`inline`}>
+          <InternalLink
+            className="breadcrumb__container__link"
+            href="/"
+            display={`inline`}
+          >
             HOME
             <KeyboardArrowRightIcon className="breadcrumb__icon_container" />
           </InternalLink>
@@ -72,7 +76,8 @@ const styles = css`
     }
     ${mq[3]} {
       .breadcrumb__container {
-        width: 760px;
+        width: 1200px;
+        margin-left: 80px;
       }
     }
   }
