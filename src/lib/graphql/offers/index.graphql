@@ -4,6 +4,7 @@ query getOffersAll {
       id
       attributes {
         title
+        createdAt
         place
         hourly_wage
         deadline

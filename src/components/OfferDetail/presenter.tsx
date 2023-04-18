@@ -1,6 +1,13 @@
 // import layer
 import { FC } from 'react';
-import { Box, Flex, Heading, Link, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Heading,
+  Link,
+  Text,
+  textDecoration,
+} from '@chakra-ui/react';
 import { Image } from 'atoms/Image';
 import { Image as NImage } from 'components/images/Image';
 import { useRouter } from 'next/router';
@@ -17,8 +24,9 @@ import { styles } from './styles';
 import { useAccountStore, selectSetPrevPath } from 'features/account';
 import { OfferEntity } from 'types/gql/graphql';
 import 'zenn-content-css';
+import { InternalLink } from '~/components/links/InternalLink';
 import { Span } from '../Span';
-
+import { routes } from 'constants/routes';
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
@@ -39,7 +47,15 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       window.location.href = offer.formUrl;
     }
   };
-
+  const currentDate = new Date();
+  const startDate = new Date(offer.createdAt);
+  const endDate = new Date(offer.deadline);
+  const isNew =
+    (currentDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24);
+  const isEnd = Math.ceil(
+    (endDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24)
+  );
+  const href = `${routes.companies}/${company.id}`;
   return (
     <div css={styles}>
       <Box w={'100%'} backgroundColor={'#f5f5f5'}>
@@ -56,7 +72,29 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           <Box className="main" w={'760px'}>
             <section className="consultation-card-list">
               <div className="consultation-card-list__card">
-                <p className="companyName">{offer.companyName}</p>
+                <Flex alignItems={'center'} mb={'12px'} flexWrap={'wrap'}>
+                  <p className="companyName">{offer.companyName}</p>
+
+                  {isEnd <= 10 && isEnd > 0 ? (
+                    <Box fontSize={'14px'} ml={'auto'} color={'red'}>
+                      締切あと{isEnd}日
+                    </Box>
+                  ) : isNew <= 7 && isEnd > 0 ? (
+                    <Box
+                      fontSize={'12px'}
+                      ml={'auto'}
+                      color={'white'}
+                      bgColor={'red'}
+                      p={'2px 5px'}
+                    >
+                      NEW
+                    </Box>
+                  ) : isEnd <= 0 ? (
+                    <Box fontSize={'14px'} ml={'auto'} color={'gray'}>
+                      掲載終了
+                    </Box>
+                  ) : null}
+                </Flex>
                 <h1 className="jobtitle">{offer?.title}</h1>
                 <Flex flexWrap={`wrap`} mb={{ lg: `20px` }}>
                   {offer.categories.map((category) => (
@@ -92,7 +130,14 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 <Image {...offer.image} className="bigImg" />
                 */}
                 <Box w={{ base: `100%`, lg: `fit-content` }} mx={`auto`}>
-                  <OfferButton onClick={() => signin()} />
+                  <OfferButton
+                    disabled={isEnd <= 0}
+                    onClick={() => {
+                      if (isEnd > 0) {
+                        signin();
+                      }
+                    }}
+                  />
                 </Box>
               </div>
             </section>
@@ -334,7 +379,14 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               )}
               <Box mt={`78px`}>
                 <Box w={{ base: `100%`, lg: `fit-content` }} mx={`auto`}>
-                  <OfferButton onClick={() => signin()} />
+                  <OfferButton
+                    disabled={isEnd <= 0}
+                    onClick={() => {
+                      if (isEnd > 0) {
+                        signin();
+                      }
+                    }}
+                  />
                 </Box>
               </Box>
             </Box>
@@ -410,7 +462,14 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               </div>
               <Box mt={`78px`}>
                 <Box w={{ base: `100%`, lg: `fit-content` }} mx={`auto`}>
-                  <OfferButton onClick={() => signin()} />
+                  <OfferButton
+                    disabled={isEnd <= 0}
+                    onClick={() => {
+                      if (isEnd > 0) {
+                        signin();
+                      }
+                    }}
+                  />
                 </Box>
               </Box>
               <Box
@@ -423,37 +482,47 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 }
                 fontFamily={`'Noto Sans JP', sans-serif`}
               >
-                {company?.logo?.src &&
-                  company?.mission &&
-                  company?.companyName && (
-                    <Box pb={`40px`}>
-                      <div className="subsection">
-                        <Flex direction={`column`} alignItems={`center`}>
-                          <Box width={{ base: `84px` }}>
-                            <Image
+                <InternalLink href={href}>
+                  {company?.logo?.src &&
+                    company?.mission &&
+                    company?.companyName && (
+                      <Box pb={`40px`}>
+                        <div className="subsection">
+                          <Flex direction={`column`} alignItems={`center`}>
+                            <Box width={{ base: `84px` }}>
+                              <Image
+                                mb={`8px`}
+                                {...company.logo}
+                                htmlWidth={company.logo.width}
+                                htmlHeight={company.logo.height}
+                              />
+                            </Box>
+                            <Box
+                              fontSize={{ base: `24px` }}
+                              fontWeight={`700`}
                               mb={`8px`}
-                              {...company.logo}
-                              htmlWidth={company.logo.width}
-                              htmlHeight={company.logo.height}
-                              // width={84}
-                              // height={84}
-                              // src={`/images/offers/trunkicon.jpeg`}
-                            />
-                          </Box>
-                          <Box
-                            fontSize={{ base: `24px` }}
-                            fontWeight={`700`}
-                            mb={`8px`}
+                            >
+                              {company.companyName}
+                            </Box>
+                            <Box
+                              fontSize={{ base: `12px` }}
+                              lineHeight={`18px`}
+                            >
+                              {company.mission}
+                            </Box>
+                          </Flex>
+                          <Text
+                            fontSize={'10px'}
+                            p={'10px 0'}
+                            textAlign={'right'}
+                            textDecoration={'underline'}
                           >
-                            {company.companyName}
-                          </Box>
-                          <Box fontSize={{ base: `12px` }} lineHeight={`18px`}>
-                            {company.mission}
-                          </Box>
-                        </Flex>
-                      </div>
-                    </Box>
-                  )}
+                            この企業の情報を見る {`>`}
+                          </Text>
+                        </div>
+                      </Box>
+                    )}
+                </InternalLink>
               </Box>
             </Box>
           </Box>
@@ -535,14 +604,14 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               dangerouslySetInnerHTML={{ __html: company?.mapUrl ?? '' }}
             />
             <Box display={'flex'} justifyContent={'center'} pt={'20px'}>
-              <Link
-                textAlign={'center'}
+              <InternalLink
+                href={href}
+                fontSize={'14px'}
                 textDecoration={'underline'}
-                _hover={{ opacity: '0.7' }}
-                fontSize={{ base: '14px', lg: '16px' }}
+                _hover={{ textDecoration: 'underline', opacity: '0.6' }}
               >
                 この企業の情報を見る
-              </Link>
+              </InternalLink>
             </Box>
           </Box>
         </Box>

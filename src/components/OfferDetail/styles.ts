@@ -36,7 +36,7 @@ export const styles = css`
   .subsection {
     width: calc(100% - 32px);
     margin: 0 auto;
-    padding: 20px;
+    padding: 20px 20px 10px;
     background-color: #fff;
     display: flex;
     flex-direction: column;
@@ -58,7 +58,7 @@ export const styles = css`
     font-size: 18px;
     font-weight: 700;
     width: fit-content;
-    margin: 0 0 12px 0;
+    /* margin: 0 0 12px 0; */
   }
 
   .termstext {
@@ -199,7 +199,7 @@ export const styles = css`
 
     .subsection {
       width: 760px;
-      padding: 40px;
+      padding: 40px 40px 20px;
     }
 
     .jobtitle {
@@ -208,7 +208,7 @@ export const styles = css`
     }
 
     .companyName {
-      margin-bottom: 12px;
+      /* margin-bottom: 12px; */
       font-size: 18px;
     }
 

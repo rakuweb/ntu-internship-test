@@ -50,6 +50,12 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const filteredOffers = offers.filter(
     (offer) => offer.createdByid === company?.createdByid
   );
+
+  const currentDate = new Date();
+  const endDate = new Date(offer.deadline);
+  const isEnd = Math.ceil(
+    (endDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24)
+  );
   return (
     <div css={styles}>
       <Box
@@ -215,7 +221,13 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             m={{ base: 'auto' }}
           >
             {filteredOffers.slice(0, 3).map((offer) => (
-              <OfferCard key={offer.id} {...offer} />
+              <>
+                {isEnd <= 0 ? (
+                  <OfferCardDead {...offer} />
+                ) : (
+                  <OfferCard startDate={''} key={offer.id} {...offer} />
+                )}
+              </>
             ))}
           </Grid>
         </Box>

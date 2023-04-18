@@ -13,7 +13,11 @@ import { Image as NImage } from 'components/images/Image';
 
 // type layer
 export type DataProps = OfferCard;
-export type PresenterProps = DataProps;
+export interface PresenterProps extends DataProps {
+  deadline: number;
+  startDate: string;
+}
+
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const {
@@ -22,13 +26,18 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     categories,
     place,
     hourlyWage,
-    isNew,
+    startDate,
     title,
     image,
     points,
+    deadline,
     createdByid,
   } = props;
   const href = `${routes.offers}/${id}`;
+  const currentDate = new Date();
+  const startDateObj = new Date(startDate);
+  const isNew =
+    (currentDate.getTime() - startDateObj.getTime()) / (1000 * 3600 * 24);
 
   return (
     <InternalLink
@@ -86,7 +95,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               />
               <div className="placetext">{place}</div>
             </div>
-            <div className="pay">
+            <Box className="pay">
               <Image
                 className="icon"
                 width={24}
@@ -95,7 +104,23 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 // src={`/images/offers/hukuroIkon.png`}
               />
               <div className="paytext">{hourlyWage}</div>
-            </div>
+              {deadline <= 10 ? (
+                <Box fontSize={'14px'} ml={'auto'} color={'red'}>
+                  締切あと{deadline}日
+                </Box>
+              ) : isNew <= 7 ? (
+                <Box
+                  fontSize={'12px'}
+                  ml={'auto'}
+                  color={'white'}
+                  bgColor={'red'}
+                  p={'2px 5px'}
+                  // borderRadius={'3px'}
+                >
+                  NEW
+                </Box>
+              ) : null}
+            </Box>
           </div>
         </div>
       </Box>
@@ -115,43 +140,42 @@ const styles = css`
     height: 398px;
     width: 300px;
     padding: 0rem;
-    margin-bottom:32px;
+    margin-bottom: 32px;
     ${mq[2]} {
-        margin-bottom:0px;
-        height: 400px;
+      margin-bottom: 0px;
+      height: 400px;
     }
     ${mq[3]} {
-        height: 440px;
-        width: 368px;
-      }
+      height: 440px;
+      width: 368px;
+    }
   }
 
-  .NEW-area{
-    position:relative;
-z-index:10;
+  .NEW-area {
+    position: relative;
+    z-index: 10;
   }
 
-  .NEW-box{
-    position:absolute;
-    top:0;
-    left:0;
-    display:flex;
+  .NEW-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
     justify-content: center;
     align-items: center;
-    width:52px;
-    height:29px;
-    font-family:'yugothic', 'Zen Kaku Gothic New','Hiragino Sans';
-    font-weight:bold;
-    font-size:14px;
-    color:#ffffff;
-    background-color:#D6322C;
+    width: 52px;
+    height: 29px;
+    font-family: 'yugothic', 'Zen Kaku Gothic New', 'Hiragino Sans';
+    font-weight: bold;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #d6322c;
     ${mq[3]} {
-      width:62px;
-      height:34px;
-      font-size:20px;
-      }
+      width: 62px;
+      height: 34px;
+      font-size: 20px;
+    }
   }
-
 
   .photo {
     width: 100%;
@@ -159,10 +183,10 @@ z-index:10;
     /*height: 150px;*/
     object-fit: cover;
     border-radius: 10px 10px 0 0;
-    overflow:hidden;
+    overflow: hidden;
     ${mq[3]} {
-    height: 215px;
-    /*height: 180px;*/
+      height: 215px;
+      /*height: 180px;*/
     }
   }
 
@@ -172,8 +196,9 @@ z-index:10;
     justify-content: space-between;
     margin: 12px;
     width: 276px;
-    font-family:yugothic, 'Zen Kaku Gothic New','ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro','Hiragino Sans';
-    color:#000000;
+    font-family: yugothic, 'Zen Kaku Gothic New', 'ヒラギノ角ゴ Pro W3',
+      'Hiragino Kaku Gothic Pro', 'Hiragino Sans';
+    color: #000000;
     ${mq[3]} {
       justify-content: space-between;
       margin: 20px auto;
@@ -184,7 +209,7 @@ z-index:10;
   .campanytext {
     font-size: 14px;
     font-weight: bold;
-    line-height:1.3em;
+    line-height: 1.3em;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -198,51 +223,50 @@ z-index:10;
     white-space: pre-wrap;
     font-size: 18px;
     font-weight: bold;
-    color:#000000;
-    line-height:1.3em;
-    margin-bottom:8px;
-    height:47px;
-    overflow:hidden;
+    color: #000000;
+    line-height: 1.3em;
+    margin-bottom: 8px;
+    height: 47px;
+    overflow: hidden;
     ${mq[3]} {
       white-space: pre-wrap;
     }
   }
 
-
-  .icon{
-    width:1rem;
-    height:1rem;
-    margin-right:4px;
+  .icon {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 4px;
     ${mq[3]} {
-      width:20px;
-    height:20px;
+      width: 20px;
+      height: 20px;
     }
   }
 
-
   .termstext {
-    display:flex;
+    display: flex;
     align-items: center;
     font-weight: bold;
-    margin-top:8px;
-    margin-bottom:8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
     white-space: nowrap;
     ${mq[3]} {
       // border-bottom: 1px solid #9d9d9e;
-      margin-top:0px;
+      margin-top: 0px;
     }
   }
 
   .pay {
-    display:flex;
+    display: flex;
     align-items: center;
     font-weight: bold;
     white-space: nowrap;
+    font-family: 'yugothic', 'Zen Kaku Gothic New', 'Hiragino Sans';
     ${mq[3]} {
     }
   }
 
-  .paytext{
+  .paytext {
     font-size: 12px;
     font-weight: 500;
     white-space: nowrap;
@@ -254,8 +278,7 @@ z-index:10;
     }
   }
 
-
-  .placetext{
+  .placetext {
     font-size: 12px;
     font-weight: 500;
     white-space: pre-wrap;
@@ -278,6 +301,4 @@ z-index:10;
       white-space: pre-wrap;
     }
   }
-}
-
 `;

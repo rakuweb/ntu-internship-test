@@ -5,6 +5,7 @@ export const routes = {
   register: '/register',
   registerComplete: '/register/complete',
   offers: '/offers',
+  companies: '/companies',
   privacyPolicy: '/privacy-policy',
   terms: '/terms',
   thanks: '/thanks',

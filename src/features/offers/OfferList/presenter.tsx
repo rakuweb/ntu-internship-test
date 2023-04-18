@@ -26,6 +26,13 @@ import { routes } from '~/constants';
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
+const remainingDays = (deadline) => {
+  const currentDate = new Date();
+  const deadlineDate = new Date(deadline);
+  const diffTime = deadlineDate.getTime() - currentDate.getTime();
+  return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+};
+
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const advertisements = useAdvertisementsStore(selectAdvertisements);
@@ -87,21 +94,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const month = monthMap[monthNum];
   const date = dayMap[dayNum];
   const today = `${year}-${month}-${date}`;
-  // const today = `${year}-02-01`;
 
-  // const list = useOffersStore(selectOfferList);
-  // const [offerList, setOfferList] = useState<OfferCardProps[][]>([]);
-
-  // useEffect(() => {
-  //   const listClone = list;
-  //   const next = [];
-
-  //   while (listClone.length > 0) {
-  //     next.push(listClone.splice(0, 3));
-  //   }
-
-  //   setOfferList(next);
-  // }, [list]);
   const [index, setIndex] = useState<number>(0);
 
   const swiperProps: SwiperProps = {
@@ -132,7 +125,10 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       setIndex(swiper.realIndex);
     },
   };
+  const activeOffers = offers.filter((offer) => offer.deadline >= today);
+  const expiredOffers = offers.filter((offer) => offer.deadline < today);
 
+  const sortedOffers = [...activeOffers, ...expiredOffers];
   return (
     <Box css={styles}>
       <Box
@@ -148,87 +144,12 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             zIndex={`1`}
             mt={`30px`}
             w={`100%`}
-            // sx={{
-            //   '.swiper-button-next': {
-            //     right: {
-            //       base: `0.5rem`,
-            //       lg: `1rem`,
-            //     },
-            //     mt: {
-            //       base: `initial`,
-            //       lg: `calc(0px - (var(--swiper-navigation-size)/ 2))`,
-            //     },
-            //     transform: { base: `translateY(-50%)`, lg: `initial` },
-            //     backgroundColor: `var(--white)`,
-            //     borderWidth: `2px`,
-            //     borderStyle: `solid`,
-            //     borderRadius: `50%`,
-            //     borderColor: `#21d4fd`,
-            //     // borderColor: `var(--navy-blue)`,
-            //     width: { base: `1.5rem`, lg: `44px` },
-            //     height: { base: `1.5rem`, lg: `44px` },
-            //     textAlign: `center`,
-            //     verticalAlign: `middle`,
-            //     ':after': {
-            //       fontSize: { base: `0.75rem`, lg: `1.5rem` },
-            //       color: `#21d4fd`,
-            //       // color: `var(--navy-blue)`,
-            //       fontWeight: `bold`,
-            //     },
-            //     ':hover': {
-            //       cursor: `pointer`,
-            //       filter: `opacity(50%)`,
-            //       transition: `all .3s`,
-            //     },
-            //   },
-            //   '.swiper-button-prev': {
-            //     left: {
-            //       base: `0.5rem`,
-            //       lg: `1rem`,
-            //     },
-            //     mt: {
-            //       base: `initial`,
-            //       lg: `calc(0px - (var(--swiper-navigation-size)/ 2))`,
-            //     },
-            //     transform: { base: `translateY(-50%)`, lg: `initial` },
-            //     backgroundColor: `var(--white)`,
-            //     borderWidth: `2px`,
-            //     borderStyle: `solid`,
-            //     borderRadius: `50%`,
-            //     borderColor: `#21d4fd`,
-            //     // borderColor: `var(--navy-blue)`,
-            //     width: { base: `1.5rem`, lg: `44px` },
-            //     height: { base: `1.5rem`, lg: `44px` },
-            //     textAlign: `center`,
-            //     verticalAlign: `middle`,
-            //     ':after': {
-            //       fontSize: { base: `0.75rem`, lg: `1.5rem` },
-            //       color: `#21d4fd`,
-            //       // color: `var(--navy-blue)`,
-            //       fontWeight: `bold`,
-            //     },
-            //     ':hover': {
-            //       cursor: `pointer`,
-            //       filter: `opacity(50%)`,
-            //       transition: `all .3s`,
-            //     },
-            //   },
-            // }}
           >
             <Swiper {...swiperProps}>
               {advertisements.map((ad) => (
                 <SwiperSlide key={ad.id}>
                   <InternalLink href={`${routes.advertisements}/${ad.id}`}>
-                    <Box
-                    // w={{ base: `100%` }}
-                    // maxW={{
-                    //   lg: `520px`,
-                    //   xl: `700px`,
-                    //   '2xl': 'initial',
-                    // }}
-                    // h={`auto`}
-                    // position={`relative`}
-                    >
+                    <Box>
                       <Image
                         w={`100%`}
                         image={{
@@ -246,33 +167,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           <div className="search-title__container">
             <p className="search-title__container__title">求人一覧</p>
           </div>
-          {/* <div className="search-result__overview">
-            <div className="search-result__overview__current">
-              
-                <p className="search-result__overview__current__paging">
-                  表示 1 / 28 ページ
-                </p>
-                <p className="search-result__overview__current__found">
-                  該当 <b>546</b> 医院
-                </p>
-             
-            </div>
-            <div className="search-result__overview__sort">
-              <p className="search-result__overview__sort__text">並び替え :</p>
-              <div className="search-result__overview__sort__checkbox">
-                <input type="checkbox" name="general" />
-                <label htmlFor="general">新着順</label>
-              </div>
-              <div className="search-result__overview__sort__checkbox">
-                <input type="checkbox" name="reservation-available" />
-                <label htmlFor="reservation-available">締切が早い順</label>
-              </div>
-              <div className="search-result__overview__sort__checkbox">
-                <input type="checkbox" name="views" />
-                <label htmlFor="views">人気順</label>
-              </div>
-            </div>
-          </div> */}
+
           <section className="recruit-card-area">
             {/* <div className="recruit-card-container"> */}
             <Grid
@@ -284,34 +179,28 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               rowGap={{ lg: `38px` }}
               columnGap={{ lg: `32px` }}
             >
-              {/* {offers.map((offer) => (
-                <OfferCard key={offer.id} {...offer} />
-              ))} */}
-              {/* {offers.map((offer) => (
-                <OfferCardDead key={offer.id} {...offer} />
-              ))} */}
-
-              {offers.map((offer) => (
-                <div key={offer.id}>
-                  {(() => {
-                    if (offer.deadline >= today) {
-                      return (
-                        <Box m={`0 auto`} w={`fit-content`}>
-                          <OfferCard {...offer} />
-                        </Box>
-                      );
-                    } else {
-                      return (
-                        <Box m={`0 auto`} w={`fit-content`}>
-                          <OfferCardDead {...offer} />
-                        </Box>
-                      );
-                    }
-                  })()}
-                </div>
-              ))}
-              {/* <div className="recruit-card-container"> */}
+              {sortedOffers.map((offer) => {
+                const daysRemaining = remainingDays(offer.deadline);
+                return (
+                  <div key={offer.id}>
+                    {offer.deadline >= today ? (
+                      <Box m={`0 auto`} w={`fit-content`}>
+                        <OfferCard
+                          {...offer}
+                          deadline={daysRemaining}
+                          startDate={offer.createdAt}
+                        />
+                      </Box>
+                    ) : (
+                      <Box m={`0 auto`} w={`fit-content`}>
+                        <OfferCardDead {...offer} deadline={daysRemaining} />
+                      </Box>
+                    )}
+                  </div>
+                );
+              })}
             </Grid>
+
             {/* </div> */}
           </section>
         </Box>

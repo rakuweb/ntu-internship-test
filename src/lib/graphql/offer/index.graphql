@@ -5,6 +5,8 @@ query getOfferById($id: ID) {
       attributes {
         form_url
         title
+        createdAt
+        deadline
         place
         hourly_wage
         description

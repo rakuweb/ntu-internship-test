@@ -12,6 +12,7 @@ export const parseToOffers = (data: OfferEntity[]): OfferCard[] => {
       createdByid: offer.createdBy.id,
       id: entity.id,
       deadline: offer.deadline,
+      createdAt: offer.createdAt,
       image: offer?.image?.data?.attributes?.url
         ? parseImage(offer.image.data.attributes)
         : undefined,
@@ -41,6 +42,7 @@ export const parseToTarget = (entity: OfferEntity): Partial<OfferSliceData> => {
   const result = {
     title: offer.title,
     companyName: offer.createdBy.lastname,
+    createdAt: offer.createdAt,
     id: entity.id,
 
     image: offer?.image?.data?.attributes?.url

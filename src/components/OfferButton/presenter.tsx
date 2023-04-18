@@ -5,23 +5,31 @@ import { mq } from '~/constants/styles';
 import { Box, BoxProps } from '@chakra-ui/react';
 
 // type layer
-export type PresenterProps = BoxProps;
+export type PresenterProps = BoxProps & {
+  disabled?: boolean;
+};
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = ({ disabled, ...props }) => {
   return (
     <Box
-      transition={`all .3s`}
-      _hover={{
-        cursor: 'pointer',
-        filter: `opacity(50%)`,
-        textDecoration: 'none',
-      }}
+      _hover={
+        !disabled
+          ? {
+              cursor: 'pointer',
+              filter: `opacity(50%)`,
+              textDecoration: 'none',
+              transition: ` 0.3s`,
+            }
+          : { filter: `opacity(0.6)` }
+      }
       css={styles}
       {...props}
     >
       <Box className="clinics-button">
-        <Box className="clinics-button__button">エントリーする</Box>
+        <Box className="clinics-button__button" opacity={disabled ? 0.5 : 1}>
+          {disabled ? '掲載終了' : 'エントリーする'}
+        </Box>
       </Box>
     </Box>
   );

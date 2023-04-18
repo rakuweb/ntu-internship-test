@@ -29,21 +29,32 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const href = `${routes.offers}/${id}`;
 
   return (
-    <Box
-      transitionProperty={`box-shadow`}
-      transitionDuration="0.3s"
-      transitionTimingFunction="ease-in-out"
-      css={styles}
-    >
-      <div className="x001">
-        {/* {isNew && (
-            <div className="NEW-area">
-              <div className="NEW-box">NEW</div>
-            </div>
-          )} */}
-        <div className="dead-area">
-          <div className="dead-box">募集終了</div>
-          {image?.src && (
+    <InternalLink href={href}>
+      <Box
+        transitionProperty={`box-shadow`}
+        transitionDuration="0.3s"
+        transitionTimingFunction="ease-in-out"
+        css={styles}
+      >
+        <div className="x001">
+          {/* {isNew && (
+              <div className="NEW-area">
+                <div className="NEW-box">NEW</div>
+              </div>
+            )} */}
+          <div className="dead-area">
+            <div className="dead-box">募集終了</div>
+            {image?.src && (
+              <NImage
+                className="photo"
+                // cmsで使う用途
+                // src={image}
+                // src={`/images/offers/cover.png`}
+                image={{ ...image }}
+              />
+            )}
+          </div>
+          {/* {image?.src && (
             <NImage
               className="photo"
               // cmsで使う用途
@@ -51,54 +62,45 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               // src={`/images/offers/cover.png`}
               image={{ ...image }}
             />
-          )}
-        </div>
-        {/* {image?.src && (
-          <NImage
-            className="photo"
-            // cmsで使う用途
-            // src={image}
-            // src={`/images/offers/cover.png`}
-            image={{ ...image }}
-          />
-        )} */}
-        <div className="text">
-          <div className="campanytext">{companyName}</div>
-          <h2 className="text-2">{title}</h2>
-          {categories.length !== 0 && (
+          )} */}
+          <div className="text">
+            <div className="campanytext">{companyName}</div>
+            <h2 className="text-2">{title}</h2>
+            {categories.length !== 0 && (
+              <div className="termstext">
+                <Flex flexWrap={`wrap`} height={{ base: `48px`, lg: `48px` }}>
+                  {categories.map((category) => (
+                    <Labeltext
+                      key={category.id}
+                      labeltext={category.name}
+                    ></Labeltext>
+                  ))}
+                </Flex>
+              </div>
+            )}
             <div className="termstext">
-              <Flex flexWrap={`wrap`} height={{ base: `48px`, lg: `48px` }}>
-                {categories.map((category) => (
-                  <Labeltext
-                    key={category.id}
-                    labeltext={category.name}
-                  ></Labeltext>
-                ))}
-              </Flex>
+              <Image
+                className="icon"
+                width={24}
+                height={24}
+                src={`/svg/map-marker.svg`}
+              />
+              <div className="placetext">{place}</div>
             </div>
-          )}
-          <div className="termstext">
-            <Image
-              className="icon"
-              width={24}
-              height={24}
-              src={`/svg/map-marker.svg`}
-            />
-            <div className="placetext">{place}</div>
-          </div>
-          <div className="pay">
-            <Image
-              className="icon"
-              width={24}
-              height={24}
-              src={`/svg/money.svg`}
-              // src={`/images/offers/hukuroIkon.png`}
-            />
-            <div className="placetext">{hourlyWage}</div>
+            <div className="pay">
+              <Image
+                className="icon"
+                width={24}
+                height={24}
+                src={`/svg/money.svg`}
+                // src={`/images/offers/hukuroIkon.png`}
+              />
+              <div className="placetext">{hourlyWage}</div>
+            </div>
           </div>
         </div>
-      </div>
-    </Box>
+      </Box>
+    </InternalLink>
   );
 };
 
