@@ -26,6 +26,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     title,
     image,
     points,
+    createdByid,
   } = props;
   const href = `${routes.offers}/${id}`;
 
@@ -34,6 +35,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       // _hover={{ cursor: `pointer`, color: `` }}
       href={href}
     >
+      <Box display={'none'}>{createdByid}</Box>
       <Box
         _hover={{ boxShadow: `2xl` }}
         transitionProperty={`box-shadow`}

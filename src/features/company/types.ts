@@ -5,7 +5,9 @@ export type Category = { name: string; enName: string };
 
 export type CompanySliceData = {
   id: string;
-  coverImage?: ImageType;
+  image?: ImageType;
+  atmosphereimage1?: ImageType;
+  atmosphereimage2?: ImageType;
   description: string;
   name: string;
   companyName: string;
@@ -16,6 +18,14 @@ export type CompanySliceData = {
   industryCategories: Category[];
   address: string;
   mapUrl: string;
+  founding: string;
+  jobtype: string;
+  employment: string;
+  scale: string;
+  outline: string;
+  atmosphere: string;
+  tostudents: string;
+  createdByid: number;
 };
 
 export type CompanySlice = CompanySliceData & {

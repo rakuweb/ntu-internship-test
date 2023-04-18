@@ -6,6 +6,7 @@ export type Point = { id: string; name: string; enName: string };
 
 export type OfferCard = {
   companyName: string;
+  createdByid: number;
   categories: Category[];
   place: string;
   hourlyWage: string;

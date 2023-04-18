@@ -10,7 +10,7 @@ export const createCompanySlice: StateCreator<
   CompanySlice
 > = (set) => ({
   id: '',
-  coverImage: undefined,
+  image: undefined,
   description: '',
   name: '',
   companyName: '',
@@ -21,6 +21,14 @@ export const createCompanySlice: StateCreator<
   industryCategories: [],
   address: '',
   mapUrl: '',
+  founding: '',
+  jobtype: '',
+  employment: '',
+  scale: '',
+  outline: '',
+  atmosphere: '',
+  tostudents: '',
+  createdByid: undefined,
 
   setCompanyItem: (entity) => set(() => parseToCompanyItem(entity)),
 });

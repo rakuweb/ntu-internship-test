@@ -65,7 +65,26 @@ query getCompanyByID($id: ID!) {
         address
         mission
         company_id
+        founding
+        jobtype
+        employment
+        scale
+        outline
+        atmosphere
+        tostudents
         cover_image {
+          data {
+            id
+            attributes {
+              width
+              height
+              formats
+              url
+              alternativeText
+            }
+          }
+        }
+        atmosphereimage {
           data {
             id
             attributes {

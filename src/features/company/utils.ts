@@ -8,9 +8,15 @@ export const parseToCompanyItem = (entity: CompanyEntity): CompanySliceData => {
     id: entity?.id,
     name: company.createdBy.firstname,
     companyName: company.createdBy?.lastname,
-    coverImage:
+    image:
       company?.cover_image?.data?.attributes &&
       parseImage(company.cover_image.data.attributes),
+    atmosphereimage1:
+      company?.atmosphereimage?.data[0]?.attributes &&
+      parseImage(company.atmosphereimage.data[0].attributes),
+    atmosphereimage2:
+      company?.atmosphereimage?.data[1]?.attributes &&
+      parseImage(company.atmosphereimage.data[1].attributes),
     description: company.description,
     logo:
       company?.logo?.data?.attributes &&
@@ -27,6 +33,14 @@ export const parseToCompanyItem = (entity: CompanyEntity): CompanySliceData => {
       })) ?? [],
     address: company?.address,
     mapUrl: company?.map_url ?? '',
+    founding: company?.founding ?? '',
+    jobtype: company?.jobtype ?? '',
+    employment: company?.employment ?? '',
+    scale: company?.scale ?? '',
+    outline: company?.outline ?? '',
+    atmosphere: company?.atmosphere ?? '',
+    tostudents: company?.tostudents ?? '',
+    createdByid: company.createdBy.id,
   };
 
   return result;
