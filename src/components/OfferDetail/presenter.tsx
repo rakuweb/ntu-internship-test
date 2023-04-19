@@ -91,7 +91,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     </Box>
                   ) : isEnd <= 0 ? (
                     <Box fontSize={'14px'} ml={'auto'} color={'gray'}>
-                      掲載終了
+                      募集終了
                     </Box>
                   ) : null}
                 </Flex>

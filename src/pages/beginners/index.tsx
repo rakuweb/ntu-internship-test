@@ -2,20 +2,18 @@
 import { useState, useEffect } from 'react';
 import { NextPage, InferGetStaticPropsType } from 'next/types';
 
-// import { Index as Template } from 'templates/PrivacyPolicy';
-import { Index as Template } from 'templates/PrivacyPolicy';
+import { Index as Template } from 'templates/beginners';
 import { SeoComponent } from 'organisms/SeoComponent';
 import { CANONICAL_URL, ORIGIN_URL } from '~/constants';
 import { parseSeo } from '~/lib';
-import Head from 'next/head';
 
 // type layer
 // type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 // component layer
 export const Index: NextPage = () => {
-  const title = `プライバシーポリシー | NOT THE UNIVERSITY FOR JOB`; // eslint-disable-line
-  const description = `NOT THE UNIVERSITY FOR JOBのプライバシーポリシーです。`;
+  const title = `はじめての方へ | NOT THE UNIVERSITY FOR JOB`; // eslint-disable-line
+  const description = `NOT THE UNIVERSITY FOR JOBのはじめての方へのページです。`;
   const seo = parseSeo(title, description);
   const openGraph = {
     type: 'website',
@@ -51,6 +49,7 @@ export const Index: NextPage = () => {
     } else {
       return (
         <>
+          {' '}
           <SeoComponent
             canonical={CANONICAL_URL}
             title={title}

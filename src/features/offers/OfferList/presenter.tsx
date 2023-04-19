@@ -1,6 +1,6 @@
 // import layer
 import { FC, useState } from 'react';
-import { Box, Grid } from '@chakra-ui/react';
+import { Box, Grid, Image } from '@chakra-ui/react';
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay, EffectFade } from 'swiper';
 
@@ -8,7 +8,7 @@ import { OfferCard } from 'features/offers/OfferCard';
 import { selectOfferList } from 'features/offers/selectors';
 import { useOffersStore } from 'features/offers/hooks';
 import { styles } from './styles';
-import { Image } from 'components/Image';
+// import { Image } from 'components/Image';
 import { breakpointsByPx } from '~/constants/styles';
 import {
   selectAdvertisements,
@@ -146,7 +146,24 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             w={`100%`}
           >
             <Swiper {...swiperProps}>
-              {advertisements.map((ad) => (
+              <SwiperSlide>
+                <InternalLink href={routes.campaign}>
+                  <Image src="/images/campaign/slider.webp"></Image>
+                </InternalLink>
+              </SwiperSlide>
+              <SwiperSlide>
+                <InternalLink href={routes.howToRegister}>
+                  {' '}
+                  <Image src="/images/register/slider.webp"></Image>
+                </InternalLink>
+              </SwiperSlide>
+              <SwiperSlide>
+                <InternalLink href={routes.beginners}>
+                  {' '}
+                  <Image src="/images/beginners/slider.webp"></Image>
+                </InternalLink>
+              </SwiperSlide>
+              {/* {advertisements.map((ad) => (
                 <SwiperSlide key={ad.id}>
                   <InternalLink href={`${routes.advertisements}/${ad.id}`}>
                     <Box>
@@ -160,7 +177,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     </Box>
                   </InternalLink>
                 </SwiperSlide>
-              ))}
+              ))} */}
             </Swiper>
           </Box>
           {/*<OfferSidebar />*/}

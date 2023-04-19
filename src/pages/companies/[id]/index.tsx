@@ -42,7 +42,7 @@ export const Index: NextPage<Props> = ({ data, company }) => {
   if (!data?.offers?.data) {
     return <></>;
   }
-  const title = company[0]?.attributes?.name ?? ``; // eslint-disable-line
+  const title = `企業情報 | NOT THE UNIVERSITY FOR JOB`; // eslint-disable-line
   const description = company[0]?.attributes?.description ?? ``;
   const ogp = company[0]?.attributes?.cover_image?.data?.attributes
     ? parseImage(

@@ -28,7 +28,7 @@ export const Presenter: VFC<PresenterProps> = ({ disabled, ...props }) => {
     >
       <Box className="clinics-button">
         <Box className="clinics-button__button" opacity={disabled ? 0.5 : 1}>
-          {disabled ? '掲載終了' : 'エントリーする'}
+          {disabled ? '募集終了' : 'エントリーする'}
         </Box>
       </Box>
     </Box>

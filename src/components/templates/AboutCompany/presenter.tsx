@@ -11,14 +11,15 @@ import { useTargetOfferStore, selectBreadCrumbItem } from 'features/offers';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
+import { useCompanyStore, selectCompany } from '~/features/company';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps> = () => {
-  const { companyName } = useTargetOfferStore(selectBreadCrumbItem);
-  const pageTitles = ['企業詳細', companyName];
+  const company = useCompanyStore(selectCompany);
+  const pageTitles = ['企業情報', company?.companyName];
 
   return (
     <>
