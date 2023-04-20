@@ -116,7 +116,7 @@ const styles = css`
     height: 390px;
     width: 300px;
     padding: 0rem;
-    margin-bottom:32px;
+    margin: auto auto 32px;
     ${mq[2]} {
         margin-bottom:0px;
         height: 400px;

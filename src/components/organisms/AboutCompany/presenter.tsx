@@ -196,7 +196,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         <Heading
           as={'h3'}
           fontSize={{ base: '18px', lg: '25px' }}
-          m={'40px auto 25px'}
+          m={{ base: '50px auto 25px', lg: '100px auto 25px' }}
           fontFamily={'"Noto Sans JP", sans-serif'}
           w={{ base: '95%', lg: '1168px;' }}
         >

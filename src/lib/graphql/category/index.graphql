@@ -1,0 +1,16 @@
+query getJobCategoryById($id: ID) {
+  jobCategory(id: $id) {
+    data {
+      id
+      attributes {
+        name
+        en_name
+        offers {
+          data {
+            id
+          }
+        }
+      }
+    }
+  }
+}

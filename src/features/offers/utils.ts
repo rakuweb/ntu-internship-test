@@ -40,7 +40,7 @@ export const parseToTarget = (entity: OfferEntity): Partial<OfferSliceData> => {
   const offer = entity?.attributes;
 
   const result = {
-    title: offer.title,
+    title: offer ? offer.title : '',
     companyName: offer.createdBy.lastname,
     createdAt: offer.createdAt,
     id: entity.id,
@@ -73,22 +73,28 @@ export const parseToTarget = (entity: OfferEntity): Partial<OfferSliceData> => {
         name: point?.attributes?.name ?? '',
         enName: point?.attributes?.en_name ?? '',
       })) ?? [],
-    place: offer.place,
+    place: offer ? offer.place : '',
     target: offer?.target ?? '',
-    hourlyWage: offer.hourly_wage,
-    description: offer.description,
-    aboutJob: offer.about_job,
+    hourlyWage: offer ? offer.hourly_wage : '',
+
+    description: offer ? offer.description : '',
+    aboutJob: offer ? offer.about_job : '',
     // gainedSkills: offer.gained_skills?.map((skill) => skill.name) ?? [],
-    recruitmentTerms: offer.recruitment_terms,
+    recruitmentTerms: offer ? offer.recruitment_terms : '',
     qualification: offer?.qualification ?? '',
-    deadline: offer.deadline,
+    deadline: offer ? offer.deadline : '',
     formUrl: offer?.form_url ?? '',
-    people: offer.people,
-    jobDescription: offer.job_description
-      ? markdownToHtml(offer.job_description)
+    people: offer ? offer.people : '',
+    jobDescription: offer
+      ? offer.job_description
+        ? markdownToHtml(offer.job_description)
+        : ''
       : '',
-    aboutCompany: offer.about_company
-      ? markdownToHtml(offer.about_company)
+
+    aboutCompany: offer
+      ? offer.about_company
+        ? markdownToHtml(offer.about_company)
+        : ''
       : '',
   };
 

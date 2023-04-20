@@ -36,8 +36,8 @@ export const Index: NextPage<Props> = ({ data, company }) => {
   const description = data?.offer?.data?.attributes?.description ?? ``;
   const ogp = data?.offer?.data?.attributes?.image?.data?.attributes
     ? parseImage(
-      data.offer.data.attributes.image?.data?.attributes as UploadFile
-    )
+        data.offer.data.attributes.image?.data?.attributes as UploadFile
+      )
     : undefined;
   const seo = parseSeo(title, description, undefined, ogp);
   const imageurl = data?.offer?.data?.attributes?.image?.data?.attributes.url;
@@ -109,10 +109,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
     const paths = data?.offers?.data
       ? data.offers.data.map((item) => ({
-        params: {
-          id: item?.id,
-        },
-      }))
+          params: {
+            id: item?.id,
+          },
+        }))
       : [];
 
     return {

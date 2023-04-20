@@ -1,0 +1,16 @@
+query getPoints {
+  points(pagination: { limit: 1000 }) {
+    data {
+      id
+      attributes {
+        name
+        en_name
+        offers {
+          data {
+            id
+          }
+        }
+      }
+    }
+  }
+}

@@ -17,7 +17,11 @@ import { Labeltext } from '~/features/offers/OfferCard/Labeltext';
 import { Labeltext2 } from './Labeltext2';
 
 import { selectCompany, useCompanyStore } from 'features/company';
-import { useTargetOfferStore, selectTarget } from 'features/offers';
+import {
+  useTargetOfferStore,
+  selectTarget,
+  selectBreadCrumbItem,
+} from 'features/offers';
 import { useLiff } from 'contexts/LineAuthContextInternship';
 
 import { styles } from './styles';
@@ -27,6 +31,7 @@ import 'zenn-content-css';
 import { InternalLink } from '~/components/links/InternalLink';
 import { Span } from '../Span';
 import { routes } from 'constants/routes';
+import { BreadcrumbOfferId } from '../organisms/BreadcrumbOfferId';
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
@@ -36,7 +41,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const company = useCompanyStore(selectCompany);
   const { liff } = useLiff();
   const setPrevPath = useAccountStore(selectSetPrevPath);
-
+  const { jobTitle, companyName } = useTargetOfferStore(selectBreadCrumbItem);
+  const pageTitles = [companyName, jobTitle];
   const signin = () => {
     if (!liff) return;
     if (!liff.isLoggedIn()) {
@@ -56,8 +62,12 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     (endDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24)
   );
   const href = `${routes.companies}/${company.id}`;
+
+  console.log(offer.createdAt);
+
   return (
     <div css={styles}>
+      <BreadcrumbOfferId titles={pageTitles} />
       <Box w={'100%'} backgroundColor={'#f5f5f5'}>
         <Box
           className="body"
@@ -100,11 +110,16 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   {offer.categories.map((category) => (
                     <Labeltext
                       key={category.id}
+                      id={category.id}
                       labeltext={category.name}
                     ></Labeltext>
                   ))}
                   {offer.points.map((point) => (
-                    <Labeltext2 key={point.id} labeltext={point.name} />
+                    <Labeltext2
+                      key={point.id}
+                      id={point.id}
+                      labeltext={point.name}
+                    />
                   ))}
                 </Flex>
                 <h3 className="termstext">
@@ -370,7 +385,11 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     >
                       <Flex flexWrap={`wrap`}>
                         {offer.points.map((point) => (
-                          <Labeltext2 key={point.id} labeltext={point.name} />
+                          <Labeltext2
+                            key={point.id}
+                            id={point.id}
+                            labeltext={point.name}
+                          />
                         ))}
                       </Flex>
                     </Box>
@@ -443,17 +462,13 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                       {offer?.categories.map((category) => (
                         <Labeltext
                           key={category.id}
+                          id={category.id}
                           labeltext={category.name}
                         />
                       ))}
                     </Flex>
                   </div>
-                  {/*
-                  <div className="termsContainer2">
-                    <p className="termsTitle">職種</p>
-                    <p className="termsMain">{offer.jobType}</p>
-                  </div>
-                  */}
+
                   <div className="termsContainer3">
                     <p className="termsTitle">勤務地</p>
                     <p className="termsMain">{offer.place}</p>

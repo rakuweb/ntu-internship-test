@@ -2,9 +2,10 @@
 import { FC } from 'react';
 import { Box } from '@chakra-ui/react';
 
-import { OfferDetail } from 'components/OfferDetail';
+import { BreadcrumbOffers } from '~/components/organisms/BreadcrumbOffers';
 import { Footer } from '~/components/footers/Footer';
-import { Header } from 'components/headers/Header';
+import { Header } from '~/components/headers/Header';
+import { TagContent } from '~/components/organisms/TagIndex';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -18,7 +19,9 @@ export const Presenter: FC<PresenterProps> = () => {
   return (
     <>
       <Header />
-      <OfferDetail />
+      <Box as={`main`}>
+        <TagContent />
+      </Box>
       <Footer />
     </>
   );

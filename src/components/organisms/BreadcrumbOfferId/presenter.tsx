@@ -40,7 +40,7 @@ const styles = css`
   .breadcrumb {
     background-color: #f5f5f5;
     display: none;
-    width: 100vw;
+    width: 100%;
     justify-content: center;
     padding: 24px 0 24px;
   }
@@ -49,7 +49,7 @@ const styles = css`
     font-size: 12px;
     font-family: var(--font-family-yugothic-medium);
     color: #000000;
-    width: calc(100% - 32px);
+    width: calc(100%);
     line-height: 1.7;
   }
 
@@ -67,17 +67,17 @@ const styles = css`
 
   ${mq[2]} {
     .breadcrumb {
-      padding: 32px 0 0;
+      /* padding: 32px 0 0; */
       display: flex;
     }
 
     .breadcrumb__container {
-      width: 760px;
+      max-width: 1180px;
+      width: 90%;
     }
     ${mq[3]} {
       .breadcrumb__container {
-        width: 1200px;
-        margin-left: 80px;
+        width: 1180px;
       }
     }
   }

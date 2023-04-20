@@ -51,6 +51,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         transitionDuration="0.3s"
         transitionTimingFunction="ease-in-out"
         css={styles}
+        m={'auto'}
       >
         <div className="x001">
           {/* {isNew && (
@@ -78,10 +79,18 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   overflow={`hidden`}
                 >
                   {categories.map((category) => (
-                    <Labeltext key={category.id} labeltext={category.name} />
+                    <Labeltext
+                      key={category.id}
+                      id={category.id}
+                      labeltext={category.name}
+                    />
                   ))}
                   {points.map((point) => (
-                    <Labeltext2 key={point.id} labeltext={point.name} />
+                    <Labeltext2
+                      key={point.id}
+                      id={point.id}
+                      labeltext={point.name}
+                    />
                   ))}
                 </Flex>
               </div>
@@ -140,7 +149,8 @@ const styles = css`
     height: 398px;
     width: 300px;
     padding: 0rem;
-    margin-bottom: 32px;
+    margin: auto auto 32px;
+
     ${mq[2]} {
       margin-bottom: 0px;
       height: 400px;
