@@ -498,8 +498,34 @@ export const styles = css`
   .flexwidth {
     width: 100%;
   }
+  .swiper-pagination-bullet {
+    width: 1vw;
+    height: 1vw;
+  }
 
+  .swiper-button-next:after {
+    display: none;
+  }
+
+  .swiper-button-prev {
+    display: none;
+  }
   ${mq[2]} {
+    .swiper-button-next:after {
+      display: block;
+      width: 27px;
+      height: 44px;
+    }
+    .swiper-button-prev {
+      display: block;
+      width: 27px;
+      height: 44px;
+    }
+
+    .swiper-pagination-bullet {
+      width: 8px;
+      height: 8px;
+    }
     .search {
       padding-top: 30px;
     }

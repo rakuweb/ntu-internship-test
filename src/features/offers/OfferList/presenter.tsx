@@ -2,7 +2,7 @@
 import { FC, useState } from 'react';
 import { Box, Grid, Image } from '@chakra-ui/react';
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay, EffectFade } from 'swiper';
+import { Navigation, Autoplay, EffectFade, Pagination } from 'swiper';
 
 import { OfferCard } from 'features/offers/OfferCard';
 import { selectOfferList } from 'features/offers/selectors';
@@ -17,6 +17,7 @@ import {
 
 import 'swiper/css';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import 'swiper/css/effect-fade';
 import { OfferCardDead } from '../OfferCardDead';
@@ -98,25 +99,30 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const [index, setIndex] = useState<number>(0);
 
   const swiperProps: SwiperProps = {
-    modules: [Navigation, Autoplay, EffectFade],
+    modules: [Navigation, Autoplay, EffectFade, Pagination],
     loop: true,
     speed: 2000,
-    effect: 'fade',
+    // effect: 'fade',
     fadeEffect: {
       crossFade: true,
     },
-    // centeredSlides: true,
-    // navigation: true,
-    autoplay: true,
+    pagination: {
+      clickable: true,
+    },
+    centeredSlides: false,
+    navigation: true,
+    autoplay: {
+      disableOnInteraction: false,
+    },
     slidesPerView: 1,
-    spaceBetween: 16,
+    spaceBetween: 0,
     breakpoints: {
       // [breakpointsByPx[0]]: {},
       // [breakpointsByPx[1]]: {},
       [breakpointsByPx[2]]: {
         centeredSlides: true,
         slidesPerView: 1,
-        spaceBetween: 40,
+        spaceBetween: 0,
       },
       // [breakpointsByPx[3]]: {},
       // [breakpointsByPx[4]]: {},
@@ -140,8 +146,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             mx={`auto`}
             borderRadius={{ base: `${20 / 3.75}vw`, lg: `${50 / 19.2}vw` }}
             overflow={`hidden`}
-            position={`relative`}
-            zIndex={`1`}
+            // position={`relative`}
+            // zIndex={`1`}
             mt={`30px`}
             w={`100%`}
           >
