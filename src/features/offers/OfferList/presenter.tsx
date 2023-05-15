@@ -23,6 +23,7 @@ import 'swiper/css/effect-fade';
 import { OfferCardDead } from '../OfferCardDead';
 import { InternalLink } from 'components/links/InternalLink';
 import { routes } from '~/constants';
+import { Firstview } from '../Firstview';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
@@ -136,98 +137,49 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
 
   const sortedOffers = [...activeOffers, ...expiredOffers];
   return (
-    <Box css={styles}>
+    <Box css={styles} w={`100%`} bg={`rgba(65,164,253,0.05)`}>
       <Box
-        // pb={{ base: `${80 / 3.75}vw`, lg: `${120 / 19.2}vw` }}
-        className="search"
+        ml={`${176 / 19.2}vw`}
+        pt={`${29 / 19.2}vw`}
+        mb={`${66 / 19.2}vw`}
+        fontSize={`${30 / 19.2}vw`}
+        fontWeight={`800`}
+        fontFamily={"'Noto Sans JP', sans-serif"}
       >
-        <Box className="search__container" position={`relative`}>
-          <Box
-            mx={`auto`}
-            borderRadius={{ base: `${20 / 3.75}vw`, lg: `${50 / 19.2}vw` }}
-            overflow={`hidden`}
-            // position={`relative`}
-            // zIndex={`1`}
-            mt={`30px`}
-            w={`100%`}
-          >
-            <Swiper {...swiperProps}>
-              <SwiperSlide>
-                <InternalLink href={routes.campaign}>
-                  <Image src="/images/campaign/slider.webp"></Image>
-                </InternalLink>
-              </SwiperSlide>
-              <SwiperSlide>
-                <InternalLink href={routes.howToRegister}>
-                  {' '}
-                  <Image src="/images/register/slider.webp"></Image>
-                </InternalLink>
-              </SwiperSlide>
-              <SwiperSlide>
-                <InternalLink href={routes.beginners}>
-                  {' '}
-                  <Image src="/images/beginners/slider.webp"></Image>
-                </InternalLink>
-              </SwiperSlide>
-              {/* {advertisements.map((ad) => (
-                <SwiperSlide key={ad.id}>
-                  <InternalLink href={`${routes.advertisements}/${ad.id}`}>
-                    <Box>
-                      <Image
-                        w={`100%`}
-                        image={{
-                          ...ad.image,
-                          layout: `responsive`,
-                        }}
-                      />
-                    </Box>
-                  </InternalLink>
-                </SwiperSlide>
-              ))} */}
-            </Swiper>
-          </Box>
-          {/*<OfferSidebar />*/}
-          <div className="search-title__container">
-            <p className="search-title__container__title">求人一覧</p>
-          </div>
-
-          <section className="recruit-card-area">
-            {/* <div className="recruit-card-container"> */}
-            <Grid
-              templateColumns={{
-                base: `repeat(1,1fr)`,
-                md: `repeat(2,1fr)`,
-                lg: `repeat(3,1fr)`,
-              }}
-              rowGap={{ lg: `38px` }}
-              columnGap={{ lg: `32px` }}
-            >
-              {sortedOffers.map((offer) => {
-                const daysRemaining = remainingDays(offer.deadline);
-                return (
-                  <div key={offer.id}>
-                    {offer.deadline >= today ? (
-                      <Box m={`0 auto`} w={`fit-content`}>
-                        <OfferCard
-                          {...offer}
-                          deadline={daysRemaining}
-                          startDate={offer.createdAt}
-                        />
-                      </Box>
-                    ) : (
-                      <Box m={`0 auto`} w={`fit-content`}>
-                        <OfferCardDead {...offer} deadline={daysRemaining} />
-                      </Box>
-                    )}
-                  </div>
-                );
-              })}
-            </Grid>
-
-            {/* </div> */}
-          </section>
-        </Box>
+        新着求人一覧
       </Box>
+      <Grid
+        ml={`${206 / 19.2}vw`}
+        mr={`${240 / 19.2}vw`}
+        templateColumns={{
+          base: `repeat(1,1fr)`,
+          lg: `repeat(2,1fr)`,
+        }}
+        rowGap={{ lg: `38px` }}
+        columnGap={{ lg: `32px` }}
+        opacity={`1`}
+      >
+        {sortedOffers.map((offer) => {
+          const daysRemaining = remainingDays(offer.deadline);
+          return (
+            <div key={offer.id}>
+              {offer.deadline >= today ? (
+                <Box m={`0 auto`} w={`fit-content`}>
+                  <OfferCard
+                    {...offer}
+                    deadline={daysRemaining}
+                    startDate={offer.createdAt}
+                  />
+                </Box>
+              ) : (
+                <Box m={`0 auto`} w={`fit-content`}>
+                  {/* <OfferCardDead {...offer} deadline={daysRemaining} /> */}
+                </Box>
+              )}
+            </div>
+          );
+        })}
+      </Grid>
     </Box>
   );
 };

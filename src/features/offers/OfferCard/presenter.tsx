@@ -1,15 +1,14 @@
 // import layer
 import { FC } from 'react';
 import { css } from '@emotion/react';
-import { Box, Image, Flex } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 
 import { InternalLink } from '~/components/links/InternalLink';
 import { OfferCard } from '../types';
 import { mq } from '~/constants/styles';
 import { routes } from 'constants/routes';
-import { Labeltext } from './Labeltext';
-import { Labeltext2 } from '~/components/OfferDetail/Labeltext2';
 import { Image as NImage } from 'components/images/Image';
+import { Image } from '~/components/Image';
 
 // type layer
 export type DataProps = OfferCard;
@@ -33,6 +32,32 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     deadline,
     createdByid,
   } = props;
+  const list = [
+    {
+      name: `時給`,
+      main: hourlyWage,
+      src: `/images/offers/okaneIcon.png`,
+      alt: `お金のアイコン`,
+    },
+    {
+      name: `職種`,
+      main: categories[0],
+      src: `/images/offers/hitogataIcon.png`,
+      alt: `人型のアイコン`,
+    },
+    {
+      name: `場所`,
+      main: `中央区天神`,
+      src: `public/images/offers/basyoIcon.png`,
+      alt: `場所のアイコン`,
+    },
+    {
+      name: `時間`,
+      main: `16:00-20:00`,
+      src: `public/svg/clock-solid.svg`,
+      alt: `時間のアイコン`,
+    },
+  ];
   const href = `${routes.offers}/${id}`;
   const currentDate = new Date();
   const startDateObj = new Date(startDate);
@@ -40,275 +65,204 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     (currentDate.getTime() - startDateObj.getTime()) / (1000 * 3600 * 24);
 
   return (
-    <InternalLink
-      // _hover={{ cursor: `pointer`, color: `` }}
-      href={href}
-    >
+    <InternalLink href={href}>
       <Box display={'none'}>{createdByid}</Box>
       <Box
-        _hover={{ boxShadow: `2xl` }}
         transitionProperty={`box-shadow`}
         transitionDuration="0.3s"
         transitionTimingFunction="ease-in-out"
-        css={styles}
         m={'auto'}
+        css={styles}
       >
-        <div className="x001">
-          {/* {isNew && (
-            <div className="NEW-area">
-              <div className="NEW-box">NEW</div>
-            </div>
-          )} */}
-          {image?.src && (
-            <NImage
-              className="photo"
-              // cmsで使う用途
-              // src={image}
-              // src={`/images/offers/cover.png`}
-              image={{ ...image }}
-            />
-          )}
-          <div className="text">
-            <div className="campanytext">{companyName}</div>
-            <h2 className="text-2">{title}</h2>
-            {categories.length !== 0 && (
-              <div className="termstext">
+        <Box
+          bg={`white`}
+          w={`${700 / 19.2}vw`}
+          h={`${363 / 19.2}vw`}
+          py={`${30 / 19.2}vw`}
+          pl={`${29 / 19.2}vw`}
+          pr={`${33 / 19.2}vw`}
+          fontFamily={`'Noto Sans JP', sans-serif`}
+          position={`relative`}
+        >
+          <Box
+            position={`absolute`}
+            top={`${20 / 19.2}vw`}
+            right={`${33 / 19.2}vw`}
+            color={`white`}
+            bg={`#F26601`}
+            border={`1px solid #F26601`}
+            borderRadius={`${3 / 19.2}vw`}
+            w={`${90 / 19.2}vw`}
+            h={`${24 / 19.2}vw`}
+            pt={`${3 / 19.2}vw`}
+            textAlign={`center`}
+            fontWeight={`bold`}
+            fontSize={`${14 / 19.2}vw`}
+          >
+            NEW
+          </Box>
+          <Box mb={`${10 / 19.2}vw`} fontSize={`${18 / 19.2}vw`}>
+            {companyName}
+          </Box>
+          <Box
+            display={`inline`}
+            fontWeight={`bold`}
+            fontSize={`${25 / 19.2}vw`}
+            color={`#41A4FD`}
+            borderBottom={`1px solid #41A4FD`}
+            lineHeight={`1.6em`}
+          >
+            {title}
+          </Box>
+          <Flex justify={`space-between`}>
+            <NImage className={`photo`} image={{ ...image }} />
+            <Box w={`${283 / 19.2}vw`}>
+              <Box
+                mt={`${25 / 19.2}vw`}
+                fontSize={`${13 / 19.2}vw`}
+                textAlign={`right`}
+              >
+                掲載終了 : 2023年06月23日
+              </Box>
+              <Box mt={`${15 / 19.2}vw`}>
                 <Flex
-                  flexWrap={`wrap`}
-                  height={{ base: `48px`, lg: `48px` }}
-                  overflow={`hidden`}
+                  pl={`${20 / 19.2}vw`}
+                  py={`${3 / 19.2}vw`}
+                  alignItems={`center`}
+                  fontWeight={`bold`}
+                  fontSize={`${17 / 19.2}vw`}
+                  bg={`rgba(254,207,2,0.1)`}
+                  borderRadius={`${26 / 19.2}vw`}
                 >
-                  {categories.map((category) => (
-                    <Labeltext
-                      key={category.id}
-                      id={category.id}
-                      labeltext={category.name}
-                    />
-                  ))}
-                  {points.map((point) => (
-                    <Labeltext2
-                      key={point.id}
-                      id={point.id}
-                      labeltext={point.name}
-                    />
-                  ))}
+                  <Image
+                    w={`${11.5 / 19.2}vw`}
+                    h={`${16 / 19.2}vw`}
+                    image={{
+                      width: 11.5,
+                      height: 16,
+                      src: `/images/offers/okaneIcon.png`,
+                      alt: `お金アイコン`,
+                    }}
+                  />
+                  <Box ml={`${12 / 19.2}vw`}>時給</Box>
+                  <Box ml={`${50 / 19.2}vw`} color={`#F26601`}>
+                    1,000円
+                  </Box>
                 </Flex>
-              </div>
-            )}
-            <div className="termstext">
-              <Image
-                className="icon"
-                width={24}
-                height={24}
-                src={`/svg/map-marker.svg`}
-              />
-              <div className="placetext">{place}</div>
-            </div>
-            <Box className="pay">
-              <Image
-                className="icon"
-                width={24}
-                height={24}
-                src={`/svg/money.svg`}
-                // src={`/images/offers/hukuroIkon.png`}
-              />
-              <div className="paytext">{hourlyWage}</div>
-              {deadline <= 10 ? (
-                <Box fontSize={'14px'} ml={'auto'} color={'red'}>
-                  締切あと{deadline}日
-                </Box>
-              ) : isNew <= 7 ? (
-                <Box
-                  fontSize={'12px'}
-                  ml={'auto'}
-                  color={'white'}
-                  bgColor={'red'}
-                  p={'2px 5px'}
-                  // borderRadius={'3px'}
+              </Box>
+              <Box mt={`${15 / 19.2}vw`}>
+                <Flex
+                  pl={`${17 / 19.2}vw`}
+                  py={`${3 / 19.2}vw`}
+                  alignItems={`center`}
+                  fontWeight={`bold`}
+                  fontSize={`${17 / 19.2}vw`}
+                  bg={`rgba(254,207,2,0.1)`}
+                  borderRadius={`${26 / 19.2}vw`}
                 >
-                  NEW
-                </Box>
-              ) : null}
+                  <Image
+                    w={`${16 / 19.2}vw`}
+                    h={`${18.5 / 19.2}vw`}
+                    image={{
+                      width: 16,
+                      height: 18.5,
+                      src: `/images/offers/hitogataIcon.png`,
+                      alt: `人型アイコン`,
+                    }}
+                  />
+                  <Box ml={`${12 / 19.2}vw`}>職種</Box>
+                  <Box ml={`${50 / 19.2}vw`}>エンジニア</Box>
+                </Flex>
+              </Box>
+              <Box mt={`${15 / 19.2}vw`}>
+                <Flex
+                  pl={`${18 / 19.2}vw`}
+                  py={`${3 / 19.2}vw`}
+                  alignItems={`center`}
+                  fontWeight={`bold`}
+                  fontSize={`${17 / 19.2}vw`}
+                  bg={`rgba(254,207,2,0.1)`}
+                  borderRadius={`${26 / 19.2}vw`}
+                >
+                  <Image
+                    w={`${13.7 / 19.2}vw`}
+                    h={`${18.3 / 19.2}vw`}
+                    image={{
+                      width: 13.7,
+                      height: 18.3,
+                      src: `/images/offers/basyoIcon.png`,
+                      alt: `場所アイコン`,
+                    }}
+                  />
+                  <Box ml={`${12 / 19.2}vw`}>職種</Box>
+                  <Box ml={`${50 / 19.2}vw`}>新潟市中央区天神</Box>
+                </Flex>
+              </Box>
+              <Box mt={`${15 / 19.2}vw`}>
+                <Flex
+                  pl={`${16 / 19.2}vw`}
+                  py={`${3 / 19.2}vw`}
+                  alignItems={`center`}
+                  fontWeight={`bold`}
+                  fontSize={`${17 / 19.2}vw`}
+                  bg={`rgba(254,207,2,0.1)`}
+                  borderRadius={`${26 / 19.2}vw`}
+                >
+                  <Image
+                    w={`${16 / 19.2}vw`}
+                    h={`${16 / 19.2}vw`}
+                    image={{
+                      width: 16,
+                      height: 16,
+                      src: `/svg/clock-solid.svg`,
+                      alt: `時間アイコン`,
+                    }}
+                  />
+                  <Box ml={`${12 / 19.2}vw`}>時間</Box>
+                  <Box ml={`${50 / 19.2}vw`}>16:00-20:00</Box>
+                </Flex>
+              </Box>
             </Box>
-          </div>
-        </div>
+          </Flex>
+        </Box>
+        <Flex
+          background={`transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box;`}
+          w={`100%`}
+          h={`${57 / 19.2}vw`}
+          borderRadius={` 0 0 ${15 / 19.2}vw ${15 / 19.2}vw`}
+          justify={`space-between`}
+          pl={`${28 / 19.2}vw`}
+          pr={`${23 / 19.2}vw`}
+          pb={`${14 / 19.2}vw`}
+          fontWeight={`bold`}
+          alignItems={`flex-end`}
+          color={`white`}
+        >
+          <Box fontSize={`${15 / 19.2}vw`}>
+            掲載終了まであと
+            <Box as={`span`} fontSize={`${25 / 19.2}vw`}>
+              6
+            </Box>
+            日
+          </Box>
+          <Box fontFamily={`"Josefin Sans", Bold Italic`}>{`CHECK >>`}</Box>
+        </Flex>
       </Box>
     </InternalLink>
   );
 };
 
-// styles
 const styles = css`
-  //モバイルサイズ
-  .x001 {
-    background-color: var(--white);
-    border-radius: 10px;
-    box-shadow: -3.06e-16px 5px 10px #00417026;
-    display: flex;
-    flex-direction: column;
-    height: 398px;
-    width: 300px;
-    padding: 0rem;
-    margin: auto auto 32px;
-
-    ${mq[2]} {
-      margin-bottom: 0px;
-      height: 400px;
-    }
-    ${mq[3]} {
-      height: 440px;
-      width: 368px;
-    }
-  }
-
-  .NEW-area {
-    position: relative;
-    z-index: 10;
-  }
-
-  .NEW-box {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 52px;
-    height: 29px;
-    font-family: 'yugothic', 'Zen Kaku Gothic New', 'Hiragino Sans';
-    font-weight: bold;
-    font-size: 14px;
-    color: #ffffff;
-    background-color: #d6322c;
-    ${mq[3]} {
-      width: 62px;
-      height: 34px;
-      font-size: 20px;
-    }
-  }
-
   .photo {
-    width: 100%;
-    height: 176px;
-    /*height: 150px;*/
+    width: ${309 / 19.2}vw;
+    height: ${180 / 19.2}vw;
     object-fit: cover;
-    border-radius: 10px 10px 0 0;
+    border-radius: 5px;
     overflow: hidden;
     ${mq[3]} {
-      height: 215px;
-      /*height: 180px;*/
-    }
-  }
-
-  .text {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin: 12px;
-    width: 276px;
-    font-family: yugothic, 'Zen Kaku Gothic New', 'ヒラギノ角ゴ Pro W3',
-      'Hiragino Kaku Gothic Pro', 'Hiragino Sans';
-    color: #000000;
-    ${mq[3]} {
-      justify-content: space-between;
-      margin: 20px auto;
-      width: 332px;
-    }
-  }
-
-  .campanytext {
-    font-size: 14px;
-    font-weight: bold;
-    line-height: 1.3em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    ${mq[3]} {
-      font-size: 14px;
-    }
-  }
-
-  .text-2 {
-    letter-spacing: 0;
-    white-space: pre-wrap;
-    font-size: 18px;
-    font-weight: bold;
-    color: #000000;
-    line-height: 1.3em;
-    margin-bottom: 8px;
-    height: 47px;
-    overflow: hidden;
-    ${mq[3]} {
-      white-space: pre-wrap;
-    }
-  }
-
-  .icon {
-    width: 1rem;
-    height: 1rem;
-    margin-right: 4px;
-    ${mq[3]} {
-      width: 20px;
-      height: 20px;
-    }
-  }
-
-  .termstext {
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    white-space: nowrap;
-    ${mq[3]} {
-      // border-bottom: 1px solid #9d9d9e;
-      margin-top: 0px;
-    }
-  }
-
-  .pay {
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-    white-space: nowrap;
-    font-family: 'yugothic', 'Zen Kaku Gothic New', 'Hiragino Sans';
-    ${mq[3]} {
-    }
-  }
-
-  .paytext {
-    font-size: 12px;
-    font-weight: 500;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    ${mq[3]} {
-      font-size: 12px;
-      white-space: nowrap;
-    }
-  }
-
-  .placetext {
-    font-size: 12px;
-    font-weight: 500;
-    white-space: pre-wrap;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-    ${mq[3]} {
-      font-size: 12px;
-      white-space: pre-wrap;
-    }
-  }
-
-  .description {
-    font-size: 11px;
-    font-weight: 500;
-    white-space: pre-wrap;
-    ${mq[3]} {
-      font-size: 13px;
-      white-space: pre-wrap;
+      width: ${309 / 19.2}vw;
+      height: ${180 / 19.2}vw;
+      margin-top: ${23 / 19.2}vw;
     }
   }
 `;

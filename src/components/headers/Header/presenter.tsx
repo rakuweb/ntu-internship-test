@@ -89,26 +89,23 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
   return (
     <Box
       w={`100%`}
-      bg={`#f5f5f5`}
-      pt={{ base: `${10 / 3.75}vw`, lg: `${15 / 19.2}vw` }}
-      px={{ base: `${20 / 3.75}vw`, lg: `${40 / 19.2}vw` }}
+      bg={`#fffffff`}
+      pt={{ base: `${10 / 3.75}vw`, lg: `0` }}
+      px={{ base: `${20 / 3.75}vw`, lg: `0` }}
+      position={{ lg: `sticky` }}
+      top={`0rem`}
+      zIndex={`sticky`}
       {...props}
     >
       <Flex
         justify={`space-between`}
         align={`center`}
-        backgroundColor={{ base: `#f5f5f5`, lg: 'var(--white)' }}
-        boxShadow={{ lg: `0px 0px 20px #00000026;` }}
-        borderRadius={{ lg: `${50 / 19.2}vw` }}
+        backgroundColor={{ base: `#ffffff`, lg: 'var(--white)' }}
         css={styles}
         w={`100%`}
-        maxWidth={`1530px`}
-        h={{ base: `80px`, lg: `100px` }}
-        p={{ base: `0`, lg: `0 ${40 / 19.2}vw` }}
+        h={{ base: `80px`, lg: `124px` }}
+        p={{ base: `0`, lg: `35px ${80 / 19.2}vw 5px` }}
         mx={`auto`}
-        position={{ lg: `sticky` }}
-        top={`0rem`}
-        zIndex={`sticky`}
         fontFamily={`'Zen Kaku Gothic New',
         'Hiragino Sans'`}
         as={`header`}
@@ -124,26 +121,14 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
               <Image htmlWidth={136} htmlHeight={59} src={`/svg/forjob.svg`} />
             </Box>
           </InternalLink>
-          <InternalLink href={routes.home}>
-            <Box
-              display={{ base: `none`, lg: `block` }}
-              m={{ lg: `0 0 0 ${40 / 19.2}vw` }}
-              color="#444444"
-              fontWeight={'bold'}
-              fontSize={`14px`}
-            >
-              新大生のための求人サイト
-            </Box>
-          </InternalLink>
         </Flex>
 
-        <Flex alignItems={'center'}>
+        <Flex alignItems={'center'} letterSpacing={`0`}>
           <Box
             display={{ base: `none`, lg: `block` }}
-            fontWeight="bold"
-            color="rgba(153,153, 153, 0.8)"
-            fontSize={`12px`}
-            mr={{ lg: `${40 / 19.2}vw` }}
+            color="#39414E"
+            fontSize={`17px`}
+            mr={{ lg: `33px` }}
             mt={{ lg: `${2 / 19.2}vw` }}
           >
             採用担当者はこちら
@@ -168,10 +153,14 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
           {username ? (
             <Box
               display={{ base: `none`, lg: `block` }}
-              borderRadius={`20px`}
-              p={`${8 / 19.2}vw ${16 / 19.2}vw`}
+              borderRadius={`10px`}
+              w={`152px`}
+              h={`44px`}
+              fontSize={`17px`}
+              pt={`${13 / 19.2}vw`}
+              textAlign={`center`}
               color="white"
-              backgroundImage={`linear-gradient(19deg, #21D4FD 0%, #B721FF 100%)`}
+              background={`transparent linear-gradient(270deg, #0EF4FF 0%, #41A4FD 100%) 0% 0% no-repeat padding-box`}
               fontWeight={'600'}
               onClick={() => signout()}
               transition={`all .3s`}
@@ -180,17 +169,21 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
                 filter: `opacity(50%)`,
                 textDecoration: 'none',
               }}
-              mr={{ lg: '50px' }}
+              mr={{ lg: '33px' }}
             >
               ログアウト
             </Box>
           ) : (
             <Box
               display={{ base: `none`, lg: `block` }}
-              borderRadius={`20px`}
-              p={`${8 / 19.2}vw ${16 / 19.2}vw`}
+              borderRadius={`10px`}
+              w={`152px`}
+              h={`44px`}
+              fontSize={`17px`}
+              pt={`13px`}
+              textAlign={`center`}
               color="white"
-              backgroundImage={`linear-gradient(19deg, #21D4FD 0%, #B721FF 100%)`}
+              background={`transparent linear-gradient(270deg, #0EF4FF 0%, #41A4FD 100%) 0% 0% no-repeat padding-box`}
               fontWeight={'600'}
               onClick={signin}
               transition={`all .3s`}
@@ -199,7 +192,7 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
                 filter: `opacity(50%)`,
                 textDecoration: 'none',
               }}
-              mr={{ lg: '50px' }}
+              mr={{ lg: '33px' }}
             >
               ログイン
             </Box>
@@ -229,6 +222,12 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
 
         <MenuDrawer isOpen={isOpen} onClose={onClose} />
       </Flex>
+      <Box
+        display={{ base: `none`, lg: `block` }}
+        w={`100%`}
+        h={`40px`}
+        bg={`#41A4FD`}
+      />
     </Box>
   );
 };

@@ -89,8 +89,13 @@ export const Presenter: VFC<PresenterProps> = ({
 
         const { exist } = res.data;
         if (exist) {
-          const { email, username,grade, studentId } = res.data;
-          setAccount({ email: email as string, username: username as string, grade: grade as string , studentId: studentId as string });
+          const { email, username, grade, studentId } = res.data;
+          setAccount({
+            email: email as string,
+            username: username as string,
+            grade: grade as string,
+            studentId: studentId as string,
+          });
         }
       };
       handler();
@@ -110,7 +115,7 @@ export const Presenter: VFC<PresenterProps> = ({
                   onClick={() => signout()}
                   w={`fit-content`}
                   h={{ base: `2.5rem` }}
-                  backgroundImage={`linear-gradient(19deg, #21d4fd 0%, #b721ff 100%)`}
+                  background={`transparent linear-gradient(270deg, #0EF4FF 0%, #41A4FD 100%) 0% 0% no-repeat padding-box`}
                   _hover={{
                     bg: `var(--white)`,
                     '.text': { color: `var(--mandy)` },
@@ -131,7 +136,7 @@ export const Presenter: VFC<PresenterProps> = ({
                   w={`fit-content`}
                   h={{ base: `2.5rem` }}
                   onClick={signin}
-                  backgroundImage={`linear-gradient(19deg, #21d4fd 0%, #b721ff 100%)`}
+                  background={`transparent linear-gradient(270deg, #0EF4FF 0%, #41A4FD 100%) 0% 0% no-repeat padding-box`}
                   _hover={{
                     bg: `var(--white)`,
                     '.text': { color: `var(--mandy)` },

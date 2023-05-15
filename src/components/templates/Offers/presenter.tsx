@@ -7,6 +7,8 @@ import { Footer } from 'components/footers/Footer';
 import { OfferList } from 'features/offers/OfferList';
 import { styles } from './styles';
 import { BreadcrumbOffers } from '~/components/organisms/BreadcrumbOffers';
+import { Firstview } from '~/features/offers/Firstview';
+import { Taglist } from '~/features/offers/Taglist';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
@@ -20,6 +22,8 @@ export const Presenter: FC<PresenterProps> = () => {
 
       <Box as={`main`} css={styles}>
         {/* <BreadcrumbOffers title={pageTitle} /> */}
+        <Firstview />
+        <Taglist />
         <OfferList />
       </Box>
       <Footer />

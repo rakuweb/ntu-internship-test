@@ -22,11 +22,11 @@ export const Presenter: VFC<PresenterProps> = ({
     <Box>
       <Flex
         className={`${isOpen ? `open` : ``}`}
-        boxShadow={{ base: `0px 0px 20px #00000026;` }}
+        boxShadow={{ base: `0px 3px 6px #00000029` }}
         bg={`white`}
         css={styles}
-        w={`45px`}
-        h={`45px`}
+        w={{ base: `45px`, lg: `60px` }}
+        h={{ base: `45px`, lg: `60px` }}
         direction={`column`}
         justify={`center`}
         align={`center`}
@@ -52,11 +52,12 @@ export const Presenter: VFC<PresenterProps> = ({
       </Flex>
       <Box
         textAlign={`center`}
-        mt={`0.7rem`}
+        mt={`10px`}
         mx={`auto`}
-        fontSize={`11px`}
+        fontSize={{ base: `11px`, lg: `14px` }}
         color={`#444444`}
         className="menu-text yugothic-bold-white-14px"
+        fontFamily={`'Noto Sans JP', sans-serif;`}
       >
         {isOpen ? <Box color={`#4444444`}>閉じる</Box> : `メニュー`}
       </Box>
@@ -74,7 +75,7 @@ const styles = css`
   .toggle_btn {
     display: block;
     position: relative;
-    width: 20px;
+    width: 26px;
     height: 30px;
     transition: all 0.5s;
     margin-left: auto;
@@ -85,10 +86,10 @@ const styles = css`
     display: block;
     position: absolute;
     left: 0;
-    width: 20px;
-    height: 3px;
-    background-color: #444444;
-    border-radius: 9px;
+    width: 26px;
+    height: 5px;
+    background-color: #41a4fd;
+    border-radius: 3px;
     transition: all 0.5s;
   }
   .toggle_btn span:nth-child(1) {
@@ -100,8 +101,8 @@ const styles = css`
     width: 100%;
   }
   .toggle_btn span:nth-child(3) {
-    bottom: 4px;
-    width: 50%;
+    bottom: 1px;
+    width: 14px;
   }
   .toggle_btn span:hover {
     color: var(--curious-blue);
