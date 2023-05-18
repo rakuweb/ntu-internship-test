@@ -32,32 +32,6 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     deadline,
     createdByid,
   } = props;
-  const list = [
-    {
-      name: `時給`,
-      main: hourlyWage,
-      src: `/images/offers/okaneIcon.png`,
-      alt: `お金のアイコン`,
-    },
-    {
-      name: `職種`,
-      main: categories[0],
-      src: `/images/offers/hitogataIcon.png`,
-      alt: `人型のアイコン`,
-    },
-    {
-      name: `場所`,
-      main: `中央区天神`,
-      src: `public/images/offers/basyoIcon.png`,
-      alt: `場所のアイコン`,
-    },
-    {
-      name: `時間`,
-      main: `16:00-20:00`,
-      src: `public/svg/clock-solid.svg`,
-      alt: `時間のアイコン`,
-    },
-  ];
   const href = `${routes.offers}/${id}`;
   const currentDate = new Date();
   const startDateObj = new Date(startDate);
@@ -68,6 +42,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     <InternalLink href={href}>
       <Box display={'none'}>{createdByid}</Box>
       <Box
+        display={{ base: `none`, lg: `block` }}
         transitionProperty={`box-shadow`}
         transitionDuration="0.3s"
         transitionTimingFunction="ease-in-out"
@@ -84,7 +59,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           fontFamily={`'Noto Sans JP', sans-serif`}
           position={`relative`}
         >
-          <Box
+          <Flex
             position={`absolute`}
             top={`${20 / 19.2}vw`}
             right={`${33 / 19.2}vw`}
@@ -94,13 +69,13 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             borderRadius={`${3 / 19.2}vw`}
             w={`${90 / 19.2}vw`}
             h={`${24 / 19.2}vw`}
-            pt={`${3 / 19.2}vw`}
-            textAlign={`center`}
+            alignItems={`center`}
+            justify={`center`}
             fontWeight={`bold`}
             fontSize={`${14 / 19.2}vw`}
           >
             NEW
-          </Box>
+          </Flex>
           <Box mb={`${10 / 19.2}vw`} fontSize={`${18 / 19.2}vw`}>
             {companyName}
           </Box>
@@ -110,7 +85,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             fontSize={`${25 / 19.2}vw`}
             color={`#41A4FD`}
             borderBottom={`1px solid #41A4FD`}
-            lineHeight={`1.6em`}
+            lineHeight={`1.5em`}
           >
             {title}
           </Box>
@@ -121,10 +96,11 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 mt={`${25 / 19.2}vw`}
                 fontSize={`${13 / 19.2}vw`}
                 textAlign={`right`}
+                color={`#39414E`}
               >
-                掲載終了 : 2023年06月23日
+                {`掲載終了 : 2023年06月23日`}
               </Box>
-              <Box mt={`${15 / 19.2}vw`}>
+              <Box mt={`${15 / 19.2}vw`} color={`#39414E`}>
                 <Flex
                   pl={`${20 / 19.2}vw`}
                   py={`${3 / 19.2}vw`}
@@ -140,17 +116,17 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     image={{
                       width: 11.5,
                       height: 16,
-                      src: `/images/offers/okaneIcon.png`,
+                      src: `/svg/yen-sign-solid.svg`,
                       alt: `お金アイコン`,
                     }}
                   />
-                  <Box ml={`${12 / 19.2}vw`}>時給</Box>
+                  <Box ml={`${13 / 19.2}vw`}>時給</Box>
                   <Box ml={`${50 / 19.2}vw`} color={`#F26601`}>
                     1,000円
                   </Box>
                 </Flex>
               </Box>
-              <Box mt={`${15 / 19.2}vw`}>
+              <Box mt={`${15 / 19.2}vw`} color={`#39414E`}>
                 <Flex
                   pl={`${17 / 19.2}vw`}
                   py={`${3 / 19.2}vw`}
@@ -166,7 +142,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     image={{
                       width: 16,
                       height: 18.5,
-                      src: `/images/offers/hitogataIcon.png`,
+                      src: `/svg/user-solid.svg`,
                       alt: `人型アイコン`,
                     }}
                   />
@@ -174,7 +150,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   <Box ml={`${50 / 19.2}vw`}>エンジニア</Box>
                 </Flex>
               </Box>
-              <Box mt={`${15 / 19.2}vw`}>
+              <Box mt={`${15 / 19.2}vw`} color={`#39414E`}>
                 <Flex
                   pl={`${18 / 19.2}vw`}
                   py={`${3 / 19.2}vw`}
@@ -190,15 +166,15 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     image={{
                       width: 13.7,
                       height: 18.3,
-                      src: `/images/offers/basyoIcon.png`,
+                      src: `/svg/location-dot-solid.svg`,
                       alt: `場所アイコン`,
                     }}
                   />
-                  <Box ml={`${12 / 19.2}vw`}>職種</Box>
+                  <Box ml={`${12 / 19.2}vw`}>場所</Box>
                   <Box ml={`${50 / 19.2}vw`}>新潟市中央区天神</Box>
                 </Flex>
               </Box>
-              <Box mt={`${15 / 19.2}vw`}>
+              <Box mt={`${15 / 19.2}vw`} color={`#39414E`}>
                 <Flex
                   pl={`${16 / 19.2}vw`}
                   py={`${3 / 19.2}vw`}
@@ -237,6 +213,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           fontWeight={`bold`}
           alignItems={`flex-end`}
           color={`white`}
+          fontFamily={`'Noto Sans JP', sans-serif`}
         >
           <Box fontSize={`${15 / 19.2}vw`}>
             掲載終了まであと
@@ -245,8 +222,233 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             </Box>
             日
           </Box>
-          <Box fontFamily={`"Josefin Sans", Bold Italic`}>{`CHECK >>`}</Box>
+          <Box
+            fontSize={`${18 / 19.2}vw`}
+            fontFamily={`"Josefin Sans"`}
+            fontStyle={`italic`}
+          >{`CHECK >>`}</Box>
         </Flex>
+      </Box>
+      {/* ///////////////// */}
+
+      {/* モバイルサイズ */}
+      <Box
+        display={{ lg: `none` }}
+        pb={`${44 / 3.75}vw`}
+        m={'auto'}
+        position={`relative`}
+        // overflow={`hidden`}
+        css={styles}
+      >
+        <Box
+          bg={`white`}
+          w={`${335 / 3.75}vw`}
+          h={`${200 / 3.75}vw`}
+          borderRadius={`${10 / 3.75}vw ${10 / 3.75}vw 0 0`}
+          fontFamily={`'Noto Sans JP', sans-serif`}
+        >
+          <Flex
+            alignItems={`center`}
+            justify={`center`}
+            borderRadius={`${3 / 3.75}vw`}
+            w={`${40 / 3.75}vw`}
+            h={`${12 / 3.75}vw`}
+            position={`absolute`}
+            top={`${10 / 3.75}vw`}
+            right={`${10 / 3.75}vw`}
+            color={`white`}
+            bg={`#F26601`}
+            fontWeight={`bold`}
+            fontSize={`${10 / 3.75}vw`}
+          >
+            NEW
+          </Flex>
+          <Box p={`${16 / 3.75}vw`} pb={`${11 / 3.75}vw`}>
+            <Box mb={`${4 / 3.75}vw`} fontSize={`${10 / 3.75}vw`}>
+              {companyName}
+            </Box>
+            <Box
+              display={`inline`}
+              fontSize={`${12 / 3.75}vw`}
+              fontWeight={`bold`}
+              h={`${37 / 3.75}vw`}
+              overflow={`hidden`}
+              textOverflow={`ellipsis`}
+              lineHeight={`1.6em`}
+              color={`#41A4FD`}
+              borderBottom={`1px solid #41A4FD`}
+            >
+              {title}
+            </Box>
+            <Flex mt={`${8 / 3.75}vw`} justify={`space-between`}>
+              <NImage
+                mt={`${5 / 3.75}vw`}
+                className={`photo`}
+                image={{ ...image }}
+              />
+              <Flex direction={`column`} fontWeight={`500`}>
+                <Box
+                  textAlign={`end`}
+                  fontSize={`${10 / 3.75}vw`}
+                  fontWeight={`400`}
+                  mb={`${6 / 3.75}vw`}
+                  color={`#39414E`}
+                >
+                  掲載終了 : 2023年6月30日
+                </Box>
+                <Flex
+                  // w={`${190 / 3.75}vw`}
+                  fontWeight={`bold`}
+                  color={`#F26601`}
+                  fontSize={`${10 / 3.75}vw`}
+                  mb={`${5 / 3.75}vw`}
+                  py={`${3 / 3.75}vw`}
+                  bg={`rgba(254,207,2,0.1)`}
+                  borderRadius={`${26 / 3.75}vw`}
+                >
+                  <Image
+                    ml={`${10 / 3.75}vw`}
+                    mr={`${10 / 3.75}vw`}
+                    w={`${6 / 3.75}vw`}
+                    h={`${9 / 3.75}vw`}
+                    image={{
+                      width: 24,
+                      height: 30,
+                      src: `/svg/yen-sign-solid.svg`,
+                      alt: `お金アイコン`,
+                    }}
+                  />
+                  <Box
+                    color={`#39414E`}
+                    fontWeight={`500`}
+                    mr={`${8 / 3.75}vw`}
+                  >
+                    時給
+                  </Box>
+                  1,000円
+                </Flex>
+                <Flex
+                  fontSize={`${10 / 3.75}vw`}
+                  mb={`${5 / 3.75}vw`}
+                  py={`${3 / 3.75}vw`}
+                  bg={`rgba(254,207,2,0.1)`}
+                  borderRadius={`${26 / 3.75}vw`}
+                  color={`#39414E`}
+                >
+                  <Image
+                    ml={`${9 / 3.75}vw`}
+                    mr={`${9 / 3.75}vw`}
+                    w={`${8 / 3.75}vw`}
+                    h={`${9 / 3.75}vw`}
+                    image={{
+                      width: 24,
+                      height: 30,
+                      src: `/svg/user-solid.svg`,
+                      alt: `人型アイコン`,
+                    }}
+                  />
+                  <Box mr={`${8 / 3.75}vw`}>職種</Box>
+                  <Box
+                    overflow={`hidden`}
+                    textOverflow={`ellipsis`}
+                    whiteSpace={`nowrap`}
+                    w={`${90 / 3.75}vw`}
+                  >
+                    エンジニア
+                  </Box>
+                </Flex>
+                <Flex
+                  fontSize={`${10 / 3.75}vw`}
+                  mb={`${5 / 3.75}vw`}
+                  py={`${3 / 3.75}vw`}
+                  bg={`rgba(254,207,2,0.1)`}
+                  borderRadius={`${26 / 3.75}vw`}
+                  color={`#39414E`}
+                >
+                  <Image
+                    ml={`${10 / 3.75}vw`}
+                    mr={`${9 / 3.75}vw`}
+                    w={`${7 / 3.75}vw`}
+                    h={`${9 / 3.75}vw`}
+                    image={{
+                      width: 24,
+                      height: 30,
+                      src: `/svg/location-dot-solid.svg`,
+                      alt: `場所アイコン`,
+                    }}
+                  />
+                  <Box mr={`${8 / 3.75}vw`}>場所</Box>
+                  <Box
+                    overflow={`hidden`}
+                    textOverflow={`ellipsis`}
+                    whiteSpace={`nowrap`}
+                    w={`${90 / 3.75}vw`}
+                  >
+                    新潟市中央区天神
+                  </Box>
+                </Flex>
+                <Flex
+                  fontSize={`${10 / 3.75}vw`}
+                  mb={`${5 / 3.75}vw`}
+                  py={`${3 / 3.75}vw`}
+                  bg={`rgba(254,207,2,0.1)`}
+                  borderRadius={`${26 / 3.75}vw`}
+                  color={`#39414E`}
+                >
+                  <Image
+                    mt={`${1 / 3.75}vw`}
+                    ml={`${9 / 3.75}vw`}
+                    mr={`${10 / 3.75}vw`}
+                    w={`${8 / 3.75}vw`}
+                    h={`${8 / 3.75}vw`}
+                    image={{
+                      width: 24,
+                      height: 30,
+                      src: `/svg/clock-solid.svg`,
+                      alt: `時間アイコン`,
+                    }}
+                  />
+                  <Box mr={`${8 / 3.75}vw`}>時間</Box>
+                  <Box
+                    overflow={`hidden`}
+                    textOverflow={`ellipsis`}
+                    whiteSpace={`nowrap`}
+                    w={`${90 / 3.75}vw`}
+                  >
+                    16:00-20:00
+                  </Box>
+                </Flex>
+              </Flex>
+            </Flex>
+          </Box>
+          <Flex
+            w={`100%`}
+            h={`${30 / 3.75}vw`}
+            pl={`${16 / 3.75}vw`}
+            pr={`${15 / 3.75}vw`}
+            borderRadius={`0 0 ${10 / 3.75}vw ${10 / 3.75}vw`}
+            fontSize={`${10 / 3.75}vw`}
+            alignItems={`center`}
+            justify={`space-between`}
+            color={`white`}
+            fontWeight={`500`}
+            background={`transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box;`}
+          >
+            <Box>
+              掲載終了まであと
+              <Box as={`span`} fontSize={`${13 / 3.75}vw`} fontWeight={`bold`}>
+                6
+              </Box>
+              日
+            </Box>
+            <Box
+              mt={`${8 / 3.75}vw`}
+              fontFamily={`"Josefin Sans"`}
+              fontStyle={`italic`}
+              fontWeight={`bold`}
+            >{`CHECK >>`}</Box>
+          </Flex>
+        </Box>
       </Box>
     </InternalLink>
   );
@@ -254,15 +456,16 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
 
 const styles = css`
   .photo {
-    width: ${309 / 19.2}vw;
-    height: ${180 / 19.2}vw;
-    object-fit: cover;
+    width: ${148 / 3.75}vw;
+    height: ${86.2 / 3.75}vw;
     border-radius: 5px;
     overflow: hidden;
-    ${mq[3]} {
+    ${mq[2]} {
       width: ${309 / 19.2}vw;
       height: ${180 / 19.2}vw;
       margin-top: ${23 / 19.2}vw;
+      border-radius: 5px;
+      object-fit: cover;
     }
   }
 `;

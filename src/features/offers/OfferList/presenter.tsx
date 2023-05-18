@@ -24,6 +24,7 @@ import { OfferCardDead } from '../OfferCardDead';
 import { InternalLink } from 'components/links/InternalLink';
 import { routes } from '~/constants';
 import { Firstview } from '../Firstview';
+import { SearchButton } from '~/components/SearchButton';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
@@ -100,37 +101,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const [index, setIndex] = useState<number>(0);
 
   const swiperProps: SwiperProps = {
-    modules: [Navigation, Autoplay, EffectFade, Pagination],
     loop: true,
-    speed: 2000,
-    // effect: 'fade',
-    fadeEffect: {
-      crossFade: true,
-    },
-    pagination: {
-      clickable: true,
-    },
-    centeredSlides: false,
-    navigation: true,
-    autoplay: {
-      disableOnInteraction: false,
-    },
-    slidesPerView: 1,
-    spaceBetween: 0,
-    breakpoints: {
-      // [breakpointsByPx[0]]: {},
-      // [breakpointsByPx[1]]: {},
-      [breakpointsByPx[2]]: {
-        centeredSlides: true,
-        slidesPerView: 1,
-        spaceBetween: 0,
-      },
-      // [breakpointsByPx[3]]: {},
-      // [breakpointsByPx[4]]: {},
-    },
-    onSlideChange: (swiper) => {
-      setIndex(swiper.realIndex);
-    },
+    spaceBetween: -60,
   };
   const activeOffers = offers.filter((offer) => offer.deadline >= today);
   const expiredOffers = offers.filter((offer) => offer.deadline < today);
@@ -139,18 +111,44 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   return (
     <Box css={styles} w={`100%`} bg={`rgba(65,164,253,0.05)`}>
       <Box
-        ml={`${176 / 19.2}vw`}
-        pt={`${29 / 19.2}vw`}
-        mb={`${66 / 19.2}vw`}
-        fontSize={`${30 / 19.2}vw`}
-        fontWeight={`800`}
+        ml={{ base: `${20 / 3.75}vw`, lg: `${176 / 19.2}vw` }}
+        pt={{ base: `${24 / 3.75}vw`, lg: `${51 / 19.2}vw` }}
+        mb={{ base: `${24 / 3.75}vw`, lg: `${30 / 19.2}vw` }}
+        fontSize={{ base: `${16 / 3.75}vw`, lg: `${30 / 19.2}vw` }}
         fontFamily={"'Noto Sans JP', sans-serif"}
+        fontWeight={`800`}
       >
         新着求人一覧
       </Box>
+      {/* <Box display={`none`}>
+        <Swiper {...swiperProps}>
+          {sortedOffers.map((offer) => {
+            const daysRemaining = remainingDays(offer.deadline);
+            return (
+              <SwiperSlide key={offer.id}>
+                {offer.deadline >= today ? (
+                  <Box m={`0 auto`} w={`fit-content`}>
+                    <OfferCard
+                      {...offer}
+                      deadline={daysRemaining}
+                      startDate={offer.createdAt}
+                    />
+                  </Box>
+                ) : (
+                  <Box display={`none`}></Box>
+                )}
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+        <Box pt={`${20 / 3.75}vw`} pb={`${40 / 3.75}vw`}>
+          <SearchButton />
+        </Box>
+      </Box> */}
+
       <Grid
-        ml={`${206 / 19.2}vw`}
-        mr={`${240 / 19.2}vw`}
+        ml={{ lg: `${206 / 19.2}vw` }}
+        mr={{ lg: `${240 / 19.2}vw` }}
         templateColumns={{
           base: `repeat(1,1fr)`,
           lg: `repeat(2,1fr)`,
@@ -180,6 +178,9 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           );
         })}
       </Grid>
+      <Box display={{ base: `none`, lg: `block` }} pb={`${100 / 19.2}vw`}>
+        <SearchButton />
+      </Box>
     </Box>
   );
 };
