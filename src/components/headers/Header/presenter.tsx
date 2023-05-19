@@ -103,8 +103,8 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
         backgroundColor={{ base: `#ffffff`, lg: 'var(--white)' }}
         css={styles}
         w={`100%`}
-        h={{ base: `80px`, lg: `124px` }}
-        p={{ base: `0`, lg: `35px ${80 / 19.2}vw 5px` }}
+        h={{ base: `80px`, lg: `${124 / 19.2}vw` }}
+        p={{ base: `0`, lg: `${0 / 19.2}vw ${80 / 19.2}vw ${5 / 19.2}vw` }}
         mx={`auto`}
         fontFamily={`'Zen Kaku Gothic New',
         'Hiragino Sans'`}
@@ -113,22 +113,30 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
         <Flex alignItems={'center'}>
           <InternalLink href={routes.home}>
             <Box
-              pt={{ lg: `8px` }}
-              w={{ base: `${136 / 16}rem` }}
+              pt={{ lg: `${8 / 19.2}vw` }}
+              w={{
+                base: `${136 / 3.75}vw`,
+                md: `${135 / 7.68}vw`,
+                lg: `${183 / 19.2}vw`,
+              }}
               className="logo"
               as={isTop ? `h1` : `div`}
             >
-              <Image htmlWidth={136} htmlHeight={59} src={`/svg/forjob.svg`} />
+              <Image src={`/svg/forjob.svg`} />
             </Box>
           </InternalLink>
         </Flex>
 
-        <Flex alignItems={'center'} letterSpacing={`0`}>
+        <Flex
+          mt={{ lg: `${10 / 19.2}vw` }}
+          alignItems={'center'}
+          letterSpacing={`0`}
+        >
           <Box
             display={{ base: `none`, lg: `block` }}
             color="#39414E"
-            fontSize={`17px`}
-            mr={{ lg: `33px` }}
+            fontSize={`${17 / 19.2}vw`}
+            mr={{ lg: `${33 / 19.2}vw` }}
             mt={{ lg: `${2 / 19.2}vw` }}
           >
             採用担当者はこちら
@@ -139,7 +147,7 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
               mr={{ lg: ` ${30 / 19.2}vw` }}
               color="#444444"
               fontWeight={'bold'}
-              fontSize={`14px`}
+              fontSize={`${14 / 19.2}vw`}
             >
               {username}
               <Box as={`span`} fontWeight={`500`}>
@@ -153,10 +161,10 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
           {username ? (
             <Box
               display={{ base: `none`, lg: `block` }}
-              borderRadius={`10px`}
-              w={`152px`}
-              h={`44px`}
-              fontSize={`17px`}
+              borderRadius={`${10 / 19.2}vw`}
+              w={`${152 / 19.2}vw`}
+              h={`${44 / 19.2}vw`}
+              fontSize={`${17 / 19.2}vw`}
               pt={`${13 / 19.2}vw`}
               textAlign={`center`}
               color="white"
@@ -169,18 +177,18 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
                 filter: `opacity(50%)`,
                 textDecoration: 'none',
               }}
-              mr={{ lg: '33px' }}
+              mr={{ lg: `${33 / 19.2}vw` }}
             >
               ログアウト
             </Box>
           ) : (
             <Box
               display={{ base: `none`, lg: `block` }}
-              borderRadius={`10px`}
-              w={`152px`}
-              h={`44px`}
-              fontSize={`17px`}
-              pt={`13px`}
+              borderRadius={`${10 / 19.2}vw`}
+              w={`${152 / 19.2}vw`}
+              h={`${44 / 19.2}vw`}
+              fontSize={`${17 / 19.2}vw`}
+              pt={`${13 / 19.2}vw`}
               textAlign={`center`}
               color="white"
               background={`transparent linear-gradient(270deg, #0EF4FF 0%, #41A4FD 100%) 0% 0% no-repeat padding-box`}
@@ -192,7 +200,7 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
                 filter: `opacity(50%)`,
                 textDecoration: 'none',
               }}
-              mr={{ lg: '33px' }}
+              mr={{ lg: `${33 / 19.2}vw` }}
             >
               ログイン
             </Box>
@@ -215,7 +223,10 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
           >
             ログアウト
           </Box> */}
-          <Box display={{ base: `block`, lg: `block` }}>
+          <Box
+            display={{ base: `block`, lg: `block` }}
+            mt={{ base: ``, lg: `${15 / 19.2}vw` }}
+          >
             <HeaderMenu isOpen={isOpen} onClick={onOpen} />
           </Box>
         </Flex>
@@ -225,7 +236,7 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
       <Box
         display={{ base: `none`, lg: `block` }}
         w={`100%`}
-        h={`40px`}
+        h={`${40 / 19.2}vw`}
         bg={`#41A4FD`}
       />
     </Box>

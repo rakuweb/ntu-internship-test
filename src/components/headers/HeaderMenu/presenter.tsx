@@ -25,8 +25,8 @@ export const Presenter: VFC<PresenterProps> = ({
         boxShadow={{ base: `0px 3px 6px #00000029` }}
         bg={`white`}
         css={styles}
-        w={{ base: `45px`, lg: `60px` }}
-        h={{ base: `45px`, lg: `60px` }}
+        w={{ base: `45px`, lg: `${60 / 19.2}vw` }}
+        h={{ base: `45px`, lg: `${60 / 19.2}vw` }}
         direction={`column`}
         justify={`center`}
         align={`center`}
@@ -52,9 +52,9 @@ export const Presenter: VFC<PresenterProps> = ({
       </Flex>
       <Box
         textAlign={`center`}
-        mt={`10px`}
+        mt={{ base: `${10 / 3.75}vw`, lg: `${10 / 19.2}vw` }}
         mx={`auto`}
-        fontSize={{ base: `11px`, lg: `14px` }}
+        fontSize={{ base: `11px`, lg: `${14 / 19.2}vw` }}
         color={`#444444`}
         className="menu-text yugothic-bold-white-14px"
         fontFamily={`'Noto Sans JP', sans-serif;`}
@@ -80,6 +80,10 @@ const styles = css`
     transition: all 0.5s;
     margin-left: auto;
     margin-right: auto;
+    ${mq[2]} {
+      width: ${26 / 19.2}vw;
+      height: ${30 / 19.2}vw;
+    }
   }
 
   .toggle_btn span {
@@ -91,18 +95,33 @@ const styles = css`
     background-color: #41a4fd;
     border-radius: 3px;
     transition: all 0.5s;
+    ${mq[2]} {
+      width: ${26 / 19.2}vw;
+      height: ${5 / 19.2}vw;
+      border-radius: ${3 / 19.2}vw;
+    }
   }
   .toggle_btn span:nth-child(1) {
     top: 4px;
     width: 100%;
+    ${mq[2]} {
+      top: ${4 / 19.2}vw;
+    }
   }
   .toggle_btn span:nth-child(2) {
     top: 14px;
     width: 100%;
+    ${mq[2]} {
+      top: ${14 / 19.2}vw;
+    }
   }
   .toggle_btn span:nth-child(3) {
     bottom: 1px;
     width: 14px;
+    ${mq[2]} {
+      bottom: ${1 / 19.2}vw;
+      width: ${14 / 19.2}vw;
+    }
   }
   .toggle_btn span:hover {
     color: var(--curious-blue);
