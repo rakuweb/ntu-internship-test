@@ -66,7 +66,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       >
         <Box
           ml={{ lg: `${638 / 19.2}vw` }}
-          mt={{ base: `${50 / 3.75}vw`, lg: `${118 / 19.2}vw` }}
+          mt={{ base: `${40 / 3.75}vw`, lg: `${118 / 19.2}vw` }}
           position={`relative`}
         >
           {/* デスクトップサイズ */}
@@ -99,7 +99,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             lineHeight={`1.25em`}
             fontWeight={`800`}
             fontSize={`${32 / 3.75}vw`}
-            mb={`${50 / 3.75}vw`}
+            mb={`${30 / 3.75}vw`}
             textShadow={`0px 3px 6px #00000029`}
           >
             新大生のための
@@ -113,7 +113,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             w={{ base: `${335 / 3.75}vw`, lg: `${676 / 19.2}vw` }}
             h={{
               base: `${150 / 3.75}vw`,
-              lg: `${178 / 19.2}vw`,
+              lg: `initial`,
             }}
             borderRadius={{ base: `${5 / 3.75}vw`, lg: `${5 / 19.2}vw` }}
             p={{
@@ -173,7 +173,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 lg: `${2 / 19.2}vw solid #A8A8A8`,
               }}
               mt={`${0 / 3.75}vw`}
-              fontSize={{ base: `${16 / 3.75}vw`, lg: `initial` }}
+              fontSize={{ base: `${16 / 3.75}vw`, lg: `${18 / 19.2}vw` }}
               color={`#A8A8A8`}
             >{`会員登録（無料）はこちら`}</Box>
           </Box>

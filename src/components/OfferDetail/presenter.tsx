@@ -29,7 +29,6 @@ import { useAccountStore, selectSetPrevPath } from 'features/account';
 import { OfferEntity } from 'types/gql/graphql';
 import 'zenn-content-css';
 import { InternalLink } from '~/components/links/InternalLink';
-import { Span } from '../Span';
 import { routes } from 'constants/routes';
 import { BreadcrumbOfferId } from '../organisms/BreadcrumbOfferId';
 import { Atmosphere } from './Atmosphere';
@@ -37,6 +36,8 @@ import { Jobterms } from './Jobterms';
 import { OfferCard3 } from '~/features/offers/OfferCard3';
 import { Contact } from '../organisms/Contact';
 import { Fixedmenu } from './Fixedmenu';
+import { MobileMinInformation } from './MobileMinInformation';
+import { Applybutton } from './Applybutton';
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
@@ -80,21 +81,32 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     <div css={styles}>
       <BreadcrumbOfferId titles={pageTitles} />
       <Flex
-        mt={{ base: `0`, md: `${80 / 19.2}vw` }}
-        ml={{ base: ``, md: `${45 / 7.68}vw`, lg: `${183 / 19.2}vw` }}
+        mt={{ base: `${24 / 3.75}vw`, md: `${80 / 19.2}vw` }}
+        ml={{
+          base: `${20 / 3.75}vw`,
+          md: `${45 / 7.68}vw`,
+          lg: `${183 / 19.2}vw`,
+        }}
+        mr={{ base: `${20 / 3.75}vw`, md: `${`0`}` }}
       >
         <Box
-          w={{ base: ``, md: `${444 / 7.68}vw`, lg: `${1012 / 19.8}vw` }}
+          w={{ base: `100%`, md: `${444 / 7.68}vw`, lg: `${1012 / 19.8}vw` }}
           fontFamily={`'Noto Sans JP', sans-serif`}
           color={`#39414E`}
         >
           <Flex
             justify={`space-between`}
-            fontSize={{ base: ``, md: `${12 / 7.68}vw`, lg: `${25 / 19.2}vw` }}
-            mb={{ base: ``, md: `${20 / 19.2}vw` }}
+            alignItems={`baseline`}
+            fontSize={{
+              base: `${10 / 3.75}vw`,
+              md: `${12 / 7.68}vw`,
+              lg: `${25 / 19.2}vw`,
+            }}
+            mb={{ base: `${13 / 3.75}vw`, md: `${20 / 19.2}vw` }}
           >
             株式会社ラクウェブ
             <Flex
+              display={{ base: `none`, md: `flex` }}
               alignItems={`center`}
               justify={`center`}
               fontWeight={`bold`}
@@ -108,39 +120,56 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             >
               NEW
             </Flex>
+            <Flex
+              display={{ base: `flex`, md: `none` }}
+              alignItems={`baseline`}
+              color={`#F26601`}
+              fontSize={`${10 / 3.75}vw`}
+              fontWeight={`bold`}
+            >
+              掲載終了まであと
+              <Box as={`span`} fontSize={`${15 / 3.75}vw`}>
+                6
+              </Box>
+              日
+            </Flex>
           </Flex>
           <Box
             as={`h1`}
             display={`inline`}
-            mb={{ base: ``, md: `${25 / 19.2}vw` }}
-            fontSize={{ base: ``, md: `${40 / 19.2}vw` }}
+            mb={{ base: `${23 / 3.75}vw`, md: `${25 / 19.2}vw` }}
+            fontSize={{ base: `${18 / 3.75}vw`, md: `${40 / 19.2}vw` }}
             fontWeight={`bold`}
             color={`#41A4FD`}
-            borderBottom={{ base: ``, md: `2px solid ` }}
+            borderBottom={{ base: `1px solid`, md: `2px solid ` }}
             lineHeight={`1.4em`}
           >
             {`未経験も活躍中。高時給1600円！7月までの限定で高時給のバイトご紹介！`}
           </Box>
+          <MobileMinInformation />
           <Box
-            mt={{ base: ``, md: `${25 / 19.2}vw` }}
-            mb={{ base: ``, md: `${54 / 19.2}vw` }}
+            mt={{ base: `${14 / 3.75}vw`, md: `${25 / 19.2}vw` }}
+            mb={{ base: `${35 / 3.75}vw`, md: `${54 / 19.2}vw` }}
             overflow={`hidden`}
             borderRadius={{ base: `${5 / 3.75}vw`, md: `${5 / 19.2}vw` }}
           >
             <NImage image={offer.image} />
           </Box>
+          <Applybutton />
           {/* 求人の詳細 */}
           <Box
             bg={`#F4FAFE`}
             w={`100%`}
-            pt={{ base: ``, md: `${42 / 19.2}vw` }}
-            pb={{ base: ``, md: `${47 / 19.2}vw` }}
-            pl={{ base: ``, md: `${45 / 19.2}vw` }}
-            mb={{ base: ``, md: `${80 / 19.2}vw` }}
+            mt={{ base: `${35 / 3.75}vw`, md: `initial` }}
+            mb={{ base: `${35 / 3.75}vw`, md: `${80 / 19.2}vw` }}
+            pt={{ base: `${17 / 3.75}vw`, md: `${42 / 19.2}vw` }}
+            pb={{ base: `${16 / 3.75}vw`, md: `${47 / 19.2}vw` }}
+            pl={{ base: `${16 / 3.75}vw`, md: `${45 / 19.2}vw` }}
+            pr={{ base: `${15 / 3.75}vw`, md: `${45 / 19.2}vw` }}
           >
             <Box
+              display={{ base: `none`, md: `block` }}
               fontSize={{
-                base: ``,
                 md: `${12 / 7.68}vw`,
                 lg: `${25 / 19.2}vw`,
               }}
@@ -151,19 +180,39 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             <Box
               mt={{ base: ``, md: `${19 / 19.2}vw` }}
               mx={{ base: ``, md: `${20 / 19.2}vw` }}
-              fontSize={{ base: ``, md: `${20 / 19.2}vw` }}
-              lineHeight={`1.5em`}
+              fontSize={{ base: `${11 / 3.75}vw`, md: `${20 / 19.2}vw` }}
+              lineHeight={{ base: `1.2em`, md: `1.5em` }}
             >{`学校やご家庭、プライベートとの両立もバッチリ◎ライフスタイルを崩さず無理なく働けるシフト制です!福利厚生も整い、腰を据えて長く活躍できる環境です♪学校やご家庭、プライベートとの両立もバッ チリ◎ライフスタイルを崩さず無理なく働けるシフト制です!福利厚生も整い、腰を据えて長く活躍できる環境で`}</Box>
           </Box>
-          <Atmosphere mb={{ base: ``, md: `${80 / 19.2}vw` }} />
-          <Jobterms mb={{ base: ``, md: `${125 / 19.2}vw` }} />
-          <Flex mb={{ base: ``, md: `${55 / 19.2}vw` }}>
+          <Atmosphere mb={{ md: `${80 / 19.2}vw` }} />
+          <Applybutton pt={`${35 / 3.75}vw`} mb={`${65 / 3.75}vw`} />
+          <Jobterms mb={{ base: `${55 / 3.75}vw`, md: `${125 / 19.2}vw` }} />
+          <Applybutton mb={`${65 / 3.75}vw`} />
+          <Flex
+            mb={{ base: `${25 / 3.75}vw`, md: `${55 / 19.2}vw` }}
+            borderBottom={{
+              base: `${2 / 3.75}vw solid #41A4FD`,
+              md: `${4 / 19.2}vw solid #41A4FD`,
+            }}
+          >
             <Image
-              ml={{ base: ``, md: `${23 / 19.2}vw` }}
-              mr={{ base: ``, md: `${13 / 19.2}vw` }}
-              mb={{ base: ``, md: `${9 / 19.2}vw` }}
-              w={{ base: ``, md: `${15 / 7.68}vw`, lg: `${32 / 19.2}vw` }}
-              h={{ base: ``, md: `${22 / 7.68}vw`, lg: `${32 / 19.2}vw` }}
+              ml={{ base: `${10 / 3.75}vw`, md: `${23 / 19.2}vw` }}
+              mr={{ base: `${5 / 3.75}vw`, md: `${13 / 19.2}vw` }}
+              mb={{
+                base: `${0 / 3.75}vw`,
+                md: `${2 / 7.68}vw`,
+                lg: `${19 / 19.2}vw`,
+              }}
+              w={{
+                base: `${14 / 3.75}vw`,
+                md: `${15 / 7.68}vw`,
+                lg: `${32 / 19.2}vw`,
+              }}
+              h={{
+                base: `${21 / 3.75}vw`,
+                md: `${22 / 7.68}vw`,
+                lg: `${32 / 19.2}vw`,
+              }}
               image={{
                 width: 32,
                 height: 42,
@@ -174,13 +223,13 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             <Box
               mt={{ base: ``, md: `${3 / 19.2}vw` }}
               fontSize={{
-                base: ``,
+                base: `${15 / 3.75}vw`,
                 md: `${16 / 7.68}vw`,
                 lg: `${36 / 19.2}vw`,
               }}
               fontWeight={`bold`}
             >
-              新着求人
+              募集求人
             </Box>
           </Flex>
           <OfferCard3
@@ -189,7 +238,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             deadline={daysRemaining}
             startDate={offer.createdAt}
           />
-          <Box mt={{ md: `${50 / 19.2}vw` }}>
+          <Box mt={{ base: `${36 / 3.75}vw`, md: `${50 / 19.2}vw` }}>
             <OfferCard3
               createdByid={1}
               {...offer}
@@ -198,13 +247,16 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             />
           </Box>
         </Box>
-        <Box ml={{ base: ``, md: `${35 / 7.68}vw`, lg: `${135 / 19.2}vw` }}>
+        <Box
+          ml={{ base: ``, md: `${35 / 7.68}vw`, lg: `${135 / 19.2}vw` }}
+          display={{ base: `none`, md: `block` }}
+        >
           <Fixedmenu />
         </Box>
       </Flex>
       <Contact
-        mt={{ base: ``, md: `${380 / 19.2}vw` }}
-        mb={{ base: ``, md: `${253 / 19.2}vw` }}
+        mt={{ base: `${100 / 3.75}vw`, md: `${380 / 19.2}vw` }}
+        mb={{ base: `${100 / 3.75}vw`, md: `${253 / 19.2}vw` }}
         mx={`auto`}
       />
     </div>

@@ -10,7 +10,7 @@ export type PresenterProps = { titles?: string[] };
 // presenter
 export const Presenter: FC<PresenterProps> = ({ titles }) => {
   return (
-    <div css={styles}>
+    <Box display={{ base: `none`, md: `block` }} css={styles}>
       <section className="breadcrumb">
         <div className="breadcrumb__container">
           <InternalLink
@@ -29,7 +29,7 @@ export const Presenter: FC<PresenterProps> = ({ titles }) => {
           ))} */}
         </div>
       </section>
-    </div>
+    </Box>
   );
 };
 // styles

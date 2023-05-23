@@ -40,35 +40,55 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       subtitle: `《週3〜OK》希望の曜日や時間帯があればお気軽にご相談下さい`,
       text: `学校やご家庭、プライベートとの両立もバッチリ◎
 ライフスタイルを崩さず無理なく働けるシフト制です! 福利厚生も整い、腰を据えて長く活躍できる環境です♪`,
+      textmobile: `学校やご家庭、プライベートとの両立もバッチリ◎
+ライフスタイルを崩さず無理なく働けるシフト制です!
+福利厚生も整い、腰を据えて長く活躍できる環境です♪`,
     },
     {
       subtitle: `《週3〜OK》希望の曜日や時間帯があればお気軽にご相談下さい`,
       text: `学校やご家庭、プライベートとの両立もバッチリ◎
 ライフスタイルを崩さず無理なく働けるシフト制です! 福利厚生も整い、腰を据えて長く活躍できる環境です♪`,
+      textmobile: `学校やご家庭、プライベートとの両立もバッチリ◎
+ライフスタイルを崩さず無理なく働けるシフト制です!
+福利厚生も整い、腰を据えて長く活躍できる環境です♪`,
     },
     {
       subtitle: `《週3〜OK》希望の曜日や時間帯があればお気軽にご相談下さい`,
       text: `学校やご家庭、プライベートとの両立もバッチリ◎
 ライフスタイルを崩さず無理なく働けるシフト制です! 福利厚生も整い、腰を据えて長く活躍できる環境です♪`,
+      textmobile: `学校やご家庭、プライベートとの両立もバッチリ◎
+ライフスタイルを崩さず無理なく働けるシフト制です!
+福利厚生も整い、腰を据えて長く活躍できる環境です♪`,
     },
   ];
 
   return (
-    <Box
-      w={{ base: ``, md: `100%` }}
-      fontFamily={`'Noto Sans JP', sans-serif`}
-      {...props}
-    >
+    <Box w={`100%`} fontFamily={`'Noto Sans JP', sans-serif`} {...props}>
       <Flex
-        mb={{ base: ``, md: `${40 / 19.2}vw` }}
-        borderBottom={{ base: ``, md: `${4 / 19.2}vw solid #41A4FD` }}
+        mb={{ base: `${20 / 3.75}vw`, md: `${40 / 19.2}vw` }}
+        borderBottom={{
+          base: `${2 / 3.75}vw solid #41A4FD`,
+          md: `${4 / 19.2}vw solid #41A4FD`,
+        }}
       >
         <Image
-          ml={{ base: ``, md: `${23 / 19.2}vw` }}
-          mr={{ base: ``, md: `${13 / 19.2}vw` }}
-          mb={{ base: ``, md: `${2 / 7.68}vw`, lg: `${19 / 19.2}vw` }}
-          w={{ base: ``, md: `${15 / 7.68}vw`, lg: `${32 / 19.2}vw` }}
-          h={{ base: ``, md: `${22 / 7.68}vw`, lg: `${32 / 19.2}vw` }}
+          ml={{ base: `${10 / 3.75}vw`, md: `${23 / 19.2}vw` }}
+          mr={{ base: `${5 / 3.75}vw`, md: `${13 / 19.2}vw` }}
+          mb={{
+            base: `${5 / 3.75}vw`,
+            md: `${2 / 7.68}vw`,
+            lg: `${19 / 19.2}vw`,
+          }}
+          w={{
+            base: `${13 / 3.75}vw`,
+            md: `${15 / 7.68}vw`,
+            lg: `${32 / 19.2}vw`,
+          }}
+          h={{
+            base: `${15 / 3.75}vw`,
+            md: `${22 / 7.68}vw`,
+            lg: `${32 / 19.2}vw`,
+          }}
           image={{
             width: 32,
             height: 42,
@@ -78,21 +98,38 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         />
         <Box
           mt={{ base: ``, md: `${3 / 19.2}vw` }}
-          fontSize={{ base: ``, md: `${16 / 7.68}vw`, lg: `${36 / 19.2}vw` }}
+          fontSize={{
+            base: `${15 / 3.75}vw`,
+            md: `${16 / 7.68}vw`,
+            lg: `${36 / 19.2}vw`,
+          }}
           fontWeight={`bold`}
         >
           職場の雰囲気
         </Box>
       </Flex>
       {list.map((list) => (
-        <Flex mb={{ base: ``, md: `${48 / 19.2}vw` }} key={list.subtitle}>
+        <Flex
+          direction={{ base: `column`, md: `row` }}
+          mb={{ base: `${20 / 3.75}vw`, md: `${48 / 19.2}vw` }}
+          key={list.subtitle}
+        >
           <Image
-            w={{ base: ``, md: `${120 / 7.68}vw`, lg: `${288 / 19.2}vw` }}
-            h={{ base: ``, md: `${79 / 7.68}vw`, lg: `${168 / 19.2}vw` }}
-            borderRadius={{ base: ``, md: `${5 / 19.2}vw` }}
+            w={{
+              base: `${173 / 3.75}vw`,
+              md: `${120 / 7.68}vw`,
+              lg: `${288 / 19.2}vw`,
+            }}
+            h={{
+              base: `${100 / 3.75}vw`,
+              md: `${79 / 7.68}vw`,
+              lg: `${168 / 19.2}vw`,
+            }}
+            borderRadius={{ base: `${5 / 3.75}vw`, md: `${5 / 19.2}vw` }}
             overflow={`hidden`}
-            ml={{ base: ``, md: `${70 / 19.2}vw` }}
+            ml={{ base: `${75 / 3.75}vw`, md: `${70 / 19.2}vw` }}
             mr={{ base: ``, md: `${47 / 19.2}vw` }}
+            mb={{ base: `${12.5 / 3.75}vw`, md: `initial` }}
             image={{
               width: 288,
               height: 168,
@@ -103,22 +140,31 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           <Box
             w={{ base: ``, md: `${250 / 7.68}vw`, lg: `${525 / 19.2}vw` }}
             fontWeight={`bold`}
-            fontSize={{ base: ``, md: `${12 / 7.68}vw`, lg: `${22 / 19.2}vw` }}
+            mx={{ base: `${15 / 3.75}vw`, md: `initial` }}
+            fontSize={{
+              base: `${10.5 / 3.75}vw`,
+              md: `${12 / 7.68}vw`,
+              lg: `${22 / 19.2}vw`,
+            }}
             lineHeight={`1.18em`}
             whiteSpace={`pre-wrap`}
           >
             {list.subtitle}
             <Box
               fontSize={{
-                base: ``,
+                base: `${10 / 3.75}vw`,
                 md: `${10 / 7.68}vw`,
                 lg: `${21 / 19.2}vw`,
               }}
               fontWeight={`normal`}
               lineHeight={`1.45em`}
-              mt={{ base: ``, md: `${16 / 19.2}vw` }}
+              mt={{ base: `${7.7 / 3.75}vw`, md: `${16 / 19.2}vw` }}
+              whiteSpace={`pre-wrap`}
             >
-              {list.text}
+              <Box display={{ base: `none`, md: `block` }}>{list.text}</Box>
+              <Box display={{ base: `block`, md: `none` }}>
+                {list.textmobile}
+              </Box>
             </Box>
           </Box>
         </Flex>

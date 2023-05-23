@@ -60,21 +60,32 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   ];
 
   return (
-    <Box
-      w={{ base: ``, md: `100%` }}
-      fontFamily={`'Noto Sans JP', sans-serif`}
-      {...props}
-    >
+    <Box w={`100%`} fontFamily={`'Noto Sans JP', sans-serif`} {...props}>
       <Flex
-        mb={{ base: ``, md: `${40 / 19.2}vw` }}
-        borderBottom={{ base: ``, md: `${4 / 19.2}vw solid #41A4FD` }}
+        mb={{ base: `${12 / 3.75}vw`, md: `${40 / 19.2}vw` }}
+        borderBottom={{
+          base: `${2 / 3.75}vw solid #41A4FD`,
+          md: `${4 / 19.2}vw solid #41A4FD`,
+        }}
       >
         <Image
-          ml={{ base: ``, md: `${23 / 19.2}vw` }}
-          mr={{ base: ``, md: `${13 / 19.2}vw` }}
-          mb={{ base: ``, md: `${2 / 7.68}vw`, lg: `${19 / 19.2}vw` }}
-          w={{ base: ``, md: `${15 / 7.68}vw`, lg: `${32 / 19.2}vw` }}
-          h={{ base: ``, md: `${22 / 7.68}vw`, lg: `${32 / 19.2}vw` }}
+          ml={{ base: `${10 / 3.75}vw`, md: `${23 / 19.2}vw` }}
+          mr={{ base: `${5 / 3.75}vw`, md: `${13 / 19.2}vw` }}
+          mb={{
+            base: `${0 / 3.75}vw`,
+            md: `${2 / 7.68}vw`,
+            lg: `${19 / 19.2}vw`,
+          }}
+          w={{
+            base: `${14 / 3.75}vw`,
+            md: `${15 / 7.68}vw`,
+            lg: `${32 / 19.2}vw`,
+          }}
+          h={{
+            base: `${21 / 3.75}vw`,
+            md: `${22 / 7.68}vw`,
+            lg: `${32 / 19.2}vw`,
+          }}
           image={{
             width: 32,
             height: 42,
@@ -84,7 +95,11 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         />
         <Box
           mt={{ base: ``, md: `${3 / 19.2}vw` }}
-          fontSize={{ base: ``, md: `${16 / 7.68}vw`, lg: `${36 / 19.2}vw` }}
+          fontSize={{
+            base: `${15 / 3.75}vw`,
+            md: `${16 / 7.68}vw`,
+            lg: `${36 / 19.2}vw`,
+          }}
           fontWeight={`bold`}
         >
           募集求人
@@ -94,26 +109,31 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         <div key={list.title}>
           <Flex
             borderBottom={{
-              base: ``,
+              base: `${2 / 3.75}vw solid rgba(65,164,253,0.25)`,
               md: `${2 / 19.2}vw solid rgba(65,164,253,0.25)`,
             }}
-            fontSize={{ base: ``, md: `${13 / 7.68}vw`, lg: `${22 / 19.2}vw` }}
-            fontWeight={`bold`}
+            fontSize={{
+              base: `${12 / 3.75}vw`,
+              md: `${13 / 7.68}vw`,
+              lg: `${22 / 19.2}vw`,
+            }}
+            // fontWeight={`bold`}
             lineHeight={`1.4em`}
           >
             <Flex>
               <Box
+                fontWeight={`bold`}
                 bg={`#F9FCFE`}
-                pt={{ base: ``, md: `${24 / 19.2}vw` }}
-                pb={{ base: ``, md: `${27 / 19.2}vw` }}
-                pl={{ base: ``, md: `${40 / 19.2}vw` }}
-                w={{ base: ``, md: `${320 / 19.2}vw` }}
+                pt={{ base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` }}
+                pb={{ base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` }}
+                pl={{ base: `${14 / 3.75}vw`, md: `${40 / 19.2}vw` }}
+                w={{ base: `${116 / 4.28}vw`, md: `${320 / 19.2}vw` }}
               >
                 {list.title}
               </Box>
 
               {Array.isArray(list.main) ? (
-                <Flex pl={{ base: ``, md: `${35 / 19.2}vw` }}>
+                <Flex pl={{ base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` }}>
                   {list.main.map((sublist) => (
                     <InternalLink
                       href={`/`}
@@ -123,24 +143,30 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                       <Flex
                         alignItems={`center`}
                         fontSize={{
-                          base: ``,
+                          base: `${10 / 3.75}vw`,
                           md: `${11 / 7.68}vw`,
                           lg: `${18 / 19.2}vw`,
                         }}
                         mt={{
-                          base: ``,
+                          base: `${6 / 3.75}vw`,
                           md: `${8 / 7.68}vw`,
                           lg: `${18 / 19.2}vw`,
                         }}
-                        mr={{ base: ``, md: `${16 / 19.2}vw` }}
-                        px={{ base: ``, md: `${22 / 19.2}vw` }}
+                        mr={{ base: `${10 / 3.75}vw`, md: `${16 / 19.2}vw` }}
+                        px={{ base: `${10 / 3.75}vw`, md: `${22 / 19.2}vw` }}
                         h={{
-                          base: ``,
+                          base: `${20 / 3.75}vw`,
                           md: `${20 / 7.68}vw`,
                           lg: `${41 / 19.2}vw`,
                         }}
-                        border={{ base: ``, md: `${3 / 19.2}vw solid #38404D` }}
-                        borderRadius={{ base: ``, md: `${26 / 19.2}vw` }}
+                        border={{
+                          base: `${2 / 3.75}vw solid #38404D`,
+                          md: `${3 / 19.2}vw solid #38404D`,
+                        }}
+                        borderRadius={{
+                          base: `${26 / 3.75}vw`,
+                          md: `${26 / 19.2}vw`,
+                        }}
                         lineHeight={`1em`}
                       >
                         {sublist}
@@ -153,13 +179,13 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   <Box
                     display={index === 12 ? `none` : `block`}
                     fontSize={{
-                      base: ``,
+                      base: `${10 / 3.75}vw`,
                       md: `${12 / 7.68}vw`,
                       lg: `${21 / 19.2}vw`,
                     }}
-                    pt={{ base: ``, md: `${24 / 19.2}vw` }}
-                    pb={{ base: ``, md: `${27 / 19.2}vw` }}
-                    pl={{ base: ``, md: `${35 / 19.2}vw` }}
+                    pt={{ base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` }}
+                    pb={{ base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` }}
+                    pl={{ base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` }}
                     whiteSpace={`pre-wrap`}
                   >
                     {list.main}
@@ -168,13 +194,13 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     href={list.main}
                     display={index === 12 ? `block` : `none`}
                     fontSize={{
-                      base: ``,
+                      base: `${10 / 3.75}vw`,
                       md: `${12 / 7.68}vw`,
                       lg: `${21 / 19.2}vw`,
                     }}
-                    pt={{ base: ``, md: `${24 / 19.2}vw` }}
-                    pb={{ base: ``, md: `${27 / 19.2}vw` }}
-                    pl={{ base: ``, md: `${35 / 19.2}vw` }}
+                    pt={{ base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` }}
+                    pb={{ base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` }}
+                    pl={{ base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` }}
                     whiteSpace={`pre-wrap`}
                   >
                     {list.main}

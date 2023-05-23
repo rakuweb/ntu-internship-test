@@ -19,7 +19,11 @@ export type PresenterProps = Record<string, unknown>;
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   return (
     <Box
-      w={{ base: ``, md: `${200 / 7.68}vw`, lg: `${355 / 19.2}vw` }}
+      w={{
+        base: `${134 / 3.75}vw`,
+        md: `${200 / 7.68}vw`,
+        lg: `${355 / 19.2}vw`,
+      }}
       fontFamily={`'Noto Sans JP', sans-serif`}
       fontWeight={`800`}
       fontSize={{ base: ``, md: `${20 / 7.68}vw`, lg: `${39 / 19.2}vw` }}
@@ -27,7 +31,11 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       {...props}
     >
       <Image
-        w={{ base: ``, md: `${200 / 7.68}vw`, lg: `${355 / 19.2}vw` }}
+        w={{
+          base: `${134 / 3.75}vw`,
+          md: `${200 / 7.68}vw`,
+          lg: `${355 / 19.2}vw`,
+        }}
         mb={{ base: ``, md: `${30 / 19.2}vw` }}
         image={{
           width: 500,
@@ -36,7 +44,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           alt: `forjob`,
         }}
       />
-      <InternalLink href={`/`}>
+      <InternalLink href={`/`} display={`none`}>
         <Flex
           w={`100%`}
           alignItems={`center`}
