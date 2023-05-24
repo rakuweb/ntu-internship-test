@@ -21,7 +21,7 @@ export const Presenter: FC<PresenterProps> = ({ titles }) => {
             HOME
           </InternalLink>
           <Box mx={`${10 / 19.2}vw`}>{`>`}</Box>
-          <Box>{`未経験も活躍中。高時給1600円! 7月までの限定で高時給のバイトご紹介!`}</Box>
+          <Box>{titles}</Box>
           {/* {titles?.map((title) => (
             <a key={title} className="breadcrumb__container__link">
               {title}

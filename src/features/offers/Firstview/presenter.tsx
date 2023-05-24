@@ -1,7 +1,7 @@
 // import layer
 import { FC, useState } from 'react';
-import { Box, Grid, Flex, Select } from '@chakra-ui/react';
-import { AiFillCaretDown } from 'react-icons/ai';
+import { Box, Grid, Flex } from '@chakra-ui/react';
+import { Select, ChakraStylesConfig } from 'chakra-react-select';
 
 import { selectOfferList } from 'features/offers/selectors';
 import { useOffersStore } from 'features/offers/hooks';
@@ -25,6 +25,59 @@ export type PresenterProps = Record<string, unknown>;
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const offers = useOffersStore(selectOfferList);
+
+  const Options = [
+    { value: 'アルバイト', label: 'アルバイト' },
+    { value: 'インターンバイト', label: 'インターンバイト' },
+    { value: 'SNS運用', label: 'SNS運用' },
+    { value: 'マーケティング', label: 'マーケティング' },
+  ];
+
+  const chakraStyles: ChakraStylesConfig = {
+    control: (provided, state) => ({
+      ...provided,
+      background: `white`,
+      border: `0px`,
+      borderRadius: {
+        base: `${10 / 3.75}vw`,
+        lg: `${10 / 19.2}vw`,
+      },
+      minHeight: {
+        base: `${45 / 3.75}vw`,
+        lg: `${53 / 19.2}vw`,
+      },
+      w: { base: `${278 / 3.75}vw`, lg: `${481 / 19.2}vw` },
+      h: { base: `${45 / 3.75}vw`, lg: `${53 / 19.2}vw` },
+      fontSize: { md: `${18 / 3.75}vw`, lg: `${18 / 19.2}vw` },
+      textAlign: `start`,
+
+      fontFamily: `'Noto Sans JP', sans-serif`,
+    }),
+    valueContainer: (provided, state) => ({
+      ...provided,
+      color: 'black',
+    }),
+    indicatorSeparator: (state) => ({
+      display: 'none',
+    }),
+    indicatorsContainer: (provided, state) => ({
+      ...provided,
+      h: { base: `${45 / 3.75}vw`, lg: `${53 / 19.2}vw` },
+    }),
+    dropdownIndicator: (provided) => ({
+      ...provided,
+      w: { base: `${52 / 3.75}vw`, lg: `${80 / 19.2}vw` },
+      background: `transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box;`,
+      borderRadius: `0`,
+    }),
+    menu: (state) => ({
+      color: 'black',
+      position: `absolute`,
+      fontWeight: `500`,
+      // left: `55px`,
+      w: `70%`,
+    }),
+  };
 
   return (
     <Box w={`100%`} {...props} position={`relative`} overflow={`hidden`}>
@@ -126,46 +179,27 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             textAlign={`center`}
           >
             \ここでしか出会えない求人がたくさん/
-            <Flex
+            <Box
+              w={`fit-content`}
+              overflow={`hidden`}
               my={{ base: `${15 / 3.75}vw`, lg: `${16 / 19.2}vw` }}
-              border={`3px solid #41A4FD`}
-              borderRadius={{ base: `${6 / 3.75}vw`, lg: `${10 / 19.2}vw` }}
-              background={`transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box`}
+              border={{
+                base: `${3 / 3.75}vw solid #41A4FD`,
+                lg: `3px solid #41A4FD`,
+              }}
+              borderRadius={{
+                base: `${13 / 3.75}vw`,
+                lg: `${15 / 19.2}vw`,
+                '2xl': `${13 / 19.2}vw`,
+              }}
+              mx={`auto`}
             >
               <Select
-                w={{ base: `${248 / 3.75}vw`, lg: `${481 / 19.2}vw` }}
-                h={{ base: `${45 / 3.75}vw`, lg: `${53 / 19.2}vw` }}
-                border={`none`}
-                color={`#9B9B9B`}
-                icon={<AiFillCaretDown />}
-                iconSize={`50px`}
-                fontSize={{ base: `${18 / 3.75}vw`, lg: `${18 / 19.2}vw` }}
-                fontWeight={`500`}
-                bg={`white`}
-                borderRadius={{
-                  base: `${6 / 3.75}vw 0 0 ${6 / 3.75}vw`,
-                  lg: `${7 / 19.2}vw 0 0 ${7 / 19.2}vw`,
-                }}
-              >
-                <option value="option1">アルバイト</option>
-                <option value="option2">インターンバイト</option>
-                <option value="option3">SNS運用</option>
-                <option value="option3">マーケティング</option>
-              </Select>
-              <Box
-                pt={{ base: `${12 / 3.75}vw`, lg: `${14 / 19.2}vw` }}
-                w={{ base: `${70 / 3.75}vw`, lg: `${109 / 19.2}vw` }}
-                h={{ base: `${45 / 3.75}vw`, lg: `${53 / 19.2}vw` }}
-                fontSize={{ base: `${18 / 3.75}vw`, lg: `${25 / 19.2}vw` }}
-                borderRadius={{
-                  base: `0 ${6 / 3.75}vw  ${6 / 3.75}vw 0`,
-                  lg: `0 ${7 / 19.2}vw ${7 / 19.2}vw 0`,
-                }}
-                background={`transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box`}
-              >
-                検索
-              </Box>
-            </Flex>
+                options={Options}
+                chakraStyles={chakraStyles}
+                placeholder={`飲食アルバイト`}
+              />
+            </Box>
             <Box
               display={`inline`}
               borderBottom={{

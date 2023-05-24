@@ -106,29 +106,36 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           >
             株式会社ラクウェブ
             <Flex
-              display={{ base: `none`, md: `flex` }}
+              display={{ base: `none`, md: `none` }}
               alignItems={`center`}
               justify={`center`}
               fontWeight={`bold`}
-              fontSize={{ base: ``, md: `${22 / 19.2}vw` }}
+              fontSize={{ base: `${11 / 3.75}vw`, md: `${22 / 19.2}vw` }}
               mt={{ base: ``, md: `${-5 / 19.2}vw` }}
-              px={{ base: ``, md: `${50 / 19.2}vw` }}
-              py={{ base: ``, md: `${8 / 19.2}vw` }}
+              px={{ base: `${20 / 3.75}vw`, md: `${50 / 19.2}vw` }}
+              py={{ base: `${3 / 3.75}vw`, md: `${8 / 19.2}vw` }}
               bg={`#F26601`}
               color={`white`}
-              borderRadius={{ base: ``, md: `${3 / 19.2}vw` }}
+              borderRadius={{ base: `${3 / 3.75}vw`, md: `${3 / 19.2}vw` }}
             >
               NEW
             </Flex>
             <Flex
-              display={{ base: `flex`, md: `none` }}
+              // display={{ base: `flex`, md: `none` }}
               alignItems={`baseline`}
               color={`#F26601`}
-              fontSize={`${10 / 3.75}vw`}
+              fontSize={{ base: `${10 / 3.75}vw`, md: `${22 / 19.2}vw` }}
               fontWeight={`bold`}
             >
               掲載終了まであと
-              <Box as={`span`} fontSize={`${15 / 3.75}vw`}>
+              <Box
+                as={`span`}
+                fontSize={{
+                  base: `${15 / 3.75}vw`,
+                  md: `${16 / 7.68}vw`,
+                  lg: `${35 / 19.2}vw`,
+                }}
+              >
                 6
               </Box>
               日
