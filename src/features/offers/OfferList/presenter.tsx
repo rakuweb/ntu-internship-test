@@ -178,7 +178,13 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           );
         })}
       </Grid>
-      <Box display={{ base: `none`, lg: `block` }} pb={`${100 / 19.2}vw`}>
+      <Box
+        w={`fit-content`}
+        mt={{ base: `${30 / 3.75}vw`, md: `0` }}
+        mb={{ base: `${60 / 3.75}vw`, md: `0` }}
+        mx={`auto`}
+        pb={{ lg: `${100 / 19.2}vw` }}
+      >
         <SearchButton />
       </Box>
     </Box>

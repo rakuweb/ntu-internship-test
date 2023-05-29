@@ -14,7 +14,11 @@ export const Presenter: FC = () => {
       letterSpacing={`0`}
       mx={`auto`}
       alignItems={`center`}
-      fontSize={{ md: `${12 / 7.68}vw`, lg: `${23 / 19.2}vw` }}
+      fontSize={{
+        base: `${16 / 3.75}vw`,
+        md: `${12 / 7.68}vw`,
+        lg: `${23 / 19.2}vw`,
+      }}
       fontWeight={`bold`}
       color={`#39414E`}
       fontFamily={`'Noto Sans JP', sans-serif;`}
@@ -30,8 +34,16 @@ export const Presenter: FC = () => {
       >{`戻る`}</Box>
       <Box
         display={pagenumber == 1 ? `none` : `block`}
-        ml={{ md: `${10 / 7.68}vw`, lg: `${10 / 19.2}vw` }}
-        mr={{ md: `${17 / 7.68}vw`, lg: `${17 / 19.2}vw` }}
+        ml={{
+          base: `${10 / 3.75}vw`,
+          md: `${10 / 7.68}vw`,
+          lg: `${10 / 19.2}vw`,
+        }}
+        mr={{
+          base: `${17 / 3.75}vw`,
+          md: `${17 / 7.68}vw`,
+          lg: `${17 / 19.2}vw`,
+        }}
       >{`…`}</Box>
       <Pagecircle
         pagenumber={pagenumber - 1}
@@ -49,8 +61,16 @@ export const Presenter: FC = () => {
       />
 
       <Box
-        ml={{ md: `${10 / 7.68}vw`, lg: `${10 / 19.2}vw` }}
-        mr={{ md: `${17 / 7.68}vw`, lg: `${17 / 19.2}vw` }}
+        ml={{
+          base: `${10 / 3.75}vw`,
+          md: `${10 / 7.68}vw`,
+          lg: `${10 / 19.2}vw`,
+        }}
+        mr={{
+          base: `${17 / 3.75}vw`,
+          md: `${17 / 7.68}vw`,
+          lg: `${17 / 19.2}vw`,
+        }}
       >{`…`}</Box>
       <Box
         onClick={() => setPagenumber(pagenumber + 1)}

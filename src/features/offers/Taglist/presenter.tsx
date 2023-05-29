@@ -11,26 +11,14 @@ export type PresenterProps = Record<string, unknown>;
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const list = [
-    `マーケティング`,
-    `コミュニケーション能力`,
-    `分析力`,
-    `思考力`,
-    `柔軟性`,
-    `効率性`,
-    `業務処理能力`,
-    `情報収集力`,
-    `トレンド察知力`,
-    `継続力`,
-    `デザイン制作スキル`,
-    `表現力`,
-    `語彙力`,
-    `推進力`,
-    `実行力`,
-    `発信力`,
-    `写真撮影スキル`,
-    `アイデア力`,
-    `コンサルティングスキル`,
-    `エンジニアスキル`,
+    `単発(1日)`,
+    `短期(1ヶ月以内)`,
+    `短期(3ヶ月以内)`,
+    `長期(定めなし)`,
+    `SNS運用`,
+    `SNS運用`,
+    `ダミー`,
+    `二列目`,
   ];
 
   return (
@@ -38,7 +26,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       <Box
         backgroundColor={{ base: `#ffffff` }}
         w={`100%`}
-        h={{ base: `${150 / 3.75}vw`, lg: `${359 / 19.2}vw` }}
+        pb={{ base: `${0 / 3.75}vw`, lg: `${60 / 19.2}vw` }}
         fontFamily={`'Noto Sans JP', sans-serif`}
       >
         <Box
@@ -48,7 +36,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           fontSize={{ base: `${16 / 3.75}vw`, lg: `${30 / 19.2}vw` }}
           fontWeight={`800`}
         >
-          おすすめの検索軸
+          かんたん検索機能
         </Box>
         <Box
           overflow={{ base: `hidden`, lg: `initial` }}
@@ -56,8 +44,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           h={{ base: `${100 / 3.75}vw`, lg: `fit-content` }}
         >
           <Flex
-            w={{ base: `${1200 / 3.75}vw`, lg: `initial` }}
-            h={{ base: `${70 / 3.75}vw`, lg: `${50 / 19.2}vw` }}
+            w={{ base: `${600 / 3.75}vw`, lg: `initial` }}
+            // h={{ base: `${70 / 3.75}vw`, lg: `${50 / 19.2}vw` }}
             pl={{ base: `${20 / 3.75}vw`, lg: `${235 / 19.2}vw` }}
             mr={{ lg: `${230 / 19.2}vw` }}
             flexWrap={{ base: `wrap`, lg: `wrap` }}

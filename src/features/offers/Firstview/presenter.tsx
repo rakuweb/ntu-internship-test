@@ -46,7 +46,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         base: `${45 / 3.75}vw`,
         lg: `${53 / 19.2}vw`,
       },
-      w: { base: `${278 / 3.75}vw`, lg: `${481 / 19.2}vw` },
+      w: { base: `${299 / 3.75}vw`, lg: `${481 / 19.2}vw` },
       h: { base: `${45 / 3.75}vw`, lg: `${53 / 19.2}vw` },
       fontSize: { md: `${18 / 3.75}vw`, lg: `${18 / 19.2}vw` },
       textAlign: `start`,
@@ -74,8 +74,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       color: 'black',
       position: `absolute`,
       fontWeight: `500`,
-      // left: `55px`,
-      w: `70%`,
+
+      w: `100%`,
     }),
   };
 
@@ -180,9 +180,10 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           >
             \ここでしか出会えない求人がたくさん/
             <Box
-              w={`fit-content`}
-              overflow={`hidden`}
+              zIndex={`0`}
               my={{ base: `${15 / 3.75}vw`, lg: `${16 / 19.2}vw` }}
+              mx={{ lg: `auto` }}
+              w={`fit-content`}
               border={{
                 base: `${3 / 3.75}vw solid #41A4FD`,
                 lg: `3px solid #41A4FD`,
@@ -192,7 +193,6 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 lg: `${15 / 19.2}vw`,
                 '2xl': `${13 / 19.2}vw`,
               }}
-              mx={`auto`}
             >
               <Select
                 options={Options}
@@ -200,16 +200,20 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 placeholder={`飲食アルバイト`}
               />
             </Box>
-            <Box
-              display={`inline`}
-              borderBottom={{
-                base: `${2 / 3.75}vw solid #A8A8A8`,
-                lg: `${2 / 19.2}vw solid #A8A8A8`,
-              }}
-              mt={`${0 / 3.75}vw`}
-              fontSize={{ base: `${16 / 3.75}vw`, lg: `${18 / 19.2}vw` }}
-              color={`#A8A8A8`}
-            >{`会員登録（無料）はこちら`}</Box>
+            <Box w={`fit-content`} mx={`auto`}>
+              <InternalLink href={`/`}>
+                <Box
+                  display={`inline`}
+                  borderBottom={{
+                    base: `${2 / 3.75}vw solid #A8A8A8`,
+                    lg: `${2 / 19.2}vw solid #A8A8A8`,
+                  }}
+                  mt={`${0 / 3.75}vw`}
+                  fontSize={{ base: `${16 / 3.75}vw`, lg: `${18 / 19.2}vw` }}
+                  color={`#A8A8A8`}
+                >{`会員登録（無料）はこちら`}</Box>
+              </InternalLink>
+            </Box>
           </Box>
         </Box>
       </Flex>
