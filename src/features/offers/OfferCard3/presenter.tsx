@@ -20,23 +20,22 @@ export interface PresenterProps extends DataProps {
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const {
-    id,
-    companyName,
-    categories,
-    place,
-    hourlyWage,
-    startDate,
     title,
+    hourly_wage,
+    place_short,
+    hours_short,
+    start_at,
+    end_at,
+    occupation,
+    id,
     image,
-    points,
-    deadline,
-    // createdByid,
+    job_type,
   } = props;
   const href = `${routes.offers}/${id}`;
   const currentDate = new Date();
-  const startDateObj = new Date(startDate);
-  const isNew =
-    (currentDate.getTime() - startDateObj.getTime()) / (1000 * 3600 * 24);
+  // const startDateObj = new Date(startDate);
+  // const isNew =
+  //   (currentDate.getTime() - startDateObj.getTime()) / (1000 * 3600 * 24);
 
   return (
     <div>
@@ -82,7 +81,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 NEW
               </Flex>
               <Box mb={`${10 / 19.2}vw`} fontSize={`${18 / 19.2}vw`}>
-                {companyName}
+                {`株式会社KUNO`}
               </Box>
               <Box
                 display={`inline`}
@@ -133,7 +132,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                       />
                       <Box ml={`${13 / 19.2}vw`}>時給</Box>
                       <Box ml={`${50 / 19.2}vw`} color={`#F26601`}>
-                        1,000円
+                        {hourly_wage}
                       </Box>
                     </Flex>
                   </Box>
@@ -158,7 +157,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                         }}
                       />
                       <Box ml={`${12 / 19.2}vw`}>職種</Box>
-                      <Box ml={`${50 / 19.2}vw`}>エンジニア</Box>
+                      <Box ml={`${50 / 19.2}vw`}>{occupation.name}</Box>
                     </Flex>
                   </Box>
                   <Box mt={`${15 / 19.2}vw`} color={`#39414E`}>
@@ -182,7 +181,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                         }}
                       />
                       <Box ml={`${12 / 19.2}vw`}>場所</Box>
-                      <Box ml={`${50 / 19.2}vw`}>新潟市中央区天神</Box>
+                      <Box ml={`${50 / 19.2}vw`}>{place_short}</Box>
                     </Flex>
                   </Box>
                   <Box mt={`${15 / 19.2}vw`} color={`#39414E`}>
@@ -206,7 +205,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                         }}
                       />
                       <Box ml={`${12 / 19.2}vw`}>時間</Box>
-                      <Box ml={`${50 / 19.2}vw`}>16:00-20:00</Box>
+                      <Box ml={`${50 / 19.2}vw`}>{hours_short}</Box>
                     </Flex>
                   </Box>
                 </Box>
@@ -279,7 +278,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               mb={{ base: `${4 / 3.75}vw`, md: `${4 / 7.68}vw` }}
               fontSize={{ base: `${10 / 3.75}vw`, md: `${10 / 7.68}vw` }}
             >
-              {companyName}
+              {`株式会社KUNO`}
             </Box>
             <Box
               display={`inline`}
@@ -347,7 +346,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   >
                     時給
                   </Box>
-                  1,000円
+                  {hourly_wage}
                 </Flex>
                 <Flex
                   fontSize={{ base: `${10 / 3.75}vw`, md: `${10 / 7.68}vw` }}
@@ -378,7 +377,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     whiteSpace={`nowrap`}
                     w={{ base: `${90 / 3.75}vw`, md: `${90 / 7.68}vw` }}
                   >
-                    エンジニア
+                    {occupation.name}
                   </Box>
                 </Flex>
                 <Flex
@@ -413,7 +412,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     whiteSpace={`nowrap`}
                     w={{ base: `${90 / 3.75}vw`, md: `${90 / 7.68}vw` }}
                   >
-                    新潟市中央区天神
+                    {place_short}
                   </Box>
                 </Flex>
                 <Flex
@@ -449,7 +448,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     whiteSpace={`nowrap`}
                     w={{ base: `${90 / 3.75}vw`, md: `${90 / 7.68}vw` }}
                   >
-                    16:00-20:00
+                    {hours_short}
                   </Box>
                 </Flex>
               </Flex>

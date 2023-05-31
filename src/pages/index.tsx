@@ -15,10 +15,7 @@ import {
 import { initializeApollo, initializeApollo_offer } from 'lib/apollo/client';
 import { UPDATE_INTERVAL } from '~/constants';
 import { selectSetOffers, useOffersStore } from 'features/offers';
-import {
-  selectSetAdvertisements,
-  useAdvertisementsStore,
-} from 'features/advertisements';
+
 import { getTodayString } from 'lib/utils';
 
 // type layer
@@ -43,7 +40,6 @@ export const Index: NextPage<Props> = ({ data }) => {
   // const seo = parseSeo(title, description);
   const [isClient, setIsClient] = useState(false);
   const setOffers = useOffersStore(selectSetOffers);
-  const setAdvertisements = useAdvertisementsStore(selectSetAdvertisements);
   useEffect(() => {
     setIsClient(true);
   }, []);

@@ -104,10 +104,10 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     loop: true,
     spaceBetween: -60,
   };
-  const activeOffers = offers.filter((offer) => offer.deadline >= today);
-  const expiredOffers = offers.filter((offer) => offer.deadline < today);
+  // const activeOffers = offers.filter((offer) => offer.deadline >= today);
+  // const expiredOffers = offers.filter((offer) => offer.deadline < today);
 
-  const sortedOffers = [...activeOffers, ...expiredOffers];
+  // const sortedOffers = [...activeOffers, ...expiredOffers];
   return (
     <Box css={styles} w={`100%`} bg={`rgba(65,164,253,0.05)`}>
       <Box
@@ -157,23 +157,26 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         columnGap={{ lg: `32px` }}
         opacity={`1`}
       >
-        {sortedOffers.map((offer) => {
-          const daysRemaining = remainingDays(offer.deadline);
+        {offers.map((offer) => {
+          // const daysRemaining = remainingDays(offer.deadline);
           return (
             <div key={offer.id}>
-              {offer.deadline >= today ? (
+              {/* {offer.deadline >= today ? (
                 <Box m={`0 auto`} w={`fit-content`}>
                   <OfferCard
                     {...offer}
-                    deadline={daysRemaining}
-                    startDate={offer.createdAt}
+                    
                   />
                 </Box>
               ) : (
                 <Box m={`0 auto`} w={`fit-content`}>
-                  {/* <OfferCardDead {...offer} deadline={daysRemaining} /> */}
+                  {/* <OfferCardDead {...offer} deadline={daysRemaining} /> 
                 </Box>
-              )}
+              )} */}
+
+              <Box m={`0 auto`} w={`fit-content`}>
+                <OfferCard {...offer} />
+              </Box>
             </div>
           );
         })}

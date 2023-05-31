@@ -15,7 +15,7 @@ module.exports = {
     return config;
   },
   images: {
-    domains: ['management.nottheuniversity.com'],
+    domains: ['management.nottheuniversity.com', 'localhost'],
     disableStaticImages: true, // importした画像の型定義設定を無効にする
   },
 };
