@@ -1,37 +1,31 @@
-query getOffersAll {
+query getOffergetOffersAll {
   offers(sort: "publishedAt:desc") {
     data {
       id
       attributes {
         title
-        createdAt
-        place
         hourly_wage
-        deadline
-        people
-        job_points {
+        place_short
+        hours_short
+        start_at
+        end_at
+        occupation {
           data {
             id
             attributes {
               name
-              en_name
             }
           }
         }
-        job_categories {
+        job_type {
           data {
             id
             attributes {
               name
-              en_name
             }
           }
         }
-        createdBy {
-          id
-          firstname
-          lastname
-        }
+
         image {
           data {
             id
@@ -44,111 +38,7 @@ query getOffersAll {
             }
           }
         }
-        gallery {
-          data {
-            id
-            attributes {
-              width
-              height
-              url
-              alternativeText
-              formats
-            }
-          }
-        }
       }
     }
   }
-}
-
-# query getOffers($today: Date, $page: Int) {
-#   offers(
-#     filters: { deadline: { lte: $today } }
-#     sort: "publishedAt:desc"
-#     pagination: { page: $page, pageSize: 10 }
-#   ) {
-#     data {
-#       id
-#       attributes {
-#         title
-#         place
-#         hourly_wage
-#         occupation
-#         createdBy {
-#           id
-#           firstname
-#           lastname
-#         }
-#       }
-#     }
-#   }
-# }
-#
-# query getOffersSortedWage($today: Date, $page: Int) {
-#   offers(
-#     filters: { deadline: { lte: $today } }
-#     sort: "hourly_wage:desc"
-#     pagination: { page: $page, pageSize: 10 }
-#   ) {
-#     data {
-#       id
-#       attributes {
-#         title
-#         place
-#         hourly_wage
-#         occupation
-#         createdBy {
-#           id
-#           firstname
-#           lastname
-#         }
-#       }
-#     }
-#   }
-# }
-#
-# query getOffersSortedDeadline($today: Date, $page: Int) {
-#   offers(
-#     filters: { deadline: { lte: $today } }
-#     sort: "deadline:asc"
-#     pagination: { page: $page, pageSize: 10 }
-#   ) {
-#     data {
-#       id
-#       attributes {
-#         title
-#         place
-#         hourly_wage
-#         occupation
-#         createdBy {
-#           id
-#           firstname
-#           lastname
-#         }
-#       }
-#     }
-#   }
-# }
-
-query getAdvertisements {
-  advertisements(sort: "updatedAt:desc") {
-    data {
-      id
-      attributes {
-        creative {
-          data {
-            id
-            attributes {
-              width
-              height
-              formats
-              alternativeText
-              url
-            }
-          }
-        }
-        publishedAt
-      }
-    }
-  }
-}
+} # Write your query or mutation here
