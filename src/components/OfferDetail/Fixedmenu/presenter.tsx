@@ -4,12 +4,14 @@ import { Box, Flex } from '@chakra-ui/react';
 import { Image } from 'components/images/Image';
 import { useRouter } from 'next/router';
 import { InternalLink } from '~/components/links/InternalLink';
+import { useTargetOfferStore, selectTarget } from 'features/offers';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
+  const offer = useTargetOfferStore(selectTarget);
   return (
     <Box
       position={{ base: `relative`, md: `sticky` }}
@@ -36,7 +38,9 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           textDecoration={`underline`}
           textDecorationThickness={{ base: ``, md: `${1 / 19.2}vw` }}
           textUnderlineOffset={{ base: ``, md: `${3 / 19.2}vw` }}
-        >{`未経験も活躍中。高時給1600円！７月までの限定で高時給のバイトご紹介！`}</Box>
+        >
+          {offer.title}
+        </Box>
         <Flex
           mb={{ base: ``, md: `${14 / 19.2}vw` }}
           pl={{ base: ``, md: `${20 / 19.2}vw` }}
@@ -57,7 +61,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             }}
           />
           <Box ml={{ base: ``, md: `${17 / 19.2}vw` }}>時給</Box>
-          <Box ml={{ base: ``, md: `${53 / 19.2}vw` }}>1,000円</Box>
+          <Box ml={{ base: ``, md: `${53 / 19.2}vw` }}>{offer.hourly_wage}</Box>
         </Flex>
         <Flex
           mb={{ base: ``, md: `${14 / 19.2}vw` }}
@@ -79,7 +83,9 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             }}
           />
           <Box ml={{ base: ``, md: `${14 / 19.2}vw` }}>職種</Box>
-          <Box ml={{ base: ``, md: `${53 / 19.2}vw` }}>エンジニア</Box>
+          <Box ml={{ base: ``, md: `${53 / 19.2}vw` }}>
+            {offer.occupation.name}
+          </Box>
         </Flex>
         <Flex
           mb={{ base: ``, md: `${14 / 19.2}vw` }}
@@ -101,7 +107,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             }}
           />
           <Box ml={{ base: ``, md: `${16 / 19.2}vw` }}>場所</Box>
-          <Box ml={{ base: ``, md: `${53 / 19.2}vw` }}>新潟市中央区</Box>
+          <Box ml={{ base: ``, md: `${53 / 19.2}vw` }}>{offer.place_short}</Box>
         </Flex>
         <Flex
           mb={{ base: ``, md: `${14 / 19.2}vw` }}
@@ -123,7 +129,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             }}
           />
           <Box ml={{ base: ``, md: `${16 / 19.2}vw` }}>時間</Box>
-          <Box ml={{ base: ``, md: `${53 / 19.2}vw` }}>16:00-20:00</Box>
+          <Box ml={{ base: ``, md: `${53 / 19.2}vw` }}>{offer.hours_short}</Box>
         </Flex>
         <Flex
           alignItems={`center`}
@@ -170,12 +176,12 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             fontSize={{ md: `${15 / 7.68}vw`, lg: `${33 / 19.2}vw` }}
             fontFamily={`'Noto Sans', sans-serif`}
           >
-            3,000
+            {offer.job_type.gift}
           </Box>
           ポイントもらえる
         </Box>
       </Box>
-      <InternalLink href={`/`}>
+      <InternalLink href={`jobform`}>
         <Flex
           alignItems={`center`}
           justify={`center`}

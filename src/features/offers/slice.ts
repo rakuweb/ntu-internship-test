@@ -1,13 +1,7 @@
 import { StateCreator } from 'zustand';
 
-import {
-  OffersSlice,
-  // OfferSlice
-} from './types';
-import {
-  parseToOffers,
-  // parseToTarget
-} from './utils';
+import { OffersSlice, OfferSlice } from './types';
+import { parseToOffers, parseToTarget } from './utils';
 
 export const createOffersSlice: StateCreator<
   OffersSlice,
@@ -24,38 +18,41 @@ export const createOffersSlice: StateCreator<
   },
 });
 
-// export const createTargetOfferSlice: StateCreator<
-//   OfferSlice,
-//   [],
-//   [],
-//   OfferSlice
-// > = (set) => ({
-//   id: '',
-//   title: '',
-//   jobType: '',
-//   deadline: '',
-//   createdAt: '',
-//   points: [],
-//   categories: [],
-//   place: '',
-//   hourlyWage: '',
-//   description: '',
-//   aboutJob: '',
-//   target: '',
-//   gainedSkills: [],
-//   recruitmentTerms: '',
-//   image: undefined,
-//   image2: undefined,
-//   companyName: '',
-//   mission: '',
-//   logo: undefined,
-//   qualification: '',
-//   formUrl: '',
-//   people: '',
-//   jobDescription: '',
-//   aboutCompany: '',
-//   setTarget: (entity) => {
-//     const result = parseToTarget(entity);
-//     set(() => ({ ...result }));
-//   },
-// });
+export const createTargetOfferSlice: StateCreator<
+  OfferSlice,
+  [],
+  [],
+  OfferSlice
+> = (set) => ({
+  id: '',
+  title: '',
+  hourly_wage: '',
+  hourly_wage_detail: '',
+  place_short: '',
+  place_detail: '',
+  hours_short: '',
+  hours_detail: '',
+  job_description: '',
+  start_at: '',
+  end_at: '',
+  target: '',
+  url: '',
+  qualification: '',
+  people: '',
+  flow: '',
+  interview_location: '',
+  min_working_hours: '',
+  min_period: { id: '', period: '' },
+  min_workingday: { id: '', days: '' },
+  atmosphere: [{ title: '', text: '', image: undefined }],
+  occupation: { id: '', name: '' },
+  job_type: { id: '', name: '', gift: '' },
+  points: [{ id: '', name: '' }],
+  image: undefined,
+  // companyName: '',
+
+  setTarget: (entity) => {
+    const result = parseToTarget(entity);
+    set(() => ({ ...result }));
+  },
+});

@@ -183,7 +183,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       </Grid>
       <Box
         w={`fit-content`}
-        mt={{ base: `${30 / 3.75}vw`, md: `0` }}
+        mt={{ base: `${30 / 3.75}vw`, md: `${80 / 19.2}vw` }}
         mb={{ base: `${60 / 3.75}vw`, md: `0` }}
         mx={`auto`}
         pb={{ lg: `${100 / 19.2}vw` }}

@@ -14,15 +14,12 @@ import { parseSeo } from '~/lib';
 import {
   GetOfferByIdQuery,
   GetOfferByIdDocument,
-  GetCompaniesQuery,
-  GetCompaniesDocument,
   OfferEntity,
-  CompanyEntity,
   GetOfferPathsQuery,
   GetOfferPathsDocument,
   UploadFile,
 } from 'types/gql/graphql';
-import { initializeApollo } from 'lib/apollo/client';
+import { initializeApollo, initializeApollo_offer } from 'lib/apollo/client';
 import { selectSetTarget, useTargetOfferStore } from 'features/offers';
 import { selectSetCompanyItem, useCompanyStore } from '~/features/company';
 import { parseImage } from '~/lib/utils';
@@ -31,9 +28,9 @@ import { parseImage } from '~/lib/utils';
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 // component layer
-export const Index: NextPage<Props> = ({ data, company }) => {
+export const Index: NextPage<Props> = ({ data }) => {
   const title = data?.offer?.data?.attributes?.title ?? ``; // eslint-disable-line
-  const description = data?.offer?.data?.attributes?.description ?? ``;
+  const description = data?.offer?.data?.attributes?.job_description ?? ``;
   const ogp = data?.offer?.data?.attributes?.image?.data?.attributes
     ? parseImage(
         data.offer.data.attributes.image?.data?.attributes as UploadFile
@@ -61,12 +58,11 @@ export const Index: NextPage<Props> = ({ data, company }) => {
     setIsClient(true);
   }, []);
 
-  if (!data?.offer?.data || !company) {
+  if (!data?.offer?.data) {
     return <></>;
   }
 
   setTarget(data?.offer?.data as OfferEntity);
-  company.length > 0 && company[0]?.attributes && setComapanyItem(company[0]);
 
   const message = () => {
     if (isClient) {
@@ -101,7 +97,7 @@ export const Index: NextPage<Props> = ({ data, company }) => {
 export default Index;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const apolloClient = initializeApollo();
+  const apolloClient = initializeApollo_offer();
   try {
     const { data } = await apolloClient.query<GetOfferPathsQuery>({
       query: GetOfferPathsDocument,
@@ -126,29 +122,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<{
   data: GetOfferByIdQuery;
-  company: CompanyEntity[];
 }> = async ({ params }) => {
   const { id } = params;
-  const apolloClient = initializeApollo();
+  const apolloClient = initializeApollo_offer();
 
   try {
     const { data } = await apolloClient.query<GetOfferByIdQuery>({
       query: GetOfferByIdDocument,
       variables: { id },
     });
-    const { data: companies } = await apolloClient.query<GetCompaniesQuery>({
-      query: GetCompaniesDocument,
-    });
-    const company = companies?.companies?.data?.filter(
-      (company) =>
-        company?.attributes?.createdBy?.id ===
-        data?.offer?.data?.attributes?.createdBy?.id
-    ) as CompanyEntity[];
 
     return {
       props: {
         data,
-        company,
       },
       notFound: !data,
       revalidate: UPDATE_INTERVAL,

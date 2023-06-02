@@ -3,57 +3,82 @@ query getOfferById($id: ID) {
     data {
       id
       attributes {
-        form_url
         title
-        createdAt
-        deadline
-        place
         hourly_wage
-        description
-        about_job
-        recruitment_terms
+        hourly_wage_detail
+        place_short
+        place_detail
+        hours_short
+        hours_detail
+        job_description
+        start_at
+        end_at
         target
+        url
         qualification
         people
-        job_description
-        about_company
-        job_points {
+        interview_location
+        flow
+        min_working_hours
+        min_period {
           data {
             id
             attributes {
-              name
-              en_name
+              period
             }
           }
         }
-        job_categories {
+        min_workingday {
+          data {
+            id
+            attributes {
+              days
+            }
+          }
+        }
+        atmosphere {
+          title
+          text
+          image {
+            data {
+              id
+              attributes {
+                width
+                height
+                url
+                alternativeText
+                formats
+              }
+            }
+          }
+        }
+        occupation {
           data {
             id
             attributes {
               name
-              en_name
+            }
+          }
+        }
+        job_type {
+          data {
+            id
+            attributes {
+              name
+              gift
+            }
+          }
+        }
+        points {
+          data {
+            id
+            attributes {
+              name
             }
           }
         }
 
-        createdBy {
-          id
-          firstname
-          lastname
-        }
         image {
-          data {
-            id
-            attributes {
-              width
-              height
-              url
-              alternativeText
-              formats
-            }
-          }
-        }
-        gallery {
           data {
             id
             attributes {
@@ -68,10 +93,9 @@ query getOfferById($id: ID) {
       }
     }
   }
-}
-
+} # Write your query or mutation here
 query getOfferPaths($today: Date) {
-  offers(sort: "publishedAt:desc", filters: { deadline: { gte: $today } }) {
+  offers(sort: "publishedAt:desc", filters: { end_at: { gte: $today } }) {
     data {
       id
     }

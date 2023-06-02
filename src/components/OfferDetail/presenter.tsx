@@ -28,7 +28,6 @@ import { styles } from './styles';
 import { useAccountStore, selectSetPrevPath } from 'features/account';
 import { OfferEntity } from 'types/gql/graphql';
 import 'zenn-content-css';
-import { InternalLink } from '~/components/links/InternalLink';
 import { routes } from 'constants/routes';
 import { BreadcrumbOfferId } from '../organisms/BreadcrumbOfferId';
 import { Atmosphere } from './Atmosphere';
@@ -52,22 +51,21 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const signin = () => {
     if (!liff) return;
     if (!liff.isLoggedIn()) {
-      offer?.formUrl && setPrevPath(decodeURI(offer.formUrl));
-      window.localStorage.setItem('prevUrl', offer?.formUrl);
+      // offer?.formUrl && setPrevPath(decodeURI(offer.formUrl));
+      // window.localStorage.setItem('prevUrl', offer?.formUrl);
       liff.login(); //{ redirectUri: redirectUri });
     } else {
-      window.location.href = offer.formUrl;
+      // window.location.href = offer.formUrl;
     }
   };
   const currentDate = new Date();
-  const startDate = new Date(offer.createdAt);
-  const endDate = new Date(offer.deadline);
+  const startDate = new Date(offer.start_at);
+  const endDate = new Date(offer.end_at);
   const isNew =
     (currentDate.getTime() - startDate.getTime()) / (1000 * 3600 * 24);
   const isEnd = Math.ceil(
     (endDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24)
   );
-  const href = `${routes.companies}/${company.id}`;
 
   const remainingDays = (deadline) => {
     const currentDate = new Date();
@@ -75,7 +73,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     const diffTime = deadlineDate.getTime() - currentDate.getTime();
     return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   };
-  const daysRemaining = remainingDays(offer.deadline);
+  // const daysRemaining = remainingDays(offer.deadline);
 
   return (
     <div css={styles}>
@@ -105,23 +103,53 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             mb={{ base: `${13 / 3.75}vw`, md: `${20 / 19.2}vw` }}
           >
             株式会社ラクウェブ
-            <Flex
-              display={{ base: `none`, md: `none` }}
-              alignItems={`center`}
-              justify={`center`}
-              fontWeight={`bold`}
-              fontSize={{ base: `${11 / 3.75}vw`, md: `${22 / 19.2}vw` }}
-              mt={{ base: ``, md: `${-5 / 19.2}vw` }}
-              px={{ base: `${20 / 3.75}vw`, md: `${50 / 19.2}vw` }}
-              py={{ base: `${3 / 3.75}vw`, md: `${8 / 19.2}vw` }}
-              bg={`#F26601`}
-              color={`white`}
-              borderRadius={{ base: `${3 / 3.75}vw`, md: `${3 / 19.2}vw` }}
-            >
-              NEW
-            </Flex>
-            <Flex
-              // display={{ base: `flex`, md: `none` }}
+            {isNew <= 7 ? (
+              <Flex
+                alignItems={`center`}
+                justify={`center`}
+                fontWeight={`bold`}
+                fontSize={{ base: `${11 / 3.75}vw`, md: `${22 / 19.2}vw` }}
+                mt={{ base: ``, md: `${-5 / 19.2}vw` }}
+                px={{ base: `${20 / 3.75}vw`, md: `${50 / 19.2}vw` }}
+                py={{ base: `${3 / 3.75}vw`, md: `${8 / 19.2}vw` }}
+                bg={`#F26601`}
+                color={`white`}
+                borderRadius={{ base: `${3 / 3.75}vw`, md: `${3 / 19.2}vw` }}
+              >
+                NEW
+              </Flex>
+            ) : isEnd <= 10 ? (
+              <Flex
+                display={
+                  isEnd
+                    ? { base: `flex`, lg: `flex` }
+                    : { base: `none`, md: `none` }
+                }
+                alignItems={`baseline`}
+                color={`#F26601`}
+                fontSize={{ base: `${10 / 3.75}vw`, md: `${22 / 19.2}vw` }}
+                fontWeight={`bold`}
+              >
+                掲載終了まであと
+                <Box
+                  as={`span`}
+                  fontSize={{
+                    base: `${15 / 3.75}vw`,
+                    md: `${16 / 7.68}vw`,
+                    lg: `${35 / 19.2}vw`,
+                  }}
+                >
+                  {isEnd}
+                </Box>
+                日
+              </Flex>
+            ) : null}
+            {/* <Flex
+              display={
+                isEnd
+                  ? { base: `flex`, lg: `flex` }
+                  : { base: `none`, md: `none` }
+              }
               alignItems={`baseline`}
               color={`#F26601`}
               fontSize={{ base: `${10 / 3.75}vw`, md: `${22 / 19.2}vw` }}
@@ -139,7 +167,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 6
               </Box>
               日
-            </Flex>
+            </Flex> */}
           </Flex>
           <Box
             as={`h1`}
@@ -151,7 +179,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             borderBottom={{ base: `1px solid`, md: `2px solid ` }}
             lineHeight={`1.4em`}
           >
-            {`未経験も活躍中。高時給1600円！7月までの限定で高時給のバイトご紹介！`}
+            {offer.title}
           </Box>
           <MobileMinInformation />
           <Box
@@ -189,7 +217,9 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               mx={{ base: ``, md: `${20 / 19.2}vw` }}
               fontSize={{ base: `${11 / 3.75}vw`, md: `${20 / 19.2}vw` }}
               lineHeight={{ base: `1.2em`, md: `1.5em` }}
-            >{`学校やご家庭、プライベートとの両立もバッチリ◎ライフスタイルを崩さず無理なく働けるシフト制です!福利厚生も整い、腰を据えて長く活躍できる環境です♪学校やご家庭、プライベートとの両立もバッ チリ◎ライフスタイルを崩さず無理なく働けるシフト制です!福利厚生も整い、腰を据えて長く活躍できる環境で`}</Box>
+            >
+              {offer.job_description}
+            </Box>
           </Box>
           <Atmosphere mb={{ md: `${80 / 19.2}vw` }} />
           <Applybutton pt={`${35 / 3.75}vw`} mb={`${65 / 3.75}vw`} />
@@ -239,19 +269,9 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               募集求人
             </Box>
           </Flex>
-          <OfferCard3
-            createdByid={1}
-            {...offer}
-            deadline={daysRemaining}
-            startDate={offer.createdAt}
-          />
+          <OfferCard3 {...offer} />
           <Box mt={{ base: `${36 / 3.75}vw`, md: `${50 / 19.2}vw` }}>
-            <OfferCard3
-              createdByid={1}
-              {...offer}
-              deadline={daysRemaining}
-              startDate={offer.createdAt}
-            />
+            <OfferCard3 {...offer} />
           </Box>
         </Box>
         <Box

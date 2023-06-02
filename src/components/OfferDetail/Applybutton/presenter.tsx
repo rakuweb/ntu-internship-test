@@ -3,12 +3,14 @@ import { FC } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import { Image } from 'components/images/Image';
 import { InternalLink } from '~/components/links/InternalLink';
+import { useTargetOfferStore, selectTarget } from 'features/offers';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
+  const offer = useTargetOfferStore(selectTarget);
   return (
     <Box
       {...props}
@@ -60,13 +62,13 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             fontSize={`${19 / 4.28}vw`}
             fontFamily={`'Noto Sans', sans-serif`}
           >
-            3,000
+            {offer.job_type.gift}
           </Box>
           ポイントもらえる
         </Box>
       </Flex>
 
-      <InternalLink href={`/`} mt={`${10 / 3.75}vw`}>
+      <InternalLink href={`/jobform`} mt={`${10 / 3.75}vw`}>
         <Flex
           alignItems={`center`}
           justify={`center`}

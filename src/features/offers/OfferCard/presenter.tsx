@@ -34,10 +34,17 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   } = props;
   const href = `${routes.offers}/${id}`;
   const currentDate = new Date();
-  // const startDateObj = new Date(startDate);
-  // const isNew =
-  //   (currentDate.getTime() - startDateObj.getTime()) / (1000 * 3600 * 24);
-  console.log(image);
+  const startDateObj = new Date(start_at);
+  const endDate = new Date(end_at);
+  const endDateY = endDate.getFullYear();
+  const endDateM = endDate.getMonth() + 1;
+  const endDateD = endDate.getDate();
+  const isNew =
+    (currentDate.getTime() - startDateObj.getTime()) / (1000 * 3600 * 24);
+  const isEnd = Math.ceil(
+    (endDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24)
+  );
+  console.log(job_type);
   return (
     <InternalLink href={href}>
       {/* <Box display={'none'}>{createdByid}</Box> */}
@@ -59,47 +66,69 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           fontFamily={`'Noto Sans JP', sans-serif`}
           position={`relative`}
         >
-          <Flex
-            position={`absolute`}
-            top={`${20 / 19.2}vw`}
-            right={`${33 / 19.2}vw`}
-            color={`white`}
-            bg={`#F26601`}
-            border={`1px solid #F26601`}
-            borderRadius={`${3 / 19.2}vw`}
-            w={`${90 / 19.2}vw`}
-            h={`${24 / 19.2}vw`}
-            alignItems={`center`}
-            justify={`center`}
-            fontWeight={`bold`}
-            fontSize={`${14 / 19.2}vw`}
-          >
-            NEW
-          </Flex>
+          {isNew <= 7 ? (
+            <Flex
+              position={`absolute`}
+              top={`${30 / 19.2}vw`}
+              right={`${33 / 19.2}vw`}
+              color={`white`}
+              bg={`#F26601`}
+              border={`1px solid #F26601`}
+              borderRadius={`${3 / 19.2}vw`}
+              w={`${90 / 19.2}vw`}
+              h={`${24 / 19.2}vw`}
+              alignItems={`center`}
+              justify={`center`}
+              fontWeight={`bold`}
+              fontSize={`${14 / 19.2}vw`}
+            >
+              NEW
+            </Flex>
+          ) : isEnd <= 10 ? (
+            <Flex
+              position={`absolute`}
+              top={`${20 / 19.2}vw`}
+              right={`${33 / 19.2}vw`}
+              color={`#F26601`}
+              alignItems={`end`}
+              fontWeight={`bold`}
+              fontSize={`${15 / 19.2}vw`}
+            >
+              掲載終了まであと
+              <Box as={`span`} fontSize={`${25 / 19.2}vw`}>
+                {isEnd}
+              </Box>
+              日
+            </Flex>
+          ) : null}
+
           <Box mb={`${10 / 19.2}vw`} fontSize={`${18 / 19.2}vw`}>
             {`株式会社KUNO`}
           </Box>
           <Box
-            display={`inline`}
             fontWeight={`bold`}
             fontSize={`${25 / 19.2}vw`}
             color={`#41A4FD`}
-            borderBottom={`1px solid #41A4FD`}
+            textDecoration={`underline #41A4FD`}
+            textUnderlineOffset={`0.2em`}
             lineHeight={`1.5em`}
+            h={`${74.5 / 19.2}vw`}
+            textOverflow={`ellipsis`}
+            overflow={`hidden`}
           >
             {title}
           </Box>
           <Flex justify={`space-between`}>
             <NImage className={`photo`} image={{ ...image }} />
             <Box w={`${283 / 19.2}vw`}>
-              <Box
+              <Flex
                 mt={`${25 / 19.2}vw`}
                 fontSize={`${13 / 19.2}vw`}
-                textAlign={`right`}
+                justify={`end`}
                 color={`#39414E`}
               >
-                {`掲載終了 : 2023年06月23日`}
-              </Box>
+                掲載終了 : {endDateY}年{endDateM}月{endDateD}日
+              </Flex>
               <Box mt={`${15 / 19.2}vw`} color={`#39414E`}>
                 <Flex
                   pl={`${20 / 19.2}vw`}
@@ -216,11 +245,11 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           fontFamily={`'Noto Sans JP', sans-serif`}
         >
           <Box fontSize={`${15 / 19.2}vw`}>
-            掲載終了まであと
+            お祝い金
             <Box as={`span`} fontSize={`${25 / 19.2}vw`}>
-              6
+              {job_type.gift}
             </Box>
-            日
+            ポイントもらえる
           </Box>
           <Box
             fontSize={`${18 / 19.2}vw`}
@@ -247,28 +276,47 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           borderRadius={`${10 / 3.75}vw ${10 / 3.75}vw 0 0`}
           fontFamily={`'Noto Sans JP', sans-serif`}
         >
-          <Flex
-            alignItems={`center`}
-            justify={`center`}
-            borderRadius={`${3 / 3.75}vw`}
-            w={`${40 / 3.75}vw`}
-            h={`${12 / 3.75}vw`}
-            position={`absolute`}
-            top={`${10 / 3.75}vw`}
-            right={`${10 / 3.75}vw`}
-            color={`white`}
-            bg={`#F26601`}
-            fontWeight={`bold`}
-            fontSize={`${10 / 3.75}vw`}
-          >
-            NEW
-          </Flex>
+          {isNew <= 7 ? (
+            <Flex
+              alignItems={`center`}
+              justify={`center`}
+              borderRadius={`${3 / 3.75}vw`}
+              w={`${40 / 3.75}vw`}
+              h={`${12 / 3.75}vw`}
+              position={`absolute`}
+              top={`${10 / 3.75}vw`}
+              right={`${10 / 3.75}vw`}
+              color={`white`}
+              bg={`#F26601`}
+              fontWeight={`bold`}
+              fontSize={`${10 / 3.75}vw`}
+            >
+              NEW
+            </Flex>
+          ) : isEnd <= 10 ? (
+            <Flex
+              position={`absolute`}
+              top={`${10 / 3.75}vw`}
+              right={`${10 / 3.75}vw`}
+              color={`#F26601`}
+              alignItems={`end`}
+              fontWeight={`bold`}
+              fontSize={`${10 / 3.75}vw`}
+            >
+              掲載終了まであと
+              <Box as={`span`} fontSize={`${13 / 3.75}vw`}>
+                {isEnd}
+              </Box>
+              日
+            </Flex>
+          ) : null}
           <Box p={`${16 / 3.75}vw`} pb={`${11 / 3.75}vw`}>
             <Box mb={`${4 / 3.75}vw`} fontSize={`${10 / 3.75}vw`}>
               {`株式会社KUNO`}
             </Box>
             <Box
-              display={`inline`}
+              textDecoration={`underline #41A4FD`}
+              textUnderlineOffset={`0.2em`}
               fontSize={`${12 / 3.75}vw`}
               fontWeight={`bold`}
               h={`${37 / 3.75}vw`}
@@ -276,7 +324,6 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               textOverflow={`ellipsis`}
               lineHeight={`1.6em`}
               color={`#41A4FD`}
-              borderBottom={`1px solid #41A4FD`}
             >
               {title}
             </Box>
@@ -287,15 +334,15 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 image={{ ...image }}
               />
               <Flex direction={`column`} fontWeight={`500`}>
-                <Box
-                  textAlign={`end`}
-                  fontSize={`${10 / 3.75}vw`}
+                <Flex
+                  justify={`end`}
+                  fontSize={{ base: `${10 / 3.75}vw`, md: `${10 / 7.68}vw` }}
                   fontWeight={`400`}
-                  mb={`${6 / 3.75}vw`}
+                  mb={{ base: `${6 / 3.75}vw`, md: `${6 / 7.68}vw` }}
                   color={`#39414E`}
                 >
-                  掲載終了 : 2023年6月30日
-                </Box>
+                  掲載終了 : {endDateY}年{endDateM}月{endDateD}日
+                </Flex>
                 <Flex
                   // w={`${190 / 3.75}vw`}
                   fontWeight={`bold`}
@@ -435,11 +482,11 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             background={`transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box;`}
           >
             <Box>
-              掲載終了まであと
+              お祝い金
               <Box as={`span`} fontSize={`${13 / 3.75}vw`} fontWeight={`bold`}>
-                6
+                {job_type.gift}
               </Box>
-              日
+              ポイントもらえる
             </Box>
             <Box
               mt={`${8 / 3.75}vw`}
