@@ -46,8 +46,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const company = useCompanyStore(selectCompany);
   const { liff } = useLiff();
   const setPrevPath = useAccountStore(selectSetPrevPath);
-  const { jobTitle, companyName } = useTargetOfferStore(selectBreadCrumbItem);
-  const pageTitles = [companyName, jobTitle];
+  const { jobTitle } = useTargetOfferStore(selectBreadCrumbItem);
+  const pageTitles = [jobTitle];
   const signin = () => {
     if (!liff) return;
     if (!liff.isLoggedIn()) {
@@ -102,7 +102,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             }}
             mb={{ base: `${13 / 3.75}vw`, md: `${20 / 19.2}vw` }}
           >
-            株式会社ラクウェブ
+            {offer.createby.firstname}
             {isNew <= 7 ? (
               <Flex
                 alignItems={`center`}
@@ -144,30 +144,6 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 日
               </Flex>
             ) : null}
-            {/* <Flex
-              display={
-                isEnd
-                  ? { base: `flex`, lg: `flex` }
-                  : { base: `none`, md: `none` }
-              }
-              alignItems={`baseline`}
-              color={`#F26601`}
-              fontSize={{ base: `${10 / 3.75}vw`, md: `${22 / 19.2}vw` }}
-              fontWeight={`bold`}
-            >
-              掲載終了まであと
-              <Box
-                as={`span`}
-                fontSize={{
-                  base: `${15 / 3.75}vw`,
-                  md: `${16 / 7.68}vw`,
-                  lg: `${35 / 19.2}vw`,
-                }}
-              >
-                6
-              </Box>
-              日
-            </Flex> */}
           </Flex>
           <Box
             as={`h1`}

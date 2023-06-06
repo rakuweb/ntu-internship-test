@@ -11,7 +11,7 @@ export const selectTarget = (state: OfferSlice) => {
 export const selectSetTarget = (state: OfferSlice) => state.setTarget;
 
 export const selectBreadCrumbItem = (state: OfferSlice) => {
-  const result = { jobTitle: state.title, companyName: state.companyName };
+  const result = { jobTitle: state.title };
 
   return result;
 };

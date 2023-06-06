@@ -6,12 +6,7 @@ import { Select, ChakraStylesConfig } from 'chakra-react-select';
 import { Image as NImage } from 'components/images/Image';
 import { useRouter } from 'next/router';
 
-import { selectCompany, useCompanyStore } from 'features/company';
-import {
-  useTargetOfferStore,
-  selectTarget,
-  selectBreadCrumbItem,
-} from 'features/offers';
+import { useTargetOfferStore, selectTarget } from 'features/offers';
 import { useLiff } from 'contexts/LineAuthContextInternship';
 
 import { useAccountStore, selectSetPrevPath } from 'features/account';
@@ -99,10 +94,10 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
 
   const [index, setIndex] = useState<number>(0);
 
-  const activeOffers = offers.filter((offer) => offer.deadline >= today);
-  const expiredOffers = offers.filter((offer) => offer.deadline < today);
+  // const activeOffers = offers.filter((offer) => offer.deadline >= today);
+  // const expiredOffers = offers.filter((offer) => offer.deadline < today);
 
-  const sortedOffers = [...activeOffers, ...expiredOffers];
+  // const sortedOffers = [...activeOffers, ...expiredOffers];
 
   const pageTitles = [`求人検索`];
 

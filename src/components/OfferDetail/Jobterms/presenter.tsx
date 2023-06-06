@@ -26,6 +26,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     { title: `最低労働時間`, main: offer.min_working_hours },
     { title: `最低勤務日数 `, main: offer.min_workingday.days },
     { title: `最低勤務期間 `, main: offer.min_period.period },
+    { title: `休日・休暇`, main: offer.holiday },
+    { title: `シフト詳細`, main: offer.shift },
     { title: `勤務場所`, main: offer.place_short },
     { title: `面接場所`, main: offer.interview_location },
     { title: `歓迎`, main: offer.qualification },
@@ -110,47 +112,30 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               </Box>
 
               {Array.isArray(list.main) ? (
-                <Flex pl={{ base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` }}>
+                <Box
+                  pt={{ base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` }}
+                  pl={{ base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` }}
+                  pb={{ base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` }}
+                >
                   {list.main.map((points) => (
-                    <Flex
-                      display={index === 12 ? `flex` : `none`}
+                    <Box
+                      display={index === 14 ? `block` : `none`}
                       key={points.name}
-                      alignItems={`center`}
                       fontSize={{
                         base: `${10 / 3.75}vw`,
-                        md: `${11 / 7.68}vw`,
-                        lg: `${18 / 19.2}vw`,
+                        md: `${12 / 7.68}vw`,
+                        lg: `${21 / 19.2}vw`,
                       }}
-                      mt={{
-                        base: `${6 / 3.75}vw`,
-                        md: `${8 / 7.68}vw`,
-                        lg: `${18 / 19.2}vw`,
-                      }}
-                      mr={{ base: `${10 / 3.75}vw`, md: `${16 / 19.2}vw` }}
-                      px={{ base: `${10 / 3.75}vw`, md: `${22 / 19.2}vw` }}
-                      h={{
-                        base: `${20 / 3.75}vw`,
-                        md: `${20 / 7.68}vw`,
-                        lg: `${41 / 19.2}vw`,
-                      }}
-                      border={{
-                        base: `${2 / 3.75}vw solid #38404D`,
-                        md: `${3 / 19.2}vw solid #38404D`,
-                      }}
-                      borderRadius={{
-                        base: `${26 / 3.75}vw`,
-                        md: `${26 / 19.2}vw`,
-                      }}
-                      lineHeight={`1em`}
+                      whiteSpace={`pre-wrap`}
                     >
-                      {points.name}
-                    </Flex>
+                      ・{points.name}
+                    </Box>
                   ))}
-                </Flex>
+                </Box>
               ) : (
                 <div>
                   <Box
-                    display={index === 15 || index === 16 ? `none` : `block`}
+                    display={index === 17 || index === 18 ? `none` : `block`}
                     fontSize={{
                       base: `${10 / 3.75}vw`,
                       md: `${12 / 7.68}vw`,
@@ -165,7 +150,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   </Box>
                   <InternalLink
                     href={list.main}
-                    display={index === 15 ? `block` : `none`}
+                    display={index === 17 ? `block` : `none`}
                     fontSize={{
                       base: `${10 / 3.75}vw`,
                       md: `${12 / 7.68}vw`,
@@ -179,7 +164,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     {list.main}
                   </InternalLink>
                   <Box
-                    display={index === 16 ? `block` : `none`}
+                    display={index === 18 ? `block` : `none`}
                     fontSize={{
                       base: `${10 / 3.75}vw`,
                       md: `${12 / 7.68}vw`,

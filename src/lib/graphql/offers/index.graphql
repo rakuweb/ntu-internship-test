@@ -9,6 +9,12 @@ query getOffersAll {
         hours_short
         start_at
         end_at
+
+        createdBy {
+          id
+          firstname
+          lastname
+        }
         occupation {
           data {
             id

@@ -40,7 +40,9 @@ export const createTargetOfferSlice: StateCreator<
   qualification: '',
   people: '',
   flow: '',
+  email_address: '',
   interview_location: '',
+  createby: { id: 0, firstname: '', lastname: '' },
   min_working_hours: '',
   min_period: { id: '', period: '' },
   min_workingday: { id: '', days: '' },
@@ -49,6 +51,8 @@ export const createTargetOfferSlice: StateCreator<
   job_type: { id: '', name: '', gift: '' },
   points: [{ id: '', name: '' }],
   image: undefined,
+  shift: '',
+  holiday: '',
   // companyName: '',
 
   setTarget: (entity) => {

@@ -7,10 +7,12 @@ export type Point = { id: string; name: string };
 export type Period = { id: string; period: string };
 export type Workingday = { id: string; days: string };
 export type Atmosphere = { title: string; text: string; image: ImageType };
+export type Createby = { id: number; firstname: string; lastname: string };
 
 export type OfferCard = {
   id: string;
   title: string;
+  createby: Createby;
   hourly_wage: string;
   place_short: string;
   hours_short: string;
@@ -46,7 +48,11 @@ export type OfferSliceData = {
   qualification: string;
   people: string;
   flow: string;
+  shift: string;
+  holiday: string;
+  email_address: string;
   interview_location: string;
+  createby: Createby;
   min_working_hours: string;
   min_period: Period;
   min_workingday: Workingday;

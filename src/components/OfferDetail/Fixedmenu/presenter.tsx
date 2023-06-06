@@ -5,6 +5,8 @@ import { Image } from 'components/images/Image';
 import { useRouter } from 'next/router';
 import { InternalLink } from '~/components/links/InternalLink';
 import { useTargetOfferStore, selectTarget } from 'features/offers';
+import { useLiff } from 'contexts/LineAuthContextInternship';
+import { useAccountStore, selectSetPrevPath } from 'features/account';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
@@ -12,6 +14,19 @@ export type PresenterProps = Record<string, unknown>;
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const offer = useTargetOfferStore(selectTarget);
+  const { liff } = useLiff();
+  const setPrevPath = useAccountStore(selectSetPrevPath);
+  const signin = () => {
+    if (!liff) return;
+    if (!liff.isLoggedIn()) {
+      offer?.id + `/jobform` && setPrevPath(decodeURI(offer.id + `/jobform`));
+      window.localStorage.setItem('prevUrl', offer?.id + `/jobform`);
+      liff.login(); //{ redirectUri: redirectUri });
+    } else {
+      window.location.href = offer.id + `/jobform`;
+    }
+  };
+
   return (
     <Box
       position={{ base: `relative`, md: `sticky` }}
@@ -181,7 +196,13 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           ポイントもらえる
         </Box>
       </Box>
-      <InternalLink href={`jobform`}>
+      <Box
+        onClick={() => {
+          {
+            signin();
+          }
+        }}
+      >
         <Flex
           alignItems={`center`}
           justify={`center`}
@@ -204,7 +225,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           />
           応募する
         </Flex>
-      </InternalLink>
+      </Box>
     </Box>
   );
 };

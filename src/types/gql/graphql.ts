@@ -154,7 +154,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = ComponentAtmosphereAtmosphere | I18NLocale | JobType | MinPeriod | MinWorkingday | Occupation | Offer | Point | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = ComponentAtmosphereAtmosphere | I18NLocale | JobType | MinPeriod | MinWorkingday | Occupation | Offer | Point | Submission | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -400,6 +400,7 @@ export type Mutation = {
   createOccupation?: Maybe<OccupationEntityResponse>;
   createOffer?: Maybe<OfferEntityResponse>;
   createPoint?: Maybe<PointEntityResponse>;
+  createSubmission?: Maybe<SubmissionEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   createUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Create a new role */
@@ -412,6 +413,7 @@ export type Mutation = {
   deleteOccupation?: Maybe<OccupationEntityResponse>;
   deleteOffer?: Maybe<OfferEntityResponse>;
   deletePoint?: Maybe<PointEntityResponse>;
+  deleteSubmission?: Maybe<SubmissionEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Delete an existing role */
@@ -436,6 +438,7 @@ export type Mutation = {
   updateOccupation?: Maybe<OccupationEntityResponse>;
   updateOffer?: Maybe<OfferEntityResponse>;
   updatePoint?: Maybe<PointEntityResponse>;
+  updateSubmission?: Maybe<SubmissionEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Update an existing role */
@@ -480,6 +483,11 @@ export type MutationCreateOfferArgs = {
 
 export type MutationCreatePointArgs = {
   data: PointInput;
+};
+
+
+export type MutationCreateSubmissionArgs = {
+  data: SubmissionInput;
 };
 
 
@@ -529,6 +537,11 @@ export type MutationDeleteOfferArgs = {
 
 
 export type MutationDeletePointArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDeleteSubmissionArgs = {
   id: Scalars['ID'];
 };
 
@@ -635,6 +648,12 @@ export type MutationUpdatePointArgs = {
 };
 
 
+export type MutationUpdateSubmissionArgs = {
+  data: SubmissionInput;
+  id: Scalars['ID'];
+};
+
+
 export type MutationUpdateUploadFileArgs = {
   data: UploadFileInput;
   id: Scalars['ID'];
@@ -713,8 +732,10 @@ export type Offer = {
   atmosphere?: Maybe<Array<Maybe<ComponentAtmosphereAtmosphere>>>;
   createdAt?: Maybe<Scalars['DateTime']>;
   createdBy?: Maybe<Creator>;
+  email_address: Scalars['String'];
   end_at: Scalars['Date'];
   flow?: Maybe<Scalars['String']>;
+  holiday?: Maybe<Scalars['String']>;
   hourly_wage: Scalars['String'];
   hourly_wage_detail?: Maybe<Scalars['String']>;
   hours_detail?: Maybe<Scalars['String']>;
@@ -733,6 +754,7 @@ export type Offer = {
   points?: Maybe<PointRelationResponseCollection>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   qualification?: Maybe<Scalars['String']>;
+  shift?: Maybe<Scalars['String']>;
   start_at: Scalars['Date'];
   target: Scalars['String'];
   title: Scalars['String'];
@@ -776,8 +798,10 @@ export type OfferFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<OfferFiltersInput>>>;
   atmosphere?: InputMaybe<ComponentAtmosphereAtmosphereFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
+  email_address?: InputMaybe<StringFilterInput>;
   end_at?: InputMaybe<DateFilterInput>;
   flow?: InputMaybe<StringFilterInput>;
+  holiday?: InputMaybe<StringFilterInput>;
   hourly_wage?: InputMaybe<StringFilterInput>;
   hourly_wage_detail?: InputMaybe<StringFilterInput>;
   hours_detail?: InputMaybe<StringFilterInput>;
@@ -798,6 +822,7 @@ export type OfferFiltersInput = {
   points?: InputMaybe<PointFiltersInput>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
   qualification?: InputMaybe<StringFilterInput>;
+  shift?: InputMaybe<StringFilterInput>;
   start_at?: InputMaybe<DateFilterInput>;
   target?: InputMaybe<StringFilterInput>;
   title?: InputMaybe<StringFilterInput>;
@@ -807,8 +832,10 @@ export type OfferFiltersInput = {
 
 export type OfferInput = {
   atmosphere?: InputMaybe<Array<InputMaybe<ComponentAtmosphereAtmosphereInput>>>;
+  email_address?: InputMaybe<Scalars['String']>;
   end_at?: InputMaybe<Scalars['Date']>;
   flow?: InputMaybe<Scalars['String']>;
+  holiday?: InputMaybe<Scalars['String']>;
   hourly_wage?: InputMaybe<Scalars['String']>;
   hourly_wage_detail?: InputMaybe<Scalars['String']>;
   hours_detail?: InputMaybe<Scalars['String']>;
@@ -827,6 +854,7 @@ export type OfferInput = {
   points?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   qualification?: InputMaybe<Scalars['String']>;
+  shift?: InputMaybe<Scalars['String']>;
   start_at?: InputMaybe<Scalars['Date']>;
   target?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
@@ -919,6 +947,8 @@ export type Query = {
   offers?: Maybe<OfferEntityResponseCollection>;
   point?: Maybe<PointEntityResponse>;
   points?: Maybe<PointEntityResponseCollection>;
+  submission?: Maybe<SubmissionEntityResponse>;
+  submissions?: Maybe<SubmissionEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
   uploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -1020,6 +1050,19 @@ export type QueryPointsArgs = {
 };
 
 
+export type QuerySubmissionArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QuerySubmissionsArgs = {
+  filters?: InputMaybe<SubmissionFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
 export type QueryUploadFileArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
@@ -1094,6 +1137,77 @@ export type StringFilterInput = {
   null?: InputMaybe<Scalars['Boolean']>;
   or?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   startsWith?: InputMaybe<Scalars['String']>;
+};
+
+export type Submission = {
+  __typename?: 'Submission';
+  birthDate?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  email?: Maybe<Scalars['String']>;
+  furigana?: Maybe<Scalars['String']>;
+  grade?: Maybe<Scalars['String']>;
+  hopeday1?: Maybe<Scalars['String']>;
+  hopeday2?: Maybe<Scalars['String']>;
+  hopeday3?: Maybe<Scalars['String']>;
+  lineid?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  phone?: Maybe<Scalars['String']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  reason?: Maybe<Scalars['String']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type SubmissionEntity = {
+  __typename?: 'SubmissionEntity';
+  attributes?: Maybe<Submission>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type SubmissionEntityResponse = {
+  __typename?: 'SubmissionEntityResponse';
+  data?: Maybe<SubmissionEntity>;
+};
+
+export type SubmissionEntityResponseCollection = {
+  __typename?: 'SubmissionEntityResponseCollection';
+  data: Array<SubmissionEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type SubmissionFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<SubmissionFiltersInput>>>;
+  birthDate?: InputMaybe<StringFilterInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  email?: InputMaybe<StringFilterInput>;
+  furigana?: InputMaybe<StringFilterInput>;
+  grade?: InputMaybe<StringFilterInput>;
+  hopeday1?: InputMaybe<StringFilterInput>;
+  hopeday2?: InputMaybe<StringFilterInput>;
+  hopeday3?: InputMaybe<StringFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  lineid?: InputMaybe<StringFilterInput>;
+  name?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<SubmissionFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<SubmissionFiltersInput>>>;
+  phone?: InputMaybe<StringFilterInput>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  reason?: InputMaybe<StringFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type SubmissionInput = {
+  birthDate?: InputMaybe<Scalars['String']>;
+  email?: InputMaybe<Scalars['String']>;
+  furigana?: InputMaybe<Scalars['String']>;
+  grade?: InputMaybe<Scalars['String']>;
+  hopeday1?: InputMaybe<Scalars['String']>;
+  hopeday2?: InputMaybe<Scalars['String']>;
+  hopeday3?: InputMaybe<Scalars['String']>;
+  lineid?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  reason?: InputMaybe<Scalars['String']>;
 };
 
 export type UploadFile = {
@@ -1474,7 +1588,7 @@ export type GetOfferByIdQueryVariables = Exact<{
 }>;
 
 
-export type GetOfferByIdQuery = { __typename?: 'Query', offer?: { __typename?: 'OfferEntityResponse', data?: { __typename?: 'OfferEntity', id?: string | null, attributes?: { __typename?: 'Offer', title: string, hourly_wage: string, hourly_wage_detail?: string | null, place_short: string, place_detail: string, hours_short: string, hours_detail?: string | null, job_description: string, start_at: any, end_at: any, target: string, url?: string | null, qualification?: string | null, people: string, interview_location: string, flow?: string | null, min_working_hours: string, min_period?: { __typename?: 'MinPeriodEntityResponse', data?: { __typename?: 'MinPeriodEntity', id?: string | null, attributes?: { __typename?: 'MinPeriod', period?: string | null } | null } | null } | null, min_workingday?: { __typename?: 'MinWorkingdayEntityResponse', data?: { __typename?: 'MinWorkingdayEntity', id?: string | null, attributes?: { __typename?: 'MinWorkingday', days?: string | null } | null } | null } | null, atmosphere?: Array<{ __typename?: 'ComponentAtmosphereAtmosphere', title?: string | null, text?: string | null, image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, url: string, alternativeText?: string | null, formats?: any | null } | null } | null } | null } | null> | null, occupation?: { __typename?: 'OccupationEntityResponse', data?: { __typename?: 'OccupationEntity', id?: string | null, attributes?: { __typename?: 'Occupation', name?: string | null } | null } | null } | null, job_type?: { __typename?: 'JobTypeEntityResponse', data?: { __typename?: 'JobTypeEntity', id?: string | null, attributes?: { __typename?: 'JobType', name?: string | null, gift?: string | null } | null } | null } | null, points?: { __typename?: 'PointRelationResponseCollection', data: Array<{ __typename?: 'PointEntity', id?: string | null, attributes?: { __typename?: 'Point', name?: string | null } | null }> } | null, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, url: string, alternativeText?: string | null, formats?: any | null } | null } | null } } | null } | null } | null };
+export type GetOfferByIdQuery = { __typename?: 'Query', offer?: { __typename?: 'OfferEntityResponse', data?: { __typename?: 'OfferEntity', id?: string | null, attributes?: { __typename?: 'Offer', title: string, hourly_wage: string, hourly_wage_detail?: string | null, place_short: string, place_detail: string, hours_short: string, hours_detail?: string | null, job_description: string, start_at: any, end_at: any, target: string, url?: string | null, qualification?: string | null, people: string, interview_location: string, flow?: string | null, shift?: string | null, holiday?: string | null, email_address: string, min_working_hours: string, min_period?: { __typename?: 'MinPeriodEntityResponse', data?: { __typename?: 'MinPeriodEntity', id?: string | null, attributes?: { __typename?: 'MinPeriod', period?: string | null } | null } | null } | null, min_workingday?: { __typename?: 'MinWorkingdayEntityResponse', data?: { __typename?: 'MinWorkingdayEntity', id?: string | null, attributes?: { __typename?: 'MinWorkingday', days?: string | null } | null } | null } | null, createdBy?: { __typename?: 'Creator', id?: number | null, firstname?: string | null, lastname?: string | null } | null, atmosphere?: Array<{ __typename?: 'ComponentAtmosphereAtmosphere', title?: string | null, text?: string | null, image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, url: string, alternativeText?: string | null, formats?: any | null } | null } | null } | null } | null> | null, occupation?: { __typename?: 'OccupationEntityResponse', data?: { __typename?: 'OccupationEntity', id?: string | null, attributes?: { __typename?: 'Occupation', name?: string | null } | null } | null } | null, job_type?: { __typename?: 'JobTypeEntityResponse', data?: { __typename?: 'JobTypeEntity', id?: string | null, attributes?: { __typename?: 'JobType', name?: string | null, gift?: string | null } | null } | null } | null, points?: { __typename?: 'PointRelationResponseCollection', data: Array<{ __typename?: 'PointEntity', id?: string | null, attributes?: { __typename?: 'Point', name?: string | null } | null }> } | null, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, url: string, alternativeText?: string | null, formats?: any | null } | null } | null } } | null } | null } | null };
 
 export type GetOfferPathsQueryVariables = Exact<{
   today?: InputMaybe<Scalars['Date']>;
@@ -1486,9 +1600,9 @@ export type GetOfferPathsQuery = { __typename?: 'Query', offers?: { __typename?:
 export type GetOffersAllQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetOffersAllQuery = { __typename?: 'Query', offers?: { __typename?: 'OfferEntityResponseCollection', data: Array<{ __typename?: 'OfferEntity', id?: string | null, attributes?: { __typename?: 'Offer', title: string, hourly_wage: string, place_short: string, hours_short: string, start_at: any, end_at: any, occupation?: { __typename?: 'OccupationEntityResponse', data?: { __typename?: 'OccupationEntity', id?: string | null, attributes?: { __typename?: 'Occupation', name?: string | null } | null } | null } | null, job_type?: { __typename?: 'JobTypeEntityResponse', data?: { __typename?: 'JobTypeEntity', id?: string | null, attributes?: { __typename?: 'JobType', name?: string | null, gift?: string | null } | null } | null } | null, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, url: string, alternativeText?: string | null, formats?: any | null } | null } | null } } | null }> } | null };
+export type GetOffersAllQuery = { __typename?: 'Query', offers?: { __typename?: 'OfferEntityResponseCollection', data: Array<{ __typename?: 'OfferEntity', id?: string | null, attributes?: { __typename?: 'Offer', title: string, hourly_wage: string, place_short: string, hours_short: string, start_at: any, end_at: any, createdBy?: { __typename?: 'Creator', id?: number | null, firstname?: string | null, lastname?: string | null } | null, occupation?: { __typename?: 'OccupationEntityResponse', data?: { __typename?: 'OccupationEntity', id?: string | null, attributes?: { __typename?: 'Occupation', name?: string | null } | null } | null } | null, job_type?: { __typename?: 'JobTypeEntityResponse', data?: { __typename?: 'JobTypeEntity', id?: string | null, attributes?: { __typename?: 'JobType', name?: string | null, gift?: string | null } | null } | null } | null, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, url: string, alternativeText?: string | null, formats?: any | null } | null } | null } } | null }> } | null };
 
 
-export const GetOfferByIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getOfferById"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"offer"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"hourly_wage"}},{"kind":"Field","name":{"kind":"Name","value":"hourly_wage_detail"}},{"kind":"Field","name":{"kind":"Name","value":"place_short"}},{"kind":"Field","name":{"kind":"Name","value":"place_detail"}},{"kind":"Field","name":{"kind":"Name","value":"hours_short"}},{"kind":"Field","name":{"kind":"Name","value":"hours_detail"}},{"kind":"Field","name":{"kind":"Name","value":"job_description"}},{"kind":"Field","name":{"kind":"Name","value":"start_at"}},{"kind":"Field","name":{"kind":"Name","value":"end_at"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"qualification"}},{"kind":"Field","name":{"kind":"Name","value":"people"}},{"kind":"Field","name":{"kind":"Name","value":"interview_location"}},{"kind":"Field","name":{"kind":"Name","value":"flow"}},{"kind":"Field","name":{"kind":"Name","value":"min_working_hours"}},{"kind":"Field","name":{"kind":"Name","value":"min_period"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"period"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"min_workingday"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"days"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"atmosphere"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"text"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"formats"}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"occupation"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"job_type"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"gift"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"points"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"formats"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetOfferByIdQuery, GetOfferByIdQueryVariables>;
+export const GetOfferByIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getOfferById"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"offer"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"hourly_wage"}},{"kind":"Field","name":{"kind":"Name","value":"hourly_wage_detail"}},{"kind":"Field","name":{"kind":"Name","value":"place_short"}},{"kind":"Field","name":{"kind":"Name","value":"place_detail"}},{"kind":"Field","name":{"kind":"Name","value":"hours_short"}},{"kind":"Field","name":{"kind":"Name","value":"hours_detail"}},{"kind":"Field","name":{"kind":"Name","value":"job_description"}},{"kind":"Field","name":{"kind":"Name","value":"start_at"}},{"kind":"Field","name":{"kind":"Name","value":"end_at"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"qualification"}},{"kind":"Field","name":{"kind":"Name","value":"people"}},{"kind":"Field","name":{"kind":"Name","value":"interview_location"}},{"kind":"Field","name":{"kind":"Name","value":"flow"}},{"kind":"Field","name":{"kind":"Name","value":"shift"}},{"kind":"Field","name":{"kind":"Name","value":"holiday"}},{"kind":"Field","name":{"kind":"Name","value":"email_address"}},{"kind":"Field","name":{"kind":"Name","value":"min_working_hours"}},{"kind":"Field","name":{"kind":"Name","value":"min_period"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"period"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"min_workingday"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"days"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"createdBy"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}}]}},{"kind":"Field","name":{"kind":"Name","value":"atmosphere"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"text"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"formats"}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"occupation"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"job_type"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"gift"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"points"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"formats"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetOfferByIdQuery, GetOfferByIdQueryVariables>;
 export const GetOfferPathsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getOfferPaths"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"today"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Date"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"offers"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"sort"},"value":{"kind":"StringValue","value":"publishedAt:desc","block":false}},{"kind":"Argument","name":{"kind":"Name","value":"filters"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"end_at"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"gte"},"value":{"kind":"Variable","name":{"kind":"Name","value":"today"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]} as unknown as DocumentNode<GetOfferPathsQuery, GetOfferPathsQueryVariables>;
-export const GetOffersAllDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getOffersAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"offers"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"sort"},"value":{"kind":"StringValue","value":"publishedAt:desc","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"hourly_wage"}},{"kind":"Field","name":{"kind":"Name","value":"place_short"}},{"kind":"Field","name":{"kind":"Name","value":"hours_short"}},{"kind":"Field","name":{"kind":"Name","value":"start_at"}},{"kind":"Field","name":{"kind":"Name","value":"end_at"}},{"kind":"Field","name":{"kind":"Name","value":"occupation"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"job_type"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"gift"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"formats"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetOffersAllQuery, GetOffersAllQueryVariables>;
+export const GetOffersAllDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getOffersAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"offers"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"sort"},"value":{"kind":"StringValue","value":"publishedAt:desc","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"hourly_wage"}},{"kind":"Field","name":{"kind":"Name","value":"place_short"}},{"kind":"Field","name":{"kind":"Name","value":"hours_short"}},{"kind":"Field","name":{"kind":"Name","value":"start_at"}},{"kind":"Field","name":{"kind":"Name","value":"end_at"}},{"kind":"Field","name":{"kind":"Name","value":"createdBy"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}}]}},{"kind":"Field","name":{"kind":"Name","value":"occupation"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"job_type"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"gift"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"formats"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetOffersAllQuery, GetOffersAllQueryVariables>;

@@ -2,7 +2,6 @@
 import { FC } from 'react';
 import { Box, Flex, Grid, GridItem } from '@chakra-ui/react';
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
-import { selectPoints, usePointsStore } from '~/features/point';
 import { InternalLink } from '~/components/links/InternalLink';
 
 // type layer
@@ -36,7 +35,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           fontSize={{ base: `${16 / 3.75}vw`, lg: `${30 / 19.2}vw` }}
           fontWeight={`800`}
         >
-          かんたん検索機能
+          人気の検索方法
         </Box>
         <Box
           overflow={{ base: `hidden`, lg: `initial` }}

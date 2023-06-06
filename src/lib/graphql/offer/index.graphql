@@ -19,6 +19,9 @@ query getOfferById($id: ID) {
         people
         interview_location
         flow
+        shift
+        holiday
+        email_address
         min_working_hours
         min_period {
           data {
@@ -35,6 +38,11 @@ query getOfferById($id: ID) {
               days
             }
           }
+        }
+        createdBy {
+          id
+          firstname
+          lastname
         }
         atmosphere {
           title

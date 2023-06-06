@@ -1,19 +1,36 @@
 // import layer
 import { useState, useEffect } from 'react';
-import { NextPage, InferGetStaticPropsType } from 'next/types';
+import {
+  NextPage,
+  InferGetStaticPropsType,
+  GetStaticPaths,
+  GetStaticProps,
+} from 'next/types';
 
 import { JobForm as Template } from '~/components/templates/JobForm';
 import { SeoComponent } from 'organisms/SeoComponent';
 import { CANONICAL_URL, ORIGIN_URL } from '~/constants';
 import { parseSeo } from '~/lib';
 
+import {
+  GetOfferByIdQuery,
+  GetOfferByIdDocument,
+  OfferEntity,
+  GetOfferPathsQuery,
+  GetOfferPathsDocument,
+  UploadFile,
+} from 'types/gql/graphql';
+import { initializeApollo, initializeApollo_offer } from 'lib/apollo/client';
+import { selectSetTarget, useTargetOfferStore } from 'features/offers';
+import { UPDATE_INTERVAL } from '~/constants';
 // type layer
-// type Props = InferGetStaticPropsType<typeof getStaticProps>;
+type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 // component layer
-export const Index: NextPage = () => {
+export const Index: NextPage<Props> = ({ data }) => {
   const title = `応募フォーム | NOT THE UNIVERSITY FOR JOB`; // eslint-disable-line
   const description = `NOT THE UNIVERSITY FOR JOBの応募フォームのページです。`;
+
   const seo = parseSeo(title, description);
   const openGraph = {
     type: 'website',
@@ -27,7 +44,9 @@ export const Index: NextPage = () => {
       },
     ],
   };
+  const setTarget = useTargetOfferStore(selectSetTarget);
   const [isClient, setIsClient] = useState(false);
+  setTarget(data?.offer?.data as OfferEntity);
 
   useEffect(() => {
     setIsClient(true);
@@ -43,6 +62,7 @@ export const Index: NextPage = () => {
             description={description}
             openGraph={openGraph}
           />
+
           <Template />
         </>
       );
@@ -65,3 +85,59 @@ export const Index: NextPage = () => {
 };
 
 export default Index;
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const apolloClient = initializeApollo_offer();
+  try {
+    const { data } = await apolloClient.query<GetOfferPathsQuery>({
+      query: GetOfferPathsDocument,
+    });
+
+    const paths = data?.offers?.data
+      ? data.offers.data.map((item) => ({
+          params: {
+            id: item?.id,
+          },
+        }))
+      : [];
+
+    return {
+      paths,
+      fallback: true,
+    };
+  } finally {
+    console.log('get pages/offers/[id] paths');
+  }
+};
+
+export const getStaticProps: GetStaticProps<{
+  data: GetOfferByIdQuery;
+}> = async ({ params }) => {
+  const { id } = params;
+  const apolloClient = initializeApollo_offer();
+
+  try {
+    const { data } = await apolloClient.query<GetOfferByIdQuery>({
+      query: GetOfferByIdDocument,
+      variables: { id },
+    });
+
+    return {
+      props: {
+        data,
+      },
+      notFound: !data,
+      revalidate: UPDATE_INTERVAL,
+    };
+  } catch (err) {
+    console.error(err);
+
+    return {
+      props: { data: undefined, company: undefined },
+      notFound: true,
+      revalidate: UPDATE_INTERVAL,
+    };
+  } finally {
+    console.log('get pages/offers/[id] static props');
+  }
+};
