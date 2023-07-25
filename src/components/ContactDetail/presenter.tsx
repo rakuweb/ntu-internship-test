@@ -4,6 +4,13 @@ import { Box, Flex, Input, Textarea, Checkbox, Button } from '@chakra-ui/react';
 import { Image } from 'components/images/Image';
 import { Select, ChakraStylesConfig } from 'chakra-react-select';
 import { InternalLink } from '../links/InternalLink';
+import { useForm } from 'react-hook-form';
+import RequiredMark from './requiredMark';
+import DocumentIcon from './DocumentIcon';
+import FormName from './FormName';
+import ListTitle from './ListTitle';
+import { listClasses } from '@mui/material';
+import SubmitButton from './SubmitButton';
 // import { Button } from 'antd';
 
 // type layer
@@ -12,14 +19,52 @@ export type PresenterProps = Record<string, unknown>;
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const list = [
-    { title: `お問い合わせ項目` },
-    { title: `お名前` },
-    { title: `会社名` },
-    { title: `住所` },
-    { title: `電話番号` },
-    { title: `メールアドレス` },
-    { title: `お問い合わせ内容` },
+    {
+      title: `お問い合わせ項目`,
+      name: 'inquiry_item',
+      validation: { required: '必須項目です' },
+    },
+    { title: `お名前`, name: 'name', validation: { required: '必須項目です' } },
+    {
+      title: `会社名`,
+      name: 'company_name',
+      validation: { required: '必須項目です' },
+    },
+    {
+      title: `住所`,
+      name: 'address',
+      validation: { required: '必須項目です' },
+    },
+    {
+      title: `電話番号`,
+      name: 'phone_number',
+      validation: { required: '必須項目です' },
+    },
+    {
+      title: `メールアドレス`,
+      name: 'email',
+      validation: {
+        required: '必須項目です',
+        pattern: {
+          value: /^\S+@\S+$/i,
+          message: '正しいメールアドレスを入力してください',
+        },
+      },
+    },
+    {
+      title: `お問い合わせ内容`,
+      name: 'inquiry_content',
+      validation: { required: '必須項目です' },
+    },
   ];
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => console.log(data);
 
   const Options = [
     { value: '資料請求', label: '資料請求' },
@@ -97,280 +142,151 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       whiteSpace: `nowrap`,
     }),
   };
-  const handleSubmit = () => {
-    console.log('送信');
-    // ここにあなたの送信ロジックを書くことができます
-  };
+
   return (
-    <Box
-      mx={`auto`}
-      w={{
-        base: `${335 / 3.75}vw`,
-        md: `${980 / 19.2}vw`,
-        lg: `${980 / 19.2}vw`,
-      }}
-      color={`#39414E`}
-      fontFamily={`'Noto Sans JP', sans-serif`}
-      {...props}
-    >
+    <form onSubmit={handleSubmit(onSubmit)}>
       <Box
-        mt={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}
-        mb={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}
-        fontSize={{
-          base: `${15 / 3.75}vw`,
-          md: `${16 / 7.68}vw`,
-          lg: `${26 / 19.2}vw`,
+        mx={`auto`}
+        w={{
+          base: `${335 / 3.75}vw`,
+          md: `${980 / 19.2}vw`,
+          lg: `${980 / 19.2}vw`,
         }}
-        whiteSpace={`pre-wrap`}
-        fontWeight={`bold`}
-        lineHeight={`1.2em`}
-      >{`お問い合わせフォーム`}</Box>
-      <Flex mb={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}>
-        <Image
-          ml={{ base: `${10 / 3.75}vw`, md: `${23 / 19.2}vw` }}
-          mr={{ base: `${5 / 3.75}vw`, md: `${13 / 19.2}vw` }}
-          mb={{
-            base: `${0 / 3.75}vw`,
-            md: `${2 / 7.68}vw`,
-            lg: `${19 / 19.2}vw`,
-          }}
-          w={{
-            base: `${14 / 3.75}vw`,
-            md: `${15 / 7.68}vw`,
-            lg: `${22 / 19.2}vw`,
-          }}
-          h={{
-            base: `${21 / 3.75}vw`,
-            md: `${22 / 7.68}vw`,
-            lg: `${22 / 19.2}vw`,
-          }}
-          image={{
-            width: 32,
-            height: 42,
-            src: `/svg/file-invoice-solid.svg`,
-            alt: `書類のアイコン`,
-          }}
-        />
-        <Box
-          mt={{ base: ``, md: `${3 / 19.2}vw` }}
-          fontSize={{
-            base: `${15 / 3.75}vw`,
-            md: `${16 / 7.68}vw`,
-            lg: `${24 / 19.2}vw`,
-          }}
-          fontWeight={`bold`}
-        >
-          お問い合わせ内容
-        </Box>
-      </Flex>
-      <Box
-        borderTop={{
-          base: `${2 / 3.75}vw solid rgba(65,164,253,0.25)`,
-          md: `${2 / 19.2}vw solid rgba(65,164,253,0.25)`,
-        }}
-        borderLeft={{
-          base: `${2 / 3.75}vw solid rgba(65,164,253,0.25)`,
-          md: `${2 / 19.2}vw solid rgba(65,164,253,0.25)`,
-        }}
-        borderRight={{
-          base: `${2 / 3.75}vw solid rgba(65,164,253,0.25)`,
-          md: `${2 / 19.2}vw solid rgba(65,164,253,0.25)`,
-        }}
+        color={`#39414E`}
+        fontFamily={`'Noto Sans JP', sans-serif`}
+        {...props}
       >
-        {list.map((list, index) => (
-          <div key={list.title}>
-            <Flex
-              borderBottom={{
-                base: `${2 / 3.75}vw solid rgba(65,164,253,0.25)`,
-                md: `${2 / 19.2}vw solid rgba(65,164,253,0.25)`,
-              }}
-              fontSize={{
-                base: `${12 / 3.75}vw`,
-                md: `${13 / 7.68}vw`,
-                lg: `${18 / 19.2}vw`,
-              }}
-              // fontWeight={`bold`}
-              lineHeight={`1.4em`}
-            >
-              <Flex>
-                <Box bg={`#F9FCFE`}>
-                  <Flex
-                    pt={{ base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` }}
-                    pb={{ base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` }}
-                    pl={{ base: `${8 / 3.75}vw`, md: `${40 / 19.2}vw` }}
-                    pr={{ base: `${0 / 3.75}vw`, md: `${40 / 19.2}vw` }}
-                    w={{ base: `${120 / 4.28}vw`, md: `${320 / 19.2}vw` }}
-                    fontWeight={`bold`}
-                    flexWrap={`wrap`}
-                    justify={{ md: `space-between` }}
-                  >
-                    <Box
-                      w={{ base: `${116 / 4.28}vw`, md: `${170 / 19.2}vw` }}
-                      whiteSpace={`pre-wrap`}
-                    >
-                      {list.title}
-                    </Box>
-                    <Flex
-                      display={index === 8 ? `none` : `flex`}
-                      px={{
-                        base: `${3 / 3.75}vw`,
-                        md: `${5 / 7.68}vw`,
-                        lg: `${5 / 19.2}vw`,
+        <FormName />
+        <Box
+          borderTop={{
+            base: `${2 / 3.75}vw solid rgba(65,164,253,0.25)`,
+            md: `${2 / 19.2}vw solid rgba(65,164,253,0.25)`,
+          }}
+          borderLeft={{
+            base: `${2 / 3.75}vw solid rgba(65,164,253,0.25)`,
+            md: `${2 / 19.2}vw solid rgba(65,164,253,0.25)`,
+          }}
+          borderRight={{
+            base: `${2 / 3.75}vw solid rgba(65,164,253,0.25)`,
+            md: `${2 / 19.2}vw solid rgba(65,164,253,0.25)`,
+          }}
+        >
+          {list.map((list, index) => (
+            <div key={list.title}>
+              <Flex
+                borderBottom={{
+                  base: `${2 / 3.75}vw solid rgba(65,164,253,0.25)`,
+                  md: `${2 / 19.2}vw solid rgba(65,164,253,0.25)`,
+                }}
+                fontSize={{
+                  base: `${12 / 3.75}vw`,
+                  md: `${13 / 7.68}vw`,
+                  lg: `${18 / 19.2}vw`,
+                }}
+                // fontWeight={`bold`}
+                lineHeight={`1.4em`}
+              >
+                <Flex>
+                  <ListTitle index={index} list={list} />
+                  <Flex alignItems={`center`}>
+                    <Input
+                      {...register(list.name, list.validation)}
+                      display={index === 0 || index === 6 ? 'none' : 'block'}
+                      borderColor={`#999`}
+                      borderRadius={`0`}
+                      w={{
+                        base: `${190 / 3.75}vw`,
+                        md: `${200 / 7.68}vw`,
+                        lg: `${500 / 19.2}vw`,
+                      }}
+                      h={{
+                        base: `${25 / 3.75}vw`,
+                        md: `${20 / 7.68}vw`,
+                        lg: `${40 / 19.2}vw`,
                       }}
                       fontSize={{
                         base: `${10 / 3.75}vw`,
-                        md: `${10 / 7.68}vw`,
-                        lg: `${16 / 19.2}vw`,
+                        md: `${12 / 7.68}vw`,
+                        lg: `${19 / 19.2}vw`,
                       }}
-                      alignItems={`center`}
-                      color={`white`}
-                      bg={`#F26601`}
-                      h={`fit-content`}
-                    >
-                      必須
-                    </Flex>
-                  </Flex>
-                </Box>
-                <Flex alignItems={`center`}>
-                  <Input
-                    display={index === 0 || index === 6 ? 'none' : 'block'}
-                    borderColor={`#999`}
-                    borderRadius={`0`}
-                    w={{
-                      base: `${190 / 3.75}vw`,
-                      md: `${200 / 7.68}vw`,
-                      lg: `${500 / 19.2}vw`,
-                    }}
-                    h={{
-                      base: `${25 / 3.75}vw`,
-                      md: `${20 / 7.68}vw`,
-                      lg: `${40 / 19.2}vw`,
-                    }}
-                    fontSize={{
-                      base: `${10 / 3.75}vw`,
-                      md: `${12 / 7.68}vw`,
-                      lg: `${19 / 19.2}vw`,
-                    }}
-                    ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
-                  />
-                  <Box
-                    display={index === 0 ? 'block' : 'none'}
-                    ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
-                    w={{ base: `${160 / 3.75}vw`, md: `initial` }}
-                  >
-                    <Select
-                      options={Options}
-                      chakraStyles={chakraStylesDesktop}
-                      placeholder={`項目を選択する`}
+                      ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
                     />
-                  </Box>
 
-                  <Textarea
-                    display={index === 6 ? 'block' : 'none'}
-                    borderRadius={`0`}
-                    borderColor={`#999`}
-                    w={{
-                      base: `${190 / 3.75}vw`,
-                      md: `${200 / 7.68}vw`,
-                      lg: `${500 / 19.2}vw`,
-                    }}
-                    h={{
-                      base: `${150 / 3.75}vw`,
-                      md: `${150 / 7.68}vw`,
-                      lg: `${200 / 19.2}vw`,
-                    }}
-                    fontSize={{
-                      base: `${10 / 3.75}vw`,
-                      md: `${12 / 7.68}vw`,
-                      lg: `${19 / 19.2}vw`,
-                    }}
-                    my={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
-                    ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
-                  />
+                    <Box
+                      display={index === 0 ? 'block' : 'none'}
+                      ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
+                      w={{ base: `${160 / 3.75}vw`, md: `initial` }}
+                    >
+                      <Select
+                        options={Options}
+                        chakraStyles={chakraStylesDesktop}
+                        placeholder={`項目を選択する`}
+                      />
+                    </Box>
+
+                    <Textarea
+                      {...register(list.name, list.validation)}
+                      display={index === 6 ? 'block' : 'none'}
+                      borderRadius={`0`}
+                      borderColor={`#999`}
+                      w={{
+                        base: `${190 / 3.75}vw`,
+                        md: `${200 / 7.68}vw`,
+                        lg: `${500 / 19.2}vw`,
+                      }}
+                      h={{
+                        base: `${150 / 3.75}vw`,
+                        md: `${150 / 7.68}vw`,
+                        lg: `${200 / 19.2}vw`,
+                      }}
+                      fontSize={{
+                        base: `${10 / 3.75}vw`,
+                        md: `${12 / 7.68}vw`,
+                        lg: `${19 / 19.2}vw`,
+                      }}
+                      my={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
+                      ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
+                    />
+                    {errors[list.name] && errors[list.name].message && (
+                      <p>{errors[list.name].message}</p>
+                    )}
+                  </Flex>
                 </Flex>
               </Flex>
-            </Flex>
-          </div>
-        ))}
+            </div>
+          ))}
+        </Box>
+
+        <Flex
+          alignItems={`center`}
+          w={`fit-content`}
+          mx={`auto`}
+          mt={{ base: `${30 / 3.75}vw`, md: `${80 / 19.2}vw` }}
+          mb={{ base: `${10 / 3.75}vw`, md: `${20 / 19.2}vw` }}
+          fontSize={{
+            base: `${12 / 3.75}vw`,
+            md: `${13 / 7.68}vw`,
+            lg: `${22 / 19.2}vw`,
+          }}
+          fontWeight={`bold`}
+        >
+          <Checkbox
+            size={{ base: `sm`, lg: `sm`, '2xl': `lg` }}
+            mr={{ base: `${10 / 3.75}vw`, md: `${20 / 19.2}vw` }}
+            isInvalid
+          />
+          <InternalLink
+            href={`/`}
+            as={`span`}
+            borderBottom={`2px solid #39414E`}
+          >
+            プライバシーポリシー
+          </InternalLink>
+          に同意する
+        </Flex>
+
+        <SubmitButton />
       </Box>
-
-      <Flex
-        alignItems={`center`}
-        w={`fit-content`}
-        mx={`auto`}
-        mt={{ base: `${30 / 3.75}vw`, md: `${80 / 19.2}vw` }}
-        mb={{ base: `${10 / 3.75}vw`, md: `${20 / 19.2}vw` }}
-        fontSize={{
-          base: `${12 / 3.75}vw`,
-          md: `${13 / 7.68}vw`,
-          lg: `${22 / 19.2}vw`,
-        }}
-        fontWeight={`bold`}
-      >
-        <Checkbox
-          size={{ base: `sm`, lg: `sm`, '2xl': `lg` }}
-          mr={{ base: `${10 / 3.75}vw`, md: `${20 / 19.2}vw` }}
-          isInvalid
-        />
-        <InternalLink href={`/`} as={`span`} borderBottom={`2px solid #39414E`}>
-          プライバシーポリシー
-        </InternalLink>
-        に同意する
-      </Flex>
-
-      <Button
-        display={'flex'}
-        w={{
-          base: `${220 / 3.75}vw`,
-          md: `${230 / 7.68}vw`,
-          lg: `${348 / 19.2}vw`,
-        }}
-        borderRadius={{
-          base: `${15 / 3.75}vw`,
-          md: `${10 / 7.68}vw`,
-          lg: `${15 / 19.2}vw`,
-        }}
-        overflow={`hidden`}
-        alignItems={`center`}
-        justifyContent={`center`}
-        py={{
-          base: `${15 / 4.28}vw`,
-          md: `${35 / 19.2}vw`,
-          lg: `${20 / 19.2}vw`,
-        }}
-        mb={{ base: `${60 / 3.75}vw`, md: `${80 / 19.2}vw` }}
-        mx={`auto`}
-        background={`transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box;`}
-        color={`white`}
-        fontSize={{
-          base: `${16 / 3.75}vw`,
-          md: `${16 / 7.68}vw`,
-          lg: `${27 / 19.2}vw`,
-        }}
-        fontWeight={`bold`}
-        onClick={handleSubmit}
-      >
-        <Image
-          w={{
-            base: `${16 / 3.75}vw`,
-            md: `${16 / 7.68}vw`,
-            lg: `${27 / 19.2}vw`,
-          }}
-          h={{
-            base: `${16 / 3.75}vw`,
-            md: `${16 / 7.68}vw`,
-            lg: `${27 / 19.2}vw`,
-          }}
-          mr={{ base: `${7 / 3.75}vw`, md: `${15 / 19.2}vw` }}
-          image={{
-            width: 35,
-            height: 35,
-            src: `/svg/paper-plane-solid.svg`,
-            alt: `紙飛行機アイコン`,
-          }}
-        />
-        送信する
-      </Button>
-    </Box>
+    </form>
   );
 };
