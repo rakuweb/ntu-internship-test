@@ -94,10 +94,10 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
 
   const [index, setIndex] = useState<number>(0);
 
-  // const activeOffers = offers.filter((offer) => offer.deadline >= today);
-  // const expiredOffers = offers.filter((offer) => offer.deadline < today);
+  const activeOffers = offers.filter((offer) => offer.end_at >= today);
+  const expiredOffers = offers.filter((offer) => offer.end_at < today);
 
-  // const sortedOffers = [...activeOffers, ...expiredOffers];
+  const sortedOffers = [...activeOffers, ...expiredOffers];
 
   const pageTitles = [`求人検索`];
 
@@ -275,7 +275,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         </Flex>
       </Flex>
 
-      {/* <Grid
+      <Grid
         ml={{ md: `${30 / 7.68}vw`, lg: `${206 / 19.2}vw` }}
         mr={{ md: `${30 / 7.68}vw`, lg: `${240 / 19.2}vw` }}
         templateColumns={{
@@ -292,23 +292,23 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         opacity={`1`}
       >
         {sortedOffers.map((offer) => {
-          const daysRemaining = remainingDays(offer.deadline);
+          const daysRemaining = remainingDays(offer.end_at);
           return (
             <div key={offer.id}>
               <Box m={`0 auto`} w={`fit-content`}>
                 <OfferCard3
                   {...offer}
-                  deadline={daysRemaining}
-                  startDate={offer.createdAt}
+                  // end_at={daysRemaining}
+                  start_at={offer.start_at}
                 />
               </Box>
             </div>
           );
         })}
-      </Grid> */}
+      </Grid>
 
       {/* 検索結果が0件の時のやつ */}
-      <Flex
+      {/* <Flex
         fontFamily={`'Noto Sans JP', sans-serif`}
         mt={{
           base: `${16 / 3.75}vw`,
@@ -341,7 +341,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       >
         {`検索条件に該当する求人情報が見つかりませんでした。
 検索条件を変更して、再度お試しください。`}
-      </Flex>
+      </Flex> */}
 
       {/* <Box
         w={`100%`}
