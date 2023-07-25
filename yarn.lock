@@ -18382,7 +18382,7 @@ __metadata:
     prettier: "npm:^2.3.2"
     react: "npm:18.2.0"
     react-dom: "npm:18.2.0"
-    react-hook-form: "npm:^7.20.5"
+    react-hook-form: "npm:^7.45.2"
     react-icons: "npm:^4.3.1"
     react-intersection-observer: "npm:^9.4.1"
     recoil: "npm:^0.7.6"
@@ -18397,6 +18397,7 @@ __metadata:
     yup: "npm:^0.32.11"
     zenn-content-css: "npm:^0.1.141"
     zenn-markdown-html: "npm:^0.1.141"
+    zod: "npm:^3.21.4"
     zustand: "npm:^4.1.4"
   languageName: unknown
   linkType: soft
@@ -21001,12 +21002,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-hook-form@npm:^7.20.5":
-  version: 7.43.9
-  resolution: "react-hook-form@npm:7.43.9"
+"react-hook-form@npm:^7.45.2":
+  version: 7.45.2
+  resolution: "react-hook-form@npm:7.45.2"
   peerDependencies:
     react: ^16.8.0 || ^17 || ^18
-  checksum: 9aa66b9eac80bcf365a15d70ee8a36204ce4398f1cbd6e15fdd2e79eb2bc8931bfd648a82b2eeb4fc5e31b41654a1624424597b422769c6f72885408f85375ba
+  checksum: 0a7aa22e37114ceb978e25115019c42d745099b736a831469422d40e42844c979cc425aedf33e118aed1417f97a8a8bc9bbb02b65e17171b96cb716dd357e5dc
   languageName: node
   linkType: hard
 
@@ -25525,6 +25526,13 @@ __metadata:
     compress-commons: "npm:^4.1.0"
     readable-stream: "npm:^3.6.0"
   checksum: 1d32379d2bf1475e71c3c6b62ebd2c407938075d597b39835458958cfeb6ed459126581abeaa1a991a6d497968f9b58202272e74eb9d813c8c900b372ee93739
+  languageName: node
+  linkType: hard
+
+"zod@npm:^3.21.4":
+  version: 3.21.4
+  resolution: "zod@npm:3.21.4"
+  checksum: f25f384f380c49d05a11541093a8d26f07688aa39f6a8adbd6dc338b43f63617bf138734fb1b79800ba374523f6a1bb561f7d401b3cc051fed2715eae5577d0a
   languageName: node
   linkType: hard
 

@@ -248,7 +248,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                       ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
                     />
                     {errors[list.name] && errors[list.name].message && (
-                      <p>{errors[list.name].message}</p>
+                      <p>{String(errors[list.name].message)}</p>
                     )}
                   </Flex>
                 </Flex>
