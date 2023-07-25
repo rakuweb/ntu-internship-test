@@ -137,7 +137,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     justify={`end`}
                     color={`#39414E`}
                   >
-                    掲載終了 : {endDateY}年{endDateM}月{endDateD}日
+                    掲載終了 :{endDateY}年{endDateM}月{endDateD}日
                   </Flex>
                   <Box mt={`${15 / 19.2}vw`} color={`#39414E`}>
                     <Flex

@@ -6,7 +6,7 @@ import { Select, ChakraStylesConfig } from 'chakra-react-select';
 import { Image as NImage } from 'components/images/Image';
 import { useRouter } from 'next/router';
 
-import { useTargetOfferStore, selectTarget } from 'features/offers';
+import { useTargetOfferStore, selectTarget, OfferCard } from 'features/offers';
 import { useLiff } from 'contexts/LineAuthContextInternship';
 
 import { useAccountStore, selectSetPrevPath } from 'features/account';
@@ -97,16 +97,35 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const activeOffers = offers.filter((offer) => offer.end_at >= today);
   const expiredOffers = offers.filter((offer) => offer.end_at < today);
 
-  const sortedOffers = [...activeOffers, ...expiredOffers];
-
   const pageTitles = [`求人検索`];
-
+  const [sortOption, setSortOption] = useState<string>('並び順 : 新着順');
   const Options = [
     { value: '並び順 : 新着順', label: '並び順 : 新着順' },
     { value: '並び順 : 締切が近い順', label: '並び順 : 締切が近い順' },
     { value: '並び順 : 締切が遠い順', label: '並び順 : 締切が遠い順' },
   ];
 
+  const sortOffers = (offers: OfferCard[]) => {
+    switch (sortOption) {
+      case '並び順 : 新着順':
+        return offers.sort(
+          (a, b) =>
+            new Date(b.start_at).getTime() - new Date(a.start_at).getTime()
+        );
+      case '並び順 : 締切が近い順':
+        return offers.sort(
+          (a, b) => new Date(a.end_at).getTime() - new Date(b.end_at).getTime()
+        );
+      case '並び順 : 締切が遠い順':
+        return offers.sort(
+          (a, b) => new Date(b.end_at).getTime() - new Date(a.end_at).getTime()
+        );
+      default:
+        return [...offers];
+    }
+  };
+
+  const sortedOffers = sortOffers([...activeOffers, ...expiredOffers]);
   const chakraStyles: ChakraStylesConfig = {
     control: (provided, state) => ({
       ...provided,
@@ -256,7 +275,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             ml={{ md: `${5 / 7.68}vw`, lg: `${10 / 19.2}vw` }}
             mr={{ md: `${20 / 7.68}vw`, lg: `${20 / 19.2}vw` }}
           >
-            {`0件`}
+            {`${sortedOffers.length}件`}
           </Box>
           <Box
             mt={{
@@ -269,7 +288,10 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             <Select
               options={Options}
               chakraStyles={chakraStyles}
-              placeholder={`並び順 : 新着順`}
+              placeholder={sortOption}
+              onChange={(option: { value: string }) =>
+                setSortOption(option.value)
+              }
             />
           </Box>
         </Flex>
