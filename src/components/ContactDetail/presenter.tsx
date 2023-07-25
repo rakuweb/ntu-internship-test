@@ -1,9 +1,10 @@
 // import layer
 import { FC } from 'react';
-import { Box, Flex, Input, Textarea, Checkbox } from '@chakra-ui/react';
+import { Box, Flex, Input, Textarea, Checkbox, Button } from '@chakra-ui/react';
 import { Image } from 'components/images/Image';
 import { Select, ChakraStylesConfig } from 'chakra-react-select';
 import { InternalLink } from '../links/InternalLink';
+// import { Button } from 'antd';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
@@ -96,7 +97,10 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       whiteSpace: `nowrap`,
     }),
   };
-
+  const handleSubmit = () => {
+    console.log('送信');
+    // ここにあなたの送信ロジックを書くことができます
+  };
   return (
     <Box
       mx={`auto`}
@@ -314,7 +318,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         に同意する
       </Flex>
 
-      <Flex
+      <Button
+        display={'flex'}
         w={{
           base: `${220 / 3.75}vw`,
           md: `${230 / 7.68}vw`,
@@ -327,7 +332,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         }}
         overflow={`hidden`}
         alignItems={`center`}
-        justify={`center`}
+        justifyContent={`center`}
         py={{
           base: `${15 / 4.28}vw`,
           md: `${35 / 19.2}vw`,
@@ -343,6 +348,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           lg: `${27 / 19.2}vw`,
         }}
         fontWeight={`bold`}
+        onClick={handleSubmit}
       >
         <Image
           w={{
@@ -364,7 +370,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           }}
         />
         送信する
-      </Flex>
+      </Button>
     </Box>
   );
 };
