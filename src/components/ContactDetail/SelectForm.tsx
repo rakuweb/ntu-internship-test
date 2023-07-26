@@ -10,7 +10,7 @@ const SelectForm = ({ index, Options, control, ChakraStylesDesktop, list }) => {
       w={{ base: `${160 / 3.75}vw`, md: `initial` }}
     >
       <Controller
-        name={list.name}
+        name={list}
         control={control}
         rules={list.validation}
         render={({ field }) => (

@@ -3,7 +3,6 @@ import { Input } from '@chakra-ui/react';
 const InputForm = ({ list, index, register }) => {
   return (
     <Input
-      {...register(list.name, list.validation)}
       display={index === 0 || index === 6 ? 'none' : 'block'}
       borderColor={`#999`}
       borderRadius={`0`}

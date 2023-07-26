@@ -19,7 +19,7 @@ const ListTitle = ({ index, list }) => {
           w={{ base: `${116 / 4.28}vw`, md: `${170 / 19.2}vw` }}
           whiteSpace={`pre-wrap`}
         >
-          {list.title}
+          {list}
         </Box>
         <RequiredMark index={index} />
       </Flex>
