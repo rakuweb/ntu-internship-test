@@ -13,7 +13,7 @@ import InputForm from './Input';
 import SelectForm from './SelectForm';
 import TextareaForm from './TextareaForm';
 import { list } from '../../constants/dev/offerDetail';
-
+import { ErrorMessage } from '@hookform/error-message';
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
@@ -86,13 +86,12 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     Options={Options}
                     control={control}
                     ChakraStylesDesktop={ChakraStylesDesktop}
-                    register={register('inquiry_item', {
-                      required: '必須項目です',
-                    })}
                   />
-                  {errors['inquiry_item'] && (
-                    <p>{String(errors['inquiry_item'].message)}</p>
-                  )}
+                  <ErrorMessage
+                    errors={errors}
+                    name="inquiry_item"
+                    render={({ message }) => <p>{message}</p>}
+                  />
                 </Flex>
               </Flex>
             </Flex>
@@ -115,12 +114,12 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               <Flex>
                 <ListTitle index={1} list={'お名前'} />
                 <Flex alignItems={`center`}>
-                  <InputForm
-                    index={1}
-                    list={'お名前'}
-                    register={register('name', { required: '必須項目です' })}
+                  <InputForm index={1} list={'お名前'} control={control} />
+                  <ErrorMessage
+                    errors={errors}
+                    name="name"
+                    render={({ message }) => <p>{message}</p>}
                   />
-                  {errors['name'] && <p>{String(errors['name'].message)}</p>}
                 </Flex>
               </Flex>
             </Flex>

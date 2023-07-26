@@ -1,8 +1,22 @@
 import { Box } from '@chakra-ui/react';
-import { Select } from 'chakra-react-select';
-import { Controller } from 'react-hook-form';
+import { ChakraStylesConfig, GroupBase, Select } from 'chakra-react-select';
+import { FC } from 'react';
+import { Control, FieldValues, Controller } from 'react-hook-form';
 
-const SelectForm = ({ index, Options, control, ChakraStylesDesktop, list }) => {
+type SelectFormProps = {
+  index: number;
+  list: string;
+  Options: { value: string; label: string }[];
+  control: Control<FieldValues, any>;
+  ChakraStylesDesktop: ChakraStylesConfig<unknown, boolean, GroupBase<unknown>>;
+};
+
+const SelectForm: FC<SelectFormProps> = ({
+  index,
+  Options,
+  control,
+  ChakraStylesDesktop,
+}) => {
   return (
     <Box
       display={index === 0 ? 'block' : 'none'}
@@ -10,9 +24,9 @@ const SelectForm = ({ index, Options, control, ChakraStylesDesktop, list }) => {
       w={{ base: `${160 / 3.75}vw`, md: `initial` }}
     >
       <Controller
-        name={list}
+        name="inquiry_item"
         control={control}
-        rules={list.validation}
+        rules={{ required: '必須項目です' }}
         render={({ field }) => (
           <Select
             {...field}
