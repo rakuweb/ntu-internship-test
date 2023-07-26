@@ -5,7 +5,15 @@ import { Control, Controller } from 'react-hook-form';
 type TextareaFormProps = {
   list: string;
   index: number;
-  control: Control;
+  control: Control<{
+    mail: string;
+    name: string;
+    company: string;
+    address: string;
+    tel: string;
+    inquiry_item: string;
+    inquiry_content: string;
+  }>;
 };
 
 const TextareaForm: FC<TextareaFormProps> = ({ list, index, control }) => {

@@ -7,8 +7,16 @@ type SelectFormProps = {
   index: number;
   list: string;
   Options: { value: string; label: string }[];
-  control: Control<FieldValues, any>;
   ChakraStylesDesktop: ChakraStylesConfig<unknown, boolean, GroupBase<unknown>>;
+  control: Control<{
+    mail: string;
+    name: string;
+    company: string;
+    address: string;
+    tel: string;
+    inquiry_item: string;
+    inquiry_content: string;
+  }>;
 };
 
 const SelectForm: FC<SelectFormProps> = ({
@@ -33,6 +41,10 @@ const SelectForm: FC<SelectFormProps> = ({
             options={Options}
             chakraStyles={ChakraStylesDesktop}
             placeholder={`項目を選択する`}
+            onChange={(option) =>
+              field.onChange((option as { value: string; label: string }).value)
+            }
+            value={Options.find((option) => option.value === field.value)}
           />
         )}
       />

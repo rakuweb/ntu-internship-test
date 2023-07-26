@@ -3,15 +3,30 @@ import { FC } from 'react';
 import { Control, Controller } from 'react-hook-form';
 
 type InputFormProps = {
-  list: string;
+  control: Control<{
+    mail: string;
+    name: string;
+    company: string;
+    address: string;
+    tel: string;
+    inquiry_item: string;
+    inquiry_content: string;
+  }>;
+  name:
+    | 'mail'
+    | 'name'
+    | 'company'
+    | 'address'
+    | 'tel'
+    | 'inquiry_item'
+    | 'inquiry_content';
   index: number;
-  control: Control;
 };
 
-const InputForm: FC<InputFormProps> = ({ index, control }) => {
+const InputForm: FC<InputFormProps> = ({ index, control, name }) => {
   return (
     <Controller
-      name="name"
+      name={name}
       control={control}
       rules={{ required: '必須項目です' }}
       render={({ field }) => (
