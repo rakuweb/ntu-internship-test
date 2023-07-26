@@ -1,34 +1,21 @@
 // import layer
 import { FC } from 'react';
-import {
-  Box,
-  Flex,
-  Heading,
-  Link,
-  Text,
-  textDecoration,
-} from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import { Image } from 'components/images/Image';
 import { Image as NImage } from 'components/images/Image';
-import { useRouter } from 'next/router';
-
-import { OfferButton } from 'components/OfferButton';
-import { Labeltext } from '~/features/offers/OfferCard/Labeltext';
-import { Labeltext2 } from './Labeltext2';
 
 import { selectCompany, useCompanyStore } from 'features/company';
 import {
   useTargetOfferStore,
   selectTarget,
   selectBreadCrumbItem,
+  useOffersStore,
+  selectOfferList,
 } from 'features/offers';
 import { useLiff } from 'contexts/LineAuthContextInternship';
-
 import { styles } from './styles';
 import { useAccountStore, selectSetPrevPath } from 'features/account';
-import { OfferEntity } from 'types/gql/graphql';
 import 'zenn-content-css';
-import { routes } from 'constants/routes';
 import { BreadcrumbOfferId } from '../organisms/BreadcrumbOfferId';
 import { Atmosphere } from './Atmosphere';
 import { Jobterms } from './Jobterms';
@@ -43,6 +30,7 @@ export type PresenterProps = Record<string, unknown>;
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const offer = useTargetOfferStore(selectTarget);
+  const offers = useOffersStore(selectOfferList);
   const company = useCompanyStore(selectCompany);
   const { liff } = useLiff();
   const setPrevPath = useAccountStore(selectSetPrevPath);
@@ -75,6 +63,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   };
   // const daysRemaining = remainingDays(offer.deadline);
 
+  const otherOffers = offers.filter((item) => item.id !== offer.id);
   return (
     <div css={styles}>
       <BreadcrumbOfferId titles={pageTitles} />
@@ -245,9 +234,22 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               募集求人
             </Box>
           </Flex>
-          <OfferCard3 {...offer} />
-          <Box mt={{ base: `${36 / 3.75}vw`, md: `${50 / 19.2}vw` }}>
-            <OfferCard3 {...offer} />
+          <Box>
+            {otherOffers.map((offer, index) => (
+              <Box
+                mt={
+                  index !== 0
+                    ? { base: `${36 / 3.75}vw`, md: `${50 / 19.2}vw` }
+                    : undefined
+                }
+                key={index}
+              >
+                <OfferCard3
+                  {...offer}
+                  onClick={() => window.location.reload()}
+                />
+              </Box>
+            ))}
           </Box>
         </Box>
         <Box
