@@ -108,7 +108,6 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 md: `${13 / 7.68}vw`,
                 lg: `${18 / 19.2}vw`,
               }}
-              // fontWeight={`bold`}
               lineHeight={`1.4em`}
             >
               <Flex>
@@ -118,6 +117,37 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   <ErrorMessage
                     errors={errors}
                     name="name"
+                    render={({ message }) => <p>{message}</p>}
+                  />
+                </Flex>
+              </Flex>
+            </Flex>
+          </div>
+
+          <div key="お問い合わせ内容">
+            <Flex
+              borderBottom={{
+                base: `${2 / 3.75}vw solid rgba(65,164,253,0.25)`,
+                md: `${2 / 19.2}vw solid rgba(65,164,253,0.25)`,
+              }}
+              fontSize={{
+                base: `${12 / 3.75}vw`,
+                md: `${13 / 7.68}vw`,
+                lg: `${18 / 19.2}vw`,
+              }}
+              lineHeight={`1.4em`}
+            >
+              <Flex>
+                <ListTitle index={2} list={'お問い合わせ内容'} />
+                <Flex alignItems={`center`}>
+                  <TextareaForm
+                    index={2}
+                    list={'お問い合わせ内容'}
+                    control={control}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="inquiry_content"
                     render={({ message }) => <p>{message}</p>}
                   />
                 </Flex>
