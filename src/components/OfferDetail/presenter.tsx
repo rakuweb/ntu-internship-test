@@ -24,6 +24,7 @@ import { Contact } from '../organisms/Contact';
 import { Fixedmenu } from './Fixedmenu';
 import { MobileMinInformation } from './MobileMinInformation';
 import { Applybutton } from './Applybutton';
+import React from 'react';
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
@@ -31,6 +32,7 @@ export type PresenterProps = Record<string, unknown>;
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const offer = useTargetOfferStore(selectTarget);
   const offers = useOffersStore(selectOfferList);
+  const [selectedOffer, setSelectedOffer] = React.useState(null);
   const company = useCompanyStore(selectCompany);
   const { liff } = useLiff();
   const setPrevPath = useAccountStore(selectSetPrevPath);
@@ -62,6 +64,10 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   };
   // const daysRemaining = remainingDays(offer.deadline);
+  const selectOffer = (offerId) => {
+    const offer = offers.find((item) => item.id === offerId);
+    setSelectedOffer(offer);
+  };
 
   const otherOffers = offers.filter((item) => item.id !== offer.id);
   return (
@@ -244,10 +250,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 }
                 key={index}
               >
-                <OfferCard3
-                  {...offer}
-                  onClick={() => window.location.reload()}
-                />
+                <OfferCard3 {...offer} onClick={() => selectOffer(offer.id)} />
               </Box>
             ))}
           </Box>

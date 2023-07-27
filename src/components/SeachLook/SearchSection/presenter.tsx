@@ -1,13 +1,20 @@
 // import layer
 import { FC, useState } from 'react';
 import { Box, Checkbox, Flex } from '@chakra-ui/react';
-import { Select, ChakraStylesConfig } from 'chakra-react-select';
-import { InternalLink } from '~/components/links/InternalLink';
+import { Select } from 'chakra-react-select';
+import { selectOfferList, useOffersStore } from '~/features/offers';
+import chakraStylesDesktop from './chakraStylesDesktop';
+import chakraStylesMobile from './chakraStylesMobile';
 // type layer
-export type PresenterProps = Record<string, unknown>;
+export type PresenterProps = {
+  occupationOptions: { value: string; label: string }[];
+  onOccupationSelect: (occupation: string) => void;
+  onEmploymentTypeSelect: (employmentType: string) => void;
+};
 
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
+  const offers = useOffersStore(selectOfferList);
   const list = [
     `単発(1日)`,
     `短期(1ヶ月以内)`,
@@ -42,106 +49,27 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     { value: '長期インターン', label: '長期インターン' },
   ];
 
-  const chakraStylesDesktop: ChakraStylesConfig = {
-    control: (provided, state) => ({
-      ...provided,
-      display: { base: `none`, md: `flex` },
-      background: `white`,
-      border: `0px`,
-      borderRadius: { md: `${10 / 7.68}vw`, lg: `${10 / 19.2}vw` },
-      minHeight: { md: `${60 / 19.2}vw`, lg: `${49 / 19.2}vw` },
-      height: { md: `${60 / 19.2}vw`, lg: `${49 / 19.2}vw` },
-      fontSize: {
-        base: `${13 / 3.75}vw`,
-        md: `${10 / 7.68}vw`,
-        lg: `${20 / 19.2}vw`,
-      },
-      // transition: `all .3s`,
-      _hover: {
-        cursor: `pointer`,
-        // filter: `opacity(50%)`,
-        // textDecoration: 'none',
-      },
-      boxShadow: `0px 3px 6px #00000029`,
-    }),
+  const occupationNames = offers.map((offer) => offer.occupation.name);
+  const uniqueOccupationNames = [...new Set(occupationNames)];
+  const occupationOptions = uniqueOccupationNames.map((name) => ({
+    value: name,
+    label: name,
+  }));
 
-    valueContainer: (provided, state) => ({
-      ...provided,
-    }),
+  const jobTypeNames = offers.map((offer) => offer.job_type.name);
+  const uniquejobTypeNames = [...new Set(jobTypeNames)];
+  const jobTypeOptions = uniquejobTypeNames.map((name) => ({
+    value: name,
+    label: name,
+  }));
 
-    input: (provided, state) => ({
-      ...provided,
-      margin: '0px',
-    }),
-    indicatorSeparator: (state) => ({
-      display: 'none',
-    }),
-    indicatorsContainer: (provided, state) => ({
-      ...provided,
-      height: { md: `${60 / 19.2}vw`, lg: `${49 / 19.2}vw` },
-    }),
-    dropdownIndicator: (provided) => ({
-      ...provided,
-      w: { md: `${90 / 19.2}vw`, lg: `${70 / 19.2}vw` },
-      color: `#41A4FD`,
-      background: `white`,
-      borderRadius: `0`,
-    }),
-    menu: (provided, state) => ({
-      ...provided,
-      fontSize: {
-        base: `${13 / 3.75}vw`,
-        md: `${10 / 7.68}vw`,
-        lg: `${20 / 19.2}vw`,
-      },
-    }),
+  const [employmentType, setEmploymentType] = useState('');
+
+  const handleEmploymentTypeChange = (newType) => {
+    setEmploymentType(newType);
+    props.onEmploymentTypeSelect(newType);
   };
 
-  // モバイル
-  const chakraStylesMobile: ChakraStylesConfig = {
-    control: (provided, state) => ({
-      ...provided,
-      display: { base: `flex`, md: `none` },
-      background: `white`,
-      border: `0px`,
-      borderRadius: `${10 / 3.75}vw`,
-      minHeight: `${38 / 3.75}vw`,
-      height: `${38 / 3.75}vw`,
-      fontSize: `${13 / 4.28}vw`,
-      boxShadow: `0px 3px 6px #00000029`,
-    }),
-
-    valueContainer: (provided, state) => ({
-      ...provided,
-      width: `${80 / 3.75}vw`,
-      pl: `${5 / 3.75}vw`,
-      pr: `0`,
-    }),
-
-    input: (provided, state) => ({
-      ...provided,
-      margin: '0px',
-    }),
-    indicatorSeparator: (state) => ({
-      display: 'none',
-    }),
-    indicatorsContainer: (provided, state) => ({
-      ...provided,
-      height: `${38 / 3.75}vw`,
-    }),
-    dropdownIndicator: (provided) => ({
-      ...provided,
-      color: `#41A4FD`,
-      background: `white`,
-      borderRadius: `0`,
-      pl: `0`,
-      pr: `${5 / 3.75}vw`,
-    }),
-    menu: (provided, state) => ({
-      ...provided,
-      fontSize: `${13 / 3.75}vw`,
-    }),
-  };
   return (
     <Box
       w={{ base: `100%`, md: `${1346 / 19.2}vw`, lg: `${1346 / 19.2}vw` }}
@@ -189,14 +117,30 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             ml={{ base: `${8 / 3.75}vw`, md: `${33 / 19.2}vw` }}
           >
             <Select
-              options={Options}
+              options={occupationOptions}
               chakraStyles={chakraStylesDesktop}
               placeholder={`職種を選択する`}
+              onChange={(option: { value: string }) =>
+                props.onOccupationSelect(option.value)
+              }
             />
+
             <Select
-              options={Options}
+              options={occupationOptions}
               chakraStyles={chakraStylesMobile}
               placeholder={`選択する`}
+              onChange={(option: { value: string }) =>
+                props.onOccupationSelect(option.value)
+              }
+            />
+
+            <Select
+              options={occupationOptions}
+              chakraStyles={chakraStylesMobile}
+              placeholder={`選択する`}
+              onChange={(option: { value: string }) =>
+                props.onOccupationSelect(option.value)
+              }
             />
           </Box>
         </Flex>
@@ -249,24 +193,19 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         >
           <Box as={`span`} fontWeight={`bold`}>{`雇用形態`}</Box>
 
-          <Checkbox
-            mt={{ base: ``, md: `${3 / 19.2}vw`, lg: `${3 / 19.2}vw` }}
-            ml={{ base: `${33 / 19.2}vw`, md: `${33 / 19.2}vw` }}
-            mr={{ base: ``, md: `${14 / 19.2}vw`, lg: `${14 / 19.2}vw` }}
-            size={{ base: ``, md: `sm`, '2xl': `md` }}
-            borderColor={`#41A4FD`}
-            defaultChecked
-          />
-          {`アルバイト`}
-          <Checkbox
-            mt={{ base: ``, md: `${3 / 19.2}vw`, lg: `${3 / 19.2}vw` }}
-            ml={{ base: `${33 / 19.2}vw`, md: `${33 / 19.2}vw` }}
-            mr={{ base: ``, md: `${14 / 19.2}vw`, lg: `${14 / 19.2}vw` }}
-            size={{ base: ``, md: `sm`, '2xl': `md` }}
-            borderColor={`#41A4FD`}
-            defaultChecked
-          />
-          {`長期インターン`}
+          {jobTypeOptions.map((option) => (
+            <Checkbox
+              mt={{ base: ``, md: `${3 / 19.2}vw`, lg: `${3 / 19.2}vw` }}
+              ml={{ base: `${33 / 19.2}vw`, md: `${33 / 19.2}vw` }}
+              mr={{ base: ``, md: `${14 / 19.2}vw`, lg: `${14 / 19.2}vw` }}
+              size={{ base: ``, md: `sm`, '2xl': `md` }}
+              borderColor={`#41A4FD`}
+              isChecked={employmentType === option.value}
+              onChange={() => handleEmploymentTypeChange(option.value)}
+            >
+              {option.label}
+            </Checkbox>
+          ))}
         </Flex>
         {/* ///////////////////// */}
       </Flex>

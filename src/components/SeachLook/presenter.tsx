@@ -2,25 +2,17 @@
 import { FC, useState } from 'react';
 import { Box, Flex, Grid } from '@chakra-ui/react';
 import { Image } from 'components/images/Image';
-import { Select, ChakraStylesConfig } from 'chakra-react-select';
-import { Image as NImage } from 'components/images/Image';
-import { useRouter } from 'next/router';
-
-import { useTargetOfferStore, selectTarget, OfferCard } from 'features/offers';
-import { useLiff } from 'contexts/LineAuthContextInternship';
-
-import { useAccountStore, selectSetPrevPath } from 'features/account';
+import { Select } from 'chakra-react-select';
+import { OfferCard } from 'features/offers';
 import { selectOfferList } from 'features/offers/selectors';
 import { useOffersStore } from 'features/offers/hooks';
-import { OfferEntity } from 'types/gql/graphql';
 import { OfferCard3 } from '~/features/offers/OfferCard3';
 import 'zenn-content-css';
-import { InternalLink } from '~/components/links/InternalLink';
-import { routes } from 'constants/routes';
 import { BreadcrumbOfferId } from '../organisms/BreadcrumbOfferId';
 import { Contact } from '../organisms/Contact';
 import { SearchSection } from './SearchSection';
-import { Pagination } from '../Pagination';
+import chakraStyles from './chakraStyles';
+import FileInvoiceSvg from './fileInvoiceSvg';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
@@ -126,79 +118,31 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   };
 
   const sortedOffers = sortOffers([...activeOffers, ...expiredOffers]);
-  const chakraStyles: ChakraStylesConfig = {
-    control: (provided, state) => ({
-      ...provided,
-      background: `white`,
-      border: { base: `${2 / 3.75}vw solid #F2F2F2`, md: `0px` },
-      borderColor: `#F2F2F2`,
-      borderRadius: {
-        base: `${10 / 3.75}vw`,
-        md: `${10 / 7.68}vw`,
-        lg: `${10 / 19.2}vw`,
-      },
-      minHeight: {
-        md: `${22 / 7.68}vw`,
-        lg: `${22 / 10.2}vw`,
-        '2xl': `${34 / 19.2}vw`,
-      },
-      h: {
-        md: `${22 / 7.68}vw`,
-        lg: `${22 / 10.2}vw`,
-        '2xl': `${34 / 19.2}vw`,
-      },
-      w: {
-        base: `${390 / 4.28}vw`,
-        md: `${170 / 7.68}vw`,
-        lg: `${170 / 10.2}vw`,
-        '2xl': `${250 / 19.2}vw`,
-      },
-      fontSize: { md: `${10 / 7.68}vw`, lg: `${13 / 19.2}vw` },
-      _hover: {
-        cursor: `pointer`,
-      },
-      boxShadow: { md: `0px 3px 6px #00000029` },
-    }),
+  const [selectedOccupation, setSelectedOccupation] = useState<string | null>(
+    null
+  );
+  const [selectedEmploymentType, setSelectedEmploymentType] = useState<
+    string | null
+  >(null);
 
-    valueContainer: (provided, state) => ({
-      ...provided,
-      ml: { '2xl': `${40 / 19.2}vw` },
-      whiteSpace: `pre-wrap`,
-    }),
-
-    input: (provided, state) => ({
-      ...provided,
-      margin: '0px',
-    }),
-    indicatorSeparator: (state) => ({
-      display: 'none',
-    }),
-    indicatorsContainer: (provided, state) => ({
-      ...provided,
-      h: {
-        md: `${22 / 7.68}vw`,
-        lg: `${22 / 10.2}vw`,
-        '2xl': `${34 / 19.2}vw`,
-      },
-    }),
-    dropdownIndicator: (provided) => ({
-      ...provided,
-      w: { md: `${30 / 7.68}vw`, lg: `${40 / 19.2}vw` },
-      color: `#39414E`,
-      background: `white`,
-      borderRadius: `0`,
-    }),
-    placeholder: (provided, state) => ({
-      ...provided,
-      fontWeight: `bold`,
-      color: `#39414E`,
-    }),
-  };
+  const filteredOffers = sortedOffers.filter((offer) => {
+    if (selectedOccupation && offer.occupation.name !== selectedOccupation)
+      return false;
+    if (
+      selectedEmploymentType &&
+      offer.job_type.name !== selectedEmploymentType
+    )
+      return false;
+    return true;
+  });
 
   return (
     <div>
       <BreadcrumbOfferId titles={pageTitles} />
       <SearchSection
+        occupationOptions={[]}
+        onOccupationSelect={setSelectedOccupation}
+        onEmploymentTypeSelect={setSelectedEmploymentType}
         mx={`auto`}
         mt={{ base: ``, md: `${81 / 19.2}vw`, lg: `${81 / 19.2}vw` }}
         mb={{ base: ``, md: `${96 / 19.2}vw`, lg: `${96 / 19.2}vw` }}
@@ -214,31 +158,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           fontFamily={`'Noto Sans JP', sans-serif`}
           display={{ base: `none`, md: `flex` }}
         >
-          <Image
-            ml={{ base: `${10 / 3.75}vw`, md: `${23 / 19.2}vw` }}
-            mr={{ base: `${5 / 3.75}vw`, md: `${13 / 19.2}vw` }}
-            mb={{
-              base: `${0 / 3.75}vw`,
-              md: `${2 / 7.68}vw`,
-              lg: `${19 / 19.2}vw`,
-            }}
-            w={{
-              base: `${14 / 3.75}vw`,
-              md: `${15 / 7.68}vw`,
-              lg: `${32 / 19.2}vw`,
-            }}
-            h={{
-              base: `${21 / 3.75}vw`,
-              md: `${22 / 7.68}vw`,
-              lg: `${32 / 19.2}vw`,
-            }}
-            image={{
-              width: 32,
-              height: 42,
-              src: `/svg/file-invoice-solid.svg`,
-              alt: `書類のアイコン`,
-            }}
-          />
+          <FileInvoiceSvg />
           <Box
             mt={{ base: ``, md: `${3 / 19.2}vw` }}
             fontSize={{
@@ -275,7 +195,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             ml={{ md: `${5 / 7.68}vw`, lg: `${10 / 19.2}vw` }}
             mr={{ md: `${20 / 7.68}vw`, lg: `${20 / 19.2}vw` }}
           >
-            {`${sortedOffers.length}件`}
+            {`${filteredOffers.length}件`}
           </Box>
           <Box
             mt={{
@@ -313,74 +233,17 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         columnGap={{ md: `${0 / 7.68}vw`, lg: `${74 / 19.2}vw` }}
         opacity={`1`}
       >
-        {sortedOffers.map((offer) => {
+        {filteredOffers.map((offer) => {
           const daysRemaining = remainingDays(offer.end_at);
           return (
             <div key={offer.id}>
               <Box m={`0 auto`} w={`fit-content`}>
-                <OfferCard3
-                  {...offer}
-                  // end_at={daysRemaining}
-                  start_at={offer.start_at}
-                />
+                <OfferCard3 {...offer} start_at={offer.start_at} />
               </Box>
             </div>
           );
         })}
       </Grid>
-
-      {/* 検索結果が0件の時のやつ */}
-      {/* <Flex
-        fontFamily={`'Noto Sans JP', sans-serif`}
-        mt={{
-          base: `${16 / 3.75}vw`,
-          md: `${50 / 7.68}vw`,
-          lg: `${100 / 19.2}vw`,
-        }}
-        w={{ base: `100%`, md: `${1346 / 19.2}vw`, lg: `${1346 / 19.2}vw` }}
-        bg={{ md: `#F2F2F2` }}
-        fontWeight={`bold`}
-        fontSize={{
-          base: `${14 / 3.75}vw`,
-          md: `${14 / 7.68}vw`,
-          lg: `${25 / 19.2}vw`,
-        }}
-        mx={`auto`}
-        justify={`center`}
-        alignItems={`center`}
-        py={{
-          base: `${10 / 3.75}vw`,
-          md: `${20 / 7.68}vw`,
-          lg: `${61 / 19.2}vw`,
-        }}
-        whiteSpace={`pre-wrap`}
-        borderRadius={{
-          base: `${0 / 3.75}vw`,
-          md: `${15 / 7.68}vw`,
-          lg: `${15 / 19.2}vw`,
-        }}
-        lineHeight={`1.5em`}
-      >
-        {`検索条件に該当する求人情報が見つかりませんでした。
-検索条件を変更して、再度お試しください。`}
-      </Flex> */}
-
-      {/* <Box
-        w={`100%`}
-        bg={`rgba(103,182,253,0.19)`}
-        py={{
-          base: `${20 / 3.75}vw`,
-          md: `${47 / 19.2}vw`,
-          lg: `${47 / 19.2}vw`,
-        }}
-        mt={{
-          base: `${34 / 3.75}vw`,
-          md: `${111 / 19.2}vw`,
-          lg: `${111 / 19.2}vw`,
-        }}
-      >
-        <Pagination />
-      </Box> */}
 
       <Contact
         mt={{ base: `${100 / 3.75}vw`, md: `${225 / 19.2}vw` }}
