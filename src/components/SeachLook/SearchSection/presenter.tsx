@@ -9,7 +9,7 @@ import chakraStylesMobile from './chakraStylesMobile';
 export type PresenterProps = {
   occupationOptions: { value: string; label: string }[];
   onOccupationSelect: (occupation: string) => void;
-  onEmploymentTypeSelect: (employmentType: string) => void;
+  onEmploymentTypeSelect: (employmentTypes: string[]) => void;
 };
 
 // presenter
@@ -45,8 +45,16 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   ];
 
   const Options2 = [
-    { value: 'アルバイト', label: 'アルバイト' },
-    { value: '長期インターン', label: '長期インターン' },
+    {
+      value: '長期インターン',
+      label: '長期インターン',
+      jobTypes: ['長期インターン'],
+    },
+    {
+      value: 'アルバイト',
+      label: 'アルバイト',
+      jobTypes: ['アルバイト', '単発バイト'],
+    },
   ];
 
   const occupationNames = offers.map((offer) => offer.occupation.name);
@@ -58,16 +66,27 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
 
   const jobTypeNames = offers.map((offer) => offer.job_type.name);
   const uniquejobTypeNames = [...new Set(jobTypeNames)];
-  const jobTypeOptions = uniquejobTypeNames.map((name) => ({
-    value: name,
-    label: name,
-  }));
-
+  const jobTypeOptions = uniquejobTypeNames
+    .filter((name) => name === '長期インターン' || name === 'アルバイト')
+    .map((name) => ({
+      value: name,
+      label: name,
+    }));
   const [employmentType, setEmploymentType] = useState('');
 
   const handleEmploymentTypeChange = (newType) => {
-    setEmploymentType(newType);
-    props.onEmploymentTypeSelect(newType);
+    if (employmentType === newType) {
+      setEmploymentType('');
+      props.onEmploymentTypeSelect([]);
+    } else {
+      setEmploymentType(newType);
+      const selectedOption = Options2.find(
+        (option) => option.value === newType
+      );
+      if (selectedOption) {
+        props.onEmploymentTypeSelect(selectedOption.jobTypes);
+      }
+    }
   };
 
   return (

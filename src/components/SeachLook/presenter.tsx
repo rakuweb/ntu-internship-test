@@ -118,31 +118,33 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   };
 
   const sortedOffers = sortOffers([...activeOffers, ...expiredOffers]);
-  const [selectedOccupation, setSelectedOccupation] = useState<string | null>(
-    null
-  );
-  const [selectedEmploymentType, setSelectedEmploymentType] = useState<
-    string | null
-  >(null);
+  const [selectedOccupation, setSelectedOccupation] = useState<string>('');
+  const [selectedEmploymentTypes, setSelectedEmploymentTypes] = useState<
+    string[]
+  >([]);
 
+  const handleEmploymentTypeSelect = (newTypes: string[]) => {
+    setSelectedEmploymentTypes(newTypes);
+  };
+
+  // Then in the filter
   const filteredOffers = sortedOffers.filter((offer) => {
     if (selectedOccupation && offer.occupation.name !== selectedOccupation)
       return false;
     if (
-      selectedEmploymentType &&
-      offer.job_type.name !== selectedEmploymentType
+      selectedEmploymentTypes.length > 0 &&
+      !selectedEmploymentTypes.includes(offer.job_type.name)
     )
       return false;
     return true;
   });
-
   return (
     <div>
       <BreadcrumbOfferId titles={pageTitles} />
       <SearchSection
         occupationOptions={[]}
         onOccupationSelect={setSelectedOccupation}
-        onEmploymentTypeSelect={setSelectedEmploymentType}
+        onEmploymentTypeSelect={setSelectedEmploymentTypes}
         mx={`auto`}
         mt={{ base: ``, md: `${81 / 19.2}vw`, lg: `${81 / 19.2}vw` }}
         mb={{ base: ``, md: `${96 / 19.2}vw`, lg: `${96 / 19.2}vw` }}
