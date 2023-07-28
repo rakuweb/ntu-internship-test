@@ -152,15 +152,6 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 props.onOccupationSelect(option.value)
               }
             />
-
-            <Select
-              options={occupationOptions}
-              chakraStyles={chakraStylesMobile}
-              placeholder={`選択する`}
-              onChange={(option: { value: string }) =>
-                props.onOccupationSelect(option.value)
-              }
-            />
           </Box>
         </Flex>
 
@@ -189,14 +180,12 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             ml={{ base: `${8 / 3.75}vw`, md: `${33 / 19.2}vw` }}
           >
             <Select
-              options={Options}
-              chakraStyles={chakraStylesDesktop}
-              placeholder={`職種を選択する`}
-            />
-            <Select
               options={Options2}
               chakraStyles={chakraStylesMobile}
               placeholder={`選択する`}
+              onChange={(option: { value: string }) =>
+                handleEmploymentTypeChange(option.value)
+              }
             />
           </Box>
         </Flex>
