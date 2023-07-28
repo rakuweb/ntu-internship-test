@@ -26,16 +26,25 @@ export const parseToOffers = (data: OfferEntity[]): OfferCard[] => {
         id: offer.occupation.data.id,
         name: offer.occupation.data.attributes.name,
       },
+      min_period: {
+        id: offer?.min_period?.data.id,
+        period: offer?.min_period?.data.attributes.period,
+      },
       job_type: {
         id: offer.job_type.data.id,
         name: offer.job_type.data.attributes.name,
         gift: offer.job_type.data.attributes.gift,
       },
-      // points:
-      //   offer?.points?.data?.map((point) => ({
-      //     id: point.id,
-      //     name: point?.attributes?.name ?? '',
-      //   })) ?? [],
+
+      min_workingday: {
+        id: offer.min_workingday.data.id,
+        days: offer.min_workingday.data.attributes.days,
+      },
+      points:
+        offer?.points?.data?.map((point) => ({
+          id: point.id,
+          name: point?.attributes?.name ?? '',
+        })) ?? [],
     };
     return result;
   });

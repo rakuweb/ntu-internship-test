@@ -32,7 +32,30 @@ query getOffersAll {
             }
           }
         }
-
+        min_period {
+          data {
+            id
+            attributes {
+              period
+            }
+          }
+        }
+        min_workingday {
+          data {
+            id
+            attributes {
+              days
+            }
+          }
+        }
+        points {
+          data {
+            id
+            attributes {
+              name
+            }
+          }
+        }
         image {
           data {
             id
