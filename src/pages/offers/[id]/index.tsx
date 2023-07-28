@@ -18,17 +18,24 @@ import {
   GetOfferPathsQuery,
   GetOfferPathsDocument,
   UploadFile,
+  GetOffersAllQuery,
+  GetOffersAllDocument,
 } from 'types/gql/graphql';
 import { initializeApollo, initializeApollo_offer } from 'lib/apollo/client';
-import { selectSetTarget, useTargetOfferStore } from 'features/offers';
+import {
+  selectSetOffers,
+  selectSetTarget,
+  useOffersStore,
+  useTargetOfferStore,
+} from 'features/offers';
 import { selectSetCompanyItem, useCompanyStore } from '~/features/company';
-import { parseImage } from '~/lib/utils';
+import { getTodayString, parseImage } from '~/lib/utils';
 
 // type layer
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 // component layer
-export const Index: NextPage<Props> = ({ data }) => {
+export const Index: NextPage<Props> = ({ data, allOffersData }) => {
   const title = data?.offer?.data?.attributes?.title ?? ``; // eslint-disable-line
   const description = data?.offer?.data?.attributes?.job_description ?? ``;
   const ogp = data?.offer?.data?.attributes?.image?.data?.attributes
@@ -53,6 +60,7 @@ export const Index: NextPage<Props> = ({ data }) => {
   const [isClient, setIsClient] = useState(false);
   const setTarget = useTargetOfferStore(selectSetTarget);
   const setComapanyItem = useCompanyStore(selectSetCompanyItem);
+  const setOffers = useOffersStore(selectSetOffers);
 
   useEffect(() => {
     setIsClient(true);
@@ -63,7 +71,8 @@ export const Index: NextPage<Props> = ({ data }) => {
   }
 
   setTarget(data?.offer?.data as OfferEntity);
-
+  allOffersData?.offers?.data &&
+    setOffers(allOffersData.offers.data as OfferEntity[]);
   const message = () => {
     if (isClient) {
       return (
@@ -122,6 +131,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<{
   data: GetOfferByIdQuery;
+  allOffersData: GetOffersAllQuery; // 追加
 }> = async ({ params }) => {
   const { id } = params;
   const apolloClient = initializeApollo_offer();
@@ -132,9 +142,16 @@ export const getStaticProps: GetStaticProps<{
       variables: { id },
     });
 
+    const allOffersResult = await apolloClient.query<GetOffersAllQuery>({
+      // 追加
+      query: GetOffersAllDocument,
+      variables: { today: getTodayString() },
+    });
+
     return {
       props: {
         data,
+        allOffersData: allOffersResult.data, // 追加
       },
       notFound: !data,
       revalidate: UPDATE_INTERVAL,
@@ -143,7 +160,7 @@ export const getStaticProps: GetStaticProps<{
     console.error(err);
 
     return {
-      props: { data: undefined, company: undefined },
+      props: { data: undefined, allOffersData: undefined }, // 変更
       notFound: true,
       revalidate: UPDATE_INTERVAL,
     };

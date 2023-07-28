@@ -12,11 +12,9 @@ import { Image } from '~/components/Image';
 
 // type layer
 export type DataProps = OfferCard;
-export type PresenterProps = DataProps;
-// export interface PresenterProps extends DataProps {
-//   deadline: number;
-//   startDate: string;
-// }
+export type PresenterProps = DataProps & {
+  onClick?: () => void;
+};
 
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {

@@ -1,34 +1,21 @@
 // import layer
 import { FC } from 'react';
-import {
-  Box,
-  Flex,
-  Heading,
-  Link,
-  Text,
-  textDecoration,
-} from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import { Image } from 'components/images/Image';
 import { Image as NImage } from 'components/images/Image';
-import { useRouter } from 'next/router';
-
-import { OfferButton } from 'components/OfferButton';
-import { Labeltext } from '~/features/offers/OfferCard/Labeltext';
-import { Labeltext2 } from './Labeltext2';
 
 import { selectCompany, useCompanyStore } from 'features/company';
 import {
   useTargetOfferStore,
   selectTarget,
   selectBreadCrumbItem,
+  useOffersStore,
+  selectOfferList,
 } from 'features/offers';
 import { useLiff } from 'contexts/LineAuthContextInternship';
-
 import { styles } from './styles';
 import { useAccountStore, selectSetPrevPath } from 'features/account';
-import { OfferEntity } from 'types/gql/graphql';
 import 'zenn-content-css';
-import { routes } from 'constants/routes';
 import { BreadcrumbOfferId } from '../organisms/BreadcrumbOfferId';
 import { Atmosphere } from './Atmosphere';
 import { Jobterms } from './Jobterms';
@@ -37,12 +24,15 @@ import { Contact } from '../organisms/Contact';
 import { Fixedmenu } from './Fixedmenu';
 import { MobileMinInformation } from './MobileMinInformation';
 import { Applybutton } from './Applybutton';
+import React from 'react';
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const offer = useTargetOfferStore(selectTarget);
+  const offers = useOffersStore(selectOfferList);
+  const [selectedOffer, setSelectedOffer] = React.useState(null);
   const company = useCompanyStore(selectCompany);
   const { liff } = useLiff();
   const setPrevPath = useAccountStore(selectSetPrevPath);
@@ -74,7 +64,12 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   };
   // const daysRemaining = remainingDays(offer.deadline);
+  const selectOffer = (offerId) => {
+    const offer = offers.find((item) => item.id === offerId);
+    setSelectedOffer(offer);
+  };
 
+  const otherOffers = offers.filter((item) => item.id !== offer.id);
   return (
     <div css={styles}>
       <BreadcrumbOfferId titles={pageTitles} />
@@ -245,9 +240,19 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               募集求人
             </Box>
           </Flex>
-          <OfferCard3 {...offer} />
-          <Box mt={{ base: `${36 / 3.75}vw`, md: `${50 / 19.2}vw` }}>
-            <OfferCard3 {...offer} />
+          <Box>
+            {otherOffers.map((offer, index) => (
+              <Box
+                mt={
+                  index !== 0
+                    ? { base: `${36 / 3.75}vw`, md: `${50 / 19.2}vw` }
+                    : undefined
+                }
+                key={index}
+              >
+                <OfferCard3 {...offer} onClick={() => selectOffer(offer.id)} />
+              </Box>
+            ))}
           </Box>
         </Box>
         <Box
