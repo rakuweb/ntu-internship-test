@@ -131,7 +131,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<{
   data: GetOfferByIdQuery;
-  allOffersData: GetOffersAllQuery; // 追加
+  allOffersData: GetOffersAllQuery;
 }> = async ({ params }) => {
   const { id } = params;
   const apolloClient = initializeApollo_offer();
@@ -143,7 +143,6 @@ export const getStaticProps: GetStaticProps<{
     });
 
     const allOffersResult = await apolloClient.query<GetOffersAllQuery>({
-      // 追加
       query: GetOffersAllDocument,
       variables: { today: getTodayString() },
     });
@@ -151,7 +150,7 @@ export const getStaticProps: GetStaticProps<{
     return {
       props: {
         data,
-        allOffersData: allOffersResult.data, // 追加
+        allOffersData: allOffersResult.data,
       },
       notFound: !data,
       revalidate: UPDATE_INTERVAL,
@@ -160,7 +159,7 @@ export const getStaticProps: GetStaticProps<{
     console.error(err);
 
     return {
-      props: { data: undefined, allOffersData: undefined }, // 変更
+      props: { data: undefined, allOffersData: undefined },
       notFound: true,
       revalidate: UPDATE_INTERVAL,
     };

@@ -3,6 +3,7 @@ import { ImageType } from 'lib/utils';
 
 export type Occupation = { id: string; name: string };
 export type JobType = { id: string; name: string; gift: string };
+export type MinPeriod = { id: string; name: string; gift: string };
 export type Point = { id: string; name: string };
 export type Period = { id: string; period: string };
 export type Workingday = { id: string; days: string };
@@ -22,6 +23,9 @@ export type OfferCard = {
   image?: ImageType;
   // points: Point[];
   job_type: JobType;
+  min_period: Period;
+  min_workingday: Workingday;
+  points: Point[];
 };
 
 export type OffersSlice = {

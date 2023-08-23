@@ -5,6 +5,7 @@ import { Select } from 'chakra-react-select';
 import { selectOfferList, useOffersStore } from '~/features/offers';
 import chakraStylesDesktop from './chakraStylesDesktop';
 import chakraStylesMobile from './chakraStylesMobile';
+import MyButton from './MyButton';
 // type layer
 export type PresenterProps = {
   occupationOptions: { value: string; label: string }[];
@@ -36,13 +37,6 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       return newColors;
     });
   };
-
-  const Options = [
-    { value: '飲食店', label: '飲食店' },
-    { value: 'インターンバイト', label: 'インターンバイト' },
-    { value: 'SNS運用', label: 'SNS運用' },
-    { value: 'マーケティング', label: 'マーケティング' },
-  ];
 
   const Options2 = [
     {
@@ -89,6 +83,10 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     }
   };
 
+  const periodNames = offers.map((offer) => offer.min_period.period);
+  const uniquePeriodNames = [...new Set(periodNames)];
+  const minWorkingDayNames = offers.map((offer) => offer.min_workingday.days);
+  const uniqueMinWorkingDayNames = [...new Set(minWorkingDayNames)];
   return (
     <Box
       w={{ base: `100%`, md: `${1346 / 19.2}vw`, lg: `${1346 / 19.2}vw` }}
@@ -248,57 +246,34 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           mx={{ base: `${28 / 4.28}vw`, md: `initial` }}
           w={{ base: `${550 / 3.75}vw`, md: `initial` }}
         >
-          {list.map((list, index) => {
-            return (
-              <Box key={`list`} w={`fit-content`}>
-                <Box
-                  whiteSpace={`nowrap`}
-                  p={{
-                    base: `${8 / 3.75}vw ${16 / 3.75}vw`,
-                    md: `${10 / 19.2}vw ${18 / 19.2}vw`,
-                    lg: `${7 / 19.2}vw ${25 / 19.2}vw`,
-                  }}
-                  mr={{
-                    base: `${8 / 3.75}vw`,
-                    md: `${12 / 19.2}vw`,
-                    lg: `${12 / 19.2}vw`,
-                  }}
-                  mb={{
-                    base: `${8 / 3.75}vw`,
-                    md: `${10 / 19.2}vw`,
-                    lg: `${10 / 19.2}vw`,
-                  }}
-                  fontSize={{
-                    base: `${13 / 3.75}vw`,
-                    md: `${20 / 19.2}vw`,
-                    lg: `${20 / 19.2}vw`,
-                  }}
-                  fontWeight={`bold`}
-                  border={{
-                    base: `${2 / 3.75}vw solid #41A4FD`,
-                    md: `${3 / 19.2}vw solid #41A4FD`,
-                    lg: `${3 / 19.2}vw solid #41A4FD`,
-                  }}
-                  borderRadius={{
-                    base: `${25 / 3.75}vw`,
-                    md: `${26 / 7.68}vw`,
-                    lg: `${26 / 19.2}vw`,
-                  }}
-                  onClick={() => buttonToggle(index)}
-                  color={active[index] ? `white` : `#41A4FD`}
-                  bg={active[index] ? `#41A4FD` : `white`}
-                  transition={`all .3s`}
-                  _hover={{
-                    cursor: `pointer`,
-                    filter: `opacity(50%)`,
-                    textDecoration: 'none',
-                  }}
-                >
-                  {list}
-                </Box>
-              </Box>
-            );
-          })}
+          {uniquePeriodNames.map((period, index) => (
+            <MyButton
+              active={active[index]}
+              index={index}
+              label={period}
+              onClick={buttonToggle}
+            />
+          ))}
+          {uniqueMinWorkingDayNames.map((day, index) => (
+            <MyButton
+              active={active[index]}
+              index={index}
+              label={day}
+              onClick={buttonToggle}
+            />
+          ))}
+
+          {offers.map((offer) =>
+            offer.points.map((point, index) => (
+              <MyButton
+                key={index}
+                active={active[index]}
+                index={index}
+                label={point.name}
+                onClick={buttonToggle}
+              />
+            ))
+          )}
         </Flex>
       </Box>
     </Box>

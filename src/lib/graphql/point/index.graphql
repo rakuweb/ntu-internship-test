@@ -4,8 +4,7 @@ query getPoints {
       id
       attributes {
         name
-        en_name
-        offers {
+        offer {
           data {
             id
           }

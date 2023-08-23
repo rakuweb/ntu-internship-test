@@ -4,8 +4,8 @@ import { Box, Flex, Grid } from '@chakra-ui/react';
 import { Image } from 'components/images/Image';
 import { Select } from 'chakra-react-select';
 import { OfferCard } from 'features/offers';
-import { selectOfferList } from 'features/offers/selectors';
-import { useOffersStore } from 'features/offers/hooks';
+import { selectOfferList, selectTarget } from 'features/offers/selectors';
+import { useOffersStore, useTargetOfferStore } from 'features/offers/hooks';
 import { OfferCard3 } from '~/features/offers/OfferCard3';
 import 'zenn-content-css';
 import { BreadcrumbOfferId } from '../organisms/BreadcrumbOfferId';
@@ -13,6 +13,7 @@ import { Contact } from '../organisms/Contact';
 import { SearchSection } from './SearchSection';
 import chakraStyles from './chakraStyles';
 import FileInvoiceSvg from './fileInvoiceSvg';
+import { Point } from '../../features/offers/types';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
@@ -138,6 +139,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       return false;
     return true;
   });
+
   return (
     <div>
       <BreadcrumbOfferId titles={pageTitles} />
@@ -237,6 +239,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       >
         {filteredOffers.map((offer) => {
           const daysRemaining = remainingDays(offer.end_at);
+
           return (
             <div key={offer.id}>
               <Box m={`0 auto`} w={`fit-content`}>

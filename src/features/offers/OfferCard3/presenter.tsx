@@ -30,6 +30,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     image,
     job_type,
     createby,
+    min_period,
   } = props;
   const href = `${routes.offers}/${id}`;
   const currentDate = new Date();
