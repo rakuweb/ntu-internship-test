@@ -118,7 +118,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     }
   };
 
-  const sortedOffers = sortOffers([...activeOffers, ...expiredOffers]);
+  const sortedOffers = sortOffers([...activeOffers]);
   const [selectedOccupation, setSelectedOccupation] = useState<string>('');
   const [selectedEmploymentTypes, setSelectedEmploymentTypes] = useState<
     string[]
