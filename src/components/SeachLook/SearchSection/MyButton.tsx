@@ -44,8 +44,8 @@ const MyButton: FC<MyButtonProps> = ({ active, index, label, onClick }) => (
         lg: `${26 / 19.2}vw`,
       }}
       onClick={() => onClick(index)}
-      color={active[index] ? `white` : `#41A4FD`}
-      bg={active[index] ? `#41A4FD` : `white`}
+      color={active ? `white` : `#41A4FD`}
+      bg={active ? `#41A4FD` : `white`}
       transition={`all .3s`}
       _hover={{
         cursor: `pointer`,

@@ -161,22 +161,13 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           // const daysRemaining = remainingDays(offer.deadline);
           return (
             <div key={offer.id}>
-              {/* {offer.deadline >= today ? (
+              {offer.end_at >= today ? (
                 <Box m={`0 auto`} w={`fit-content`}>
-                  <OfferCard
-                    {...offer}
-                    
-                  />
+                  <OfferCard {...offer} />
                 </Box>
               ) : (
-                <Box m={`0 auto`} w={`fit-content`}>
-                  {/* <OfferCardDead {...offer} deadline={daysRemaining} /> 
-                </Box>
-              )} */}
-
-              <Box m={`0 auto`} w={`fit-content`}>
-                <OfferCard {...offer} />
-              </Box>
+                <></>
+              )}
             </div>
           );
         })}

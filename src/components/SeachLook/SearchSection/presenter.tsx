@@ -16,20 +16,7 @@ export type PresenterProps = {
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const offers = useOffersStore(selectOfferList);
-  const list = [
-    `単発(1日)`,
-    `短期(1ヶ月以内)`,
-    `短期(3ヶ月以内)`,
-    `長期(定めなし)`,
-    `SNS運用`,
-    `SNS運用`,
-    `ダミー`,
-    `二列目`,
-  ];
 
-  const [active, setActive] = useState<boolean[]>(
-    new Array(list.length).fill(false)
-  );
   const buttonToggle = (index: number) => {
     setActive((prevColors) => {
       const newColors = [...prevColors];
@@ -57,6 +44,9 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     value: name,
     label: name,
   }));
+  const [active, setActive] = useState<boolean[]>(
+    new Array(occupationOptions.length).fill(false)
+  );
 
   const jobTypeNames = offers.map((offer) => offer.job_type.name);
   const uniquejobTypeNames = [...new Set(jobTypeNames)];
@@ -87,6 +77,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const uniquePeriodNames = [...new Set(periodNames)];
   const minWorkingDayNames = offers.map((offer) => offer.min_workingday.days);
   const uniqueMinWorkingDayNames = [...new Set(minWorkingDayNames)];
+
   return (
     <Box
       w={{ base: `100%`, md: `${1346 / 19.2}vw`, lg: `${1346 / 19.2}vw` }}
@@ -248,6 +239,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         >
           {uniquePeriodNames.map((period, index) => (
             <MyButton
+              key={period}
               active={active[index]}
               index={index}
               label={period}
@@ -256,6 +248,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           ))}
           {uniqueMinWorkingDayNames.map((day, index) => (
             <MyButton
+              key={day}
               active={active[index]}
               index={index}
               label={day}
@@ -264,15 +257,19 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           ))}
 
           {offers.map((offer) =>
-            offer.points.map((point, index) => (
-              <MyButton
-                key={index}
-                active={active[index]}
-                index={index}
-                label={point.name}
-                onClick={buttonToggle}
-              />
-            ))
+            offer.points.map(
+              (point, index) => (
+                console.log(index),
+                (
+                  <MyButton
+                    active={active[index]}
+                    index={index}
+                    label={point.name}
+                    onClick={buttonToggle}
+                  />
+                )
+              )
+            )
           )}
         </Flex>
       </Box>
