@@ -1,11 +1,12 @@
 import { Box } from '@chakra-ui/react';
+import React from 'react';
 import { FC } from 'react';
 
 type MyButtonProps = {
   active: boolean;
-  index: number;
+  index: string | number;
   label: string;
-  onClick: (index: number) => void;
+  onClick: (index: string | number) => void;
 };
 
 const MyButton: FC<MyButtonProps> = ({ active, index, label, onClick }) => (

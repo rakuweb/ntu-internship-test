@@ -16,7 +16,7 @@ type TextareaFormProps = {
   }>;
 };
 
-const TextareaForm: FC<TextareaFormProps> = ({ list, index, control }) => {
+const TextareaForm: FC<TextareaFormProps> = ({ control }) => {
   return (
     <Controller
       name="inquiry_content"
@@ -42,8 +42,8 @@ const TextareaForm: FC<TextareaFormProps> = ({ list, index, control }) => {
             md: `${12 / 7.68}vw`,
             lg: `${19 / 19.2}vw`,
           }}
-          my={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
-          ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
+          mt={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
+          // ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
         />
       )}
     />
