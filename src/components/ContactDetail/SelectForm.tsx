@@ -28,7 +28,7 @@ const SelectForm: FC<SelectFormProps> = ({
   return (
     <Box
       display={index === 0 ? 'block' : 'none'}
-      ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
+      // ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
       w={{ base: `${160 / 3.75}vw`, md: `initial` }}
     >
       <Controller

@@ -1,9 +1,18 @@
 import { Button } from '@chakra-ui/react';
 import { Image } from 'components/images/Image';
-const SubmitButton = () => {
+type SubmitButtonProps = {
+  disabled: boolean;
+};
+const SubmitButton: React.FC<SubmitButtonProps> = ({ disabled }) => {
   return (
     <Button
       type="submit"
+      disabled={disabled} // ボタンの活性・非活性を設定
+      background={
+        disabled
+          ? 'grey'
+          : `transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box;`
+      } // 色をチェック状態に基づいて変更
       display={'flex'}
       w={{
         base: `${220 / 3.75}vw`,
@@ -25,7 +34,7 @@ const SubmitButton = () => {
       }}
       mb={{ base: `${60 / 3.75}vw`, md: `${80 / 19.2}vw` }}
       mx={`auto`}
-      background={`transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box;`}
+      // background={`transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box;`}
       color={`white`}
       fontSize={{
         base: `${16 / 3.75}vw`,

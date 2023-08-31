@@ -50,7 +50,7 @@ const InputForm: FC<InputFormProps> = ({ index, control, name }) => {
             md: `${12 / 7.68}vw`,
             lg: `${19 / 19.2}vw`,
           }}
-          ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
+          // ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
         />
       )}
     />
