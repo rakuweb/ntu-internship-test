@@ -6,6 +6,7 @@ import { selectOfferList, useOffersStore } from '~/features/offers';
 import chakraStylesDesktop from './chakraStylesDesktop';
 import chakraStylesMobile from './chakraStylesMobile';
 import MyButton from './MyButton';
+import React from 'react';
 // type layer
 export type PresenterProps = {
   occupationOptions: { value: string; label: string }[];
@@ -27,15 +28,15 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     `二列目`,
   ];
 
-  const [active, setActive] = useState<boolean[]>(
-    new Array(list.length).fill(false)
-  );
-  const buttonToggle = (index: number) => {
-    setActive((prevColors) => {
-      const newColors = [...prevColors];
-      newColors[index] = !newColors[index];
-      return newColors;
-    });
+  const generateKey = (prefix, index) => `${prefix}-${index}`;
+
+  const [active, setActive] = useState<{ [key: string]: boolean }>({});
+
+  const buttonToggle = (key: string) => {
+    setActive((prevActive) => ({
+      ...prevActive,
+      [key]: !prevActive[key],
+    }));
   };
 
   const Options2 = [
@@ -256,23 +257,26 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           ))}
           {uniqueMinWorkingDayNames.map((day, index) => (
             <MyButton
-              active={active[index]}
-              index={index}
+              active={active[index + uniquePeriodNames.length]}
+              index={index + uniquePeriodNames.length}
               label={day}
               onClick={buttonToggle}
             />
           ))}
 
-          {offers.map((offer) =>
-            offer.points.map((point, index) => (
-              <MyButton
-                key={index}
-                active={active[index]}
-                index={index}
-                label={point.name}
-                onClick={buttonToggle}
-              />
-            ))
+          {offers.map((offer, offerIndex) =>
+            offer.points.map((point, pointIndex) => {
+              const key = generateKey(`offer-${offerIndex}`, pointIndex);
+              return (
+                <MyButton
+                  key={key}
+                  active={!!active[key]}
+                  index={key}
+                  label={point.name}
+                  onClick={buttonToggle}
+                />
+              );
+            })
           )}
         </Flex>
       </Box>

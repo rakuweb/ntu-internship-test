@@ -4,9 +4,9 @@ import { FC } from 'react';
 
 type MyButtonProps = {
   active: boolean;
-  index: number;
+  index: string | number;
   label: string;
-  onClick: (index: number) => void;
+  onClick: (index: string | number) => void;
 };
 
 const MyButton: FC<MyButtonProps> = ({ active, index, label, onClick }) => (
@@ -45,8 +45,8 @@ const MyButton: FC<MyButtonProps> = ({ active, index, label, onClick }) => (
         lg: `${26 / 19.2}vw`,
       }}
       onClick={() => onClick(index)}
-      color={active[index] ? `white` : `#41A4FD`}
-      bg={active[index] ? `#41A4FD` : `white`}
+      color={active ? `white` : `#41A4FD`}
+      bg={active ? `#41A4FD` : `white`}
       transition={`all .3s`}
       _hover={{
         cursor: `pointer`,
