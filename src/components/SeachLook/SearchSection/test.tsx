@@ -6,7 +6,6 @@ import { selectOfferList, useOffersStore } from '~/features/offers';
 import chakraStylesDesktop from './chakraStylesDesktop';
 import chakraStylesMobile from './chakraStylesMobile';
 import MyButton from './MyButton';
-import React from 'react';
 // type layer
 export type PresenterProps = {
   occupationOptions: { value: string; label: string }[];
@@ -17,13 +16,26 @@ export type PresenterProps = {
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const offers = useOffersStore(selectOfferList);
+  const list = [
+    `単発(1日)`,
+    `短期(1ヶ月以内)`,
+    `短期(3ヶ月以内)`,
+    `長期(定めなし)`,
+    `SNS運用`,
+    `SNS運用`,
+    `ダミー`,
+    `二列目`,
+  ];
 
-  const [active, setActive] = useState<Record<string, boolean>>({});
-  const buttonToggle = (key: string) => {
-    setActive((prevActive) => ({
-      ...prevActive,
-      [key]: !prevActive[key],
-    }));
+  const [active, setActive] = useState<boolean[]>(
+    new Array(list.length).fill(false)
+  );
+  const buttonToggle = (index: number) => {
+    setActive((prevColors) => {
+      const newColors = [...prevColors];
+      newColors[index] = !newColors[index];
+      return newColors;
+    });
   };
 
   const Options2 = [
@@ -234,40 +246,33 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           mx={{ base: `${28 / 4.28}vw`, md: `initial` }}
           w={{ base: `${550 / 3.75}vw`, md: `initial` }}
         >
-          {uniquePeriodNames.map((period, index) => {
-            const key = `period-${index}`;
-            return (
+          {uniquePeriodNames.map((period, index) => (
+            <MyButton
+              active={active[index]}
+              index={index}
+              label={period}
+              onClick={buttonToggle}
+            />
+          ))}
+          {uniqueMinWorkingDayNames.map((day, index) => (
+            <MyButton
+              active={active[index]}
+              index={index}
+              label={day}
+              onClick={buttonToggle}
+            />
+          ))}
+
+          {offers.map((offer) =>
+            offer.points.map((point, index) => (
               <MyButton
-                active={!!active[key]}
+                key={index}
+                active={active[index]}
                 index={index}
-                label={period}
-                onClick={() => buttonToggle(key)}
+                label={point.name}
+                onClick={buttonToggle}
               />
-            );
-          })}
-          {uniqueMinWorkingDayNames.map((day, index) => {
-            const key = `day-${index}`;
-            return (
-              <MyButton
-                active={!!active[key]}
-                index={index}
-                label={day}
-                onClick={() => buttonToggle(key)}
-              />
-            );
-          })}
-          {offers.map((offer, offerIndex) =>
-            offer.points.map((point, pointIndex) => {
-              const key = `offer-${offerIndex}-point-${pointIndex}`;
-              return (
-                <MyButton
-                  active={!!active[key]}
-                  index={pointIndex}
-                  label={point.name}
-                  onClick={() => buttonToggle(key)}
-                />
-              );
-            })
+            ))
           )}
         </Flex>
       </Box>
