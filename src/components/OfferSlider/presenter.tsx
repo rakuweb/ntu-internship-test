@@ -96,8 +96,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     spaceBetween: 50,
     slidesPerView: 1,
   };
-  const activeOffers = offers.filter((offer) => offer.deadline >= today);
-  const expiredOffers = offers.filter((offer) => offer.deadline < today);
+  const activeOffers = offers.filter((offer) => offer.end_at >= today);
+  const expiredOffers = offers.filter((offer) => offer.end_at < today);
 
   const sortedOffers = [...activeOffers, ...expiredOffers];
 
@@ -108,7 +108,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   };
 
-  const daysRemaining = remainingDays(offers[0].deadline);
+  const daysRemaining = remainingDays(offers[0].end_at);
   return (
     <Box
       w={`960px`}
@@ -135,7 +135,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 <OfferCardverSlider
                   {...offers[0]}
                   deadline={daysRemaining}
-                  startDate={offers[0].createdAt}
+                  startDate={offers[0].start_at}
                 />
               </Box>
             </SwiperSlide>
@@ -144,7 +144,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 <OfferCardverSlider
                   {...offers[0]}
                   deadline={daysRemaining}
-                  startDate={offers[0].createdAt}
+                  startDate={offers[0].start_at}
                 />
               </Box>
             </SwiperSlide>

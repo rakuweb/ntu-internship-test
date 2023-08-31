@@ -18,12 +18,14 @@ export type PresenterProps = {
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const offers = useOffersStore(selectOfferList);
 
+
   const [active, setActive] = useState<Record<string, boolean>>({});
   const buttonToggle = (key: string) => {
     setActive((prevActive) => ({
       ...prevActive,
       [key]: !prevActive[key],
     }));
+
   };
 
   const Options2 = [
@@ -45,6 +47,9 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     value: name,
     label: name,
   }));
+  const [active, setActive] = useState<boolean[]>(
+    new Array(occupationOptions.length).fill(false)
+  );
 
   const jobTypeNames = offers.map((offer) => offer.job_type.name);
   const uniquejobTypeNames = [...new Set(jobTypeNames)];
@@ -75,6 +80,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const uniquePeriodNames = [...new Set(periodNames)];
   const minWorkingDayNames = offers.map((offer) => offer.min_workingday.days);
   const uniqueMinWorkingDayNames = [...new Set(minWorkingDayNames)];
+
   return (
     <Box
       w={{ base: `100%`, md: `${1346 / 19.2}vw`, lg: `${1346 / 19.2}vw` }}
@@ -234,6 +240,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           mx={{ base: `${28 / 4.28}vw`, md: `initial` }}
           w={{ base: `${550 / 3.75}vw`, md: `initial` }}
         >
+
           {uniquePeriodNames.map((period, index) => {
             const key = `period-${index}`;
             return (
@@ -268,6 +275,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 />
               );
             })
+
           )}
         </Flex>
       </Box>

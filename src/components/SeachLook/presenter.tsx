@@ -118,7 +118,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     }
   };
 
-  const sortedOffers = sortOffers([...activeOffers, ...expiredOffers]);
+  const sortedOffers = sortOffers([...activeOffers]);
   const [selectedOccupation, setSelectedOccupation] = useState<string>('');
   const [selectedEmploymentTypes, setSelectedEmploymentTypes] = useState<
     string[]
@@ -242,9 +242,13 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
 
           return (
             <div key={offer.id}>
-              <Box m={`0 auto`} w={`fit-content`}>
-                <OfferCard3 {...offer} start_at={offer.start_at} />
-              </Box>
+              {offer.end_at >= today ? (
+                <Box m={`0 auto`} w={`fit-content`}>
+                  <OfferCard3 {...offer} />
+                </Box>
+              ) : (
+                <></>
+              )}
             </div>
           );
         })}
