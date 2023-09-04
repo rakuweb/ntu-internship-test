@@ -14,6 +14,7 @@ import { SearchSection } from './SearchSection';
 import chakraStyles from './chakraStyles';
 import FileInvoiceSvg from './fileInvoiceSvg';
 import { Point } from '../../features/offers/types';
+import { constSelector } from 'recoil';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
@@ -48,6 +49,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
 
   const dayNum = currentDate.getDate();
   const dayMap = [
+    '00',
     '01',
     '02',
     '03',
@@ -84,7 +86,6 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const month = monthMap[monthNum];
   const date = dayMap[dayNum];
   const today = `${year}-${month}-${date}`;
-
   const [index, setIndex] = useState<number>(0);
 
   const activeOffers = offers.filter((offer) => offer.end_at >= today);
@@ -238,8 +239,6 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         opacity={`1`}
       >
         {filteredOffers.map((offer) => {
-          const daysRemaining = remainingDays(offer.end_at);
-
           return (
             <div key={offer.id}>
               {offer.end_at >= today ? (

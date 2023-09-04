@@ -61,6 +61,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
 
   const dayNum = currentDate.getDate();
   const dayMap = [
+    '00',
     '01',
     '02',
     '03',
@@ -99,6 +100,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const today = `${year}-${month}-${date}`;
 
   const [index, setIndex] = useState<number>(0);
+
+  const activeOffers = offers.filter((offer) => offer.end_at >= today);
 
   const swiperProps: SwiperProps = {
     loop: true,
@@ -157,7 +160,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         columnGap={{ lg: `32px` }}
         opacity={`1`}
       >
-        {offers.map((offer) => {
+        {activeOffers.map((offer) => {
           // const daysRemaining = remainingDays(offer.deadline);
           return (
             <div key={offer.id}>

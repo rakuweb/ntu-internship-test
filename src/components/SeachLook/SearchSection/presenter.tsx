@@ -18,14 +18,11 @@ export type PresenterProps = {
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const offers = useOffersStore(selectOfferList);
 
-
-  const [active, setActive] = useState<Record<string, boolean>>({});
   const buttonToggle = (key: string) => {
     setActive((prevActive) => ({
       ...prevActive,
       [key]: !prevActive[key],
     }));
-
   };
 
   const Options2 = [
@@ -240,7 +237,6 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           mx={{ base: `${28 / 4.28}vw`, md: `initial` }}
           w={{ base: `${550 / 3.75}vw`, md: `initial` }}
         >
-
           {uniquePeriodNames.map((period, index) => {
             const key = `period-${index}`;
             return (
@@ -275,7 +271,6 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 />
               );
             })
-
           )}
         </Flex>
       </Box>

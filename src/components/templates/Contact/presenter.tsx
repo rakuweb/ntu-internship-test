@@ -4,6 +4,7 @@ import { FC } from 'react';
 import { ContactDetail } from '~/components/ContactDetail';
 import { Footer } from '~/components/footers/Footer';
 import { Header } from 'components/headers/Header';
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -17,7 +18,11 @@ export const Presenter: FC<PresenterProps> = () => {
   return (
     <>
       <Header />
-      <ContactDetail />
+      <GoogleReCaptchaProvider
+        reCaptchaKey={process.env.NEXT_PUBLIC_GOOGLE_RECAPTCHA_SITEKEY}
+      >
+        <ContactDetail />
+      </GoogleReCaptchaProvider>
       <Footer />
     </>
   );

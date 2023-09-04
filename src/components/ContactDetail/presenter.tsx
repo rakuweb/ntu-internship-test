@@ -1,5 +1,5 @@
 // import layer
-import { FC, useState } from 'react';
+import { FC, useState,useCallback,useEffect } from 'react';
 import { Box, Checkbox, Flex } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 import FormName from './FormName';
@@ -10,6 +10,7 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import InquiryItem from './InquiryItem';
 import { InternalLink } from '../links/InternalLink';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
@@ -47,6 +48,14 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     { value: 'お仕事について', label: 'お仕事について' },
     { value: 'その他', label: 'その他' },
   ];
+
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const handleReCaptchaVerify = useCallback(async () => {
+    if (!executeRecaptcha) {
+      return;
+    }
+
+    const recaptchaToken = await executeRecaptcha('yourAction');
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
