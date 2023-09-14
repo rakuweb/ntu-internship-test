@@ -1,28 +1,37 @@
 // import layer
 import { FC, useState } from 'react';
-import { Box, Checkbox, Flex } from '@chakra-ui/react';
+import { Box, Checkbox, Flex, BoxProps } from '@chakra-ui/react';
 import { Select } from 'chakra-react-select';
 import { selectOfferList, useOffersStore } from '~/features/offers';
 import chakraStylesDesktop from './chakraStylesDesktop';
 import chakraStylesMobile from './chakraStylesMobile';
 import MyButton from './MyButton';
-import React from 'react';
 // type layer
-export type PresenterProps = {
+export type DataProps = {
   occupationOptions: { value: string; label: string }[];
   onOccupationSelect: (occupation: string) => void;
   onEmploymentTypeSelect: (employmentTypes: string[]) => void;
 };
+export type StyleProps = BoxProps;
+export type PresenterProps = StyleProps & DataProps;
 
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const offers = useOffersStore(selectOfferList);
+  const [clickedName, setClickedName] = useState<string | null>(null);
 
-  const buttonToggle = (key: string) => {
+  const buttonToggle = (key: string, name: string) => {
     setActive((prevActive) => ({
       ...prevActive,
       [key]: !prevActive[key],
     }));
+    setClickedName((prevClickedName) => {
+      // 同じものがクリックされたら空白に
+      if (prevClickedName === name) {
+        return null;
+      }
+      return name;
+    });
   };
 
   const Options2 = [
@@ -77,6 +86,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const uniquePeriodNames = [...new Set(periodNames)];
   const minWorkingDayNames = offers.map((offer) => offer.min_workingday.days);
   const uniqueMinWorkingDayNames = [...new Set(minWorkingDayNames)];
+
+  console.log(clickedName);
 
   return (
     <Box
@@ -246,7 +257,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 active={!!active[key]}
                 index={index}
                 label={period}
-                onClick={() => buttonToggle(key)}
+                onClick={() => buttonToggle(key, period)}
               />
             );
           })}
@@ -258,7 +269,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 active={!!active[key]}
                 index={index}
                 label={day}
-                onClick={() => buttonToggle(key)}
+                onClick={() => buttonToggle(key, day)}
               />
             );
           })}
@@ -267,11 +278,11 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               const key = `offer-${offerIndex}-point-${pointIndex}`;
               return (
                 <MyButton
-                  key={offerIndex}
+                  key={pointIndex}
                   active={!!active[key]}
                   index={pointIndex}
                   label={point.name}
-                  onClick={() => buttonToggle(key)}
+                  onClick={() => buttonToggle(key, point.name)}
                 />
               );
             })

@@ -29,17 +29,17 @@ export const Presenter: FC<PresenterProps> = () => {
   const jobCategories = useJobCategorysStore(selectJobCategorys);
   const offers = useOffersStore(selectOfferList);
   const points = usePointsStore(selectPoints);
-  const filteredOffers = offers
-    .filter((offer) =>
-      offer.categories.some(
-        (categoriesItem) => categoriesItem.id === jobcategory.id
-      )
-    )
-    .sort((offer1, offer2) => {
-      const endDate1 = new Date(offer1.deadline);
-      const endDate2 = new Date(offer2.deadline);
-      return endDate2.getTime() - endDate1.getTime();
-    });
+  // const filteredOffers = offers
+  //   .filter((offer) =>
+  //     offer.categories.some(
+  //       (categoriesItem) => categoriesItem.id === jobcategory.id
+  //     )
+  //   )
+  //   .sort((offer1, offer2) => {
+  //     const endDate1 = new Date(offer1.deadline);
+  //     const endDate2 = new Date(offer2.deadline);
+  //     return endDate2.getTime() - endDate1.getTime();
+  //   });
 
   const pageTitles = ['タグ', jobcategory.name];
 
@@ -101,7 +101,7 @@ export const Presenter: FC<PresenterProps> = () => {
             m={{ base: '30px auto auto' }}
             w={{ base: '300px', md: '700px', lg: '100%' }}
           >
-            {filteredOffers.map((offer) => {
+            {/* {filteredOffers.map((offer) => {
               const currentDate = new Date();
               const endDate = new Date(offer.deadline);
               const isEnd =
@@ -125,7 +125,7 @@ export const Presenter: FC<PresenterProps> = () => {
                   deadline={daysRemaining}
                 />
               );
-            })}
+            })} */}
           </Grid>
         </Box>
       </Box>

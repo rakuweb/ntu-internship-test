@@ -26,11 +26,11 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
   const points = usePointsStore(selectPoints);
   const offers = useOffersStore(selectOfferList);
 
-  const filteredOffers = offers.sort((offer1, offer2) => {
-    const endDate1 = new Date(offer1.deadline);
-    const endDate2 = new Date(offer2.deadline);
-    return endDate2.getTime() - endDate1.getTime();
-  });
+  // const filteredOffers = offers.sort((offer1, offer2) => {
+  //   const endDate1 = new Date(offer1.deadline);
+  //   const endDate2 = new Date(offer2.deadline);
+  //   return endDate2.getTime() - endDate1.getTime();
+  // });
 
   return (
     <div css={styles}>
@@ -90,7 +90,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
             m={{ base: '30px auto auto' }}
             w={{ base: '300px', md: '700px', lg: '100%' }}
           >
-            {filteredOffers.map((offer) => {
+            {/* {filteredOffers.map((offer) => {
               const currentDate = new Date();
               const endDate = new Date(offer.deadline);
               const isEnd =
@@ -114,7 +114,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
                   deadline={daysRemaining}
                 />
               );
-            })}
+            })} */}
           </Grid>
         </Box>
       </Box>

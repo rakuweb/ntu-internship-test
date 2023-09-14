@@ -37,25 +37,25 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const { liff } = useLiff();
   const setPrevPath = useAccountStore(selectSetPrevPath);
 
-  const signin = () => {
-    if (!liff) return;
-    if (!liff.isLoggedIn()) {
-      offer?.formUrl && setPrevPath(decodeURI(offer.formUrl));
-      window.localStorage.setItem('prevUrl', offer?.formUrl);
-      liff.login(); //{ redirectUri: redirectUri });
-    } else {
-      window.location.href = offer.formUrl;
-    }
-  };
-  const filteredOffers = offers.filter(
-    (offer) => offer.createdByid === company?.createdByid
-  );
+  // const signin = () => {
+  //   if (!liff) return;
+  //   if (!liff.isLoggedIn()) {
+  //     offer?.formUrl && setPrevPath(decodeURI(offer.formUrl));
+  //     window.localStorage.setItem('prevUrl', offer?.formUrl);
+  //     liff.login(); //{ redirectUri: redirectUri });
+  //   } else {
+  //     window.location.href = offer.formUrl;
+  //   }
+  // };
+  // const filteredOffers = offers.filter(
+  //   (offer) => offer.createdByid === company?.createdByid
+  // );
 
-  const currentDate = new Date();
-  const endDate = new Date(offer.deadline);
-  const isEnd = Math.ceil(
-    (endDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24)
-  );
+  // const currentDate = new Date();
+  // const endDate = new Date(offer.deadline);
+  // const isEnd = Math.ceil(
+  //   (endDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24)
+  // );
   return (
     <div css={styles}>
       <Box
@@ -220,7 +220,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             columnGap={{ lg: `32px` }}
             m={{ base: 'auto' }}
           >
-            {filteredOffers.slice(0, 3).map((offer) => (
+            {/* {filteredOffers.slice(0, 3).map((offer) => (
               <>
                 {isEnd <= 0 ? (
                   <OfferCardDead {...offer} />
@@ -228,7 +228,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   <OfferCard startDate={''} key={offer.id} {...offer} />
                 )}
               </>
-            ))}
+            ))} */}
           </Grid>
         </Box>
       </Box>
