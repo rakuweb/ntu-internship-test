@@ -10,12 +10,12 @@ export type ContainerProps = PresenterProps;
 
 // container
 export const Container: VFC<ContainerProps> = ({ ...props }) => {
-  const { handleSubmit } = useFormContext<JobFormSchema>();
+  // const { handleSubmit } = useFormContext<JobFormSchema>();
   const updateFormData = useJobFormStore((state) => state.updateFormData);
 
-  const onClick = handleSubmit(async (data) => {
-    updateFormData(data);
-  });
+  // const onClick = handleSubmit(async (data) => {
+  //   updateFormData(data);
+  // });
 
-  return <Presenter onClick={onClick} {...props} />;
+  return <Presenter {...props} />;
 };

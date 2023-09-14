@@ -25,13 +25,13 @@ export type PresenterProps = DataProps;
 // presenter
 export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
   const offer = useTargetOfferStore(selectTarget);
-  const {
-    register,
-    watch,
-    setValue,
-    formState: { errors },
-  } = useFormContext<JobFormSchema>();
-  console.log(errors);
+  // const {
+  //   register,
+  //   watch,
+  //   setValue,
+  //   formState: { errors },
+  // } = useFormContext<JobFormSchema>();
+  // console.log(errors);
 
   const list = [
     { title: `氏名` },
@@ -289,7 +289,7 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
                             ? 'none'
                             : 'block'
                         }
-                        {...register('name')}
+                        // {...register('name')}
                         borderColor={`#999`}
                         borderRadius={`0`}
                         w={{
@@ -309,7 +309,7 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
                         }}
                         ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
                       />
-                      {errors?.name?.message && (
+                      {/* {errors?.name?.message && (
                         <Box
                           mt={{ base: `0.25rem` }}
                           fontSize={{ base: `0.5rem`, md: `0.75rem` }}
@@ -326,7 +326,7 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
                         >
                           {errors.name.message}
                         </Box>
-                      )}
+                      )} */}
                     </Box>
                     <Box
                       display={index === 5 ? 'block' : 'none'}
@@ -337,7 +337,7 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
                         options={Options}
                         chakraStyles={chakraStylesDesktop}
                         placeholder={`学年を選択する`}
-                        {...register('grade')}
+                        // {...register('grade')}
                       />
                     </Box>
                     <RadioGroup
@@ -363,7 +363,7 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
                     >
                       <Textarea
                         display={index === 7 ? 'block' : 'none'}
-                        {...register('reason')}
+                        // {...register('reason')}
                         borderRadius={`0`}
                         borderColor={`#999`}
                         w={{
@@ -382,7 +382,7 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
                           lg: `${19 / 19.2}vw`,
                         }}
                       />
-                      {errors?.reason?.message && (
+                      {/* {errors?.reason?.message && (
                         <Box
                           mt={{ base: `0.25rem` }}
                           fontSize={{ base: `0.5rem`, md: `0.75rem` }}
@@ -391,11 +391,11 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
                         >
                           {errors.reason.message}
                         </Box>
-                      )}
+                      )} */}
                     </Box>
                     <Box display={index === 8 ? 'block' : 'none'}>
                       <Input
-                        {...register('hopeday1')}
+                        // {...register('hopeday1')}
                         borderColor={`#999`}
                         borderRadius={`0`}
                         w={{
@@ -415,7 +415,7 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
                         }}
                         mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
                       />
-                      {errors?.reason?.message && (
+                      {/* {errors?.reason?.message && (
                         <Box
                           mt={{ base: `0.25rem` }}
                           fontSize={{ base: `0.5rem`, md: `0.75rem` }}
@@ -424,9 +424,9 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
                         >
                           {errors.reason.message}
                         </Box>
-                      )}
+                      )} */}
                       <Input
-                        {...register('hopeday2')}
+                        // {...register('hopeday2')}
                         borderColor={`#999`}
                         borderRadius={`0`}
                         w={{
@@ -447,7 +447,7 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
                         mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
                       />
                       <Input
-                        {...register('hopeday3')}
+                        // {...register('hopeday3')}
                         borderColor={`#999`}
                         borderRadius={`0`}
                         w={{
