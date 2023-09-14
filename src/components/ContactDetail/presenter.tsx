@@ -1,5 +1,5 @@
 // import layer
-import { FC, useState,useCallback,useEffect } from 'react';
+import { FC, useState, useCallback, useEffect } from 'react';
 import { Box, Checkbox, Flex } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 import FormName from './FormName';
@@ -50,12 +50,12 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   ];
 
   const { executeRecaptcha } = useGoogleReCaptcha();
-  const handleReCaptchaVerify = useCallback(async () => {
-    if (!executeRecaptcha) {
-      return;
-    }
+  // const handleReCaptchaVerify = useCallback(async () => {
+  //   if (!executeRecaptcha) {
+  //     return;
+  //   }
 
-    const recaptchaToken = await executeRecaptcha('yourAction');
+  // const recaptchaToken = await executeRecaptcha('yourAction');
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
