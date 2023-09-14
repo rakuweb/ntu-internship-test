@@ -192,6 +192,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
 
           {jobTypeOptions.map((option) => (
             <Checkbox
+              key={option.label}
               mt={{ base: ``, md: `${3 / 19.2}vw`, lg: `${3 / 19.2}vw` }}
               ml={{ base: `${33 / 19.2}vw`, md: `${33 / 19.2}vw` }}
               mr={{ base: ``, md: `${14 / 19.2}vw`, lg: `${14 / 19.2}vw` }}
@@ -241,6 +242,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             const key = `period-${index}`;
             return (
               <MyButton
+                key={index}
                 active={!!active[key]}
                 index={index}
                 label={period}
@@ -252,6 +254,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             const key = `day-${index}`;
             return (
               <MyButton
+                key={index}
                 active={!!active[key]}
                 index={index}
                 label={day}
@@ -264,6 +267,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               const key = `offer-${offerIndex}-point-${pointIndex}`;
               return (
                 <MyButton
+                  key={offerIndex}
                   active={!!active[key]}
                   index={pointIndex}
                   label={point.name}
