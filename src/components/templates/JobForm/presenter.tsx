@@ -13,16 +13,24 @@ export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps> = () => {
-  const methods = useForm<JobFormSchema>({
-    defaultValues: { agreement: false },
-    resolver: yupResolver(jobFormSchema),
-  });
+  // const methods = useForm<JobFormSchema>({
+  //   defaultValues: { agreement: false },
+  //   resolver: yupResolver(jobFormSchema),
+  // });
   return (
     <>
       <Header />
+      {/*
       <FormProvider {...methods}>
-        <JobForm />
+       */}
+      <JobForm
+        onClick={() => {
+          console.log('test');
+        }}
+      />
+      {/*
       </FormProvider>
+        */}
       <Footer />
     </>
   );

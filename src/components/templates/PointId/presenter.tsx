@@ -23,7 +23,7 @@ export const Presenter: FC<PresenterProps> = () => {
   return (
     <>
       <Header />
-      <Point deadline={false} jobCategories={[]} points={[]} />
+      <Point deadline={false} />
       <Footer />
     </>
   );
