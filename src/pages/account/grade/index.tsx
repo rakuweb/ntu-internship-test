@@ -28,7 +28,7 @@ export const Index: NextPage = () => {
   const description = ``;
   const seo = parseSeo(title, description);
   const methods = useForm<RegisterGradeFormSchema>({
-    resolver: yupResolver(registerGradeFormSchema),
+    // resolver: yupResolver(registerGradeFormSchema),
   });
   const progress = useFormProgressStore((state) => state.progress);
   const [isClient, setIsClient] = useState(false);

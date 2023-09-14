@@ -1,4 +1,4 @@
-import { OfferEntity } from 'types/gql/graphql';
+import { OfferEntity } from 'types/offers-gql/graphql';
 import { ImageType } from 'lib/utils';
 
 export type Occupation = { id: string; name: string };

@@ -11,7 +11,7 @@ import {
   GetOffersAllQuery,
   GetOffersAllDocument,
   OfferEntity,
-} from 'types/gql/graphql';
+} from 'types/offers-gql/graphql';
 import { initializeApollo, initializeApollo_offer } from 'lib/apollo/client';
 import { UPDATE_INTERVAL } from '~/constants';
 import { selectSetOffers, useOffersStore } from 'features/offers';

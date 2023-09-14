@@ -22,6 +22,94 @@ export type Scalars = {
   Upload: any;
 };
 
+export type Advertisement = {
+  __typename?: 'Advertisement';
+  createdAt?: Maybe<Scalars['DateTime']>;
+  creative: UploadFileEntityResponse;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type AdvertisementArticle = {
+  __typename?: 'AdvertisementArticle';
+  banner: UploadFileEntityResponse;
+  body: Scalars['String'];
+  createdAt?: Maybe<Scalars['DateTime']>;
+  image: UploadFileEntityResponse;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  title: Scalars['String'];
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type AdvertisementArticleEntity = {
+  __typename?: 'AdvertisementArticleEntity';
+  attributes?: Maybe<AdvertisementArticle>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type AdvertisementArticleEntityResponse = {
+  __typename?: 'AdvertisementArticleEntityResponse';
+  data?: Maybe<AdvertisementArticleEntity>;
+};
+
+export type AdvertisementArticleEntityResponseCollection = {
+  __typename?: 'AdvertisementArticleEntityResponseCollection';
+  data: Array<AdvertisementArticleEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type AdvertisementArticleFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<AdvertisementArticleFiltersInput>>>;
+  body?: InputMaybe<StringFilterInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<AdvertisementArticleFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<AdvertisementArticleFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  title?: InputMaybe<StringFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type AdvertisementArticleInput = {
+  banner?: InputMaybe<Scalars['ID']>;
+  body?: InputMaybe<Scalars['String']>;
+  image?: InputMaybe<Scalars['ID']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  title?: InputMaybe<Scalars['String']>;
+};
+
+export type AdvertisementEntity = {
+  __typename?: 'AdvertisementEntity';
+  attributes?: Maybe<Advertisement>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type AdvertisementEntityResponse = {
+  __typename?: 'AdvertisementEntityResponse';
+  data?: Maybe<AdvertisementEntity>;
+};
+
+export type AdvertisementEntityResponseCollection = {
+  __typename?: 'AdvertisementEntityResponseCollection';
+  data: Array<AdvertisementEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type AdvertisementFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<AdvertisementFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<AdvertisementFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<AdvertisementFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type AdvertisementInput = {
+  creative?: InputMaybe<Scalars['ID']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
 export type BooleanFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>;
@@ -46,27 +134,189 @@ export type BooleanFilterInput = {
   startsWith?: InputMaybe<Scalars['Boolean']>;
 };
 
-export type ComponentAtmosphereAtmosphere = {
-  __typename?: 'ComponentAtmosphereAtmosphere';
+export type CafeSignage = {
+  __typename?: 'CafeSignage';
+  createdAt?: Maybe<Scalars['DateTime']>;
+  images?: Maybe<UploadFileRelationResponseCollection>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+  videos?: Maybe<UploadFileRelationResponseCollection>;
+};
+
+
+export type CafeSignageImagesArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type CafeSignageVideosArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type CafeSignageEntity = {
+  __typename?: 'CafeSignageEntity';
+  attributes?: Maybe<CafeSignage>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type CafeSignageEntityResponse = {
+  __typename?: 'CafeSignageEntityResponse';
+  data?: Maybe<CafeSignageEntity>;
+};
+
+export type CafeSignageInput = {
+  images?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  videos?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+};
+
+export type Company = {
+  __typename?: 'Company';
+  address?: Maybe<Scalars['String']>;
+  atmosphere?: Maybe<Scalars['String']>;
+  atmosphereimage?: Maybe<UploadFileRelationResponseCollection>;
+  business_details?: Maybe<Scalars['String']>;
+  company_id?: Maybe<Scalars['String']>;
+  cover_image?: Maybe<UploadFileEntityResponse>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  createdBy?: Maybe<Creator>;
+  description?: Maybe<Scalars['String']>;
+  employee_number?: Maybe<Scalars['String']>;
+  employee_statuses?: Maybe<EmployeeStatusRelationResponseCollection>;
+  employment?: Maybe<Scalars['String']>;
+  establishment_date?: Maybe<Scalars['Date']>;
+  founding?: Maybe<Scalars['String']>;
+  hp_url?: Maybe<Scalars['String']>;
+  industry_categories?: Maybe<IndustryCategoryRelationResponseCollection>;
+  jobtype?: Maybe<Scalars['String']>;
+  logo?: Maybe<UploadFileEntityResponse>;
+  map_url?: Maybe<Scalars['String']>;
+  message_for_students?: Maybe<Scalars['String']>;
+  mission?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  office_atmosphere?: Maybe<Scalars['String']>;
+  outline?: Maybe<Scalars['String']>;
+  point?: Maybe<Scalars['String']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  scale?: Maybe<Scalars['String']>;
+  tostudents?: Maybe<Scalars['String']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+  users_permissions_user?: Maybe<UsersPermissionsUserEntityResponse>;
+};
+
+
+export type CompanyAtmosphereimageArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type CompanyEmployee_StatusesArgs = {
+  filters?: InputMaybe<EmployeeStatusFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type CompanyIndustry_CategoriesArgs = {
+  filters?: InputMaybe<IndustryCategoryFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type CompanyEntity = {
+  __typename?: 'CompanyEntity';
+  attributes?: Maybe<Company>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type CompanyEntityResponse = {
+  __typename?: 'CompanyEntityResponse';
+  data?: Maybe<CompanyEntity>;
+};
+
+export type CompanyEntityResponseCollection = {
+  __typename?: 'CompanyEntityResponseCollection';
+  data: Array<CompanyEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type CompanyFiltersInput = {
+  address?: InputMaybe<StringFilterInput>;
+  and?: InputMaybe<Array<InputMaybe<CompanyFiltersInput>>>;
+  atmosphere?: InputMaybe<StringFilterInput>;
+  business_details?: InputMaybe<StringFilterInput>;
+  company_id?: InputMaybe<StringFilterInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  description?: InputMaybe<StringFilterInput>;
+  employee_number?: InputMaybe<StringFilterInput>;
+  employee_statuses?: InputMaybe<EmployeeStatusFiltersInput>;
+  employment?: InputMaybe<StringFilterInput>;
+  establishment_date?: InputMaybe<DateFilterInput>;
+  founding?: InputMaybe<StringFilterInput>;
+  hp_url?: InputMaybe<StringFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  industry_categories?: InputMaybe<IndustryCategoryFiltersInput>;
+  jobtype?: InputMaybe<StringFilterInput>;
+  map_url?: InputMaybe<StringFilterInput>;
+  message_for_students?: InputMaybe<StringFilterInput>;
+  mission?: InputMaybe<StringFilterInput>;
+  name?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<CompanyFiltersInput>;
+  office_atmosphere?: InputMaybe<StringFilterInput>;
+  or?: InputMaybe<Array<InputMaybe<CompanyFiltersInput>>>;
+  outline?: InputMaybe<StringFilterInput>;
+  point?: InputMaybe<StringFilterInput>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  scale?: InputMaybe<StringFilterInput>;
+  tostudents?: InputMaybe<StringFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+  users_permissions_user?: InputMaybe<UsersPermissionsUserFiltersInput>;
+};
+
+export type CompanyInput = {
+  address?: InputMaybe<Scalars['String']>;
+  atmosphere?: InputMaybe<Scalars['String']>;
+  atmosphereimage?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  business_details?: InputMaybe<Scalars['String']>;
+  company_id?: InputMaybe<Scalars['String']>;
+  cover_image?: InputMaybe<Scalars['ID']>;
+  description?: InputMaybe<Scalars['String']>;
+  employee_number?: InputMaybe<Scalars['String']>;
+  employee_statuses?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  employment?: InputMaybe<Scalars['String']>;
+  establishment_date?: InputMaybe<Scalars['Date']>;
+  founding?: InputMaybe<Scalars['String']>;
+  hp_url?: InputMaybe<Scalars['String']>;
+  industry_categories?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  jobtype?: InputMaybe<Scalars['String']>;
+  logo?: InputMaybe<Scalars['ID']>;
+  map_url?: InputMaybe<Scalars['String']>;
+  message_for_students?: InputMaybe<Scalars['String']>;
+  mission?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  office_atmosphere?: InputMaybe<Scalars['String']>;
+  outline?: InputMaybe<Scalars['String']>;
+  point?: InputMaybe<Scalars['String']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  scale?: InputMaybe<Scalars['String']>;
+  tostudents?: InputMaybe<Scalars['String']>;
+  users_permissions_user?: InputMaybe<Scalars['ID']>;
+};
+
+export type CompanyRelationResponseCollection = {
+  __typename?: 'CompanyRelationResponseCollection';
+  data: Array<CompanyEntity>;
+};
+
+export type ComponentJobSkill = {
+  __typename?: 'ComponentJobSkill';
   id: Scalars['ID'];
-  image?: Maybe<UploadFileEntityResponse>;
-  text?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-};
-
-export type ComponentAtmosphereAtmosphereFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentAtmosphereAtmosphereFiltersInput>>>;
-  not?: InputMaybe<ComponentAtmosphereAtmosphereFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<ComponentAtmosphereAtmosphereFiltersInput>>>;
-  text?: InputMaybe<StringFilterInput>;
-  title?: InputMaybe<StringFilterInput>;
-};
-
-export type ComponentAtmosphereAtmosphereInput = {
-  id?: InputMaybe<Scalars['ID']>;
-  image?: InputMaybe<Scalars['ID']>;
-  text?: InputMaybe<Scalars['String']>;
-  title?: InputMaybe<Scalars['String']>;
+  name: Scalars['String'];
+  test?: Maybe<Scalars['String']>;
 };
 
 export type Creator = {
@@ -124,6 +374,140 @@ export type DateTimeFilterInput = {
   startsWith?: InputMaybe<Scalars['DateTime']>;
 };
 
+export type EmployeeStatus = {
+  __typename?: 'EmployeeStatus';
+  companies?: Maybe<CompanyRelationResponseCollection>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  en_name: Scalars['String'];
+  name: Scalars['String'];
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+
+export type EmployeeStatusCompaniesArgs = {
+  filters?: InputMaybe<CompanyFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type EmployeeStatusEntity = {
+  __typename?: 'EmployeeStatusEntity';
+  attributes?: Maybe<EmployeeStatus>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type EmployeeStatusEntityResponse = {
+  __typename?: 'EmployeeStatusEntityResponse';
+  data?: Maybe<EmployeeStatusEntity>;
+};
+
+export type EmployeeStatusEntityResponseCollection = {
+  __typename?: 'EmployeeStatusEntityResponseCollection';
+  data: Array<EmployeeStatusEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type EmployeeStatusFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<EmployeeStatusFiltersInput>>>;
+  companies?: InputMaybe<CompanyFiltersInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  en_name?: InputMaybe<StringFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  name?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<EmployeeStatusFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<EmployeeStatusFiltersInput>>>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type EmployeeStatusInput = {
+  companies?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  en_name?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+export type EmployeeStatusRelationResponseCollection = {
+  __typename?: 'EmployeeStatusRelationResponseCollection';
+  data: Array<EmployeeStatusEntity>;
+};
+
+export type Entry = {
+  __typename?: 'Entry';
+  admission_year?: Maybe<Scalars['String']>;
+  birthday?: Maybe<Scalars['Date']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  department?: Maybe<Scalars['String']>;
+  email?: Maybe<Scalars['String']>;
+  furigana?: Maybe<Scalars['String']>;
+  gender?: Maybe<Scalars['String']>;
+  grade?: Maybe<Scalars['String']>;
+  graduate_date?: Maybe<Scalars['String']>;
+  line_id?: Maybe<Scalars['String']>;
+  message?: Maybe<Scalars['String']>;
+  name: Scalars['String'];
+  offer_id?: Maybe<Scalars['String']>;
+  phone?: Maybe<Scalars['String']>;
+  status?: Maybe<Scalars['String']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type EntryEntity = {
+  __typename?: 'EntryEntity';
+  attributes?: Maybe<Entry>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type EntryEntityResponse = {
+  __typename?: 'EntryEntityResponse';
+  data?: Maybe<EntryEntity>;
+};
+
+export type EntryEntityResponseCollection = {
+  __typename?: 'EntryEntityResponseCollection';
+  data: Array<EntryEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type EntryFiltersInput = {
+  admission_year?: InputMaybe<StringFilterInput>;
+  and?: InputMaybe<Array<InputMaybe<EntryFiltersInput>>>;
+  birthday?: InputMaybe<DateFilterInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  department?: InputMaybe<StringFilterInput>;
+  email?: InputMaybe<StringFilterInput>;
+  furigana?: InputMaybe<StringFilterInput>;
+  gender?: InputMaybe<StringFilterInput>;
+  grade?: InputMaybe<StringFilterInput>;
+  graduate_date?: InputMaybe<StringFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  line_id?: InputMaybe<StringFilterInput>;
+  message?: InputMaybe<StringFilterInput>;
+  name?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<EntryFiltersInput>;
+  offer_id?: InputMaybe<StringFilterInput>;
+  or?: InputMaybe<Array<InputMaybe<EntryFiltersInput>>>;
+  phone?: InputMaybe<StringFilterInput>;
+  status?: InputMaybe<StringFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type EntryInput = {
+  admission_year?: InputMaybe<Scalars['String']>;
+  birthday?: InputMaybe<Scalars['Date']>;
+  department?: InputMaybe<Scalars['String']>;
+  email?: InputMaybe<Scalars['String']>;
+  furigana?: InputMaybe<Scalars['String']>;
+  gender?: InputMaybe<Scalars['String']>;
+  grade?: InputMaybe<Scalars['String']>;
+  graduate_date?: InputMaybe<Scalars['String']>;
+  line_id?: InputMaybe<Scalars['String']>;
+  message?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  offer_id?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']>;
+  status?: InputMaybe<Scalars['String']>;
+};
+
 export type FileInfoInput = {
   alternativeText?: InputMaybe<Scalars['String']>;
   caption?: InputMaybe<Scalars['String']>;
@@ -154,7 +538,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = ComponentAtmosphereAtmosphere | I18NLocale | JobType | MinPeriod | MinWorkingday | Occupation | Offer | Point | Submission | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Advertisement | AdvertisementArticle | CafeSignage | Company | ComponentJobSkill | EmployeeStatus | Entry | I18NLocale | IndustryCategory | JobCategory | MailTemplate | News | Offer | Point | Signage | Student | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | VisitCount;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -216,6 +600,63 @@ export type IdFilterInput = {
   startsWith?: InputMaybe<Scalars['ID']>;
 };
 
+export type IndustryCategory = {
+  __typename?: 'IndustryCategory';
+  companies?: Maybe<CompanyRelationResponseCollection>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  en_name: Scalars['String'];
+  name: Scalars['String'];
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+
+export type IndustryCategoryCompaniesArgs = {
+  filters?: InputMaybe<CompanyFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type IndustryCategoryEntity = {
+  __typename?: 'IndustryCategoryEntity';
+  attributes?: Maybe<IndustryCategory>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type IndustryCategoryEntityResponse = {
+  __typename?: 'IndustryCategoryEntityResponse';
+  data?: Maybe<IndustryCategoryEntity>;
+};
+
+export type IndustryCategoryEntityResponseCollection = {
+  __typename?: 'IndustryCategoryEntityResponseCollection';
+  data: Array<IndustryCategoryEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type IndustryCategoryFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<IndustryCategoryFiltersInput>>>;
+  companies?: InputMaybe<CompanyFiltersInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  en_name?: InputMaybe<StringFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  name?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<IndustryCategoryFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<IndustryCategoryFiltersInput>>>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type IndustryCategoryInput = {
+  companies?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  en_name?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+export type IndustryCategoryRelationResponseCollection = {
+  __typename?: 'IndustryCategoryRelationResponseCollection';
+  data: Array<IndustryCategoryEntity>;
+};
+
 export type IntFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
@@ -264,162 +705,163 @@ export type JsonFilterInput = {
   startsWith?: InputMaybe<Scalars['JSON']>;
 };
 
-export type JobType = {
-  __typename?: 'JobType';
+export type JobCategory = {
+  __typename?: 'JobCategory';
   createdAt?: Maybe<Scalars['DateTime']>;
-  gift?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  publishedAt?: Maybe<Scalars['DateTime']>;
+  en_name: Scalars['String'];
+  name: Scalars['String'];
+  offers?: Maybe<OfferRelationResponseCollection>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-export type JobTypeEntity = {
-  __typename?: 'JobTypeEntity';
-  attributes?: Maybe<JobType>;
+
+export type JobCategoryOffersArgs = {
+  filters?: InputMaybe<OfferFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type JobCategoryEntity = {
+  __typename?: 'JobCategoryEntity';
+  attributes?: Maybe<JobCategory>;
   id?: Maybe<Scalars['ID']>;
 };
 
-export type JobTypeEntityResponse = {
-  __typename?: 'JobTypeEntityResponse';
-  data?: Maybe<JobTypeEntity>;
+export type JobCategoryEntityResponse = {
+  __typename?: 'JobCategoryEntityResponse';
+  data?: Maybe<JobCategoryEntity>;
 };
 
-export type JobTypeEntityResponseCollection = {
-  __typename?: 'JobTypeEntityResponseCollection';
-  data: Array<JobTypeEntity>;
+export type JobCategoryEntityResponseCollection = {
+  __typename?: 'JobCategoryEntityResponseCollection';
+  data: Array<JobCategoryEntity>;
   meta: ResponseCollectionMeta;
 };
 
-export type JobTypeFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<JobTypeFiltersInput>>>;
+export type JobCategoryFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<JobCategoryFiltersInput>>>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
-  gift?: InputMaybe<StringFilterInput>;
+  en_name?: InputMaybe<StringFilterInput>;
   id?: InputMaybe<IdFilterInput>;
   name?: InputMaybe<StringFilterInput>;
-  not?: InputMaybe<JobTypeFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<JobTypeFiltersInput>>>;
-  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  not?: InputMaybe<JobCategoryFiltersInput>;
+  offers?: InputMaybe<OfferFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<JobCategoryFiltersInput>>>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
-export type JobTypeInput = {
-  gift?: InputMaybe<Scalars['String']>;
+export type JobCategoryInput = {
+  en_name?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
-  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  offers?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 };
 
-export type MinPeriod = {
-  __typename?: 'MinPeriod';
+export type JobCategoryRelationResponseCollection = {
+  __typename?: 'JobCategoryRelationResponseCollection';
+  data: Array<JobCategoryEntity>;
+};
+
+export type MailTemplate = {
+  __typename?: 'MailTemplate';
   createdAt?: Maybe<Scalars['DateTime']>;
-  period?: Maybe<Scalars['String']>;
-  publishedAt?: Maybe<Scalars['DateTime']>;
+  from?: Maybe<Scalars['String']>;
+  html: Scalars['String'];
+  name: Scalars['String'];
+  reply_to?: Maybe<Scalars['String']>;
+  subject: Scalars['String'];
+  text: Scalars['String'];
+  to?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-export type MinPeriodEntity = {
-  __typename?: 'MinPeriodEntity';
-  attributes?: Maybe<MinPeriod>;
+export type MailTemplateEntity = {
+  __typename?: 'MailTemplateEntity';
+  attributes?: Maybe<MailTemplate>;
   id?: Maybe<Scalars['ID']>;
 };
 
-export type MinPeriodEntityResponse = {
-  __typename?: 'MinPeriodEntityResponse';
-  data?: Maybe<MinPeriodEntity>;
+export type MailTemplateEntityResponse = {
+  __typename?: 'MailTemplateEntityResponse';
+  data?: Maybe<MailTemplateEntity>;
 };
 
-export type MinPeriodEntityResponseCollection = {
-  __typename?: 'MinPeriodEntityResponseCollection';
-  data: Array<MinPeriodEntity>;
+export type MailTemplateEntityResponseCollection = {
+  __typename?: 'MailTemplateEntityResponseCollection';
+  data: Array<MailTemplateEntity>;
   meta: ResponseCollectionMeta;
 };
 
-export type MinPeriodFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<MinPeriodFiltersInput>>>;
+export type MailTemplateFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<MailTemplateFiltersInput>>>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
+  from?: InputMaybe<StringFilterInput>;
+  html?: InputMaybe<StringFilterInput>;
   id?: InputMaybe<IdFilterInput>;
-  not?: InputMaybe<MinPeriodFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<MinPeriodFiltersInput>>>;
-  period?: InputMaybe<StringFilterInput>;
-  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  name?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<MailTemplateFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<MailTemplateFiltersInput>>>;
+  reply_to?: InputMaybe<StringFilterInput>;
+  subject?: InputMaybe<StringFilterInput>;
+  text?: InputMaybe<StringFilterInput>;
+  to?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
-export type MinPeriodInput = {
-  period?: InputMaybe<Scalars['String']>;
-  publishedAt?: InputMaybe<Scalars['DateTime']>;
-};
-
-export type MinWorkingday = {
-  __typename?: 'MinWorkingday';
-  createdAt?: Maybe<Scalars['DateTime']>;
-  days?: Maybe<Scalars['String']>;
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
-};
-
-export type MinWorkingdayEntity = {
-  __typename?: 'MinWorkingdayEntity';
-  attributes?: Maybe<MinWorkingday>;
-  id?: Maybe<Scalars['ID']>;
-};
-
-export type MinWorkingdayEntityResponse = {
-  __typename?: 'MinWorkingdayEntityResponse';
-  data?: Maybe<MinWorkingdayEntity>;
-};
-
-export type MinWorkingdayEntityResponseCollection = {
-  __typename?: 'MinWorkingdayEntityResponseCollection';
-  data: Array<MinWorkingdayEntity>;
-  meta: ResponseCollectionMeta;
-};
-
-export type MinWorkingdayFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<MinWorkingdayFiltersInput>>>;
-  createdAt?: InputMaybe<DateTimeFilterInput>;
-  days?: InputMaybe<StringFilterInput>;
-  id?: InputMaybe<IdFilterInput>;
-  not?: InputMaybe<MinWorkingdayFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<MinWorkingdayFiltersInput>>>;
-  publishedAt?: InputMaybe<DateTimeFilterInput>;
-  updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-
-export type MinWorkingdayInput = {
-  days?: InputMaybe<Scalars['String']>;
-  publishedAt?: InputMaybe<Scalars['DateTime']>;
+export type MailTemplateInput = {
+  from?: InputMaybe<Scalars['String']>;
+  html?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  reply_to?: InputMaybe<Scalars['String']>;
+  subject?: InputMaybe<Scalars['String']>;
+  text?: InputMaybe<Scalars['String']>;
+  to?: InputMaybe<Scalars['String']>;
 };
 
 export type Mutation = {
   __typename?: 'Mutation';
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
-  createJobType?: Maybe<JobTypeEntityResponse>;
-  createMinPeriod?: Maybe<MinPeriodEntityResponse>;
-  createMinWorkingday?: Maybe<MinWorkingdayEntityResponse>;
-  createOccupation?: Maybe<OccupationEntityResponse>;
+  createAdvertisement?: Maybe<AdvertisementEntityResponse>;
+  createAdvertisementArticle?: Maybe<AdvertisementArticleEntityResponse>;
+  createCompany?: Maybe<CompanyEntityResponse>;
+  createEmployeeStatus?: Maybe<EmployeeStatusEntityResponse>;
+  createEntry?: Maybe<EntryEntityResponse>;
+  createIndustryCategory?: Maybe<IndustryCategoryEntityResponse>;
+  createJobCategory?: Maybe<JobCategoryEntityResponse>;
+  createMailTemplate?: Maybe<MailTemplateEntityResponse>;
+  createNews?: Maybe<NewsEntityResponse>;
   createOffer?: Maybe<OfferEntityResponse>;
   createPoint?: Maybe<PointEntityResponse>;
-  createSubmission?: Maybe<SubmissionEntityResponse>;
+  createStudent?: Maybe<StudentEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   createUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Create a new role */
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
-  deleteJobType?: Maybe<JobTypeEntityResponse>;
-  deleteMinPeriod?: Maybe<MinPeriodEntityResponse>;
-  deleteMinWorkingday?: Maybe<MinWorkingdayEntityResponse>;
-  deleteOccupation?: Maybe<OccupationEntityResponse>;
+  createVisitCount?: Maybe<VisitCountEntityResponse>;
+  deleteAdvertisement?: Maybe<AdvertisementEntityResponse>;
+  deleteAdvertisementArticle?: Maybe<AdvertisementArticleEntityResponse>;
+  deleteCafeSignage?: Maybe<CafeSignageEntityResponse>;
+  deleteCompany?: Maybe<CompanyEntityResponse>;
+  deleteEmployeeStatus?: Maybe<EmployeeStatusEntityResponse>;
+  deleteEntry?: Maybe<EntryEntityResponse>;
+  deleteIndustryCategory?: Maybe<IndustryCategoryEntityResponse>;
+  deleteJobCategory?: Maybe<JobCategoryEntityResponse>;
+  deleteMailTemplate?: Maybe<MailTemplateEntityResponse>;
+  deleteNews?: Maybe<NewsEntityResponse>;
   deleteOffer?: Maybe<OfferEntityResponse>;
   deletePoint?: Maybe<PointEntityResponse>;
-  deleteSubmission?: Maybe<SubmissionEntityResponse>;
+  deleteSignage?: Maybe<SignageEntityResponse>;
+  deleteStudent?: Maybe<StudentEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Delete an existing role */
   deleteUsersPermissionsRole?: Maybe<UsersPermissionsDeleteRolePayload>;
   /** Delete an existing user */
   deleteUsersPermissionsUser: UsersPermissionsUserEntityResponse;
+  deleteVisitCount?: Maybe<VisitCountEntityResponse>;
   /** Confirm an email users email address */
   emailConfirmation?: Maybe<UsersPermissionsLoginPayload>;
   /** Request a reset password token */
@@ -431,20 +873,28 @@ export type Mutation = {
   removeFile?: Maybe<UploadFileEntityResponse>;
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
+  updateAdvertisement?: Maybe<AdvertisementEntityResponse>;
+  updateAdvertisementArticle?: Maybe<AdvertisementArticleEntityResponse>;
+  updateCafeSignage?: Maybe<CafeSignageEntityResponse>;
+  updateCompany?: Maybe<CompanyEntityResponse>;
+  updateEmployeeStatus?: Maybe<EmployeeStatusEntityResponse>;
+  updateEntry?: Maybe<EntryEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
-  updateJobType?: Maybe<JobTypeEntityResponse>;
-  updateMinPeriod?: Maybe<MinPeriodEntityResponse>;
-  updateMinWorkingday?: Maybe<MinWorkingdayEntityResponse>;
-  updateOccupation?: Maybe<OccupationEntityResponse>;
+  updateIndustryCategory?: Maybe<IndustryCategoryEntityResponse>;
+  updateJobCategory?: Maybe<JobCategoryEntityResponse>;
+  updateMailTemplate?: Maybe<MailTemplateEntityResponse>;
+  updateNews?: Maybe<NewsEntityResponse>;
   updateOffer?: Maybe<OfferEntityResponse>;
   updatePoint?: Maybe<PointEntityResponse>;
-  updateSubmission?: Maybe<SubmissionEntityResponse>;
+  updateSignage?: Maybe<SignageEntityResponse>;
+  updateStudent?: Maybe<StudentEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Update an existing role */
   updateUsersPermissionsRole?: Maybe<UsersPermissionsUpdateRolePayload>;
   /** Update an existing user */
   updateUsersPermissionsUser: UsersPermissionsUserEntityResponse;
+  updateVisitCount?: Maybe<VisitCountEntityResponse>;
   upload: UploadFileEntityResponse;
 };
 
@@ -456,23 +906,48 @@ export type MutationChangePasswordArgs = {
 };
 
 
-export type MutationCreateJobTypeArgs = {
-  data: JobTypeInput;
+export type MutationCreateAdvertisementArgs = {
+  data: AdvertisementInput;
 };
 
 
-export type MutationCreateMinPeriodArgs = {
-  data: MinPeriodInput;
+export type MutationCreateAdvertisementArticleArgs = {
+  data: AdvertisementArticleInput;
 };
 
 
-export type MutationCreateMinWorkingdayArgs = {
-  data: MinWorkingdayInput;
+export type MutationCreateCompanyArgs = {
+  data: CompanyInput;
 };
 
 
-export type MutationCreateOccupationArgs = {
-  data: OccupationInput;
+export type MutationCreateEmployeeStatusArgs = {
+  data: EmployeeStatusInput;
+};
+
+
+export type MutationCreateEntryArgs = {
+  data: EntryInput;
+};
+
+
+export type MutationCreateIndustryCategoryArgs = {
+  data: IndustryCategoryInput;
+};
+
+
+export type MutationCreateJobCategoryArgs = {
+  data: JobCategoryInput;
+};
+
+
+export type MutationCreateMailTemplateArgs = {
+  data: MailTemplateInput;
+};
+
+
+export type MutationCreateNewsArgs = {
+  data: NewsInput;
 };
 
 
@@ -486,8 +961,8 @@ export type MutationCreatePointArgs = {
 };
 
 
-export type MutationCreateSubmissionArgs = {
-  data: SubmissionInput;
+export type MutationCreateStudentArgs = {
+  data: StudentInput;
 };
 
 
@@ -511,22 +986,52 @@ export type MutationCreateUsersPermissionsUserArgs = {
 };
 
 
-export type MutationDeleteJobTypeArgs = {
+export type MutationCreateVisitCountArgs = {
+  data: VisitCountInput;
+};
+
+
+export type MutationDeleteAdvertisementArgs = {
   id: Scalars['ID'];
 };
 
 
-export type MutationDeleteMinPeriodArgs = {
+export type MutationDeleteAdvertisementArticleArgs = {
   id: Scalars['ID'];
 };
 
 
-export type MutationDeleteMinWorkingdayArgs = {
+export type MutationDeleteCompanyArgs = {
   id: Scalars['ID'];
 };
 
 
-export type MutationDeleteOccupationArgs = {
+export type MutationDeleteEmployeeStatusArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDeleteEntryArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDeleteIndustryCategoryArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDeleteJobCategoryArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDeleteMailTemplateArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDeleteNewsArgs = {
   id: Scalars['ID'];
 };
 
@@ -541,7 +1046,7 @@ export type MutationDeletePointArgs = {
 };
 
 
-export type MutationDeleteSubmissionArgs = {
+export type MutationDeleteStudentArgs = {
   id: Scalars['ID'];
 };
 
@@ -562,6 +1067,11 @@ export type MutationDeleteUsersPermissionsRoleArgs = {
 
 
 export type MutationDeleteUsersPermissionsUserArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDeleteVisitCountArgs = {
   id: Scalars['ID'];
 };
 
@@ -606,32 +1116,67 @@ export type MutationResetPasswordArgs = {
 };
 
 
+export type MutationUpdateAdvertisementArgs = {
+  data: AdvertisementInput;
+  id: Scalars['ID'];
+};
+
+
+export type MutationUpdateAdvertisementArticleArgs = {
+  data: AdvertisementArticleInput;
+  id: Scalars['ID'];
+};
+
+
+export type MutationUpdateCafeSignageArgs = {
+  data: CafeSignageInput;
+};
+
+
+export type MutationUpdateCompanyArgs = {
+  data: CompanyInput;
+  id: Scalars['ID'];
+};
+
+
+export type MutationUpdateEmployeeStatusArgs = {
+  data: EmployeeStatusInput;
+  id: Scalars['ID'];
+};
+
+
+export type MutationUpdateEntryArgs = {
+  data: EntryInput;
+  id: Scalars['ID'];
+};
+
+
 export type MutationUpdateFileInfoArgs = {
   id: Scalars['ID'];
   info?: InputMaybe<FileInfoInput>;
 };
 
 
-export type MutationUpdateJobTypeArgs = {
-  data: JobTypeInput;
+export type MutationUpdateIndustryCategoryArgs = {
+  data: IndustryCategoryInput;
   id: Scalars['ID'];
 };
 
 
-export type MutationUpdateMinPeriodArgs = {
-  data: MinPeriodInput;
+export type MutationUpdateJobCategoryArgs = {
+  data: JobCategoryInput;
   id: Scalars['ID'];
 };
 
 
-export type MutationUpdateMinWorkingdayArgs = {
-  data: MinWorkingdayInput;
+export type MutationUpdateMailTemplateArgs = {
+  data: MailTemplateInput;
   id: Scalars['ID'];
 };
 
 
-export type MutationUpdateOccupationArgs = {
-  data: OccupationInput;
+export type MutationUpdateNewsArgs = {
+  data: NewsInput;
   id: Scalars['ID'];
 };
 
@@ -648,8 +1193,13 @@ export type MutationUpdatePointArgs = {
 };
 
 
-export type MutationUpdateSubmissionArgs = {
-  data: SubmissionInput;
+export type MutationUpdateSignageArgs = {
+  data: SignageInput;
+};
+
+
+export type MutationUpdateStudentArgs = {
+  data: StudentInput;
   id: Scalars['ID'];
 };
 
@@ -678,6 +1228,12 @@ export type MutationUpdateUsersPermissionsUserArgs = {
 };
 
 
+export type MutationUpdateVisitCountArgs = {
+  data: VisitCountInput;
+  id: Scalars['ID'];
+};
+
+
 export type MutationUploadArgs = {
   field?: InputMaybe<Scalars['String']>;
   file: Scalars['Upload'];
@@ -686,94 +1242,102 @@ export type MutationUploadArgs = {
   refId?: InputMaybe<Scalars['ID']>;
 };
 
-export type Occupation = {
-  __typename?: 'Occupation';
+export type News = {
+  __typename?: 'News';
+  content: Scalars['String'];
   createdAt?: Maybe<Scalars['DateTime']>;
-  name?: Maybe<Scalars['String']>;
+  date: Scalars['DateTime'];
+  image?: Maybe<UploadFileEntityResponse>;
   publishedAt?: Maybe<Scalars['DateTime']>;
+  title: Scalars['String'];
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-export type OccupationEntity = {
-  __typename?: 'OccupationEntity';
-  attributes?: Maybe<Occupation>;
+export type NewsEntity = {
+  __typename?: 'NewsEntity';
+  attributes?: Maybe<News>;
   id?: Maybe<Scalars['ID']>;
 };
 
-export type OccupationEntityResponse = {
-  __typename?: 'OccupationEntityResponse';
-  data?: Maybe<OccupationEntity>;
+export type NewsEntityResponse = {
+  __typename?: 'NewsEntityResponse';
+  data?: Maybe<NewsEntity>;
 };
 
-export type OccupationEntityResponseCollection = {
-  __typename?: 'OccupationEntityResponseCollection';
-  data: Array<OccupationEntity>;
+export type NewsEntityResponseCollection = {
+  __typename?: 'NewsEntityResponseCollection';
+  data: Array<NewsEntity>;
   meta: ResponseCollectionMeta;
 };
 
-export type OccupationFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<OccupationFiltersInput>>>;
+export type NewsFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<NewsFiltersInput>>>;
+  content?: InputMaybe<StringFilterInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
+  date?: InputMaybe<DateTimeFilterInput>;
   id?: InputMaybe<IdFilterInput>;
-  name?: InputMaybe<StringFilterInput>;
-  not?: InputMaybe<OccupationFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<OccupationFiltersInput>>>;
+  not?: InputMaybe<NewsFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<NewsFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
+  title?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
-export type OccupationInput = {
-  name?: InputMaybe<Scalars['String']>;
+export type NewsInput = {
+  content?: InputMaybe<Scalars['String']>;
+  date?: InputMaybe<Scalars['DateTime']>;
+  image?: InputMaybe<Scalars['ID']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
+  title?: InputMaybe<Scalars['String']>;
 };
 
 export type Offer = {
   __typename?: 'Offer';
-  atmosphere?: Maybe<Array<Maybe<ComponentAtmosphereAtmosphere>>>;
+  about_company?: Maybe<Scalars['String']>;
+  about_job: Scalars['String'];
+  application_number?: Maybe<Scalars['Int']>;
   createdAt?: Maybe<Scalars['DateTime']>;
   createdBy?: Maybe<Creator>;
-  email_address: Scalars['String'];
-  end_at: Scalars['Date'];
+  deadline: Scalars['Date'];
+  description: Scalars['String'];
+  end_at?: Maybe<Scalars['Date']>;
   flow?: Maybe<Scalars['String']>;
-  holiday?: Maybe<Scalars['String']>;
+  form_url: Scalars['String'];
+  gallery?: Maybe<UploadFileRelationResponseCollection>;
   hourly_wage: Scalars['String'];
-  hourly_wage_detail?: Maybe<Scalars['String']>;
-  hours_detail?: Maybe<Scalars['String']>;
-  hours_short: Scalars['String'];
   image: UploadFileEntityResponse;
-  interview_location: Scalars['String'];
-  job_description: Scalars['String'];
-  job_type?: Maybe<JobTypeEntityResponse>;
-  min_period?: Maybe<MinPeriodEntityResponse>;
-  min_working_hours: Scalars['String'];
-  min_workingday?: Maybe<MinWorkingdayEntityResponse>;
-  occupation?: Maybe<OccupationEntityResponse>;
-  people: Scalars['String'];
-  place_detail: Scalars['String'];
-  place_short: Scalars['String'];
-  points?: Maybe<PointRelationResponseCollection>;
+  job_categories?: Maybe<JobCategoryRelationResponseCollection>;
+  job_description?: Maybe<Scalars['String']>;
+  job_points?: Maybe<PointRelationResponseCollection>;
+  people?: Maybe<Scalars['String']>;
+  place: Scalars['String'];
   publishedAt?: Maybe<Scalars['DateTime']>;
-  qualification?: Maybe<Scalars['String']>;
-  shift?: Maybe<Scalars['String']>;
-  start_at: Scalars['Date'];
+  qualification: Scalars['String'];
+  recruitment_terms: Scalars['String'];
+  start_at?: Maybe<Scalars['Date']>;
   target: Scalars['String'];
   title: Scalars['String'];
   updatedAt?: Maybe<Scalars['DateTime']>;
-  url?: Maybe<Scalars['String']>;
 };
 
 
-export type OfferAtmosphereArgs = {
-  filters?: InputMaybe<ComponentAtmosphereAtmosphereFiltersInput>;
+export type OfferGalleryArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
-export type OfferPointsArgs = {
+export type OfferJob_CategoriesArgs = {
+  filters?: InputMaybe<JobCategoryFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type OfferJob_PointsArgs = {
   filters?: InputMaybe<PointFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
@@ -795,70 +1359,62 @@ export type OfferEntityResponseCollection = {
 };
 
 export type OfferFiltersInput = {
+  about_company?: InputMaybe<StringFilterInput>;
+  about_job?: InputMaybe<StringFilterInput>;
   and?: InputMaybe<Array<InputMaybe<OfferFiltersInput>>>;
-  atmosphere?: InputMaybe<ComponentAtmosphereAtmosphereFiltersInput>;
+  application_number?: InputMaybe<IntFilterInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
-  email_address?: InputMaybe<StringFilterInput>;
+  deadline?: InputMaybe<DateFilterInput>;
+  description?: InputMaybe<StringFilterInput>;
   end_at?: InputMaybe<DateFilterInput>;
   flow?: InputMaybe<StringFilterInput>;
-  holiday?: InputMaybe<StringFilterInput>;
+  form_url?: InputMaybe<StringFilterInput>;
   hourly_wage?: InputMaybe<StringFilterInput>;
-  hourly_wage_detail?: InputMaybe<StringFilterInput>;
-  hours_detail?: InputMaybe<StringFilterInput>;
-  hours_short?: InputMaybe<StringFilterInput>;
   id?: InputMaybe<IdFilterInput>;
-  interview_location?: InputMaybe<StringFilterInput>;
+  job_categories?: InputMaybe<JobCategoryFiltersInput>;
   job_description?: InputMaybe<StringFilterInput>;
-  job_type?: InputMaybe<JobTypeFiltersInput>;
-  min_period?: InputMaybe<MinPeriodFiltersInput>;
-  min_working_hours?: InputMaybe<StringFilterInput>;
-  min_workingday?: InputMaybe<MinWorkingdayFiltersInput>;
+  job_points?: InputMaybe<PointFiltersInput>;
   not?: InputMaybe<OfferFiltersInput>;
-  occupation?: InputMaybe<OccupationFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<OfferFiltersInput>>>;
   people?: InputMaybe<StringFilterInput>;
-  place_detail?: InputMaybe<StringFilterInput>;
-  place_short?: InputMaybe<StringFilterInput>;
-  points?: InputMaybe<PointFiltersInput>;
+  place?: InputMaybe<StringFilterInput>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
   qualification?: InputMaybe<StringFilterInput>;
-  shift?: InputMaybe<StringFilterInput>;
+  recruitment_terms?: InputMaybe<StringFilterInput>;
   start_at?: InputMaybe<DateFilterInput>;
   target?: InputMaybe<StringFilterInput>;
   title?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
-  url?: InputMaybe<StringFilterInput>;
 };
 
 export type OfferInput = {
-  atmosphere?: InputMaybe<Array<InputMaybe<ComponentAtmosphereAtmosphereInput>>>;
-  email_address?: InputMaybe<Scalars['String']>;
+  about_company?: InputMaybe<Scalars['String']>;
+  about_job?: InputMaybe<Scalars['String']>;
+  application_number?: InputMaybe<Scalars['Int']>;
+  deadline?: InputMaybe<Scalars['Date']>;
+  description?: InputMaybe<Scalars['String']>;
   end_at?: InputMaybe<Scalars['Date']>;
   flow?: InputMaybe<Scalars['String']>;
-  holiday?: InputMaybe<Scalars['String']>;
+  form_url?: InputMaybe<Scalars['String']>;
+  gallery?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   hourly_wage?: InputMaybe<Scalars['String']>;
-  hourly_wage_detail?: InputMaybe<Scalars['String']>;
-  hours_detail?: InputMaybe<Scalars['String']>;
-  hours_short?: InputMaybe<Scalars['String']>;
   image?: InputMaybe<Scalars['ID']>;
-  interview_location?: InputMaybe<Scalars['String']>;
+  job_categories?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   job_description?: InputMaybe<Scalars['String']>;
-  job_type?: InputMaybe<Scalars['ID']>;
-  min_period?: InputMaybe<Scalars['ID']>;
-  min_working_hours?: InputMaybe<Scalars['String']>;
-  min_workingday?: InputMaybe<Scalars['ID']>;
-  occupation?: InputMaybe<Scalars['ID']>;
+  job_points?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   people?: InputMaybe<Scalars['String']>;
-  place_detail?: InputMaybe<Scalars['String']>;
-  place_short?: InputMaybe<Scalars['String']>;
-  points?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  place?: InputMaybe<Scalars['String']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   qualification?: InputMaybe<Scalars['String']>;
-  shift?: InputMaybe<Scalars['String']>;
+  recruitment_terms?: InputMaybe<Scalars['String']>;
   start_at?: InputMaybe<Scalars['Date']>;
   target?: InputMaybe<Scalars['String']>;
   title?: InputMaybe<Scalars['String']>;
-  url?: InputMaybe<Scalars['String']>;
+};
+
+export type OfferRelationResponseCollection = {
+  __typename?: 'OfferRelationResponseCollection';
+  data: Array<OfferEntity>;
 };
 
 export type Pagination = {
@@ -879,10 +1435,18 @@ export type PaginationArg = {
 export type Point = {
   __typename?: 'Point';
   createdAt?: Maybe<Scalars['DateTime']>;
-  name?: Maybe<Scalars['String']>;
-  offer?: Maybe<OfferEntityResponse>;
-  publishedAt?: Maybe<Scalars['DateTime']>;
+  en_name: Scalars['String'];
+  name: Scalars['String'];
+  offers?: Maybe<OfferRelationResponseCollection>;
   updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+
+export type PointOffersArgs = {
+  filters?: InputMaybe<OfferFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 export type PointEntity = {
@@ -905,19 +1469,19 @@ export type PointEntityResponseCollection = {
 export type PointFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<PointFiltersInput>>>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
+  en_name?: InputMaybe<StringFilterInput>;
   id?: InputMaybe<IdFilterInput>;
   name?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<PointFiltersInput>;
-  offer?: InputMaybe<OfferFiltersInput>;
+  offers?: InputMaybe<OfferFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<PointFiltersInput>>>;
-  publishedAt?: InputMaybe<DateTimeFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
 export type PointInput = {
+  en_name?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
-  offer?: InputMaybe<Scalars['ID']>;
-  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  offers?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 };
 
 export type PointRelationResponseCollection = {
@@ -932,23 +1496,35 @@ export enum PublicationState {
 
 export type Query = {
   __typename?: 'Query';
+  advertisement?: Maybe<AdvertisementEntityResponse>;
+  advertisementArticle?: Maybe<AdvertisementArticleEntityResponse>;
+  advertisementArticles?: Maybe<AdvertisementArticleEntityResponseCollection>;
+  advertisements?: Maybe<AdvertisementEntityResponseCollection>;
+  cafeSignage?: Maybe<CafeSignageEntityResponse>;
+  companies?: Maybe<CompanyEntityResponseCollection>;
+  company?: Maybe<CompanyEntityResponse>;
+  employeeStatus?: Maybe<EmployeeStatusEntityResponse>;
+  employeeStatuses?: Maybe<EmployeeStatusEntityResponseCollection>;
+  entries?: Maybe<EntryEntityResponseCollection>;
+  entry?: Maybe<EntryEntityResponse>;
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
-  jobType?: Maybe<JobTypeEntityResponse>;
-  jobTypes?: Maybe<JobTypeEntityResponseCollection>;
+  industryCategories?: Maybe<IndustryCategoryEntityResponseCollection>;
+  industryCategory?: Maybe<IndustryCategoryEntityResponse>;
+  jobCategories?: Maybe<JobCategoryEntityResponseCollection>;
+  jobCategory?: Maybe<JobCategoryEntityResponse>;
+  mailTemplate?: Maybe<MailTemplateEntityResponse>;
+  mailTemplates?: Maybe<MailTemplateEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
-  minPeriod?: Maybe<MinPeriodEntityResponse>;
-  minPeriods?: Maybe<MinPeriodEntityResponseCollection>;
-  minWorkingday?: Maybe<MinWorkingdayEntityResponse>;
-  minWorkingdays?: Maybe<MinWorkingdayEntityResponseCollection>;
-  occupation?: Maybe<OccupationEntityResponse>;
-  occupations?: Maybe<OccupationEntityResponseCollection>;
+  news?: Maybe<NewsEntityResponse>;
+  newses?: Maybe<NewsEntityResponseCollection>;
   offer?: Maybe<OfferEntityResponse>;
   offers?: Maybe<OfferEntityResponseCollection>;
   point?: Maybe<PointEntityResponse>;
   points?: Maybe<PointEntityResponseCollection>;
-  submission?: Maybe<SubmissionEntityResponse>;
-  submissions?: Maybe<SubmissionEntityResponseCollection>;
+  signage?: Maybe<SignageEntityResponse>;
+  student?: Maybe<StudentEntityResponse>;
+  students?: Maybe<StudentEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
   uploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -957,6 +1533,71 @@ export type Query = {
   usersPermissionsRoles?: Maybe<UsersPermissionsRoleEntityResponseCollection>;
   usersPermissionsUser?: Maybe<UsersPermissionsUserEntityResponse>;
   usersPermissionsUsers?: Maybe<UsersPermissionsUserEntityResponseCollection>;
+  visitCount?: Maybe<VisitCountEntityResponse>;
+  visitCounts?: Maybe<VisitCountEntityResponseCollection>;
+};
+
+
+export type QueryAdvertisementArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryAdvertisementArticleArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryAdvertisementArticlesArgs = {
+  filters?: InputMaybe<AdvertisementArticleFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryAdvertisementsArgs = {
+  filters?: InputMaybe<AdvertisementFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryCompaniesArgs = {
+  filters?: InputMaybe<CompanyFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryCompanyArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryEmployeeStatusArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryEmployeeStatusesArgs = {
+  filters?: InputMaybe<EmployeeStatusFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryEntriesArgs = {
+  filters?: InputMaybe<EntryFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryEntryArgs = {
+  id?: InputMaybe<Scalars['ID']>;
 };
 
 
@@ -972,52 +1613,49 @@ export type QueryI18NLocalesArgs = {
 };
 
 
-export type QueryJobTypeArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-};
-
-
-export type QueryJobTypesArgs = {
-  filters?: InputMaybe<JobTypeFiltersInput>;
+export type QueryIndustryCategoriesArgs = {
+  filters?: InputMaybe<IndustryCategoryFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
-export type QueryMinPeriodArgs = {
+export type QueryIndustryCategoryArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
 
-export type QueryMinPeriodsArgs = {
-  filters?: InputMaybe<MinPeriodFiltersInput>;
+export type QueryJobCategoriesArgs = {
+  filters?: InputMaybe<JobCategoryFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
-export type QueryMinWorkingdayArgs = {
+export type QueryJobCategoryArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
 
-export type QueryMinWorkingdaysArgs = {
-  filters?: InputMaybe<MinWorkingdayFiltersInput>;
+export type QueryMailTemplateArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryMailTemplatesArgs = {
+  filters?: InputMaybe<MailTemplateFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
-export type QueryOccupationArgs = {
+export type QueryNewsArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
 
-export type QueryOccupationsArgs = {
-  filters?: InputMaybe<OccupationFiltersInput>;
+export type QueryNewsesArgs = {
+  filters?: InputMaybe<NewsFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
@@ -1045,20 +1683,23 @@ export type QueryPointArgs = {
 export type QueryPointsArgs = {
   filters?: InputMaybe<PointFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
-export type QuerySubmissionArgs = {
+export type QuerySignageArgs = {
+  publicationState?: InputMaybe<PublicationState>;
+};
+
+
+export type QueryStudentArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
 
-export type QuerySubmissionsArgs = {
-  filters?: InputMaybe<SubmissionFiltersInput>;
+export type QueryStudentsArgs = {
+  filters?: InputMaybe<StudentFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
@@ -1110,9 +1751,61 @@ export type QueryUsersPermissionsUsersArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
+export type QueryVisitCountArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryVisitCountsArgs = {
+  filters?: InputMaybe<VisitCountFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
 export type ResponseCollectionMeta = {
   __typename?: 'ResponseCollectionMeta';
   pagination: Pagination;
+};
+
+export type Signage = {
+  __typename?: 'Signage';
+  createdAt?: Maybe<Scalars['DateTime']>;
+  images?: Maybe<UploadFileRelationResponseCollection>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+  videos?: Maybe<UploadFileRelationResponseCollection>;
+};
+
+
+export type SignageImagesArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type SignageVideosArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type SignageEntity = {
+  __typename?: 'SignageEntity';
+  attributes?: Maybe<Signage>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type SignageEntityResponse = {
+  __typename?: 'SignageEntityResponse';
+  data?: Maybe<SignageEntity>;
+};
+
+export type SignageInput = {
+  images?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  videos?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 };
 
 export type StringFilterInput = {
@@ -1139,75 +1832,82 @@ export type StringFilterInput = {
   startsWith?: InputMaybe<Scalars['String']>;
 };
 
-export type Submission = {
-  __typename?: 'Submission';
-  birthDate?: Maybe<Scalars['String']>;
+export type Student = {
+  __typename?: 'Student';
   createdAt?: Maybe<Scalars['DateTime']>;
-  email?: Maybe<Scalars['String']>;
-  furigana?: Maybe<Scalars['String']>;
-  grade?: Maybe<Scalars['String']>;
-  hopeday1?: Maybe<Scalars['String']>;
-  hopeday2?: Maybe<Scalars['String']>;
-  hopeday3?: Maybe<Scalars['String']>;
-  lineid?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  phone?: Maybe<Scalars['String']>;
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  reason?: Maybe<Scalars['String']>;
+  department_jp: Scalars['String'];
+  grade_jp: Scalars['String'];
+  grade_updated_at?: Maybe<Scalars['Date']>;
+  is_interested_in_internship: Scalars['Boolean'];
+  line_id: Scalars['String'];
+  name: Scalars['String'];
+  phone: Scalars['String'];
+  registered_at?: Maybe<Scalars['DateTime']>;
+  to_receive_job_info: Scalars['Boolean'];
   updatedAt?: Maybe<Scalars['DateTime']>;
+  users_permissions_user?: Maybe<UsersPermissionsUserEntityResponse>;
+  visit_counts?: Maybe<VisitCountRelationResponseCollection>;
+  will_start_working: Scalars['Boolean'];
 };
 
-export type SubmissionEntity = {
-  __typename?: 'SubmissionEntity';
-  attributes?: Maybe<Submission>;
+
+export type StudentVisit_CountsArgs = {
+  filters?: InputMaybe<VisitCountFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type StudentEntity = {
+  __typename?: 'StudentEntity';
+  attributes?: Maybe<Student>;
   id?: Maybe<Scalars['ID']>;
 };
 
-export type SubmissionEntityResponse = {
-  __typename?: 'SubmissionEntityResponse';
-  data?: Maybe<SubmissionEntity>;
+export type StudentEntityResponse = {
+  __typename?: 'StudentEntityResponse';
+  data?: Maybe<StudentEntity>;
 };
 
-export type SubmissionEntityResponseCollection = {
-  __typename?: 'SubmissionEntityResponseCollection';
-  data: Array<SubmissionEntity>;
+export type StudentEntityResponseCollection = {
+  __typename?: 'StudentEntityResponseCollection';
+  data: Array<StudentEntity>;
   meta: ResponseCollectionMeta;
 };
 
-export type SubmissionFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<SubmissionFiltersInput>>>;
-  birthDate?: InputMaybe<StringFilterInput>;
+export type StudentFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<StudentFiltersInput>>>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
-  email?: InputMaybe<StringFilterInput>;
-  furigana?: InputMaybe<StringFilterInput>;
-  grade?: InputMaybe<StringFilterInput>;
-  hopeday1?: InputMaybe<StringFilterInput>;
-  hopeday2?: InputMaybe<StringFilterInput>;
-  hopeday3?: InputMaybe<StringFilterInput>;
+  department_jp?: InputMaybe<StringFilterInput>;
+  grade_jp?: InputMaybe<StringFilterInput>;
+  grade_updated_at?: InputMaybe<DateFilterInput>;
   id?: InputMaybe<IdFilterInput>;
-  lineid?: InputMaybe<StringFilterInput>;
+  is_interested_in_internship?: InputMaybe<BooleanFilterInput>;
+  line_id?: InputMaybe<StringFilterInput>;
   name?: InputMaybe<StringFilterInput>;
-  not?: InputMaybe<SubmissionFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<SubmissionFiltersInput>>>;
+  not?: InputMaybe<StudentFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<StudentFiltersInput>>>;
   phone?: InputMaybe<StringFilterInput>;
-  publishedAt?: InputMaybe<DateTimeFilterInput>;
-  reason?: InputMaybe<StringFilterInput>;
+  registered_at?: InputMaybe<DateTimeFilterInput>;
+  to_receive_job_info?: InputMaybe<BooleanFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
+  users_permissions_user?: InputMaybe<UsersPermissionsUserFiltersInput>;
+  visit_counts?: InputMaybe<VisitCountFiltersInput>;
+  will_start_working?: InputMaybe<BooleanFilterInput>;
 };
 
-export type SubmissionInput = {
-  birthDate?: InputMaybe<Scalars['String']>;
-  email?: InputMaybe<Scalars['String']>;
-  furigana?: InputMaybe<Scalars['String']>;
-  grade?: InputMaybe<Scalars['String']>;
-  hopeday1?: InputMaybe<Scalars['String']>;
-  hopeday2?: InputMaybe<Scalars['String']>;
-  hopeday3?: InputMaybe<Scalars['String']>;
-  lineid?: InputMaybe<Scalars['String']>;
+export type StudentInput = {
+  department_jp?: InputMaybe<Scalars['String']>;
+  grade_jp?: InputMaybe<Scalars['String']>;
+  grade_updated_at?: InputMaybe<Scalars['Date']>;
+  is_interested_in_internship?: InputMaybe<Scalars['Boolean']>;
+  line_id?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
   phone?: InputMaybe<Scalars['String']>;
-  publishedAt?: InputMaybe<Scalars['DateTime']>;
-  reason?: InputMaybe<Scalars['String']>;
+  registered_at?: InputMaybe<Scalars['DateTime']>;
+  to_receive_job_info?: InputMaybe<Scalars['Boolean']>;
+  users_permissions_user?: InputMaybe<Scalars['ID']>;
+  visit_counts?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  will_start_working?: InputMaybe<Scalars['Boolean']>;
 };
 
 export type UploadFile = {
@@ -1522,13 +2222,22 @@ export type UsersPermissionsUpdateRolePayload = {
 export type UsersPermissionsUser = {
   __typename?: 'UsersPermissionsUser';
   blocked?: Maybe<Scalars['Boolean']>;
+  company?: Maybe<CompanyEntityResponse>;
   confirmed?: Maybe<Scalars['Boolean']>;
   createdAt?: Maybe<Scalars['DateTime']>;
+  department: Scalars['String'];
   email: Scalars['String'];
+  grade?: Maybe<Scalars['String']>;
+  is_company?: Maybe<Scalars['Boolean']>;
+  is_interested_in_internship?: Maybe<Scalars['Boolean']>;
+  line_id: Scalars['String'];
+  phone?: Maybe<Scalars['String']>;
   provider?: Maybe<Scalars['String']>;
   role?: Maybe<UsersPermissionsRoleEntityResponse>;
+  student?: Maybe<StudentEntityResponse>;
   updatedAt?: Maybe<Scalars['DateTime']>;
   username: Scalars['String'];
+  will_start_working?: Maybe<Scalars['Boolean']>;
 };
 
 export type UsersPermissionsUserEntity = {
@@ -1551,31 +2260,49 @@ export type UsersPermissionsUserEntityResponseCollection = {
 export type UsersPermissionsUserFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<UsersPermissionsUserFiltersInput>>>;
   blocked?: InputMaybe<BooleanFilterInput>;
+  company?: InputMaybe<CompanyFiltersInput>;
   confirmationToken?: InputMaybe<StringFilterInput>;
   confirmed?: InputMaybe<BooleanFilterInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
+  department?: InputMaybe<StringFilterInput>;
   email?: InputMaybe<StringFilterInput>;
+  grade?: InputMaybe<StringFilterInput>;
   id?: InputMaybe<IdFilterInput>;
+  is_company?: InputMaybe<BooleanFilterInput>;
+  is_interested_in_internship?: InputMaybe<BooleanFilterInput>;
+  line_id?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<UsersPermissionsUserFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<UsersPermissionsUserFiltersInput>>>;
   password?: InputMaybe<StringFilterInput>;
+  phone?: InputMaybe<StringFilterInput>;
   provider?: InputMaybe<StringFilterInput>;
   resetPasswordToken?: InputMaybe<StringFilterInput>;
   role?: InputMaybe<UsersPermissionsRoleFiltersInput>;
+  student?: InputMaybe<StudentFiltersInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
   username?: InputMaybe<StringFilterInput>;
+  will_start_working?: InputMaybe<BooleanFilterInput>;
 };
 
 export type UsersPermissionsUserInput = {
   blocked?: InputMaybe<Scalars['Boolean']>;
+  company?: InputMaybe<Scalars['ID']>;
   confirmationToken?: InputMaybe<Scalars['String']>;
   confirmed?: InputMaybe<Scalars['Boolean']>;
+  department?: InputMaybe<Scalars['String']>;
   email?: InputMaybe<Scalars['String']>;
+  grade?: InputMaybe<Scalars['String']>;
+  is_company?: InputMaybe<Scalars['Boolean']>;
+  is_interested_in_internship?: InputMaybe<Scalars['Boolean']>;
+  line_id?: InputMaybe<Scalars['String']>;
   password?: InputMaybe<Scalars['String']>;
+  phone?: InputMaybe<Scalars['String']>;
   provider?: InputMaybe<Scalars['String']>;
   resetPasswordToken?: InputMaybe<Scalars['String']>;
   role?: InputMaybe<Scalars['ID']>;
+  student?: InputMaybe<Scalars['ID']>;
   username?: InputMaybe<Scalars['String']>;
+  will_start_working?: InputMaybe<Scalars['Boolean']>;
 };
 
 export type UsersPermissionsUserRelationResponseCollection = {
@@ -1583,12 +2310,118 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
+export type VisitCount = {
+  __typename?: 'VisitCount';
+  createdAt?: Maybe<Scalars['DateTime']>;
+  date: Scalars['DateTime'];
+  student?: Maybe<StudentEntityResponse>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type VisitCountEntity = {
+  __typename?: 'VisitCountEntity';
+  attributes?: Maybe<VisitCount>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type VisitCountEntityResponse = {
+  __typename?: 'VisitCountEntityResponse';
+  data?: Maybe<VisitCountEntity>;
+};
+
+export type VisitCountEntityResponseCollection = {
+  __typename?: 'VisitCountEntityResponseCollection';
+  data: Array<VisitCountEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type VisitCountFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<VisitCountFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  date?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<VisitCountFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<VisitCountFiltersInput>>>;
+  student?: InputMaybe<StudentFiltersInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type VisitCountInput = {
+  date?: InputMaybe<Scalars['DateTime']>;
+  student?: InputMaybe<Scalars['ID']>;
+};
+
+export type VisitCountRelationResponseCollection = {
+  __typename?: 'VisitCountRelationResponseCollection';
+  data: Array<VisitCountEntity>;
+};
+
+export type GetAdvertisementArticlesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAdvertisementArticlesQuery = { __typename?: 'Query', advertisementArticles?: { __typename?: 'AdvertisementArticleEntityResponseCollection', data: Array<{ __typename?: 'AdvertisementArticleEntity', id?: string | null, attributes?: { __typename?: 'AdvertisementArticle', title: string, publishedAt?: any | null, updatedAt?: any | null, banner: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, url: string, alternativeText?: string | null, formats?: any | null } | null } | null } } | null }> } | null };
+
+export type GetAdvertisementArticleIdQueryVariables = Exact<{
+  id?: InputMaybe<Scalars['ID']>;
+}>;
+
+
+export type GetAdvertisementArticleIdQuery = { __typename?: 'Query', advertisementArticle?: { __typename?: 'AdvertisementArticleEntityResponse', data?: { __typename?: 'AdvertisementArticleEntity', id?: string | null, attributes?: { __typename?: 'AdvertisementArticle', title: string, body: string, publishedAt?: any | null, updatedAt?: any | null, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, url: string, alternativeText?: string | null, formats?: any | null } | null } | null }, banner: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, url: string, alternativeText?: string | null, formats?: any | null } | null } | null } } | null } | null } | null };
+
+export type GetadvertisementArticlePathsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetadvertisementArticlePathsQuery = { __typename?: 'Query', advertisementArticles?: { __typename?: 'AdvertisementArticleEntityResponseCollection', data: Array<{ __typename?: 'AdvertisementArticleEntity', id?: string | null }> } | null };
+
+export type GetJobCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetJobCategoriesQuery = { __typename?: 'Query', jobCategories?: { __typename?: 'JobCategoryEntityResponseCollection', data: Array<{ __typename?: 'JobCategoryEntity', id?: string | null, attributes?: { __typename?: 'JobCategory', name: string, en_name: string, offers?: { __typename?: 'OfferRelationResponseCollection', data: Array<{ __typename?: 'OfferEntity', id?: string | null }> } | null } | null }> } | null };
+
+export type GetJobCategoryByIdQueryVariables = Exact<{
+  id?: InputMaybe<Scalars['ID']>;
+}>;
+
+
+export type GetJobCategoryByIdQuery = { __typename?: 'Query', jobCategory?: { __typename?: 'JobCategoryEntityResponse', data?: { __typename?: 'JobCategoryEntity', id?: string | null, attributes?: { __typename?: 'JobCategory', name: string, en_name: string, offers?: { __typename?: 'OfferRelationResponseCollection', data: Array<{ __typename?: 'OfferEntity', id?: string | null }> } | null } | null } | null } | null };
+
+export type GetCompaniesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetCompaniesQuery = { __typename?: 'Query', companies?: { __typename?: 'CompanyEntityResponseCollection', data: Array<{ __typename?: 'CompanyEntity', id?: string | null, attributes?: { __typename?: 'Company', establishment_date?: any | null, address?: string | null, map_url?: string | null, mission?: string | null, name?: string | null, description?: string | null, company_id?: string | null, founding?: string | null, jobtype?: string | null, employment?: string | null, scale?: string | null, outline?: string | null, atmosphere?: string | null, tostudents?: string | null, industry_categories?: { __typename?: 'IndustryCategoryRelationResponseCollection', data: Array<{ __typename?: 'IndustryCategoryEntity', id?: string | null, attributes?: { __typename?: 'IndustryCategory', name: string, en_name: string } | null }> } | null, createdBy?: { __typename?: 'Creator', id?: number | null, firstname?: string | null, lastname?: string | null } | null, cover_image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, formats?: any | null, url: string, alternativeText?: string | null } | null } | null } | null, atmosphereimage?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, formats?: any | null, url: string, alternativeText?: string | null } | null }> } | null, logo?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, formats?: any | null, url: string, alternativeText?: string | null } | null } | null } | null } | null }> } | null };
+
+export type GetRecruiterByIdQueryVariables = Exact<{
+  id?: InputMaybe<Scalars['ID']>;
+}>;
+
+
+export type GetRecruiterByIdQuery = { __typename?: 'Query', company?: { __typename?: 'CompanyEntityResponse', data?: { __typename?: 'CompanyEntity', id?: string | null, attributes?: { __typename?: 'Company', cover_image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, alternativeText?: string | null } | null } | null } | null, createdBy?: { __typename?: 'Creator', id?: number | null, firstname?: string | null, lastname?: string | null } | null } | null } | null } | null };
+
+export type GetCompanyByIdQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type GetCompanyByIdQuery = { __typename?: 'Query', company?: { __typename?: 'CompanyEntityResponse', data?: { __typename?: 'CompanyEntity', id?: string | null, attributes?: { __typename?: 'Company', business_details?: string | null, office_atmosphere?: string | null, message_for_students?: string | null, employee_number?: string | null, establishment_date?: any | null, address?: string | null, map_url?: string | null, mission?: string | null, name?: string | null, description?: string | null, company_id?: string | null, founding?: string | null, jobtype?: string | null, employment?: string | null, scale?: string | null, outline?: string | null, atmosphere?: string | null, tostudents?: string | null, employee_statuses?: { __typename?: 'EmployeeStatusRelationResponseCollection', data: Array<{ __typename?: 'EmployeeStatusEntity', id?: string | null, attributes?: { __typename?: 'EmployeeStatus', name: string, en_name: string } | null }> } | null, industry_categories?: { __typename?: 'IndustryCategoryRelationResponseCollection', data: Array<{ __typename?: 'IndustryCategoryEntity', id?: string | null, attributes?: { __typename?: 'IndustryCategory', name: string, en_name: string } | null }> } | null, createdBy?: { __typename?: 'Creator', id?: number | null, firstname?: string | null, lastname?: string | null } | null, cover_image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, formats?: any | null, url: string, alternativeText?: string | null } | null } | null } | null, atmosphereimage?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, formats?: any | null, url: string, alternativeText?: string | null } | null }> } | null, logo?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, formats?: any | null, url: string, alternativeText?: string | null } | null } | null } | null } | null } | null } | null };
+
+export type GetNewsByIdQueryVariables = Exact<{
+  id?: InputMaybe<Scalars['ID']>;
+}>;
+
+
+export type GetNewsByIdQuery = { __typename?: 'Query', news?: { __typename?: 'NewsEntityResponse', data?: { __typename?: 'NewsEntity', id?: string | null, attributes?: { __typename?: 'News', title: string, date: any } | null } | null } | null };
+
+export type GetNewsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetNewsQuery = { __typename?: 'Query', newses?: { __typename?: 'NewsEntityResponseCollection', data: Array<{ __typename?: 'NewsEntity', id?: string | null, attributes?: { __typename?: 'News', title: string, date: any } | null }> } | null };
+
 export type GetOfferByIdQueryVariables = Exact<{
   id?: InputMaybe<Scalars['ID']>;
 }>;
 
 
-export type GetOfferByIdQuery = { __typename?: 'Query', offer?: { __typename?: 'OfferEntityResponse', data?: { __typename?: 'OfferEntity', id?: string | null, attributes?: { __typename?: 'Offer', title: string, hourly_wage: string, hourly_wage_detail?: string | null, place_short: string, place_detail: string, hours_short: string, hours_detail?: string | null, job_description: string, start_at: any, end_at: any, target: string, url?: string | null, qualification?: string | null, people: string, interview_location: string, flow?: string | null, shift?: string | null, holiday?: string | null, email_address: string, min_working_hours: string, min_period?: { __typename?: 'MinPeriodEntityResponse', data?: { __typename?: 'MinPeriodEntity', id?: string | null, attributes?: { __typename?: 'MinPeriod', period?: string | null } | null } | null } | null, min_workingday?: { __typename?: 'MinWorkingdayEntityResponse', data?: { __typename?: 'MinWorkingdayEntity', id?: string | null, attributes?: { __typename?: 'MinWorkingday', days?: string | null } | null } | null } | null, createdBy?: { __typename?: 'Creator', id?: number | null, firstname?: string | null, lastname?: string | null } | null, atmosphere?: Array<{ __typename?: 'ComponentAtmosphereAtmosphere', title?: string | null, text?: string | null, image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, url: string, alternativeText?: string | null, formats?: any | null } | null } | null } | null } | null> | null, occupation?: { __typename?: 'OccupationEntityResponse', data?: { __typename?: 'OccupationEntity', id?: string | null, attributes?: { __typename?: 'Occupation', name?: string | null } | null } | null } | null, job_type?: { __typename?: 'JobTypeEntityResponse', data?: { __typename?: 'JobTypeEntity', id?: string | null, attributes?: { __typename?: 'JobType', name?: string | null, gift?: string | null } | null } | null } | null, points?: { __typename?: 'PointRelationResponseCollection', data: Array<{ __typename?: 'PointEntity', id?: string | null, attributes?: { __typename?: 'Point', name?: string | null } | null }> } | null, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, url: string, alternativeText?: string | null, formats?: any | null } | null } | null } } | null } | null } | null };
+export type GetOfferByIdQuery = { __typename?: 'Query', offer?: { __typename?: 'OfferEntityResponse', data?: { __typename?: 'OfferEntity', id?: string | null, attributes?: { __typename?: 'Offer', form_url: string, title: string, createdAt?: any | null, deadline: any, place: string, hourly_wage: string, description: string, about_job: string, recruitment_terms: string, target: string, qualification: string, people?: string | null, job_description?: string | null, about_company?: string | null, job_points?: { __typename?: 'PointRelationResponseCollection', data: Array<{ __typename?: 'PointEntity', id?: string | null, attributes?: { __typename?: 'Point', name: string, en_name: string } | null }> } | null, job_categories?: { __typename?: 'JobCategoryRelationResponseCollection', data: Array<{ __typename?: 'JobCategoryEntity', id?: string | null, attributes?: { __typename?: 'JobCategory', name: string, en_name: string } | null }> } | null, createdBy?: { __typename?: 'Creator', id?: number | null, firstname?: string | null, lastname?: string | null } | null, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, url: string, alternativeText?: string | null, formats?: any | null } | null } | null }, gallery?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, url: string, alternativeText?: string | null, formats?: any | null } | null }> } | null } | null } | null } | null };
 
 export type GetOfferPathsQueryVariables = Exact<{
   today?: InputMaybe<Scalars['Date']>;
@@ -1600,23 +2433,133 @@ export type GetOfferPathsQuery = { __typename?: 'Query', offers?: { __typename?:
 export type GetOffersAllQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetOffersAllQuery = { __typename?: 'Query', offers?: { __typename?: 'OfferEntityResponseCollection', data: Array<{ __typename?: 'OfferEntity', id?: string | null, attributes?: { __typename?: 'Offer', title: string, hourly_wage: string, place_short: string, hours_short: string, start_at: any, end_at: any, createdBy?: { __typename?: 'Creator', id?: number | null, firstname?: string | null, lastname?: string | null } | null, occupation?: { __typename?: 'OccupationEntityResponse', data?: { __typename?: 'OccupationEntity', id?: string | null, attributes?: { __typename?: 'Occupation', name?: string | null } | null } | null } | null, job_type?: { __typename?: 'JobTypeEntityResponse', data?: { __typename?: 'JobTypeEntity', id?: string | null, attributes?: { __typename?: 'JobType', name?: string | null, gift?: string | null } | null } | null } | null, min_period?: { __typename?: 'MinPeriodEntityResponse', data?: { __typename?: 'MinPeriodEntity', id?: string | null, attributes?: { __typename?: 'MinPeriod', period?: string | null } | null } | null } | null, min_workingday?: { __typename?: 'MinWorkingdayEntityResponse', data?: { __typename?: 'MinWorkingdayEntity', id?: string | null, attributes?: { __typename?: 'MinWorkingday', days?: string | null } | null } | null } | null, points?: { __typename?: 'PointRelationResponseCollection', data: Array<{ __typename?: 'PointEntity', id?: string | null, attributes?: { __typename?: 'Point', name?: string | null } | null }> } | null, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, url: string, alternativeText?: string | null, formats?: any | null } | null } | null } } | null }> } | null };
+export type GetOffersAllQuery = { __typename?: 'Query', offers?: { __typename?: 'OfferEntityResponseCollection', data: Array<{ __typename?: 'OfferEntity', id?: string | null, attributes?: { __typename?: 'Offer', title: string, createdAt?: any | null, place: string, hourly_wage: string, deadline: any, people?: string | null, job_points?: { __typename?: 'PointRelationResponseCollection', data: Array<{ __typename?: 'PointEntity', id?: string | null, attributes?: { __typename?: 'Point', name: string, en_name: string } | null }> } | null, job_categories?: { __typename?: 'JobCategoryRelationResponseCollection', data: Array<{ __typename?: 'JobCategoryEntity', id?: string | null, attributes?: { __typename?: 'JobCategory', name: string, en_name: string } | null }> } | null, createdBy?: { __typename?: 'Creator', id?: number | null, firstname?: string | null, lastname?: string | null } | null, image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, url: string, alternativeText?: string | null, formats?: any | null } | null } | null }, gallery?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, url: string, alternativeText?: string | null, formats?: any | null } | null }> } | null } | null }> } | null };
+
+export type GetAdvertisementsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAdvertisementsQuery = { __typename?: 'Query', advertisements?: { __typename?: 'AdvertisementEntityResponseCollection', data: Array<{ __typename?: 'AdvertisementEntity', id?: string | null, attributes?: { __typename?: 'Advertisement', publishedAt?: any | null, creative: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, formats?: any | null, alternativeText?: string | null, url: string } | null } | null } } | null }> } | null };
 
 export type GetPointsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetPointsQuery = { __typename?: 'Query', points?: { __typename?: 'PointEntityResponseCollection', data: Array<{ __typename?: 'PointEntity', id?: string | null, attributes?: { __typename?: 'Point', name?: string | null, offer?: { __typename?: 'OfferEntityResponse', data?: { __typename?: 'OfferEntity', id?: string | null } | null } | null } | null }> } | null };
+export type GetPointsQuery = { __typename?: 'Query', points?: { __typename?: 'PointEntityResponseCollection', data: Array<{ __typename?: 'PointEntity', id?: string | null, attributes?: { __typename?: 'Point', name: string, en_name: string, offers?: { __typename?: 'OfferRelationResponseCollection', data: Array<{ __typename?: 'OfferEntity', id?: string | null }> } | null } | null }> } | null };
 
 export type GetPointByIdQueryVariables = Exact<{
   id?: InputMaybe<Scalars['ID']>;
 }>;
 
 
-export type GetPointByIdQuery = { __typename?: 'Query', point?: { __typename?: 'PointEntityResponse', data?: { __typename?: 'PointEntity', id?: string | null, attributes?: { __typename?: 'Point', name?: string | null, offer?: { __typename?: 'OfferEntityResponse', data?: { __typename?: 'OfferEntity', id?: string | null } | null } | null } | null } | null } | null };
+export type GetPointByIdQuery = { __typename?: 'Query', point?: { __typename?: 'PointEntityResponse', data?: { __typename?: 'PointEntity', id?: string | null, attributes?: { __typename?: 'Point', name: string, en_name: string, offers?: { __typename?: 'OfferRelationResponseCollection', data: Array<{ __typename?: 'OfferEntity', id?: string | null }> } | null } | null } | null } | null };
+
+export type GetSinageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export const GetOfferByIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getOfferById"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"offer"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"hourly_wage"}},{"kind":"Field","name":{"kind":"Name","value":"hourly_wage_detail"}},{"kind":"Field","name":{"kind":"Name","value":"place_short"}},{"kind":"Field","name":{"kind":"Name","value":"place_detail"}},{"kind":"Field","name":{"kind":"Name","value":"hours_short"}},{"kind":"Field","name":{"kind":"Name","value":"hours_detail"}},{"kind":"Field","name":{"kind":"Name","value":"job_description"}},{"kind":"Field","name":{"kind":"Name","value":"start_at"}},{"kind":"Field","name":{"kind":"Name","value":"end_at"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"qualification"}},{"kind":"Field","name":{"kind":"Name","value":"people"}},{"kind":"Field","name":{"kind":"Name","value":"interview_location"}},{"kind":"Field","name":{"kind":"Name","value":"flow"}},{"kind":"Field","name":{"kind":"Name","value":"shift"}},{"kind":"Field","name":{"kind":"Name","value":"holiday"}},{"kind":"Field","name":{"kind":"Name","value":"email_address"}},{"kind":"Field","name":{"kind":"Name","value":"min_working_hours"}},{"kind":"Field","name":{"kind":"Name","value":"min_period"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"period"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"min_workingday"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"days"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"createdBy"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}}]}},{"kind":"Field","name":{"kind":"Name","value":"atmosphere"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"text"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"formats"}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"occupation"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"job_type"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"gift"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"points"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"formats"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetOfferByIdQuery, GetOfferByIdQueryVariables>;
-export const GetOfferPathsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getOfferPaths"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"today"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Date"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"offers"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"sort"},"value":{"kind":"StringValue","value":"publishedAt:desc","block":false}},{"kind":"Argument","name":{"kind":"Name","value":"filters"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"end_at"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"gte"},"value":{"kind":"Variable","name":{"kind":"Name","value":"today"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]} as unknown as DocumentNode<GetOfferPathsQuery, GetOfferPathsQueryVariables>;
-export const GetOffersAllDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getOffersAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"offers"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"sort"},"value":{"kind":"StringValue","value":"publishedAt:desc","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"hourly_wage"}},{"kind":"Field","name":{"kind":"Name","value":"place_short"}},{"kind":"Field","name":{"kind":"Name","value":"hours_short"}},{"kind":"Field","name":{"kind":"Name","value":"start_at"}},{"kind":"Field","name":{"kind":"Name","value":"end_at"}},{"kind":"Field","name":{"kind":"Name","value":"createdBy"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}}]}},{"kind":"Field","name":{"kind":"Name","value":"occupation"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"job_type"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"gift"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"min_period"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"period"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"min_workingday"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"days"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"points"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"formats"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetOffersAllQuery, GetOffersAllQueryVariables>;
-export const GetPointsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getPoints"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"points"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"pagination"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"1000"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"offer"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetPointsQuery, GetPointsQueryVariables>;
-export const GetPointByIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getPointById"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"point"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"offer"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetPointByIdQuery, GetPointByIdQueryVariables>;
+export type GetSinageQuery = { __typename?: 'Query', signage?: { __typename?: 'SignageEntityResponse', data?: { __typename?: 'SignageEntity', id?: string | null, attributes?: { __typename?: 'Signage', videos?: { __typename?: 'UploadFileRelationResponseCollection', data: Array<{ __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string } | null }> } | null } | null } | null } | null };
+
+export type GetStudentByIdQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type GetStudentByIdQuery = { __typename?: 'Query', student?: { __typename?: 'StudentEntityResponse', data?: { __typename?: 'StudentEntity', id?: string | null, attributes?: { __typename?: 'Student', grade_updated_at?: any | null, name: string, line_id: string, grade_jp: string, registered_at?: any | null } | null } | null } | null };
+
+export type UpdpateGradeMutationVariables = Exact<{
+  id: Scalars['ID'];
+  grade?: InputMaybe<Scalars['String']>;
+  to_receive_job_info?: InputMaybe<Scalars['Boolean']>;
+  updated_at?: InputMaybe<Scalars['Date']>;
+}>;
+
+
+export type UpdpateGradeMutation = { __typename?: 'Mutation', updateStudent?: { __typename?: 'StudentEntityResponse', data?: { __typename?: 'StudentEntity', id?: string | null, attributes?: { __typename?: 'Student', grade_jp: string, grade_updated_at?: any | null, name: string } | null } | null } | null };
+
+export type PostStudentMutationVariables = Exact<{
+  name?: InputMaybe<Scalars['String']>;
+  user_id: Scalars['ID'];
+  phone?: InputMaybe<Scalars['String']>;
+  line_id?: InputMaybe<Scalars['String']>;
+  department_jp?: InputMaybe<Scalars['String']>;
+  grade_jp?: InputMaybe<Scalars['String']>;
+  is_interested_in_internship?: InputMaybe<Scalars['Boolean']>;
+  will_start_working?: InputMaybe<Scalars['Boolean']>;
+  grade_updated_at?: InputMaybe<Scalars['Date']>;
+  to_receive_job_info?: InputMaybe<Scalars['Boolean']>;
+  registered_at?: InputMaybe<Scalars['DateTime']>;
+}>;
+
+
+export type PostStudentMutation = { __typename?: 'Mutation', createStudent?: { __typename?: 'StudentEntityResponse', data?: { __typename?: 'StudentEntity', id?: string | null } | null } | null };
+
+export type GetGradeQueryVariables = Exact<{
+  id?: InputMaybe<Scalars['ID']>;
+}>;
+
+
+export type GetGradeQuery = { __typename?: 'Query', usersPermissionsUser?: { __typename?: 'UsersPermissionsUserEntityResponse', data?: { __typename?: 'UsersPermissionsUserEntity', id?: string | null, attributes?: { __typename?: 'UsersPermissionsUser', grade?: string | null } | null } | null } | null };
+
+export type GetUsersByLineIdQueryVariables = Exact<{
+  lineId?: InputMaybe<Scalars['String']>;
+}>;
+
+
+export type GetUsersByLineIdQuery = { __typename?: 'Query', usersPermissionsUsers?: { __typename?: 'UsersPermissionsUserEntityResponseCollection', data: Array<{ __typename?: 'UsersPermissionsUserEntity', id?: string | null, attributes?: { __typename?: 'UsersPermissionsUser', username: string, email: string, confirmed?: boolean | null, grade?: string | null, student?: { __typename?: 'StudentEntityResponse', data?: { __typename?: 'StudentEntity', id?: string | null, attributes?: { __typename?: 'Student', line_id: string, to_receive_job_info: boolean, grade_jp: string, department_jp: string, grade_updated_at?: any | null, name: string, registered_at?: any | null } | null } | null } | null } | null }> } | null };
+
+export type PostVisitCountMutationVariables = Exact<{
+  id: Scalars['ID'];
+  date?: InputMaybe<Scalars['DateTime']>;
+}>;
+
+
+export type PostVisitCountMutation = { __typename?: 'Mutation', createVisitCount?: { __typename?: 'VisitCountEntityResponse', data?: { __typename?: 'VisitCountEntity', id?: string | null, attributes?: { __typename?: 'VisitCount', date: any } | null } | null } | null };
+
+export type GetVisitCountsByStudentIdQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type GetVisitCountsByStudentIdQuery = { __typename?: 'Query', visitCounts?: { __typename?: 'VisitCountEntityResponseCollection', data: Array<{ __typename?: 'VisitCountEntity', id?: string | null, attributes?: { __typename?: 'VisitCount', date: any } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number } } } | null };
+
+export type GetVisitCountTotalByStudentIdQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type GetVisitCountTotalByStudentIdQuery = { __typename?: 'Query', visitCounts?: { __typename?: 'VisitCountEntityResponseCollection', data: Array<{ __typename?: 'VisitCountEntity', id?: string | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number } } } | null };
+
+export type GetVisitCountsByStudentIdAndDatesQueryVariables = Exact<{
+  id: Scalars['ID'];
+  start_date?: InputMaybe<Scalars['DateTime']>;
+  end_date?: InputMaybe<Scalars['DateTime']>;
+}>;
+
+
+export type GetVisitCountsByStudentIdAndDatesQuery = { __typename?: 'Query', visitCounts?: { __typename?: 'VisitCountEntityResponseCollection', data: Array<{ __typename?: 'VisitCountEntity', id?: string | null, attributes?: { __typename?: 'VisitCount', date: any } | null }>, meta: { __typename?: 'ResponseCollectionMeta', pagination: { __typename?: 'Pagination', total: number } } } | null };
+
+
+export const GetAdvertisementArticlesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getAdvertisementArticles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"advertisementArticles"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"sort"},"value":{"kind":"StringValue","value":"publishedAt:desc","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"banner"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"formats"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"publishedAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetAdvertisementArticlesQuery, GetAdvertisementArticlesQueryVariables>;
+export const GetAdvertisementArticleIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getAdvertisementArticleId"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"advertisementArticle"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"body"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"formats"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"banner"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"formats"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"publishedAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetAdvertisementArticleIdQuery, GetAdvertisementArticleIdQueryVariables>;
+export const GetadvertisementArticlePathsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getadvertisementArticlePaths"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"advertisementArticles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]} as unknown as DocumentNode<GetadvertisementArticlePathsQuery, GetadvertisementArticlePathsQueryVariables>;
+export const GetJobCategoriesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getJobCategories"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"jobCategories"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"pagination"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"1000"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"en_name"}},{"kind":"Field","name":{"kind":"Name","value":"offers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetJobCategoriesQuery, GetJobCategoriesQueryVariables>;
+export const GetJobCategoryByIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getJobCategoryById"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"jobCategory"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"en_name"}},{"kind":"Field","name":{"kind":"Name","value":"offers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetJobCategoryByIdQuery, GetJobCategoryByIdQueryVariables>;
+export const GetCompaniesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getCompanies"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"companies"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"establishment_date"}},{"kind":"Field","name":{"kind":"Name","value":"industry_categories"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"en_name"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"map_url"}},{"kind":"Field","name":{"kind":"Name","value":"mission"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"createdBy"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}}]}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"mission"}},{"kind":"Field","name":{"kind":"Name","value":"company_id"}},{"kind":"Field","name":{"kind":"Name","value":"founding"}},{"kind":"Field","name":{"kind":"Name","value":"jobtype"}},{"kind":"Field","name":{"kind":"Name","value":"employment"}},{"kind":"Field","name":{"kind":"Name","value":"scale"}},{"kind":"Field","name":{"kind":"Name","value":"outline"}},{"kind":"Field","name":{"kind":"Name","value":"atmosphere"}},{"kind":"Field","name":{"kind":"Name","value":"tostudents"}},{"kind":"Field","name":{"kind":"Name","value":"cover_image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"formats"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"atmosphereimage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"formats"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"logo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"formats"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetCompaniesQuery, GetCompaniesQueryVariables>;
+export const GetRecruiterByIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getRecruiterById"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"company"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"cover_image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"createdBy"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetRecruiterByIdQuery, GetRecruiterByIdQueryVariables>;
+export const GetCompanyByIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getCompanyByID"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"company"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"business_details"}},{"kind":"Field","name":{"kind":"Name","value":"office_atmosphere"}},{"kind":"Field","name":{"kind":"Name","value":"message_for_students"}},{"kind":"Field","name":{"kind":"Name","value":"employee_number"}},{"kind":"Field","name":{"kind":"Name","value":"employee_statuses"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"en_name"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"establishment_date"}},{"kind":"Field","name":{"kind":"Name","value":"industry_categories"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"en_name"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"map_url"}},{"kind":"Field","name":{"kind":"Name","value":"mission"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"createdBy"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}}]}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"mission"}},{"kind":"Field","name":{"kind":"Name","value":"company_id"}},{"kind":"Field","name":{"kind":"Name","value":"founding"}},{"kind":"Field","name":{"kind":"Name","value":"jobtype"}},{"kind":"Field","name":{"kind":"Name","value":"employment"}},{"kind":"Field","name":{"kind":"Name","value":"scale"}},{"kind":"Field","name":{"kind":"Name","value":"outline"}},{"kind":"Field","name":{"kind":"Name","value":"atmosphere"}},{"kind":"Field","name":{"kind":"Name","value":"tostudents"}},{"kind":"Field","name":{"kind":"Name","value":"cover_image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"formats"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"atmosphereimage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"formats"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"logo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"formats"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetCompanyByIdQuery, GetCompanyByIdQueryVariables>;
+export const GetNewsByIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getNewsById"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"news"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"date"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetNewsByIdQuery, GetNewsByIdQueryVariables>;
+export const GetNewsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getNews"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"newses"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"sort"},"value":{"kind":"StringValue","value":"date:desc","block":false}},{"kind":"Argument","name":{"kind":"Name","value":"pagination"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"15"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"date"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetNewsQuery, GetNewsQueryVariables>;
+export const GetOfferByIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getOfferById"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"offer"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"form_url"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"deadline"}},{"kind":"Field","name":{"kind":"Name","value":"place"}},{"kind":"Field","name":{"kind":"Name","value":"hourly_wage"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"about_job"}},{"kind":"Field","name":{"kind":"Name","value":"recruitment_terms"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"qualification"}},{"kind":"Field","name":{"kind":"Name","value":"people"}},{"kind":"Field","name":{"kind":"Name","value":"job_description"}},{"kind":"Field","name":{"kind":"Name","value":"about_company"}},{"kind":"Field","name":{"kind":"Name","value":"job_points"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"en_name"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"job_categories"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"en_name"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"createdBy"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}}]}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"formats"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"gallery"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"formats"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetOfferByIdQuery, GetOfferByIdQueryVariables>;
+export const GetOfferPathsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getOfferPaths"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"today"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Date"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"offers"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"sort"},"value":{"kind":"StringValue","value":"publishedAt:desc","block":false}},{"kind":"Argument","name":{"kind":"Name","value":"filters"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"deadline"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"gte"},"value":{"kind":"Variable","name":{"kind":"Name","value":"today"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]} as unknown as DocumentNode<GetOfferPathsQuery, GetOfferPathsQueryVariables>;
+export const GetOffersAllDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getOffersAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"offers"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"sort"},"value":{"kind":"StringValue","value":"publishedAt:desc","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"place"}},{"kind":"Field","name":{"kind":"Name","value":"hourly_wage"}},{"kind":"Field","name":{"kind":"Name","value":"deadline"}},{"kind":"Field","name":{"kind":"Name","value":"people"}},{"kind":"Field","name":{"kind":"Name","value":"job_points"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"en_name"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"job_categories"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"en_name"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"createdBy"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}}]}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"formats"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"gallery"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"formats"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetOffersAllQuery, GetOffersAllQueryVariables>;
+export const GetAdvertisementsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getAdvertisements"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"advertisements"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"sort"},"value":{"kind":"StringValue","value":"updatedAt:desc","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"creative"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"formats"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"publishedAt"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetAdvertisementsQuery, GetAdvertisementsQueryVariables>;
+export const GetPointsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getPoints"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"points"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"pagination"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"1000"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"en_name"}},{"kind":"Field","name":{"kind":"Name","value":"offers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetPointsQuery, GetPointsQueryVariables>;
+export const GetPointByIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getPointById"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"point"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"en_name"}},{"kind":"Field","name":{"kind":"Name","value":"offers"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetPointByIdQuery, GetPointByIdQueryVariables>;
+export const GetSinageDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getSinage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"signage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"videos"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"sort"},"value":{"kind":"StringValue","value":"id:asc","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetSinageQuery, GetSinageQueryVariables>;
+export const GetStudentByIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getStudentByID"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"student"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"grade_updated_at"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"line_id"}},{"kind":"Field","name":{"kind":"Name","value":"grade_jp"}},{"kind":"Field","name":{"kind":"Name","value":"registered_at"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetStudentByIdQuery, GetStudentByIdQueryVariables>;
+export const UpdpateGradeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"updpateGrade"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"grade"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"to_receive_job_info"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"updated_at"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Date"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"updateStudent"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"data"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"grade_jp"},"value":{"kind":"Variable","name":{"kind":"Name","value":"grade"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"to_receive_job_info"},"value":{"kind":"Variable","name":{"kind":"Name","value":"to_receive_job_info"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"grade_updated_at"},"value":{"kind":"Variable","name":{"kind":"Name","value":"updated_at"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"grade_jp"}},{"kind":"Field","name":{"kind":"Name","value":"grade_updated_at"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]} as unknown as DocumentNode<UpdpateGradeMutation, UpdpateGradeMutationVariables>;
+export const PostStudentDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"postStudent"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"name"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"user_id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"phone"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"line_id"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"department_jp"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"grade_jp"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"is_interested_in_internship"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"will_start_working"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"grade_updated_at"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Date"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"to_receive_job_info"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Boolean"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"registered_at"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"DateTime"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createStudent"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"data"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"name"},"value":{"kind":"Variable","name":{"kind":"Name","value":"name"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"users_permissions_user"},"value":{"kind":"Variable","name":{"kind":"Name","value":"user_id"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"phone"},"value":{"kind":"Variable","name":{"kind":"Name","value":"phone"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"line_id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"line_id"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"department_jp"},"value":{"kind":"Variable","name":{"kind":"Name","value":"department_jp"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"grade_jp"},"value":{"kind":"Variable","name":{"kind":"Name","value":"grade_jp"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"is_interested_in_internship"},"value":{"kind":"Variable","name":{"kind":"Name","value":"is_interested_in_internship"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"will_start_working"},"value":{"kind":"Variable","name":{"kind":"Name","value":"will_start_working"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"grade_updated_at"},"value":{"kind":"Variable","name":{"kind":"Name","value":"grade_updated_at"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"to_receive_job_info"},"value":{"kind":"Variable","name":{"kind":"Name","value":"to_receive_job_info"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"registered_at"},"value":{"kind":"Variable","name":{"kind":"Name","value":"registered_at"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]} as unknown as DocumentNode<PostStudentMutation, PostStudentMutationVariables>;
+export const GetGradeDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getGrade"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"usersPermissionsUser"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"grade"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetGradeQuery, GetGradeQueryVariables>;
+export const GetUsersByLineIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getUsersByLineId"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"lineId"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"usersPermissionsUsers"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filters"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"line_id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"lineId"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"username"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"confirmed"}},{"kind":"Field","name":{"kind":"Name","value":"grade"}},{"kind":"Field","name":{"kind":"Name","value":"student"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"line_id"}},{"kind":"Field","name":{"kind":"Name","value":"to_receive_job_info"}},{"kind":"Field","name":{"kind":"Name","value":"grade_jp"}},{"kind":"Field","name":{"kind":"Name","value":"department_jp"}},{"kind":"Field","name":{"kind":"Name","value":"grade_updated_at"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"registered_at"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetUsersByLineIdQuery, GetUsersByLineIdQueryVariables>;
+export const PostVisitCountDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"postVisitCount"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"date"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"DateTime"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createVisitCount"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"data"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"student"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"date"},"value":{"kind":"Variable","name":{"kind":"Name","value":"date"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"date"}}]}}]}}]}}]}}]} as unknown as DocumentNode<PostVisitCountMutation, PostVisitCountMutationVariables>;
+export const GetVisitCountsByStudentIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getVisitCountsByStudentId"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"visitCounts"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filters"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"student"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}]}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"pagination"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"-1"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"date"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"meta"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"pagination"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetVisitCountsByStudentIdQuery, GetVisitCountsByStudentIdQueryVariables>;
+export const GetVisitCountTotalByStudentIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getVisitCountTotalByStudentId"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"visitCounts"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filters"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"student"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}]}}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"pagination"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"-1"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}},{"kind":"Field","name":{"kind":"Name","value":"meta"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"pagination"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetVisitCountTotalByStudentIdQuery, GetVisitCountTotalByStudentIdQueryVariables>;
+export const GetVisitCountsByStudentIdAndDatesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getVisitCountsByStudentIdAndDates"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"start_date"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"DateTime"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"end_date"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"DateTime"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"visitCounts"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filters"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"and"},"value":{"kind":"ListValue","values":[{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"student"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}]}}]}}]},{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"date"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"lt"},"value":{"kind":"Variable","name":{"kind":"Name","value":"end_date"}}}]}}]},{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"date"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"gte"},"value":{"kind":"Variable","name":{"kind":"Name","value":"start_date"}}}]}}]}]}}]}},{"kind":"Argument","name":{"kind":"Name","value":"pagination"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"-1"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"date"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"meta"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"pagination"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"total"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetVisitCountsByStudentIdAndDatesQuery, GetVisitCountsByStudentIdAndDatesQueryVariables>;

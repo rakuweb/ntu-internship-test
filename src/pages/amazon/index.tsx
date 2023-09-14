@@ -5,12 +5,14 @@ import { useRouter } from 'next/router';
 
 import { OfferSlider as Template } from '~/components/templates/OfferSlider';
 import {
-  GetOffersAllQuery,
-  GetOffersAllDocument,
-  OfferEntity,
   GetAdvertisementArticlesQuery,
   GetAdvertisementArticlesDocument,
 } from 'types/gql/graphql';
+import {
+  GetOffersAllQuery,
+  GetOffersAllDocument,
+  OfferEntity,
+} from 'types/offers-gql/graphql';
 import { initializeApollo } from 'lib/apollo/client';
 import { UPDATE_INTERVAL } from '~/constants';
 import { selectSetOffers, useOffersStore } from 'features/offers';

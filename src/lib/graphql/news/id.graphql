@@ -1,0 +1,11 @@
+query getNewsById($id: ID) {
+	news(id: $id) {
+    data {
+      id
+      attributes {
+        title
+        date
+      }
+    }
+  }
+}

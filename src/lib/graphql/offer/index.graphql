@@ -1,0 +1,79 @@
+query getOfferById($id: ID) {
+  offer(id: $id) {
+    data {
+      id
+      attributes {
+        form_url
+        title
+        createdAt
+        deadline
+        place
+        hourly_wage
+        description
+        about_job
+        recruitment_terms
+        target
+        qualification
+        people
+        job_description
+        about_company
+        job_points {
+          data {
+            id
+            attributes {
+              name
+              en_name
+            }
+          }
+        }
+        job_categories {
+          data {
+            id
+            attributes {
+              name
+              en_name
+            }
+          }
+        }
+
+        createdBy {
+          id
+          firstname
+          lastname
+        }
+        image {
+          data {
+            id
+            attributes {
+              width
+              height
+              url
+              alternativeText
+              formats
+            }
+          }
+        }
+        gallery {
+          data {
+            id
+            attributes {
+              width
+              height
+              url
+              alternativeText
+              formats
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+query getOfferPaths($today: Date) {
+  offers(sort: "publishedAt:desc", filters: { deadline: { gte: $today } }) {
+    data {
+      id
+    }
+  }
+}

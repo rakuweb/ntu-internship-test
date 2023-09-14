@@ -7,14 +7,16 @@ import { CANONICAL_URL, ORIGIN_URL, UPDATE_INTERVAL } from '~/constants';
 import { initializeApollo } from '~/lib/apollo/client';
 import {
   GetOffersAllQuery,
-  JobCategoryEntity,
   GetOffersAllDocument,
-  GetJobCategoriesQuery,
-  GetJobCategoriesDocument,
   GetPointsQuery,
   GetPointsDocument,
   PointEntity,
   OfferEntity,
+} from '~/types/offers-gql/graphql';
+import {
+  JobCategoryEntity,
+  GetJobCategoriesQuery,
+  GetJobCategoriesDocument,
 } from '~/types/gql/graphql';
 import {
   selectSetJobCategorys,

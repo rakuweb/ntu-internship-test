@@ -1,7 +1,7 @@
 import type { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
-  overwrite: false,
+  overwrite: true,
   schema: 'http://118.27.25.166:1337/graphql',
   documents: [
     'src/lib/offers-graphql/offer/index.graphql',
@@ -10,7 +10,7 @@ const config: CodegenConfig = {
     'src/lib/offers-graphql/points/index.graphql',
   ],
   generates: {
-    'src/types/gql/': {
+    'src/types/offers-gql/': {
       preset: 'client',
       plugins: [],
     },

@@ -1,0 +1,70 @@
+query getAdvertisementArticles {
+  advertisementArticles(sort: "publishedAt:desc") {
+    data {
+      id
+      attributes {
+        title
+        banner {
+          data {
+            id
+            attributes {
+              width
+              height
+              url
+              alternativeText
+              formats
+            }
+          }
+        }
+        publishedAt
+        updatedAt
+      }
+    }
+  }
+}
+
+query getAdvertisementArticleId($id: ID) {
+  advertisementArticle(id: $id) {
+    data {
+      id
+      attributes {
+        title
+        body
+        image {
+          data {
+            id
+            attributes {
+              width
+              height
+              url
+              alternativeText
+              formats
+            }
+          }
+        }
+        banner {
+          data {
+            id
+            attributes {
+              width
+              height
+              url
+              alternativeText
+              formats
+            }
+          }
+        }
+        publishedAt
+        updatedAt
+      }
+    }
+  }
+}
+
+query getadvertisementArticlePaths {
+  advertisementArticles {
+    data {
+      id
+    }
+  }
+}

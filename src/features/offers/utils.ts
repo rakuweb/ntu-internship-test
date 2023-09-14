@@ -1,4 +1,4 @@
-import { OfferEntity } from 'types/gql/graphql';
+import { OfferEntity } from 'types/offers-gql/graphql';
 import { OfferCard, OfferSliceData } from './types';
 import { parseDate, parseImage } from 'lib/utils';
 import markdownToHtml from 'zenn-markdown-html';
@@ -20,7 +20,7 @@ export const parseToOffers = (data: OfferEntity[]): OfferCard[] => {
       end_at: offer.end_at,
       id: entity.id,
       image: offer?.image?.data?.attributes?.url
-        ? parseImage(offer.image.data.attributes)
+        ? parseImage(offer?.image?.data?.attributes)
         : undefined,
       occupation: {
         id: offer.occupation.data.id,

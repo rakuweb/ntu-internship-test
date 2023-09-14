@@ -33,7 +33,7 @@ export const Index: NextPage = () => {
   const seo = parseSeo(title, description);
   const methods = useForm<RegisterFormSchema>({
     defaultValues: { willStartWorking: false, isInterestedInInternship: false },
-    resolver: yupResolver(registerFormSchema),
+    // resolver: yupResolver(registerFormSchema),
   });
   const progress = useFormProgressStore((state) => state.progress);
   const [isClient, setIsClient] = useState(false);

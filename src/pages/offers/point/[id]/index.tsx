@@ -16,12 +16,14 @@ import {
   UploadFile,
   GetOffersAllQuery,
   GetOffersAllDocument,
-  GetJobCategoriesQuery,
-  GetJobCategoriesDocument,
-  JobCategoryEntity,
   PointEntity,
   GetPointsQuery,
   GetPointsDocument,
+} from 'types/offers-gql/graphql';
+import {
+  GetJobCategoriesQuery,
+  GetJobCategoriesDocument,
+  JobCategoryEntity,
 } from 'types/gql/graphql';
 import { initializeApollo } from 'lib/apollo/client';
 import { selectSetOffers, useOffersStore } from 'features/offers';
@@ -50,16 +52,14 @@ export const Index: NextPage<Props> = ({
   points,
   jobcategories,
 }) => {
-  const title = `${
-    point && point.length > 0 ? point[0].attributes.name : ''
-  }が身に付く求人一覧 | NOT THE UNIVERSITY FOR JOB`;
-  const description = `${
-    point && point.length > 0 ? point[0].attributes.name : ''
-  }が身に付く求人一覧 | NOT THE UNIVERSITY FOR JOB`;
+  const title = `${point && point.length > 0 ? point[0].attributes.name : ''
+    }が身に付く求人一覧 | NOT THE UNIVERSITY FOR JOB`;
+  const description = `${point && point.length > 0 ? point[0].attributes.name : ''
+    }が身に付く求人一覧 | NOT THE UNIVERSITY FOR JOB`;
   const ogp = data?.offers?.data[0]?.attributes?.image?.data?.attributes
     ? parseImage(
-        data.offers.data[0].attributes.image?.data?.attributes as UploadFile
-      )
+      data.offers.data[0].attributes.image?.data?.attributes as UploadFile
+    )
     : undefined;
   const seo = parseSeo(title, description, undefined, ogp);
   const imageurl =
@@ -131,10 +131,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
     });
     const paths = data?.points?.data
       ? data.points.data.map((item) => ({
-          params: {
-            id: item?.id,
-          },
-        }))
+        params: {
+          id: item?.id,
+        },
+      }))
       : [];
     return {
       paths,

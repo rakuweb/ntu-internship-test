@@ -1,4 +1,4 @@
-import { PointEntity } from 'types/gql/graphql';
+import { PointEntity } from 'types/offers-gql/graphql';
 import { PointSliceData, PointsCard } from './types';
 
 export const parseToPointItem = (entity: PointEntity): PointSliceData => {
@@ -6,11 +6,11 @@ export const parseToPointItem = (entity: PointEntity): PointSliceData => {
   const result = {
     id: entity?.id,
     name: point.name,
-    en_name: point.en_name,
-    offers:
-      point?.offers?.data?.map((offer) => ({
-        id: offer.id,
-      })) ?? [],
+    // en_name: point.en_name,
+    // offers:
+    //   point?.offers?.data?.map((offer) => ({
+    //     id: offer.id,
+    //   })) ?? [],
   };
 
   return result;

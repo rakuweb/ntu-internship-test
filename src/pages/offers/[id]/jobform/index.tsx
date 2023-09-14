@@ -19,7 +19,7 @@ import {
   GetOfferPathsQuery,
   GetOfferPathsDocument,
   UploadFile,
-} from 'types/gql/graphql';
+} from 'types/offers-gql/graphql';
 import { initializeApollo, initializeApollo_offer } from 'lib/apollo/client';
 import { selectSetTarget, useTargetOfferStore } from 'features/offers';
 import { UPDATE_INTERVAL } from '~/constants';
@@ -95,10 +95,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
     const paths = data?.offers?.data
       ? data.offers.data.map((item) => ({
-          params: {
-            id: item?.id,
-          },
-        }))
+        params: {
+          id: item?.id,
+        },
+      }))
       : [];
 
     return {

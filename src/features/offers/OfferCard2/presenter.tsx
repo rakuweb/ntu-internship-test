@@ -15,6 +15,8 @@ export type DataProps = OfferCard;
 export interface PresenterProps extends DataProps {
   deadline: number;
   startDate: string;
+  companyName: any;
+  createdByid: any;
 }
 
 // presenter
@@ -22,9 +24,9 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const {
     id,
     companyName,
-    categories,
-    place,
-    hourlyWage,
+    // categories,
+    // place,
+    // hourlyWage,
     startDate,
     title,
     image,

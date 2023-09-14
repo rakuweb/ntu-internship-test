@@ -11,7 +11,12 @@ import { Labeltext } from './Labeltext';
 import { Image as NImage } from 'components/images/Image';
 
 // type layer
-export type DataProps = OfferCard;
+export type DataProps = OfferCard & {
+  companyName: any;
+  categories: any[];
+  place: any;
+  hourlyWage: any;
+};
 export type PresenterProps = DataProps;
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
@@ -21,10 +26,10 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     categories,
     place,
     hourlyWage,
-    isNew,
+    // isNew,
     title,
     image,
-    deadline,
+    // deadline,
   } = props;
   const href = `${routes.offers}/${id}`;
 
@@ -93,7 +98,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 width={24}
                 height={24}
                 src={`/svg/money.svg`}
-                // src={`/images/offers/hukuroIkon.png`}
+              // src={`/images/offers/hukuroIkon.png`}
               />
               <div className="placetext">{hourlyWage}</div>
             </div>

@@ -1,0 +1,10 @@
+query getGrade($id: ID) {
+  usersPermissionsUser(id: $id) {
+    data {
+      id
+      attributes {
+        grade
+      }
+    }
+  }
+}

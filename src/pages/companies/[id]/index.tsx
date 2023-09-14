@@ -15,12 +15,14 @@ import { parseSeo } from '~/lib';
 import {
   GetCompaniesQuery,
   GetCompaniesDocument,
-  OfferEntity,
   CompanyEntity,
+} from 'types/gql/graphql';
+import {
+  OfferEntity,
   UploadFile,
   GetOffersAllQuery,
   GetOffersAllDocument,
-} from 'types/gql/graphql';
+} from 'types/offers-gql/graphql';
 import { initializeApollo } from 'lib/apollo/client';
 import { selectSetOffers, useOffersStore } from 'features/offers';
 import { selectSetCompanyItem, useCompanyStore } from '~/features/company';
@@ -46,8 +48,8 @@ export const Index: NextPage<Props> = ({ data, company }) => {
   const description = company[0]?.attributes?.description ?? ``;
   const ogp = company[0]?.attributes?.cover_image?.data?.attributes
     ? parseImage(
-        company[0]?.attributes.cover_image?.data?.attributes as UploadFile
-      )
+      company[0]?.attributes.cover_image?.data?.attributes as UploadFile
+    )
     : undefined;
   const seo = parseSeo(title, description, undefined, ogp);
   const imageurl = company[0]?.attributes?.cover_image?.data?.attributes.url;
@@ -109,10 +111,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
     const paths = data?.companies?.data
       ? data.companies.data.map((item) => ({
-          params: {
-            id: item?.id,
-          },
-        }))
+        params: {
+          id: item?.id,
+        },
+      }))
       : [];
 
     return {

@@ -1,0 +1,75 @@
+query getCompanies {
+  companies {
+    data {
+      id
+      attributes {
+        establishment_date
+        industry_categories {
+          data {
+            id
+            attributes {
+              name
+              en_name
+            }
+          }
+        }
+        address
+        map_url
+        mission
+        name
+        createdBy {
+          id
+          firstname
+          lastname
+        }
+        description
+        address
+        mission
+        company_id
+        founding
+        jobtype
+        employment
+        scale
+        outline
+        atmosphere
+        tostudents
+        cover_image {
+          data {
+            id
+            attributes {
+              width
+              height
+              formats
+              url
+              alternativeText
+            }
+          }
+        }
+        atmosphereimage {
+          data {
+            id
+            attributes {
+              width
+              height
+              formats
+              url
+              alternativeText
+            }
+          }
+        }
+        logo {
+          data {
+            id
+            attributes {
+              width
+              height
+              formats
+              url
+              alternativeText
+            }
+          }
+        }
+      }
+    }
+  }
+}
