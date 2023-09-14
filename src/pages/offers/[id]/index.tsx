@@ -10,26 +10,23 @@ import { Top as Template } from 'templates/OfferId';
 import { SeoComponent } from 'organisms/SeoComponent';
 import { CANONICAL_URL, CMS_URL } from 'constants/env';
 import { UPDATE_INTERVAL } from '~/constants';
-import { parseSeo } from '~/lib';
 import {
   GetOfferByIdQuery,
   GetOfferByIdDocument,
   OfferEntity,
   GetOfferPathsQuery,
   GetOfferPathsDocument,
-  UploadFile,
   GetOffersAllQuery,
   GetOffersAllDocument,
 } from 'types/offers-gql/graphql';
-import { initializeApollo, initializeApollo_offer } from 'lib/apollo/client';
+import { initializeApollo_offer } from 'lib/apollo/client';
 import {
   selectSetOffers,
   selectSetTarget,
   useOffersStore,
   useTargetOfferStore,
 } from 'features/offers';
-import { selectSetCompanyItem, useCompanyStore } from '~/features/company';
-import { getTodayString, parseImage } from '~/lib/utils';
+import { getTodayString } from '~/lib/utils';
 
 // type layer
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
@@ -38,12 +35,6 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 export const Index: NextPage<Props> = ({ data, allOffersData }) => {
   const title = data?.offer?.data?.attributes?.title ?? ``; // eslint-disable-line
   const description = data?.offer?.data?.attributes?.job_description ?? ``;
-  const ogp = data?.offer?.data?.attributes?.image?.data?.attributes
-    ? parseImage(
-      data.offer.data.attributes.image?.data?.attributes as UploadFile
-    )
-    : undefined;
-  const seo = parseSeo(title, description, undefined, ogp);
   const imageurl = data?.offer?.data?.attributes?.image?.data?.attributes.url;
   const openGraph = {
     type: 'website',
@@ -59,7 +50,6 @@ export const Index: NextPage<Props> = ({ data, allOffersData }) => {
   };
   const [isClient, setIsClient] = useState(false);
   const setTarget = useTargetOfferStore(selectSetTarget);
-  const setComapanyItem = useCompanyStore(selectSetCompanyItem);
   const setOffers = useOffersStore(selectSetOffers);
 
   useEffect(() => {
@@ -88,14 +78,12 @@ export const Index: NextPage<Props> = ({ data, allOffersData }) => {
       );
     } else {
       return (
-        <>
-          <SeoComponent
-            canonical={CANONICAL_URL}
-            title={title}
-            description={description}
-            openGraph={openGraph}
-          />
-        </>
+        <SeoComponent
+          canonical={CANONICAL_URL}
+          title={title}
+          description={description}
+          openGraph={openGraph}
+        />
       );
     }
   };

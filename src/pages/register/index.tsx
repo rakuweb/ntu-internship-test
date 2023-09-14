@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { NextPage } from 'next/types';
 import { FormProvider, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+// import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
@@ -11,26 +11,21 @@ import { Index as Check } from 'templates/Register/RegisterCheck';
 import { SeoComponent } from 'organisms/SeoComponent';
 import { CANONICAL_URL } from 'constants/env';
 import { ORIGIN_URL } from 'constants/env';
-import { parseSeo } from '~/lib';
 import { useFormProgressStore } from 'features/formProgress/hooks';
 import {
   RegisterFormSchema,
-  registerFormSchema,
+  // registerFormSchema,
 } from '~/features/registerForm/schema';
 import { useLiff } from 'contexts/LineAuthContextInternship';
 import { routes } from 'constants/routes';
 import { useAccountStore } from 'features/account/hooks';
-import { selectSetAccount, selectAccount } from 'features/account/selectors';
+import { selectSetAccount } from 'features/account/selectors';
 import { useStudentStore, selectSetStudent } from 'features/student';
-
-// type layer
-// type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 // component layer
 export const Index: NextPage = () => {
   const title = ``; // eslint-disable-line
   const description = ``;
-  const seo = parseSeo(title, description);
   const methods = useForm<RegisterFormSchema>({
     defaultValues: { willStartWorking: false, isInterestedInInternship: false },
     // resolver: yupResolver(registerFormSchema),
@@ -97,7 +92,7 @@ export const Index: NextPage = () => {
     };
 
     handler();
-  }, [liff, liff?.isLoggedIn, isClient]);
+  }, [liff, liff?.isLoggedIn, isClient]); // eslint-disable-line
 
   const message = () => {
     if (isClient) {

@@ -12,6 +12,7 @@ import { parseAuthorization } from './parse';
 export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
 
 let apolloClient;
+let apolloClientOffers;
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors)
@@ -107,15 +108,15 @@ export function initializeApollo(initialState = null) {
 }
 
 export function initializeApollo_offer(initialState = null) {
-  const _apolloClient: ReturnType<typeof createApolloClient_offer> =
-    apolloClient ?? createApolloClient_offer();
+  const _apolloClientOffers: ReturnType<typeof createApolloClient_offer> =
+    apolloClientOffers ?? createApolloClient_offer();
 
   // If your page has Next.js data fetching methods that use Apollo Client, the initial state
   // gets hydrated here
   if (initialState) {
     // Get existing cache, loaded during client side data fetching
 
-    const existingCache = _apolloClient.extract();
+    const existingCache = _apolloClientOffers.extract();
 
     // Merge the initialState from getStaticProps/getServerSideProps in the existing cache
 
@@ -131,14 +132,14 @@ export function initializeApollo_offer(initialState = null) {
     });
 
     // Restore the cache with the merged data
-    _apolloClient.cache.restore(data);
+    _apolloClientOffers.cache.restore(data);
   }
   // For SSG and SSR always create a new Apollo Client
-  if (typeof window === 'undefined') return _apolloClient;
+  if (typeof window === 'undefined') return _apolloClientOffers;
   // Create the Apollo Client once in the client
-  if (!apolloClient) apolloClient = _apolloClient;
+  if (!apolloClientOffers) apolloClientOffers = _apolloClientOffers;
 
-  return _apolloClient;
+  return _apolloClientOffers;
 }
 
 export function addApolloState(client, pageProps) {

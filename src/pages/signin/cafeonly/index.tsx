@@ -4,10 +4,7 @@ import { NextPage } from 'next/types';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
-import { SeoComponent } from 'organisms/SeoComponent';
-import { CANONICAL_URL } from 'constants/env';
 import { ORIGIN_URL } from 'constants/env';
-import { parseSeo } from '~/lib';
 import { useLiff } from 'contexts/LineAuthContextInternship';
 import { routes } from 'constants/routes';
 import { useAccountStore } from 'features/account/hooks';
@@ -20,12 +17,8 @@ import {
 } from 'features/student';
 import { CAFE_ENTRY_QUERY } from '~/constants';
 
-// type layer
-
 // component layer
 export const Index: NextPage = () => {
-  const title = ``; // eslint-disable-line
-  const description = ``;
   const [isClient, setIsClient] = useState(false);
   const { liff } = useLiff();
   const router = useRouter();
@@ -42,7 +35,7 @@ export const Index: NextPage = () => {
     setQuery((router?.query?.cafeonly as string) ?? '');
     setIsClient(true);
   }, [router, router?.query?.cafeonly]);
-  console.log('aaaa: ',query)
+  console.log('aaaa: ', query);
 
   useEffect(() => {
     if (!isClient) return;
@@ -114,7 +107,7 @@ export const Index: NextPage = () => {
     };
 
     handler();
-  }, [liff, liff?.isLoggedIn(), query]);
+  }, [liff, liff?.isLoggedIn(), query]); // eslint-disable-line
 
   useEffect(() => {
     // api接続が完了したら
@@ -131,7 +124,7 @@ export const Index: NextPage = () => {
         router.push(routes.signinMembercard);
       }
     }
-  }, [liff, liff?.isLoggedIn(), connected]);
+  }, [liff, liff?.isLoggedIn(), connected]); // eslint-disable-line
 
   const message = () => {
     if (isClient) {

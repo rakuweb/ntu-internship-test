@@ -9,12 +9,10 @@ import {
 
 import { Top as Template } from '../../../../components/templates/TagId';
 import { SeoComponent } from 'organisms/SeoComponent';
-import { CANONICAL_URL, ORIGIN_URL } from 'constants/env';
+import { CANONICAL_URL } from 'constants/env';
 import { UPDATE_INTERVAL } from '~/constants';
-import { parseSeo } from '~/lib';
 import {
   OfferEntity,
-  UploadFile,
   GetOffersAllQuery,
   GetOffersAllDocument,
   GetPointsQuery,
@@ -29,7 +27,6 @@ import {
 import { initializeApollo } from 'lib/apollo/client';
 import { selectSetOffers, useOffersStore } from 'features/offers';
 
-import { parseImage } from '~/lib/utils';
 import {
   selectSetJobCategoryItem,
   selectSetJobCategorys,
@@ -54,12 +51,6 @@ export const Index: NextPage<Props> = ({
   const description = `${jobcategory && jobcategory.length > 0 ? jobcategory[0].attributes.name : ''
     }が身に付く求人一覧 | NOT THE UNIVERSITY FOR JOB`;
 
-  const ogp = data?.offers?.data[0]?.attributes?.image?.data?.attributes
-    ? parseImage(
-      data.offers.data[0].attributes.image?.data?.attributes as UploadFile
-    )
-    : undefined;
-  const seo = parseSeo(title, description, undefined, ogp);
   const imageurl =
     data?.offers?.data[0]?.attributes?.image?.data?.attributes.url;
   const cmsurl = `https://management.nottheuniversity.com`;
@@ -107,14 +98,12 @@ export const Index: NextPage<Props> = ({
       );
     } else {
       return (
-        <>
-          <SeoComponent
-            canonical={CANONICAL_URL}
-            title={title}
-            description={description}
-            openGraph={openGraph}
-          />
-        </>
+        <SeoComponent
+          canonical={CANONICAL_URL}
+          title={title}
+          description={description}
+          openGraph={openGraph}
+        />
       );
     }
   };

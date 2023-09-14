@@ -1,24 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import fetch from 'node-fetch';
-import { v4 as uuidv4 } from 'uuid';
 
-import { parseAuthorization } from 'lib/apollo/parse';
-import { API_URL, WRITE_API_KEY } from 'constants/env';
+import { API_URL } from 'constants/env';
 import { apiRoutes } from 'constants/routes';
 import { PostStudentMutation, PostStudentDocument } from 'types/gql/graphql';
 import { initializeApollo } from 'lib/apollo/client';
-
-// type Data = {
-//   name?: string;
-//   email?: string;
-//   kind?: string;
-//   grade?: string;
-//   phone?: string;
-//   department?: string;
-//   willStartWorking: boolean;
-//   isInterestedInIntership: boolean;
-//   lineId?: string;
-// };
 
 type Data = {
   message?: string;
@@ -33,7 +19,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   switch (method) {
     case 'POST': {
       try {
-        const { recaptcha, ...data } = req.body;
+        const { recaptcha: _recaptcha, ...data } = req.body;
 
         // const recaptchaRes = await fetch(RECAPTCHA_URL, {
         //   method: 'POST',
@@ -79,7 +65,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
           const createdAt = `${date.getFullYear()}-${(date.getMonth() + 1)
             .toString()
             .padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
-          const { data: studentData } =
+          const { data: _studentData } =
             await apolloClient.mutate<PostStudentMutation>({
               mutation: PostStudentDocument,
               variables: {
@@ -110,11 +96,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
         }
 
         return res.status(200).json({ message: 'POST', ...result });
-      } catch (err: any) {
+      } catch (err) {
         console.error(err);
         return res.status(403).end();
       }
-      break;
     }
   }
 };

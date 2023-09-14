@@ -67,7 +67,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         res.status(200).json({
           date: data?.createVisitCount?.data?.attributes?.date,
         });
-      } catch (err: any) {
+      } catch (err) {
         console.error(err);
         res.status(500).end();
       }

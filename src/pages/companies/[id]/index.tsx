@@ -6,12 +6,10 @@ import {
   GetStaticPaths,
   GetStaticProps,
 } from 'next/types';
-import { Image as NImage } from 'components/images/Image';
 import { Top as Template } from '../../../components/templates/AboutCompany';
 import { SeoComponent } from 'organisms/SeoComponent';
-import { CANONICAL_URL, ORIGIN_URL } from 'constants/env';
+import { CANONICAL_URL } from 'constants/env';
 import { UPDATE_INTERVAL } from '~/constants';
-import { parseSeo } from '~/lib';
 import {
   GetCompaniesQuery,
   GetCompaniesDocument,
@@ -19,14 +17,12 @@ import {
 } from 'types/gql/graphql';
 import {
   OfferEntity,
-  UploadFile,
   GetOffersAllQuery,
   GetOffersAllDocument,
 } from 'types/offers-gql/graphql';
 import { initializeApollo } from 'lib/apollo/client';
 import { selectSetOffers, useOffersStore } from 'features/offers';
 import { selectSetCompanyItem, useCompanyStore } from '~/features/company';
-import { parseImage } from '~/lib/utils';
 
 // type layer
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
@@ -44,14 +40,8 @@ export const Index: NextPage<Props> = ({ data, company }) => {
   if (!data?.offers?.data) {
     return <></>;
   }
-  const title = `企業情報 | NOT THE UNIVERSITY FOR JOB`; // eslint-disable-line
+  const title = `企業情報 | NOT THE UNIVERSITY FOR JOB`;
   const description = company[0]?.attributes?.description ?? ``;
-  const ogp = company[0]?.attributes?.cover_image?.data?.attributes
-    ? parseImage(
-      company[0]?.attributes.cover_image?.data?.attributes as UploadFile
-    )
-    : undefined;
-  const seo = parseSeo(title, description, undefined, ogp);
   const imageurl = company[0]?.attributes?.cover_image?.data?.attributes.url;
   const cmsurl = `https://management.nottheuniversity.com`;
   const openGraph = {
@@ -85,14 +75,12 @@ export const Index: NextPage<Props> = ({ data, company }) => {
       );
     } else {
       return (
-        <>
-          <SeoComponent
-            canonical={CANONICAL_URL}
-            title={title}
-            description={description}
-            openGraph={openGraph}
-          />
-        </>
+        <SeoComponent
+          canonical={CANONICAL_URL}
+          title={title}
+          description={description}
+          openGraph={openGraph}
+        />
       );
     }
   };

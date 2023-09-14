@@ -6,8 +6,7 @@ import { useRouter } from 'next/router';
 import { Index as Template } from '~/components/templates/Register/Registered';
 import { SeoComponent } from 'organisms/SeoComponent';
 import { CANONICAL_URL } from 'constants/env';
-import { ORIGIN_URL } from 'constants/env';
-import { parseSeo } from '~/lib';
+// import { parseSeo } from '~/lib';
 import { useLiff } from 'contexts/LineAuthContext';
 import { routes } from 'constants/routes';
 
@@ -18,7 +17,7 @@ import { routes } from 'constants/routes';
 export const Index: NextPage = () => {
   const title = ``; // eslint-disable-line
   const description = ``;
-  const seo = parseSeo(title, description);
+  // const seo = parseSeo(title, description);
   const [isClient, setIsClient] = useState(false);
   const { liff } = useLiff();
   const router = useRouter();
@@ -32,7 +31,7 @@ export const Index: NextPage = () => {
     if (!liff.isLoggedIn()) {
       router.push(routes.register);
     }
-  }, [liff]);
+  }, [liff]); // eslint-disable-line
 
   const message = () => {
     if (isClient) {

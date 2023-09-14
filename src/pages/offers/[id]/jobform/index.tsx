@@ -10,7 +10,6 @@ import {
 import { JobForm as Template } from '~/components/templates/JobForm';
 import { SeoComponent } from 'organisms/SeoComponent';
 import { CANONICAL_URL, ORIGIN_URL } from '~/constants';
-import { parseSeo } from '~/lib';
 
 import {
   GetOfferByIdQuery,
@@ -18,20 +17,19 @@ import {
   OfferEntity,
   GetOfferPathsQuery,
   GetOfferPathsDocument,
-  UploadFile,
 } from 'types/offers-gql/graphql';
-import { initializeApollo, initializeApollo_offer } from 'lib/apollo/client';
+import { initializeApollo_offer } from 'lib/apollo/client';
 import { selectSetTarget, useTargetOfferStore } from 'features/offers';
 import { UPDATE_INTERVAL } from '~/constants';
+
 // type layer
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 // component layer
 export const Index: NextPage<Props> = ({ data }) => {
-  const title = `応募フォーム | NOT THE UNIVERSITY FOR JOB`; // eslint-disable-line
+  const title = `応募フォーム | NOT THE UNIVERSITY FOR JOB`;
   const description = `NOT THE UNIVERSITY FOR JOBの応募フォームのページです。`;
 
-  const seo = parseSeo(title, description);
   const openGraph = {
     type: 'website',
     title: title,
@@ -68,15 +66,12 @@ export const Index: NextPage<Props> = ({ data }) => {
       );
     } else {
       return (
-        <>
-          {' '}
-          <SeoComponent
-            canonical={CANONICAL_URL}
-            title={title}
-            description={description}
-            openGraph={openGraph}
-          />
-        </>
+        <SeoComponent
+          canonical={CANONICAL_URL}
+          title={title}
+          description={description}
+          openGraph={openGraph}
+        />
       );
     }
   };

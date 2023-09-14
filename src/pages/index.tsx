@@ -6,13 +6,12 @@ import { useRouter } from 'next/router';
 import { Offers as Template } from 'templates/Offers';
 import { SeoComponent } from 'components/seo/SeoComponent';
 import { CANONICAL_URL, ORIGIN_URL } from 'constants/env';
-import { parseSeo } from '~/lib';
 import {
   GetOffersAllQuery,
   GetOffersAllDocument,
   OfferEntity,
 } from 'types/offers-gql/graphql';
-import { initializeApollo, initializeApollo_offer } from 'lib/apollo/client';
+import { initializeApollo_offer } from 'lib/apollo/client';
 import { UPDATE_INTERVAL } from '~/constants';
 import { selectSetOffers, useOffersStore } from 'features/offers';
 
@@ -37,7 +36,6 @@ export const Index: NextPage<Props> = ({ data }) => {
       },
     ],
   };
-  // const seo = parseSeo(title, description);
   const [isClient, setIsClient] = useState(false);
   const setOffers = useOffersStore(selectSetOffers);
   useEffect(() => {
@@ -65,15 +63,12 @@ export const Index: NextPage<Props> = ({ data }) => {
       );
     } else {
       return (
-        <>
-          {' '}
-          <SeoComponent
-            canonical={CANONICAL_URL}
-            title={title}
-            description={description}
-            openGraph={openGraph}
-          />
-        </>
+        <SeoComponent
+          canonical={CANONICAL_URL}
+          title={title}
+          description={description}
+          openGraph={openGraph}
+        />
       );
     }
   };

@@ -2,9 +2,6 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import { initializeApollo } from 'lib/apollo/client';
 import { UpdpateGradeMutation, UpdpateGradeDocument } from 'types/gql/graphql';
-import axios from 'axios';
-import { API_URL, CMS_URL } from '~/constants/env';
-import { apiRoutes, routes } from '~/constants';
 
 export type RequestProps = {
   grade: string;
@@ -51,7 +48,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             data?.updateStudent?.data?.attributes?.grade_updated_at,
           username: data?.updateStudent?.data?.attributes?.name,
         });
-      } catch (err: any) {
+      } catch (err) {
         console.error(err);
         res.status(403).end();
       }

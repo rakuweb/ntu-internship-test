@@ -11,7 +11,7 @@ import {
   GetOffersAllDocument,
   OfferEntity,
 } from 'types/offers-gql/graphql';
-import { initializeApollo, initializeApollo_offer } from 'lib/apollo/client';
+import { initializeApollo_offer } from 'lib/apollo/client';
 import { UPDATE_INTERVAL } from '~/constants';
 import { selectSetOffers, useOffersStore } from 'features/offers';
 
@@ -64,14 +64,12 @@ export const Index: NextPage<Props> = ({ data }) => {
       );
     } else {
       return (
-        <>
-          <SeoComponent
-            canonical={CANONICAL_URL}
-            title={title}
-            description={description}
-            openGraph={openGraph}
-          />
-        </>
+        <SeoComponent
+          canonical={CANONICAL_URL}
+          title={title}
+          description={description}
+          openGraph={openGraph}
+        />
       );
     }
   };
@@ -105,6 +103,6 @@ export const getStaticProps: GetStaticProps<{
       revalidate: UPDATE_INTERVAL,
     };
   } finally {
-    console.log('get pages/home static props');
+    console.log('get pages/search static props');
   }
 };
