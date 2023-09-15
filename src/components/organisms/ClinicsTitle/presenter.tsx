@@ -7,19 +7,18 @@ import { mq } from '~/constants/styles';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <div css={styles}>
       <section className="clinics-title">
-        <p className="clinics-title__status">
-          本日診療中
-        </p>
+        <p className="clinics-title__status">本日診療中</p>
         <div className="clinics-title__title">
           <h1 className="clinics-title__title__name">
             医療法人社団清麗会 銀座T&apos;Sデンタルオフィスインプラントセンター
           </h1>
           <a href="#" className="clinics-title__title__button">
-            電話で予約<br />
+            電話で予約
+            <br />
             <span className="clinics-title__title__button__number">
               0066-0000-00000
             </span>
@@ -62,9 +61,9 @@ const styles = css`
 
   .clinics-title__title__button {
     align-items: center;
-    background-color: #2194E5;
+    background-color: #2194e5;
     border-radius: 8px;
-    color: #FFF;
+    color: #fff;
     display: flex;
     flex-direction: column;
     font-size: 20px;

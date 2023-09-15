@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import { ChakraStylesConfig, GroupBase, Select } from 'chakra-react-select';
 import { FC } from 'react';
-import { Control, FieldValues, Controller } from 'react-hook-form';
+import { Control, Controller } from 'react-hook-form';
 
 type SelectFormProps = {
   index: number;

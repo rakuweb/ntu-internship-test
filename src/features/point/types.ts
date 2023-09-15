@@ -1,4 +1,3 @@
-import { ImageType } from 'lib/utils';
 import { PointEntity } from 'types/offers-gql/graphql';
 
 export type PointSliceData = {

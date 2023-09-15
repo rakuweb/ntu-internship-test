@@ -1,7 +1,6 @@
 // import layer
 import { FC } from 'react';
-import { Box, Flex, Grid, GridItem } from '@chakra-ui/react';
-import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
+import { Box, Flex } from '@chakra-ui/react';
 import { InternalLink } from '~/components/links/InternalLink';
 
 // type layer
@@ -51,7 +50,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             // overflow={`hidden`}
             // overflowX={{ base: `scroll`, lg: `initial` }}
             flexShrink={`0`}
-            // direction={`column`}
+          // direction={`column`}
           >
             {/* 仮表示ね */}
             {list.map((list) => {

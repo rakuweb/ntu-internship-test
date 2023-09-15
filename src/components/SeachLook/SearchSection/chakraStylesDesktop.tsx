@@ -1,7 +1,7 @@
 import { ChakraStylesConfig } from 'chakra-react-select';
 
 const chakraStylesDesktop: ChakraStylesConfig = {
-  control: (provided, state) => ({
+  control: (provided, _state) => ({
     ...provided,
     display: { base: `none`, md: `flex` },
     background: `white`,
@@ -23,18 +23,18 @@ const chakraStylesDesktop: ChakraStylesConfig = {
     boxShadow: `0px 3px 6px #00000029`,
   }),
 
-  valueContainer: (provided, state) => ({
+  valueContainer: (provided, _state) => ({
     ...provided,
   }),
 
-  input: (provided, state) => ({
+  input: (provided, _state) => ({
     ...provided,
     margin: '0px',
   }),
-  indicatorSeparator: (state) => ({
+  indicatorSeparator: (_state) => ({
     display: 'none',
   }),
-  indicatorsContainer: (provided, state) => ({
+  indicatorsContainer: (provided, _state) => ({
     ...provided,
     height: { md: `${60 / 19.2}vw`, lg: `${49 / 19.2}vw` },
   }),
@@ -45,7 +45,7 @@ const chakraStylesDesktop: ChakraStylesConfig = {
     background: `white`,
     borderRadius: `0`,
   }),
-  menu: (provided, state) => ({
+  menu: (provided, _state) => ({
     ...provided,
     fontSize: {
       base: `${13 / 3.75}vw`,

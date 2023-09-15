@@ -26,6 +26,7 @@ export const LiffProvider: FC<
     mock?: {
       enable: boolean;
       plugin?: LiffMockPlugin;
+      // eslint-disable-next-line
       mockDidLoaded?: (parameter?: any) => { [method: string]: any };
     };
   }>
@@ -39,6 +40,7 @@ export const LiffProvider: FC<
     if (typeof window === 'undefined') return;
     if (didLoadRef.current === true) return;
     didLoadRef.current = true;
+    // eslint-disable-next-line
     import('@line/liff').then((data: any) => setLiffSDK(data?.liff));
   }, []);
 
@@ -52,9 +54,11 @@ export const LiffProvider: FC<
       .init({
         liffId,
         mock: mock?.enable ?? false,
+        // eslint-disable-next-line
       } as any)
       .then(() => {
         if (mock?.mockDidLoaded) {
+          // eslint-disable-next-line
           (_liff as any).$mock.set(mock.mockDidLoaded);
         }
         setLiff(_liff);

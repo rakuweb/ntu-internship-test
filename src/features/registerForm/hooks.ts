@@ -1,5 +1,4 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
 
 import { RegisterFormSlice, RegisterGradeFormSlice } from './types';
 import { createRegisterFormSlice, createRegisterGradeFormSlice } from './slice';

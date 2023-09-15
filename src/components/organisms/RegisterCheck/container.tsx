@@ -37,7 +37,7 @@ export const Container: FC<ContainerProps> = ({ ...props }) => {
         ...formItem,
         lineId: profile.userId,
       };
-      const res = await axios.post(apiUrl, {
+      const _res = await axios.post(apiUrl, {
         ...registerData,
         // recaptcha: token,
       });

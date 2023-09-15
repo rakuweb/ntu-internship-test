@@ -1,18 +1,15 @@
 // import layer
 import { FC } from 'react';
-import { Box, Stack, Flex } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 
-import { Image } from 'components/Image';
 import { InternalLink } from 'components/links/InternalLink';
-import { HP_URL, INSTAGRAM_URL, TWITTER_URL, routes } from 'constants/routes';
-import { ExternalLink } from 'components/links/ExternalLink';
-import { addApolloState } from '../../../lib/apollo/client';
+import { routes } from 'constants/routes';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: FC<PresenterProps> = ({ ...props }) => {
+export const Presenter: FC<PresenterProps> = () => {
   return (
     <Box w={`100%`} bg={`#39414E`} as={`footer`}>
       <Box

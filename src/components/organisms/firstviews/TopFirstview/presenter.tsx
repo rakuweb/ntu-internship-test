@@ -1,5 +1,5 @@
 // import layer
-import { VFC, useState } from 'react';
+import { FC, useState } from 'react';
 import { css } from '@emotion/react';
 import { Box, Progress, Flex } from '@chakra-ui/react';
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
@@ -18,7 +18,7 @@ import 'swiper/css/autoplay';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: FC<PresenterProps> = () => {
   const [index, setIndex] = useState<number>(0);
   const images = [
     { src: `/dev/img/clip-11@1x.png`, width: 874, height: 500 },
@@ -127,7 +127,13 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
                 h={`auto`}
                 position={`relative`}
               >
-                <Image w={`100%`} h={`100%`} objectFit={`cover`} {...image} />
+                <Image
+                  w={`100%`}
+                  h={`100%`}
+                  objectFit={`cover`}
+                  {...image}
+                  alt={``}
+                />
 
                 <Box
                   display={{ base: `none`, md: `block` }}
@@ -210,7 +216,12 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
           >
             <Box css={number}>{zeroPadding(index + 1)}</Box>
             <Box css={line}>
-              <Image src={`/dev/img/line@1x.png`} width={145} height={145} />
+              <Image
+                src={`/dev/img/line@1x.png`}
+                width={145}
+                height={145}
+                alt={``}
+              />
             </Box>
             <Box css={styleTotal}>{zeroPadding(slideTotal)}</Box>
           </Box>

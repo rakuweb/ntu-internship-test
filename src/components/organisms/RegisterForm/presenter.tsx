@@ -18,7 +18,7 @@ export type StyleProps = Record<string, unknown>;
 export type PresenterProps = DataProps & StyleProps;
 
 // presenter
-export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
+export const Presenter: FC<PresenterProps> = ({ onClick }) => {
   const {
     register,
     setValue,
@@ -37,7 +37,7 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
         setInputDisabled(true);
       }
     }
-  }, [liff?.isLoggedIn, liff]);
+  }, [liff?.isLoggedIn, liff]); // eslint-disable-line
 
   setValue('toReceiveJobInfo', true);
   setValue('isInterestedInInternship', true);

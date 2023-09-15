@@ -8,7 +8,7 @@ import { Box } from '@chakra-ui/react';
 export type PresenterProps = { title: string; message: string };
 
 // presenter
-export const Presenter: FC<PresenterProps> = ({ title, message, ...props }) => {
+export const Presenter: FC<PresenterProps> = ({ title, message }) => {
   return (
     <div css={styles}>
       <section className="form">

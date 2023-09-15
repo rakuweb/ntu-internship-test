@@ -10,7 +10,7 @@ import { mq } from '~/constants/styles';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   const list = {
     Link: `/news/1`,
     Img: `/images/newscard/clip-5@1x.png`,
@@ -30,6 +30,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
             src={list.Img}
             width={350}
             height={195}
+            alt={``}
           />
           <div className="spacing_item">
             <p className="news-article-item__info">

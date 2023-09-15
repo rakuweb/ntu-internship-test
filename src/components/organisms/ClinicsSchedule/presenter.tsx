@@ -7,14 +7,12 @@ import { mq } from '~/constants/styles';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <div css={styles}>
       <section className="clinics-schedule">
         <div className="clinics-schedule__container">
-          <h2 className="clinics-schedule__container__h2">
-            診療時間
-          </h2>
+          <h2 className="clinics-schedule__container__h2">診療時間</h2>
 
           <table className="clinics-schedule__container__table">
             <tr>
@@ -28,7 +26,9 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
               <th className="clinics-schedule__container__table__day">土</th>
             </tr>
             <tr>
-              <td className="clinics-schedule__container__table__time">9:00 ～ 12:45</td>
+              <td className="clinics-schedule__container__table__time">
+                9:00 ～ 12:45
+              </td>
               <td className="clinics-schedule__container__table__day">ー</td>
               <td className="clinics-schedule__container__table__day">○</td>
               <td className="clinics-schedule__container__table__day">○</td>
@@ -38,7 +38,9 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
               <td className="clinics-schedule__container__table__day">○</td>
             </tr>
             <tr>
-              <td className="clinics-schedule__container__table__time">14:00 ～ 17:45</td>
+              <td className="clinics-schedule__container__table__time">
+                14:00 ～ 17:45
+              </td>
               <td className="clinics-schedule__container__table__day">ー</td>
               <td className="clinics-schedule__container__table__day">○</td>
               <td className="clinics-schedule__container__table__day">○</td>
@@ -82,7 +84,7 @@ const styles = css`
   }
 
   .clinics-schedule__container__table {
-    border: 1px solid #DDD;
+    border: 1px solid #ddd;
     color: #003968;
     font-size: 14px;
     width: 100%;
@@ -90,14 +92,14 @@ const styles = css`
   }
 
   .clinics-schedule__container__table__time {
-    border: 1px solid #DDD;
+    border: 1px solid #ddd;
     text-align: center;
     width: 30%;
     padding: 16px 0;
   }
 
   .clinics-schedule__container__table__day {
-    border: 1px solid #DDD;
+    border: 1px solid #ddd;
     text-align: center;
   }
 
@@ -112,7 +114,7 @@ const styles = css`
     .clinics-schedule__container {
       width: 1024px;
     }
-    
+
     .clinics-schedule__container__table {
       font-size: 16px;
     }

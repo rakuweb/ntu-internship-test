@@ -1,10 +1,9 @@
 // import layer
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { Box, Flex, Grid, Heading } from '@chakra-ui/react';
 import { selectOfferList, useOffersStore } from 'features/offers';
 import { styles } from './styles';
 import 'zenn-content-css';
-import { OfferCard } from '~/features/offers/OfferCard';
 import { BreadcrumbOfferId } from '../BreadcrumbOfferId';
 import {
   selectPoint,
@@ -13,7 +12,6 @@ import {
   usePointStore,
   usePointsStore,
 } from '~/features/point';
-import { OfferCardDead } from '~/features/offers/OfferCardDead';
 import { Labeltext } from '~/features/offers/OfferCard/Labeltext';
 import { Labeltext2 } from './Labeltext2';
 import {
@@ -32,15 +30,15 @@ export type PresenterProps = {
 };
 
 // presenter
-export const Presenter: FC<PresenterProps> = ({ ...props }) => {
+export const Presenter: FC<PresenterProps> = () => {
   const point = usePointStore(selectPoint);
   const jobCategories = useJobCategorysStore(selectJobCategorys);
   const offers = useOffersStore(selectOfferList);
   const points = usePointsStore(selectPoints);
-  const setJobCategoryItem = useJobCategoryStore(selectSetJobCategoryItem);
-  const setPointItem = usePointStore(selectSetPointItem);
+  const _setJobCategoryItem = useJobCategoryStore(selectSetJobCategoryItem);
+  const _setPointItem = usePointStore(selectSetPointItem);
 
-  const filteredOffers = offers.filter((offer) =>
+  const _filteredOffers = offers.filter((offer) =>
     offer.points.some((pointsItem) => pointsItem.id === point.id)
   );
   // .sort((offer1, offer2) => {
@@ -61,7 +59,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           <Box className="subsection">
             <Flex
               flexWrap={`wrap`}
-              //  mb={{ lg: `20px` }}
+            //  mb={{ lg: `20px` }}
             >
               {jobCategories &&
                 jobCategories.list.map((jobCategories) => {

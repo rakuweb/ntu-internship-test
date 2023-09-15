@@ -1,10 +1,9 @@
 // import layer
-import { FC, useState, useCallback, useEffect } from 'react';
+import { FC, useState } from 'react';
 import { Box, Checkbox, Flex } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 import FormName from './FormName';
 import SubmitButton from './SubmitButton';
-import Policy from './Policy';
 import ChakraStylesDesktop from './ChakraStyles';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -31,7 +30,6 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   });
 
   const {
-    register,
     handleSubmit,
     control,
     formState: { errors },
@@ -49,7 +47,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     { value: 'その他', label: 'その他' },
   ];
 
-  const { executeRecaptcha } = useGoogleReCaptcha();
+  const { executeRecaptcha: _ } = useGoogleReCaptcha();
   // const handleReCaptchaVerify = useCallback(async () => {
   //   if (!executeRecaptcha) {
   //     return;

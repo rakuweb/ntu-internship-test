@@ -32,7 +32,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       >
         <div className="x001">
           <div className="NEW-area">
-            <Image className="photo" src={`/dev/img/clip-1@1x.png`} />
+            <Image className="photo" src={`/dev/img/clip-1@1x.png`} alt={``} />
             <div className="NEW-box">NEW</div>
           </div>
 
@@ -41,7 +41,11 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             <div className="campanytext">{companyName}</div>
 
             <div className="termstext">
-              <Image className="icon" src={`/dev/img/人物アイコン.png`} />
+              <Image
+                className="icon"
+                src={`/dev/img/人物アイコン.png`}
+                alt={``}
+              />
               職種
               <div className="description">{occupation}</div>
             </div>
@@ -51,6 +55,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 width={29}
                 height={29}
                 src={`/dev/img/目的地アイコン2.png`}
+                alt={``}
               />
               場所
               <div className="description">{place}</div>
@@ -61,6 +66,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 width={29}
                 height={29}
                 src={`/dev/img/シンプルな円袋のアイコン.png`}
+                alt={``}
               />
               時給
               <div className="description">{hourlyWage}</div>

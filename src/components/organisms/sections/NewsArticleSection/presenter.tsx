@@ -8,7 +8,7 @@ import { ArticleCard } from '../../cards/ArticleCard';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <Box>
       <Box ml={{ lg: `2rem` }} as={`h3`}>

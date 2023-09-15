@@ -1,12 +1,12 @@
 // import layer
-import { VFC, ReactNode } from 'react';
+import { VFC } from 'react';
 import { css } from '@emotion/react';
 
 // type layer
 export type PresenterProps = { children: string };
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ children, ...props }) => {
+export const Presenter: VFC<PresenterProps> = ({ children }) => {
   return (
     <div css={styles}>
       <div className="view border-1px-curious-blue">

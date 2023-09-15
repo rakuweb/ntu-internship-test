@@ -1,7 +1,7 @@
 // import layer
 import { FC } from 'react';
 
-import { Box, Flex, BoxProps } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 
 import { Image } from '~/components/Image';
 
@@ -9,7 +9,7 @@ import { Image } from '~/components/Image';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: FC<PresenterProps> = ({ ...props }) => {
+export const Presenter: FC<PresenterProps> = () => {
   return (
     <Box display={{ md: `none` }} mt={`${19 / 3.75}vw`}>
       {/* モバイルサイズ */}
@@ -28,7 +28,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           bg={`rgba(254,207,2,0.1)`}
           borderRadius={`${26 / 3.75}vw`}
         >
-          <Image
+          <Image // eslint-disable-line
             ml={`${11 / 3.75}vw`}
             mr={`${10 / 3.75}vw`}
             w={`${7 / 3.75}vw`}
@@ -59,7 +59,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           bg={`rgba(254,207,2,0.1)`}
           borderRadius={`${26 / 3.75}vw`}
         >
-          <Image
+          <Image // eslint-disable-line
             ml={`${11 / 3.75}vw`}
             mr={`${10 / 3.75}vw`}
             w={`${9 / 3.75}vw`}
@@ -90,7 +90,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           bg={`rgba(254,207,2,0.1)`}
           borderRadius={`${26 / 3.75}vw`}
         >
-          <Image
+          <Image // eslint-disable-line
             ml={`${10 / 3.75}vw`}
             mr={`${8 / 3.75}vw`}
             w={`${10 / 3.75}vw`}
@@ -122,7 +122,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           bg={`rgba(254,207,2,0.1)`}
           borderRadius={`${26 / 3.75}vw`}
         >
-          <Image
+          <Image // eslint-disable-line
             ml={`${10 / 3.75}vw`}
             mr={`${8 / 3.75}vw`}
             w={`${11.6 / 3.75}vw`}

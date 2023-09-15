@@ -2,7 +2,6 @@
 import { FC } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import { Image } from 'components/images/Image';
-import { useRouter } from 'next/router';
 import { InternalLink } from '~/components/links/InternalLink';
 import { useTargetOfferStore, selectTarget } from 'features/offers';
 import { useLiff } from 'contexts/LineAuthContextInternship';
@@ -65,7 +64,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           bg={`rgba(254,207,2,0.1)`}
           borderRadius={{ base: ``, md: `${26 / 19.2}vw` }}
         >
-          <Image
+          <Image // eslint-disable-line
             w={{ base: ``, md: `${8 / 7.68}vw`, lg: `${13 / 19.2}vw` }}
             h={{ base: ``, md: `${12 / 7.68}vw`, lg: `${19 / 19.2}vw` }}
             image={{
@@ -87,7 +86,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           bg={`rgba(254,207,2,0.1)`}
           borderRadius={{ base: ``, md: `${26 / 19.2}vw` }}
         >
-          <Image
+          <Image // eslint-disable-line
             w={{ base: ``, md: `${10 / 7.68}vw`, lg: `${19 / 19.2}vw` }}
             h={{ base: ``, md: `${10 / 7.68}vw`, lg: `${21 / 19.2}vw` }}
             image={{
@@ -111,7 +110,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           bg={`rgba(254,207,2,0.1)`}
           borderRadius={{ base: ``, md: `${26 / 19.2}vw` }}
         >
-          <Image
+          <Image // eslint-disable-line
             w={{ base: ``, md: `${9 / 7.68}vw`, lg: `${16 / 19.2}vw` }}
             h={{ base: ``, md: `${10 / 7.68}vw`, lg: `${21 / 19.2}vw` }}
             image={{
@@ -133,7 +132,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           bg={`rgba(254,207,2,0.1)`}
           borderRadius={{ base: ``, md: `${26 / 19.2}vw` }}
         >
-          <Image
+          <Image // eslint-disable-line
             w={{ base: ``, md: `${11 / 7.68}vw`, lg: `${20 / 19.2}vw` }}
             h={{ base: ``, md: `${11 / 7.68}vw`, lg: `${20 / 19.2}vw` }}
             image={{
@@ -164,7 +163,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               ml={{ base: ``, md: `${5 / 19.2}vw` }}
               borderRadius={`50%`}
             >
-              <Image
+              <Image // eslint-disable-line
                 w={{ base: ``, md: `${5 / 7.68}vw`, lg: `${8 / 19.2}vw` }}
                 h={{ base: ``, md: `${8 / 7.68}vw`, lg: `${12 / 19.2}vw` }}
                 image={{
@@ -212,7 +211,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           fontSize={{ base: ``, md: `${16 / 7.68}vw`, lg: `${27 / 19.2}vw` }}
           fontWeight={`bold`}
         >
-          <Image
+          <Image // eslint-disable-line
             w={{ base: ``, md: `${16 / 7.68}vw`, lg: `${27 / 19.2}vw` }}
             h={{ base: ``, md: `${16 / 7.68}vw`, lg: `${27 / 19.2}vw` }}
             mr={{ base: ``, md: `${15 / 19.2}vw` }}

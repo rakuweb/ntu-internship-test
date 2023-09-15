@@ -11,7 +11,7 @@ export const selectSetAdvertisementArticle = (
 export const selectAdvertisementArticle = (
   state: AdvertisementArticleSlice
 ) => {
-  const { setAdvertisementArticle, ...remain } = state;
+  const { setAdvertisementArticle: _, ...remain } = state;
 
   return remain;
 };

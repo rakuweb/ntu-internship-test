@@ -1,13 +1,12 @@
 // import layer
-import { FC, useEffect, useState } from 'react';
-import { Input, Select, Button, Box, Switch, Flex } from '@chakra-ui/react';
+import { FC } from 'react';
+import { Select, Button, Box, Switch, Flex } from '@chakra-ui/react';
 import { useFormContext } from 'react-hook-form';
 
 import { styles } from './styles';
 import { routes } from '~/constants/routes';
 import { InternalLink } from '~/components/molecules/links/InternalLink';
 import {
-  useRegisterGradeFormStore,
   parseGrade,
   gradeList,
   RegisterGradeFormSchema,
@@ -20,11 +19,10 @@ export type StyleProps = Record<string, unknown>;
 export type PresenterProps = DataProps & StyleProps;
 
 // presenter
-export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
+export const Presenter: FC<PresenterProps> = ({ onClick }) => {
   const {
     register,
     watch,
-    setValue,
     formState: { errors },
   } = useFormContext<RegisterGradeFormSchema>();
   const { grade } = useStudentStore(selectStudent);

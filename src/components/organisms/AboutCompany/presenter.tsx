@@ -1,61 +1,21 @@
 // import layer
 import { FC } from 'react';
-import { Box, Flex, Grid, Heading, Link, Text } from '@chakra-ui/react';
-import { Image } from 'atoms/Image';
+import { Box, Grid, Heading, Text } from '@chakra-ui/react';
 import { Image as NImage } from 'components/images/Image';
-import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
-import { OfferButton } from 'components/OfferButton';
-import { Labeltext } from '~/features/offers/OfferCard/Labeltext';
-// import { Labeltext2 } from './Labeltext2';
 
 import { selectCompany, useCompanyStore } from 'features/company';
-import {
-  useTargetOfferStore,
-  selectTarget,
-  selectOfferList,
-  useOffersStore,
-} from 'features/offers';
-import { useLiff } from 'contexts/LineAuthContextInternship';
 
 // import { styles } from './styles';
-import { useAccountStore, selectSetPrevPath } from 'features/account';
-import { OfferEntity } from 'types/gql/graphql';
 import 'zenn-content-css';
-import { OfferList } from '~/features/offers/OfferList';
-import { OfferCard } from '~/features/offers/OfferCard';
-import { OfferCardDead } from '~/features/offers/OfferCardDead';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: FC<PresenterProps> = ({ ...props }) => {
-  const offer = useTargetOfferStore(selectTarget);
-  const offers = useOffersStore(selectOfferList);
+export const Presenter: FC<PresenterProps> = () => {
   const company = useCompanyStore(selectCompany);
-  const { liff } = useLiff();
-  const setPrevPath = useAccountStore(selectSetPrevPath);
 
-  // const signin = () => {
-  //   if (!liff) return;
-  //   if (!liff.isLoggedIn()) {
-  //     offer?.formUrl && setPrevPath(decodeURI(offer.formUrl));
-  //     window.localStorage.setItem('prevUrl', offer?.formUrl);
-  //     liff.login(); //{ redirectUri: redirectUri });
-  //   } else {
-  //     window.location.href = offer.formUrl;
-  //   }
-  // };
-  // const filteredOffers = offers.filter(
-  //   (offer) => offer.createdByid === company?.createdByid
-  // );
-
-  // const currentDate = new Date();
-  // const endDate = new Date(offer.deadline);
-  // const isEnd = Math.ceil(
-  //   (endDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24)
-  // );
   return (
     <div css={styles}>
       <Box

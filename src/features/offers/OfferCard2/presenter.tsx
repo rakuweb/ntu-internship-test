@@ -15,30 +15,14 @@ export type DataProps = OfferCard;
 export interface PresenterProps extends DataProps {
   deadline: number;
   startDate: string;
-  companyName: any;
-  createdByid: any;
+  companyName: any; // eslint-disable-line
+  createdByid: any; // eslint-disable-line
 }
 
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
-  const {
-    id,
-    companyName,
-    // categories,
-    // place,
-    // hourlyWage,
-    startDate,
-    title,
-    image,
-    points,
-    deadline,
-    createdByid,
-  } = props;
+  const { id, companyName, title, image, createdByid } = props;
   const href = `${routes.offers}/${id}`;
-  const currentDate = new Date();
-  const startDateObj = new Date(startDate);
-  const isNew =
-    (currentDate.getTime() - startDateObj.getTime()) / (1000 * 3600 * 24);
 
   return (
     <InternalLink href={href}>
@@ -105,7 +89,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               {title}
             </Box>
             <Flex fontSize={`${13 / 3.75}vw`}>
-              <Image
+              <Image // eslint-disable-line
                 mr={`${8 / 3.75}vw`}
                 w={`${12 / 3.75}vw`}
                 h={`${15 / 3.75}vw`}

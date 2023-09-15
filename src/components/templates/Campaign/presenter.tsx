@@ -2,7 +2,6 @@
 import { FC } from 'react';
 import { Box } from '@chakra-ui/react';
 
-import { BreadcrumbOffers } from '~/components/organisms/BreadcrumbOffers';
 import { BreadcrumbOfferId } from '~/components/organisms/BreadcrumbOfferId';
 import { Footer } from '~/components/footers/Footer';
 import { Header } from '~/components/headers/Header';

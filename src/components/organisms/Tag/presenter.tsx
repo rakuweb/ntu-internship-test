@@ -2,8 +2,6 @@
 import { FC } from 'react';
 import { Box, Flex, Grid, Heading } from '@chakra-ui/react';
 
-import { OfferCard } from '~/features/offers/OfferCard';
-import { OfferCardDead } from '~/features/offers/OfferCardDead';
 import { BreadcrumbOfferId } from '../BreadcrumbOfferId';
 import {
   useJobCategoryStore,
@@ -11,7 +9,6 @@ import {
   selectJobCategorys,
   useJobCategorysStore,
 } from '~/features/category';
-import { useOffersStore, selectOfferList } from 'features/offers';
 
 import { styles } from './styles';
 import { Labeltext } from '~/features/offers/OfferCard/Labeltext';
@@ -27,7 +24,6 @@ export type PresenterProps = {
 export const Presenter: FC<PresenterProps> = () => {
   const jobcategory = useJobCategoryStore(selectJobCategory);
   const jobCategories = useJobCategorysStore(selectJobCategorys);
-  const offers = useOffersStore(selectOfferList);
   const points = usePointsStore(selectPoints);
   // const filteredOffers = offers
   //   .filter((offer) =>
@@ -55,7 +51,7 @@ export const Presenter: FC<PresenterProps> = () => {
           <Box className="subsection">
             <Flex
               flexWrap={`wrap`}
-              //  mb={{ lg: `20px` }}
+            //  mb={{ lg: `20px` }}
             >
               {jobCategories &&
                 jobCategories.list.map((jobCategories) => {

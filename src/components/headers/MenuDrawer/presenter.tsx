@@ -1,5 +1,5 @@
 // import layer
-import { VFC, useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import {
   Drawer,
   DrawerProps,
@@ -25,10 +25,8 @@ import { useLiff } from 'contexts/LineAuthContextInternship';
 import { ORIGIN_URL } from 'constants/env';
 
 import { HeaderMenu } from '../HeaderMenu';
-import { Image } from 'atoms/Image';
 import { HeaderMenuButton } from 'components/organisms/buttons/HeaderMenuButton';
 import { DrawerMenuNav } from '../DrawerMenuNav';
-import { InternalLink } from '~/components/links/InternalLink';
 import { routes } from '~/constants';
 
 // type layer
@@ -38,12 +36,12 @@ export type PresenterProps = Partial<DrawerProps> & {
 };
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({
+export const Presenter: FC<PresenterProps> = ({
   isOpen,
   onClose,
   ...props
 }) => {
-  const { email, username } = useAccountStore(selectAccount);
+  const { username } = useAccountStore(selectAccount);
   const _signout = useAccountStore(selectSignout);
   const setAccount = useAccountStore(selectSetAccount);
   const setPrevPath = useAccountStore(selectSetPrevPath);
@@ -100,7 +98,7 @@ export const Presenter: VFC<PresenterProps> = ({
       };
       handler();
     }
-  }, [liff, username, liff?.isLoggedIn()]);
+  }, [liff, username, liff?.isLoggedIn()]); // eslint-disable-line
 
   return (
     <Drawer size={`sm`} isOpen={isOpen} onClose={onClose} {...props}>

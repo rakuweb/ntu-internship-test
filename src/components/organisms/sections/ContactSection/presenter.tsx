@@ -11,7 +11,7 @@ import { mq } from '~/constants/styles';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <Box
       bg={`#2194E5`}
@@ -84,6 +84,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
           height={172}
           w={`100%`}
           objectFit={`cover`}
+          alt={``}
         />
       </Box>
     </Box>

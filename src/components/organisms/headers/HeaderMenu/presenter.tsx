@@ -1,11 +1,8 @@
 // import layer
-import { VFC, useState } from 'react';
+import { VFC } from 'react';
 import { css } from '@emotion/react';
 import { Flex, Box } from '@chakra-ui/react';
 
-import { InternalLink } from 'molecules/links/InternalLink';
-import { routes } from '~/constants';
-import { mq } from '~/constants/styles';
 import { Span } from '~/components/atoms/Span';
 
 // type layer
@@ -13,11 +10,7 @@ export type DataProps = { isOpen: boolean; onClick: () => void };
 export type PresenterProps = DataProps;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({
-  isOpen,
-  onClick,
-  ...props
-}) => {
+export const Presenter: VFC<PresenterProps> = ({ isOpen, onClick }) => {
   return (
     <Flex
       className={`${isOpen ? `open` : ``}`}

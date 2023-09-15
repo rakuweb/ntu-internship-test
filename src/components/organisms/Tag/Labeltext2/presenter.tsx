@@ -1,14 +1,12 @@
 // import layer
 import { FC } from 'react';
-import { css } from '@emotion/react';
-import { Box, Image } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
 import { InternalLink } from '~/components/links/InternalLink';
-import { mq } from '~/constants/styles';
 import { routes } from 'constants/routes';
 
 // type layer
-export type DataProps = any;
+export type DataProps = any; // eslint-disable-line
 export type PresenterProps = DataProps;
 
 // presenter
@@ -34,9 +32,3 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     </Box>
   );
 };
-
-// styles
-const styles = css`
-   {
-  }
-`;

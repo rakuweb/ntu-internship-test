@@ -1,8 +1,7 @@
 // import layer
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { Box, BoxProps, Flex } from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/react';
-import axios from 'axios';
 import { useRouter } from 'next/router';
 
 import { styles } from './styles';
@@ -15,11 +14,9 @@ import {
   useAccountStore,
   selectAccount,
   selectSignout,
-  selectSetAccount,
   selectSetPrevPath,
 } from 'features/account';
 import { useLiff } from 'contexts/LineAuthContextInternship';
-import { ORIGIN_URL } from 'constants/env';
 
 // type layer
 export type PresenterProps = BoxProps;
@@ -27,9 +24,8 @@ export type PresenterProps = BoxProps;
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { email, username } = useAccountStore(selectAccount);
+  const { username } = useAccountStore(selectAccount);
   const _signout = useAccountStore(selectSignout);
-  const setAccount = useAccountStore(selectSetAccount);
   const setPrevPath = useAccountStore(selectSetPrevPath);
   const { liff } = useLiff();
   const router = useRouter();
@@ -110,6 +106,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 htmlWidth={267}
                 htmlHeight={150}
                 src={`/svg/ntu-job.svg`}
+                alt={``}
               />
             </Box>
           </InternalLink>

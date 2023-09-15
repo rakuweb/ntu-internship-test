@@ -1,4 +1,4 @@
-import { Flex, list, Box } from '@chakra-ui/react';
+import { Flex, Box } from '@chakra-ui/react';
 
 import RequiredMark from './requiredMark';
 

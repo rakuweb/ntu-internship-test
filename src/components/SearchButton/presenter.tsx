@@ -1,6 +1,6 @@
 // import layer
-import { VFC } from 'react';
-import { Box, BoxProps, Flex } from '@chakra-ui/react';
+import { FC } from 'react';
+import { BoxProps, Flex } from '@chakra-ui/react';
 import { Image } from '../images/Image';
 import { InternalLink } from '../links/InternalLink';
 
@@ -8,7 +8,7 @@ import { InternalLink } from '../links/InternalLink';
 export type PresenterProps = BoxProps;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: FC<PresenterProps> = () => {
   return (
     <InternalLink
       href={`/search`}
@@ -30,7 +30,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
         fontWeight={`bold`}
         fontFamily={`'Noto Sans JP', sans-serif`}
       >
-        <Image
+        <Image // eslint-disable-line
           w={{
             base: `${27 / 3.75}vw`,
             md: `${16 / 7.68}vw`,

@@ -3,44 +3,16 @@ import { VFC } from 'react';
 import { Box, Stack } from '@chakra-ui/react';
 
 import { ImageTitle } from '~/components/molecules/titles/ImageTitle';
-import { OfferCard } from 'features/offers/OfferCard';
 import { InterviewCard } from '../../cards/InterviewCard';
 import { BlueButton } from '~/components/molecules/buttons/BlueButton';
 import { InternalLink } from 'molecules/links/InternalLink';
 import { Span } from '~/components/atoms/Span';
 
-import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay } from 'swiper';
-import { breakpointsByPx } from '~/constants/styles';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/autoplay';
-
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
-  const swiperProps: SwiperProps = {
-    modules: [Navigation, Autoplay],
-    navigation: true,
-    loop: true,
-    slidesPerView: 4,
-    autoplay: true,
-    breakpoints: {
-      // [breakpointsByPx[1]]: {},
-      [breakpointsByPx[2]]: {
-        // centeredSlides: true,
-        slidesPerView: 3,
-        spaceBetween: 35,
-      },
-      [breakpointsByPx[3]]: { slidesPerView: 4, spaceBetween: 35 },
-      //[breakpointsByPx[4]]: {  },
-      //375px対応ため5を作りました
-      [breakpointsByPx[5]]: { slidesPerView: 1, spaceBetween: 16 },
-    },
-  };
-
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <Box
       position="relative"
@@ -98,7 +70,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
           base: `28rem`,
         }}
       >
-      {/*
+        {/*
         <OfferCard
         title={`test募集です。`}
           companyName={`test`}

@@ -1,7 +1,7 @@
 import { Image } from 'components/images/Image';
 const DocumentIcon = () => {
   return (
-    <Image
+    <Image // eslint-disable-line
       ml={{ base: `${10 / 3.75}vw`, md: `${23 / 19.2}vw` }}
       mr={{ base: `${5 / 3.75}vw`, md: `${13 / 19.2}vw` }}
       mb={{

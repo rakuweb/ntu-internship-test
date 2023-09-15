@@ -22,7 +22,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           md: `${4 / 19.2}vw solid #41A4FD`,
         }}
       >
-        <Image
+        <Image // eslint-disable-line
           ml={{ base: `${10 / 3.75}vw`, md: `${23 / 19.2}vw` }}
           mr={{ base: `${5 / 3.75}vw`, md: `${13 / 19.2}vw` }}
           mb={{
@@ -65,7 +65,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           mb={{ base: `${20 / 3.75}vw`, md: `${48 / 19.2}vw` }}
           key={list.title}
         >
-          <Image
+          <Image // eslint-disable-line
             w={{
               base: `${173 / 3.75}vw`,
               md: `${120 / 7.68}vw`,

@@ -1,6 +1,6 @@
 import { ChakraStylesConfig } from 'chakra-react-select';
 const chakraStyles: ChakraStylesConfig = {
-  control: (provided, state) => ({
+  control: (provided, _state) => ({
     ...provided,
     background: `white`,
     border: { base: `${2 / 3.75}vw solid #F2F2F2`, md: `0px` },
@@ -33,20 +33,20 @@ const chakraStyles: ChakraStylesConfig = {
     boxShadow: { md: `0px 3px 6px #00000029` },
   }),
 
-  valueContainer: (provided, state) => ({
+  valueContainer: (provided, _state) => ({
     ...provided,
     ml: { '2xl': `${40 / 19.2}vw` },
     whiteSpace: `pre-wrap`,
   }),
 
-  input: (provided, state) => ({
+  input: (provided, _state) => ({
     ...provided,
     margin: '0px',
   }),
-  indicatorSeparator: (state) => ({
+  indicatorSeparator: (_state) => ({
     display: 'none',
   }),
-  indicatorsContainer: (provided, state) => ({
+  indicatorsContainer: (provided, _state) => ({
     ...provided,
     h: {
       md: `${22 / 7.68}vw`,
@@ -61,7 +61,7 @@ const chakraStyles: ChakraStylesConfig = {
     background: `white`,
     borderRadius: `0`,
   }),
-  placeholder: (provided, state) => ({
+  placeholder: (provided, _state) => ({
     ...provided,
     fontWeight: `bold`,
     color: `#39414E`,

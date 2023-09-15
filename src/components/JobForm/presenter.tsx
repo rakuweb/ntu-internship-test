@@ -1,6 +1,6 @@
 // import layer
 import { FC, useState } from 'react';
-import { useFormContext } from 'react-hook-form';
+// import { useFormContext } from 'react-hook-form';
 import {
   Box,
   Flex,
@@ -16,7 +16,7 @@ import { Image } from 'components/images/Image';
 import { Select, ChakraStylesConfig } from 'chakra-react-select';
 import { InternalLink } from '../links/InternalLink';
 import { useTargetOfferStore, selectTarget } from 'features/offers';
-import { JobFormSchema } from '../../lib/jobForm/schema';
+// import { JobFormSchema } from '../../lib/jobForm/schema';
 
 // type layer
 export type DataProps = { onClick: () => void };
@@ -45,7 +45,7 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
     { title: `面接希望日` },
   ];
 
-  const registarlist = [
+  const _registarlist = [
     `name`,
     `furigana`,
     `birthDate`,
@@ -78,7 +78,7 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
   ];
 
   const chakraStylesDesktop: ChakraStylesConfig = {
-    control: (provided, state) => ({
+    control: (provided, _state) => ({
       ...provided,
       background: `white`,
       borderColor: `#999`,
@@ -106,18 +106,18 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
       },
     }),
 
-    valueContainer: (provided, state) => ({
+    valueContainer: (provided, _state) => ({
       ...provided,
     }),
 
-    input: (provided, state) => ({
+    input: (provided, _state) => ({
       ...provided,
       margin: '0px',
     }),
-    indicatorSeparator: (state) => ({
+    indicatorSeparator: (_state) => ({
       display: 'none',
     }),
-    indicatorsContainer: (provided, state) => ({
+    indicatorsContainer: (provided, _state) => ({
       ...provided,
       height: {
         base: `${25 / 3.75}vw`,
@@ -132,7 +132,7 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
       borderRadius: `0`,
       pl: `0`,
     }),
-    menu: (provided, state) => ({
+    menu: (provided, _state) => ({
       ...provided,
       fontSize: {
         base: `${13 / 3.75}vw`,
@@ -140,7 +140,7 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
         lg: `${19 / 19.2}vw`,
       },
     }),
-    placeholder: (provided, state) => ({
+    placeholder: (provided, _state) => ({
       ...provided,
       whiteSpace: `nowrap`,
     }),
@@ -173,7 +173,7 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
         {offer.title + `への応募情報の入力`}
       </Box>
       <Flex mb={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}>
-        <Image
+        <Image // eslint-disable-line
           ml={{ base: `${10 / 3.75}vw`, md: `${23 / 19.2}vw` }}
           mr={{ base: `${5 / 3.75}vw`, md: `${13 / 19.2}vw` }}
           mb={{
@@ -283,9 +283,9 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
                       <Input
                         display={
                           index === 2 ||
-                          index === 5 ||
-                          index === 7 ||
-                          index === 8
+                            index === 5 ||
+                            index === 7 ||
+                            index === 8
                             ? 'none'
                             : 'block'
                         }
@@ -337,7 +337,7 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
                         options={Options}
                         chakraStyles={chakraStylesDesktop}
                         placeholder={`学年を選択する`}
-                        // {...register('grade')}
+                      // {...register('grade')}
                       />
                     </Box>
                     <RadioGroup
@@ -478,7 +478,7 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
           mt={{ base: `${20 / 3.75}vw`, md: `${30 / 19.2}vw` }}
           mb={{ base: `${12 / 3.75}vw`, md: `${30 / 19.2}vw` }}
         >
-          <Image
+          <Image // eslint-disable-line
             ml={{ base: `${10 / 3.75}vw`, md: `${23 / 19.2}vw` }}
             mr={{ base: `${5 / 3.75}vw`, md: `${13 / 19.2}vw` }}
             mb={{
@@ -529,7 +529,7 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
             md: `${2 / 19.2}vw solid rgba(65,164,253,0.25)`,
           }}
         >
-          {list2.map((list, index) => (
+          {list2.map((list, _index) => (
             <div key={list.title}>
               <Flex
                 borderBottom={{
@@ -631,7 +631,7 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
           }}
           fontWeight={`bold`}
         >
-          <Image
+          <Image // eslint-disable-line
             w={{
               base: `${16 / 3.75}vw`,
               md: `${16 / 7.68}vw`,

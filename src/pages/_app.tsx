@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import { Global, css } from '@emotion/react';
 import { ChakraProvider } from '@chakra-ui/react';
-import { NextSeo, DefaultSeo } from 'next-seo';
+import { DefaultSeo } from 'next-seo';
 import { RecoilRoot } from 'recoil';
 
 import { SEO } from '~/constants';

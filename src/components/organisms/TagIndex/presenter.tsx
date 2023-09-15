@@ -1,5 +1,5 @@
 // import layer
-import { VFC } from 'react';
+import { FC } from 'react';
 import { css } from '@emotion/react';
 import { mq } from '~/constants/styles';
 import { Box, Flex, Grid, Heading } from '@chakra-ui/react';
@@ -12,19 +12,15 @@ import { Labeltext } from '~/features/offers/OfferCard/Labeltext';
 import { Labeltext2 } from '../Tag/Labeltext2';
 import { selectPoints, usePointsStore } from '~/features/point';
 import { BreadcrumbOffers } from '../BreadcrumbOffers';
-import { OfferCard } from '~/features/offers/OfferCard';
-import { OfferCardDead } from '~/features/offers/OfferCardDead';
-import { useOffersStore, selectOfferList } from '~/features/offers';
+
 // type layer
 export type DataProps = JobCategorysCard;
 export type PresenterProps = Record<string, string>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
-  const { list } = props;
+export const Presenter: FC<PresenterProps> = () => {
   const jobCategories = useJobCategorysStore(selectJobCategorys);
   const points = usePointsStore(selectPoints);
-  const offers = useOffersStore(selectOfferList);
 
   // const filteredOffers = offers.sort((offer1, offer2) => {
   //   const endDate1 = new Date(offer1.deadline);
@@ -54,7 +50,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
           <Box className="subsection">
             <Flex
               flexWrap={`wrap`}
-              //  mb={{ lg: `20px` }}
+            //  mb={{ lg: `20px` }}
             >
               {jobCategories &&
                 jobCategories.list.map((jobCategories) => {

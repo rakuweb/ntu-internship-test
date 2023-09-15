@@ -18,7 +18,7 @@ import { BreadcrumbWhite } from 'organisms/BreadcrumbWhite';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <>
       <Header />
@@ -27,12 +27,24 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
         <ClinicsTitle />
         <section className="clinics-tab">
           <div className="clinics-tab__container">
-            <a href="./top" className="clinics-tab__container__item">医院TOP</a>
-            <a href="./staff" className="clinics-tab__container__item">スタッフ</a>
-            <a href="./vr" className="clinics-tab__container__item active">VR院内検索</a>
-            <a href="./map" className="clinics-tab__container__item">マップ</a>
-            <a href="./faq" className="clinics-tab__container__item">相談箱</a>
-            <a href="./comments" className="clinics-tab__container__item">口コミ</a>
+            <a href="./top" className="clinics-tab__container__item">
+              医院TOP
+            </a>
+            <a href="./staff" className="clinics-tab__container__item">
+              スタッフ
+            </a>
+            <a href="./vr" className="clinics-tab__container__item active">
+              VR院内検索
+            </a>
+            <a href="./map" className="clinics-tab__container__item">
+              マップ
+            </a>
+            <a href="./faq" className="clinics-tab__container__item">
+              相談箱
+            </a>
+            <a href="./comments" className="clinics-tab__container__item">
+              口コミ
+            </a>
           </div>
         </section>
         <ClinicsVr />
@@ -65,9 +77,9 @@ const styles = css`
 
   .clinics-tab__container__item {
     align-items: center;
-    color: #2194E5;
+    color: #2194e5;
     cursor: pointer;
-    border: 1px solid #2194E5;
+    border: 1px solid #2194e5;
     border-radius: 8px;
     display: flex;
     height: 48px;
@@ -77,7 +89,7 @@ const styles = css`
   }
 
   .clinics-tab__container__item.active {
-    border: 3px solid #2194E5;
+    border: 3px solid #2194e5;
     height: 48px;
   }
 
@@ -87,7 +99,7 @@ const styles = css`
 
   ${mq[2]} {
     .clinics-tab__container {
-      border-bottom: 2px solid #2194E5;
+      border-bottom: 2px solid #2194e5;
       flex-wrap: nowrap;
       justify-content: center;
       width: 1200px;
@@ -103,7 +115,7 @@ const styles = css`
     }
 
     .clinics-tab__container__item.active {
-      border: 2px solid #2194E5;
+      border: 2px solid #2194e5;
       border-bottom: none;
       height: 44px;
     }

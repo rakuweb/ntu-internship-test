@@ -1,4 +1,3 @@
-import { ImageType } from 'lib/utils';
 import { JobCategoryEntity } from 'types/gql/graphql';
 
 export type JobCategorySliceData = {

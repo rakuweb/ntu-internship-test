@@ -86,6 +86,7 @@ export const parseImage = (image: UploadFile | UploadFile2): ImageType => {
   return res;
 };
 
+// eslint-disable-next-line
 export const parseSrcSet = (formats: any): string =>
   formats
     ? `${formats.xsmall ? `${parseImageUrl(formats.xsmall.url)} 375w,` : ``}${formats.small ? `${parseImageUrl(formats.small.url)} 500w,` : ``

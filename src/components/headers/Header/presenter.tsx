@@ -27,7 +27,7 @@ export type PresenterProps = BoxProps & { isTop?: boolean };
 // presenter
 export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { email, username } = useAccountStore(selectAccount);
+  const { username } = useAccountStore(selectAccount);
   const _signout = useAccountStore(selectSignout);
   const setAccount = useAccountStore(selectSetAccount);
   const setPrevPath = useAccountStore(selectSetPrevPath);
@@ -84,7 +84,7 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
       };
       handler();
     }
-  }, [liff, username, liff?.isLoggedIn()]);
+  }, [liff, username, liff?.isLoggedIn()]); // eslint-disable-line
 
   return (
     <Box
@@ -122,7 +122,7 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
               className="logo"
               as={isTop ? `h1` : `div`}
             >
-              <Image src={`/svg/forjob.svg`} />
+              <Image src={`/svg/forjob.svg`} alt={``} />
             </Box>
           </InternalLink>
         </Flex>

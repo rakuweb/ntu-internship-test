@@ -6,16 +6,7 @@ import { Index as Template } from '~/components/templates/Register/RegisterGrade
 import { SeoComponent } from 'organisms/SeoComponent';
 import { CAFE_ENTRY_QUERY, CANONICAL_URL } from '~/constants';
 import { parseSeo } from '~/lib';
-import { useLiff } from 'contexts/LineAuthContext';
 import { routes } from 'constants/routes';
-import {
-  useStudentStore,
-  selectStudentId,
-  selectSetStudent,
-  selectStudent,
-} from 'features/student';
-
-// type layer
 
 // component layer
 export const Index: NextPage = () => {
@@ -23,9 +14,7 @@ export const Index: NextPage = () => {
   const description = ``;
   const seo = parseSeo(title, description);
   const [isClient, setIsClient] = useState(false);
-  const { liff } = useLiff();
   const router = useRouter();
-  const student = useStudentStore(selectStudent);
   const [query, setQuery] = useState<string>(null);
 
   useEffect(() => {
@@ -47,7 +36,7 @@ export const Index: NextPage = () => {
     }, 1000 * 1);
 
     return () => clearTimeout(timeoutId);
-  }, [isClient]);
+  }, [isClient]); // eslint-disable-line
 
   const message = () => {
     if (isClient) {
