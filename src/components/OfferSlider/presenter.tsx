@@ -1,27 +1,21 @@
 // import layer
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay, EffectFade, Pagination } from 'swiper';
+import { Autoplay } from 'swiper';
 
-import { OfferCard } from 'features/offers/OfferCard';
 import { selectOfferList } from 'features/offers/selectors';
 import { useOffersStore } from 'features/offers/hooks';
-import {
-  selectAdvertisements,
-  useAdvertisementsStore,
-} from 'features/advertisements';
 
 import 'swiper/css';
 
-import { SearchButton } from '~/components/SearchButton';
 import { OfferCardverSlider } from './OfferCardverSlider';
 import { Image } from '../images/Image';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
-const remainingDays = (deadline) => {
+const _remainingDays = (deadline) => {
   const currentDate = new Date();
   const deadlineDate = new Date(deadline);
   const diffTime = deadlineDate.getTime() - currentDate.getTime();
@@ -29,7 +23,7 @@ const remainingDays = (deadline) => {
 };
 
 // presenter
-export const Presenter: FC<PresenterProps> = ({ ...props }) => {
+export const Presenter: FC<PresenterProps> = () => {
   const offers = useOffersStore(selectOfferList);
 
   const currentDate = new Date();
@@ -99,7 +93,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const activeOffers = offers.filter((offer) => offer.end_at >= today);
   const expiredOffers = offers.filter((offer) => offer.end_at < today);
 
-  const sortedOffers = [...activeOffers, ...expiredOffers];
+  const _sortedOffers = [...activeOffers, ...expiredOffers];
 
   const remainingDays = (deadline) => {
     const currentDate = new Date();
@@ -116,7 +110,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       position={`relative`}
     >
       <Flex>
-        <Image
+        <Image // eslint-disable-line
           mt={`${203 / 9.6}vw`}
           ml={`${16 / 9.6}vw`}
           mr={`${23 / 9.6}vw`}
@@ -150,7 +144,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             </SwiperSlide>
           </Swiper>
         </Box>
-        <Image
+        <Image // eslint-disable-line
           ml={`${17 / 9.6}vw`}
           mt={`${169 / 9.6}vw`}
           w={`${94 / 9.6}vw`}

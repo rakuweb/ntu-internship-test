@@ -8,7 +8,7 @@ import { mq } from '~/constants/styles';
 export type PresenterProps = { children: string };
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ children, ...props }) => {
+export const Presenter: VFC<PresenterProps> = ({ children }) => {
   return (
     <div css={styles}>
       <div className="x16-5 border-1px-mountain-mist yugothic-bold-granite-gray-16px">

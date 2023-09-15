@@ -1,5 +1,5 @@
 // import layer
-import { VFC, ReactNode } from 'react';
+import { VFC } from 'react';
 import { css } from '@emotion/react';
 import { Box } from '@chakra-ui/react';
 
@@ -9,7 +9,7 @@ import { Image } from 'atoms/Image';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <div css={styles}>
       <div className="view">
@@ -17,7 +17,12 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
           一覧から探す
         </div>
         <Box className="x19">
-          <Image width={10} height={16} src="/dev/img/file----19-----@1x.png" />
+          <Image
+            width={10}
+            height={16}
+            src="/dev/img/file----19-----@1x.png"
+            alt={``}
+          />
         </Box>
       </div>
     </div>
@@ -35,7 +40,7 @@ const styles = css`
     width: 105px;
     align-items: center;
   }
-  //          align-items: flex-end;
+  /*          align-items: flex-end; */
 
   .text-1 {
     letter-spacing: 0;

@@ -43,7 +43,7 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({ disabled }) => {
       }}
       fontWeight={`bold`}
     >
-      <Image
+      <Image // eslint-disable-line
         w={{
           base: `${16 / 3.75}vw`,
           md: `${16 / 7.68}vw`,

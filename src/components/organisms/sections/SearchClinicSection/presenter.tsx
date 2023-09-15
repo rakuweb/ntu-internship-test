@@ -8,13 +8,12 @@ import { Image } from 'atoms/Image';
 import { AreaTag } from '~/components/molecules/tags/AreaTag';
 import { Span } from '~/components/atoms/Span';
 import { InternalLink } from 'molecules/links/InternalLink';
-import { routes } from '~/constants';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <Box
       w={{ base: `100%`, md: `fit-content` }}
@@ -80,6 +79,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
                 src={`/dev/img/file-----142@1x.png`}
                 width={1025}
                 height={742}
+                alt={``}
               />
             </Box>
             <Box

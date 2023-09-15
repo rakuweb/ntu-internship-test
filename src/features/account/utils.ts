@@ -5,7 +5,7 @@ import { useLiff } from 'contexts/LineAuthContext';
 import { routes } from 'constants/routes';
 
 export const useCheckAccount = () => {
-  const [existAccount, setExistAccount] = useState<boolean>(false);
+  const [existAccount, _setExistAccount] = useState<boolean>(false);
   const { liff } = useLiff();
   const router = useRouter();
 
@@ -14,7 +14,7 @@ export const useCheckAccount = () => {
     if (!liff.isLoggedIn()) {
       router.push(routes.register);
     }
-  }, [liff]);
+  }, [liff]); // eslint-disable-line
 
   return { existAccount };
 };

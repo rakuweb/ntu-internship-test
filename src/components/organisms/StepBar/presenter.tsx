@@ -4,9 +4,6 @@ import { Steps } from 'antd';
 import { Box } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
-// to instance
-const { Step } = Steps;
-
 // type layer
 export type PresenterProps = { current: number };
 

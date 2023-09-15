@@ -140,7 +140,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   bg={`rgba(254,207,2,0.1)`}
                   borderRadius={`${26 / 19.2}vw`}
                 >
-                  <Image
+                  <Image // eslint-disable-line
                     w={`${11.5 / 19.2}vw`}
                     h={`${16 / 19.2}vw`}
                     image={{
@@ -166,7 +166,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   bg={`rgba(254,207,2,0.1)`}
                   borderRadius={`${26 / 19.2}vw`}
                 >
-                  <Image
+                  <Image // eslint-disable-line
                     w={`${16 / 19.2}vw`}
                     h={`${18.5 / 19.2}vw`}
                     image={{
@@ -190,7 +190,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   bg={`rgba(254,207,2,0.1)`}
                   borderRadius={`${26 / 19.2}vw`}
                 >
-                  <Image
+                  <Image // eslint-disable-line
                     w={`${13.7 / 19.2}vw`}
                     h={`${18.3 / 19.2}vw`}
                     image={{
@@ -214,7 +214,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   bg={`rgba(254,207,2,0.1)`}
                   borderRadius={`${26 / 19.2}vw`}
                 >
-                  <Image
+                  <Image // eslint-disable-line
                     w={`${16 / 19.2}vw`}
                     h={`${16 / 19.2}vw`}
                     image={{
@@ -354,7 +354,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   bg={`rgba(254,207,2,0.1)`}
                   borderRadius={`${26 / 3.75}vw`}
                 >
-                  <Image
+                  <Image // eslint-disable-line
                     ml={`${10 / 3.75}vw`}
                     mr={`${10 / 3.75}vw`}
                     w={`${6 / 3.75}vw`}
@@ -383,7 +383,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   borderRadius={`${26 / 3.75}vw`}
                   color={`#39414E`}
                 >
-                  <Image
+                  <Image // eslint-disable-line
                     ml={`${9 / 3.75}vw`}
                     mr={`${9 / 3.75}vw`}
                     w={`${8 / 3.75}vw`}
@@ -413,7 +413,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   borderRadius={`${26 / 3.75}vw`}
                   color={`#39414E`}
                 >
-                  <Image
+                  <Image // eslint-disable-line
                     ml={`${10 / 3.75}vw`}
                     mr={`${9 / 3.75}vw`}
                     w={`${7 / 3.75}vw`}
@@ -443,7 +443,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   borderRadius={`${26 / 3.75}vw`}
                   color={`#39414E`}
                 >
-                  <Image
+                  <Image // eslint-disable-line
                     mt={`${1 / 3.75}vw`}
                     ml={`${9 / 3.75}vw`}
                     mr={`${10 / 3.75}vw`}

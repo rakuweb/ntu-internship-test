@@ -1,21 +1,19 @@
 // import layer
 import { VFC } from 'react';
-import { css } from '@emotion/react';
-import { mq } from '~/constants/styles';
-import { Box, Heading, Image, Text } from '@chakra-ui/react';
+import { Heading, Image, Text } from '@chakra-ui/react';
 import { styles } from './styles';
 
 // type layer
 export type PresenterProps = Record<string, string>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <div css={styles}>
       <section className="consultation-card-list">
         <div className="consultation-card-list__card">
           <h1 className="jobtitle">お祝い金キャンペーン！</h1>
-          <Image src="/images/campaign/campaign.webp" mb={'15px'}></Image>
+          <Image src="/images/campaign/campaign.webp" mb={'15px'} alt={``} />
           <Text fontSize={'14px'} lineHeight={'1.4'}>
             新大生のための求人サイトForjobを利用して採用されると、先着10名様にお祝い金（Amazonギフト券最大3,000円分）をプレゼントします。
             <br />
@@ -33,7 +31,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
             よりたくさんの方に、Forjobを利用して欲しいとの思いから「お祝い金」を準備しております。
           </Text>
 
-          <Image src="/images/campaign/moneyget.png" mb={'15px'}></Image>
+          <Image src="/images/campaign/moneyget.png" mb={'15px'} alt={``} />
 
           <Heading
             as={'h2'}
@@ -62,7 +60,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
             ※ご不明点がある場合は、公式LINEよりご連絡ください。
           </Text>
 
-          <Image src="/images/campaign/method.png" mb={'15px'}></Image>
+          <Image src="/images/campaign/method.png" mb={'15px'} alt={``} />
           {/* 
           <Box
             className={`znc yugothic-medium`}

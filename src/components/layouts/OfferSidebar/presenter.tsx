@@ -1,13 +1,13 @@
 // import layer
 import { FC } from 'react';
 
-import {styles} from './styles';
+import { styles } from './styles';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: FC<PresenterProps> = ({ ...props }) => {
+export const Presenter: FC<PresenterProps> = () => {
   return (
     <div css={styles}>
       <div className="search">
@@ -159,4 +159,3 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     </div>
   );
 };
-

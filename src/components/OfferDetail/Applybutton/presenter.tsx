@@ -36,7 +36,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               mr={`${10 / 4.28}vw`}
               borderRadius={`50%`}
             >
-              <Image
+              <Image // eslint-disable-line
                 w={`${5 / 3.75}vw`}
                 h={`${7 / 3.75}vw`}
                 image={{
@@ -79,7 +79,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           fontWeight={`bold`}
           borderRadius={`${5 / 3.75}vw`}
         >
-          <Image
+          <Image // eslint-disable-line
             w={`${27 / 3.75}vw`}
             h={`${27 / 3.75}vw`}
             mr={`${15 / 3.75}vw`}

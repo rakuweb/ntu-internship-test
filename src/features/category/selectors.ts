@@ -4,7 +4,7 @@ export const selectSetJobCategoryItem = (state: JobCategorySlice) =>
   state.setJobCategoryItem;
 
 export const selectJobCategory = (state: JobCategorySlice) => {
-  const { setJobCategoryItem, ...remain } = state;
+  const { setJobCategoryItem: _, ...remain } = state;
 
   return remain;
 };
@@ -13,7 +13,7 @@ export const selectSetJobCategorys = (state: JobCategorysSlice) =>
   state.setJobCategorysItem;
 
 export const selectJobCategorys = (state: JobCategorysSlice) => {
-  const { setJobCategorysItem, ...remain } = state;
+  const { setJobCategorysItem: _, ...remain } = state;
 
   return remain;
 };

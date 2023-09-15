@@ -4,7 +4,6 @@ import { Box, Flex } from '@chakra-ui/react';
 import { Image } from 'components/images/Image';
 import { Image as NImage } from 'components/images/Image';
 
-import { selectCompany, useCompanyStore } from 'features/company';
 import {
   useTargetOfferStore,
   selectTarget,
@@ -12,9 +11,7 @@ import {
   useOffersStore,
   selectOfferList,
 } from 'features/offers';
-import { useLiff } from 'contexts/LineAuthContextInternship';
 import { styles } from './styles';
-import { useAccountStore, selectSetPrevPath } from 'features/account';
 import 'zenn-content-css';
 import { BreadcrumbOfferId } from '../organisms/BreadcrumbOfferId';
 import { Atmosphere } from './Atmosphere';
@@ -29,25 +26,12 @@ import React from 'react';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: FC<PresenterProps> = ({ ...props }) => {
+export const Presenter: FC<PresenterProps> = () => {
   const offer = useTargetOfferStore(selectTarget);
   const offers = useOffersStore(selectOfferList);
-  const [selectedOffer, setSelectedOffer] = React.useState(null);
-  const company = useCompanyStore(selectCompany);
-  const { liff } = useLiff();
-  const setPrevPath = useAccountStore(selectSetPrevPath);
+  const [_selectedOffer, setSelectedOffer] = React.useState(null);
   const { jobTitle } = useTargetOfferStore(selectBreadCrumbItem);
   const pageTitles = [jobTitle];
-  const signin = () => {
-    if (!liff) return;
-    if (!liff.isLoggedIn()) {
-      // offer?.formUrl && setPrevPath(decodeURI(offer.formUrl));
-      // window.localStorage.setItem('prevUrl', offer?.formUrl);
-      liff.login(); //{ redirectUri: redirectUri });
-    } else {
-      // window.location.href = offer.formUrl;
-    }
-  };
   const currentDate = new Date();
   const startDate = new Date(offer.start_at);
   const endDate = new Date(offer.end_at);
@@ -57,7 +41,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     (endDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24)
   );
 
-  const remainingDays = (deadline) => {
+  const _remainingDays = (deadline) => {
     const currentDate = new Date();
     const deadlineDate = new Date(deadline);
     const diffTime = deadlineDate.getTime() - currentDate.getTime();
@@ -203,7 +187,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               md: `${4 / 19.2}vw solid #41A4FD`,
             }}
           >
-            <Image
+            <Image // eslint-disable-line
               ml={{ base: `${10 / 3.75}vw`, md: `${23 / 19.2}vw` }}
               mr={{ base: `${5 / 3.75}vw`, md: `${13 / 19.2}vw` }}
               mb={{

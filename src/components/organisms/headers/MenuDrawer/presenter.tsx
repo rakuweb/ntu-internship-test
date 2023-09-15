@@ -51,6 +51,7 @@ export const Presenter: VFC<PresenterProps> = ({
                       width={66}
                       height={80}
                       src="/dev/img/arrow-@2x.png"
+                      alt={``}
                     />
                   </Box>
                   <Box color={`white`} className={`text`} ml={{ lg: `0.5rem` }}>
@@ -74,6 +75,7 @@ export const Presenter: VFC<PresenterProps> = ({
                       width={66}
                       height={80}
                       src="/dev/img/arrow-@2x.png"
+                      alt={``}
                     />
                   </Box>
                   <Box color={`white`} className={`text`} ml={{ lg: `0.5rem` }}>

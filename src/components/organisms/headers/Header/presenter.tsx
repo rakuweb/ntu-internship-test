@@ -16,7 +16,7 @@ import { MenuDrawer } from '../MenuDrawer';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -35,7 +35,12 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
     >
       <InternalLink href={routes.index}>
         <Box className="logo" as={`h1`}>
-          <Image width={233} height={36} src={`/dev/img/logo@1x.png`} />
+          <Image
+            width={233}
+            height={36}
+            src={`/dev/img/logo@1x.png`}
+            alt={``}
+          />
         </Box>
       </InternalLink>
       <Box
@@ -72,9 +77,9 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
                   color={`white`}
                   fontSize={`2.5rem`}
                   mx={`auto`}
-                  // width={66}
-                  // height={80}
-                  // src="/dev/img/arrow-@2x.png"
+                // width={66}
+                // height={80}
+                // src="/dev/img/arrow-@2x.png"
                 />
               </Box>
               <Box
@@ -106,9 +111,9 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
                   color={`white`}
                   fontSize={`2.5rem`}
                   mx={`auto`}
-                  // width={66}
-                  // height={80}
-                  // src="/dev/img/arrow-@2x.png"
+                // width={66}
+                // height={80}
+                // src="/dev/img/arrow-@2x.png"
                 />
               </Box>
               <Box

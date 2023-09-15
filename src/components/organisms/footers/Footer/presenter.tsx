@@ -1,5 +1,5 @@
 // import layer
-import { VFC, ElementType } from 'react';
+import { VFC } from 'react';
 import { css } from '@emotion/react';
 import { Box, Stack } from '@chakra-ui/react';
 
@@ -12,9 +12,7 @@ import { mq } from '~/constants/styles';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ as = `div`, ...props }) => {
-  const Tag = as as ElementType;
-
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <footer css={styles}>
       <div className="footer">
@@ -47,6 +45,7 @@ export const Presenter: VFC<PresenterProps> = ({ as = `div`, ...props }) => {
                       width={33}
                       height={33}
                       src={`/dev/img/file-----636@1x.png`}
+                      alt={``}
                     />
                   </div>
                 </InternalLink>
@@ -56,6 +55,7 @@ export const Presenter: VFC<PresenterProps> = ({ as = `div`, ...props }) => {
                       width={33}
                       height={33}
                       src={`/dev/img/file-----635@1x.png`}
+                      alt={``}
                     />
                   </div>
                 </InternalLink>

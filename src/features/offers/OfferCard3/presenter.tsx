@@ -30,7 +30,6 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     image,
     job_type,
     createby,
-    min_period,
   } = props;
   const href = `${routes.offers}/${id}`;
   const currentDate = new Date();
@@ -148,7 +147,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                       bg={`rgba(254,207,2,0.1)`}
                       borderRadius={`${26 / 19.2}vw`}
                     >
-                      <Image
+                      <Image // eslint-disable-line
                         w={`${11.5 / 19.2}vw`}
                         h={`${16 / 19.2}vw`}
                         image={{
@@ -174,7 +173,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                       bg={`rgba(254,207,2,0.1)`}
                       borderRadius={`${26 / 19.2}vw`}
                     >
-                      <Image
+                      <Image // eslint-disable-line
                         w={`${16 / 19.2}vw`}
                         h={`${18.5 / 19.2}vw`}
                         image={{
@@ -198,7 +197,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                       bg={`rgba(254,207,2,0.1)`}
                       borderRadius={`${26 / 19.2}vw`}
                     >
-                      <Image
+                      <Image // eslint-disable-line
                         w={`${13.7 / 19.2}vw`}
                         h={`${18.3 / 19.2}vw`}
                         image={{
@@ -222,7 +221,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                       bg={`rgba(254,207,2,0.1)`}
                       borderRadius={`${26 / 19.2}vw`}
                     >
-                      <Image
+                      <Image // eslint-disable-line
                         w={`${16 / 19.2}vw`}
                         h={`${16 / 19.2}vw`}
                         image={{
@@ -373,7 +372,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     md: `${26 / 7.68}vw`,
                   }}
                 >
-                  <Image
+                  <Image // eslint-disable-line
                     ml={{ base: `${10 / 3.75}vw`, md: `${10 / 7.68}vw` }}
                     mr={{ base: `${10 / 3.75}vw`, md: `${10 / 7.68}vw` }}
                     w={{ base: `${6 / 3.75}vw`, md: `${6 / 7.68}vw` }}
@@ -402,7 +401,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   borderRadius={`${26 / 3.75}vw`}
                   color={`#39414E`}
                 >
-                  <Image
+                  <Image // eslint-disable-line
                     ml={{ base: `${9 / 3.75}vw`, md: `${9 / 7.68}vw` }}
                     mr={{ base: `${9 / 3.75}vw`, md: `${9 / 7.68}vw` }}
                     w={{ base: `${8 / 3.75}vw`, md: `${8 / 7.68}vw` }}
@@ -437,7 +436,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   }}
                   color={`#39414E`}
                 >
-                  <Image
+                  <Image // eslint-disable-line
                     ml={{ base: `${10 / 3.75}vw`, md: `${10 / 7.68}vw` }}
                     mr={{ base: `${9 / 3.75}vw`, md: `${9 / 7.68}vw` }}
                     w={{ base: `${7 / 3.75}vw`, md: `${7 / 7.68}vw` }}
@@ -472,7 +471,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   }}
                   color={`#39414E`}
                 >
-                  <Image
+                  <Image // eslint-disable-line
                     mt={{ base: `${1 / 3.75}vw`, md: `${1 / 7.68}vw` }}
                     ml={{ base: `${9 / 3.75}vw`, md: `${9 / 7.68}vw` }}
                     mr={{ base: `${10 / 3.75}vw`, md: `${10 / 7.68}vw` }}

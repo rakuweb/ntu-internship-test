@@ -2,7 +2,6 @@ import { useMemo } from 'react';
 import { ApolloClient, HttpLink, InMemoryCache, from } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 import { concatPagination } from '@apollo/client/utilities';
-import { setContext } from '@apollo/client/link/context';
 import merge from 'deepmerge';
 import isEqual from 'lodash/isEqual';
 
@@ -11,8 +10,8 @@ import { parseAuthorization } from './parse';
 
 export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
 
-let apolloClient;
-let apolloClientOffers;
+let apolloClient: any; // eslint-disable-line
+let apolloClientOffers: any; // eslint-disable-line
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors)

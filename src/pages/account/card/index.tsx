@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import { Index as Template } from '~/components/templates/Member';
 import { SeoComponent } from 'organisms/SeoComponent';
 import { CANONICAL_URL } from '~/constants';
-import { parseSeo } from '~/lib';
 import { routes } from 'constants/routes';
 import {
   useStudentStore,
@@ -21,7 +20,6 @@ import axios from 'axios';
 export const Index: NextPage = () => {
   const title = ``; // eslint-disable-line
   const description = ``;
-  const seo = parseSeo(title, description);
   const [isClient, setIsClient] = useState(false);
   const router = useRouter();
   const student = useStudentStore(selectStudent);
@@ -55,7 +53,7 @@ export const Index: NextPage = () => {
     };
 
     handler();
-  }, [student, counted, isClient]);
+  }, [student, counted, isClient]); // eslint-disable-line
 
   useEffect(() => {
     if (connected) return;
@@ -82,7 +80,7 @@ export const Index: NextPage = () => {
     };
 
     handler();
-  }, [isClient, counted, student, connected]);
+  }, [isClient, counted, student, connected]); // eslint-disable-line
 
   const message = () => {
     if (isClient) {
@@ -98,14 +96,11 @@ export const Index: NextPage = () => {
       );
     } else {
       return (
-        <>
-          {' '}
-          <SeoComponent
-            canonical={CANONICAL_URL}
-            title={title}
-            description={description}
-          />
-        </>
+        <SeoComponent
+          canonical={CANONICAL_URL}
+          title={title}
+          description={description}
+        />
       );
     }
   };

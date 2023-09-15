@@ -1,10 +1,6 @@
 // import layer
-// import layer
-import { VFC } from 'react';
+import { FC } from 'react';
 import { Box } from '@chakra-ui/react';
-import { css } from '@emotion/react';
-
-import { mq } from '~/constants/styles';
 
 import { NewsId } from '~/components/organisms/NewsId';
 import { BreadcrumbGray } from 'organisms/BreadcrumbGray';
@@ -19,11 +15,11 @@ import 'swiper/css/autoplay';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: FC<PresenterProps> = () => {
   return (
     <>
       <Header />
-      <Box as={`main`} css={styles}>
+      <Box as={`main`}>
         <BreadcrumbGray title={`ニュース`} />
         <NewsId />
       </Box>
@@ -31,6 +27,3 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
     </>
   );
 };
-
-// styles
-const styles = css``;

@@ -7,7 +7,7 @@ import { mq } from '~/constants/styles';
 export type PresenterProps = Record<string, string>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   const firstsentence = `株式会社ラクウェブ(以下当社)は個人情報の保護に対する社会的責任を十分認識し、個人情報の適正な取り扱いを推進していくことが、重要な社会的責務と考えております。
 このような責務を果たしていくため以下の方針にもとづき個人情報の保護に努めてまいります。`;
 

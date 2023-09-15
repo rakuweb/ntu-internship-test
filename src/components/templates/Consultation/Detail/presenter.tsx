@@ -15,7 +15,7 @@ import 'swiper/css/autoplay';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   const pagetitle = `企業詳細`;
 
   return (

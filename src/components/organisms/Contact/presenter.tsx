@@ -1,15 +1,7 @@
 // import layer
 import { FC } from 'react';
-import {
-  Box,
-  Flex,
-  Heading,
-  Link,
-  Text,
-  textDecoration,
-} from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import { Image } from 'components/images/Image';
-import { useRouter } from 'next/router';
 import { InternalLink } from '~/components/links/InternalLink';
 
 // type layer
@@ -30,7 +22,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       color={`white`}
       {...props}
     >
-      <Image
+      <Image // eslint-disable-line
         w={{
           base: `${134 / 3.75}vw`,
           md: `${200 / 7.68}vw`,

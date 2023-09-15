@@ -19,7 +19,7 @@ import { BreadcrumbWhite } from 'organisms/BreadcrumbWhite';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <>
       <Header />

@@ -10,7 +10,7 @@ import { SansSerifText as Text } from '~/components/atoms/texts/SansSerifText';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <Box
       _hover={{ boxShadow: `2xl` }}
@@ -28,7 +28,12 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
           <div className="text-1 yugothic-bold-mandy-18px">{`フッ素とフッ化第一スズはどちらが虫歯予防に効果的ですか？`}</div>
         </Flex>
         <Box my={`0.5rem`} className="x15">
-          <Image width={686} height={2} src="/dev/img/file----15-----@1x.png" />
+          <Image
+            width={686}
+            height={2}
+            src="/dev/img/file----15-----@1x.png"
+            alt={``}
+          />
         </Box>
         <Text
           noOfLines={3}

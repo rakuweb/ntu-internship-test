@@ -1,7 +1,6 @@
 import { OfferEntity } from 'types/offers-gql/graphql';
 import { OfferCard, OfferSliceData } from './types';
-import { parseDate, parseImage } from 'lib/utils';
-import markdownToHtml from 'zenn-markdown-html';
+import { parseImage } from 'lib/utils';
 
 export const parseToOffers = (data: OfferEntity[]): OfferCard[] => {
   const result = data.map((entity) => {

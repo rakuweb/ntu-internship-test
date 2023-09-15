@@ -1,8 +1,7 @@
 // import layer
 import { FC } from 'react';
 import { css } from '@emotion/react';
-import { mq } from '~/constants/styles';
-import { Box, Heading, Text } from '@chakra-ui/react';
+import { Box, Heading } from '@chakra-ui/react';
 import MenberLogo from '../../../../public/svg/menberLogo.svg';
 import Card from './card';
 import Caferoom from './caferoom';
@@ -11,7 +10,7 @@ import Caferoom from './caferoom';
 export type PresenterProps = Record<string, string>;
 
 // presenter
-export const Presenter: FC<PresenterProps> = ({ ...props }) => {
+export const Presenter: FC<PresenterProps> = () => {
   return (
     <Box css={styles} bgColor={'#F4F4F4'}>
       <Box

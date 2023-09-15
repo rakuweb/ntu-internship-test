@@ -7,13 +7,12 @@ import { SearchSectionTitle } from '~/components/molecules/titles/SearchSectionT
 import { SearchSectionButton } from '~/components/molecules/buttons/SearchSectionButton';
 import { SearchTag } from '~/components/molecules/tags/SearchTag';
 import { InternalLink } from 'molecules/links/InternalLink';
-import { routes } from '~/constants';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <Box
       w={`fit-content`}

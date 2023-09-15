@@ -3,12 +3,9 @@ import { FC } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import { Image } from 'components/images/Image';
 
-import { selectCompany, useCompanyStore } from 'features/company';
 import { useTargetOfferStore, selectTarget } from 'features/offers';
-import { useLiff } from 'contexts/LineAuthContextInternship';
-
-import { useAccountStore, selectSetPrevPath } from 'features/account';
 import { InternalLink } from '~/components/links/InternalLink';
+
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
@@ -47,7 +44,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           md: `${4 / 19.2}vw solid #41A4FD`,
         }}
       >
-        <Image
+        <Image // eslint-disable-line
           ml={{ base: `${10 / 3.75}vw`, md: `${23 / 19.2}vw` }}
           mr={{ base: `${5 / 3.75}vw`, md: `${13 / 19.2}vw` }}
           mb={{

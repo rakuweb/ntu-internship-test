@@ -12,10 +12,10 @@ import { Image as NImage } from 'components/images/Image';
 
 // type layer
 export type DataProps = OfferCard & {
-  companyName: any;
-  categories: any[];
-  place: any;
-  hourlyWage: any;
+  companyName: any; // eslint-disable-line
+  categories: any[]; // eslint-disable-line
+  place: any; // eslint-disable-line
+  hourlyWage: any; // eslint-disable-line
 };
 export type PresenterProps = DataProps;
 // presenter
@@ -89,6 +89,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 width={24}
                 height={24}
                 src={`/svg/map-marker.svg`}
+                alt={``}
               />
               <div className="placetext">{place}</div>
             </div>
@@ -98,7 +99,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 width={24}
                 height={24}
                 src={`/svg/money.svg`}
-              // src={`/images/offers/hukuroIkon.png`}
+                // src={`/images/offers/hukuroIkon.png`}
+                alt={``}
               />
               <div className="placetext">{hourlyWage}</div>
             </div>
@@ -111,7 +113,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
 
 // styles
 const styles = css`
-  //モバイルサイズ
+  {/*//モバイルサイズ*/}
   .x001 {
     background-color: var(--white);
     border-radius: 10px;
@@ -277,6 +279,4 @@ const styles = css`
       white-space: pre-wrap;
     }
   }
-}
-
-`;
+}`;

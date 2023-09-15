@@ -1,22 +1,9 @@
 // import layer
-import { FC, useState } from 'react';
-import { Box, Grid, Flex } from '@chakra-ui/react';
+import { FC } from 'react';
+import { Box, Flex } from '@chakra-ui/react';
 import { Select, ChakraStylesConfig } from 'chakra-react-select';
 
-import { selectOfferList } from 'features/offers/selectors';
-import { useOffersStore } from 'features/offers/hooks';
-import {
-  selectAdvertisements,
-  useAdvertisementsStore,
-} from 'features/advertisements';
-
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/autoplay';
-import 'swiper/css/effect-fade';
 import { InternalLink } from 'components/links/InternalLink';
-import { routes } from '~/constants';
 import { Image } from '~/components/Image';
 
 // type layer
@@ -24,8 +11,6 @@ export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
-  const offers = useOffersStore(selectOfferList);
-
   const Options = [
     { value: 'アルバイト', label: 'アルバイト' },
     { value: 'インターンバイト', label: 'インターンバイト' },
@@ -34,7 +19,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   ];
 
   const chakraStyles: ChakraStylesConfig = {
-    control: (provided, state) => ({
+    control: (provided, _state) => ({
       ...provided,
       background: `white`,
       border: `0px`,
@@ -53,14 +38,14 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
 
       fontFamily: `'Noto Sans JP', sans-serif`,
     }),
-    valueContainer: (provided, state) => ({
+    valueContainer: (provided, _state) => ({
       ...provided,
       color: 'black',
     }),
-    indicatorSeparator: (state) => ({
+    indicatorSeparator: (_state) => ({
       display: 'none',
     }),
-    indicatorsContainer: (provided, state) => ({
+    indicatorsContainer: (provided, _state) => ({
       ...provided,
       h: { base: `${45 / 3.75}vw`, lg: `${53 / 19.2}vw` },
     }),
@@ -70,7 +55,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       background: `transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box;`,
       borderRadius: `0`,
     }),
-    menu: (state) => ({
+    menu: (_state) => ({
       color: 'black',
       position: `absolute`,
       fontWeight: `500`,
@@ -81,7 +66,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
 
   return (
     <Box w={`100%`} {...props} position={`relative`} overflow={`hidden`}>
-      <Image
+      <Image // eslint-disable-line
         display={{ base: `none`, lg: `block` }}
         position={`absolute`}
         top={0}
@@ -96,7 +81,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           alt: `カバー画像`,
         }}
       />
-      <Image
+      <Image // eslint-disable-line
         display={{ lg: `none` }}
         position={`absolute`}
         top={`0`}

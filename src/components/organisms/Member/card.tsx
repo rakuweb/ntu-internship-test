@@ -52,7 +52,7 @@ const Card = ({ noSound = false }: { noSound?: boolean }) => {
       }
     }
     // play();
-  }, [loaded]);
+  }, [loaded]); // eslint-disable-line
 
   useEffect(() => {
     if (!student?.username || !student?.grade || !student?.gradeUpdatedAt)

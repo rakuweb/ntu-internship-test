@@ -6,13 +6,12 @@ import { Image } from 'components/Image';
 import { InternalLink } from 'components/links/InternalLink';
 import { HP_URL, INSTAGRAM_URL, TWITTER_URL } from 'constants/routes';
 import { ExternalLink } from 'components/links/ExternalLink';
-import { addApolloState } from '../../../lib/apollo/client';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: FC<PresenterProps> = ({ ...props }) => {
+export const Presenter: FC<PresenterProps> = () => {
   return (
     <Box
       w={{ lg: `${1000 / 19.2}vw` }}
@@ -54,7 +53,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               position={`relative`}
               w={{ base: `${160 / 3.75}vw`, lg: `${180 / 19.2}vw` }}
             >
-              <Image
+              <Image // eslint-disable-line
                 position={`initial`}
                 w={`100%`}
                 image={{
@@ -84,7 +83,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             justify={{ base: `center` }}
           >
             <ExternalLink href={INSTAGRAM_URL}>
-              <Image
+              <Image // eslint-disable-line
                 w={{ base: `24px`, lg: `${20 / 19.2}vw` }}
                 image={{
                   width: 20,
@@ -95,7 +94,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               />
             </ExternalLink>
             <ExternalLink href={TWITTER_URL}>
-              <Image
+              <Image // eslint-disable-line
                 w={{ base: `24px`, lg: `${20 / 19.2}vw` }}
                 image={{
                   width: 20,

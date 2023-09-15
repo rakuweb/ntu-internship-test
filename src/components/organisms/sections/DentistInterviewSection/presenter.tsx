@@ -19,7 +19,7 @@ import 'swiper/css/autoplay';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   const swiperProps: SwiperProps = {
     modules: [Navigation, Autoplay],
     navigation: true,

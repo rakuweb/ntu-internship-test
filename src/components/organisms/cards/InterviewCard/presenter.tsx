@@ -9,7 +9,7 @@ import { mq } from '~/constants/styles';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <Box
       _hover={{ boxShadow: `2xl` }}
@@ -20,7 +20,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
       css={styles}
     >
       <div className="x001">
-        <Image className="photo" src={`/dev/img/clip-1@1x.png`} />
+        <Image className="photo" src={`/dev/img/clip-1@1x.png`} alt={``} />
 
         <div className="text">
           <div className="text-2">
@@ -34,7 +34,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
 
 // styles
 const styles = css`
-  //モバイルサイズ
+  /*モバイルサイズ*/
   .x001 {
     background-color: var(--white);
     border-radius: 10px;

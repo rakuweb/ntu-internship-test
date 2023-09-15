@@ -6,7 +6,6 @@ import { Header } from 'components/headers/Header';
 import { Footer } from 'components/footers/Footer';
 import { OfferList } from 'features/offers/OfferList';
 import { styles } from './styles';
-import { BreadcrumbOffers } from '~/components/organisms/BreadcrumbOffers';
 import { Firstview } from '~/features/offers/Firstview';
 import { Taglist } from '~/features/offers/Taglist';
 
@@ -15,7 +14,6 @@ export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps> = () => {
-  const pageTitle = `求人一覧`;
   return (
     <>
       <Header isTop />

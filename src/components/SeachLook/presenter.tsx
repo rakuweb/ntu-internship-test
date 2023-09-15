@@ -1,11 +1,10 @@
 // import layer
 import { FC, useState } from 'react';
 import { Box, Flex, Grid } from '@chakra-ui/react';
-import { Image } from 'components/images/Image';
 import { Select } from 'chakra-react-select';
 import { OfferCard } from 'features/offers';
-import { selectOfferList, selectTarget } from 'features/offers/selectors';
-import { useOffersStore, useTargetOfferStore } from 'features/offers/hooks';
+import { selectOfferList } from 'features/offers/selectors';
+import { useOffersStore } from 'features/offers/hooks';
 import { OfferCard3 } from '~/features/offers/OfferCard3';
 import 'zenn-content-css';
 import { BreadcrumbOfferId } from '../organisms/BreadcrumbOfferId';
@@ -13,15 +12,15 @@ import { Contact } from '../organisms/Contact';
 import { SearchSection } from './SearchSection';
 import chakraStyles from './chakraStyles';
 import FileInvoiceSvg from './fileInvoiceSvg';
-import { Point } from '../../features/offers/types';
-import { constSelector } from 'recoil';
+// import { Point } from '../../features/offers/types';
+// import { constSelector } from 'recoil';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: FC<PresenterProps> = ({ ...props }) => {
-  const remainingDays = (deadline) => {
+export const Presenter: FC<PresenterProps> = () => {
+  const _remainingDays = (deadline) => {
     const currentDate = new Date();
     const deadlineDate = new Date(deadline);
     const diffTime = deadlineDate.getTime() - currentDate.getTime();
@@ -86,10 +85,10 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const month = monthMap[monthNum];
   const date = dayMap[dayNum];
   const today = `${year}-${month}-${date}`;
-  const [index, setIndex] = useState<number>(0);
+  // const [index, setIndex] = useState<number>(0);
 
   const activeOffers = offers.filter((offer) => offer.end_at >= today);
-  const expiredOffers = offers.filter((offer) => offer.end_at < today);
+  // const expiredOffers = offers.filter((offer) => offer.end_at < today);
 
   const pageTitles = [`求人検索`];
   const [sortOption, setSortOption] = useState<string>('並び順 : 新着順');
@@ -125,7 +124,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     string[]
   >([]);
 
-  const handleEmploymentTypeSelect = (newTypes: string[]) => {
+  const _handleEmploymentTypeSelect = (newTypes: string[]) => {
     setSelectedEmploymentTypes(newTypes);
   };
 

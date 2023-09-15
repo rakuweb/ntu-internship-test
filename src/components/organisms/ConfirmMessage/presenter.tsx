@@ -3,30 +3,27 @@ import { FC } from 'react';
 import { css } from '@emotion/react';
 import { mq } from '~/constants/styles';
 import { Box, Button } from '@chakra-ui/react';
-import axios from 'axios'
-
-import { InternalLink } from 'components/links/InternalLink';
-import { routes } from 'constants/routes';
-import { HP_URL } from 'constants/routes';
+import axios from 'axios';
 
 // type layer
 export type PresenterProps = { title: string; message: string };
 
 // presenter
-export const Presenter: FC<PresenterProps> = ({ title, message, ...props }) => {
+export const Presenter: FC<PresenterProps> = ({ title, message }) => {
   const handleClick = () => {
     axios
-  .post(`http://localhost:1337/auth/send-email-confirmation`, {
-    email: 'user@strapi.io',
-  })
-  .then(response => {
-    // Handle success.
-    console.log('Your user received an email');
-  })
-  .catch(error => {
-    // Handle error.
-    console.error('An error occured:', error.response);
-  });
+      .post(`http://localhost:1337/auth/send-email-confirmation`, {
+        email: 'user@strapi.io',
+      })
+      // eslint-disable-next-line
+      .then((response: any) => {
+        // Handle success.
+        console.log('Your user received an email');
+      })
+      .catch((error) => {
+        // Handle error.
+        console.error('An error occured:', error.response);
+      });
   };
 
   return (

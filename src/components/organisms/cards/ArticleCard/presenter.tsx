@@ -10,7 +10,7 @@ import { mq } from '~/constants/styles';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <Box
       _hover={{ boxShadow: `2xl` }}
@@ -25,6 +25,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
             src="/dev/img/concept-image-of-dental@1x.png"
             width={918}
             height={611}
+            alt={``}
           />
         </Box>
         <Box className="overlap-group">

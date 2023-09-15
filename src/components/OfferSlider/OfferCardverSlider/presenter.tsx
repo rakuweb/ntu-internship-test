@@ -5,7 +5,6 @@ import { Box, Flex } from '@chakra-ui/react';
 
 import { InternalLink } from '~/components/links/InternalLink';
 import { OfferCard } from '~/features/offers/types';
-import { mq } from '~/constants/styles';
 import { routes } from 'constants/routes';
 import { Image as NImage } from 'components/images/Image';
 import { Image } from '~/components/Image';
@@ -25,14 +24,12 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     startDate,
     title,
     image,
-    points,
-    deadline,
     // createdByid,
   } = props;
   const href = `${routes.offers}/${id}`;
   const currentDate = new Date();
   const startDateObj = new Date(startDate);
-  const isNew =
+  const _isNew =
     (currentDate.getTime() - startDateObj.getTime()) / (1000 * 3600 * 24);
 
   return (
@@ -118,7 +115,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                       bg={`rgba(254,207,2,0.1)`}
                       borderRadius={`${26 / 9.6}vw`}
                     >
-                      <Image
+                      <Image // eslint-disable-line
                         w={`${11.5 / 9.6}vw`}
                         h={`${16 / 9.6}vw`}
                         image={{
@@ -144,7 +141,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                       bg={`rgba(254,207,2,0.1)`}
                       borderRadius={`${26 / 9.6}vw`}
                     >
-                      <Image
+                      <Image // eslint-disable-line
                         w={`${16 / 9.6}vw`}
                         h={`${18.5 / 9.6}vw`}
                         image={{
@@ -168,7 +165,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                       bg={`rgba(254,207,2,0.1)`}
                       borderRadius={`${26 / 9.6}vw`}
                     >
-                      <Image
+                      <Image // eslint-disable-line
                         w={`${13.7 / 9.6}vw`}
                         h={`${18.3 / 9.6}vw`}
                         image={{
@@ -192,7 +189,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                       bg={`rgba(254,207,2,0.1)`}
                       borderRadius={`${26 / 9.6}vw`}
                     >
-                      <Image
+                      <Image // eslint-disable-line
                         w={`${16 / 9.6}vw`}
                         h={`${16 / 9.6}vw`}
                         image={{

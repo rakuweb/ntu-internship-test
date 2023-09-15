@@ -12,7 +12,7 @@ import { InternalLink } from 'molecules/links/InternalLink';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <Box
       w={`100%`}
