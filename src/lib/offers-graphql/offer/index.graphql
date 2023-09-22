@@ -21,7 +21,7 @@ query getOfferById($id: ID) {
         flow
         shift
         holiday
-        email_address
+        email
         min_working_hours
         min_period {
           data {

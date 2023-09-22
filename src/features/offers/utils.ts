@@ -60,6 +60,11 @@ export const parseToTarget = (entity: OfferEntity): Partial<OfferSliceData> => {
     image: offer?.image?.data?.attributes?.url
       ? parseImage(offer.image.data.attributes)
       : undefined,
+    createby: {
+      id: offer.createdBy.id,
+      firstname: offer.createdBy.firstname,
+      lastname: offer ? offer.createdBy.lastname : '',
+    },
     hourly_wage: offer.hourly_wage,
     hourly_wage_detail: offer ? offer.hourly_wage_detail : '',
     place_short: offer.place_short,
@@ -76,13 +81,8 @@ export const parseToTarget = (entity: OfferEntity): Partial<OfferSliceData> => {
     flow: offer.flow,
     holiday: offer ? offer.holiday : '',
     shift: offer ? offer.shift : '',
-    email_address: offer.email_address,
+    email: offer.email,
     interview_location: offer.interview_location,
-    createby: {
-      id: offer.createdBy.id,
-      firstname: offer.createdBy.firstname,
-      lastname: offer ? offer.createdBy.lastname : '',
-    },
     min_working_hours: offer.min_working_hours,
     min_period: {
       id: offer.min_period.data.id,
