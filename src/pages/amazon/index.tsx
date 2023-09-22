@@ -13,7 +13,7 @@ import {
   GetOffersAllDocument,
   OfferEntity,
 } from 'types/offers-gql/graphql';
-import { initializeApollo } from 'lib/apollo/client';
+import { initializeApollo, initializeApollo_offer } from 'lib/apollo/client';
 import { UPDATE_INTERVAL } from '~/constants';
 import { selectSetOffers, useOffersStore } from 'features/offers';
 
@@ -67,8 +67,9 @@ export const getStaticProps: GetStaticProps<{
   adData: GetAdvertisementArticlesQuery;
 }> = async () => {
   const apolloClient = initializeApollo();
+  const apolloClientOffer = initializeApollo_offer();
   try {
-    const { data } = await apolloClient.query<GetOffersAllQuery>({
+    const { data } = await apolloClientOffer.query<GetOffersAllQuery>({
       query: GetOffersAllDocument,
       variables: { today: getTodayString() },
     });
