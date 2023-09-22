@@ -1,19 +1,11 @@
-import { Button } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import { Image } from 'components/images/Image';
 type SubmitButtonProps = {
   disabled: boolean;
 };
 const SubmitButton: React.FC<SubmitButtonProps> = ({ disabled }) => {
   return (
-    <Button
-      type="submit"
-      disabled={disabled} // ボタンの活性・非活性を設定
-      background={
-        disabled
-          ? 'grey'
-          : `transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box;`
-      } // 色をチェック状態に基づいて変更
-      display={'flex'}
+    <Flex
       w={{
         base: `${220 / 3.75}vw`,
         md: `${230 / 7.68}vw`,
@@ -26,7 +18,7 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({ disabled }) => {
       }}
       overflow={`hidden`}
       alignItems={`center`}
-      justifyContent={`center`}
+      justify={`center`}
       py={{
         base: `${15 / 4.28}vw`,
         md: `${35 / 19.2}vw`,
@@ -34,7 +26,7 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({ disabled }) => {
       }}
       mb={{ base: `${60 / 3.75}vw`, md: `${80 / 19.2}vw` }}
       mx={`auto`}
-      // background={`transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box;`}
+      background={`transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box;`}
       color={`white`}
       fontSize={{
         base: `${16 / 3.75}vw`,
@@ -42,6 +34,12 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({ disabled }) => {
         lg: `${27 / 19.2}vw`,
       }}
       fontWeight={`bold`}
+      as={`button`}
+      transition={`all .3s`}
+      _hover={{
+        cursor: `pointer`,
+        filter: `opacity(50%)`,
+      }}
     >
       <Image // eslint-disable-line
         w={{
@@ -63,7 +61,7 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({ disabled }) => {
         }}
       />
       送信する
-    </Button>
+    </Flex>
   );
 };
 

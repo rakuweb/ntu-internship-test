@@ -4,22 +4,26 @@ import { Control, Controller } from 'react-hook-form';
 
 type InputFormProps = {
   control: Control<{
-    mail: string;
     name: string;
-    company: string;
-    address: string;
-    tel: string;
-    inquiry_item: string;
-    inquiry_content: string;
+    manager_name: string;
+    manager_phone: string;
+    email: string;
+    place: string;
+    listing_details: string;
+    department: string;
+    url: string;
+    remarks: string;
   }>;
   name:
-    | 'mail'
     | 'name'
-    | 'company'
-    | 'address'
-    | 'tel'
-    | 'inquiry_item'
-    | 'inquiry_content';
+    | 'manager_name'
+    | 'manager_phone'
+    | 'email'
+    | 'place'
+    | 'listing_details'
+    | 'department'
+    | 'url'
+    | 'remarks';
   index: number;
 };
 

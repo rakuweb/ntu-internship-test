@@ -17,16 +17,17 @@ export type PresenterProps = Record<string, unknown>;
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const schema = yup.object().shape({
-    mail: yup
+    item: yup.string().required('必須項目です'),
+    employment_status: yup.string().required('必須項目です'),
+    period: yup.string().required('必須項目です'),
+    name: yup.string().required('必須項目です'),
+    manager_name: yup.string().required('必須項目です'),
+    manager_phone: yup.string().required('必須項目です'),
+    email: yup
       .string()
       .email('有効なメールアドレスを入力してください')
       .required('必須項目です'),
-    name: yup.string().required('必須項目です'),
-    company: yup.string().required('必須項目です'),
-    address: yup.string().required('必須項目です'),
-    tel: yup.string().required('必須項目です'),
-    inquiry_item: yup.string().required('必須項目です'),
-    inquiry_content: yup.string().required('必須項目です'),
+    place: yup.string().required('必須項目です'),
   });
 
   const {
@@ -41,10 +42,21 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const Options = [
-    { value: '資料請求', label: '資料請求' },
-    { value: '採用について', label: '採用について' },
-    { value: 'お仕事について', label: 'お仕事について' },
+    { value: '掲載について', label: '掲載について' },
+    { value: '料金プランについて', label: '料金プランについて' },
     { value: 'その他', label: 'その他' },
+  ];
+
+  const Options2 = [
+    { value: '単発アルバイト', label: '単発アルバイト' },
+    { value: 'アルバイト', label: 'アルバイト' },
+    { value: '長期インターン', label: '長期インターン' },
+  ];
+
+  const Options3 = [
+    { value: '1ヶ月以内の採用', label: '1ヶ月以内の採用' },
+    { value: '3ヶ月以内の採用', label: '3ヶ月以内の採用' },
+    { value: '3ヶ月以上先の採用', label: '3ヶ月以上先の採用' },
   ];
 
   const { executeRecaptcha: _ } = useGoogleReCaptcha();
@@ -85,6 +97,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         >
           <InquiryItem
             Options={Options}
+            Options2={Options2}
+            Options3={Options3}
             control={control}
             ChakraStylesDesktop={ChakraStylesDesktop}
             errors={errors}
