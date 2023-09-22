@@ -31,6 +31,9 @@ export const routes = {
   apiAccount: '/api/account',
   apiUpdateGrade: '/api/update/grade',
   apitVisitCount: '/api/visit/count',
+  apiApplication: '/api/application',
+  apiCompaniesRequest: '/api/companies/request',
+  apiJobform: `/api/offers/jobform/send`,
 };
 
 export const HP_URL = `https://nottheuniversity.com`;
@@ -43,7 +46,9 @@ export const apiRoutes = {
   signin: `/auth/local`,
   signage: `/signage`,
   students: `/students`,
-  jobform: `/offers/jobform/send`
+  jobform: `/offers/jobform/send`,
+  companies: `/companies`,
+  offer: `/offers`,
 };
 
 export type NavItem = { name: string; link: string; isExternal?: boolean };
@@ -64,4 +69,4 @@ export const navItems: NavItem[] = [
 
 export const lineAPIRoutes = {
   messagePush: `https://api.line.me/v2/bot/message/push`,
-}
+};

@@ -50,9 +50,16 @@ export type Company = {
   __typename?: 'Company';
   createdAt?: Maybe<Scalars['DateTime']>;
   email: Scalars['String'];
+  establishment_date?: Maybe<Scalars['String']>;
+  manager_name?: Maybe<Scalars['String']>;
+  manager_phone?: Maybe<Scalars['String']>;
   name: Scalars['String'];
+  number_of_employees?: Maybe<Scalars['String']>;
   offers?: Maybe<OfferRelationResponseCollection>;
   place: Scalars['String'];
+  plan?: Maybe<Scalars['String']>;
+  remarks?: Maybe<Scalars['String']>;
+  representative?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
   url?: Maybe<Scalars['String']>;
 };
@@ -86,21 +93,35 @@ export type CompanyFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<CompanyFiltersInput>>>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   email?: InputMaybe<StringFilterInput>;
+  establishment_date?: InputMaybe<StringFilterInput>;
   id?: InputMaybe<IdFilterInput>;
+  manager_name?: InputMaybe<StringFilterInput>;
+  manager_phone?: InputMaybe<StringFilterInput>;
   name?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<CompanyFiltersInput>;
+  number_of_employees?: InputMaybe<StringFilterInput>;
   offers?: InputMaybe<OfferFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<CompanyFiltersInput>>>;
   place?: InputMaybe<StringFilterInput>;
+  plan?: InputMaybe<StringFilterInput>;
+  remarks?: InputMaybe<StringFilterInput>;
+  representative?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
   url?: InputMaybe<StringFilterInput>;
 };
 
 export type CompanyInput = {
   email?: InputMaybe<Scalars['String']>;
+  establishment_date?: InputMaybe<Scalars['String']>;
+  manager_name?: InputMaybe<Scalars['String']>;
+  manager_phone?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  number_of_employees?: InputMaybe<Scalars['String']>;
   offers?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   place?: InputMaybe<Scalars['String']>;
+  plan?: InputMaybe<Scalars['String']>;
+  remarks?: InputMaybe<Scalars['String']>;
+  representative?: InputMaybe<Scalars['String']>;
   url?: InputMaybe<Scalars['String']>;
 };
 
