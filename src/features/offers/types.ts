@@ -21,7 +21,6 @@ export type OfferCard = {
   end_at: string;
   occupation: Occupation;
   image?: ImageType;
-  // points: Point[];
   job_type: JobType;
   min_period: Period;
   min_workingday: Workingday;
@@ -54,7 +53,7 @@ export type OfferSliceData = {
   flow: string;
   shift: string;
   holiday: string;
-  email_address: string;
+  email: string;
   interview_location: string;
   createby: Createby;
   min_working_hours: string;
@@ -65,7 +64,6 @@ export type OfferSliceData = {
   job_type: JobType;
   points: Point[];
   image?: ImageType;
-  // companyName: string;
 };
 
 export type OfferSlice = OfferSliceData & {

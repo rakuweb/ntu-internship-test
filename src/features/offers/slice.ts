@@ -40,7 +40,7 @@ export const createTargetOfferSlice: StateCreator<
   qualification: '',
   people: '',
   flow: '',
-  email_address: '',
+  email: '',
   interview_location: '',
   createby: { id: 0, firstname: '', lastname: '' },
   min_working_hours: '',
@@ -53,7 +53,6 @@ export const createTargetOfferSlice: StateCreator<
   image: undefined,
   shift: '',
   holiday: '',
-  // companyName: '',
 
   setTarget: (entity) => {
     const result = parseToTarget(entity);

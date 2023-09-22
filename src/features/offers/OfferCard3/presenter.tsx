@@ -105,7 +105,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 </Flex>
               ) : null}
               <Box mb={`${10 / 19.2}vw`} fontSize={`${18 / 19.2}vw`}>
-                {createby.firstname}
+                {`会社名が入る`}
               </Box>
               <Box
                 fontWeight={`bold`}
