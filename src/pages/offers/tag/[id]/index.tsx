@@ -133,7 +133,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       fallback: true,
     };
   } finally {
-    console.log('get pages/jobCategories/[id] paths');
+    console.log('get pages/offers/tag/[id] paths');
   }
 };
 
@@ -186,6 +186,6 @@ export const getStaticProps: GetStaticProps<{
       revalidate: UPDATE_INTERVAL,
     };
   } finally {
-    console.log('get pages/offers/[id] static props');
+    console.log('get pages/offers/tag/[id] static props');
   }
 };

@@ -36,12 +36,14 @@ export const routes = {
 export const HP_URL = `https://nottheuniversity.com`;
 export const TWITTER_URL = `https://twitter.com/nottheuniv`;
 export const INSTAGRAM_URL = `https://www.instagram.com/nottheuniversity`;
+export const RECAPTCHA_URL = `https://www.google.com/recaptcha/api/siteverify`;
 
 export const apiRoutes = {
   register: `/auth/local/register`,
   signin: `/auth/local`,
   signage: `/signage`,
   students: `/students`,
+  jobform: `/offers/jobform/send`
 };
 
 export type NavItem = { name: string; link: string; isExternal?: boolean };
@@ -59,3 +61,7 @@ export const navItems: NavItem[] = [
   { name: `公式Instagram`, link: INSTAGRAM_URL, isExternal: true },
   { name: `公式Twitter`, link: TWITTER_URL, isExternal: true },
 ];
+
+export const lineAPIRoutes = {
+  messagePush: `https://api.line.me/v2/bot/message/push`,
+}

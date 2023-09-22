@@ -151,6 +151,6 @@ export const getStaticProps: GetStaticProps<{
       revalidate: UPDATE_INTERVAL,
     };
   } finally {
-    console.log('get pages/offers/[id] static props');
+    console.log('get pages/companies/[id] static props');
   }
 };
