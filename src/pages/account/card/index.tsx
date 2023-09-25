@@ -1,18 +1,18 @@
 import { useState, useEffect } from 'react';
-import { NextPage } from 'next/types';
+import axios from 'axios';
 import { useRouter } from 'next/router';
+import { NextPage } from 'next/types';
 
-import { Index as Template } from '~/components/templates/Member';
-import { SeoComponent } from 'organisms/SeoComponent';
-import { CANONICAL_URL } from '~/constants';
 import { routes } from 'constants/routes';
 import {
   useStudentStore,
   selectStudent,
   selectSetVisitCounts,
 } from 'features/student';
+import { SeoComponent } from 'organisms/SeoComponent';
+import { Index as Template } from '~/components/templates/Member';
+import { CANONICAL_URL } from '~/constants';
 import { ORIGIN_URL } from '~/constants/env';
-import axios from 'axios';
 
 // type layer
 

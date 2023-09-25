@@ -1,11 +1,11 @@
 // import layer
 import { VFC } from 'react';
 
-import { ConsultationDetail } from 'organisms/ConsultationDetail';
-import { BreadcrumbGray } from 'organisms/BreadcrumbGray';
-import { ContactSection } from 'organisms/sections/ContactSection';
-import { Footer } from 'organisms/footers/Footer';
 import { Header } from 'components/headers/Header';
+import { BreadcrumbGray } from 'organisms/BreadcrumbGray';
+import { ConsultationDetail } from 'organisms/ConsultationDetail';
+import { Footer } from 'organisms/footers/Footer';
+import { ContactSection } from 'organisms/sections/ContactSection';
 
 import 'swiper/css';
 import 'swiper/css/navigation';

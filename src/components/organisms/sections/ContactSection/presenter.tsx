@@ -1,7 +1,7 @@
 // import layer
 import { VFC } from 'react';
-import { css } from '@emotion/react';
 import { Box, Center } from '@chakra-ui/react';
+import { css } from '@emotion/react';
 
 import { Image } from 'atoms/Image';
 import { InternalLink } from 'molecules/links/InternalLink';

@@ -1,7 +1,7 @@
 // import layer
 import { FC } from 'react';
-import { css } from '@emotion/react';
 import { Box, Image } from '@chakra-ui/react';
+import { css } from '@emotion/react';
 import { InternalLink } from '~/components/links/InternalLink';
 
 import { mq } from '~/constants/styles';

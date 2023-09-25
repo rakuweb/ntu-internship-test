@@ -7,10 +7,9 @@ import {
   GetStaticProps,
 } from 'next/types';
 
-import { JobForm as Template } from '~/components/templates/JobForm';
+import { selectSetTarget, useTargetOfferStore } from 'features/offers';
+import { initializeApollo_offer } from 'lib/apollo/client';
 import { SeoComponent } from 'organisms/SeoComponent';
-import { CANONICAL_URL, ORIGIN_URL } from '~/constants';
-
 import {
   GetOfferByIdQuery,
   GetOfferByIdDocument,
@@ -18,8 +17,9 @@ import {
   GetOfferPathsQuery,
   GetOfferPathsDocument,
 } from 'types/offers-gql/graphql';
-import { initializeApollo_offer } from 'lib/apollo/client';
-import { selectSetTarget, useTargetOfferStore } from 'features/offers';
+import { JobForm as Template } from '~/components/templates/JobForm';
+import { CANONICAL_URL, ORIGIN_URL } from '~/constants';
+
 import { UPDATE_INTERVAL } from '~/constants';
 
 // type layer

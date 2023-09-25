@@ -2,8 +2,8 @@
 import { useState, useEffect } from 'react';
 import { NextPage } from 'next/types';
 
-import { Index as Template } from 'templates/Campaign';
 import { SeoComponent } from 'organisms/SeoComponent';
+import { Index as Template } from 'templates/Campaign';
 import { CANONICAL_URL, ORIGIN_URL } from '~/constants';
 
 // component layer

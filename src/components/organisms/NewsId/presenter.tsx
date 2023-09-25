@@ -1,8 +1,8 @@
 // import layer
 import { VFC } from 'react';
+import { Image } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 import { mq } from '~/constants/styles';
-import { Image } from '@chakra-ui/react';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

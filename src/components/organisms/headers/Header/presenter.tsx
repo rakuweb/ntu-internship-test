@@ -2,15 +2,15 @@
 import { VFC } from 'react';
 import { Box, Flex, Icon } from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/react';
-import { BiLogIn } from 'react-icons/bi';
 import { AiOutlineUser } from 'react-icons/ai';
+import { BiLogIn } from 'react-icons/bi';
 
-import { styles } from './styles';
 import { Image } from 'atoms/Image';
 import { InternalLink } from 'molecules/links/InternalLink';
 import { routes } from '~/constants';
 import { HeaderMenu } from '../HeaderMenu';
 import { MenuDrawer } from '../MenuDrawer';
+import { styles } from './styles';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
@@ -77,9 +77,9 @@ export const Presenter: VFC<PresenterProps> = () => {
                   color={`white`}
                   fontSize={`2.5rem`}
                   mx={`auto`}
-                // width={66}
-                // height={80}
-                // src="/dev/img/arrow-@2x.png"
+                  // width={66}
+                  // height={80}
+                  // src="/dev/img/arrow-@2x.png"
                 />
               </Box>
               <Box
@@ -111,9 +111,9 @@ export const Presenter: VFC<PresenterProps> = () => {
                   color={`white`}
                   fontSize={`2.5rem`}
                   mx={`auto`}
-                // width={66}
-                // height={80}
-                // src="/dev/img/arrow-@2x.png"
+                  // width={66}
+                  // height={80}
+                  // src="/dev/img/arrow-@2x.png"
                 />
               </Box>
               <Box

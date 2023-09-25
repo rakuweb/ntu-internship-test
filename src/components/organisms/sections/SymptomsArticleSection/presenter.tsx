@@ -1,10 +1,10 @@
 // import layer
 import { VFC } from 'react';
-import { css } from '@emotion/react';
 import { Box, Stack } from '@chakra-ui/react';
+import { css } from '@emotion/react';
 
-import { ArticleCard } from '../../cards/ArticleCard';
 import { InternalLink } from 'molecules/links/InternalLink';
+import { ArticleCard } from '../../cards/ArticleCard';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

@@ -1,7 +1,7 @@
 // import layer
 import { VFC } from 'react';
-import { css } from '@emotion/react';
 import { Box, Flex } from '@chakra-ui/react';
+import { css } from '@emotion/react';
 
 import { Image } from 'atoms/Image';
 import { SansSerifText as Text } from '~/components/atoms/texts/SansSerifText';

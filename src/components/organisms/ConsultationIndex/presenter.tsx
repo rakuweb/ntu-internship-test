@@ -1,8 +1,8 @@
 // import layer
 import { VFC } from 'react';
 import { css } from '@emotion/react';
-import { mq } from '~/constants/styles';
 import { Image } from 'atoms/Image';
+import { mq } from '~/constants/styles';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

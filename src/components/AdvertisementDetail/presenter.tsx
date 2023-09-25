@@ -4,11 +4,11 @@ import { Box } from '@chakra-ui/react';
 
 import { Image } from 'components/Image';
 
-import { styles } from './styles';
 import {
   useAdvertisementArticleStore,
   selectAdvertisementArticle,
 } from 'features/advertisements';
+import { styles } from './styles';
 
 import 'zenn-content-css';
 

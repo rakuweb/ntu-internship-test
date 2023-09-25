@@ -2,8 +2,8 @@
 import { useState, useEffect } from 'react';
 import { NextPage } from 'next/types';
 
-import { Contact as Template } from '~/components/templates/Contact';
 import { SeoComponent } from 'organisms/SeoComponent';
+import { Contact as Template } from '~/components/templates/Contact';
 import { CANONICAL_URL, ORIGIN_URL } from '~/constants';
 
 // component layer

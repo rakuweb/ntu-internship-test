@@ -2,8 +2,8 @@
 import { FC } from 'react';
 import { Box } from '@chakra-ui/react';
 
-import { InternalLink } from '~/components/links/InternalLink';
 import { routes } from 'constants/routes';
+import { InternalLink } from '~/components/links/InternalLink';
 
 // type layer
 export type DataProps = any; // eslint-disable-line

@@ -4,11 +4,11 @@ import { Box } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
 import { Header } from 'components/headers/Header';
+import { BreadcrumbGray } from 'organisms/BreadcrumbGray';
 import { Footer } from 'organisms/footers/Footer';
+import { DictionaryContentsSection } from 'organisms/sections/DictionaryContentsSection';
 import { ContactSection } from '~/components/organisms/sections/ContactSection';
 import { mq } from '~/constants/styles';
-import { DictionaryContentsSection } from 'organisms/sections/DictionaryContentsSection';
-import { BreadcrumbGray } from 'organisms/BreadcrumbGray';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

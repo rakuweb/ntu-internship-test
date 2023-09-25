@@ -6,10 +6,16 @@ import {
   GetStaticPaths,
   GetStaticProps,
 } from 'next/types';
-import { Top as Template } from 'templates/OfferId';
-import { SeoComponent } from 'organisms/SeoComponent';
 import { CANONICAL_URL, CMS_URL } from 'constants/env';
-import { UPDATE_INTERVAL } from '~/constants';
+import {
+  selectSetOffers,
+  selectSetTarget,
+  useOffersStore,
+  useTargetOfferStore,
+} from 'features/offers';
+import { initializeApollo_offer } from 'lib/apollo/client';
+import { SeoComponent } from 'organisms/SeoComponent';
+import { Top as Template } from 'templates/OfferId';
 import {
   GetOfferByIdQuery,
   GetOfferByIdDocument,
@@ -19,13 +25,7 @@ import {
   GetOffersAllQuery,
   GetOffersAllDocument,
 } from 'types/offers-gql/graphql';
-import { initializeApollo_offer } from 'lib/apollo/client';
-import {
-  selectSetOffers,
-  selectSetTarget,
-  useOffersStore,
-  useTargetOfferStore,
-} from 'features/offers';
+import { UPDATE_INTERVAL } from '~/constants';
 import { getTodayString } from '~/lib/utils';
 
 // type layer
@@ -102,10 +102,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
     const paths = data?.offers?.data
       ? data.offers.data.map((item) => ({
-        params: {
-          id: item?.id,
-        },
-      }))
+          params: {
+            id: item?.id,
+          },
+        }))
       : [];
 
     return {

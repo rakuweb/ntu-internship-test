@@ -4,16 +4,16 @@ import { Box } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
 import { Header } from 'components/headers/Header';
+import { BreadcrumbWhite } from 'organisms/BreadcrumbWhite';
+import { ClinicsContact } from 'organisms/ClinicsContact';
+import { ClinicsForm } from 'organisms/ClinicsForm';
+import { ClinicsInformation } from 'organisms/ClinicsInformation';
+import { ClinicsSchedule } from 'organisms/ClinicsSchedule';
+import { ClinicsSignUp } from 'organisms/ClinicsSignUp';
+import { ClinicsTitle } from 'organisms/ClinicsTitle';
 import { Footer } from 'organisms/footers/Footer';
 import { ContactSection } from '~/components/organisms/sections/ContactSection';
 import { mq } from '~/constants/styles';
-import { ClinicsTitle } from 'organisms/ClinicsTitle';
-import { ClinicsInformation } from 'organisms/ClinicsInformation';
-import { ClinicsSchedule } from 'organisms/ClinicsSchedule';
-import { ClinicsContact } from 'organisms/ClinicsContact';
-import { ClinicsForm } from 'organisms/ClinicsForm';
-import { ClinicsSignUp } from 'organisms/ClinicsSignUp';
-import { BreadcrumbWhite } from 'organisms/BreadcrumbWhite';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

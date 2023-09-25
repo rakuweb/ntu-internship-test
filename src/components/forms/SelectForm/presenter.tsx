@@ -61,10 +61,7 @@ export const Presenter: FC<PresenterProps> = ({
             ))}
           </Select>
           {errorMessage && (
-            <Box
-              mt={{ base: `0.25rem` }}
-              color={`red`}
-            >
+            <Box mt={{ base: `0.25rem` }} color={`red`}>
               {errorMessage}
             </Box>
           )}

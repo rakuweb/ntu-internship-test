@@ -1,7 +1,7 @@
-import { parseImage } from '~/lib/utils';
 import markdownToHtml from 'zenn-markdown-html';
 
 import { AdvertisementArticleEntity } from 'types/gql/graphql';
+import { parseImage } from '~/lib/utils';
 import {
   AdvertisementsSliceData,
   AdvertisementArticleSliceData,

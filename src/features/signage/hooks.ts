@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
-import { SignageSlice } from './types';
 import { createSignageSlice } from './slice';
+import { SignageSlice } from './types';
 
 export const useSignageStore = create<SignageSlice>((...a) => ({
   ...createSignageSlice(...a),

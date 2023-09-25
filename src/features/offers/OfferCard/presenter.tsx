@@ -1,14 +1,14 @@
 // import layer
 import { FC } from 'react';
-import { css } from '@emotion/react';
 import { Box, Flex } from '@chakra-ui/react';
+import { css } from '@emotion/react';
 
-import { InternalLink } from '~/components/links/InternalLink';
-import { OfferCard } from '../types';
-import { mq } from '~/constants/styles';
-import { routes } from 'constants/routes';
 import { Image as NImage } from 'components/images/Image';
+import { routes } from 'constants/routes';
 import { Image } from '~/components/Image';
+import { InternalLink } from '~/components/links/InternalLink';
+import { mq } from '~/constants/styles';
+import { OfferCard } from '../types';
 
 // type layer
 export type DataProps = OfferCard;

@@ -4,16 +4,16 @@ import { Box } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 import dynamic from 'next/dynamic';
 
-import { mq } from '~/constants/styles';
-
+import { Header } from 'components/headers/Header';
 import { BreadcrumbWhite } from 'organisms/BreadcrumbWhite';
+
 import { ClinicsContact } from 'organisms/ClinicsContact';
 import { ClinicsInformation } from 'organisms/ClinicsInformation';
 import { ClinicsSchedule } from 'organisms/ClinicsSchedule';
 import { ClinicsTitle } from 'organisms/ClinicsTitle';
-import { ContactSection } from 'organisms/sections/ContactSection';
 import { Footer } from 'organisms/footers/Footer';
-import { Header } from 'components/headers/Header';
+import { ContactSection } from 'organisms/sections/ContactSection';
+import { mq } from '~/constants/styles';
 
 import 'swiper/css';
 import 'swiper/css/navigation';

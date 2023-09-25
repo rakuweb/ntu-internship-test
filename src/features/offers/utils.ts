@@ -1,6 +1,6 @@
+import { parseImage } from 'lib/utils';
 import { OfferEntity } from 'types/offers-gql/graphql';
 import { OfferCard, OfferSliceData } from './types';
-import { parseImage } from 'lib/utils';
 
 export const parseToOffers = (data: OfferEntity[]): OfferCard[] => {
   const result = data.map((entity) => {

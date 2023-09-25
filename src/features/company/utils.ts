@@ -1,5 +1,5 @@
-import { parseImage } from '~/lib/utils';
 import { CompanyEntity } from 'types/gql/graphql';
+import { parseImage } from '~/lib/utils';
 import { CompanySliceData } from './types';
 
 export const parseToCompanyItem = (entity: CompanyEntity): CompanySliceData => {

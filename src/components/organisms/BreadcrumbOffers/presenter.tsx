@@ -1,10 +1,10 @@
 // import layer
 import { FC } from 'react';
 import { css } from '@emotion/react';
-import { mq } from '~/constants/styles';
 
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { InternalLink } from '~/components/links/InternalLink';
+import { mq } from '~/constants/styles';
 // type layer
 export type PresenterProps = { title?: string };
 

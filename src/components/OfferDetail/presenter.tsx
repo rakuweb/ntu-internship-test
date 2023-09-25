@@ -11,16 +11,16 @@ import {
   useOffersStore,
   selectOfferList,
 } from 'features/offers';
-import { styles } from './styles';
-import 'zenn-content-css';
+import { OfferCard3 } from '~/features/offers/OfferCard3';
 import { BreadcrumbOfferId } from '../organisms/BreadcrumbOfferId';
+import { Contact } from '../organisms/Contact';
+import { Applybutton } from './Applybutton';
 import { Atmosphere } from './Atmosphere';
 import { Jobterms } from './Jobterms';
-import { OfferCard3 } from '~/features/offers/OfferCard3';
-import { Contact } from '../organisms/Contact';
+import { styles } from './styles';
+import 'zenn-content-css';
 import { Fixedmenu } from './Fixedmenu';
 import { MobileMinInformation } from './MobileMinInformation';
-import { Applybutton } from './Applybutton';
 import React from 'react';
 // type layer
 export type PresenterProps = Record<string, unknown>;

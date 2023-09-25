@@ -1,8 +1,8 @@
 // import layer
 import { VFC, useState } from 'react';
 import { Box } from '@chakra-ui/react';
-import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper';
+import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 
 import { Image } from 'atoms/Image';
 import { breakpointsByPx } from '~/constants/styles';

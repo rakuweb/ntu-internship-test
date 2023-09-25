@@ -59,7 +59,7 @@ export const Presenter: FC<PresenterProps> = () => {
           <Box className="subsection">
             <Flex
               flexWrap={`wrap`}
-            //  mb={{ lg: `20px` }}
+              //  mb={{ lg: `20px` }}
             >
               {jobCategories &&
                 jobCategories.list.map((jobCategories) => {

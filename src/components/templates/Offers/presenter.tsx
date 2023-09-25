@@ -2,12 +2,12 @@
 import { FC } from 'react';
 import { Box } from '@chakra-ui/react';
 
-import { Header } from 'components/headers/Header';
 import { Footer } from 'components/footers/Footer';
+import { Header } from 'components/headers/Header';
 import { OfferList } from 'features/offers/OfferList';
-import { styles } from './styles';
 import { Firstview } from '~/features/offers/Firstview';
 import { Taglist } from '~/features/offers/Taglist';
+import { styles } from './styles';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

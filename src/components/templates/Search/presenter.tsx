@@ -1,9 +1,9 @@
 // import layer
 import { FC } from 'react';
 
+import { Header } from 'components/headers/Header';
 import { SearchLook } from '~/components/SeachLook';
 import { Footer } from '~/components/footers/Footer';
-import { Header } from 'components/headers/Header';
 
 import 'swiper/css';
 import 'swiper/css/navigation';

@@ -50,7 +50,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             // overflow={`hidden`}
             // overflowX={{ base: `scroll`, lg: `initial` }}
             flexShrink={`0`}
-          // direction={`column`}
+            // direction={`column`}
           >
             {/* 仮表示ね */}
             {list.map((list) => {

@@ -1,6 +1,6 @@
-import type { UploadFile } from 'types/offers-gql/graphql';
-import type { UploadFile as UploadFile2 } from 'types/gql/graphql';
 import { MEDIA_ROOT_URL } from 'constants/env';
+import type { UploadFile as UploadFile2 } from 'types/gql/graphql';
+import type { UploadFile } from 'types/offers-gql/graphql';
 
 export const parseDate = (stringDate: string): string => {
   const dateFromProp: Date = new Date(stringDate);
@@ -89,9 +89,11 @@ export const parseImage = (image: UploadFile | UploadFile2): ImageType => {
 // eslint-disable-next-line
 export const parseSrcSet = (formats: any): string =>
   formats
-    ? `${formats.xsmall ? `${parseImageUrl(formats.xsmall.url)} 375w,` : ``}${formats.small ? `${parseImageUrl(formats.small.url)} 500w,` : ``
-    }${formats.medium ? `${parseImageUrl(formats.medium.url)} 768w,` : ``}${formats.large ? `${parseImageUrl(formats.large.url)} 1000w` : ``
-    }${formats.xlarge ? `${parseImageUrl(formats.xlarge.url)} 3000w` : ``}`
+    ? `${formats.xsmall ? `${parseImageUrl(formats.xsmall.url)} 375w,` : ``}${
+        formats.small ? `${parseImageUrl(formats.small.url)} 500w,` : ``
+      }${formats.medium ? `${parseImageUrl(formats.medium.url)} 768w,` : ``}${
+        formats.large ? `${parseImageUrl(formats.large.url)} 1000w` : ``
+      }${formats.xlarge ? `${parseImageUrl(formats.xlarge.url)} 3000w` : ``}`
     : ``;
 
 export const parseImageUrl = (path: string): string => toCMSPath(path);

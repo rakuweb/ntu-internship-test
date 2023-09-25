@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { NextPage } from 'next/types';
 
-import { Graduation as Template } from '~/components/templates/Graduation';
 import { SeoComponent } from 'organisms/SeoComponent';
+import { Graduation as Template } from '~/components/templates/Graduation';
 import { CANONICAL_URL } from '~/constants';
 
 // component layer

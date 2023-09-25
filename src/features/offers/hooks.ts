@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
-import { OffersSlice, OfferSlice } from './types';
 import { createOffersSlice, createTargetOfferSlice } from './slice';
+import { OffersSlice, OfferSlice } from './types';
 
 export const useOffersStore = create<OffersSlice>((...a) => ({
   ...createOffersSlice(...a),

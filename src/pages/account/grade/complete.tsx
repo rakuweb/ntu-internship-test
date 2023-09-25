@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import { NextPage } from 'next/types';
 import { useRouter } from 'next/router';
+import { NextPage } from 'next/types';
 
-import { Index as Template } from '~/components/templates/Register/RegisterGradeComplete';
+import { routes } from 'constants/routes';
 import { SeoComponent } from 'organisms/SeoComponent';
+import { Index as Template } from '~/components/templates/Register/RegisterGradeComplete';
 import { CAFE_ENTRY_QUERY, CANONICAL_URL } from '~/constants';
 import { parseSeo } from '~/lib';
-import { routes } from 'constants/routes';
 
 // component layer
 export const Index: NextPage = () => {
@@ -27,7 +27,7 @@ export const Index: NextPage = () => {
   useEffect(() => {
     if (!isClient) return;
 
-    const timeoutId = setTimeout(function() {
+    const timeoutId = setTimeout(function () {
       if (query === CAFE_ENTRY_QUERY) {
         router.push(`${routes.signinCafeonly}?cafeonly=${CAFE_ENTRY_QUERY}`);
       } else {

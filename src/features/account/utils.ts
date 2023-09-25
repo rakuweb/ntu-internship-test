@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-import { useLiff } from 'contexts/LineAuthContext';
 import { routes } from 'constants/routes';
+import { useLiff } from 'contexts/LineAuthContext';
 
 export const useCheckAccount = () => {
   const [existAccount, _setExistAccount] = useState<boolean>(false);

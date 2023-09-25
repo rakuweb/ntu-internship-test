@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 
-import { FormProgressSlice } from './types';
 import { createFormProgressSlice } from './slice';
+import { FormProgressSlice } from './types';
 
 export const useFormProgressStore = create<FormProgressSlice>((...a) => ({
   ...createFormProgressSlice(...a),

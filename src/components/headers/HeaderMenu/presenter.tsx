@@ -1,10 +1,10 @@
 // import layer
 import { FC } from 'react';
-import { css } from '@emotion/react';
 import { Flex, Box } from '@chakra-ui/react';
+import { css } from '@emotion/react';
 
-import { mq } from '~/constants/styles';
 import { Span } from '~/components/atoms/Span';
+import { mq } from '~/constants/styles';
 
 // type layer
 export type DataProps = { isOpen: boolean; onClick: () => void };

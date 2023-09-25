@@ -10,34 +10,37 @@ query getCompanyPaths {
 }
 
 mutation postCompany(
-  $name: String, 
-  $representative: String,
-  $establishment_date: String,
-  $number_of_employees: String,
-  $place: String,
-  $url: String,
-  $manager_name: String,
-  $manager_phone: String,
-  $email: String,
-  $plan: String,
-  $how_to_make: String,
-  $remarks: String,
+  $name: String
+  $representative: String
+  $establishment_date: String
+  $number_of_employees: String
+  $place: String
+  $url: String
+  $manager_name: String
+  $manager_phone: String
+  $email: String
+  $plan: String
+  $how_to_make: String
+  $remarks: String
 ) {
-  createCompany(data: {
-    name: $name,
-    representative: $representative,
-    establishment_date: $establishment_date,
-    number_of_employees: $number_of_employees,
-    place: $place,
-    url: $url,
-    manager_name: $manager_name,
-    manager_phone: $manager_phone,
-    email: $email,
-    plan: $plan,
-    how_to_make: $how_to_make,
-    remarks: $remarks
-  }) {
-    data{
+  createCompany(
+    data: {
+      name: $name
+      representative: $representative
+      establishment_date: $establishment_date
+      number_of_employees: $number_of_employees
+      place: $place
+      url: $url
+      manager_name: $manager_name
+      manager_phone: $manager_phone
+      email: $email
+      plan: $plan
+      how_to_make: $how_to_make
+      remarks: $remarks
+    }
+  ) {
+    data {
       id
     }
-  }}
+  }
+}

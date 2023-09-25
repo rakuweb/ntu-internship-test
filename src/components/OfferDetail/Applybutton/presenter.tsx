@@ -2,8 +2,8 @@
 import { FC } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import { Image } from 'components/images/Image';
-import { InternalLink } from '~/components/links/InternalLink';
 import { useTargetOfferStore, selectTarget } from 'features/offers';
+import { InternalLink } from '~/components/links/InternalLink';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

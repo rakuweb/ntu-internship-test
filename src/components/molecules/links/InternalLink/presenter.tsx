@@ -1,8 +1,8 @@
 // import layer
 import { FC } from 'react';
+import { Box, BoxProps } from '@chakra-ui/react';
 import NextLink, { LinkProps as NextLinkProps } from 'next/link';
 
-import { Box, BoxProps } from '@chakra-ui/react';
 
 // type layer
 export type PresenterProps = BoxProps & NextLinkProps;

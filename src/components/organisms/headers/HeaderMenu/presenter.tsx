@@ -1,7 +1,7 @@
 // import layer
 import { VFC } from 'react';
-import { css } from '@emotion/react';
 import { Flex, Box } from '@chakra-ui/react';
+import { css } from '@emotion/react';
 
 import { Span } from '~/components/atoms/Span';
 

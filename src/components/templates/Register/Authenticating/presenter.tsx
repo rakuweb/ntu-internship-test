@@ -3,10 +3,10 @@ import { FC, useState, useEffect } from 'react';
 import { Box, Center } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
-import { SigninHeader as Header } from 'components/headers/SigninHeader';
 import { Footer } from 'components/footers/OldFooter';
-import { mq } from '~/constants/styles';
+import { SigninHeader as Header } from 'components/headers/SigninHeader';
 import { RegisteredMessage } from '~/components/organisms/RegisteredMessage';
+import { mq } from '~/constants/styles';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

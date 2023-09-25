@@ -4,10 +4,10 @@ import { Stack, StackProps, Box } from '@chakra-ui/react';
 
 import { useAccountStore, selectAccount } from 'features/account';
 
-import { navItems } from '~/constants';
-import { InternalLink } from '~/components/molecules/links/InternalLink';
-import { ExternalLink } from '~/components/molecules/links/ExternalLink';
 import { SansSerifText as Text } from '~/components/atoms/texts/SansSerifText';
+import { ExternalLink } from '~/components/molecules/links/ExternalLink';
+import { InternalLink } from '~/components/molecules/links/InternalLink';
+import { navItems } from '~/constants';
 
 // type layer
 export type StyleProps = StackProps;

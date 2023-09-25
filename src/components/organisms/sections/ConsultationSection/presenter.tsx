@@ -1,17 +1,17 @@
 // import layer
 import { VFC } from 'react';
-import { css } from '@emotion/react';
 import { Box, Flex, Stack } from '@chakra-ui/react';
+import { css } from '@emotion/react';
 
-import { ImageTitle } from '~/components/molecules/titles/ImageTitle';
-import { BlueButton } from '~/components/molecules/buttons/BlueButton';
-import { FaqCard } from '~/components/organisms/cards/FaqCard';
-import { QuestionBoxCard } from '../../cards/QuestionBoxCard';
-import { OnlineConsultationCard } from '../../cards/OnlineConsultationCard';
 import { Image } from 'atoms/Image';
 import { InternalLink } from 'molecules/links/InternalLink';
-import { mq } from '~/constants/styles';
 import { Span } from '~/components/atoms/Span';
+import { BlueButton } from '~/components/molecules/buttons/BlueButton';
+import { ImageTitle } from '~/components/molecules/titles/ImageTitle';
+import { FaqCard } from '~/components/organisms/cards/FaqCard';
+import { mq } from '~/constants/styles';
+import { OnlineConsultationCard } from '../../cards/OnlineConsultationCard';
+import { QuestionBoxCard } from '../../cards/QuestionBoxCard';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

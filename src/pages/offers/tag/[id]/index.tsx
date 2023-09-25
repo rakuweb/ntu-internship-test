@@ -7,10 +7,15 @@ import {
   GetStaticProps,
 } from 'next/types';
 
-import { Top as Template } from '../../../../components/templates/TagId';
-import { SeoComponent } from 'organisms/SeoComponent';
 import { CANONICAL_URL } from 'constants/env';
-import { UPDATE_INTERVAL } from '~/constants';
+import { selectSetOffers, useOffersStore } from 'features/offers';
+import { initializeApollo } from 'lib/apollo/client';
+import { SeoComponent } from 'organisms/SeoComponent';
+import {
+  GetJobCategoriesQuery,
+  GetJobCategoriesDocument,
+  JobCategoryEntity,
+} from 'types/gql/graphql';
 import {
   OfferEntity,
   GetOffersAllQuery,
@@ -19,13 +24,7 @@ import {
   GetPointsDocument,
   PointEntity,
 } from 'types/offers-gql/graphql';
-import {
-  GetJobCategoriesQuery,
-  GetJobCategoriesDocument,
-  JobCategoryEntity,
-} from 'types/gql/graphql';
-import { initializeApollo } from 'lib/apollo/client';
-import { selectSetOffers, useOffersStore } from 'features/offers';
+import { UPDATE_INTERVAL } from '~/constants';
 
 import {
   selectSetJobCategoryItem,
@@ -34,6 +33,7 @@ import {
   useJobCategorysStore,
 } from '~/features/category';
 import { usePointsStore, selectSetPoints } from '~/features/point';
+import { Top as Template } from '../../../../components/templates/TagId';
 
 // type layer
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
@@ -45,11 +45,13 @@ export const Index: NextPage<Props> = ({
   jobcategories,
   points,
 }) => {
-  const title = `${jobcategory && jobcategory.length > 0 ? jobcategory[0].attributes.name : ''
-    }が身に付く求人一覧 | NOT THE UNIVERSITY FOR JOB`;
+  const title = `${
+    jobcategory && jobcategory.length > 0 ? jobcategory[0].attributes.name : ''
+  }が身に付く求人一覧 | NOT THE UNIVERSITY FOR JOB`;
 
-  const description = `${jobcategory && jobcategory.length > 0 ? jobcategory[0].attributes.name : ''
-    }が身に付く求人一覧 | NOT THE UNIVERSITY FOR JOB`;
+  const description = `${
+    jobcategory && jobcategory.length > 0 ? jobcategory[0].attributes.name : ''
+  }が身に付く求人一覧 | NOT THE UNIVERSITY FOR JOB`;
 
   const imageurl =
     data?.offers?.data[0]?.attributes?.image?.data?.attributes.url;
@@ -122,10 +124,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
     const paths = data?.jobCategories?.data
       ? data.jobCategories.data.map((item) => ({
-        params: {
-          id: item?.id,
-        },
-      }))
+          params: {
+            id: item?.id,
+          },
+        }))
       : [];
 
     return {

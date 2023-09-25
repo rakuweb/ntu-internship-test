@@ -2,9 +2,9 @@
 import { VFC } from 'react';
 
 import { Heading, Image, Text } from '@chakra-ui/react';
-import { styles } from './styles';
 import { InternalLink } from '~/components/molecules/links/InternalLink';
 import { routes } from '../../../constants/routes';
+import { styles } from './styles';
 // type layer
 export type PresenterProps = Record<string, string>;
 

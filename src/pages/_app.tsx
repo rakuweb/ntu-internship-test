@@ -1,16 +1,16 @@
 // import layer
+import { ChakraProvider } from '@chakra-ui/react';
+import { Global, css } from '@emotion/react';
 import { NextPage } from 'next';
 import { AppProps } from 'next/app';
-import { Global, css } from '@emotion/react';
-import { ChakraProvider } from '@chakra-ui/react';
 import { DefaultSeo } from 'next-seo';
 import { RecoilRoot } from 'recoil';
 
-import { SEO } from '~/constants';
-import theme from '~/lib/theme';
-import { global, guide } from '~/constants/styles';
 import { LiffProvider, generateEnv } from 'contexts/LineAuthContextInternship';
 import { GoogleAnalytics } from '~/components/GoogleAnalytics';
+import { SEO } from '~/constants';
+import { global, guide } from '~/constants/styles';
+import theme from '~/lib/theme';
 // import usePageView from '~/hooks/usePageView';
 
 // component layer

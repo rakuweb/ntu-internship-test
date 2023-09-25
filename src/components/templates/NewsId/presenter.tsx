@@ -2,10 +2,10 @@
 import { FC } from 'react';
 import { Box } from '@chakra-ui/react';
 
-import { NewsId } from '~/components/organisms/NewsId';
 import { BreadcrumbGray } from 'organisms/BreadcrumbGray';
 import { Footer } from '~/components/footers/Footer';
 import { Header } from '~/components/headers/Header';
+import { NewsId } from '~/components/organisms/NewsId';
 
 import 'swiper/css';
 import 'swiper/css/navigation';

@@ -1,5 +1,5 @@
 query getNews {
-	newses(sort: "date:desc" , pagination: {limit: 15}) {
+  newses(sort: "date:desc", pagination: { limit: 15 }) {
     data {
       id
       attributes {

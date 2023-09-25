@@ -1,9 +1,9 @@
 // import layer
 import { FC } from 'react';
+import { Box } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
 import { InternalLink } from '~/components/links/InternalLink';
-import { Box } from '@chakra-ui/react';
 // type layer
 export type PresenterProps = { titles?: string[] };
 

@@ -2,9 +2,9 @@
 import { FC } from 'react';
 
 // import { OfferDetail } from 'components/OfferDetail';
+import { Header } from 'components/headers/Header';
 import { AboutCompany } from 'components/organisms/AboutCompany';
 import { Footer } from '~/components/footers/Footer';
-import { Header } from 'components/headers/Header';
 import { BreadcrumbOfferId } from '~/components/organisms/BreadcrumbOfferId';
 
 import 'swiper/css';

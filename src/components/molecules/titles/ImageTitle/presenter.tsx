@@ -1,7 +1,7 @@
 // import layer
 import { VFC, ElementType, ReactNode } from 'react';
-import { css } from '@emotion/react';
 import { Box } from '@chakra-ui/react';
+import { css } from '@emotion/react';
 
 import { Image, ImageProps } from 'atoms/Image';
 import { mq } from '~/constants/styles';

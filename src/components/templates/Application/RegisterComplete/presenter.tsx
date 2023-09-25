@@ -3,11 +3,11 @@ import { FC } from 'react';
 import { Box } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
-import { Header } from 'components/headers/Header';
 import { Footer } from 'components/footers/Footer';
-import { mq } from '~/constants/styles';
+import { Header } from 'components/headers/Header';
 import { RegisterMessage } from '~/components/organisms/RegisterMessage';
 import { StepBar } from '~/components/organisms/StepBar';
+import { mq } from '~/constants/styles';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

@@ -1,17 +1,17 @@
 // import layer
 import { FC } from 'react';
+import { Box, Flex, Grid, Heading } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 import { mq } from '~/constants/styles';
-import { Box, Flex, Grid, Heading } from '@chakra-ui/react';
 import {
   useJobCategorysStore,
   selectJobCategorys,
   JobCategorysCard,
 } from '~/features/category';
 import { Labeltext } from '~/features/offers/OfferCard/Labeltext';
-import { Labeltext2 } from '../Tag/Labeltext2';
 import { selectPoints, usePointsStore } from '~/features/point';
 import { BreadcrumbOffers } from '../BreadcrumbOffers';
+import { Labeltext2 } from '../Tag/Labeltext2';
 
 // type layer
 export type DataProps = JobCategorysCard;
@@ -50,7 +50,7 @@ export const Presenter: FC<PresenterProps> = () => {
           <Box className="subsection">
             <Flex
               flexWrap={`wrap`}
-            //  mb={{ lg: `20px` }}
+              //  mb={{ lg: `20px` }}
             >
               {jobCategories &&
                 jobCategories.list.map((jobCategories) => {

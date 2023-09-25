@@ -2,12 +2,12 @@
 import { FC, useState, useEffect } from 'react';
 import { Button, Checkbox } from '@chakra-ui/react';
 
-import { styles } from './styles';
-import { useRegisterFormStore } from 'features/registerForm/hooks';
+import { routes } from 'constants/routes';
 import { useFormProgressStore } from 'features/formProgress/hooks';
 import { selectBackProgress } from 'features/formProgress/selectors';
-import { routes } from 'constants/routes';
+import { useRegisterFormStore } from 'features/registerForm/hooks';
 import { InternalLink } from '~/components/links/InternalLink';
+import { styles } from './styles';
 
 // type layer
 export type DataProps = { onClick: () => void };

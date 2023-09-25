@@ -1,14 +1,14 @@
 // import layer
 import { useState, useEffect } from 'react';
-import { NextPage } from 'next/types';
 import { useRouter } from 'next/router';
+import { NextPage } from 'next/types';
 
-import { Index as Template } from '~/components/templates/Register/Registered';
-import { SeoComponent } from 'organisms/SeoComponent';
 import { CANONICAL_URL } from 'constants/env';
 // import { parseSeo } from '~/lib';
-import { useLiff } from 'contexts/LineAuthContext';
 import { routes } from 'constants/routes';
+import { useLiff } from 'contexts/LineAuthContext';
+import { SeoComponent } from 'organisms/SeoComponent';
+import { Index as Template } from '~/components/templates/Register/Registered';
 
 // type layer
 // type Props = InferGetStaticPropsType<typeof getStaticProps>;

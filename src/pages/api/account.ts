@@ -1,10 +1,10 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-
+import { initializeApollo } from 'lib/apollo/client';
 import {
   GetUsersByLineIdQuery,
   GetUsersByLineIdDocument,
 } from 'types/gql/graphql';
-import { initializeApollo } from 'lib/apollo/client';
+import type { NextApiRequest, NextApiResponse } from 'next';
+
 
 type Data = {
   exist: boolean;

@@ -2,8 +2,8 @@
 import { useState, useEffect } from 'react';
 import { NextPage } from 'next/types';
 
-import { Index as Template } from 'templates/PrivacyPolicy';
 import { SeoComponent } from 'organisms/SeoComponent';
+import { Index as Template } from 'templates/PrivacyPolicy';
 import { CANONICAL_URL, ORIGIN_URL } from '~/constants';
 
 // component layer

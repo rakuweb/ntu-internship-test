@@ -1,21 +1,21 @@
 // import layer
 import { useState, useEffect } from 'react';
-import type { NextPage, InferGetStaticPropsType, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 
-import { Offers as Template } from 'templates/Offers';
 import { SeoComponent } from 'components/seo/SeoComponent';
 import { CANONICAL_URL, ORIGIN_URL } from 'constants/env';
+import { selectSetOffers, useOffersStore } from 'features/offers';
+import { initializeApollo_offer } from 'lib/apollo/client';
+
+import { getTodayString } from 'lib/utils';
+import { Offers as Template } from 'templates/Offers';
 import {
   GetOffersAllQuery,
   GetOffersAllDocument,
   OfferEntity,
 } from 'types/offers-gql/graphql';
-import { initializeApollo_offer } from 'lib/apollo/client';
 import { UPDATE_INTERVAL } from '~/constants';
-import { selectSetOffers, useOffersStore } from 'features/offers';
-
-import { getTodayString } from 'lib/utils';
+import type { NextPage, InferGetStaticPropsType, GetStaticProps } from 'next';
 
 // type layer
 type Props = InferGetStaticPropsType<typeof getStaticProps>;

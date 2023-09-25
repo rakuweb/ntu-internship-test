@@ -1,8 +1,8 @@
 // import layer
 import { FC } from 'react';
-import { Steps } from 'antd';
 import { Box } from '@chakra-ui/react';
 import { css } from '@emotion/react';
+import { Steps } from 'antd';
 
 // type layer
 export type PresenterProps = { current: number };

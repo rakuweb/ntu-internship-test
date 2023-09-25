@@ -1,10 +1,10 @@
 // import layer
 import { FC } from 'react';
-import { css } from '@emotion/react';
 import { Box, Heading } from '@chakra-ui/react';
+import { css } from '@emotion/react';
 import MenberLogo from '../../../../public/svg/menberLogo.svg';
-import Card from './card';
 import Caferoom from './caferoom';
+import Card from './card';
 
 // type layer
 export type PresenterProps = Record<string, string>;

@@ -1,14 +1,14 @@
 // import layer
 import { FC, useState } from 'react';
-import { css } from '@emotion/react';
 import { Box, Progress, Flex } from '@chakra-ui/react';
-import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
+import { css } from '@emotion/react';
 import { Navigation, Autoplay } from 'swiper';
+import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 
 import { Image } from 'atoms/Image';
-import { zeroPadding } from '~/lib';
 import { breakpointsByPx } from '~/constants/styles';
 import { mq } from '~/constants/styles';
+import { zeroPadding } from '~/lib';
 
 import 'swiper/css';
 import 'swiper/css/navigation';

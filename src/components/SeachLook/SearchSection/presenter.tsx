@@ -3,9 +3,9 @@ import { FC, useState } from 'react';
 import { Box, Checkbox, Flex, BoxProps } from '@chakra-ui/react';
 import { Select } from 'chakra-react-select';
 import { selectOfferList, useOffersStore } from '~/features/offers';
+import MyButton from './MyButton';
 import chakraStylesDesktop from './chakraStylesDesktop';
 import chakraStylesMobile from './chakraStylesMobile';
-import MyButton from './MyButton';
 // type layer
 export type DataProps = {
   occupationOptions: { value: string; label: string }[];

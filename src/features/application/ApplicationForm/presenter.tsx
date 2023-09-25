@@ -1,14 +1,14 @@
 // import layer
 import { FC } from 'react';
-import { useFormContext } from 'react-hook-form';
 import { Box, Flex, Input, Checkbox, Textarea, Button } from '@chakra-ui/react';
+import { useFormContext } from 'react-hook-form';
 
 import { Image } from 'components/images/Image';
-import { ApplicationSchema, planList } from '../schema';
-import { routes } from '~/constants';
 import { ExternalLink } from 'components/links/ExternalLink';
 import { useApplicationStore } from 'features/application';
 import { SelectForm } from '~/components/forms/SelectForm';
+import { routes } from '~/constants';
+import { ApplicationSchema, planList } from '../schema';
 
 // type layer
 export type DataProps = { submitHandler: (data: ApplicationSchema) => void };

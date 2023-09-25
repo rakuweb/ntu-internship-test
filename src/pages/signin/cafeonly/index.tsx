@@ -1,15 +1,15 @@
 // import layer
 import { useState, useEffect } from 'react';
-import { NextPage } from 'next/types';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import { NextPage } from 'next/types';
 
+import { Index as Authenticating } from 'components/templates/Register/Authenticating';
 import { ORIGIN_URL } from 'constants/env';
-import { useLiff } from 'contexts/LineAuthContextInternship';
 import { routes } from 'constants/routes';
+import { useLiff } from 'contexts/LineAuthContextInternship';
 import { useAccountStore } from 'features/account/hooks';
 import { selectSetAccount, selectSetLineId } from 'features/account/selectors';
-import { Index as Authenticating } from 'components/templates/Register/Authenticating';
 import {
   useStudentStore,
   selectSetStudent,

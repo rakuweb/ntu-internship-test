@@ -1,26 +1,26 @@
 // import layer
 import { useState, useEffect } from 'react';
-import { NextPage } from 'next/types';
-import { FormProvider, useForm } from 'react-hook-form';
 // import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import { NextPage } from 'next/types';
+import { FormProvider, useForm } from 'react-hook-form';
 
-import { Index as Form } from 'templates/Register';
-import { Index as Check } from 'templates/Register/RegisterCheck';
-import { SeoComponent } from 'organisms/SeoComponent';
 import { CANONICAL_URL } from 'constants/env';
 import { ORIGIN_URL } from 'constants/env';
+import { routes } from 'constants/routes';
+import { useLiff } from 'contexts/LineAuthContextInternship';
+import { useAccountStore } from 'features/account/hooks';
+import { selectSetAccount } from 'features/account/selectors';
 import { useFormProgressStore } from 'features/formProgress/hooks';
+import { useStudentStore, selectSetStudent } from 'features/student';
+import { SeoComponent } from 'organisms/SeoComponent';
+import { Index as Form } from 'templates/Register';
+import { Index as Check } from 'templates/Register/RegisterCheck';
 import {
   RegisterFormSchema,
   // registerFormSchema,
 } from '~/features/registerForm/schema';
-import { useLiff } from 'contexts/LineAuthContextInternship';
-import { routes } from 'constants/routes';
-import { useAccountStore } from 'features/account/hooks';
-import { selectSetAccount } from 'features/account/selectors';
-import { useStudentStore, selectSetStudent } from 'features/student';
 
 // component layer
 export const Index: NextPage = () => {

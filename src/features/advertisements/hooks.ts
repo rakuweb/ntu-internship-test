@@ -1,10 +1,10 @@
 import { create } from 'zustand';
 
-import { AdvertisementsSlice } from './types';
 import { createAdvertisementsSlice } from './slice';
+import { createAdvertisementArticleSlice } from './slice';
+import { AdvertisementsSlice } from './types';
 
 import { AdvertisementArticleSlice } from './types';
-import { createAdvertisementArticleSlice } from './slice';
 
 export const useAdvertisementsStore = create<AdvertisementsSlice>((...a) => ({
   ...createAdvertisementsSlice(...a),

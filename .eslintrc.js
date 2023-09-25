@@ -16,7 +16,7 @@ module.exports = {
       version: 'detect',
     },
   },
-  plugins: ['react-hooks', 'react', '@typescript-eslint'],
+  plugins: ['react-hooks', 'react', '@typescript-eslint', 'unused-imports'],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
@@ -37,6 +37,33 @@ module.exports = {
         varsIgnorePattern: '^_',
         caughtErrorsIgnorePattern: '^_',
         destructuredArrayIgnorePattern: '^_',
+      },
+    ],
+    'unused-imports/no-unused-imports-ts': 'warn',
+    'import/order': [
+      'warn',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+          'object',
+          'type',
+        ],
+        pathGroups: [
+          {
+            pattern: '{react,react-dom/**,react-router-dom}',
+            group: 'builtin',
+            position: 'before',
+          },
+        ],
+        pathGroupsExcludedImportTypes: ['builtin'],
+        alphabetize: {
+          order: 'asc',
+        },
       },
     ],
   },

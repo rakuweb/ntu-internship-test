@@ -1,15 +1,15 @@
 // import layer
 import { FC } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { FormProvider, useForm } from 'react-hook-form';
 import axios from 'axios';
+import { FormProvider, useForm } from 'react-hook-form';
 
-import { ApplicationForm } from 'features/application/ApplicationForm';
-import { Footer } from '~/components/footers/Footer';
 import { Header } from 'components/headers/Header';
 import { ApplicationSchema, applicationSchema } from 'features/application';
-import { routes } from '~/constants';
 import { useApplicationStore } from 'features/application';
+import { ApplicationForm } from 'features/application/ApplicationForm';
+import { Footer } from '~/components/footers/Footer';
+import { routes } from '~/constants';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
@@ -36,6 +36,7 @@ export const Presenter: FC<PresenterProps> = () => {
       setIsChecking(false);
     }
   };
+
   return (
     <>
       <Header />

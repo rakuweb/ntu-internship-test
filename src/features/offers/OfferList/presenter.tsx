@@ -3,10 +3,10 @@ import { FC } from 'react';
 import { Box, Grid } from '@chakra-ui/react';
 
 import { OfferCard } from 'features/offers/OfferCard';
-import { selectOfferList } from 'features/offers/selectors';
 import { useOffersStore } from 'features/offers/hooks';
-import { styles } from './styles';
+import { selectOfferList } from 'features/offers/selectors';
 import { SearchButton } from '~/components/SearchButton';
+import { styles } from './styles';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

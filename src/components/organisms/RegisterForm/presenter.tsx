@@ -3,14 +3,14 @@ import { FC, useEffect, useState } from 'react';
 import { Input, Select, Button, Box, Switch, Flex } from '@chakra-ui/react';
 import { useFormContext } from 'react-hook-form';
 
-import { gradeList, departmentList } from '~/features/registerForm/schema';
-import { styles } from './styles';
-import { routes } from '~/constants/routes';
-import { InternalLink } from '~/components/molecules/links/InternalLink';
-import { RegisterFormSchema } from '~/features/registerForm/schema';
 import { useLiff } from 'contexts/LineAuthContext';
 import { useRegisterFormStore } from 'features/registerForm/hooks';
 import { selectSetEmail } from 'features/registerForm/selectors';
+import { InternalLink } from '~/components/molecules/links/InternalLink';
+import { routes } from '~/constants/routes';
+import { RegisterFormSchema } from '~/features/registerForm/schema';
+import { gradeList, departmentList } from '~/features/registerForm/schema';
+import { styles } from './styles';
 
 // type layer
 export type DataProps = { onClick: () => void };

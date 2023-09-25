@@ -2,9 +2,9 @@
 import { FC, useEffect, useMemo, useState } from 'react';
 import { Box } from '@chakra-ui/react';
 
+import { CMS_URL } from 'constants/env';
 import { useSignageStore } from 'features/signage/hooks';
 import { selectVideos } from 'features/signage/selectors';
-import { CMS_URL } from 'constants/env';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

@@ -2,9 +2,9 @@
 import { FC } from 'react';
 import { Box } from '@chakra-ui/react';
 
-import { BreadcrumbOfferId } from '~/components/organisms/BreadcrumbOfferId';
 import { Footer } from '~/components/footers/Footer';
 import { Header } from '~/components/headers/Header';
+import { BreadcrumbOfferId } from '~/components/organisms/BreadcrumbOfferId';
 import { CampaignContent } from '~/components/organisms/CampaignContent';
 
 import 'swiper/css';

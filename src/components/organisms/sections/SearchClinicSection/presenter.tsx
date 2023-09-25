@@ -2,12 +2,12 @@
 import { VFC } from 'react';
 import { Flex, Box } from '@chakra-ui/react';
 
+import { Image } from 'atoms/Image';
+import { InternalLink } from 'molecules/links/InternalLink';
+import { Span } from '~/components/atoms/Span';
+import { AreaTag } from '~/components/molecules/tags/AreaTag';
 import { ImageTitle } from '~/components/molecules/titles/ImageTitle';
 import { SearchSectionTitle } from '~/components/molecules/titles/SearchSectionTitle';
-import { Image } from 'atoms/Image';
-import { AreaTag } from '~/components/molecules/tags/AreaTag';
-import { Span } from '~/components/atoms/Span';
-import { InternalLink } from 'molecules/links/InternalLink';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

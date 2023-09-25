@@ -13,9 +13,8 @@ export const registerFormState = atom<RegisterFormItem>({
     department: '',
     phone: '',
     email: '',
-    willStartWorking: false, 
+    willStartWorking: false,
     isInterestedInInternship: false,
     toReceiveJobInfo: false,
   },
 });
-

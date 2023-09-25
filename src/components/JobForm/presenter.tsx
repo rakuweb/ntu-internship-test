@@ -1,6 +1,5 @@
 // import layer
 import { FC, useState } from 'react';
-import { useFormContext } from 'react-hook-form';
 import {
   Box,
   Flex,
@@ -11,11 +10,12 @@ import {
   Textarea,
   Checkbox,
 } from '@chakra-ui/react';
-import { Image } from 'components/images/Image';
 import { Select, ChakraStylesConfig } from 'chakra-react-select';
+import { useFormContext } from 'react-hook-form';
+import { Image } from 'components/images/Image';
 import { useTargetOfferStore, selectTarget } from 'features/offers';
-import { JobFormSchema } from '../../lib/jobForm/schema';
 import { routes } from '~/constants';
+import { JobFormSchema } from '../../lib/jobForm/schema';
 import { ExternalLink } from '../links/ExternalLink';
 
 // type layer
@@ -284,44 +284,44 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                       index === 1 ||
                       index === 3 ||
                       index === 4 ||
-                      index === 6
-                    ) && (
-                        <Box>
-                          <Input
-                            {...register(idlist[index])}
-                            borderColor={`#999`}
-                            borderRadius={`0`}
-                            w={{
-                              base: `${190 / 3.75}vw`,
-                              md: `${200 / 7.68}vw`,
-                              lg: `${500 / 19.2}vw`,
+                      index === 6) && (
+                      <Box>
+                        <Input
+                          {...register(idlist[index])}
+                          borderColor={`#999`}
+                          borderRadius={`0`}
+                          w={{
+                            base: `${190 / 3.75}vw`,
+                            md: `${200 / 7.68}vw`,
+                            lg: `${500 / 19.2}vw`,
+                          }}
+                          h={{
+                            base: `${25 / 3.75}vw`,
+                            md: `${20 / 7.68}vw`,
+                            lg: `${40 / 19.2}vw`,
+                          }}
+                          fontSize={{
+                            base: `${10 / 3.75}vw`,
+                            md: `${12 / 7.68}vw`,
+                            lg: `${19 / 19.2}vw`,
+                          }}
+                          ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
+                        />
+                        {errors?.[idlist[index]]?.message && (
+                          <Box
+                            mt={{ base: `0.25rem` }}
+                            fontSize={{ base: `0.5rem`, md: `0.75rem` }}
+                            ml={{
+                              base: `${19 / 3.75}vw`,
+                              md: `${70 / 19.2}vw`,
                             }}
-                            h={{
-                              base: `${25 / 3.75}vw`,
-                              md: `${20 / 7.68}vw`,
-                              lg: `${40 / 19.2}vw`,
-                            }}
-                            fontSize={{
-                              base: `${10 / 3.75}vw`,
-                              md: `${12 / 7.68}vw`,
-                              lg: `${19 / 19.2}vw`,
-                            }}
-                            ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
-                          />
-                          {errors?.[idlist[index]]?.message && (
-                            <Box
-                              mt={{ base: `0.25rem` }}
-                              fontSize={{ base: `0.5rem`, md: `0.75rem` }}
-                              ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
-                              color={`red`}
-                            >
-                              {errors[idlist[index]].message}
-                            </Box>
-                          )}
-                        </Box>
-
-                      )
-                    }
+                            color={`red`}
+                          >
+                            {errors[idlist[index]].message}
+                          </Box>
+                        )}
+                      </Box>
+                    )}
                     {index === 5 && (
                       <Box
                         ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
@@ -362,125 +362,120 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                         </Stack>
                       </RadioGroup>
                     )}
-                    {
-
-                      index === 7 && (
-                        <Box
+                    {index === 7 && (
+                      <Box
+                        mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
+                        ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
+                      >
+                        <Textarea
+                          borderRadius={`0`}
+                          borderColor={`#999`}
+                          w={{
+                            base: `${190 / 3.75}vw`,
+                            md: `${200 / 7.68}vw`,
+                            lg: `${500 / 19.2}vw`,
+                          }}
+                          h={{
+                            base: `${150 / 3.75}vw`,
+                            md: `${150 / 7.68}vw`,
+                            lg: `${200 / 19.2}vw`,
+                          }}
+                          fontSize={{
+                            base: `${10 / 3.75}vw`,
+                            md: `${12 / 7.68}vw`,
+                            lg: `${19 / 19.2}vw`,
+                          }}
+                          {...register('reason')}
+                        />
+                        {errors?.reason?.message && (
+                          <Box
+                            mt={{ base: `0.25rem` }}
+                            fontSize={{ base: `0.5rem`, md: `0.75rem` }}
+                            color={`red`}
+                            display={index === 7 ? 'block' : 'none'}
+                          >
+                            {errors.reason.message}
+                          </Box>
+                        )}
+                      </Box>
+                    )}
+                    {index === 8 && (
+                      <Box>
+                        <Input
+                          {...register('hopeday1')}
+                          borderColor={`#999`}
+                          borderRadius={`0`}
+                          w={{
+                            base: `${190 / 3.75}vw`,
+                            md: `${200 / 7.68}vw`,
+                            lg: `${500 / 19.2}vw`,
+                          }}
+                          h={{
+                            base: `${25 / 3.75}vw`,
+                            md: `${20 / 7.68}vw`,
+                            lg: `${40 / 19.2}vw`,
+                          }}
+                          fontSize={{
+                            base: `${10 / 3.75}vw`,
+                            md: `${12 / 7.68}vw`,
+                            lg: `${19 / 19.2}vw`,
+                          }}
                           mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
-                          ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
-                        >
-                          <Textarea
-                            borderRadius={`0`}
-                            borderColor={`#999`}
-                            w={{
-                              base: `${190 / 3.75}vw`,
-                              md: `${200 / 7.68}vw`,
-                              lg: `${500 / 19.2}vw`,
-                            }}
-                            h={{
-                              base: `${150 / 3.75}vw`,
-                              md: `${150 / 7.68}vw`,
-                              lg: `${200 / 19.2}vw`,
-                            }}
-                            fontSize={{
-                              base: `${10 / 3.75}vw`,
-                              md: `${12 / 7.68}vw`,
-                              lg: `${19 / 19.2}vw`,
-                            }}
-                            {...register('reason')}
-                          />
-                          {errors?.reason?.message && (
-                            <Box
-                              mt={{ base: `0.25rem` }}
-                              fontSize={{ base: `0.5rem`, md: `0.75rem` }}
-                              color={`red`}
-                              display={index === 7 ? 'block' : 'none'}
-                            >
-                              {errors.reason.message}
-                            </Box>
-                          )}
-                        </Box>
-                      )
-                    }
-                    {
-                      index === 8 && (
-                        <Box>
-                          <Input
-                            {...register('hopeday1')}
-                            borderColor={`#999`}
-                            borderRadius={`0`}
-                            w={{
-                              base: `${190 / 3.75}vw`,
-                              md: `${200 / 7.68}vw`,
-                              lg: `${500 / 19.2}vw`,
-                            }}
-                            h={{
-                              base: `${25 / 3.75}vw`,
-                              md: `${20 / 7.68}vw`,
-                              lg: `${40 / 19.2}vw`,
-                            }}
-                            fontSize={{
-                              base: `${10 / 3.75}vw`,
-                              md: `${12 / 7.68}vw`,
-                              lg: `${19 / 19.2}vw`,
-                            }}
-                            mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
-                          />
-                          {errors?.hopeday1?.message && (
-                            <Box
-                              mt={{ base: `0.25rem` }}
-                              fontSize={{ base: `0.5rem`, md: `0.75rem` }}
-                              color={`red`}
-                              display={index === 8 ? 'block' : 'none'}
-                            >
-                              {errors.hopeday1.message}
-                            </Box>
-                          )}
-                          <Input
-                            {...register('hopeday2')}
-                            borderColor={`#999`}
-                            borderRadius={`0`}
-                            w={{
-                              base: `${190 / 3.75}vw`,
-                              md: `${200 / 7.68}vw`,
-                              lg: `${500 / 19.2}vw`,
-                            }}
-                            h={{
-                              base: `${25 / 3.75}vw`,
-                              md: `${20 / 7.68}vw`,
-                              lg: `${40 / 19.2}vw`,
-                            }}
-                            fontSize={{
-                              base: `${10 / 3.75}vw`,
-                              md: `${12 / 7.68}vw`,
-                              lg: `${19 / 19.2}vw`,
-                            }}
-                            mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
-                          />
-                          <Input
-                            {...register('hopeday3')}
-                            borderColor={`#999`}
-                            borderRadius={`0`}
-                            w={{
-                              base: `${190 / 3.75}vw`,
-                              md: `${200 / 7.68}vw`,
-                              lg: `${500 / 19.2}vw`,
-                            }}
-                            h={{
-                              base: `${25 / 3.75}vw`,
-                              md: `${20 / 7.68}vw`,
-                              lg: `${40 / 19.2}vw`,
-                            }}
-                            fontSize={{
-                              base: `${10 / 3.75}vw`,
-                              md: `${12 / 7.68}vw`,
-                              lg: `${19 / 19.2}vw`,
-                            }}
-                            mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
-                          />
-                        </Box>
-                      )
-                    }
+                        />
+                        {errors?.hopeday1?.message && (
+                          <Box
+                            mt={{ base: `0.25rem` }}
+                            fontSize={{ base: `0.5rem`, md: `0.75rem` }}
+                            color={`red`}
+                            display={index === 8 ? 'block' : 'none'}
+                          >
+                            {errors.hopeday1.message}
+                          </Box>
+                        )}
+                        <Input
+                          {...register('hopeday2')}
+                          borderColor={`#999`}
+                          borderRadius={`0`}
+                          w={{
+                            base: `${190 / 3.75}vw`,
+                            md: `${200 / 7.68}vw`,
+                            lg: `${500 / 19.2}vw`,
+                          }}
+                          h={{
+                            base: `${25 / 3.75}vw`,
+                            md: `${20 / 7.68}vw`,
+                            lg: `${40 / 19.2}vw`,
+                          }}
+                          fontSize={{
+                            base: `${10 / 3.75}vw`,
+                            md: `${12 / 7.68}vw`,
+                            lg: `${19 / 19.2}vw`,
+                          }}
+                          mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
+                        />
+                        <Input
+                          {...register('hopeday3')}
+                          borderColor={`#999`}
+                          borderRadius={`0`}
+                          w={{
+                            base: `${190 / 3.75}vw`,
+                            md: `${200 / 7.68}vw`,
+                            lg: `${500 / 19.2}vw`,
+                          }}
+                          h={{
+                            base: `${25 / 3.75}vw`,
+                            md: `${20 / 7.68}vw`,
+                            lg: `${40 / 19.2}vw`,
+                          }}
+                          fontSize={{
+                            base: `${10 / 3.75}vw`,
+                            md: `${12 / 7.68}vw`,
+                            lg: `${19 / 19.2}vw`,
+                          }}
+                          mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
+                        />
+                      </Box>
+                    )}
                   </Flex>
                 </Flex>
               </Flex>
@@ -605,10 +600,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
             mr={{ base: `${10 / 3.75}vw`, md: `${20 / 19.2}vw` }}
             isInvalid
           />
-          <ExternalLink
-            href={routes.terms}
-            borderBottom={`2px solid #39414E`}
-          >
+          <ExternalLink href={routes.terms} borderBottom={`2px solid #39414E`}>
             利用規約
           </ExternalLink>
           の取り扱いに同意する

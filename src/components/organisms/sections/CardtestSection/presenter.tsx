@@ -2,11 +2,11 @@
 import { VFC } from 'react';
 import { Box, Stack } from '@chakra-ui/react';
 
-import { ImageTitle } from '~/components/molecules/titles/ImageTitle';
-import { InterviewCard } from '../../cards/InterviewCard';
-import { BlueButton } from '~/components/molecules/buttons/BlueButton';
 import { InternalLink } from 'molecules/links/InternalLink';
 import { Span } from '~/components/atoms/Span';
+import { BlueButton } from '~/components/molecules/buttons/BlueButton';
+import { ImageTitle } from '~/components/molecules/titles/ImageTitle';
+import { InterviewCard } from '../../cards/InterviewCard';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

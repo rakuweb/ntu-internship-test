@@ -23,23 +23,23 @@ export const Presenter: FC<PresenterProps> = ({
 
   const variants = isX
     ? {
-      visible: {
-        opacity: 1,
-        x: 0,
-        scale: 1,
-        transition: { duration: 1 },
-      },
-      hidden: { opacity: 0, x: fadeLength ?? 300 },
-    }
+        visible: {
+          opacity: 1,
+          x: 0,
+          scale: 1,
+          transition: { duration: 1 },
+        },
+        hidden: { opacity: 0, x: fadeLength ?? 300 },
+      }
     : {
-      visible: {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        transition: { duration: 1 },
-      },
-      hidden: { opacity: 0, y: fadeLength ?? 200 },
-    };
+        visible: {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          transition: { duration: 1 },
+        },
+        hidden: { opacity: 0, y: fadeLength ?? 200 },
+      };
 
   // effect
   useEffect(() => {

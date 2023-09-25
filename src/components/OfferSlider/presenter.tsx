@@ -1,16 +1,16 @@
 // import layer
 import { FC } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
-import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper';
+import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 
-import { selectOfferList } from 'features/offers/selectors';
 import { useOffersStore } from 'features/offers/hooks';
+import { selectOfferList } from 'features/offers/selectors';
 
 import 'swiper/css';
 
-import { OfferCardverSlider } from './OfferCardverSlider';
 import { Image } from '../images/Image';
+import { OfferCardverSlider } from './OfferCardverSlider';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

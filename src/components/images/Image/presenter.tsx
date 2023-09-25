@@ -1,8 +1,8 @@
 // import layer
 import { FC } from 'react';
+import { Box, BoxProps } from '@chakra-ui/react';
 import NextImage from 'next/image';
 import type { ImageProps } from 'next/image';
-import { Box, BoxProps } from '@chakra-ui/react';
 
 // type layer
 export type StyleProps = BoxProps;

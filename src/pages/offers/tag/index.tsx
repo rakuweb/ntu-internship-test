@@ -1,10 +1,21 @@
 // import layer
 import { useState, useEffect } from 'react';
 import { NextPage, GetStaticProps } from 'next/types';
-import { Index as Template } from 'templates/Tag';
 import { SeoComponent } from 'organisms/SeoComponent';
+import { Index as Template } from 'templates/Tag';
 import { CANONICAL_URL, ORIGIN_URL, UPDATE_INTERVAL } from '~/constants';
+import {
+  selectSetJobCategorys,
+  useJobCategorysStore,
+} from '~/features/category';
+import { useOffersStore, selectSetOffers } from '~/features/offers';
+import { selectSetPoints, usePointsStore } from '~/features/point';
 import { initializeApollo } from '~/lib/apollo/client';
+import {
+  JobCategoryEntity,
+  GetJobCategoriesQuery,
+  GetJobCategoriesDocument,
+} from '~/types/gql/graphql';
 import {
   GetOffersAllQuery,
   GetOffersAllDocument,
@@ -13,17 +24,6 @@ import {
   PointEntity,
   OfferEntity,
 } from '~/types/offers-gql/graphql';
-import {
-  JobCategoryEntity,
-  GetJobCategoriesQuery,
-  GetJobCategoriesDocument,
-} from '~/types/gql/graphql';
-import {
-  selectSetJobCategorys,
-  useJobCategorysStore,
-} from '~/features/category';
-import { selectSetPoints, usePointsStore } from '~/features/point';
-import { useOffersStore, selectSetOffers } from '~/features/offers';
 
 // type layer
 type Props = {

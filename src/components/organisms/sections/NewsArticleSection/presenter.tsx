@@ -1,7 +1,7 @@
 // import layer
 import { VFC } from 'react';
-import { css } from '@emotion/react';
 import { Box, Stack } from '@chakra-ui/react';
+import { css } from '@emotion/react';
 import { ArticleCard } from '../../cards/ArticleCard';
 
 // type layer

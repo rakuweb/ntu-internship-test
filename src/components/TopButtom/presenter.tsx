@@ -1,8 +1,8 @@
 // import layer
 import { VFC } from 'react';
+import { Box, BoxProps } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 import { mq } from '~/constants/styles';
-import { Box, BoxProps } from '@chakra-ui/react';
 
 // type layer
 export type PresenterProps = BoxProps;
@@ -21,9 +21,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
 const styles = css`
   .clinics-button {
     display: flex;
-    font-family:
-      'Noto Sans JP' 'Zen Kaku Gothic New',
-      'Hiragino Sans';
+    font-family: 'Noto Sans JP' 'Zen Kaku Gothic New', 'Hiragino Sans';
     justify-content: center;
   }
 

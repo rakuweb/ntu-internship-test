@@ -3,10 +3,10 @@ import { VFC } from 'react';
 import { Box } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
-import { ConsultationIndex } from 'organisms/ConsultationIndex';
-import { ContactSection } from 'organisms/sections/ContactSection';
-import { Footer } from 'organisms/footers/Footer';
 import { Header } from 'components/headers/Header';
+import { ConsultationIndex } from 'organisms/ConsultationIndex';
+import { Footer } from 'organisms/footers/Footer';
+import { ContactSection } from 'organisms/sections/ContactSection';
 
 import 'swiper/css';
 import 'swiper/css/navigation';

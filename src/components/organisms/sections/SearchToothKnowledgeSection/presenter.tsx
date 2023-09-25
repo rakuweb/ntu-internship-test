@@ -2,11 +2,11 @@
 import { VFC } from 'react';
 import { Flex, Box, Wrap, WrapItem } from '@chakra-ui/react';
 
-import { ImageTitle } from '~/components/molecules/titles/ImageTitle';
-import { SearchSectionTitle } from '~/components/molecules/titles/SearchSectionTitle';
+import { InternalLink } from 'molecules/links/InternalLink';
 import { SearchSectionButton } from '~/components/molecules/buttons/SearchSectionButton';
 import { SearchTag } from '~/components/molecules/tags/SearchTag';
-import { InternalLink } from 'molecules/links/InternalLink';
+import { ImageTitle } from '~/components/molecules/titles/ImageTitle';
+import { SearchSectionTitle } from '~/components/molecules/titles/SearchSectionTitle';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

@@ -22,14 +22,19 @@ export const jobFormSchema = z.object({
   gender: z.string(),
   birthDate: z.string().min(1, '入力してください'),
   phone: z.string().min(1, '入力してください'),
-  grade: z.string({ required_error: "入力してください" }).min(1, '入力してください'),
-  email: z.string().email('メールアドレスを入力してください').min(1, '入力してください'),
+  grade: z
+    .string({ required_error: '入力してください' })
+    .min(1, '入力してください'),
+  email: z
+    .string()
+    .email('メールアドレスを入力してください')
+    .min(1, '入力してください'),
   reason: z.string().min(1, '入力してください'),
-  hopeday1: z.string().min(1, "入力してください"),
+  hopeday1: z.string().min(1, '入力してください'),
   hopeday2: z.string(),
   hopeday3: z.string(),
   agreement: z.boolean(),
-})
+});
 
 export type JobFormSchema = z.infer<typeof jobFormSchema>;
 

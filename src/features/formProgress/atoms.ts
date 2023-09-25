@@ -8,4 +8,3 @@ export const formProgressState = atom<FormProgress>({
     progress: 0,
   },
 });
-

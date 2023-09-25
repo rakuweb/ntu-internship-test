@@ -2,10 +2,10 @@
 import { useState, useEffect } from 'react';
 import { NextPage } from 'next/types';
 
-import { Index as Template } from '~/components/templates/Register/Confirm';
-import { SeoComponent } from 'organisms/SeoComponent';
 import { CANONICAL_URL } from 'constants/env';
 import { useLiff } from 'contexts/LineAuthContext';
+import { SeoComponent } from 'organisms/SeoComponent';
+import { Index as Template } from '~/components/templates/Register/Confirm';
 
 // component layer
 export const Index: NextPage = () => {

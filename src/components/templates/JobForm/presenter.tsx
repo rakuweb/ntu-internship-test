@@ -4,11 +4,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import { FormProvider, useForm } from 'react-hook-form';
 
+import { Header } from 'components/headers/Header';
+import { GOOGLE_RECAPTCHA_SITE_KEY } from 'constants/env';
 import { JobForm } from '~/components/JobForm';
 import { Footer } from '~/components/footers/Footer';
-import { Header } from 'components/headers/Header';
 import { JobFormSchema, jobFormSchema } from '~/lib/jobForm/schema';
-import { GOOGLE_RECAPTCHA_SITE_KEY } from 'constants/env';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
@@ -25,11 +25,11 @@ export const Presenter: FC<PresenterProps> = () => {
 
     console.log(agreement);
     if (!agreement) {
-      alert("利用規約に同意してください。");
+      alert('利用規約に同意してください。');
       return;
     }
 
-    console.log(remain)
+    console.log(remain);
   };
   return (
     <>
@@ -39,9 +39,7 @@ export const Presenter: FC<PresenterProps> = () => {
         language={`ja`}
       >
         <FormProvider {...methods}>
-          <JobForm
-            submitHandler={submitHandler}
-          />
+          <JobForm submitHandler={submitHandler} />
         </FormProvider>
       </GoogleReCaptchaProvider>
       <Footer />

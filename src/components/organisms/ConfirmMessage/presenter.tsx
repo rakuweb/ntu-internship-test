@@ -1,9 +1,9 @@
 // import layer
 import { FC } from 'react';
-import { css } from '@emotion/react';
-import { mq } from '~/constants/styles';
 import { Box, Button } from '@chakra-ui/react';
+import { css } from '@emotion/react';
 import axios from 'axios';
+import { mq } from '~/constants/styles';
 
 // type layer
 export type PresenterProps = { title: string; message: string };

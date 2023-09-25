@@ -1,13 +1,13 @@
 // import layer
 import { useState, useEffect } from 'react';
-import { NextPage } from 'next/types';
 import { useRouter } from 'next/router';
+import { NextPage } from 'next/types';
 
-import { Index as Template } from '~/components/templates/Register/Registered';
-import { SeoComponent } from 'organisms/SeoComponent';
 import { CANONICAL_URL } from 'constants/env';
-import { useLiff } from 'contexts/LineAuthContext';
 import { routes } from 'constants/routes';
+import { useLiff } from 'contexts/LineAuthContext';
+import { SeoComponent } from 'organisms/SeoComponent';
+import { Index as Template } from '~/components/templates/Register/Registered';
 
 // component layer
 export const Index: NextPage = () => {

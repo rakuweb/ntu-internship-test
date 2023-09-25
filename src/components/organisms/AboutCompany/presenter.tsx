@@ -1,8 +1,8 @@
 // import layer
 import { FC } from 'react';
 import { Box, Grid, Heading, Text } from '@chakra-ui/react';
-import { Image as NImage } from 'components/images/Image';
 import { css } from '@emotion/react';
+import { Image as NImage } from 'components/images/Image';
 
 import { selectCompany, useCompanyStore } from 'features/company';
 

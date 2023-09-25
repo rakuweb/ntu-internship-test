@@ -1,5 +1,5 @@
-import { Textarea } from '@chakra-ui/react';
 import { FC } from 'react';
+import { Textarea } from '@chakra-ui/react';
 import { Control, Controller } from 'react-hook-form';
 
 type TextareaFormProps = {

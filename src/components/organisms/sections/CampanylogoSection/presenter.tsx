@@ -1,10 +1,10 @@
 // import layer
 import { FC } from 'react';
-import { css } from '@emotion/react';
 import { Box, Stack } from '@chakra-ui/react';
+import { css } from '@emotion/react';
 
-import { ImageTitle } from '~/components/molecules/titles/ImageTitle';
 import { Image } from 'atoms/Image';
+import { ImageTitle } from '~/components/molecules/titles/ImageTitle';
 import { mq } from '~/constants/styles';
 
 // type layer

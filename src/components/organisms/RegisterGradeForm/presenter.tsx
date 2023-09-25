@@ -3,15 +3,15 @@ import { FC } from 'react';
 import { Select, Button, Box, Switch, Flex } from '@chakra-ui/react';
 import { useFormContext } from 'react-hook-form';
 
-import { styles } from './styles';
-import { routes } from '~/constants/routes';
-import { InternalLink } from '~/components/molecules/links/InternalLink';
 import {
   parseGrade,
   gradeList,
   RegisterGradeFormSchema,
 } from 'features/registerForm';
 import { useStudentStore, selectStudent } from 'features/student';
+import { InternalLink } from '~/components/molecules/links/InternalLink';
+import { routes } from '~/constants/routes';
+import { styles } from './styles';
 
 // type layer
 export type DataProps = { onClick: () => void };
@@ -81,7 +81,7 @@ export const Presenter: FC<PresenterProps> = ({ onClick }) => {
                   size="lg"
                   // checked={sendJobInfo}
                   {...register('toReceiveJobInfo')}
-                // onChange={(e) => setSendJobInfo(e.target.checked)}
+                  // onChange={(e) => setSendJobInfo(e.target.checked)}
                 />
                 <label
                   htmlFor="send-job-info"

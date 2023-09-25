@@ -1,8 +1,8 @@
 // import layer
 import { FC } from 'react';
 import { Heading, Image, Text } from '@chakra-ui/react';
-import { styles } from './styles';
 import { ExternalLink } from '~/components/links/ExternalLink';
+import { styles } from './styles';
 
 // type layer
 export type PresenterProps = Record<string, string>;

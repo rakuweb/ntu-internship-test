@@ -1,9 +1,9 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
 import fetch from 'node-fetch';
 
-import { parseAuthorization } from 'lib/apollo/parse';
 import { API_URL, WRITE_API_KEY_OFFER } from 'constants/env';
 import { RECAPTCHA_URL } from 'constants/routes';
+import { parseAuthorization } from 'lib/apollo/parse';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const method = req.method;
@@ -29,15 +29,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           return;
         }
 
-        const body = { data: { ...data, } };
+        const body = { data: { ...data } };
         const response = await fetch(url, {
           method: 'POST',
           body: JSON.stringify(body),
           headers: {
             'Content-type': 'application/json',
-            Authorization: parseAuthorization(
-              WRITE_API_KEY_OFFER
-            ),
+            Authorization: parseAuthorization(WRITE_API_KEY_OFFER),
           },
         });
         const result = await response.json();

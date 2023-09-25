@@ -1,10 +1,10 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
 import fetch from 'node-fetch';
 
 import { API_URL } from 'constants/env';
 import { apiRoutes } from 'constants/routes';
-import { PostStudentMutation, PostStudentDocument } from 'types/gql/graphql';
 import { initializeApollo } from 'lib/apollo/client';
+import { PostStudentMutation, PostStudentDocument } from 'types/gql/graphql';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 type Data = {
   message?: string;

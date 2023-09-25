@@ -11,10 +11,10 @@ import {
   Box,
 } from '@chakra-ui/react';
 
-import { HeaderMenu } from '../HeaderMenu';
 import { Image } from 'atoms/Image';
 import { HeaderMenuButton } from '../../buttons/HeaderMenuButton';
 import { DrawerMenuNav } from '../DrawerMenuNav';
+import { HeaderMenu } from '../HeaderMenu';
 
 // type layer
 export type PresenterProps = Partial<DrawerProps> & {

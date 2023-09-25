@@ -3,9 +3,9 @@ import { FC } from 'react';
 import { Box, Stack } from '@chakra-ui/react';
 
 import { Image } from 'components/Image';
+import { ExternalLink } from 'components/links/ExternalLink';
 import { InternalLink } from 'components/links/InternalLink';
 import { INSTAGRAM_URL, routes, TWITTER_URL } from 'constants/routes';
-import { ExternalLink } from 'components/links/ExternalLink';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

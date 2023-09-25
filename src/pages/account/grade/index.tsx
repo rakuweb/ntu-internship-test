@@ -1,24 +1,24 @@
 // import layer
 import { useState, useEffect } from 'react';
-import { NextPage } from 'next/types';
-import { FormProvider, useForm } from 'react-hook-form';
 // import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from 'next/router';
+import { NextPage } from 'next/types';
+import { FormProvider, useForm } from 'react-hook-form';
 
+import { CANONICAL_URL } from 'constants/env';
+import { routes } from 'constants/routes';
+import { useAccountStore } from 'features/account';
+import { useFormProgressStore } from 'features/formProgress/hooks';
+import { useStudentStore, selectStudent } from 'features/student';
+import { SeoComponent } from 'organisms/SeoComponent';
 import { Index as Form } from 'templates/Register/Grade';
 import { Index as Check } from 'templates/Register/RegisterGradeCheck';
-import { SeoComponent } from 'organisms/SeoComponent';
-import { CANONICAL_URL } from 'constants/env';
-import { parseSeo } from '~/lib';
-import { useFormProgressStore } from 'features/formProgress/hooks';
+import { CAFE_ENTRY_QUERY } from '~/constants';
 import {
   RegisterGradeFormSchema,
   // registerGradeFormSchema,
 } from '~/features/registerForm/schema';
-import { routes } from 'constants/routes';
-import { useAccountStore } from 'features/account';
-import { useStudentStore, selectStudent } from 'features/student';
-import { CAFE_ENTRY_QUERY } from '~/constants';
+import { parseSeo } from '~/lib';
 
 // type layer
 
