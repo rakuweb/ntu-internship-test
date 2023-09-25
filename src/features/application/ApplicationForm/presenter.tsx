@@ -18,13 +18,10 @@ export type PresenterProps = DataProps;
 export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
   const {
     register,
-    watch,
-    setValue,
     handleSubmit,
     formState: { errors },
   } = useFormContext<ApplicationSchema>();
   const { isSending, isChecking, setIsChecking } = useApplicationStore();
-  console.log(errors);
 
   const list = [
     { title: `企業名` },
@@ -37,7 +34,6 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
     { title: `ご担当者電話番号` },
     { title: 'メールアドレス' },
     { title: '掲載プラン' },
-    // { title: '記事作成方法' },
     { title: '備考' },
   ];
   const idlist = [
@@ -51,7 +47,6 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
     'manager_phone',
     'email',
     'plan',
-    // 'how_to_make',
     'remarks',
   ] as const;
 
@@ -314,6 +309,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
           type={`submit`}
           display={`flex`}
           disabled={isSending || !isChecking}
+          isLoading={isSending}
           w={{
             base: `${220 / 3.75}vw`,
             md: `${230 / 7.68}vw`,
