@@ -1,11 +1,12 @@
-import { Flex } from '@chakra-ui/react';
+import { Button, ButtonProps } from '@chakra-ui/react';
 import { Image } from 'components/images/Image';
-type SubmitButtonProps = {
-  disabled: boolean;
-};
-const SubmitButton: React.FC<SubmitButtonProps> = ({ disabled }) => {
+
+type SubmitButtonProps = ButtonProps;
+
+const SubmitButton: React.FC<SubmitButtonProps> = ({ ...props }) => {
   return (
-    <Flex
+    <Button
+      display={`flex`}
       w={{
         base: `${220 / 3.75}vw`,
         md: `${230 / 7.68}vw`,
@@ -18,7 +19,7 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({ disabled }) => {
       }}
       overflow={`hidden`}
       alignItems={`center`}
-      justify={`center`}
+      justifyContent={`center`}
       py={{
         base: `${15 / 4.28}vw`,
         md: `${35 / 19.2}vw`,
@@ -40,6 +41,7 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({ disabled }) => {
         cursor: `pointer`,
         filter: `opacity(50%)`,
       }}
+      {...props}
     >
       <Image // eslint-disable-line
         w={{
@@ -61,7 +63,7 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({ disabled }) => {
         }}
       />
       送信する
-    </Flex>
+    </Button>
   );
 };
 

@@ -34,6 +34,7 @@ export const routes = {
   apiApplication: '/api/application',
   apiCompaniesRequest: '/api/companies/request',
   apiJobform: `/api/offers/jobform/send`,
+  apiContact: `/api/contact`,
 };
 
 export const HP_URL = `https://nottheuniversity.com`;

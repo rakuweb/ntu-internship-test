@@ -5,61 +5,51 @@ import { useForm } from 'react-hook-form';
 import FormName from './FormName';
 import SubmitButton from './SubmitButton';
 import ChakraStylesDesktop from './ChakraStyles';
-import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { zodResolver } from '@hookform/resolvers/zod';
 import InquiryItem from './InquiryItem';
 import { InternalLink } from '../links/InternalLink';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import {
+  contactSchema,
+  ContactSchema,
+  useContactFormStore,
+} from '~/features/contact';
+import axios from 'axios';
+import { routes } from '~/constants';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
-  const schema = yup.object().shape({
-    item: yup.string().required('必須項目です'),
-    employment_status: yup.string().required('必須項目です'),
-    period: yup.string().required('必須項目です'),
-    name: yup.string().required('必須項目です'),
-    manager_name: yup.string().required('必須項目です'),
-    manager_phone: yup.string().required('必須項目です'),
-    email: yup
-      .string()
-      .email('有効なメールアドレスを入力してください')
-      .required('必須項目です'),
-    place: yup.string().required('必須項目です'),
-  });
-
   const {
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: zodResolver(contactSchema),
   });
-
-  const onSubmit = (data) => console.log(data);
-  const [isChecked, setIsChecked] = useState(false);
-
-  const Options = [
-    { value: '掲載について', label: '掲載について' },
-    { value: '料金プランについて', label: '料金プランについて' },
-    { value: 'その他', label: 'その他' },
-  ];
-
-  const Options2 = [
-    { value: '単発アルバイト', label: '単発アルバイト' },
-    { value: 'アルバイト', label: 'アルバイト' },
-    { value: '長期インターン', label: '長期インターン' },
-  ];
-
-  const Options3 = [
-    { value: '1ヶ月以内の採用', label: '1ヶ月以内の採用' },
-    { value: '3ヶ月以内の採用', label: '3ヶ月以内の採用' },
-    { value: '3ヶ月以上先の採用', label: '3ヶ月以上先の採用' },
-  ];
-
+  const { isSending, isChecked, setIsChecked, setIsSending } =
+    useContactFormStore();
   const { executeRecaptcha: _ } = useGoogleReCaptcha();
+
+  const submitHandler = async (data: ContactSchema) => {
+    const { ...remain } = data;
+    setIsSending(true);
+
+    try {
+      const res = await axios.post(routes.apiContact, { ...remain });
+      alert('送信が完了しました。');
+      control._reset();
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setIsSending(false);
+      setIsChecked(false);
+    }
+  };
+
   // const handleReCaptchaVerify = useCallback(async () => {
   //   if (!executeRecaptcha) {
   //     return;
@@ -68,7 +58,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   // const recaptchaToken = await executeRecaptcha('yourAction');
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(submitHandler)}>
       <Box
         mx={`auto`}
         w={{
@@ -96,9 +86,6 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           }}
         >
           <InquiryItem
-            Options={Options}
-            Options2={Options2}
-            Options3={Options3}
             control={control}
             ChakraStylesDesktop={ChakraStylesDesktop}
             errors={errors}
@@ -119,6 +106,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           fontWeight={`bold`}
         >
           <Checkbox
+            checked={isChecked}
             size={{ base: `sm`, lg: `sm`, '2xl': `lg` }}
             mr={{ base: `${10 / 3.75}vw`, md: `${20 / 19.2}vw` }}
             isInvalid
@@ -133,7 +121,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           </InternalLink>
           に同意する
         </Flex>
-        <SubmitButton disabled={!isChecked} />
+        <SubmitButton type={`submit`} disabled={isSending || !isChecked} />
       </Box>
     </form>
   );

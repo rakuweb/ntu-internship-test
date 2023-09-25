@@ -1,19 +1,14 @@
 import { Box, Flex } from '@chakra-ui/react';
+import { ErrorMessage } from '@hookform/error-message';
+
 import ListTitle from './ListTitle';
 import SelectForm from './SelectForm';
-import { ErrorMessage } from '@hookform/error-message';
 import Message from './message';
 import InputForm from './Input';
 import TextareaForm from './TextareaForm';
+import { kindList, jobTypeList, periodList } from 'features/contact';
 
-const InquiryItem = ({
-  Options,
-  Options2,
-  Options3,
-  control,
-  ChakraStylesDesktop,
-  errors,
-}) => {
+const InquiryItem = ({ control, ChakraStylesDesktop, errors }) => {
   return (
     <>
       <div key="お問い合わせ項目">
@@ -43,7 +38,7 @@ const InquiryItem = ({
                 index={0}
                 name={'item'}
                 list={'お問い合わせ内容'}
-                Options={Options}
+                Options={kindList}
                 control={control}
                 ChakraStylesDesktop={ChakraStylesDesktop}
               />
@@ -83,7 +78,7 @@ const InquiryItem = ({
                 index={0}
                 name={'employment_status'}
                 list={'採用雇用形態'}
-                Options={Options2}
+                Options={jobTypeList}
                 control={control}
                 ChakraStylesDesktop={ChakraStylesDesktop}
               />
@@ -123,7 +118,7 @@ const InquiryItem = ({
                 index={0}
                 name={'period'}
                 list={'採用希望時期'}
-                Options={Options3}
+                Options={periodList}
                 control={control}
                 ChakraStylesDesktop={ChakraStylesDesktop}
               />
@@ -323,7 +318,12 @@ const InquiryItem = ({
               pr={{ base: `${0 / 3.75}vw`, md: `${40 / 19.2}vw` }}
               ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
             >
-              <TextareaForm index={8} list={'掲載内容'} control={control} />
+              <TextareaForm
+                name={`listing_details`}
+                index={8}
+                list={'掲載内容'}
+                control={control}
+              />
             </Box>
           </Flex>
         </Flex>
@@ -406,6 +406,7 @@ const InquiryItem = ({
               <TextareaForm
                 index={8}
                 list={'お問い合わせ内容'}
+                name={`remarks`}
                 control={control}
               />
             </Box>
