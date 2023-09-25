@@ -1,19 +1,12 @@
-import { Button } from '@chakra-ui/react';
+import { Button, ButtonProps } from '@chakra-ui/react';
 import { Image } from 'components/images/Image';
-type SubmitButtonProps = {
-  disabled: boolean;
-};
-const SubmitButton: React.FC<SubmitButtonProps> = ({ disabled }) => {
+
+type SubmitButtonProps = ButtonProps;
+
+const SubmitButton: React.FC<SubmitButtonProps> = ({ ...props }) => {
   return (
     <Button
-      type="submit"
-      disabled={disabled} // ボタンの活性・非活性を設定
-      background={
-        disabled
-          ? 'grey'
-          : `transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box;`
-      } // 色をチェック状態に基づいて変更
-      display={'flex'}
+      display={`flex`}
       w={{
         base: `${220 / 3.75}vw`,
         md: `${230 / 7.68}vw`,
@@ -34,7 +27,7 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({ disabled }) => {
       }}
       mb={{ base: `${60 / 3.75}vw`, md: `${80 / 19.2}vw` }}
       mx={`auto`}
-      // background={`transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box;`}
+      background={`transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box;`}
       color={`white`}
       fontSize={{
         base: `${16 / 3.75}vw`,
@@ -42,6 +35,13 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({ disabled }) => {
         lg: `${27 / 19.2}vw`,
       }}
       fontWeight={`bold`}
+      as={`button`}
+      transition={`all .3s`}
+      _hover={{
+        cursor: `pointer`,
+        filter: `opacity(50%)`,
+      }}
+      {...props}
     >
       <Image // eslint-disable-line
         w={{

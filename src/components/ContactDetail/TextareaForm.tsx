@@ -5,6 +5,7 @@ import { Control, Controller } from 'react-hook-form';
 type TextareaFormProps = {
   list: string;
   index: number;
+  name: any;
   control: Control<{
     mail: string;
     name: string;
@@ -13,13 +14,14 @@ type TextareaFormProps = {
     tel: string;
     inquiry_item: string;
     inquiry_content: string;
+    remarks: string;
   }>;
 };
 
-const TextareaForm: FC<TextareaFormProps> = ({ control }) => {
+const TextareaForm: FC<TextareaFormProps> = ({ name, control }) => {
   return (
     <Controller
-      name="inquiry_content"
+      name={name}
       control={control}
       rules={{ required: '必須項目です' }}
       render={({ field }) => (

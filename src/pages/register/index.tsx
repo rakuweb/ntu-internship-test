@@ -86,7 +86,7 @@ export const Index: NextPage = () => {
           registeredAt: registeredAt ? new Date(registeredAt) : null,
         });
 
-        router.push(routes.signin);
+        // router.push(routes.signin);
         window.scroll({ top: 0 });
       }
     };

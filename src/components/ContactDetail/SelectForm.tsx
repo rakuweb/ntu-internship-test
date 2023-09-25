@@ -9,20 +9,19 @@ type SelectFormProps = {
   Options: { value: string; label: string }[];
   ChakraStylesDesktop: ChakraStylesConfig<unknown, boolean, GroupBase<unknown>>;
   control: Control<{
-    mail: string;
     name: string;
-    company: string;
-    address: string;
-    tel: string;
-    inquiry_item: string;
-    inquiry_content: string;
+    item: string;
+    employment_status: string;
+    period: string;
   }>;
+  name: 'name' | 'item' | 'employment_status' | 'period';
 };
 
 const SelectForm: FC<SelectFormProps> = ({
   index,
   Options,
   control,
+  name,
   ChakraStylesDesktop,
 }) => {
   return (
@@ -32,7 +31,7 @@ const SelectForm: FC<SelectFormProps> = ({
       w={{ base: `${160 / 3.75}vw`, md: `initial` }}
     >
       <Controller
-        name="inquiry_item"
+        name={name}
         control={control}
         rules={{ required: '必須項目です' }}
         render={({ field }) => (

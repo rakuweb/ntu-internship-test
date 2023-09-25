@@ -5,49 +5,51 @@ import { useForm } from 'react-hook-form';
 import FormName from './FormName';
 import SubmitButton from './SubmitButton';
 import ChakraStylesDesktop from './ChakraStyles';
-import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { zodResolver } from '@hookform/resolvers/zod';
 import InquiryItem from './InquiryItem';
 import { InternalLink } from '../links/InternalLink';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import {
+  contactSchema,
+  ContactSchema,
+  useContactFormStore,
+} from '~/features/contact';
+import axios from 'axios';
+import { routes } from '~/constants';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
-  const schema = yup.object().shape({
-    mail: yup
-      .string()
-      .email('有効なメールアドレスを入力してください')
-      .required('必須項目です'),
-    name: yup.string().required('必須項目です'),
-    company: yup.string().required('必須項目です'),
-    address: yup.string().required('必須項目です'),
-    tel: yup.string().required('必須項目です'),
-    inquiry_item: yup.string().required('必須項目です'),
-    inquiry_content: yup.string().required('必須項目です'),
-  });
-
   const {
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: zodResolver(contactSchema),
   });
-
-  const onSubmit = (data) => console.log(data);
-  const [isChecked, setIsChecked] = useState(false);
-
-  const Options = [
-    { value: '資料請求', label: '資料請求' },
-    { value: '採用について', label: '採用について' },
-    { value: 'お仕事について', label: 'お仕事について' },
-    { value: 'その他', label: 'その他' },
-  ];
-
+  const { isSending, isChecked, setIsChecked, setIsSending } =
+    useContactFormStore();
   const { executeRecaptcha: _ } = useGoogleReCaptcha();
+
+  const submitHandler = async (data: ContactSchema) => {
+    const { ...remain } = data;
+    setIsSending(true);
+
+    try {
+      const res = await axios.post(routes.apiContact, { ...remain });
+      alert('送信が完了しました。');
+      control._reset();
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setIsSending(false);
+      setIsChecked(false);
+    }
+  };
+
   // const handleReCaptchaVerify = useCallback(async () => {
   //   if (!executeRecaptcha) {
   //     return;
@@ -56,7 +58,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   // const recaptchaToken = await executeRecaptcha('yourAction');
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(submitHandler)}>
       <Box
         mx={`auto`}
         w={{
@@ -84,7 +86,6 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           }}
         >
           <InquiryItem
-            Options={Options}
             control={control}
             ChakraStylesDesktop={ChakraStylesDesktop}
             errors={errors}
@@ -105,6 +106,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           fontWeight={`bold`}
         >
           <Checkbox
+            checked={isChecked}
             size={{ base: `sm`, lg: `sm`, '2xl': `lg` }}
             mr={{ base: `${10 / 3.75}vw`, md: `${20 / 19.2}vw` }}
             isInvalid
@@ -119,7 +121,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           </InternalLink>
           に同意する
         </Flex>
-        <SubmitButton disabled={!isChecked} />
+        <SubmitButton type={`submit`} disabled={isSending || !isChecked} />
       </Box>
     </form>
   );
