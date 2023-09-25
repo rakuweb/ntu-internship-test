@@ -8,8 +8,6 @@ import {
   Checkbox,
   Textarea,
   Button,
-  CheckboxGroup,
-  Wrap,
 } from '@chakra-ui/react';
 
 import { Image } from 'components/images/Image';
@@ -27,8 +25,6 @@ export type PresenterProps = DataProps;
 export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
   const {
     register,
-    watch,
-    setValue,
     handleSubmit,
     formState: { errors },
   } = useFormContext<AgentSchema>();

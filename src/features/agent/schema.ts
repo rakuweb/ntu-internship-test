@@ -18,6 +18,10 @@ export const agentSchema = z.object({
     .email('メールアドレスを入力してください'),
   manager_phone: z
     .string({ required_error: '入力してください' })
+    .regex(
+      new RegExp(/^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/),
+      '電話番号を入力してください'
+    )
     .min(1, '入力してください'),
   level: z
     .string({ required_error: '入力してください' })
@@ -25,9 +29,7 @@ export const agentSchema = z.object({
   contact_request: z
     .array(z.string({ required_error: '選択してください' }))
     .min(1, '入力してください'),
-  job_link: z
-    .string({ required_error: '入力してください' })
-    .min(1, '入力してください'),
+  job_link: z.string({ required_error: '入力してください' }).optional(),
   remarks: z.string().optional(),
 });
 
