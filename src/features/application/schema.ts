@@ -36,7 +36,6 @@ export const applicationSchema = z.object({
   plan: z
     .string({ required_error: '入力してください' })
     .min(1, '入力してください'),
-  how_to_make: z.string({ required_error: '入力してください' }),
   remarks: z.string().optional(),
 });
 

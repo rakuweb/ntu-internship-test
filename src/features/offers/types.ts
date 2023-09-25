@@ -19,12 +19,16 @@ export type OfferCard = {
   hours_short: string;
   start_at: string;
   end_at: string;
-  occupation: Occupation;
+  occupation: string;
+  // occupation: Occupation;
   image?: ImageType;
-  job_type: JobType;
-  min_period: Period;
-  min_workingday: Workingday;
-  points: Point[];
+  job_type: string;
+  // job_type: JobType;
+  min_period: string;
+  // min_period: Period;
+  min_workingday: string;
+  points: string;
+  // points: Point[];
 };
 
 export type OffersSlice = {
@@ -57,12 +61,17 @@ export type OfferSliceData = {
   interview_location: string;
   createby: Createby;
   min_working_hours: string;
-  min_period: Period;
-  min_workingday: Workingday;
+  min_period: string;
+  // min_period: Period;
+  min_workingday: string;
+  // min_workingday: Workingday;
   atmosphere: Atmosphere[];
-  occupation: Occupation;
-  job_type: JobType;
-  points: Point[];
+  occupation: string;
+  // occupation: Occupation;
+  job_type: string;
+  // job_type: JobType;
+  points: string;
+  // points: Point[];
   image?: ImageType;
 };
 

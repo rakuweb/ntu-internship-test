@@ -24,6 +24,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
     formState: { errors },
   } = useFormContext<ApplicationSchema>();
   const { isSending, isChecking, setIsChecking } = useApplicationStore();
+  console.log(errors);
 
   const list = [
     { title: `企業名` },
@@ -365,7 +366,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                 alt: `紙飛行機アイコン`,
               }}
             />
-            応募する
+            申し込む
           </Flex>
         </Button>
       </form>

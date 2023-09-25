@@ -14,15 +14,19 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const offer = useTargetOfferStore(selectTarget);
 
   const list = [
-    { title: `職種`, main: offer.occupation.name },
+    { title: `職種`, main: offer.occupation },
+    // { title: `職種`, main: offer.occupation.name },
     { title: `募集人数`, main: offer.people },
     { title: `対象`, main: offer.target },
-    { title: `雇用形態`, main: offer.job_type.name },
+    { title: `雇用形態`, main: offer.job_type },
+    // { title: `雇用形態`, main: offer.job_type.name },
     { title: `給与`, main: offer.hourly_wage_detail },
     { title: `勤務時間`, main: offer.hours_detail },
     { title: `最低労働時間`, main: offer.min_working_hours },
-    { title: `最低勤務日数 `, main: offer.min_workingday.days },
-    { title: `最低勤務期間 `, main: offer.min_period.period },
+    { title: `最低勤務日数 `, main: offer.min_workingday },
+    // { title: `最低勤務日数 `, main: offer.min_workingday.days },
+    { title: `最低勤務期間 `, main: offer.min_period },
+    // { title: `最低勤務期間 `, main: offer.min_period.period },
     { title: `休日・休暇`, main: offer.holiday },
     { title: `シフト詳細`, main: offer.shift },
     { title: `勤務場所`, main: offer.place_short },

@@ -184,7 +184,10 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                         }}
                       />
                       <Box ml={`${12 / 19.2}vw`}>職種</Box>
-                      <Box ml={`${50 / 19.2}vw`}>{occupation.name}</Box>
+                      <Box ml={`${50 / 19.2}vw`}>
+                        {occupation}
+                        {/*occupation.name*/}
+                      </Box>
                     </Flex>
                   </Box>
                   <Box mt={`${15 / 19.2}vw`} color={`#39414E`}>
@@ -255,7 +258,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               <Box fontSize={`${15 / 19.2}vw`}>
                 お祝い金
                 <Box as={`span`} fontSize={`${25 / 19.2}vw`}>
-                  {job_type.gift}
+                  {job_type}
+                  {/*job_type.gift*/}
                 </Box>
                 ポイントもらえる
               </Box>
@@ -422,7 +426,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     whiteSpace={`nowrap`}
                     w={{ base: `${90 / 3.75}vw`, md: `${90 / 7.68}vw` }}
                   >
-                    {occupation.name}
+                    {occupation}
+                    {/*occupation.name*/}
                   </Box>
                 </Flex>
                 <Flex
@@ -514,7 +519,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             <Box>
               お祝い金
               <Box as={`span`} fontSize={`${13 / 3.75}vw`} fontWeight={`bold`}>
-                {job_type.gift}
+                {job_type}
+                {/*job_type.gift*/}
               </Box>
               ポイントもらえる
             </Box>

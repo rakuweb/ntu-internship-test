@@ -23,22 +23,8 @@ query getOfferById($id: ID) {
         holiday
         email
         min_working_hours
-        min_period {
-          data {
-            id
-            attributes {
-              period
-            }
-          }
-        }
-        min_workingday {
-          data {
-            id
-            attributes {
-              days
-            }
-          }
-        }
+        min_period 
+        min_workingday 
         createdBy {
           id
           firstname
@@ -60,31 +46,9 @@ query getOfferById($id: ID) {
             }
           }
         }
-        occupation {
-          data {
-            id
-            attributes {
-              name
-            }
-          }
-        }
-        job_type {
-          data {
-            id
-            attributes {
-              name
-              gift
-            }
-          }
-        }
-        points {
-          data {
-            id
-            attributes {
-              name
-            }
-          }
-        }
+        occupation 
+        job_type 
+        points 
 
         image {
           data {

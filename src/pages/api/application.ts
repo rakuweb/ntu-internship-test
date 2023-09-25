@@ -16,7 +16,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   switch (method) {
     case 'POST': {
       try {
-        const { how_to_make: _, ...data } = req.body;
+        const { ...data } = req.body;
         // const { recaptcha: _recaptcha, ...data } = req.body;
 
         // const recaptchaRes = await fetch(RECAPTCHA_URL, {

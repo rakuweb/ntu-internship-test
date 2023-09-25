@@ -4,11 +4,6 @@ query getPointById($id: ID) {
       id
       attributes {
         name
-        offer {
-          data {
-            id
-          }
-        }
       }
     }
   }

@@ -2,15 +2,9 @@
 import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K];
-};
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]?: Maybe<T[SubKey]>;
-};
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]: Maybe<T[SubKey]>;
-};
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -26,6 +20,65 @@ export type Scalars = {
   JSON: any;
   /** The `Upload` scalar type represents a file upload. */
   Upload: any;
+};
+
+export type Agent = {
+  __typename?: 'Agent';
+  contact_request?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  email?: Maybe<Scalars['String']>;
+  job_link?: Maybe<Scalars['String']>;
+  level?: Maybe<Scalars['String']>;
+  manager_phone?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  remarks?: Maybe<Scalars['String']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type AgentEntity = {
+  __typename?: 'AgentEntity';
+  attributes?: Maybe<Agent>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type AgentEntityResponse = {
+  __typename?: 'AgentEntityResponse';
+  data?: Maybe<AgentEntity>;
+};
+
+export type AgentEntityResponseCollection = {
+  __typename?: 'AgentEntityResponseCollection';
+  data: Array<AgentEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type AgentFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<AgentFiltersInput>>>;
+  contact_request?: InputMaybe<StringFilterInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  email?: InputMaybe<StringFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  job_link?: InputMaybe<StringFilterInput>;
+  level?: InputMaybe<StringFilterInput>;
+  manager_phone?: InputMaybe<StringFilterInput>;
+  name?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<AgentFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<AgentFiltersInput>>>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  remarks?: InputMaybe<StringFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type AgentInput = {
+  contact_request?: InputMaybe<Scalars['String']>;
+  email?: InputMaybe<Scalars['String']>;
+  job_link?: InputMaybe<Scalars['String']>;
+  level?: InputMaybe<Scalars['String']>;
+  manager_phone?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  remarks?: InputMaybe<Scalars['String']>;
 };
 
 export type BooleanFilterInput = {
@@ -69,6 +122,7 @@ export type Company = {
   updatedAt?: Maybe<Scalars['DateTime']>;
   url?: Maybe<Scalars['String']>;
 };
+
 
 export type CompanyOffersArgs = {
   filters?: InputMaybe<OfferFiltersInput>;
@@ -139,9 +193,7 @@ export type ComponentAtmosphereAtmosphere = {
 };
 
 export type ComponentAtmosphereAtmosphereFiltersInput = {
-  and?: InputMaybe<
-    Array<InputMaybe<ComponentAtmosphereAtmosphereFiltersInput>>
-  >;
+  and?: InputMaybe<Array<InputMaybe<ComponentAtmosphereAtmosphereFiltersInput>>>;
   not?: InputMaybe<ComponentAtmosphereAtmosphereFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<ComponentAtmosphereAtmosphereFiltersInput>>>;
   text?: InputMaybe<StringFilterInput>;
@@ -157,16 +209,21 @@ export type ComponentAtmosphereAtmosphereInput = {
 
 export type Contact = {
   __typename?: 'Contact';
-  address?: Maybe<Scalars['String']>;
-  company_name?: Maybe<Scalars['String']>;
   createdAt?: Maybe<Scalars['DateTime']>;
-  inquiry_details?: Maybe<Scalars['String']>;
+  department?: Maybe<Scalars['String']>;
+  email?: Maybe<Scalars['String']>;
+  employment_status?: Maybe<Scalars['String']>;
   item?: Maybe<Scalars['String']>;
-  mail?: Maybe<Scalars['String']>;
+  listing_details?: Maybe<Scalars['String']>;
+  manager_name?: Maybe<Scalars['String']>;
+  manager_phone?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
-  phone?: Maybe<Scalars['String']>;
+  period?: Maybe<Scalars['String']>;
+  place?: Maybe<Scalars['String']>;
   publishedAt?: Maybe<Scalars['DateTime']>;
+  remarks?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
+  url?: Maybe<Scalars['String']>;
 };
 
 export type ContactEntity = {
@@ -187,31 +244,41 @@ export type ContactEntityResponseCollection = {
 };
 
 export type ContactFiltersInput = {
-  address?: InputMaybe<StringFilterInput>;
   and?: InputMaybe<Array<InputMaybe<ContactFiltersInput>>>;
-  company_name?: InputMaybe<StringFilterInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
+  department?: InputMaybe<StringFilterInput>;
+  email?: InputMaybe<StringFilterInput>;
+  employment_status?: InputMaybe<StringFilterInput>;
   id?: InputMaybe<IdFilterInput>;
-  inquiry_details?: InputMaybe<StringFilterInput>;
   item?: InputMaybe<StringFilterInput>;
-  mail?: InputMaybe<StringFilterInput>;
+  listing_details?: InputMaybe<StringFilterInput>;
+  manager_name?: InputMaybe<StringFilterInput>;
+  manager_phone?: InputMaybe<StringFilterInput>;
   name?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<ContactFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<ContactFiltersInput>>>;
-  phone?: InputMaybe<StringFilterInput>;
+  period?: InputMaybe<StringFilterInput>;
+  place?: InputMaybe<StringFilterInput>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
+  remarks?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
+  url?: InputMaybe<StringFilterInput>;
 };
 
 export type ContactInput = {
-  address?: InputMaybe<Scalars['String']>;
-  company_name?: InputMaybe<Scalars['String']>;
-  inquiry_details?: InputMaybe<Scalars['String']>;
+  department?: InputMaybe<Scalars['String']>;
+  email?: InputMaybe<Scalars['String']>;
+  employment_status?: InputMaybe<Scalars['String']>;
   item?: InputMaybe<Scalars['String']>;
-  mail?: InputMaybe<Scalars['String']>;
+  listing_details?: InputMaybe<Scalars['String']>;
+  manager_name?: InputMaybe<Scalars['String']>;
+  manager_phone?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
-  phone?: InputMaybe<Scalars['String']>;
+  period?: InputMaybe<Scalars['String']>;
+  place?: InputMaybe<Scalars['String']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
+  remarks?: InputMaybe<Scalars['String']>;
+  url?: InputMaybe<Scalars['String']>;
 };
 
 export type Creator = {
@@ -299,23 +366,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph =
-  | Company
-  | ComponentAtmosphereAtmosphere
-  | Contact
-  | I18NLocale
-  | JobType
-  | MinPeriod
-  | MinWorkingday
-  | Occupation
-  | Offer
-  | Point
-  | Submission
-  | UploadFile
-  | UploadFolder
-  | UsersPermissionsPermission
-  | UsersPermissionsRole
-  | UsersPermissionsUser;
+export type GenericMorph = Agent | Company | ComponentAtmosphereAtmosphere | Contact | I18NLocale | JobType | MinPeriod | MinWorkingday | Occupation | Offer | Point | Submission | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -555,6 +606,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
+  createAgent?: Maybe<AgentEntityResponse>;
   createCompany?: Maybe<CompanyEntityResponse>;
   createContact?: Maybe<ContactEntityResponse>;
   createJobType?: Maybe<JobTypeEntityResponse>;
@@ -570,6 +622,7 @@ export type Mutation = {
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
+  deleteAgent?: Maybe<AgentEntityResponse>;
   deleteCompany?: Maybe<CompanyEntityResponse>;
   deleteContact?: Maybe<ContactEntityResponse>;
   deleteJobType?: Maybe<JobTypeEntityResponse>;
@@ -596,6 +649,7 @@ export type Mutation = {
   removeFile?: Maybe<UploadFileEntityResponse>;
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
+  updateAgent?: Maybe<AgentEntityResponse>;
   updateCompany?: Maybe<CompanyEntityResponse>;
   updateContact?: Maybe<ContactEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
@@ -615,127 +669,168 @@ export type Mutation = {
   upload: UploadFileEntityResponse;
 };
 
+
 export type MutationChangePasswordArgs = {
   currentPassword: Scalars['String'];
   password: Scalars['String'];
   passwordConfirmation: Scalars['String'];
 };
 
+
+export type MutationCreateAgentArgs = {
+  data: AgentInput;
+};
+
+
 export type MutationCreateCompanyArgs = {
   data: CompanyInput;
 };
+
 
 export type MutationCreateContactArgs = {
   data: ContactInput;
 };
 
+
 export type MutationCreateJobTypeArgs = {
   data: JobTypeInput;
 };
+
 
 export type MutationCreateMinPeriodArgs = {
   data: MinPeriodInput;
 };
 
+
 export type MutationCreateMinWorkingdayArgs = {
   data: MinWorkingdayInput;
 };
+
 
 export type MutationCreateOccupationArgs = {
   data: OccupationInput;
 };
 
+
 export type MutationCreateOfferArgs = {
   data: OfferInput;
 };
+
 
 export type MutationCreatePointArgs = {
   data: PointInput;
 };
 
+
 export type MutationCreateSubmissionArgs = {
   data: SubmissionInput;
 };
+
 
 export type MutationCreateUploadFileArgs = {
   data: UploadFileInput;
 };
 
+
 export type MutationCreateUploadFolderArgs = {
   data: UploadFolderInput;
 };
+
 
 export type MutationCreateUsersPermissionsRoleArgs = {
   data: UsersPermissionsRoleInput;
 };
 
+
 export type MutationCreateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput;
 };
+
+
+export type MutationDeleteAgentArgs = {
+  id: Scalars['ID'];
+};
+
 
 export type MutationDeleteCompanyArgs = {
   id: Scalars['ID'];
 };
 
+
 export type MutationDeleteContactArgs = {
   id: Scalars['ID'];
 };
+
 
 export type MutationDeleteJobTypeArgs = {
   id: Scalars['ID'];
 };
 
+
 export type MutationDeleteMinPeriodArgs = {
   id: Scalars['ID'];
 };
+
 
 export type MutationDeleteMinWorkingdayArgs = {
   id: Scalars['ID'];
 };
 
+
 export type MutationDeleteOccupationArgs = {
   id: Scalars['ID'];
 };
+
 
 export type MutationDeleteOfferArgs = {
   id: Scalars['ID'];
 };
 
+
 export type MutationDeletePointArgs = {
   id: Scalars['ID'];
 };
+
 
 export type MutationDeleteSubmissionArgs = {
   id: Scalars['ID'];
 };
 
+
 export type MutationDeleteUploadFileArgs = {
   id: Scalars['ID'];
 };
+
 
 export type MutationDeleteUploadFolderArgs = {
   id: Scalars['ID'];
 };
 
+
 export type MutationDeleteUsersPermissionsRoleArgs = {
   id: Scalars['ID'];
 };
+
 
 export type MutationDeleteUsersPermissionsUserArgs = {
   id: Scalars['ID'];
 };
 
+
 export type MutationEmailConfirmationArgs = {
   confirmation: Scalars['String'];
 };
+
 
 export type MutationForgotPasswordArgs = {
   email: Scalars['String'];
 };
 
+
 export type MutationLoginArgs = {
   input: UsersPermissionsLoginInput;
 };
+
 
 export type MutationMultipleUploadArgs = {
   field?: InputMaybe<Scalars['String']>;
@@ -744,13 +839,16 @@ export type MutationMultipleUploadArgs = {
   refId?: InputMaybe<Scalars['ID']>;
 };
 
+
 export type MutationRegisterArgs = {
   input: UsersPermissionsRegisterInput;
 };
 
+
 export type MutationRemoveFileArgs = {
   id: Scalars['ID'];
 };
+
 
 export type MutationResetPasswordArgs = {
   code: Scalars['String'];
@@ -758,75 +856,96 @@ export type MutationResetPasswordArgs = {
   passwordConfirmation: Scalars['String'];
 };
 
+
+export type MutationUpdateAgentArgs = {
+  data: AgentInput;
+  id: Scalars['ID'];
+};
+
+
 export type MutationUpdateCompanyArgs = {
   data: CompanyInput;
   id: Scalars['ID'];
 };
+
 
 export type MutationUpdateContactArgs = {
   data: ContactInput;
   id: Scalars['ID'];
 };
 
+
 export type MutationUpdateFileInfoArgs = {
   id: Scalars['ID'];
   info?: InputMaybe<FileInfoInput>;
 };
+
 
 export type MutationUpdateJobTypeArgs = {
   data: JobTypeInput;
   id: Scalars['ID'];
 };
 
+
 export type MutationUpdateMinPeriodArgs = {
   data: MinPeriodInput;
   id: Scalars['ID'];
 };
+
 
 export type MutationUpdateMinWorkingdayArgs = {
   data: MinWorkingdayInput;
   id: Scalars['ID'];
 };
 
+
 export type MutationUpdateOccupationArgs = {
   data: OccupationInput;
   id: Scalars['ID'];
 };
+
 
 export type MutationUpdateOfferArgs = {
   data: OfferInput;
   id: Scalars['ID'];
 };
 
+
 export type MutationUpdatePointArgs = {
   data: PointInput;
   id: Scalars['ID'];
 };
+
 
 export type MutationUpdateSubmissionArgs = {
   data: SubmissionInput;
   id: Scalars['ID'];
 };
 
+
 export type MutationUpdateUploadFileArgs = {
   data: UploadFileInput;
   id: Scalars['ID'];
 };
+
 
 export type MutationUpdateUploadFolderArgs = {
   data: UploadFolderInput;
   id: Scalars['ID'];
 };
 
+
 export type MutationUpdateUsersPermissionsRoleArgs = {
   data: UsersPermissionsRoleInput;
   id: Scalars['ID'];
 };
 
+
 export type MutationUpdateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput;
   id: Scalars['ID'];
 };
+
 
 export type MutationUploadArgs = {
   field?: InputMaybe<Scalars['String']>;
@@ -883,46 +1002,43 @@ export type Offer = {
   company?: Maybe<CompanyEntityResponse>;
   createdAt?: Maybe<Scalars['DateTime']>;
   createdBy?: Maybe<Creator>;
+  desired_interview_date?: Maybe<Scalars['String']>;
+  desired_interview_time?: Maybe<Scalars['String']>;
   email: Scalars['String'];
   end_at: Scalars['Date'];
   flow?: Maybe<Scalars['String']>;
   holiday?: Maybe<Scalars['String']>;
-  hourly_wage: Scalars['String'];
+  hourly_wage?: Maybe<Scalars['String']>;
   hourly_wage_detail?: Maybe<Scalars['String']>;
   hours_detail?: Maybe<Scalars['String']>;
   hours_short: Scalars['String'];
-  image: UploadFileEntityResponse;
+  image?: Maybe<UploadFileEntityResponse>;
   interview_location: Scalars['String'];
+  interview_remarks?: Maybe<Scalars['String']>;
   job_description: Scalars['String'];
-  job_type?: Maybe<JobTypeEntityResponse>;
-  min_period?: Maybe<MinPeriodEntityResponse>;
-  min_working_hours: Scalars['String'];
-  min_workingday?: Maybe<MinWorkingdayEntityResponse>;
-  occupation?: Maybe<OccupationEntityResponse>;
+  job_type?: Maybe<Scalars['String']>;
+  min_period?: Maybe<Scalars['String']>;
+  min_working_hours?: Maybe<Scalars['String']>;
+  min_workingday?: Maybe<Scalars['String']>;
+  occupation?: Maybe<Scalars['String']>;
   people: Scalars['String'];
-  place_detail: Scalars['String'];
+  place_detail?: Maybe<Scalars['String']>;
   place_short: Scalars['String'];
-  points?: Maybe<PointRelationResponseCollection>;
+  points?: Maybe<Scalars['String']>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   qualification?: Maybe<Scalars['String']>;
   shift?: Maybe<Scalars['String']>;
   start_at: Scalars['Date'];
   target: Scalars['String'];
-  title: Scalars['String'];
+  title?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
   url?: Maybe<Scalars['String']>;
 };
 
+
 export type OfferAtmosphereArgs = {
   filters?: InputMaybe<ComponentAtmosphereAtmosphereFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-export type OfferPointsArgs = {
-  filters?: InputMaybe<PointFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
@@ -948,6 +1064,8 @@ export type OfferFiltersInput = {
   atmosphere?: InputMaybe<ComponentAtmosphereAtmosphereFiltersInput>;
   company?: InputMaybe<CompanyFiltersInput>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
+  desired_interview_date?: InputMaybe<StringFilterInput>;
+  desired_interview_time?: InputMaybe<StringFilterInput>;
   email?: InputMaybe<StringFilterInput>;
   end_at?: InputMaybe<DateFilterInput>;
   flow?: InputMaybe<StringFilterInput>;
@@ -958,18 +1076,19 @@ export type OfferFiltersInput = {
   hours_short?: InputMaybe<StringFilterInput>;
   id?: InputMaybe<IdFilterInput>;
   interview_location?: InputMaybe<StringFilterInput>;
+  interview_remarks?: InputMaybe<StringFilterInput>;
   job_description?: InputMaybe<StringFilterInput>;
-  job_type?: InputMaybe<JobTypeFiltersInput>;
-  min_period?: InputMaybe<MinPeriodFiltersInput>;
+  job_type?: InputMaybe<StringFilterInput>;
+  min_period?: InputMaybe<StringFilterInput>;
   min_working_hours?: InputMaybe<StringFilterInput>;
-  min_workingday?: InputMaybe<MinWorkingdayFiltersInput>;
+  min_workingday?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<OfferFiltersInput>;
-  occupation?: InputMaybe<OccupationFiltersInput>;
+  occupation?: InputMaybe<StringFilterInput>;
   or?: InputMaybe<Array<InputMaybe<OfferFiltersInput>>>;
   people?: InputMaybe<StringFilterInput>;
   place_detail?: InputMaybe<StringFilterInput>;
   place_short?: InputMaybe<StringFilterInput>;
-  points?: InputMaybe<PointFiltersInput>;
+  points?: InputMaybe<StringFilterInput>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
   qualification?: InputMaybe<StringFilterInput>;
   shift?: InputMaybe<StringFilterInput>;
@@ -981,10 +1100,10 @@ export type OfferFiltersInput = {
 };
 
 export type OfferInput = {
-  atmosphere?: InputMaybe<
-    Array<InputMaybe<ComponentAtmosphereAtmosphereInput>>
-  >;
+  atmosphere?: InputMaybe<Array<InputMaybe<ComponentAtmosphereAtmosphereInput>>>;
   company?: InputMaybe<Scalars['ID']>;
+  desired_interview_date?: InputMaybe<Scalars['String']>;
+  desired_interview_time?: InputMaybe<Scalars['String']>;
   email?: InputMaybe<Scalars['String']>;
   end_at?: InputMaybe<Scalars['Date']>;
   flow?: InputMaybe<Scalars['String']>;
@@ -995,16 +1114,17 @@ export type OfferInput = {
   hours_short?: InputMaybe<Scalars['String']>;
   image?: InputMaybe<Scalars['ID']>;
   interview_location?: InputMaybe<Scalars['String']>;
+  interview_remarks?: InputMaybe<Scalars['String']>;
   job_description?: InputMaybe<Scalars['String']>;
-  job_type?: InputMaybe<Scalars['ID']>;
-  min_period?: InputMaybe<Scalars['ID']>;
+  job_type?: InputMaybe<Scalars['String']>;
+  min_period?: InputMaybe<Scalars['String']>;
   min_working_hours?: InputMaybe<Scalars['String']>;
-  min_workingday?: InputMaybe<Scalars['ID']>;
-  occupation?: InputMaybe<Scalars['ID']>;
+  min_workingday?: InputMaybe<Scalars['String']>;
+  occupation?: InputMaybe<Scalars['String']>;
   people?: InputMaybe<Scalars['String']>;
   place_detail?: InputMaybe<Scalars['String']>;
   place_short?: InputMaybe<Scalars['String']>;
-  points?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  points?: InputMaybe<Scalars['String']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   qualification?: InputMaybe<Scalars['String']>;
   shift?: InputMaybe<Scalars['String']>;
@@ -1038,7 +1158,6 @@ export type Point = {
   __typename?: 'Point';
   createdAt?: Maybe<Scalars['DateTime']>;
   name?: Maybe<Scalars['String']>;
-  offer?: Maybe<OfferEntityResponse>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
@@ -1066,7 +1185,6 @@ export type PointFiltersInput = {
   id?: InputMaybe<IdFilterInput>;
   name?: InputMaybe<StringFilterInput>;
   not?: InputMaybe<PointFiltersInput>;
-  offer?: InputMaybe<OfferFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<PointFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
@@ -1074,22 +1192,18 @@ export type PointFiltersInput = {
 
 export type PointInput = {
   name?: InputMaybe<Scalars['String']>;
-  offer?: InputMaybe<Scalars['ID']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
-};
-
-export type PointRelationResponseCollection = {
-  __typename?: 'PointRelationResponseCollection';
-  data: Array<PointEntity>;
 };
 
 export enum PublicationState {
   Live = 'LIVE',
-  Preview = 'PREVIEW',
+  Preview = 'PREVIEW'
 }
 
 export type Query = {
   __typename?: 'Query';
+  agent?: Maybe<AgentEntityResponse>;
+  agents?: Maybe<AgentEntityResponseCollection>;
   companies?: Maybe<CompanyEntityResponseCollection>;
   company?: Maybe<CompanyEntityResponse>;
   contact?: Maybe<ContactEntityResponse>;
@@ -1121,19 +1235,36 @@ export type Query = {
   usersPermissionsUsers?: Maybe<UsersPermissionsUserEntityResponseCollection>;
 };
 
+
+export type QueryAgentArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryAgentsArgs = {
+  filters?: InputMaybe<AgentFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
 export type QueryCompaniesArgs = {
   filters?: InputMaybe<CompanyFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 export type QueryCompanyArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
+
 export type QueryContactArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
+
 
 export type QueryContactsArgs = {
   filters?: InputMaybe<ContactFiltersInput>;
@@ -1142,9 +1273,11 @@ export type QueryContactsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 export type QueryI18NLocaleArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
+
 
 export type QueryI18NLocalesArgs = {
   filters?: InputMaybe<I18NLocaleFiltersInput>;
@@ -1152,9 +1285,11 @@ export type QueryI18NLocalesArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 export type QueryJobTypeArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
+
 
 export type QueryJobTypesArgs = {
   filters?: InputMaybe<JobTypeFiltersInput>;
@@ -1163,9 +1298,11 @@ export type QueryJobTypesArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 export type QueryMinPeriodArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
+
 
 export type QueryMinPeriodsArgs = {
   filters?: InputMaybe<MinPeriodFiltersInput>;
@@ -1174,9 +1311,11 @@ export type QueryMinPeriodsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 export type QueryMinWorkingdayArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
+
 
 export type QueryMinWorkingdaysArgs = {
   filters?: InputMaybe<MinWorkingdayFiltersInput>;
@@ -1185,9 +1324,11 @@ export type QueryMinWorkingdaysArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 export type QueryOccupationArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
+
 
 export type QueryOccupationsArgs = {
   filters?: InputMaybe<OccupationFiltersInput>;
@@ -1196,9 +1337,11 @@ export type QueryOccupationsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 export type QueryOfferArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
+
 
 export type QueryOffersArgs = {
   filters?: InputMaybe<OfferFiltersInput>;
@@ -1207,9 +1350,11 @@ export type QueryOffersArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 export type QueryPointArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
+
 
 export type QueryPointsArgs = {
   filters?: InputMaybe<PointFiltersInput>;
@@ -1218,9 +1363,11 @@ export type QueryPointsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 export type QuerySubmissionArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
+
 
 export type QuerySubmissionsArgs = {
   filters?: InputMaybe<SubmissionFiltersInput>;
@@ -1229,9 +1376,11 @@ export type QuerySubmissionsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 export type QueryUploadFileArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
+
 
 export type QueryUploadFilesArgs = {
   filters?: InputMaybe<UploadFileFiltersInput>;
@@ -1239,9 +1388,11 @@ export type QueryUploadFilesArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 export type QueryUploadFolderArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
+
 
 export type QueryUploadFoldersArgs = {
   filters?: InputMaybe<UploadFolderFiltersInput>;
@@ -1249,9 +1400,11 @@ export type QueryUploadFoldersArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 export type QueryUsersPermissionsRoleArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
+
 
 export type QueryUsersPermissionsRolesArgs = {
   filters?: InputMaybe<UsersPermissionsRoleFiltersInput>;
@@ -1259,9 +1412,11 @@ export type QueryUsersPermissionsRolesArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
+
 export type QueryUsersPermissionsUserArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
+
 
 export type QueryUsersPermissionsUsersArgs = {
   filters?: InputMaybe<UsersPermissionsUserFiltersInput>;
@@ -1468,11 +1623,13 @@ export type UploadFolder = {
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
+
 export type UploadFolderChildrenArgs = {
   filters?: InputMaybe<UploadFolderFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
+
 
 export type UploadFolderFilesArgs = {
   filters?: InputMaybe<UploadFileFiltersInput>;
@@ -1618,11 +1775,13 @@ export type UsersPermissionsRole = {
   users?: Maybe<UsersPermissionsUserRelationResponseCollection>;
 };
 
+
 export type UsersPermissionsRolePermissionsArgs = {
   filters?: InputMaybe<UsersPermissionsPermissionFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
+
 
 export type UsersPermissionsRoleUsersArgs = {
   filters?: InputMaybe<UsersPermissionsUserFiltersInput>;
@@ -1742,1456 +1901,36 @@ export type GetOfferByIdQueryVariables = Exact<{
   id?: InputMaybe<Scalars['ID']>;
 }>;
 
-export type GetOfferByIdQuery = {
-  __typename?: 'Query';
-  offer?: {
-    __typename?: 'OfferEntityResponse';
-    data?: {
-      __typename?: 'OfferEntity';
-      id?: string | null;
-      attributes?: {
-        __typename?: 'Offer';
-        title: string;
-        hourly_wage: string;
-        hourly_wage_detail?: string | null;
-        place_short: string;
-        place_detail: string;
-        hours_short: string;
-        hours_detail?: string | null;
-        job_description: string;
-        start_at: any;
-        end_at: any;
-        target: string;
-        url?: string | null;
-        qualification?: string | null;
-        people: string;
-        interview_location: string;
-        flow?: string | null;
-        shift?: string | null;
-        holiday?: string | null;
-        email: string;
-        min_working_hours: string;
-        min_period?: {
-          __typename?: 'MinPeriodEntityResponse';
-          data?: {
-            __typename?: 'MinPeriodEntity';
-            id?: string | null;
-            attributes?: {
-              __typename?: 'MinPeriod';
-              period?: string | null;
-            } | null;
-          } | null;
-        } | null;
-        min_workingday?: {
-          __typename?: 'MinWorkingdayEntityResponse';
-          data?: {
-            __typename?: 'MinWorkingdayEntity';
-            id?: string | null;
-            attributes?: {
-              __typename?: 'MinWorkingday';
-              days?: string | null;
-            } | null;
-          } | null;
-        } | null;
-        createdBy?: {
-          __typename?: 'Creator';
-          id?: number | null;
-          firstname?: string | null;
-          lastname?: string | null;
-        } | null;
-        atmosphere?: Array<{
-          __typename?: 'ComponentAtmosphereAtmosphere';
-          title?: string | null;
-          text?: string | null;
-          image?: {
-            __typename?: 'UploadFileEntityResponse';
-            data?: {
-              __typename?: 'UploadFileEntity';
-              id?: string | null;
-              attributes?: {
-                __typename?: 'UploadFile';
-                width?: number | null;
-                height?: number | null;
-                url: string;
-                alternativeText?: string | null;
-                formats?: any | null;
-              } | null;
-            } | null;
-          } | null;
-        } | null> | null;
-        occupation?: {
-          __typename?: 'OccupationEntityResponse';
-          data?: {
-            __typename?: 'OccupationEntity';
-            id?: string | null;
-            attributes?: {
-              __typename?: 'Occupation';
-              name?: string | null;
-            } | null;
-          } | null;
-        } | null;
-        job_type?: {
-          __typename?: 'JobTypeEntityResponse';
-          data?: {
-            __typename?: 'JobTypeEntity';
-            id?: string | null;
-            attributes?: {
-              __typename?: 'JobType';
-              name?: string | null;
-              gift?: string | null;
-            } | null;
-          } | null;
-        } | null;
-        points?: {
-          __typename?: 'PointRelationResponseCollection';
-          data: Array<{
-            __typename?: 'PointEntity';
-            id?: string | null;
-            attributes?: { __typename?: 'Point'; name?: string | null } | null;
-          }>;
-        } | null;
-        image: {
-          __typename?: 'UploadFileEntityResponse';
-          data?: {
-            __typename?: 'UploadFileEntity';
-            id?: string | null;
-            attributes?: {
-              __typename?: 'UploadFile';
-              width?: number | null;
-              height?: number | null;
-              url: string;
-              alternativeText?: string | null;
-              formats?: any | null;
-            } | null;
-          } | null;
-        };
-      } | null;
-    } | null;
-  } | null;
-};
+
+export type GetOfferByIdQuery = { __typename?: 'Query', offer?: { __typename?: 'OfferEntityResponse', data?: { __typename?: 'OfferEntity', id?: string | null, attributes?: { __typename?: 'Offer', title?: string | null, hourly_wage?: string | null, hourly_wage_detail?: string | null, place_short: string, place_detail?: string | null, hours_short: string, hours_detail?: string | null, job_description: string, start_at: any, end_at: any, target: string, url?: string | null, qualification?: string | null, people: string, interview_location: string, flow?: string | null, shift?: string | null, holiday?: string | null, email: string, min_working_hours?: string | null, min_period?: string | null, min_workingday?: string | null, occupation?: string | null, job_type?: string | null, points?: string | null, createdBy?: { __typename?: 'Creator', id?: number | null, firstname?: string | null, lastname?: string | null } | null, atmosphere?: Array<{ __typename?: 'ComponentAtmosphereAtmosphere', title?: string | null, text?: string | null, image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, url: string, alternativeText?: string | null, formats?: any | null } | null } | null } | null } | null> | null, image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, url: string, alternativeText?: string | null, formats?: any | null } | null } | null } | null } | null } | null } | null };
 
 export type GetOfferPathsQueryVariables = Exact<{
   today?: InputMaybe<Scalars['Date']>;
 }>;
 
-export type GetOfferPathsQuery = {
-  __typename?: 'Query';
-  offers?: {
-    __typename?: 'OfferEntityResponseCollection';
-    data: Array<{ __typename?: 'OfferEntity'; id?: string | null }>;
-  } | null;
-};
 
-export type GetOffersAllQueryVariables = Exact<{ [key: string]: never }>;
+export type GetOfferPathsQuery = { __typename?: 'Query', offers?: { __typename?: 'OfferEntityResponseCollection', data: Array<{ __typename?: 'OfferEntity', id?: string | null }> } | null };
 
-export type GetOffersAllQuery = {
-  __typename?: 'Query';
-  offers?: {
-    __typename?: 'OfferEntityResponseCollection';
-    data: Array<{
-      __typename?: 'OfferEntity';
-      id?: string | null;
-      attributes?: {
-        __typename?: 'Offer';
-        title: string;
-        hourly_wage: string;
-        place_short: string;
-        hours_short: string;
-        start_at: any;
-        end_at: any;
-        createdBy?: {
-          __typename?: 'Creator';
-          id?: number | null;
-          firstname?: string | null;
-          lastname?: string | null;
-        } | null;
-        occupation?: {
-          __typename?: 'OccupationEntityResponse';
-          data?: {
-            __typename?: 'OccupationEntity';
-            id?: string | null;
-            attributes?: {
-              __typename?: 'Occupation';
-              name?: string | null;
-            } | null;
-          } | null;
-        } | null;
-        job_type?: {
-          __typename?: 'JobTypeEntityResponse';
-          data?: {
-            __typename?: 'JobTypeEntity';
-            id?: string | null;
-            attributes?: {
-              __typename?: 'JobType';
-              name?: string | null;
-              gift?: string | null;
-            } | null;
-          } | null;
-        } | null;
-        min_period?: {
-          __typename?: 'MinPeriodEntityResponse';
-          data?: {
-            __typename?: 'MinPeriodEntity';
-            id?: string | null;
-            attributes?: {
-              __typename?: 'MinPeriod';
-              period?: string | null;
-            } | null;
-          } | null;
-        } | null;
-        min_workingday?: {
-          __typename?: 'MinWorkingdayEntityResponse';
-          data?: {
-            __typename?: 'MinWorkingdayEntity';
-            id?: string | null;
-            attributes?: {
-              __typename?: 'MinWorkingday';
-              days?: string | null;
-            } | null;
-          } | null;
-        } | null;
-        points?: {
-          __typename?: 'PointRelationResponseCollection';
-          data: Array<{
-            __typename?: 'PointEntity';
-            id?: string | null;
-            attributes?: { __typename?: 'Point'; name?: string | null } | null;
-          }>;
-        } | null;
-        image: {
-          __typename?: 'UploadFileEntityResponse';
-          data?: {
-            __typename?: 'UploadFileEntity';
-            id?: string | null;
-            attributes?: {
-              __typename?: 'UploadFile';
-              width?: number | null;
-              height?: number | null;
-              url: string;
-              alternativeText?: string | null;
-              formats?: any | null;
-            } | null;
-          } | null;
-        };
-      } | null;
-    }>;
-  } | null;
-};
+export type GetOffersAllQueryVariables = Exact<{ [key: string]: never; }>;
 
-export type GetPointsQueryVariables = Exact<{ [key: string]: never }>;
 
-export type GetPointsQuery = {
-  __typename?: 'Query';
-  points?: {
-    __typename?: 'PointEntityResponseCollection';
-    data: Array<{
-      __typename?: 'PointEntity';
-      id?: string | null;
-      attributes?: {
-        __typename?: 'Point';
-        name?: string | null;
-        offer?: {
-          __typename?: 'OfferEntityResponse';
-          data?: { __typename?: 'OfferEntity'; id?: string | null } | null;
-        } | null;
-      } | null;
-    }>;
-  } | null;
-};
+export type GetOffersAllQuery = { __typename?: 'Query', offers?: { __typename?: 'OfferEntityResponseCollection', data: Array<{ __typename?: 'OfferEntity', id?: string | null, attributes?: { __typename?: 'Offer', title?: string | null, hourly_wage?: string | null, place_short: string, hours_short: string, start_at: any, end_at: any, occupation?: string | null, job_type?: string | null, min_period?: string | null, min_workingday?: string | null, points?: string | null, createdBy?: { __typename?: 'Creator', id?: number | null, firstname?: string | null, lastname?: string | null } | null, image?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', width?: number | null, height?: number | null, url: string, alternativeText?: string | null, formats?: any | null } | null } | null } | null } | null }> } | null };
+
+export type GetPointsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetPointsQuery = { __typename?: 'Query', points?: { __typename?: 'PointEntityResponseCollection', data: Array<{ __typename?: 'PointEntity', id?: string | null, attributes?: { __typename?: 'Point', name?: string | null } | null }> } | null };
 
 export type GetPointByIdQueryVariables = Exact<{
   id?: InputMaybe<Scalars['ID']>;
 }>;
 
-export type GetPointByIdQuery = {
-  __typename?: 'Query';
-  point?: {
-    __typename?: 'PointEntityResponse';
-    data?: {
-      __typename?: 'PointEntity';
-      id?: string | null;
-      attributes?: {
-        __typename?: 'Point';
-        name?: string | null;
-        offer?: {
-          __typename?: 'OfferEntityResponse';
-          data?: { __typename?: 'OfferEntity'; id?: string | null } | null;
-        } | null;
-      } | null;
-    } | null;
-  } | null;
-};
 
-export const GetOfferByIdDocument = {
-  kind: 'Document',
-  definitions: [
-    {
-      kind: 'OperationDefinition',
-      operation: 'query',
-      name: { kind: 'Name', value: 'getOfferById' },
-      variableDefinitions: [
-        {
-          kind: 'VariableDefinition',
-          variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
-          type: { kind: 'NamedType', name: { kind: 'Name', value: 'ID' } },
-        },
-      ],
-      selectionSet: {
-        kind: 'SelectionSet',
-        selections: [
-          {
-            kind: 'Field',
-            name: { kind: 'Name', value: 'offer' },
-            arguments: [
-              {
-                kind: 'Argument',
-                name: { kind: 'Name', value: 'id' },
-                value: {
-                  kind: 'Variable',
-                  name: { kind: 'Name', value: 'id' },
-                },
-              },
-            ],
-            selectionSet: {
-              kind: 'SelectionSet',
-              selections: [
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'data' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [
-                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'attributes' },
-                        selectionSet: {
-                          kind: 'SelectionSet',
-                          selections: [
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'title' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'hourly_wage' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: {
-                                kind: 'Name',
-                                value: 'hourly_wage_detail',
-                              },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'place_short' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'place_detail' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'hours_short' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'hours_detail' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'job_description' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'start_at' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'end_at' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'target' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'url' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'qualification' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'people' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: {
-                                kind: 'Name',
-                                value: 'interview_location',
-                              },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'flow' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'shift' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'holiday' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'email' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: {
-                                kind: 'Name',
-                                value: 'min_working_hours',
-                              },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'min_period' },
-                              selectionSet: {
-                                kind: 'SelectionSet',
-                                selections: [
-                                  {
-                                    kind: 'Field',
-                                    name: { kind: 'Name', value: 'data' },
-                                    selectionSet: {
-                                      kind: 'SelectionSet',
-                                      selections: [
-                                        {
-                                          kind: 'Field',
-                                          name: { kind: 'Name', value: 'id' },
-                                        },
-                                        {
-                                          kind: 'Field',
-                                          name: {
-                                            kind: 'Name',
-                                            value: 'attributes',
-                                          },
-                                          selectionSet: {
-                                            kind: 'SelectionSet',
-                                            selections: [
-                                              {
-                                                kind: 'Field',
-                                                name: {
-                                                  kind: 'Name',
-                                                  value: 'period',
-                                                },
-                                              },
-                                            ],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'min_workingday' },
-                              selectionSet: {
-                                kind: 'SelectionSet',
-                                selections: [
-                                  {
-                                    kind: 'Field',
-                                    name: { kind: 'Name', value: 'data' },
-                                    selectionSet: {
-                                      kind: 'SelectionSet',
-                                      selections: [
-                                        {
-                                          kind: 'Field',
-                                          name: { kind: 'Name', value: 'id' },
-                                        },
-                                        {
-                                          kind: 'Field',
-                                          name: {
-                                            kind: 'Name',
-                                            value: 'attributes',
-                                          },
-                                          selectionSet: {
-                                            kind: 'SelectionSet',
-                                            selections: [
-                                              {
-                                                kind: 'Field',
-                                                name: {
-                                                  kind: 'Name',
-                                                  value: 'days',
-                                                },
-                                              },
-                                            ],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'createdBy' },
-                              selectionSet: {
-                                kind: 'SelectionSet',
-                                selections: [
-                                  {
-                                    kind: 'Field',
-                                    name: { kind: 'Name', value: 'id' },
-                                  },
-                                  {
-                                    kind: 'Field',
-                                    name: { kind: 'Name', value: 'firstname' },
-                                  },
-                                  {
-                                    kind: 'Field',
-                                    name: { kind: 'Name', value: 'lastname' },
-                                  },
-                                ],
-                              },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'atmosphere' },
-                              selectionSet: {
-                                kind: 'SelectionSet',
-                                selections: [
-                                  {
-                                    kind: 'Field',
-                                    name: { kind: 'Name', value: 'title' },
-                                  },
-                                  {
-                                    kind: 'Field',
-                                    name: { kind: 'Name', value: 'text' },
-                                  },
-                                  {
-                                    kind: 'Field',
-                                    name: { kind: 'Name', value: 'image' },
-                                    selectionSet: {
-                                      kind: 'SelectionSet',
-                                      selections: [
-                                        {
-                                          kind: 'Field',
-                                          name: { kind: 'Name', value: 'data' },
-                                          selectionSet: {
-                                            kind: 'SelectionSet',
-                                            selections: [
-                                              {
-                                                kind: 'Field',
-                                                name: {
-                                                  kind: 'Name',
-                                                  value: 'id',
-                                                },
-                                              },
-                                              {
-                                                kind: 'Field',
-                                                name: {
-                                                  kind: 'Name',
-                                                  value: 'attributes',
-                                                },
-                                                selectionSet: {
-                                                  kind: 'SelectionSet',
-                                                  selections: [
-                                                    {
-                                                      kind: 'Field',
-                                                      name: {
-                                                        kind: 'Name',
-                                                        value: 'width',
-                                                      },
-                                                    },
-                                                    {
-                                                      kind: 'Field',
-                                                      name: {
-                                                        kind: 'Name',
-                                                        value: 'height',
-                                                      },
-                                                    },
-                                                    {
-                                                      kind: 'Field',
-                                                      name: {
-                                                        kind: 'Name',
-                                                        value: 'url',
-                                                      },
-                                                    },
-                                                    {
-                                                      kind: 'Field',
-                                                      name: {
-                                                        kind: 'Name',
-                                                        value:
-                                                          'alternativeText',
-                                                      },
-                                                    },
-                                                    {
-                                                      kind: 'Field',
-                                                      name: {
-                                                        kind: 'Name',
-                                                        value: 'formats',
-                                                      },
-                                                    },
-                                                  ],
-                                                },
-                                              },
-                                            ],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'occupation' },
-                              selectionSet: {
-                                kind: 'SelectionSet',
-                                selections: [
-                                  {
-                                    kind: 'Field',
-                                    name: { kind: 'Name', value: 'data' },
-                                    selectionSet: {
-                                      kind: 'SelectionSet',
-                                      selections: [
-                                        {
-                                          kind: 'Field',
-                                          name: { kind: 'Name', value: 'id' },
-                                        },
-                                        {
-                                          kind: 'Field',
-                                          name: {
-                                            kind: 'Name',
-                                            value: 'attributes',
-                                          },
-                                          selectionSet: {
-                                            kind: 'SelectionSet',
-                                            selections: [
-                                              {
-                                                kind: 'Field',
-                                                name: {
-                                                  kind: 'Name',
-                                                  value: 'name',
-                                                },
-                                              },
-                                            ],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'job_type' },
-                              selectionSet: {
-                                kind: 'SelectionSet',
-                                selections: [
-                                  {
-                                    kind: 'Field',
-                                    name: { kind: 'Name', value: 'data' },
-                                    selectionSet: {
-                                      kind: 'SelectionSet',
-                                      selections: [
-                                        {
-                                          kind: 'Field',
-                                          name: { kind: 'Name', value: 'id' },
-                                        },
-                                        {
-                                          kind: 'Field',
-                                          name: {
-                                            kind: 'Name',
-                                            value: 'attributes',
-                                          },
-                                          selectionSet: {
-                                            kind: 'SelectionSet',
-                                            selections: [
-                                              {
-                                                kind: 'Field',
-                                                name: {
-                                                  kind: 'Name',
-                                                  value: 'name',
-                                                },
-                                              },
-                                              {
-                                                kind: 'Field',
-                                                name: {
-                                                  kind: 'Name',
-                                                  value: 'gift',
-                                                },
-                                              },
-                                            ],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'points' },
-                              selectionSet: {
-                                kind: 'SelectionSet',
-                                selections: [
-                                  {
-                                    kind: 'Field',
-                                    name: { kind: 'Name', value: 'data' },
-                                    selectionSet: {
-                                      kind: 'SelectionSet',
-                                      selections: [
-                                        {
-                                          kind: 'Field',
-                                          name: { kind: 'Name', value: 'id' },
-                                        },
-                                        {
-                                          kind: 'Field',
-                                          name: {
-                                            kind: 'Name',
-                                            value: 'attributes',
-                                          },
-                                          selectionSet: {
-                                            kind: 'SelectionSet',
-                                            selections: [
-                                              {
-                                                kind: 'Field',
-                                                name: {
-                                                  kind: 'Name',
-                                                  value: 'name',
-                                                },
-                                              },
-                                            ],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'image' },
-                              selectionSet: {
-                                kind: 'SelectionSet',
-                                selections: [
-                                  {
-                                    kind: 'Field',
-                                    name: { kind: 'Name', value: 'data' },
-                                    selectionSet: {
-                                      kind: 'SelectionSet',
-                                      selections: [
-                                        {
-                                          kind: 'Field',
-                                          name: { kind: 'Name', value: 'id' },
-                                        },
-                                        {
-                                          kind: 'Field',
-                                          name: {
-                                            kind: 'Name',
-                                            value: 'attributes',
-                                          },
-                                          selectionSet: {
-                                            kind: 'SelectionSet',
-                                            selections: [
-                                              {
-                                                kind: 'Field',
-                                                name: {
-                                                  kind: 'Name',
-                                                  value: 'width',
-                                                },
-                                              },
-                                              {
-                                                kind: 'Field',
-                                                name: {
-                                                  kind: 'Name',
-                                                  value: 'height',
-                                                },
-                                              },
-                                              {
-                                                kind: 'Field',
-                                                name: {
-                                                  kind: 'Name',
-                                                  value: 'url',
-                                                },
-                                              },
-                                              {
-                                                kind: 'Field',
-                                                name: {
-                                                  kind: 'Name',
-                                                  value: 'alternativeText',
-                                                },
-                                              },
-                                              {
-                                                kind: 'Field',
-                                                name: {
-                                                  kind: 'Name',
-                                                  value: 'formats',
-                                                },
-                                              },
-                                            ],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                          ],
-                        },
-                      },
-                    ],
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<GetOfferByIdQuery, GetOfferByIdQueryVariables>;
-export const GetOfferPathsDocument = {
-  kind: 'Document',
-  definitions: [
-    {
-      kind: 'OperationDefinition',
-      operation: 'query',
-      name: { kind: 'Name', value: 'getOfferPaths' },
-      variableDefinitions: [
-        {
-          kind: 'VariableDefinition',
-          variable: {
-            kind: 'Variable',
-            name: { kind: 'Name', value: 'today' },
-          },
-          type: { kind: 'NamedType', name: { kind: 'Name', value: 'Date' } },
-        },
-      ],
-      selectionSet: {
-        kind: 'SelectionSet',
-        selections: [
-          {
-            kind: 'Field',
-            name: { kind: 'Name', value: 'offers' },
-            arguments: [
-              {
-                kind: 'Argument',
-                name: { kind: 'Name', value: 'sort' },
-                value: {
-                  kind: 'StringValue',
-                  value: 'publishedAt:desc',
-                  block: false,
-                },
-              },
-              {
-                kind: 'Argument',
-                name: { kind: 'Name', value: 'filters' },
-                value: {
-                  kind: 'ObjectValue',
-                  fields: [
-                    {
-                      kind: 'ObjectField',
-                      name: { kind: 'Name', value: 'end_at' },
-                      value: {
-                        kind: 'ObjectValue',
-                        fields: [
-                          {
-                            kind: 'ObjectField',
-                            name: { kind: 'Name', value: 'gte' },
-                            value: {
-                              kind: 'Variable',
-                              name: { kind: 'Name', value: 'today' },
-                            },
-                          },
-                        ],
-                      },
-                    },
-                  ],
-                },
-              },
-            ],
-            selectionSet: {
-              kind: 'SelectionSet',
-              selections: [
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'data' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [
-                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
-                    ],
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<GetOfferPathsQuery, GetOfferPathsQueryVariables>;
-export const GetOffersAllDocument = {
-  kind: 'Document',
-  definitions: [
-    {
-      kind: 'OperationDefinition',
-      operation: 'query',
-      name: { kind: 'Name', value: 'getOffersAll' },
-      selectionSet: {
-        kind: 'SelectionSet',
-        selections: [
-          {
-            kind: 'Field',
-            name: { kind: 'Name', value: 'offers' },
-            arguments: [
-              {
-                kind: 'Argument',
-                name: { kind: 'Name', value: 'sort' },
-                value: {
-                  kind: 'StringValue',
-                  value: 'publishedAt:desc',
-                  block: false,
-                },
-              },
-            ],
-            selectionSet: {
-              kind: 'SelectionSet',
-              selections: [
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'data' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [
-                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'attributes' },
-                        selectionSet: {
-                          kind: 'SelectionSet',
-                          selections: [
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'title' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'hourly_wage' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'place_short' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'hours_short' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'start_at' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'end_at' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'createdBy' },
-                              selectionSet: {
-                                kind: 'SelectionSet',
-                                selections: [
-                                  {
-                                    kind: 'Field',
-                                    name: { kind: 'Name', value: 'id' },
-                                  },
-                                  {
-                                    kind: 'Field',
-                                    name: { kind: 'Name', value: 'firstname' },
-                                  },
-                                  {
-                                    kind: 'Field',
-                                    name: { kind: 'Name', value: 'lastname' },
-                                  },
-                                ],
-                              },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'occupation' },
-                              selectionSet: {
-                                kind: 'SelectionSet',
-                                selections: [
-                                  {
-                                    kind: 'Field',
-                                    name: { kind: 'Name', value: 'data' },
-                                    selectionSet: {
-                                      kind: 'SelectionSet',
-                                      selections: [
-                                        {
-                                          kind: 'Field',
-                                          name: { kind: 'Name', value: 'id' },
-                                        },
-                                        {
-                                          kind: 'Field',
-                                          name: {
-                                            kind: 'Name',
-                                            value: 'attributes',
-                                          },
-                                          selectionSet: {
-                                            kind: 'SelectionSet',
-                                            selections: [
-                                              {
-                                                kind: 'Field',
-                                                name: {
-                                                  kind: 'Name',
-                                                  value: 'name',
-                                                },
-                                              },
-                                            ],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'job_type' },
-                              selectionSet: {
-                                kind: 'SelectionSet',
-                                selections: [
-                                  {
-                                    kind: 'Field',
-                                    name: { kind: 'Name', value: 'data' },
-                                    selectionSet: {
-                                      kind: 'SelectionSet',
-                                      selections: [
-                                        {
-                                          kind: 'Field',
-                                          name: { kind: 'Name', value: 'id' },
-                                        },
-                                        {
-                                          kind: 'Field',
-                                          name: {
-                                            kind: 'Name',
-                                            value: 'attributes',
-                                          },
-                                          selectionSet: {
-                                            kind: 'SelectionSet',
-                                            selections: [
-                                              {
-                                                kind: 'Field',
-                                                name: {
-                                                  kind: 'Name',
-                                                  value: 'name',
-                                                },
-                                              },
-                                              {
-                                                kind: 'Field',
-                                                name: {
-                                                  kind: 'Name',
-                                                  value: 'gift',
-                                                },
-                                              },
-                                            ],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'min_period' },
-                              selectionSet: {
-                                kind: 'SelectionSet',
-                                selections: [
-                                  {
-                                    kind: 'Field',
-                                    name: { kind: 'Name', value: 'data' },
-                                    selectionSet: {
-                                      kind: 'SelectionSet',
-                                      selections: [
-                                        {
-                                          kind: 'Field',
-                                          name: { kind: 'Name', value: 'id' },
-                                        },
-                                        {
-                                          kind: 'Field',
-                                          name: {
-                                            kind: 'Name',
-                                            value: 'attributes',
-                                          },
-                                          selectionSet: {
-                                            kind: 'SelectionSet',
-                                            selections: [
-                                              {
-                                                kind: 'Field',
-                                                name: {
-                                                  kind: 'Name',
-                                                  value: 'period',
-                                                },
-                                              },
-                                            ],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'min_workingday' },
-                              selectionSet: {
-                                kind: 'SelectionSet',
-                                selections: [
-                                  {
-                                    kind: 'Field',
-                                    name: { kind: 'Name', value: 'data' },
-                                    selectionSet: {
-                                      kind: 'SelectionSet',
-                                      selections: [
-                                        {
-                                          kind: 'Field',
-                                          name: { kind: 'Name', value: 'id' },
-                                        },
-                                        {
-                                          kind: 'Field',
-                                          name: {
-                                            kind: 'Name',
-                                            value: 'attributes',
-                                          },
-                                          selectionSet: {
-                                            kind: 'SelectionSet',
-                                            selections: [
-                                              {
-                                                kind: 'Field',
-                                                name: {
-                                                  kind: 'Name',
-                                                  value: 'days',
-                                                },
-                                              },
-                                            ],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'points' },
-                              selectionSet: {
-                                kind: 'SelectionSet',
-                                selections: [
-                                  {
-                                    kind: 'Field',
-                                    name: { kind: 'Name', value: 'data' },
-                                    selectionSet: {
-                                      kind: 'SelectionSet',
-                                      selections: [
-                                        {
-                                          kind: 'Field',
-                                          name: { kind: 'Name', value: 'id' },
-                                        },
-                                        {
-                                          kind: 'Field',
-                                          name: {
-                                            kind: 'Name',
-                                            value: 'attributes',
-                                          },
-                                          selectionSet: {
-                                            kind: 'SelectionSet',
-                                            selections: [
-                                              {
-                                                kind: 'Field',
-                                                name: {
-                                                  kind: 'Name',
-                                                  value: 'name',
-                                                },
-                                              },
-                                            ],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'image' },
-                              selectionSet: {
-                                kind: 'SelectionSet',
-                                selections: [
-                                  {
-                                    kind: 'Field',
-                                    name: { kind: 'Name', value: 'data' },
-                                    selectionSet: {
-                                      kind: 'SelectionSet',
-                                      selections: [
-                                        {
-                                          kind: 'Field',
-                                          name: { kind: 'Name', value: 'id' },
-                                        },
-                                        {
-                                          kind: 'Field',
-                                          name: {
-                                            kind: 'Name',
-                                            value: 'attributes',
-                                          },
-                                          selectionSet: {
-                                            kind: 'SelectionSet',
-                                            selections: [
-                                              {
-                                                kind: 'Field',
-                                                name: {
-                                                  kind: 'Name',
-                                                  value: 'width',
-                                                },
-                                              },
-                                              {
-                                                kind: 'Field',
-                                                name: {
-                                                  kind: 'Name',
-                                                  value: 'height',
-                                                },
-                                              },
-                                              {
-                                                kind: 'Field',
-                                                name: {
-                                                  kind: 'Name',
-                                                  value: 'url',
-                                                },
-                                              },
-                                              {
-                                                kind: 'Field',
-                                                name: {
-                                                  kind: 'Name',
-                                                  value: 'alternativeText',
-                                                },
-                                              },
-                                              {
-                                                kind: 'Field',
-                                                name: {
-                                                  kind: 'Name',
-                                                  value: 'formats',
-                                                },
-                                              },
-                                            ],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                          ],
-                        },
-                      },
-                    ],
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<GetOffersAllQuery, GetOffersAllQueryVariables>;
-export const GetPointsDocument = {
-  kind: 'Document',
-  definitions: [
-    {
-      kind: 'OperationDefinition',
-      operation: 'query',
-      name: { kind: 'Name', value: 'getPoints' },
-      selectionSet: {
-        kind: 'SelectionSet',
-        selections: [
-          {
-            kind: 'Field',
-            name: { kind: 'Name', value: 'points' },
-            arguments: [
-              {
-                kind: 'Argument',
-                name: { kind: 'Name', value: 'pagination' },
-                value: {
-                  kind: 'ObjectValue',
-                  fields: [
-                    {
-                      kind: 'ObjectField',
-                      name: { kind: 'Name', value: 'limit' },
-                      value: { kind: 'IntValue', value: '1000' },
-                    },
-                  ],
-                },
-              },
-            ],
-            selectionSet: {
-              kind: 'SelectionSet',
-              selections: [
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'data' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [
-                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'attributes' },
-                        selectionSet: {
-                          kind: 'SelectionSet',
-                          selections: [
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'name' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'offer' },
-                              selectionSet: {
-                                kind: 'SelectionSet',
-                                selections: [
-                                  {
-                                    kind: 'Field',
-                                    name: { kind: 'Name', value: 'data' },
-                                    selectionSet: {
-                                      kind: 'SelectionSet',
-                                      selections: [
-                                        {
-                                          kind: 'Field',
-                                          name: { kind: 'Name', value: 'id' },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                          ],
-                        },
-                      },
-                    ],
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<GetPointsQuery, GetPointsQueryVariables>;
-export const GetPointByIdDocument = {
-  kind: 'Document',
-  definitions: [
-    {
-      kind: 'OperationDefinition',
-      operation: 'query',
-      name: { kind: 'Name', value: 'getPointById' },
-      variableDefinitions: [
-        {
-          kind: 'VariableDefinition',
-          variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
-          type: { kind: 'NamedType', name: { kind: 'Name', value: 'ID' } },
-        },
-      ],
-      selectionSet: {
-        kind: 'SelectionSet',
-        selections: [
-          {
-            kind: 'Field',
-            name: { kind: 'Name', value: 'point' },
-            arguments: [
-              {
-                kind: 'Argument',
-                name: { kind: 'Name', value: 'id' },
-                value: {
-                  kind: 'Variable',
-                  name: { kind: 'Name', value: 'id' },
-                },
-              },
-            ],
-            selectionSet: {
-              kind: 'SelectionSet',
-              selections: [
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'data' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [
-                      { kind: 'Field', name: { kind: 'Name', value: 'id' } },
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'attributes' },
-                        selectionSet: {
-                          kind: 'SelectionSet',
-                          selections: [
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'name' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'offer' },
-                              selectionSet: {
-                                kind: 'SelectionSet',
-                                selections: [
-                                  {
-                                    kind: 'Field',
-                                    name: { kind: 'Name', value: 'data' },
-                                    selectionSet: {
-                                      kind: 'SelectionSet',
-                                      selections: [
-                                        {
-                                          kind: 'Field',
-                                          name: { kind: 'Name', value: 'id' },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                          ],
-                        },
-                      },
-                    ],
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      },
-    },
-  ],
-} as unknown as DocumentNode<GetPointByIdQuery, GetPointByIdQueryVariables>;
+export type GetPointByIdQuery = { __typename?: 'Query', point?: { __typename?: 'PointEntityResponse', data?: { __typename?: 'PointEntity', id?: string | null, attributes?: { __typename?: 'Point', name?: string | null } | null } | null } | null };
+
+
+export const GetOfferByIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getOfferById"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"offer"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"hourly_wage"}},{"kind":"Field","name":{"kind":"Name","value":"hourly_wage_detail"}},{"kind":"Field","name":{"kind":"Name","value":"place_short"}},{"kind":"Field","name":{"kind":"Name","value":"place_detail"}},{"kind":"Field","name":{"kind":"Name","value":"hours_short"}},{"kind":"Field","name":{"kind":"Name","value":"hours_detail"}},{"kind":"Field","name":{"kind":"Name","value":"job_description"}},{"kind":"Field","name":{"kind":"Name","value":"start_at"}},{"kind":"Field","name":{"kind":"Name","value":"end_at"}},{"kind":"Field","name":{"kind":"Name","value":"target"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"qualification"}},{"kind":"Field","name":{"kind":"Name","value":"people"}},{"kind":"Field","name":{"kind":"Name","value":"interview_location"}},{"kind":"Field","name":{"kind":"Name","value":"flow"}},{"kind":"Field","name":{"kind":"Name","value":"shift"}},{"kind":"Field","name":{"kind":"Name","value":"holiday"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"min_working_hours"}},{"kind":"Field","name":{"kind":"Name","value":"min_period"}},{"kind":"Field","name":{"kind":"Name","value":"min_workingday"}},{"kind":"Field","name":{"kind":"Name","value":"createdBy"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}}]}},{"kind":"Field","name":{"kind":"Name","value":"atmosphere"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"text"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"formats"}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"occupation"}},{"kind":"Field","name":{"kind":"Name","value":"job_type"}},{"kind":"Field","name":{"kind":"Name","value":"points"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"formats"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetOfferByIdQuery, GetOfferByIdQueryVariables>;
+export const GetOfferPathsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getOfferPaths"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"today"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Date"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"offers"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"sort"},"value":{"kind":"StringValue","value":"publishedAt:desc","block":false}},{"kind":"Argument","name":{"kind":"Name","value":"filters"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"end_at"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"gte"},"value":{"kind":"Variable","name":{"kind":"Name","value":"today"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]}}]} as unknown as DocumentNode<GetOfferPathsQuery, GetOfferPathsQueryVariables>;
+export const GetOffersAllDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getOffersAll"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"offers"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"sort"},"value":{"kind":"StringValue","value":"publishedAt:desc","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"hourly_wage"}},{"kind":"Field","name":{"kind":"Name","value":"place_short"}},{"kind":"Field","name":{"kind":"Name","value":"hours_short"}},{"kind":"Field","name":{"kind":"Name","value":"start_at"}},{"kind":"Field","name":{"kind":"Name","value":"end_at"}},{"kind":"Field","name":{"kind":"Name","value":"createdBy"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"firstname"}},{"kind":"Field","name":{"kind":"Name","value":"lastname"}}]}},{"kind":"Field","name":{"kind":"Name","value":"occupation"}},{"kind":"Field","name":{"kind":"Name","value":"job_type"}},{"kind":"Field","name":{"kind":"Name","value":"min_period"}},{"kind":"Field","name":{"kind":"Name","value":"min_workingday"}},{"kind":"Field","name":{"kind":"Name","value":"points"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"alternativeText"}},{"kind":"Field","name":{"kind":"Name","value":"formats"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetOffersAllQuery, GetOffersAllQueryVariables>;
+export const GetPointsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getPoints"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"points"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"pagination"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"limit"},"value":{"kind":"IntValue","value":"1000"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetPointsQuery, GetPointsQueryVariables>;
+export const GetPointByIdDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getPointById"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"point"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"data"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"attributes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]} as unknown as DocumentNode<GetPointByIdQuery, GetPointByIdQueryVariables>;

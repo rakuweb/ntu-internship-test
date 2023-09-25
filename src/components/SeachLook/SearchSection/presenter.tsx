@@ -47,7 +47,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     },
   ];
 
-  const occupationNames = offers.map((offer) => offer.occupation.name);
+  const occupationNames = offers.map((offer) => offer.occupation);
+  // const occupationNames = offers.map((offer) => offer.occupation.name);
   const uniqueOccupationNames = [...new Set(occupationNames)];
   const occupationOptions = uniqueOccupationNames.map((name) => ({
     value: name,
@@ -57,7 +58,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     new Array(occupationOptions.length).fill(false)
   );
 
-  const jobTypeNames = offers.map((offer) => offer.job_type.name);
+  const jobTypeNames = offers.map((offer) => offer.job_type);
+  // const jobTypeNames = offers.map((offer) => offer.job_type.name);
   const uniquejobTypeNames = [...new Set(jobTypeNames)];
   const jobTypeOptions = uniquejobTypeNames
     .filter((name) => name === '長期インターン' || name === 'アルバイト')
@@ -82,9 +84,11 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     }
   };
 
-  const periodNames = offers.map((offer) => offer.min_period.period);
+  const periodNames = offers.map((offer) => offer.min_period);
+  // const periodNames = offers.map((offer) => offer.min_period.period);
   const uniquePeriodNames = [...new Set(periodNames)];
-  const minWorkingDayNames = offers.map((offer) => offer.min_workingday.days);
+  const minWorkingDayNames = offers.map((offer) => offer.min_workingday);
+  // const minWorkingDayNames = offers.map((offer) => offer.min_workingday.days);
   const uniqueMinWorkingDayNames = [...new Set(minWorkingDayNames)];
 
   console.log(clickedName);
@@ -273,7 +277,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               />
             );
           })}
-          {offers.map((offer, offerIndex) =>
+          {/*offers.map((offer, offerIndex) =>
             offer.points.map((point, pointIndex) => {
               const key = `offer-${offerIndex}-point-${pointIndex}`;
               return (
@@ -286,7 +290,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 />
               );
             })
-          )}
+          )*/}
         </Flex>
       </Box>
     </Box>

@@ -38,9 +38,10 @@ export const Presenter: FC<PresenterProps> = () => {
   const _setJobCategoryItem = useJobCategoryStore(selectSetJobCategoryItem);
   const _setPointItem = usePointStore(selectSetPointItem);
 
-  const _filteredOffers = offers.filter((offer) =>
-    offer.points.some((pointsItem) => pointsItem.id === point.id)
-  );
+  const _filteredOffers = offers;
+  //   offers.filter((offer) =>
+  //   offer.points.some((pointsItem) => pointsItem.id === point.id)
+  // );
   // .sort((offer1, offer2) => {
   //   const endDate1 = new Date(offer1.deadline);
   //   const endDate2 = new Date(offer2.deadline);

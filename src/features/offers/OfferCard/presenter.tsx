@@ -248,7 +248,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           <Box fontSize={`${15 / 19.2}vw`}>
             お祝い金
             <Box as={`span`} fontSize={`${25 / 19.2}vw`}>
-              {job_type.gift}
+              {job_type}
+              {/*job_type.gift*/}
             </Box>
             ポイントもらえる
           </Box>
@@ -402,7 +403,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     whiteSpace={`nowrap`}
                     w={`${90 / 3.75}vw`}
                   >
-                    {occupation.name}
+                    {occupation}
+                    {/*occupation.name*/}
                   </Box>
                 </Flex>
                 <Flex
@@ -485,7 +487,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             <Box>
               お祝い金
               <Box as={`span`} fontSize={`${13 / 3.75}vw`} fontWeight={`bold`}>
-                {job_type.gift}
+                {job_type}
+                {/*job_type.gift*/}
               </Box>
               ポイントもらえる
             </Box>
