@@ -44,11 +44,14 @@ export const Index: NextPage<Props> = ({ data }) => {
   };
   const setTarget = useTargetOfferStore(selectSetTarget);
   const [isClient, setIsClient] = useState(false);
-  setTarget(data?.offer?.data as OfferEntity);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  if (!data) return;
+
+  setTarget(data?.offer?.data as OfferEntity);
 
   const message = () => {
     if (isClient) {
@@ -90,10 +93,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
     const paths = data?.offers?.data
       ? data.offers.data.map((item) => ({
-        params: {
-          id: item?.id,
-        },
-      }))
+          params: {
+            id: item?.id,
+          },
+        }))
       : [];
 
     return {
@@ -101,7 +104,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       fallback: true,
     };
   } finally {
-    console.log('get pages/offers/[id] paths');
+    console.log('get pages/offers/[id]/jobform paths');
   }
 };
 
@@ -128,11 +131,11 @@ export const getStaticProps: GetStaticProps<{
     console.error(err);
 
     return {
-      props: { data: undefined, company: undefined },
+      props: { data: undefined },
       notFound: true,
       revalidate: UPDATE_INTERVAL,
     };
   } finally {
-    console.log('get pages/offers/[id] static props');
+    console.log('get pages/offers/[id]/jobform static props');
   }
 };

@@ -5,6 +5,7 @@ export const WRITE_API_KEY_OFFER = process.env?.WRITE_API_KEY_OFFER ?? '';
 export const ORIGIN_URL = process?.env?.NEXT_PUBLIC_ORIGIN_URL ?? '';
 export const CMS_URL = process?.env?.NEXT_PUBLIC_CMS_URL2 ?? '';
 export const API_URL = `${process.env?.NEXT_PUBLIC_CMS_URL ?? ''}/api`;
+export const API_URL_OFFER = `${process.env?.NEXT_PUBLIC_CMS_URL2 ?? ''}/api`;
 export const GRAPHQL_URL = `${process?.env?.NEXT_PUBLIC_CMS_URL ?? ''}/gql`;
 export const GRAPHQL_URL_offer = `${process?.env?.NEXT_PUBLIC_CMS_URL2 ?? ''
   }/graphql`;
