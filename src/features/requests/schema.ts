@@ -4,11 +4,25 @@ export const planList = [
   '①採用課金型（1名採用¥30,000円〜）',
   '②月額プラン（掲載1枠¥月25,000円）',
 ];
-
 export const jobTypeList = [
   ` ①単発アルバイト`,
   `②通常アルバイト`,
   `③長期インターン`,
+];
+export const occuationList = [
+  '飲食/フード',
+  '接客/販売',
+  'SNS運用',
+  'イベント',
+  '事務',
+  '広報',
+  '営業',
+  '教育',
+  'エンジニア',
+  'デザイナー',
+  'ディレクター',
+  'ライター',
+  'その他',
 ];
 export const shiftList = [
   `①土日祝のみOK`,
@@ -22,6 +36,24 @@ export const minPeriodList = [
   `③1ヶ月以内`,
   `④3ヶ月以内`,
   `④3ヶ月以上（長期）`,
+];
+export const minWorkingdayList = [
+  '週1日からOK',
+  '週2日からOK',
+  '週3日からOK',
+  '週4日以上',
+  '日数が選べる',
+];
+export const pointList = [
+  '未経験者OK',
+  '服装自由',
+  '髪型/髪色自由',
+  'ネイルOK',
+  'ピアスOK',
+  '履歴書不要',
+  '職場見学応募OK',
+  '在宅勤務可能',
+  '大学周辺',
 ];
 export const desiredInterviewDateList = [
   `①月`,
@@ -68,8 +100,11 @@ export const requestSchema = z.object({
     .string({ required_error: '入力してください' })
     .min(1, '入力してください'),
   shift: z
-    .string({ required_error: '入力してください' })
-    .min(1, '入力してください'),
+    .array(z.string({ required_error: '選択してください' }), {
+      required_error: '選択してください',
+      invalid_type_error: '選択してください',
+    })
+    .min(1, '選択してください'),
   min_period: z
     .string({ required_error: '入力してください' })
     .min(1, '入力してください'),
@@ -89,17 +124,26 @@ export const requestSchema = z.object({
     .string({ required_error: '入力してください' })
     .min(1, '入力してください'),
   points: z
-    .string({ required_error: '入力してください' })
-    .min(1, '入力してください'),
+    .array(z.string({ required_error: '選択してください' }), {
+      required_error: '選択してください',
+      invalid_type_error: '選択してください',
+    })
+    .min(1, '選択してください'),
   desired_interview_date: z
-    .string({ required_error: '入力してください' })
-    .min(1, '入力してください'),
+    .array(z.string({ required_error: '選択してください' }), {
+      required_error: '選択してください',
+      invalid_type_error: '選択してください',
+    })
+    .min(1, '選択してください'),
   desired_interview_time: z
-    .string({ required_error: '入力してください' })
-    .min(1, '入力してください'),
+    .array(z.string({ required_error: '選択してください' }), {
+      required_error: '選択してください',
+      invalid_type_error: '選択してください',
+    })
+    .min(1, '選択してください'),
   interview_remarks: z
     .string({ required_error: '入力してください' })
-    .min(1, '入力してください'),
+    .optional(),
   flow: z
     .string({ required_error: '入力してください' })
     .min(1, '入力してください'),

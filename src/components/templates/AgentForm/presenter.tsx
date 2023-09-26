@@ -1,15 +1,15 @@
 // import layer
 import { FC } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { FormProvider, useForm } from 'react-hook-form';
 import axios from 'axios';
+import { FormProvider, useForm } from 'react-hook-form';
 
-import { AgentForm } from '~/features/agent/AgentForm';
-import { Footer } from '~/components/footers/Footer';
 import { Header } from 'components/headers/Header';
 import { AgentSchema, agentSchema } from 'features/agent';
-import { routes } from '~/constants';
 import { useAgentStore } from 'features/agent';
+import { Footer } from '~/components/footers/Footer';
+import { routes } from '~/constants';
+import { AgentForm } from '~/features/agent/AgentForm';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

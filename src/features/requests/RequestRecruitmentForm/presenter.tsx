@@ -1,11 +1,12 @@
 // import layer
 import { FC } from 'react';
-import { Box, Flex, Input, Checkbox, Textarea, Button } from '@chakra-ui/react';
+import { Box, Flex, Input, Textarea } from '@chakra-ui/react';
 import { useFormContext } from 'react-hook-form';
 
 import { Image } from 'components/images/Image';
 import { useRequestStore } from 'features/requests';
 import { FormButton } from '~/components/buttons/FormButton';
+import { CheckboxForm } from '~/components/forms/CheckboxForm';
 import { SelectForm } from '~/components/forms/SelectForm';
 import {
   RequestSchema,
@@ -14,6 +15,9 @@ import {
   minPeriodList,
   desiredInterviewDateList,
   desiredInterviewTimeList,
+  occuationList,
+  minWorkingdayList,
+  pointList,
 } from '../schema';
 
 // type layer
@@ -76,6 +80,31 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
     'start_at',
     'end_at',
   ] as const;
+  const placeholderList = [
+    '',
+    '',
+    '大学1年生〜修士1年生',
+    '3人',
+    '1,000円',
+    '15:00〜19:00',
+    '',
+    '',
+    '',
+    '',
+    '新潟県新潟市中央区天神1-1PLAKA3 2F',
+    '新潟県新潟市中央区天神1-1PLAKA3 2F',
+    '・経験を積みたい方・エクセル使える方・高時給で働きたい方',
+    '',
+    '',
+    '',
+    `その他希望日時等ある場合は記載ください
+例）10月10日　対応不可`, // eslint-disable-line
+    'エントリー⇒面接⇒合否',
+    'https://forjob.nottheuniversity.com/',
+    '',
+    '',
+    '',
+  ];
 
   return (
     <Box
@@ -190,7 +219,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                       >
                         {list.title}
                       </Box>
-                      {index < 22 && (
+                      {index < 22 && index !== 16 && (
                         <Flex
                           px={{
                             base: `${3 / 3.75}vw`,
@@ -215,13 +244,17 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                   <Flex pt={{ base: `${15 / 3.75}vw`, md: `${18 / 19.2}vw` }}>
                     {index < 19 &&
                       index !== 0 &&
+                      index !== 1 &&
                       index !== 6 &&
                       index !== 7 &&
+                      index !== 8 &&
+                      index !== 13 &&
                       index !== 14 &&
                       index !== 15 &&
                       index !== 16 && (
                         <Box>
                           <Input
+                            placeholder={placeholderList[index]}
                             {...register(idlist[index] as any)}
                             borderColor={`#999`}
                             borderRadius={`0`}
@@ -297,16 +330,39 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                             }}
                             color={`red`}
                           >
-                            {errors[idlist[index]].message}
+                            {`日付を入力してください`}
                           </Box>
                         )}
                       </Box>
                     )}
-                    {(index === 0 ||
-                      index === 6 ||
-                      index === 7 ||
+                    {(index === 6 ||
+                      index === 13 ||
                       index === 14 ||
                       index === 15) && (
+                      <Box
+                        mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
+                        ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
+                      >
+                        <CheckboxForm
+                          checkboxes={
+                            index === 6
+                              ? shiftList
+                              : index === 13
+                              ? pointList
+                              : index === 14
+                              ? desiredInterviewDateList
+                              : desiredInterviewTimeList
+                          }
+                          registers={register(idlist[index])}
+                          isRequired
+                          errorMessage={errors?.[idlist[index]]?.message}
+                        />
+                      </Box>
+                    )}
+                    {(index === 0 ||
+                      index === 1 ||
+                      index === 7 ||
+                      index === 8) && (
                       <Box
                         mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
                         ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
@@ -315,10 +371,12 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                           selectList={
                             index === 0
                               ? jobTypeList
-                              : index === 6
-                              ? shiftList
+                              : index === 1
+                              ? occuationList
                               : index === 7
                               ? minPeriodList
+                              : index === 8
+                              ? minWorkingdayList
                               : index === 15
                               ? desiredInterviewDateList
                               : desiredInterviewTimeList
@@ -335,6 +393,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                         ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
                       >
                         <Textarea
+                          placeholder={placeholderList[index]}
                           borderRadius={`0`}
                           borderColor={`#999`}
                           w={{

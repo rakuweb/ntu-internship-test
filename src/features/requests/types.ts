@@ -49,5 +49,6 @@ export type RequestSlice = RequestSliceData & {
   setIsChecking: (next: boolean) => void;
   proceedProgress: () => void;
   backProgress: () => void;
+  setProgress: (next: number) => void;
   updateFormData: (data: RequestSchema) => void;
 };

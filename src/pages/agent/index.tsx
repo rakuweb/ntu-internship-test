@@ -2,8 +2,8 @@
 import { useState, useEffect } from 'react';
 import { NextPage } from 'next/types';
 
-import { AgentForm as Template } from '~/components/templates/AgentForm';
 import { SeoComponent } from 'organisms/SeoComponent';
+import { AgentForm as Template } from '~/components/templates/AgentForm';
 import { CANONICAL_URL, ORIGIN_URL } from '~/constants';
 
 // component layer

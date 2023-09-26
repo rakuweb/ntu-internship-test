@@ -1,21 +1,21 @@
 // import layer
 import { FC } from 'react';
 import { Box, Checkbox, Flex } from '@chakra-ui/react';
-import { useForm } from 'react-hook-form';
-import FormName from './FormName';
-import SubmitButton from './SubmitButton';
-import ChakraStylesDesktop from './ChakraStyles';
 import { zodResolver } from '@hookform/resolvers/zod';
-import InquiryItem from './InquiryItem';
+import axios from 'axios';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { useForm } from 'react-hook-form';
+import { routes } from '~/constants';
 import {
   contactSchema,
   ContactSchema,
   useContactFormStore,
 } from '~/features/contact';
-import axios from 'axios';
-import { routes } from '~/constants';
 import { ExternalLink } from '../links/ExternalLink';
+import ChakraStylesDesktop from './ChakraStyles';
+import FormName from './FormName';
+import InquiryItem from './InquiryItem';
+import SubmitButton from './SubmitButton';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
