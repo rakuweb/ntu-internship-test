@@ -16,7 +16,7 @@ import {
 } from 'features/offers';
 import { initializeApollo_offer } from 'lib/apollo/client';
 import { SeoComponent } from 'organisms/SeoComponent';
-import { Top as Template } from 'templates/OfferId';
+import { Top as Template } from 'templates/OfferPreview';
 import {
   GetOfferByIdQuery,
   GetOfferByIdDocument,
