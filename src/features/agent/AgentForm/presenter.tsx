@@ -1,14 +1,7 @@
 // import layer
 import { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
-import {
-  Box,
-  Flex,
-  Input,
-  Checkbox,
-  Textarea,
-  Button,
-} from '@chakra-ui/react';
+import { Box, Flex, Input, Checkbox, Textarea, Button } from '@chakra-ui/react';
 
 import { Image } from 'components/images/Image';
 import { AgentSchema, levelList, List } from '../schema';
@@ -224,7 +217,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                     )}
                     {index === 3 && (
                       <Box
-                        mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
+                        // mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
                         ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
                       >
                         <SelectForm

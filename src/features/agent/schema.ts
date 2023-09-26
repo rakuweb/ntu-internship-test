@@ -29,7 +29,7 @@ export const agentSchema = z.object({
   contact_request: z
     .array(z.string({ required_error: '選択してください' }))
     .min(1, '入力してください'),
-  job_link: z.string({ required_error: '入力してください' }).optional(),
+  job_link: z.string(),
   remarks: z.string().optional(),
 });
 

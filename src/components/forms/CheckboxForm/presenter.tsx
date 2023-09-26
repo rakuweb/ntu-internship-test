@@ -54,6 +54,8 @@ export const Presenter: FC<PresenterProps> = ({
                 // h={{ base: '2.75rem' }}
               >
                 <Checkbox
+                  size={{ base: `sm`, '2xl': `md` }}
+                  borderColor={`gray`}
                   w={{
                     lg: `15rem`,
                     xl: `15rem`,
@@ -67,8 +69,14 @@ export const Presenter: FC<PresenterProps> = ({
             ))}
           </CheckboxGroup>
         </Wrap>
-        <FormErrorMessage>{errorMessage}</FormErrorMessage>
       </Stack>
+      <Box
+        mt={{ base: `0.25rem` }}
+        fontSize={{ base: `0.5rem`, md: `0.75rem` }}
+        color={`red`}
+      >
+        {errorMessage}
+      </Box>
     </FormControl>
   );
 };
