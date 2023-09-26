@@ -18,8 +18,6 @@ export type PresenterProps = DataProps;
 export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
   const {
     register,
-    watch,
-    setValue,
     formState: { errors },
   } = useFormContext<RequestSchema>();
   const { backProgress } = useRequestStore();
@@ -28,15 +26,15 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
     { title: '求人タイトル' },
     { title: '写真' },
     { title: '求人の詳細情報' },
-    { title: '雰囲気の画像' },
-    { title: '雰囲気のタイトル' },
-    { title: '雰囲気の詳細' },
-    // { title: '雰囲気の画像②' },
-    // { title: '雰囲気のタイトル②' },
-    // { title: '雰囲気の詳細②' },
-    // { title: '雰囲気の画像③' },
-    // { title: '雰囲気のタイトル③' },
-    // { title: '雰囲気の詳細③' },
+    { title: '職場の情報画像' },
+    { title: '職場の情報タイトル' },
+    { title: '職場情報のテキスト' },
+    // { title: '職場の情報の画像②' },
+    // { title: '職場の情報のタイトル②' },
+    // { title: '職場の情報の詳細②' },
+    // { title: '職場の情報の画像③' },
+    // { title: '職場の情報のタイトル③' },
+    // { title: '職場の情報の詳細③' },
   ];
   const idlist = [
     'title',

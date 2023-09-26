@@ -1,9 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
 import fetch from 'node-fetch';
 
-import { parseAuthorization } from 'lib/apollo/parse';
-import { API_URL_OFFER, WRITE_API_KEY_OFFER } from 'constants/env';
-import { RECAPTCHA_URL } from 'constants/routes';
+import { API_URL_OFFER } from 'constants/env';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const method = req.method;

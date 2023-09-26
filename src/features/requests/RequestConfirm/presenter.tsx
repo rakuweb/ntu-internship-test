@@ -1,16 +1,17 @@
 // import layer
 import { FC } from 'react';
 import { Box, Flex, Checkbox } from '@chakra-ui/react';
+import axios from 'axios';
 import { useFormContext } from 'react-hook-form';
 
 import { Image } from 'components/images/Image';
 import { ExternalLink } from 'components/links/ExternalLink';
 import { useRequestStore } from 'features/requests';
-import { apiRoutes, routes } from '~/constants';
 import { FormButton } from '~/components/buttons/FormButton';
+import { apiRoutes, routes } from '~/constants';
 import { API_URL_OFFER } from '~/constants/env';
+import { parseDate } from '~/lib/utils';
 import { RequestSchema } from '../schema';
-import axios from 'axios';
 
 // type layer
 export type DataProps = {
@@ -23,7 +24,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
   const { reset } = useFormContext<RequestSchema>();
   const { isSending, setIsSending, isChecking, setIsChecking, ...remain } =
     useRequestStore();
-  const { backProgress } = useRequestStore();
+  const { backProgress, setProgress } = useRequestStore();
 
   const list = [
     { title: `会社名` },
@@ -86,12 +87,12 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
     remain.interview_remarks,
     remain.flow,
     remain.url,
-    remain.start_at,
-    remain.end_at,
+    parseDate(remain?.start_at?.toString()),
+    parseDate(remain?.end_at?.toString()),
     remain.title,
-    remain.image,
+    '画像選択済み', // remain.image,
     remain.job_description,
-    remain.atmosphere_image,
+    '画像選択済み', // remain.atmosphere_image,
     remain.atmosphere_title,
     remain.atmosphere_text,
   ];
@@ -124,6 +125,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
         atmosphere_text,
         atmosphere_title,
         image,
+        shift,
         ...others
       } = remain;
       const res = await axios.post(url, {
@@ -139,9 +141,9 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
           ],
         },
       });
-      console.log(res);
       alert('送信が完了しました。');
       reset();
+      setProgress(0);
     } catch (e) {
       console.error(e);
     } finally {
@@ -270,6 +272,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                       <Box
                         borderColor={`#999`}
                         borderRadius={`0`}
+                        whiteSpace={`pre-wrap`}
                         w={{
                           base: `${190 / 3.75}vw`,
                           md: `${200 / 7.68}vw`,
@@ -333,8 +336,9 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
             onClick={() => handleClick()}
             isSending={isSending}
             isChecking={isChecking}
+            isLoading={isSending}
           >
-            {`応募する`}
+            {`依頼する`}
           </FormButton>
         </Flex>
       </Box>

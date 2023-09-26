@@ -1,12 +1,9 @@
 // import layer
 import { FC } from 'react';
 import {
-  Badge,
   FormControl,
-  FormLabel,
   Checkbox,
   FormControlProps,
-  FormErrorMessage,
   CheckboxGroup,
   Stack,
   Box,
@@ -18,9 +15,9 @@ import { UseFormRegisterReturn } from 'react-hook-form';
 export type StyleProps = FormControlProps;
 export type DataProps = {
   checkboxes: string[];
-  label: string;
+  label?: string;
   placeholder?: string;
-  name: string;
+  name?: string;
   isRequired?: boolean;
   errorMessage?: string;
   autoComplete?: string;

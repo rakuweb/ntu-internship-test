@@ -54,5 +54,13 @@ export const createRequestSlice: StateCreator<
   setIsChecking: (next) => set(() => ({ isChecking: next })),
   proceedProgress: () => set((state) => ({ progress: state.progress + 1 })),
   backProgress: () => set((state) => ({ progress: state.progress - 1 })),
-  updateFormData: (data) => set(() => ({ ...data })),
+  setProgress: (next) => set(() => ({ progress: next })),
+  updateFormData: (data) =>
+    set(() => ({
+      ...data,
+      shift: data.shift.join(`, `),
+      points: data.points.join(`, `),
+      desired_interview_date: data.desired_interview_date.join(`, `),
+      desired_interview_time: data.desired_interview_time.join(`, `),
+    })),
 });
