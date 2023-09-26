@@ -10,14 +10,13 @@ import {
   Textarea,
   Checkbox,
 } from '@chakra-ui/react';
-import { Select, ChakraStylesConfig } from 'chakra-react-select';
 import { useFormContext } from 'react-hook-form';
+import { SelectForm } from 'components/forms/SelectForm';
 import { Image } from 'components/images/Image';
 import { useTargetOfferStore, selectTarget } from 'features/offers';
 import { routes } from '~/constants';
 import { JobFormSchema } from '../../lib/jobForm/schema';
 import { ExternalLink } from '../links/ExternalLink';
-import { SelectForm } from 'components/forms/SelectForm';
 
 // type layer
 export type DataProps = { submitHandler: (data: JobFormSchema) => void };

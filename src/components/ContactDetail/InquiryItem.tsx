@@ -1,11 +1,11 @@
 import { Box, Flex } from '@chakra-ui/react';
 import { ErrorMessage } from '@hookform/error-message';
+import { kindList, jobTypeList, periodList } from 'features/contact';
+import InputForm from './Input';
 import ListTitle from './ListTitle';
 import SelectForm from './SelectForm';
-import Message from './message';
-import InputForm from './Input';
 import TextareaForm from './TextareaForm';
-import { kindList, jobTypeList, periodList } from 'features/contact';
+import Message from './message';
 
 const InquiryItem = ({ control, ChakraStylesDesktop, errors }) => {
   return (

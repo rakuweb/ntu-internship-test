@@ -22,9 +22,9 @@ export const Presenter: FC<PresenterProps> = ({ current }) => {
     {
       title: `確認`,
     },
-    {
-      title: `完了`,
-    },
+    // {
+    //   title: `完了`,
+    // },
   ];
   return (
     <Box css={styles}>

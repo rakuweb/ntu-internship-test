@@ -24,6 +24,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
 
   const list = [{ title: `会社名` }, { title: `登録メールアドレス` }];
   const idlist = ['company_name', 'email'] as const;
+  const placeholderList = ['株式会社ラクウェブ', 'xxx@forjob.jp'];
 
   return (
     <Box
@@ -164,6 +165,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                     {index < 9 && (
                       <Box>
                         <Input
+                          placeholder={placeholderList[index]}
                           {...register(idlist[index] as any)}
                           borderColor={`#999`}
                           borderRadius={`0`}

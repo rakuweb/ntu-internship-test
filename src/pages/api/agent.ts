@@ -1,9 +1,8 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
 import fetch from 'node-fetch';
 
-import { API_URL_OFFER, WRITE_API_KEY_OFFER } from 'constants/env';
+import { API_URL_OFFER } from 'constants/env';
 import { apiRoutes } from 'constants/routes';
-import { parseAuthorization } from 'lib/apollo/parse';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 type Data = {
   message?: string;
