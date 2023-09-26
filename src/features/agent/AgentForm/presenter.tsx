@@ -1,17 +1,17 @@
 // import layer
 import { FC } from 'react';
-import { Box, Flex, Input, Checkbox, Textarea, Button } from '@chakra-ui/react';
 import { useFormContext } from 'react-hook-form';
+import { Box, Flex, Input, Checkbox, Textarea, Button } from '@chakra-ui/react';
 
 import { Image } from 'components/images/Image';
-import { ExternalLink } from 'components/links/ExternalLink';
-import { useApplicationStore } from 'features/application';
-import { SelectForm } from '~/components/forms/SelectForm';
+import { AgentSchema, levelList, List } from '../schema';
 import { routes } from '~/constants';
-import { ApplicationSchema, planList } from '../schema';
-
+import { ExternalLink } from 'components/links/ExternalLink';
+import { useAgentStore } from '../hooks';
+import { SelectForm } from '~/components/forms/SelectForm';
+import { CheckboxForm } from '~/components/forms/CheckboxForm';
 // type layer
-export type DataProps = { submitHandler: (data: ApplicationSchema) => void };
+export type DataProps = { submitHandler: (data: AgentSchema) => void };
 export type PresenterProps = DataProps;
 
 // presenter
@@ -20,33 +20,25 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useFormContext<ApplicationSchema>();
-  const { isSending, isChecking, setIsChecking } = useApplicationStore();
+  } = useFormContext<AgentSchema>();
+  const { isSending, isChecking, setIsChecking } = useAgentStore();
 
   const list = [
-    { title: `企業名` },
-    { title: '代表者' },
-    { title: '設立日' },
-    { title: '従業員数' },
-    { title: '所在地' },
-    { title: '会社HP' },
-    { title: 'ご担当者氏名' },
-    { title: `ご担当者電話番号` },
-    { title: 'メールアドレス' },
-    { title: '掲載プラン' },
+    { title: `会社名` },
+    { title: `メールアドレス` },
+    { title: 'ご担当者電話番号' },
+    { title: '掲載急ぎ度' },
+    { title: 'ご連絡希望日' },
+    { title: '他社求人媒体リンク' },
     { title: '備考' },
   ];
   const idlist = [
     'name',
-    'representative',
-    'establishment_date',
-    'number_of_employees',
-    'place',
-    'url',
-    'manager_name',
-    'manager_phone',
     'email',
-    'plan',
+    'manager_phone',
+    'level',
+    'contact_request',
+    'job_link',
     'remarks',
   ] as const;
 
@@ -74,7 +66,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
         fontWeight={`bold`}
         lineHeight={`1.2em`}
       >
-        {`お申し込み情報の入力`}
+        {`記事作成代行フォーム`}
       </Box>
       <Flex mb={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}>
         <Image // eslint-disable-line
@@ -162,7 +154,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                       >
                         {list.title}
                       </Box>
-                      {index < 10 && (
+                      {index < 5 && (
                         <Flex
                           px={{
                             base: `${3 / 3.75}vw`,
@@ -185,7 +177,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                     </Flex>
                   </Box>
                   <Flex pt={{ base: `${15 / 3.75}vw`, md: `${18 / 19.2}vw` }}>
-                    {index < 9 && (
+                    {(index < 3 || index === 5) && (
                       <Box>
                         <Input
                           {...register(idlist[index])}
@@ -223,20 +215,35 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                         )}
                       </Box>
                     )}
-                    {index === 9 && (
+                    {index === 3 && (
                       <Box
-                        mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
+                        // mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
                         ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
                       >
                         <SelectForm
-                          selectList={planList}
-                          registers={register('plan')}
-                          errorMessage={errors?.plan?.message}
+                          selectList={levelList}
+                          registers={register('level')}
+                          errorMessage={errors?.level?.message}
                           placeholder={`選択してください`}
                         />
                       </Box>
                     )}
-                    {index === 10 && (
+                    {index === 4 && (
+                      <Box
+                        mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
+                        ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
+                      >
+                        <CheckboxForm
+                          checkboxes={List}
+                          isRequired
+                          label={`項目`}
+                          name={`contact`}
+                          registers={register('contact_request')}
+                          errorMessage={errors?.contact_request?.message}
+                        />
+                      </Box>
+                    )}
+                    {index === 6 && (
                       <Box
                         mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
                         ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
@@ -309,7 +316,6 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
           type={`submit`}
           display={`flex`}
           disabled={isSending || !isChecking}
-          isLoading={isSending}
           w={{
             base: `${220 / 3.75}vw`,
             md: `${230 / 7.68}vw`,
@@ -362,7 +368,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                 alt: `紙飛行機アイコン`,
               }}
             />
-            申し込む
+            送信する
           </Flex>
         </Button>
       </form>

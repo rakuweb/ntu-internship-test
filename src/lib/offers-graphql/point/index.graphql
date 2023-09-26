@@ -4,11 +4,6 @@ query getPoints {
       id
       attributes {
         name
-        offer {
-          data {
-            id
-          }
-        }
       }
     }
   }

@@ -1,7 +1,6 @@
 // import layer
 import { FC } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import axios from 'axios';
 import { FormProvider, useForm } from 'react-hook-form';
 // import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
@@ -15,10 +14,8 @@ import { RequestCompanyForm } from 'features/requests/RequestCompanyForm';
 import { RequestRecruitmentForm } from 'features/requests/RequestRecruitmentForm';
 import { StepBar } from 'features/requests/StepBar';
 import { Footer } from '~/components/footers/Footer';
-import { apiRoutes, routes } from '~/constants';
 import { RequestConfirm } from '~/features/requests/RequestConfirm';
 import { RequestPRForm } from '~/features/requests/RequestPRForm';
-import { API_URL_OFFER } from '~/constants/env';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

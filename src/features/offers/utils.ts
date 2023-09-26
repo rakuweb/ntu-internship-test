@@ -21,29 +21,29 @@ export const parseToOffers = (data: OfferEntity[]): OfferCard[] => {
       image: offer?.image?.data?.attributes?.url
         ? parseImage(offer?.image?.data?.attributes)
         : undefined,
-      occupation: {
-        id: offer.occupation.data.id,
-        name: offer.occupation.data.attributes.name,
-      },
-      min_period: {
-        id: offer?.min_period?.data.id,
-        period: offer?.min_period?.data.attributes.period,
-      },
-      job_type: {
-        id: offer.job_type.data.id,
-        name: offer.job_type.data.attributes.name,
-        gift: offer.job_type.data.attributes.gift,
-      },
+      occupation: offer.occupation,
+      min_period: offer.min_period,
+      //   {
+      //   id: offer?.min_period?.data.id,
+      //   period: offer?.min_period?.data.attributes.period,
+      // },
+      job_type: offer.job_type,
+      //   {
+      //   id: offer.job_type.data.id,
+      //   name: offer.job_type.data.attributes.name,
+      //   gift: offer.job_type.data.attributes.gift,
+      // },
 
-      min_workingday: {
-        id: offer.min_workingday.data.id,
-        days: offer.min_workingday.data.attributes.days,
-      },
-      points:
-        offer?.points?.data?.map((point) => ({
-          id: point.id,
-          name: point?.attributes?.name ?? '',
-        })) ?? [],
+      min_workingday: offer.min_workingday,
+      //   {
+      //   id: offer.min_workingday.data.id,
+      //   days: offer.min_workingday.data.attributes.days,
+      // },
+      points: offer?.points,
+      // offer?.points?.data?.map((point) => ({
+      //   id: point.id,
+      //   name: point?.attributes?.name ?? '',
+      // })) ?? [],
     };
     return result;
   });
@@ -84,14 +84,16 @@ export const parseToTarget = (entity: OfferEntity): Partial<OfferSliceData> => {
     email: offer.email,
     interview_location: offer.interview_location,
     min_working_hours: offer.min_working_hours,
-    min_period: {
-      id: offer.min_period.data.id,
-      period: offer.min_period.data.attributes.period,
-    },
-    min_workingday: {
-      id: offer.min_workingday.data.id,
-      days: offer.min_workingday.data.attributes.days,
-    },
+    min_period: offer.min_period,
+    //   {
+    //   id: offer.min_period.data.id,
+    //   period: offer.min_period.data.attributes.period,
+    // },
+    min_workingday: offer.min_workingday,
+    //   {
+    //   id: offer.min_workingday.data.id,
+    //   days: offer.min_workingday.data.attributes.days,
+    // },
     atmosphere:
       offer.atmosphere.map((atomosphere) => ({
         title: atomosphere.title,
@@ -100,21 +102,23 @@ export const parseToTarget = (entity: OfferEntity): Partial<OfferSliceData> => {
           ? parseImage(atomosphere.image.data.attributes)
           : undefined,
       })) ?? [],
-    occupation: {
-      id: offer.occupation.data.id,
-      name: offer.occupation.data.attributes.name,
-    },
-    job_type: {
-      id: offer.job_type.data.id,
-      name: offer.job_type.data.attributes.name,
-      gift: offer.job_type.data.attributes.gift,
-    },
+    occupation: offer.occupation,
+    //     {
+    //   id: offer.occupation.data.id,
+    //   name: offer.occupation.data.attributes.name,
+    // },
+    job_type: offer.job_type,
+    //     {
+    //   id: offer.job_type.data.id,
+    //   name: offer.job_type.data.attributes.name,
+    //   gift: offer.job_type.data.attributes.gift,
+    // },
 
-    points:
-      offer?.points?.data?.map((point) => ({
-        id: point.id,
-        name: point?.attributes?.name ?? '',
-      })) ?? [],
+    points: offer?.points,
+    // offer?.points?.data?.map((point) => ({
+    //   id: point.id,
+    //   name: point?.attributes?.name ?? '',
+    // })) ?? [],
   };
 
   return result;

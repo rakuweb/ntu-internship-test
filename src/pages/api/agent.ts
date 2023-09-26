@@ -1,8 +1,9 @@
+import type { NextApiRequest, NextApiResponse } from 'next';
 import fetch from 'node-fetch';
 
-import { API_URL_OFFER } from 'constants/env';
+import { API_URL_OFFER, WRITE_API_KEY_OFFER } from 'constants/env';
 import { apiRoutes } from 'constants/routes';
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { parseAuthorization } from 'lib/apollo/parse';
 
 type Data = {
   message?: string;
@@ -11,12 +12,12 @@ type Data = {
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   const method = req.method;
-  const url = `${API_URL_OFFER}${apiRoutes.companies}`;
+  const url = `${API_URL_OFFER}${apiRoutes.agent}`;
 
   switch (method) {
     case 'POST': {
       try {
-        const { ...data } = req.body;
+        const { how_to_make: _, ...data } = req.body;
         // const { recaptcha: _recaptcha, ...data } = req.body;
 
         // const recaptchaRes = await fetch(RECAPTCHA_URL, {

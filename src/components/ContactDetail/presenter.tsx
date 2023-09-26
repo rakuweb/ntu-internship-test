@@ -1,5 +1,5 @@
 // import layer
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { Box, Checkbox, Flex } from '@chakra-ui/react';
 import { useForm } from 'react-hook-form';
 import FormName from './FormName';
@@ -7,7 +7,6 @@ import SubmitButton from './SubmitButton';
 import ChakraStylesDesktop from './ChakraStyles';
 import { zodResolver } from '@hookform/resolvers/zod';
 import InquiryItem from './InquiryItem';
-import { InternalLink } from '../links/InternalLink';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import {
   contactSchema,
@@ -16,6 +15,7 @@ import {
 } from '~/features/contact';
 import axios from 'axios';
 import { routes } from '~/constants';
+import { ExternalLink } from '../links/ExternalLink';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
@@ -41,7 +41,21 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     try {
       const res = await axios.post(routes.apiContact, { ...remain });
       alert('送信が完了しました。');
-      control._reset();
+      reset({
+        item: '',
+        name: '',
+        email: '',
+        employment_status: '',
+        period: '',
+        manager_name: '',
+        manager_phone: '',
+        place: '',
+        url: '',
+        department: '',
+        listing_details: '',
+        remarks: '',
+      });
+      // control._reset({item: '', name: '', email: '', employment_status: ''})
     } catch (e) {
       console.error(e);
     } finally {
@@ -112,16 +126,20 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             isInvalid
             onChange={(e) => setIsChecked(e.target.checked)}
           />
-          <InternalLink
+          <ExternalLink
             href={`/`}
             as={`span`}
             borderBottom={`2px solid #39414E`}
           >
             プライバシーポリシー
-          </InternalLink>
+          </ExternalLink>
           に同意する
         </Flex>
-        <SubmitButton type={`submit`} disabled={isSending || !isChecked} />
+        <SubmitButton
+          type={`submit`}
+          disabled={isSending || !isChecked}
+          isLoading={isSending}
+        />
       </Box>
     </form>
   );

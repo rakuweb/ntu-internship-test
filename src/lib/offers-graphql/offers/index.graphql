@@ -14,47 +14,11 @@ query getOffersAll {
           firstname
           lastname
         }
-        occupation {
-          data {
-            id
-            attributes {
-              name
-            }
-          }
-        }
-        job_type {
-          data {
-            id
-            attributes {
-              name
-              gift
-            }
-          }
-        }
-        min_period {
-          data {
-            id
-            attributes {
-              period
-            }
-          }
-        }
-        min_workingday {
-          data {
-            id
-            attributes {
-              days
-            }
-          }
-        }
-        points {
-          data {
-            id
-            attributes {
-              name
-            }
-          }
-        }
+        occupation 
+        job_type 
+        min_period 
+        min_workingday 
+        points 
         image {
           data {
             id

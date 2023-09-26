@@ -26,8 +26,6 @@ export type PresenterProps = DataProps;
 export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
   const {
     register,
-    watch,
-    setValue,
     formState: { errors },
   } = useFormContext<RequestSchema>();
   const { backProgress, proceedProgress } = useRequestStore();
@@ -104,7 +102,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
         fontWeight={`bold`}
         lineHeight={`1.2em`}
       >
-        {`お申し込み情報の入力`}
+        {`求人掲載情報の入力`}
       </Box>
       <Flex mb={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}>
         <Image // eslint-disable-line

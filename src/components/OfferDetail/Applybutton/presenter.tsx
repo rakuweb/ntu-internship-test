@@ -62,7 +62,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             fontSize={`${19 / 4.28}vw`}
             fontFamily={`'Noto Sans', sans-serif`}
           >
-            {offer.job_type.gift}
+            {offer.job_type}
+            {/*offer.job_type.gift*/}
           </Box>
           ポイントもらえる
         </Box>

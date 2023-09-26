@@ -98,7 +98,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           />
           <Box ml={{ base: ``, md: `${14 / 19.2}vw` }}>職種</Box>
           <Box ml={{ base: ``, md: `${53 / 19.2}vw` }}>
-            {offer.occupation.name}
+            {offer.occupation}
+            {/*offer.occupation.name*/}
           </Box>
         </Flex>
         <Flex
@@ -190,7 +191,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             fontSize={{ md: `${15 / 7.68}vw`, lg: `${33 / 19.2}vw` }}
             fontFamily={`'Noto Sans', sans-serif`}
           >
-            {offer.job_type.gift}
+            {offer.job_type}
+            {/*offer.job_type.gift*/}
           </Box>
           ポイントもらえる
         </Box>

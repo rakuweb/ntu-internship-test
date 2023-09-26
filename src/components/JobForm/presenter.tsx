@@ -17,6 +17,7 @@ import { useTargetOfferStore, selectTarget } from 'features/offers';
 import { routes } from '~/constants';
 import { JobFormSchema } from '../../lib/jobForm/schema';
 import { ExternalLink } from '../links/ExternalLink';
+import { SelectForm } from 'components/forms/SelectForm';
 
 // type layer
 export type DataProps = { submitHandler: (data: JobFormSchema) => void };
@@ -69,83 +70,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
 
   const [value, setValue1] = useState('1');
 
-  const options = [
-    { value: '大学1年生', label: '大学1年生', name: '大学1年生' },
-    { value: '大学2年生', label: '大学2年生', name: '大学2年生' },
-    { value: '大学3年生', label: '大学3年生', name: '大学3年生' },
-    { value: '大学4年生', label: '大学4年生', name: '大学4年生' },
-    { value: '大学5年生', label: '大学5年生', name: '大学5年生' },
-    { value: '大学6年生', label: '大学6年生', name: '大学6年生' },
-  ];
-
-  const chakraStylesDesktop: ChakraStylesConfig = {
-    control: (provided, _state) => ({
-      ...provided,
-      background: `white`,
-      borderColor: `#999`,
-      borderRadius: `${0 / 7.68}vw`,
-      minHeight: {
-        base: `${27 / 3.75}vw`,
-        md: `${62 / 19.2}vw`,
-        lg: `${42 / 19.2}vw`,
-      },
-      height: {
-        base: `${27 / 3.75}vw`,
-        md: `${62 / 19.2}vw`,
-        lg: `${42 / 19.2}vw`,
-      },
-      fontSize: {
-        base: `${13 / 3.75}vw`,
-        md: `${10 / 7.68}vw`,
-        lg: `${19 / 19.2}vw`,
-      },
-      transition: `all .3s`,
-      _hover: {
-        cursor: `pointer`,
-        filter: `opacity(50%)`,
-        textDecoration: 'none',
-      },
-    }),
-
-    valueContainer: (provided, _state) => ({
-      ...provided,
-    }),
-
-    input: (provided, _state) => ({
-      ...provided,
-      margin: '0px',
-    }),
-    indicatorSeparator: (_state) => ({
-      display: 'none',
-    }),
-    indicatorsContainer: (provided, _state) => ({
-      ...provided,
-      height: {
-        base: `${25 / 3.75}vw`,
-        md: `${60 / 19.2}vw`,
-        lg: `${40 / 19.2}vw`,
-      },
-    }),
-    dropdownIndicator: (provided) => ({
-      ...provided,
-      w: { md: `${90 / 19.2}vw`, lg: `${70 / 19.2}vw` },
-      background: `white`,
-      borderRadius: `0`,
-      pl: `0`,
-    }),
-    menu: (provided, _state) => ({
-      ...provided,
-      fontSize: {
-        base: `${13 / 3.75}vw`,
-        md: `${10 / 7.68}vw`,
-        lg: `${19 / 19.2}vw`,
-      },
-    }),
-    placeholder: (provided, _state) => ({
-      ...provided,
-      whiteSpace: `nowrap`,
-    }),
-  };
+  const gradeList = ['大学1年生', '大学2年生', '大学3年生', '大学4年生'];
 
   return (
     <Box
@@ -327,9 +252,8 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                         ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
                         w={{ base: `${160 / 3.75}vw`, md: `initial` }}
                       >
-                        <Select
-                          options={options}
-                          chakraStyles={chakraStylesDesktop}
+                        <SelectForm
+                          selectList={gradeList}
                           placeholder={`学年を選択する`}
                           {...register('grade')}
                         />
@@ -400,7 +324,9 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                       </Box>
                     )}
                     {index === 8 && (
-                      <Box>
+                      <Box
+                        ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
+                      >
                         <Input
                           {...register('hopeday1')}
                           borderColor={`#999`}

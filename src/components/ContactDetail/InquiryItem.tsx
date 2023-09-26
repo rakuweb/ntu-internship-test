@@ -188,7 +188,7 @@ const InquiryItem = ({ control, ChakraStylesDesktop, errors }) => {
               <InputForm index={1} control={control} name={'manager_name'} />
               <ErrorMessage
                 errors={errors}
-                name=" manager_name"
+                name="manager_name"
                 render={({ message }) => <Message message={message} />}
               />
             </Box>
@@ -377,6 +377,11 @@ const InquiryItem = ({ control, ChakraStylesDesktop, errors }) => {
               ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
             >
               <InputForm index={8} control={control} name={'url'} />
+              <ErrorMessage
+                errors={errors}
+                name="url"
+                render={({ message }) => <Message message={message} />}
+              />
             </Box>
           </Flex>
         </Flex>

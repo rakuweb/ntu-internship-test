@@ -11,6 +11,7 @@ export const applicationSchema = z.object({
     .min(1, '入力してください'),
   url: z
     .string({ required_error: '入力してください' })
+    .url('URLを入力してください')
     .min(1, '入力してください'),
   email: z
     .string({ required_error: '入力してください' })
@@ -32,11 +33,14 @@ export const applicationSchema = z.object({
     .min(1, '入力してください'),
   manager_phone: z
     .string({ required_error: '入力してください' })
+    .regex(
+      new RegExp(/^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/),
+      '電話番号を入力してください'
+    )
     .min(1, '入力してください'),
   plan: z
     .string({ required_error: '入力してください' })
     .min(1, '入力してください'),
-  how_to_make: z.string({ required_error: '入力してください' }),
   remarks: z.string().optional(),
 });
 

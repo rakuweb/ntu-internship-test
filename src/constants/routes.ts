@@ -35,6 +35,7 @@ export const routes = {
   apiCompaniesRequest: '/api/companies/request',
   apiJobform: `/api/offers/jobform/send`,
   apiContact: `/api/contact`,
+  apiAgent: `/api/agent`,
 };
 
 export const HP_URL = `https://nottheuniversity.com`;
@@ -50,6 +51,7 @@ export const apiRoutes = {
   jobform: `/offers/jobform/send`,
   companies: `/companies`,
   offer: `/offers`,
+  agent: `/agents`,
 };
 
 export type NavItem = { name: string; link: string; isExternal?: boolean };
