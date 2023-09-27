@@ -166,7 +166,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                       <Box>
                         <Input
                           placeholder={placeholderList[index]}
-                          {...register(idlist[index] as any)}
+                          {...register(idlist[index])}
                           borderColor={`#999`}
                           borderRadius={`0`}
                           w={{

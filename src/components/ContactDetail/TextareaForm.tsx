@@ -3,9 +3,8 @@ import { Textarea } from '@chakra-ui/react';
 import { Control, Controller } from 'react-hook-form';
 
 type TextareaFormProps = {
-  list: string;
-  index: number;
-  name: any;
+  placeholder?: string;
+  name: any; // eslint-disable-line
   control: Control<{
     mail: string;
     name: string;
@@ -18,7 +17,11 @@ type TextareaFormProps = {
   }>;
 };
 
-const TextareaForm: FC<TextareaFormProps> = ({ name, control }) => {
+const TextareaForm: FC<TextareaFormProps> = ({
+  placeholder,
+  name,
+  control,
+}) => {
   return (
     <Controller
       name={name}
@@ -27,6 +30,7 @@ const TextareaForm: FC<TextareaFormProps> = ({ name, control }) => {
       render={({ field }) => (
         <Textarea
           {...field}
+          placeholder={placeholder}
           borderRadius={`0`}
           borderColor={`#999`}
           w={{

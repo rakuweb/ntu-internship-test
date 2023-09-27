@@ -1,5 +1,6 @@
 // import layer
 import { FC } from 'react';
+import React from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import { Image } from 'components/images/Image';
 import { Image as NImage } from 'components/images/Image';
@@ -16,12 +17,13 @@ import { BreadcrumbOfferId } from '../organisms/BreadcrumbOfferId';
 import { Contact } from '../organisms/Contact';
 import { Applybutton } from './Applybutton';
 import { Atmosphere } from './Atmosphere';
+import { Fixedmenu } from './Fixedmenu';
 import { Jobterms } from './Jobterms';
+import { MobileMinInformation } from './MobileMinInformation';
+
 import { styles } from './styles';
 import 'zenn-content-css';
-import { Fixedmenu } from './Fixedmenu';
-import { MobileMinInformation } from './MobileMinInformation';
-import React from 'react';
+
 // type layer
 export type PresenterProps = Record<string, unknown>;
 

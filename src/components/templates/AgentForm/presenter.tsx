@@ -37,7 +37,7 @@ export const Presenter: FC<PresenterProps> = () => {
     setIsSending(true);
 
     try {
-      const res = await axios.post(routes.apiAgent, { ...remain });
+      const _res = await axios.post(routes.apiAgent, { ...remain });
       alert('送信が完了しました。');
       methods.reset();
     } catch (e) {

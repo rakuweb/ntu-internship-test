@@ -4,12 +4,12 @@ import { Box } from '@chakra-ui/react';
 
 import { Footer } from '~/components/footers/Footer';
 import { Header } from '~/components/headers/Header';
+import { BreadcrumbOfferId } from '~/components/organisms/BreadcrumbOfferId';
 import { HowToRegisterContent } from '~/components/organisms/How-to-registerContent';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
-import { BreadcrumbOfferId } from '~/components/organisms/BreadcrumbOfferId';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

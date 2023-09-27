@@ -25,9 +25,15 @@ type InputFormProps = {
     | 'url'
     | 'remarks';
   index: number;
+  placeholder?: string;
 };
 
-const InputForm: FC<InputFormProps> = ({ index, control, name }) => {
+const InputForm: FC<InputFormProps> = ({
+  placeholder,
+  index,
+  control,
+  name,
+}) => {
   return (
     <Controller
       name={name}
@@ -37,6 +43,7 @@ const InputForm: FC<InputFormProps> = ({ index, control, name }) => {
         <Input
           {...field}
           display={index === 0 || index === 6 ? 'none' : 'block'}
+          placeholder={placeholder}
           borderColor={`#999`}
           borderRadius={`0`}
           w={{

@@ -199,6 +199,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                       index !== 11 && (
                         <Box>
                           <Input
+                            // eslint-disable-next-line
                             {...register(idlist[index] as any)}
                             borderColor={`#999`}
                             borderRadius={`0`}
@@ -241,6 +242,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                       <Box>
                         <Input
                           type={`file`}
+                          // eslint-disable-next-line
                           {...register(idlist[index] as any)}
                           borderColor={`#999`}
                           borderRadius={`0`}
@@ -303,6 +305,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                             md: `${12 / 7.68}vw`,
                             lg: `${19 / 19.2}vw`,
                           }}
+                          // eslint-disable-next-line
                           {...register(idlist[index] as any)}
                         />
                         {errors?.[idlist[index]]?.message && (

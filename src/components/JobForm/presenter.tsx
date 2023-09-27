@@ -27,8 +27,6 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
   const offer = useTargetOfferStore(selectTarget);
   const {
     register,
-    watch,
-    setValue,
     handleSubmit,
     formState: { errors },
   } = useFormContext<JobFormSchema>();

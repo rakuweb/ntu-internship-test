@@ -28,8 +28,6 @@ export type PresenterProps = StyleProps & DataProps;
 // presenter
 export const Presenter: FC<PresenterProps> = ({
   checkboxes,
-  name,
-  isRequired = false,
   errorMessage,
   registers,
   ...props
