@@ -8,8 +8,8 @@ import { CANONICAL_URL, ORIGIN_URL } from '~/constants';
 
 // component layer
 export const Application: NextPage = () => {
-  const title = `申し込みフォーム | NOT THE UNIVERSITY FOR JOB`;
-  const description = `NOT THE UNIVERSITY FOR JOBのお申し込みフォームのページです。`;
+  const title = `FORJOB求人掲載　お申し込み | NOT THE UNIVERSITY FOR JOB`; // eslint-disable-line
+  const description = `NOT THE UNIVERSITY FOR JOBのFORJOB求人掲載　お申し込みフォームのページです。`; // eslint-disable-line
 
   const openGraph = {
     type: 'website',

@@ -28,6 +28,7 @@ export const routes = {
   campaign: '/campaign',
   contact: '/contact',
   contactComplete: '/contact/complete',
+  applicationComplete: '/application/complete',
 
   apiRegister: '/api/register',
   apiAccount: '/api/account',
