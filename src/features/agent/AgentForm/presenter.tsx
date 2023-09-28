@@ -43,6 +43,16 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
     'remarks',
   ] as const;
 
+  const placeholderList = [
+    `株式会社ラクウェブ`,
+    `xxx@forjob.jp`,
+    `0012345678`,
+    ``,
+    ``,
+    ``,
+    ``,
+  ];
+
   return (
     <Box
       mx={`auto`}
@@ -181,6 +191,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                     {(index < 3 || index === 5) && (
                       <Box>
                         <Input
+                          placeholder={placeholderList[index]}
                           {...register(idlist[index])}
                           borderColor={`#999`}
                           borderRadius={`0`}
@@ -201,6 +212,28 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                           }}
                           ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
                         />
+                        {index === 5 && (
+                          <Box
+                            w={{
+                              base: `${190 / 3.75}vw`,
+                              md: `${200 / 7.68}vw`,
+                              lg: `${500 / 19.2}vw`,
+                            }}
+                            ml={{
+                              base: `${19 / 3.75}vw`,
+                              md: `${70 / 19.2}vw`,
+                            }}
+                            pb={{
+                              base: `${15 / 3.75}vw`,
+                              md: `${18 / 19.2}vw`,
+                            }}
+                            fontSize={{ lg: `${13 / 19.2}vw` }}
+                            lineHeight={`1.5`}
+                            whiteSpace={{ base: `pre-wrap` }}
+                          >
+                            {`※掲載情報の変更がなければサイトの情報をもとに原稿を作成いたします。`}
+                          </Box>
+                        )}
                         {errors?.[idlist[index]]?.message && (
                           <Box
                             mt={{ base: `0.25rem` }}
@@ -241,8 +274,21 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                           control={control}
                           errorMessage={errors?.contact_request?.message}
                         />
+                        <Box
+                          w={{
+                            base: `${190 / 3.75}vw`,
+                            md: `${200 / 7.68}vw`,
+                            lg: `${500 / 19.2}vw`,
+                          }}
+                          fontSize={{ lg: `${13 / 19.2}vw` }}
+                          lineHeight={`1.5`}
+                          whiteSpace={{ base: `pre-wrap` }}
+                        >
+                          {`※10:00−15:00の間にお電話いたします。`}
+                        </Box>
                       </Box>
                     )}
+
                     {index === 6 && (
                       <Box
                         mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
