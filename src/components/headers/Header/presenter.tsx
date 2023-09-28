@@ -16,7 +16,8 @@ import {
   selectSetAccount,
   selectSetPrevPath,
 } from 'features/account';
-import { routes } from '~/constants';
+import { ExternalLink } from '~/components/links/ExternalLink';
+import { FORJOB_LP_URL, routes } from '~/constants';
 import { HeaderMenu } from '../HeaderMenu';
 import { MenuDrawer } from '../MenuDrawer';
 import { styles } from './styles';
@@ -132,15 +133,17 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
           alignItems={'center'}
           letterSpacing={`0`}
         >
-          <Box
-            display={{ base: `none`, lg: `block` }}
-            color="#39414E"
-            fontSize={`${17 / 19.2}vw`}
-            mr={{ lg: `${33 / 19.2}vw` }}
-            mt={{ lg: `${2 / 19.2}vw` }}
-          >
-            採用担当者はこちら
-          </Box>
+          <ExternalLink href={FORJOB_LP_URL}>
+            <Box
+              display={{ base: `none`, lg: `block` }}
+              color="#39414E"
+              fontSize={`${17 / 19.2}vw`}
+              mr={{ lg: `${33 / 19.2}vw` }}
+              mt={{ lg: `${2 / 19.2}vw` }}
+            >
+              採用担当者はこちら
+            </Box>
+          </ExternalLink>
           {username ? (
             <Box
               display={{ base: `none`, lg: `block` }}
@@ -233,12 +236,14 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
 
         <MenuDrawer isOpen={isOpen} onClose={onClose} />
       </Flex>
+      {/*
       <Box
         display={{ base: `none`, lg: `block` }}
         w={`100%`}
         h={`${40 / 19.2}vw`}
         bg={`#41A4FD`}
       />
+      */}
     </Box>
   );
 };

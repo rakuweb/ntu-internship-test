@@ -26,6 +26,9 @@ export const routes = {
   beginners: '/beginners',
   howToRegister: '/how-to-register',
   campaign: '/campaign',
+  contact: '/contact',
+  contactComplete: '/contact/complete',
+  applicationComplete: '/application/complete',
 
   apiRegister: '/api/register',
   apiAccount: '/api/account',
@@ -42,6 +45,7 @@ export const HP_URL = `https://nottheuniversity.com`;
 export const TWITTER_URL = `https://twitter.com/nottheuniv`;
 export const INSTAGRAM_URL = `https://www.instagram.com/nottheuniversity`;
 export const RECAPTCHA_URL = `https://www.google.com/recaptcha/api/siteverify`;
+export const FORJOB_LP_URL = `https://aboutforjob.nottheuniversity.com/`;
 
 export const apiRoutes = {
   register: `/auth/local/register`,

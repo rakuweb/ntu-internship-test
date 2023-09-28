@@ -5,12 +5,12 @@ import { concatPagination } from '@apollo/client/utilities';
 import merge from 'deepmerge';
 import isEqual from 'lodash/isEqual';
 
-import { GRAPHQL_URL, GRAPHQL_URL_offer } from 'constants/env';
+import { GRAPHQL_URL_offer } from 'constants/env';
 import { parseAuthorization } from './parse';
 
 export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
 
-let apolloClient: any; // eslint-disable-line
+// let apolloClient: any; // eslint-disable-line
 let apolloClientOffers: any; // eslint-disable-line
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
@@ -23,13 +23,13 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (networkError) console.log(`[Network error]: ${networkError}`);
 });
 
-const httpLink = new HttpLink({
-  uri: GRAPHQL_URL, // Server URL (must be absolute)
-  credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
-  headers: {
-    authorization: parseAuthorization(process.env.API_TOKEN_CONTACT ?? ``),
-  },
-});
+// const httpLink = new HttpLink({
+//   uri: GRAPHQL_URL, // Server URL (must be absolute)
+//   credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
+//   headers: {
+//     authorization: parseAuthorization(process.env.API_TOKEN_CONTACT ?? ``),
+//   },
+// });
 
 const httpLink_offer = new HttpLink({
   uri: GRAPHQL_URL_offer, // Server URL (must be absolute)

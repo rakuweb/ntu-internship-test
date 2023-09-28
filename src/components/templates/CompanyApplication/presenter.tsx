@@ -1,5 +1,6 @@
 // import layer
 import { FC } from 'react';
+import { useRouter } from 'next/router';
 import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -16,6 +17,7 @@ export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps> = () => {
+  const router = useRouter();
   const methods = useForm<ApplicationSchema>({
     resolver: zodResolver(applicationSchema),
   });
@@ -26,9 +28,9 @@ export const Presenter: FC<PresenterProps> = () => {
     setIsSending(true);
 
     try {
-      const res = await axios.post(routes.apiApplication, { ...remain });
-      alert('送信が完了しました。');
+      const _res = await axios.post(routes.apiApplication, { ...remain });
       methods.reset();
+      router.push(routes.applicationComplete);
     } catch (e) {
       console.error(e);
     } finally {

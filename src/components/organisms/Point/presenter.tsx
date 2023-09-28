@@ -1,10 +1,15 @@
 // import layer
 import { FC } from 'react';
 import { Box, Flex, Grid, Heading } from '@chakra-ui/react';
+
 import { selectOfferList, useOffersStore } from 'features/offers';
-import { styles } from './styles';
-import 'zenn-content-css';
-import { BreadcrumbOfferId } from '../BreadcrumbOfferId';
+import {
+  useJobCategorysStore,
+  selectJobCategorys,
+  selectSetJobCategoryItem,
+  useJobCategoryStore,
+} from '~/features/category';
+import { Labeltext } from '~/features/offers/OfferCard/Labeltext';
 import {
   selectPoint,
   selectPoints,
@@ -12,15 +17,11 @@ import {
   usePointStore,
   usePointsStore,
 } from '~/features/point';
-import { Labeltext } from '~/features/offers/OfferCard/Labeltext';
+import { BreadcrumbOfferId } from '../BreadcrumbOfferId';
 import { Labeltext2 } from './Labeltext2';
-import {
-  useJobCategorysStore,
-  selectJobCategorys,
-  selectSetJobCategoryItem,
-  useJobCategoryStore,
-} from '~/features/category';
-// import { JobCategoryEntity,PointEntity } from '~/types/gql/graphql';
+
+import { styles } from './styles';
+import 'zenn-content-css';
 
 // type layer
 export type PresenterProps = {

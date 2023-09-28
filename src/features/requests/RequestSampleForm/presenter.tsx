@@ -25,8 +25,6 @@ export const Presenter: FC<PresenterProps> = ({
 }) => {
   const {
     register,
-    watch,
-    setValue,
     handleSubmit,
     formState: { errors },
   } = useFormContext<RequestSchema>();
@@ -219,6 +217,7 @@ export const Presenter: FC<PresenterProps> = ({
                     {index < 9 && (
                       <Box>
                         <Input
+                          // eslint-disable-next-line
                           {...register(idlist[index] as any)}
                           borderColor={`#999`}
                           borderRadius={`0`}

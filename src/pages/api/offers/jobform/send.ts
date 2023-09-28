@@ -52,7 +52,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         }
 
         res.status(200).json({ message: 'POST' });
-      } catch (err: any) {
+      } catch (err) {
         console.error(err);
         res.status(403).end();
       }

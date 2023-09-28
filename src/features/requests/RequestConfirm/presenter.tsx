@@ -121,14 +121,13 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
 
       const url = `${API_URL_OFFER}${apiRoutes.offer}`;
       const {
-        atmosphere_image,
+        atmosphere_image: _atmosphere_image,
         atmosphere_text,
         atmosphere_title,
-        image,
-        shift,
+        image: _image,
         ...others
       } = remain;
-      const res = await axios.post(url, {
+      const _res = await axios.post(url, {
         data: {
           ...others,
           image: imageId,

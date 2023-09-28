@@ -255,6 +255,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                         <Box>
                           <Input
                             placeholder={placeholderList[index]}
+                            // eslint-disable-next-line
                             {...register(idlist[index] as any)}
                             borderColor={`#999`}
                             borderRadius={`0`}
@@ -381,6 +382,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                               ? desiredInterviewDateList
                               : desiredInterviewTimeList
                           }
+                          // eslint-disable-next-line
                           registers={register(idlist[index] as any)}
                           errorMessage={errors?.[idlist[index]]?.message}
                           placeholder={`選択してください`}
@@ -411,6 +413,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                             md: `${12 / 7.68}vw`,
                             lg: `${19 / 19.2}vw`,
                           }}
+                          // eslint-disable-next-line
                           {...register(idlist[index] as any)}
                         />
                         {errors?.[idlist[index]]?.message && (

@@ -8,7 +8,7 @@ import { ExternalLink } from 'components/links/ExternalLink';
 import { useApplicationStore } from 'features/application';
 import { SelectForm } from '~/components/forms/SelectForm';
 import { routes } from '~/constants';
-import { ApplicationSchema, planList } from '../schema';
+import { ApplicationSchema, employeeNumberList, planList } from '../schema';
 
 // type layer
 export type DataProps = { submitHandler: (data: ApplicationSchema) => void };
@@ -49,6 +49,19 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
     'plan',
     'remarks',
   ] as const;
+  const placeholderList = [
+    `株式会社ラクウェブ`,
+    `新潟太郎`,
+    ``,
+    ``,
+    `新潟県新潟市中央区天神1-1PLAKA3 2F`,
+    `https://forjob.nottheuniversity.com/`,
+    `新潟一郎`,
+    `0012345678`,
+    `xxx@forjob.jp`,
+    ``,
+    ``,
+  ];
 
   return (
     <Box
@@ -62,21 +75,10 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
       fontFamily={`'Noto Sans JP', sans-serif`}
       {...props}
     >
-      <Box
-        mt={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}
-        mb={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}
-        fontSize={{
-          base: `${15 / 3.75}vw`,
-          md: `${16 / 7.68}vw`,
-          lg: `${26 / 19.2}vw`,
-        }}
-        whiteSpace={`pre-wrap`}
-        fontWeight={`bold`}
-        lineHeight={`1.2em`}
+      <Flex
+        mt={{ base: ``, md: `${80 / 19.2}vw` }}
+        mb={{ base: `${12 / 3.75}vw`, md: `${40 / 19.2}vw` }}
       >
-        {`お申し込み情報の入力`}
-      </Box>
-      <Flex mb={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}>
         <Image // eslint-disable-line
           ml={{ base: `${10 / 3.75}vw`, md: `${23 / 19.2}vw` }}
           mr={{ base: `${5 / 3.75}vw`, md: `${13 / 19.2}vw` }}
@@ -111,7 +113,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
           }}
           fontWeight={`bold`}
         >
-          企業情報
+          {`FORJOB求人掲載  お申し込み`}
         </Box>
       </Flex>
       <form onSubmit={handleSubmit(submitHandler)}>
@@ -185,9 +187,10 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                     </Flex>
                   </Box>
                   <Flex pt={{ base: `${15 / 3.75}vw`, md: `${18 / 19.2}vw` }}>
-                    {index < 9 && (
+                    {index !== 2 && index !== 3 && index < 9 && (
                       <Box>
                         <Input
+                          placeholder={placeholderList[index]}
                           {...register(idlist[index])}
                           borderColor={`#999`}
                           borderRadius={`0`}
@@ -223,17 +226,76 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                         )}
                       </Box>
                     )}
-                    {index === 9 && (
+                    {index === 2 && (
+                      <Box>
+                        <Input
+                          type={`date`}
+                          {...register(idlist[index])}
+                          borderColor={`#999`}
+                          borderRadius={`0`}
+                          w={{
+                            base: `${190 / 3.75}vw`,
+                            md: `${200 / 7.68}vw`,
+                            lg: `${500 / 19.2}vw`,
+                          }}
+                          h={{
+                            base: `${25 / 3.75}vw`,
+                            md: `${20 / 7.68}vw`,
+                            lg: `${40 / 19.2}vw`,
+                          }}
+                          fontSize={{
+                            base: `${10 / 3.75}vw`,
+                            md: `${12 / 7.68}vw`,
+                            lg: `${19 / 19.2}vw`,
+                          }}
+                          ml={{
+                            base: `${19 / 3.75}vw`,
+                            md: `${70 / 19.2}vw`,
+                          }}
+                        />
+                        {errors?.[idlist[index]]?.message && (
+                          <Box
+                            mt={{ base: `0.25rem` }}
+                            fontSize={{ base: `0.5rem`, md: `0.75rem` }}
+                            ml={{
+                              base: `${19 / 3.75}vw`,
+                              md: `${70 / 19.2}vw`,
+                            }}
+                            color={`red`}
+                          >
+                            {`日付を入力してください`}
+                          </Box>
+                        )}
+                      </Box>
+                    )}
+                    {(index === 3 || index === 9) && (
                       <Box
                         mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
                         ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
                       >
                         <SelectForm
-                          selectList={planList}
-                          registers={register('plan')}
-                          errorMessage={errors?.plan?.message}
+                          selectList={
+                            index === 3 ? employeeNumberList : planList
+                          }
+                          registers={register(idlist[index])}
+                          errorMessage={errors?.[idlist[index]]?.message}
                           placeholder={`選択してください`}
                         />
+                        {index === 9 && (
+                          <Box
+                            w={{
+                              base: `${190 / 3.75}vw`,
+                              md: `${200 / 7.68}vw`,
+                              lg: `${500 / 19.2}vw`,
+                            }}
+                            fontSize={{ lg: `${13 / 19.2}vw` }}
+                            lineHeight={`1.5`}
+                            whiteSpace={{ base: `pre-wrap` }}
+                          >
+                            {`※契約者は無料でご利用いただけます。
+※月額プランの方は記事作成代行を0円でご利用いただけます。`}
+                          </Box>
+                        )}
                       </Box>
                     )}
                     {index === 10 && (
@@ -283,8 +345,8 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
           alignItems={`center`}
           w={`fit-content`}
           mx={`auto`}
-          mt={{ base: `${30 / 3.75}vw`, md: `${80 / 19.2}vw` }}
-          mb={{ base: `${10 / 3.75}vw`, md: `${20 / 19.2}vw` }}
+          mt={{ base: `${30 / 3.75}vw`, md: `${40 / 19.2}vw` }}
+          mb={{ base: `${10 / 3.75}vw`, md: `${60 / 19.2}vw` }}
           fontSize={{
             base: `${12 / 3.75}vw`,
             md: `${13 / 7.68}vw`,
@@ -302,7 +364,18 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
           <ExternalLink href={routes.terms} borderBottom={`2px solid #39414E`}>
             利用規約
           </ExternalLink>
-          の取り扱いに同意する
+          ・
+          <ExternalLink href={''} borderBottom={`2px solid #39414E`}>
+            広告掲載基準
+          </ExternalLink>
+          ・
+          <ExternalLink
+            href={routes.privacyPolicy}
+            borderBottom={`2px solid #39414E`}
+          >
+            プライバシーポリシー
+          </ExternalLink>
+          に同意の上でご送信ください
         </Flex>
 
         <Button

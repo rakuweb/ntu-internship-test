@@ -3,6 +3,7 @@ import { FC } from 'react';
 import { Box, Checkbox, Flex } from '@chakra-ui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { useForm } from 'react-hook-form';
 import { routes } from '~/constants';
@@ -12,7 +13,6 @@ import {
   useContactFormStore,
 } from '~/features/contact';
 import { ExternalLink } from '../links/ExternalLink';
-import ChakraStylesDesktop from './ChakraStyles';
 import FormName from './FormName';
 import InquiryItem from './InquiryItem';
 import SubmitButton from './SubmitButton';
@@ -22,7 +22,9 @@ export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
+  const router = useRouter();
   const {
+    register,
     handleSubmit,
     control,
     reset,
@@ -39,8 +41,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     setIsSending(true);
 
     try {
-      const res = await axios.post(routes.apiContact, { ...remain });
-      alert('送信が完了しました。');
+      const _res = await axios.post(routes.apiContact, { ...remain });
       reset({
         item: '',
         name: '',
@@ -55,7 +56,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         listing_details: '',
         remarks: '',
       });
-      // control._reset({item: '', name: '', email: '', employment_status: ''})
+      router.push(routes.contactComplete);
     } catch (e) {
       console.error(e);
     } finally {
@@ -99,23 +100,19 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             md: `${2 / 19.2}vw solid rgba(65,164,253,0.25)`,
           }}
         >
-          <InquiryItem
-            control={control}
-            ChakraStylesDesktop={ChakraStylesDesktop}
-            errors={errors}
-          />
+          <InquiryItem control={control} errors={errors} register={register} />
         </Box>
 
         <Flex
           alignItems={`center`}
           w={`fit-content`}
           mx={`auto`}
-          mt={{ base: `${30 / 3.75}vw`, md: `${80 / 19.2}vw` }}
-          mb={{ base: `${10 / 3.75}vw`, md: `${20 / 19.2}vw` }}
+          mt={{ base: `${30 / 3.75}vw`, md: `${40 / 19.2}vw` }}
+          mb={{ base: `${10 / 3.75}vw`, md: `${60 / 19.2}vw` }}
           fontSize={{
             base: `${12 / 3.75}vw`,
             md: `${13 / 7.68}vw`,
-            lg: `${22 / 19.2}vw`,
+            lg: `${18 / 19.2}vw`,
           }}
           fontWeight={`bold`}
         >
@@ -126,14 +123,17 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             isInvalid
             onChange={(e) => setIsChecked(e.target.checked)}
           />
+          <ExternalLink href={routes.terms} borderBottom={`2px solid #39414E`}>
+            利用規約
+          </ExternalLink>
+          ・
           <ExternalLink
-            href={`/`}
-            as={`span`}
+            href={routes.privacyPolicy}
             borderBottom={`2px solid #39414E`}
           >
             プライバシーポリシー
           </ExternalLink>
-          に同意する
+          に同意いただき、内容をご確認いただいた上でご送信ください
         </Flex>
         <SubmitButton
           type={`submit`}

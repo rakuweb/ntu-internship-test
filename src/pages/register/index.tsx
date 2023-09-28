@@ -2,7 +2,6 @@
 import { useState, useEffect } from 'react';
 // import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
-import { useRouter } from 'next/router';
 import { NextPage } from 'next/types';
 import { FormProvider, useForm } from 'react-hook-form';
 
@@ -33,7 +32,6 @@ export const Index: NextPage = () => {
   const progress = useFormProgressStore((state) => state.progress);
   const [isClient, setIsClient] = useState(false);
   const { liff } = useLiff();
-  const router = useRouter();
   const setAccount = useAccountStore(selectSetAccount);
   const setStudent = useStudentStore(selectSetStudent);
   const { lineId } = useAccountStore();

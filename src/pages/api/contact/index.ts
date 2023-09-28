@@ -10,7 +10,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   switch (method) {
     case 'POST': {
       try {
-        const { recaptcha, ...data } = req.body;
+        const { recaptcha: _, ...data } = req.body;
 
         // const recaptchaRes = await fetch(RECAPTCHA_URL, {
         //   method: 'POST',
@@ -27,7 +27,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         //   return;
         // }
 
-        const body = { data: { ...data, } };
+        const body = { data: { ...data } };
         const response = await fetch(url, {
           method: 'POST',
           body: JSON.stringify(body),
@@ -52,7 +52,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         }
 
         res.status(200).json({ message: 'POST' });
-      } catch (err: any) {
+      } catch (err) {
         console.error(err);
         res.status(403).end();
       }
