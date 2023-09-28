@@ -3,10 +3,10 @@ import { FC } from 'react';
 import { Box, Flex, Input } from '@chakra-ui/react';
 import { useFormContext } from 'react-hook-form';
 
-import { FormButton } from 'components/buttons/FormButton';
 import { Image } from 'components/images/Image';
 import { useRequestStore } from 'features/requests';
 import { RequestSchema } from '../schema';
+import { NextButton } from '~/components/buttons/NextButton';
 
 // type layer
 export type DataProps = {
@@ -18,6 +18,7 @@ export type PresenterProps = DataProps;
 export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
   const {
     register,
+    trigger,
     formState: { errors },
   } = useFormContext<RequestSchema>();
   const { proceedProgress } = useRequestStore();
@@ -25,6 +26,15 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
   const list = [{ title: `会社名` }, { title: `登録メールアドレス` }];
   const idlist = ['company_name', 'email'] as const;
   const placeholderList = ['株式会社ラクウェブ', 'xxx@forjob.jp'];
+
+  const handleNextClick = async () => {
+    const validationCompanyName = await trigger('company_name');
+    const validationEmail = await trigger('email');
+
+    if (validationCompanyName && validationEmail) {
+      proceedProgress();
+    }
+  };
 
   return (
     <Box
@@ -39,6 +49,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
       display={isHidden ? 'none' : `block`}
       {...props}
     >
+      {/*
       <Box
         mt={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}
         mb={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}
@@ -53,7 +64,11 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
       >
         {`求人掲載情報の入力`}
       </Box>
-      <Flex mb={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}>
+    */}
+      <Flex
+        mt={{ base: ``, md: `${80 / 19.2}vw` }}
+        mb={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}
+      >
         <Image // eslint-disable-line
           ml={{ base: `${10 / 3.75}vw`, md: `${23 / 19.2}vw` }}
           mr={{ base: `${5 / 3.75}vw`, md: `${13 / 19.2}vw` }}
@@ -88,7 +103,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
           }}
           fontWeight={`bold`}
         >
-          企業情報
+          求人原稿の作成
         </Box>
       </Flex>
       <Box>
@@ -208,14 +223,14 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
           ))}
         </Box>
 
-        <FormButton
+        <NextButton
           mt={{ base: `${30 / 3.75}vw`, md: `${80 / 19.2}vw` }}
           isSending={false}
           isChecking={true}
-          onClick={() => proceedProgress()}
+          onClick={() => handleNextClick()}
         >
           {`次へ`}
-        </FormButton>
+        </NextButton>
       </Box>
     </Box>
   );

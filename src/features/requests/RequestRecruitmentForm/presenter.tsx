@@ -5,20 +5,26 @@ import { useFormContext } from 'react-hook-form';
 
 import { Image } from 'components/images/Image';
 import { useRequestStore } from 'features/requests';
-import { FormButton } from '~/components/buttons/FormButton';
 import { CheckboxForm } from '~/components/forms/CheckboxForm';
 import { SelectForm } from '~/components/forms/SelectForm';
 import {
   RequestSchema,
   jobTypeList,
-  shiftList,
   minPeriodList,
   desiredInterviewDateList,
   desiredInterviewTimeList,
   occuationList,
   minWorkingdayList,
   pointList,
+  targetList,
+  peopleList,
+  holidayList,
 } from '../schema';
+import { BackButton } from '~/components/buttons/BackButton';
+import { NextButton } from '~/components/buttons/NextButton';
+import { AmountForm } from '~/components/forms/AmountForm';
+import { TimeForm } from '~/components/forms/TimeForm';
+import { Span } from '~/components/Span';
 
 // type layer
 export type DataProps = {
@@ -30,6 +36,8 @@ export type PresenterProps = DataProps;
 export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
   const {
     register,
+    control,
+    trigger,
     formState: { errors },
   } = useFormContext<RequestSchema>();
   const { backProgress, proceedProgress } = useRequestStore();
@@ -41,18 +49,18 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
     { title: '募集人数' },
     { title: '時給' },
     { title: '勤務時間' },
+    { title: `勤務期間` },
+    { title: '勤務可能日数' },
     { title: 'シフト詳細' },
-    { title: `最低勤務時間` },
-    { title: '最低勤務日数' },
-    { title: '休日・休暇' },
+    { title: '定休日' },
     { title: '勤務地' },
     { title: '面接場所' },
-    { title: '歓迎' },
+    { title: '対象となる方・資格' },
     { title: 'おすすめポイント' },
     { title: '面談希望日' },
     { title: '面談希望時間' },
     { title: '面談希望時間（備考）' },
-    { title: '選考方法' },
+    { title: '選考について' },
     { title: '会社HP' },
     { title: '掲載日' },
     { title: '締切日' },
@@ -64,9 +72,9 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
     'people',
     'hourly_wage',
     'hours_short',
-    'shift',
     'min_period',
     'min_workingday',
+    'shift',
     'holiday',
     'place_short',
     'interview_location',
@@ -87,7 +95,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
     '3人',
     '1,000円',
     '15:00〜19:00',
-    '',
+    ``,
     '',
     '',
     '',
@@ -99,12 +107,71 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
     '',
     `その他希望日時等ある場合は記載ください
 例）10月10日　対応不可`, // eslint-disable-line
-    'エントリー⇒面接⇒合否',
+    `Web応募
+【エントリー⇒面接⇒採用⇒勤務】
+「エントリー」ボタンより必要事項を入力の上、送信してください。
+※Web応募された方には、こちらからLINEにて面接のご案内をさせていただきます。`,
     'https://forjob.nottheuniversity.com/',
     '',
     '',
     '',
   ];
+
+  const handleNextClick = async () => {
+    const validationJobType = await trigger('job_type');
+    const validationOccupation = await trigger('occupation');
+    const validationTarget = await trigger('target');
+    const validationPeople = await trigger('people');
+    const validationHourlyWage = await trigger('hourly_wage');
+    const validationHoursShortStart = await trigger('hours_short_start');
+    const validationHoursShortEnd = await trigger('hours_short_end');
+    const validationMinPeriod = await trigger('min_period');
+    const validationMinWorkingday = await trigger('min_workingday');
+    const validationShift = await trigger('shift');
+    const validationHoliday = await trigger('holiday');
+    const validationPlaceShort = await trigger('place_short');
+    const validationInterviewLocation = await trigger('interview_location');
+    const validationQualification = await trigger('qualification');
+    const validationPoints = await trigger('points');
+    const validationDesiredInterviewDate = await trigger(
+      'desired_interview_date'
+    );
+    const validationDesiredInterviewTime = await trigger(
+      'desired_interview_time'
+    );
+    const validationInterviewRemarks = await trigger('interview_remarks');
+    const validationFlow = await trigger('flow');
+    const validationUrl = await trigger('url');
+    const validationStartAt = await trigger('start_at');
+    const validationEndAt = await trigger('end_at');
+
+    if (
+      validationJobType &&
+      validationOccupation &&
+      validationTarget &&
+      validationPeople &&
+      validationHourlyWage &&
+      validationHoursShortStart &&
+      validationHoursShortEnd &&
+      validationMinPeriod &&
+      validationMinWorkingday &&
+      validationShift &&
+      validationHoliday &&
+      validationPlaceShort &&
+      validationInterviewLocation &&
+      validationQualification &&
+      validationPoints &&
+      validationDesiredInterviewDate &&
+      validationDesiredInterviewTime &&
+      validationInterviewRemarks &&
+      validationFlow &&
+      validationUrl &&
+      validationStartAt &&
+      validationEndAt
+    ) {
+      proceedProgress();
+    }
+  };
 
   return (
     <Box
@@ -119,6 +186,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
       display={isHidden ? 'none' : `block`}
       {...props}
     >
+      {/*
       <Box
         mt={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}
         mb={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}
@@ -133,7 +201,11 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
       >
         {`求人掲載情報の入力`}
       </Box>
-      <Flex mb={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}>
+    */}
+      <Flex
+        mt={{ base: ``, md: `${80 / 19.2}vw` }}
+        mb={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}
+      >
         <Image // eslint-disable-line
           ml={{ base: `${10 / 3.75}vw`, md: `${23 / 19.2}vw` }}
           mr={{ base: `${5 / 3.75}vw`, md: `${13 / 19.2}vw` }}
@@ -168,7 +240,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
           }}
           fontWeight={`bold`}
         >
-          求人情報
+          求人原稿の作成
         </Box>
       </Flex>
       <Box>
@@ -245,13 +317,19 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                     {index < 19 &&
                       index !== 0 &&
                       index !== 1 &&
+                      index !== 2 &&
+                      index !== 3 &&
+                      index !== 4 &&
+                      index !== 5 &&
                       index !== 6 &&
                       index !== 7 &&
                       index !== 8 &&
+                      index !== 9 &&
                       index !== 13 &&
                       index !== 14 &&
                       index !== 15 &&
-                      index !== 16 && (
+                      index !== 16 &&
+                      index !== 17 && (
                         <Box>
                           <Input
                             placeholder={placeholderList[index]}
@@ -294,6 +372,52 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                           )}
                         </Box>
                       )}
+
+                    {index === 4 && (
+                      <AmountForm
+                        placeholder={`1000`}
+                        registers={register(idlist[index])}
+                        errorMessage={errors?.[idlist[index]]?.message}
+                      />
+                    )}
+
+                    {index === 5 && (
+                      <Box>
+                        <Flex
+                          ml={{
+                            base: `${19 / 3.75}vw`,
+                            md: `${70 / 19.2}vw`,
+                          }}
+                          justifyContent={`space-between`}
+                          alignItems={`center`}
+                          h={{
+                            base: `${25 / 3.75}vw`,
+                            md: `${20 / 7.68}vw`,
+                            lg: `${40 / 19.2}vw`,
+                          }}
+                        >
+                          <TimeForm registers={register('hours_short_start')} />
+                          <Span mx={{ base: `0.5rem` }}>〜</Span>
+                          <TimeForm registers={register('hours_short_end')} />
+                        </Flex>
+                        {(errors?.['hours_short_start']?.message ||
+                          errors?.['hours_short_end']?.message) && (
+                          <Box
+                            mt={{ base: `0.25rem` }}
+                            fontSize={{ base: `0.5rem`, md: `0.75rem` }}
+                            ml={{
+                              base: `${19 / 3.75}vw`,
+                              md: `${70 / 19.2}vw`,
+                            }}
+                            color={`red`}
+                          >
+                            {errors?.['hours_short_start']?.message ||
+                              errors?.['hours_short_end']?.message}
+                          </Box>
+                        )}
+                      </Box>
+                    )}
+
                     {(index === 19 || index === 20) && (
                       <Box>
                         <Input
@@ -336,7 +460,8 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                         )}
                       </Box>
                     )}
-                    {(index === 6 ||
+                    {(index === 2 ||
+                      index === 9 ||
                       index === 13 ||
                       index === 14 ||
                       index === 15) && (
@@ -346,24 +471,27 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                       >
                         <CheckboxForm
                           checkboxes={
-                            index === 6
-                              ? shiftList
+                            index === 2
+                              ? targetList
+                              : index === 9
+                              ? holidayList
                               : index === 13
                               ? pointList
                               : index === 14
                               ? desiredInterviewDateList
                               : desiredInterviewTimeList
                           }
-                          registers={register(idlist[index])}
-                          isRequired
+                          name={idlist[index]}
+                          control={control}
                           errorMessage={errors?.[idlist[index]]?.message}
                         />
                       </Box>
                     )}
                     {(index === 0 ||
                       index === 1 ||
-                      index === 7 ||
-                      index === 8) && (
+                      index === 3 ||
+                      index === 6 ||
+                      index === 7) && (
                       <Box
                         mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
                         ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
@@ -374,13 +502,13 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                               ? jobTypeList
                               : index === 1
                               ? occuationList
-                              : index === 7
+                              : index === 3
+                              ? peopleList
+                              : index === 6
                               ? minPeriodList
-                              : index === 8
+                              : index === 7
                               ? minWorkingdayList
-                              : index === 15
-                              ? desiredInterviewDateList
-                              : desiredInterviewTimeList
+                              : holidayList
                           }
                           // eslint-disable-next-line
                           registers={register(idlist[index] as any)}
@@ -389,7 +517,8 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                         />
                       </Box>
                     )}
-                    {index === 16 && (
+
+                    {(index === 8 || index === 16 || index === 17) && (
                       <Box
                         mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
                         ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
@@ -422,7 +551,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                             fontSize={{ base: `0.5rem`, md: `0.75rem` }}
                             color={`red`}
                           >
-                            {errors.job_description.message}
+                            {errors?.[idlist[index]]?.message}
                           </Box>
                         )}
                       </Box>
@@ -435,16 +564,16 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
         </Box>
 
         <Flex mt={{ base: `${60 / 3.75}vw`, md: `${80 / 19.2}vw` }}>
-          <FormButton
+          <BackButton
             isSending={false}
             isChecking={true}
             onClick={() => backProgress()}
-          >{`戻る`}</FormButton>
-          <FormButton
+          >{`戻る`}</BackButton>
+          <NextButton
             isSending={false}
             isChecking={true}
-            onClick={() => proceedProgress()}
-          >{`次へ`}</FormButton>
+            onClick={() => handleNextClick()}
+          >{`次へ`}</NextButton>
         </Flex>
       </Box>
     </Box>

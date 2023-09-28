@@ -5,7 +5,8 @@ import { useFormContext } from 'react-hook-form';
 
 import { Image } from 'components/images/Image';
 import { useRequestStore } from 'features/requests';
-import { FormButton } from '~/components/buttons/FormButton';
+import { BackButton } from '~/components/buttons/BackButton';
+import { NextButton } from '~/components/buttons/NextButton';
 import { RequestSchema } from '../schema';
 
 // type layer
@@ -24,11 +25,11 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
 
   const list = [
     { title: '求人タイトル' },
-    { title: '写真' },
-    { title: '求人の詳細情報' },
-    { title: '職場の情報画像' },
-    { title: '職場の情報タイトル' },
-    { title: '職場情報のテキスト' },
+    { title: 'メイン写真' },
+    { title: '求人の詳細内容' },
+    { title: '職場情報の写真' },
+    { title: '職場情報のタイトル' },
+    { title: '職場情報の詳細' },
     // { title: '職場の情報の画像②' },
     // { title: '職場の情報のタイトル②' },
     // { title: '職場の情報の詳細②' },
@@ -50,6 +51,19 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
     // 'atmosphere_title3',
     // 'atmosphere_text3',
   ] as const;
+  const placeholderlist = [
+    `初めてでもOK！人気のイベントで働いてみませんか？`,
+    ``,
+    ``,
+    ``,
+    `職場の雰囲気`,
+    `私たちの職場は、フレンドリーで協力的な雰囲気が広がっています。
+年齢や性別に関わらず、お互いにサポートし合い、
+協力しあう文化が根付いています。みんなでわいわいと楽しく働きながら、
+お仕事をこなすので、新人さんもすぐに馴染むことができますよ。
+テキパキと動きながらも、のんびりとした雰囲気で、
+お仕事のストレスを感じにくい環境です。`,
+  ];
 
   return (
     <Box
@@ -64,6 +78,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
       display={isHidden ? 'none' : `block`}
       {...props}
     >
+      {/*
       <Box
         mt={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}
         mb={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}
@@ -78,7 +93,11 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
       >
         {`お申し込み情報の入力`}
       </Box>
-      <Flex mb={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}>
+    */}
+      <Flex
+        mt={{ base: ``, md: `${80 / 19.2}vw` }}
+        mb={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}
+      >
         <Image // eslint-disable-line
           ml={{ base: `${10 / 3.75}vw`, md: `${23 / 19.2}vw` }}
           mr={{ base: `${5 / 3.75}vw`, md: `${13 / 19.2}vw` }}
@@ -113,7 +132,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
           }}
           fontWeight={`bold`}
         >
-          求人情報
+          求人原稿の作成
         </Box>
       </Flex>
       <Box>
@@ -199,6 +218,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                       index !== 11 && (
                         <Box>
                           <Input
+                            placeholder={placeholderlist[index]}
                             // eslint-disable-next-line
                             {...register(idlist[index] as any)}
                             borderColor={`#999`}
@@ -241,7 +261,9 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                     {(index === 1 || index === 3) && (
                       <Box>
                         <Input
+                          placeholder={placeholderlist[index]}
                           type={`file`}
+                          accept={`image/jpeg,image/png`}
                           // eslint-disable-next-line
                           {...register(idlist[index] as any)}
                           borderColor={`#999`}
@@ -288,6 +310,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                         ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
                       >
                         <Textarea
+                          placeholder={placeholderlist[index]}
                           borderRadius={`0`}
                           borderColor={`#999`}
                           w={{
@@ -327,16 +350,16 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
         </Box>
 
         <Flex mt={{ base: `${60 / 3.75}vw`, md: `${80 / 19.2}vw` }}>
-          <FormButton
+          <BackButton
             isSending={false}
             isChecking={true}
             onClick={() => backProgress()}
-          >{`戻る`}</FormButton>
-          <FormButton
+          >{`戻る`}</BackButton>
+          <NextButton
             type={`submit`}
             isSending={false}
             isChecking={true}
-          >{`確認する`}</FormButton>
+          >{`確認する`}</NextButton>
         </Flex>
       </Box>
     </Box>
