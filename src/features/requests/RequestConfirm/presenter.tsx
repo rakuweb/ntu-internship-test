@@ -3,10 +3,12 @@ import { FC } from 'react';
 import { Box, Flex, Checkbox } from '@chakra-ui/react';
 import axios from 'axios';
 import { useFormContext } from 'react-hook-form';
+import { useRouter } from 'next/router';
 
 import { Image } from 'components/images/Image';
 import { ExternalLink } from 'components/links/ExternalLink';
 import { useRequestStore } from 'features/requests';
+import { BackButton } from '~/components/buttons/BackButton';
 import { FormButton } from '~/components/buttons/FormButton';
 import { apiRoutes, routes } from '~/constants';
 import { API_URL_OFFER } from '~/constants/env';
@@ -21,6 +23,7 @@ export type PresenterProps = DataProps;
 
 // presenter
 export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
+  const router = useRouter();
   const { reset } = useFormContext<RequestSchema>();
   const { isSending, setIsSending, isChecking, setIsChecking, ...remain } =
     useRequestStore();
@@ -140,9 +143,11 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
           ],
         },
       });
-      alert('送信が完了しました。');
       reset();
       setProgress(0);
+
+      const id = router?.query?.id as string;
+      router.push(routes.requestComplete(id));
     } catch (e) {
       console.error(e);
     } finally {
@@ -303,8 +308,8 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
           alignItems={`center`}
           w={`fit-content`}
           mx={`auto`}
-          mt={{ base: `${30 / 3.75}vw`, md: `${80 / 19.2}vw` }}
-          mb={{ base: `${10 / 3.75}vw`, md: `${20 / 19.2}vw` }}
+          mt={{ base: `${30 / 3.75}vw`, md: `${40 / 19.2}vw` }}
+          mb={{ base: `${10 / 3.75}vw`, md: `${60 / 19.2}vw` }}
           fontSize={{
             base: `${12 / 3.75}vw`,
             md: `${13 / 7.68}vw`,
@@ -322,15 +327,26 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
           <ExternalLink href={routes.terms} borderBottom={`2px solid #39414E`}>
             利用規約
           </ExternalLink>
-          の取り扱いに同意する
+          ・
+          <ExternalLink href={''} borderBottom={`2px solid #39414E`}>
+            広告掲載基準
+          </ExternalLink>
+          ・
+          <ExternalLink
+            href={routes.privacyPolicy}
+            borderBottom={`2px solid #39414E`}
+          >
+            プライバシーポリシー
+          </ExternalLink>
+          に同意の上でご送信ください
         </Flex>
 
         <Flex mt={{ base: `${60 / 3.75}vw`, md: `${80 / 19.2}vw` }}>
-          <FormButton
+          <BackButton
             isSending={false}
             isChecking={true}
             onClick={() => backProgress()}
-          >{`戻る`}</FormButton>
+          >{`戻る`}</BackButton>
           <FormButton
             onClick={() => handleClick()}
             isSending={isSending}

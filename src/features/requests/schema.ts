@@ -1,13 +1,39 @@
 import { z } from 'zod';
 
+export const targetList = [
+  '大学1年生',
+  '大学2年生',
+  '大学3年生',
+  '大学4年生',
+  '修士1年生',
+  '修士2年生',
+  '博士1年生',
+  '博士2年生',
+  '博士3年生',
+  '博士4年生',
+  '博士5年生',
+];
+export const peopleList = [
+  '1人',
+  '2人',
+  '3人',
+  '4人',
+  '5人',
+  '6人',
+  '7人',
+  '8人',
+  '9人',
+  '10人',
+  '11人以上',
+];
 export const planList = [
-  '①採用課金型（1名採用¥30,000円〜）',
-  '②月額プラン（掲載1枠¥月25,000円）',
+  '採用課金型（1名採用¥30,000円〜）',
+  '月額プラン（掲載1枠¥月25,000円）',
 ];
 export const jobTypeList = [
-  ` ①単発アルバイト`,
-  `②通常アルバイト`,
-  `③長期インターン`,
+  `単発アルバイト`,
+  `通常アルバイト`,
+  `長期インターン`,
 ];
 export const occuationList = [
   '飲食/フード',
@@ -25,24 +51,35 @@ export const occuationList = [
   'その他',
 ];
 export const shiftList = [
-  `①土日祝のみOK`,
-  `②平日のみOK`,
-  `③シフト自由・相談OK`,
-  `④該当なし`,
+  `土日祝のみOK`,
+  `平日のみOK`,
+  `シフト自由・相談OK`,
+  `該当なし`,
 ];
 export const minPeriodList = [
-  `①単発（1日のみ）`,
-  `②1周間以内`,
-  `③1ヶ月以内`,
-  `④3ヶ月以内`,
-  `④3ヶ月以上（長期）`,
+  `単発（1日のみ）`,
+  `1週間以内`,
+  `1ヶ月以内`,
+  `3ヶ月以内`,
+  `3ヶ月以上（長期）`,
 ];
 export const minWorkingdayList = [
-  '週1日からOK',
-  '週2日からOK',
-  '週3日からOK',
+  '週1日以上',
+  '週2日以上',
+  '週3日以上',
   '週4日以上',
-  '日数が選べる',
+];
+export const holidayList = [
+  '日曜日',
+  '月曜日',
+  '火曜日',
+  '水曜日',
+  '木曜日',
+  '金曜日',
+  '土曜日',
+  '祝祭日',
+  '不定休',
+  'なし',
 ];
 export const pointList = [
   '未経験者OK',
@@ -54,23 +91,24 @@ export const pointList = [
   '職場見学応募OK',
   '在宅勤務可能',
   '大学周辺',
+  '該当なし',
 ];
 export const desiredInterviewDateList = [
-  `①月`,
-  `②火`,
-  `③水`,
-  `④木`,
-  `⑤金`,
-  `⑥土`,
-  `⑦日`,
+  `月`,
+  `火`,
+  `水`,
+  `木`,
+  `金`,
+  `土`,
+  `日`,
 ];
 export const desiredInterviewTimeList = [
-  `①10:00−11:00`,
-  `②11:00−12:00`,
-  `③13:00−14:00`,
-  `④14:00−15:00`,
-  `⑤15:00−16:00`,
-  `⑥16:00−17:00`,
+  `10:00−11:00`,
+  `11:00−12:00`,
+  `13:00−14:00`,
+  `14:00−15:00`,
+  `15:00−16:00`,
+  `16:00−17:00`,
 ];
 
 export const requestSchema = z.object({
@@ -82,38 +120,45 @@ export const requestSchema = z.object({
     .email('メールアドレスを入力してください'),
 
   job_type: z
-    .string({ required_error: '入力してください' })
-    .min(1, '入力してください'),
+    .string({ required_error: '選択してください' })
+    .min(1, '選択してください'),
   occupation: z
-    .string({ required_error: '入力してください' })
-    .min(1, '入力してください'),
+    .string({ required_error: '選択してください' })
+    .min(1, '選択してください'),
   target: z
-    .string({ required_error: '入力してください' })
-    .min(1, '入力してください'),
-  people: z
-    .string({ required_error: '入力してください' })
-    .min(1, '入力してください'),
-  hourly_wage: z
-    .string({ required_error: '入力してください' })
-    .min(1, '入力してください'),
-  hours_short: z
-    .string({ required_error: '入力してください' })
-    .min(1, '入力してください'),
-  shift: z
     .array(z.string({ required_error: '選択してください' }), {
       required_error: '選択してください',
       invalid_type_error: '選択してください',
     })
     .min(1, '選択してください'),
+  people: z
+    .string({ required_error: '選択してください' })
+    .min(1, '選択してください'),
+  hourly_wage: z
+    .string({ required_error: '入力してください' })
+    .regex(new RegExp(/^[0-9]+$/), '半角数字を入力してください')
+    .min(1, '入力してください'),
+  hours_short_start: z
+    .string({ required_error: '入力してください' })
+    .min(1, '入力してください'),
+  hours_short_end: z
+    .string({ required_error: '入力してください' })
+    .min(1, '入力してください'),
+  shift: z
+    .string({ required_error: '入力してください' })
+    .min(1, '入力してください'),
   min_period: z
-    .string({ required_error: '入力してください' })
-    .min(1, '入力してください'),
+    .string({ required_error: '選択してください' })
+    .min(1, '選択してください'),
   min_workingday: z
-    .string({ required_error: '入力してください' })
-    .min(1, '入力してください'),
+    .string({ required_error: '選択してください' })
+    .min(1, '選択してください'),
   holiday: z
-    .string({ required_error: '入力してください' })
-    .min(1, '入力してください'),
+    .array(z.string({ required_error: '選択してください' }), {
+      required_error: '選択してください',
+      invalid_type_error: '選択してください',
+    })
+    .min(1, '選択してください'),
   place_short: z
     .string({ required_error: '入力してください' })
     .min(1, '入力してください'),

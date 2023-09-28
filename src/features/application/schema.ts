@@ -10,8 +10,8 @@ export const employeeNumberList = [
   `1000人以上`,
 ];
 export const planList = [
-  '①採用課金型（1名採用¥30,000円〜）',
-  '②月額プラン（掲載1枠¥月25,000円）',
+  '採用課金型（1名採用¥30,000円〜）',
+  '月額プラン（掲載1枠¥月25,000円）',
 ];
 
 export const applicationSchema = z.object({

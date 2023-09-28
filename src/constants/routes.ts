@@ -29,6 +29,7 @@ export const routes = {
   contact: '/contact',
   contactComplete: '/contact/complete',
   applicationComplete: '/application/complete',
+  requestComplete: (id: string) => `/companies/${id}/request/complete`,
 
   apiRegister: '/api/register',
   apiAccount: '/api/account',

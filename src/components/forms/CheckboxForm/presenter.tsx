@@ -9,7 +9,7 @@ import {
   Box,
   Wrap,
 } from '@chakra-ui/react';
-import { UseFormRegisterReturn } from 'react-hook-form';
+import { Control, Controller } from 'react-hook-form';
 
 // type layer
 export type StyleProps = FormControlProps;
@@ -17,11 +17,11 @@ export type DataProps = {
   checkboxes: string[];
   label?: string;
   placeholder?: string;
-  name?: string;
-  isRequired?: boolean;
+  name: string;
+  // isRequired?: boolean;
   errorMessage?: string;
   autoComplete?: string;
-  registers?: UseFormRegisterReturn;
+  control: Control;
 };
 export type PresenterProps = StyleProps & DataProps;
 
@@ -29,7 +29,8 @@ export type PresenterProps = StyleProps & DataProps;
 export const Presenter: FC<PresenterProps> = ({
   checkboxes,
   errorMessage,
-  registers,
+  name,
+  control,
   ...props
 }) => {
   return (
@@ -42,27 +43,37 @@ export const Presenter: FC<PresenterProps> = ({
           w={{ lg: `90%`, xl: `70%` }}
           spacing={{ base: `4.26vw`, lg: `1.25rem` }}
         >
-          <CheckboxGroup>
-            {checkboxes.map((checkbox) => (
-              <Box
-                key={checkbox}
-                // h={{ base: '2.75rem' }}
-              >
-                <Checkbox
-                  size={{ base: `sm`, '2xl': `md` }}
-                  borderColor={`gray`}
-                  w={{
-                    lg: `15rem`,
-                    xl: `15rem`,
-                  }}
-                  value={checkbox}
-                  {...registers}
-                >
-                  {checkbox}
-                </Checkbox>
-              </Box>
-            ))}
-          </CheckboxGroup>
+          <Controller
+            name={name}
+            control={control}
+            render={({ field }) => {
+              return (
+                <CheckboxGroup {...field} defaultValue={[]}>
+                  {checkboxes.map((checkbox) => (
+                    <Box
+                      key={checkbox}
+                      // h={{ base: '2.75rem' }}
+                    >
+                      <Checkbox
+                        name={name}
+                        key={checkbox}
+                        size={{ base: `sm`, '2xl': `md` }}
+                        borderColor={`gray`}
+                        w={{
+                          lg: `15rem`,
+                          xl: `15rem`,
+                        }}
+                        value={checkbox}
+                        required={false}
+                      >
+                        {checkbox}
+                      </Checkbox>
+                    </Box>
+                  ))}
+                </CheckboxGroup>
+              );
+            }}
+          />
         </Wrap>
       </Stack>
       <Box
