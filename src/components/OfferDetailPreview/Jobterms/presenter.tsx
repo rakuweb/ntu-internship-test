@@ -20,7 +20,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     { title: `対象`, main: offer.target },
     { title: `雇用形態`, main: offer.job_type },
     // { title: `雇用形態`, main: offer.job_type.name },
-    { title: `給与`, main: offer.hourly_wage },
+    { title: `給与`, main: `${offer.hourly_wage}円` },
     { title: `勤務時間`, main: offer.hours_short },
     // { title: `最低労働時間`, main: offer.min_working_hours },
     { title: `最低勤務日数 `, main: offer.min_workingday },
@@ -34,7 +34,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     { title: `歓迎`, main: offer.qualification },
     { title: `おすすめポイント`, main: offer.points },
     { title: `選考方法`, main: offer.flow },
-    { title: `会社名`, main: `株式会社ラクウェブ` },
+    { title: `会社名`, main: offer.company_name },
     { title: `会社詳細`, main: offer.url },
     { title: `求人番号`, main: offer.id },
   ];
@@ -176,7 +176,6 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     pl={{ base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` }}
                     whiteSpace={`pre-wrap`}
                   >
-                    {`100`}
                     {list.main}
                   </Box>
                 </div>

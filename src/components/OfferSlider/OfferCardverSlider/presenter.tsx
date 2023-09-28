@@ -20,7 +20,7 @@ export interface PresenterProps extends DataProps {
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const {
     id,
-    createby,
+    // createby,
     startDate,
     title,
     image,
@@ -76,7 +76,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 NEW
               </Flex>
               <Box mb={`${10 / 9.6}vw`} fontSize={`${18 / 9.6}vw`}>
-                {createby.firstname}
+                {/*createby.firstname*/}
               </Box>
               <Box
                 display={`inline`}

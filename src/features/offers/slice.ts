@@ -40,6 +40,7 @@ export const createTargetOfferSlice: StateCreator<
   qualification: '',
   people: '',
   flow: '',
+  company_name: '',
   email: '',
   interview_location: '',
   // createby: { id: 0, firstname: '', lastname: '' },

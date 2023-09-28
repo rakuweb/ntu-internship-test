@@ -1,6 +1,5 @@
 // import layer
 import { useState, useEffect } from 'react';
-import Head from 'next/head';
 import {
   NextPage,
   InferGetStaticPropsType,
@@ -114,7 +113,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
     return {
       paths,
-      fallback: true,
+      fallback: 'blocking',
     };
   } finally {
     console.log('get pages/offers/[id] paths');

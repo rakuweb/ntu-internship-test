@@ -31,7 +31,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     id,
     image,
     job_type,
-    createby,
+    // createby,
   } = props;
   const href = `${routes.offers}/${id}`;
   const currentDate = new Date();
@@ -314,7 +314,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           ) : null}
           <Box p={`${16 / 3.75}vw`} pb={`${11 / 3.75}vw`}>
             <Box mb={`${4 / 3.75}vw`} fontSize={`${10 / 3.75}vw`}>
-              {createby.firstname}
+              {/*createby.firstname*/}
             </Box>
             <Box
               textDecoration={`underline #41A4FD`}

@@ -81,6 +81,7 @@ export const parseToTarget = (entity: OfferEntity): Partial<OfferSliceData> => {
     flow: offer.flow,
     holiday: offer ? offer.holiday : '',
     shift: offer ? offer.shift : '',
+    company_name: offer?.company_name ?? '',
     email: offer.email,
     interview_location: offer.interview_location,
     min_working_hours: offer.min_working_hours,

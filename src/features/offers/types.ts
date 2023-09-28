@@ -73,6 +73,7 @@ export type OfferSliceData = {
   points: string;
   // points: Point[];
   image?: ImageType;
+  company_name: string;
 };
 
 export type OfferSlice = OfferSliceData & {

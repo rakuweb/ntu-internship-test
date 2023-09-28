@@ -2,27 +2,46 @@
 import { FC } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import { Image } from 'components/images/Image';
-import { useLiff } from 'contexts/LineAuthContextInternship';
-import { useAccountStore, selectSetPrevPath } from 'features/account';
+// import { useLiff } from 'contexts/LineAuthContextInternship';
+// import { useAccountStore, selectSetPrevPath } from 'features/account';
 import { useTargetOfferStore, selectTarget } from 'features/offers';
-import { InternalLink } from '~/components/links/InternalLink';
+import axios from 'axios';
+import { routes } from '~/constants';
+import { useRouter } from 'next/router';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
+  const router = useRouter();
   const offer = useTargetOfferStore(selectTarget);
-  const { liff } = useLiff();
-  const setPrevPath = useAccountStore(selectSetPrevPath);
-  const signin = () => {
-    if (!liff) return;
-    if (!liff.isLoggedIn()) {
-      offer?.id + `/jobform` && setPrevPath(decodeURI(offer.id + `/jobform`));
-      window.localStorage.setItem('prevUrl', offer?.id + `/jobform`);
-      liff.login(); //{ redirectUri: redirectUri });
-    } else {
-      window.location.href = offer.id + `/jobform`;
+  // const { liff } = useLiff();
+  // const setPrevPath = useAccountStore(selectSetPrevPath);
+  // const signin = () => {
+  //   if (!liff) return;
+  //   if (!liff.isLoggedIn()) {
+  //     offer?.id + `/jobform` && setPrevPath(decodeURI(offer.id + `/jobform`));
+  //     window.localStorage.setItem('prevUrl', offer?.id + `/jobform`);
+  //     liff.login(); //{ redirectUri: redirectUri });
+  //   } else {
+  //     window.location.href = offer.id + `/jobform`;
+  //   }
+  // };
+
+  const handleConfirmPublish = async () => {
+    const confirmResult = confirm('求人記事の公開申請をしますか。');
+
+    if (!confirmResult) return;
+
+    try {
+      const _res = await axios.put(routes.apiOffersCheck, { id: offer.id });
+      const id = router.query.id as string;
+      router.push(routes.offerCheckComplete(id));
+    } catch (e) {
+      console.error(e);
+      alert(`公開申請に失敗しました。
+時間が経ってからもう一度お試しください。`);
     }
   };
 
@@ -75,7 +94,9 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             }}
           />
           <Box ml={{ base: ``, md: `${17 / 19.2}vw` }}>時給</Box>
-          <Box ml={{ base: ``, md: `${53 / 19.2}vw` }}>{offer.hourly_wage}</Box>
+          <Box ml={{ base: ``, md: `${53 / 19.2}vw` }}>
+            {offer.hourly_wage}円
+          </Box>
         </Flex>
         <Flex
           mb={{ base: ``, md: `${14 / 19.2}vw` }}
@@ -197,6 +218,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           ポイントもらえる
         </Box> */}
       </Box>
+      {/*
       <Box
         onClick={() => {
           {
@@ -227,6 +249,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           応募する
         </Flex>
       </Box>
+      */}
       <Flex
         mt={`3vw`}
         alignItems={`center`}
@@ -236,6 +259,9 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         color={`white`}
         fontSize={{ base: ``, md: `${16 / 7.68}vw`, lg: `${27 / 19.2}vw` }}
         fontWeight={`bold`}
+        onClick={() => handleConfirmPublish()}
+        transition={`all 0.3s`}
+        _hover={{ cursor: `pointer`, filter: `opacity(50%)` }}
       >
         <Image // eslint-disable-line
           w={{ base: ``, md: `${16 / 7.68}vw`, lg: `${27 / 19.2}vw` }}
