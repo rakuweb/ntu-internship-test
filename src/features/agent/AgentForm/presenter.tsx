@@ -19,6 +19,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useFormContext<AgentSchema>();
   const { isSending, isChecking, setIsChecking } = useAgentStore();
@@ -235,10 +236,9 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                       >
                         <CheckboxForm
                           checkboxes={List}
-                          isRequired
                           label={`項目`}
                           name={`contact`}
-                          registers={register('contact_request')}
+                          control={control}
                           errorMessage={errors?.contact_request?.message}
                         />
                       </Box>
