@@ -58,10 +58,10 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
   ] as const;
 
   const list2 = [
-    { title: `応募先`, text: offer.createby.firstname },
+    { title: `応募先`, text: offer.company_name },
     {
       title: `勤務地・面接地`,
-      text: offer.place_short + offer.place_detail,
+      text: offer.place_short,
     },
   ];
 

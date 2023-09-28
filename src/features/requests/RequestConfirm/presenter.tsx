@@ -271,7 +271,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                       </Box>
                     </Flex>
                   </Box>
-                  <Flex pt={{ base: `${15 / 3.75}vw`, md: `${18 / 19.2}vw` }}>
+                  <Flex py={{ base: `${15 / 3.75}vw`, md: `${18 / 19.2}vw` }}>
                     <Box>
                       <Box
                         borderColor={`#999`}
@@ -281,11 +281,6 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                           base: `${190 / 3.75}vw`,
                           md: `${200 / 7.68}vw`,
                           lg: `${500 / 19.2}vw`,
-                        }}
-                        h={{
-                          base: `${25 / 3.75}vw`,
-                          md: `${20 / 7.68}vw`,
-                          lg: `${40 / 19.2}vw`,
                         }}
                         fontSize={{
                           base: `${10 / 3.75}vw`,

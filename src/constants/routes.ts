@@ -30,6 +30,7 @@ export const routes = {
   contactComplete: '/contact/complete',
   applicationComplete: '/application/complete',
   requestComplete: (id: string) => `/companies/${id}/request/complete`,
+  offerCheckComplete: (id: string) => `/offers/preview/${id}/complete`,
 
   apiRegister: '/api/register',
   apiAccount: '/api/account',
@@ -40,6 +41,7 @@ export const routes = {
   apiJobform: `/api/offers/jobform/send`,
   apiContact: `/api/contact`,
   apiAgent: `/api/agent`,
+  apiOffersCheck: `/api/offers/check`,
 };
 
 export const HP_URL = `https://nottheuniversity.com`;
@@ -56,6 +58,7 @@ export const apiRoutes = {
   jobform: `/offers/jobform/send`,
   companies: `/companies`,
   offer: `/offers`,
+  offerId: (id: string) => `/offers/${id}`,
   agent: `/agents`,
 };
 

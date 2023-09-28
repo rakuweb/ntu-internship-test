@@ -7,9 +7,7 @@ query getOfferById($id: ID) {
         hourly_wage
         hourly_wage_detail
         place_short
-        place_detail
         hours_short
-        hours_detail
         job_description
         start_at
         end_at
@@ -21,15 +19,11 @@ query getOfferById($id: ID) {
         flow
         shift
         holiday
+        company_name
         email
         min_working_hours
-        min_period 
-        min_workingday 
-        createdBy {
-          id
-          firstname
-          lastname
-        }
+        min_period
+        min_workingday
         atmosphere {
           title
           text
@@ -46,9 +40,9 @@ query getOfferById($id: ID) {
             }
           }
         }
-        occupation 
-        job_type 
-        points 
+        occupation
+        job_type
+        points
 
         image {
           data {

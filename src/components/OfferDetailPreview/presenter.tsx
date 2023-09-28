@@ -56,6 +56,7 @@ export const Presenter: FC<PresenterProps> = () => {
   };
 
   const otherOffers = offers.filter((item) => item.id !== offer.id);
+
   return (
     <div css={styles}>
       <BreadcrumbOfferId titles={pageTitles} />
@@ -83,7 +84,7 @@ export const Presenter: FC<PresenterProps> = () => {
             }}
             mb={{ base: `${13 / 3.75}vw`, md: `${20 / 19.2}vw` }}
           >
-            {`会社名が入る`}
+            {offer.company_name}
             {isNew <= 7 ? (
               <Flex
                 alignItems={`center`}
@@ -174,6 +175,7 @@ export const Presenter: FC<PresenterProps> = () => {
               mx={{ base: ``, md: `${20 / 19.2}vw` }}
               fontSize={{ base: `${11 / 3.75}vw`, md: `${20 / 19.2}vw` }}
               lineHeight={{ base: `1.2em`, md: `1.5em` }}
+              whiteSpace={`pre-wrap`}
             >
               {offer.job_description}
             </Box>

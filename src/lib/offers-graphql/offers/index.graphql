@@ -9,16 +9,11 @@ query getOffersAll {
         hours_short
         start_at
         end_at
-        createdBy {
-          id
-          firstname
-          lastname
-        }
-        occupation 
-        job_type 
-        min_period 
-        min_workingday 
-        points 
+        occupation
+        job_type
+        min_period
+        min_workingday
+        points
         image {
           data {
             id

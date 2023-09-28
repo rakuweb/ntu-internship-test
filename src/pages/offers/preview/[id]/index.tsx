@@ -1,6 +1,5 @@
 // import layer
 import { useState, useEffect } from 'react';
-import Head from 'next/head';
 import {
   NextPage,
   InferGetStaticPropsType,
@@ -16,7 +15,7 @@ import {
 } from 'features/offers';
 import { initializeApollo_offer } from 'lib/apollo/client';
 import { SeoComponent } from 'organisms/SeoComponent';
-import { Top as Template } from 'templates/OfferId';
+import { Top as Template } from 'templates/OfferPreview';
 import {
   GetOfferByIdQuery,
   GetOfferByIdDocument,
@@ -74,10 +73,10 @@ export const Index: NextPage<Props> = ({ data, allOffersData }) => {
             description={description}
             openGraph={openGraph}
           />
-          <Head>
-            <meta content="noindex" />
-            <Template />
-          </Head>
+          {/* <Head> */}
+          <meta content="noindex" />
+          <Template />
+          {/* </Head> */}
         </>
       );
     } else {
@@ -114,7 +113,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
     return {
       paths,
-      fallback: true,
+      fallback: 'blocking',
     };
   } finally {
     console.log('get pages/offers/[id] paths');

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { NextPage } from 'next/types';
+import { NextPage, GetStaticPaths, GetStaticProps } from 'next/types';
 
 import { SeoComponent } from 'organisms/SeoComponent';
 import { RequestComplete } from '~/components/templates/RequestComplete';
@@ -42,3 +42,14 @@ export const Index: NextPage = () => {
 };
 
 export default Index;
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: 'blocking',
+  };
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  return { props: {} };
+};
