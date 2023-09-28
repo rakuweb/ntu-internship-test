@@ -20,15 +20,15 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     { title: `対象`, main: offer.target },
     { title: `雇用形態`, main: offer.job_type },
     // { title: `雇用形態`, main: offer.job_type.name },
-    { title: `給与`, main: offer.hourly_wage_detail },
-    { title: `勤務時間`, main: offer.hours_detail },
-    { title: `最低労働時間`, main: offer.min_working_hours },
+    { title: `給与`, main: offer.hourly_wage },
+    { title: `勤務時間`, main: offer.hours_short },
+    // { title: `最低労働時間`, main: offer.min_working_hours },
     { title: `最低勤務日数 `, main: offer.min_workingday },
     // { title: `最低勤務日数 `, main: offer.min_workingday.days },
     { title: `最低勤務期間 `, main: offer.min_period },
     // { title: `最低勤務期間 `, main: offer.min_period.period },
     { title: `休日・休暇`, main: offer.holiday },
-    { title: `シフト詳細`, main: offer.shift },
+    // { title: `シフト詳細`, main: offer.shift },
     { title: `勤務場所`, main: offer.place_short },
     { title: `面接場所`, main: offer.interview_location },
     { title: `歓迎`, main: offer.qualification },
@@ -136,7 +136,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               ) : (
                 <div>
                   <Box
-                    display={index === 17 || index === 18 ? `none` : `block`}
+                    display={index === 15 || index === 16 ? `none` : `block`}
                     fontSize={{
                       base: `${10 / 3.75}vw`,
                       md: `${12 / 7.68}vw`,
@@ -150,8 +150,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     {list.main}
                   </Box>
                   <InternalLink
-                    href={list.main}
-                    display={index === 17 ? `block` : `none`}
+                    href={`${list.main}`}
+                    display={index === 15 ? `block` : `none`}
                     fontSize={{
                       base: `${10 / 3.75}vw`,
                       md: `${12 / 7.68}vw`,
@@ -165,7 +165,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     {list.main}
                   </InternalLink>
                   <Box
-                    display={index === 18 ? `block` : `none`}
+                    display={index === 16 ? `block` : `none`}
                     fontSize={{
                       base: `${10 / 3.75}vw`,
                       md: `${12 / 7.68}vw`,
@@ -176,7 +176,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     pl={{ base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` }}
                     whiteSpace={`pre-wrap`}
                   >
-                    {`1000`}
+                    {`100`}
                     {list.main}
                   </Box>
                 </div>

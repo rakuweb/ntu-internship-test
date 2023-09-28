@@ -146,7 +146,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           <Box ml={{ base: ``, md: `${16 / 19.2}vw` }}>時間</Box>
           <Box ml={{ base: ``, md: `${53 / 19.2}vw` }}>{offer.hours_short}</Box>
         </Flex>
-        <Flex
+        {/* <Flex
           alignItems={`center`}
           justify={`center`}
           fontWeight={`bold`}
@@ -176,8 +176,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               />
             </Flex>
           </InternalLink>
-        </Flex>
-        <Box
+        </Flex> */}
+        {/* <Box
           mt={{ base: ``, md: `${6 / 19.2}vw` }}
           textAlign={`center`}
           color={`#41A4FD`}
@@ -192,10 +192,10 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             fontFamily={`'Noto Sans', sans-serif`}
           >
             {offer.job_type}
-            {/*offer.job_type.gift*/}
+            {/*offer.job_type.gift
           </Box>
           ポイントもらえる
-        </Box>
+        </Box> */}
       </Box>
       <Box
         onClick={() => {

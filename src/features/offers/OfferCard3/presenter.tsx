@@ -29,7 +29,6 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     id,
     image,
     job_type,
-    createby,
   } = props;
   const href = `${routes.offers}/${id}`;
   const currentDate = new Date();
@@ -327,7 +326,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               mb={{ base: `${4 / 3.75}vw`, md: `${4 / 7.68}vw` }}
               fontSize={{ base: `${10 / 3.75}vw`, md: `${10 / 7.68}vw` }}
             >
-              {createby.firstname}
+              {`会社名`}
             </Box>
             <Box
               fontSize={{ base: `${12 / 3.75}vw`, md: `${12 / 7.68}vw` }}

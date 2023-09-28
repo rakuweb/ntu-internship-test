@@ -13,7 +13,7 @@ export type Createby = { id: number; firstname: string; lastname: string };
 export type OfferCard = {
   id: string;
   title: string;
-  createby: Createby;
+  // createby: Createby;
   hourly_wage: string;
   place_short: string;
   hours_short: string;
@@ -42,11 +42,11 @@ export type OfferSliceData = {
   id: string;
   title: string;
   hourly_wage: string;
-  hourly_wage_detail: string;
+  // hourly_wage_detail: string;
   place_short: string;
-  place_detail: string;
+  // place_detail: string;
   hours_short: string;
-  hours_detail: string;
+  // hours_detail: string;
   job_description: string;
   start_at: string;
   end_at: string;
@@ -59,7 +59,7 @@ export type OfferSliceData = {
   holiday: string;
   email: string;
   interview_location: string;
-  createby: Createby;
+  // createby: Createby;
   min_working_hours: string;
   min_period: string;
   // min_period: Period;

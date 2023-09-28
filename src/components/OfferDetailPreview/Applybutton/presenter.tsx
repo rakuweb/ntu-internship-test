@@ -18,7 +18,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       color={`#39414E`}
       display={{ md: `none` }}
     >
-      <Flex>
+      {/* <Flex>
         <Flex
           alignItems={`end`}
           fontWeight={`bold`}
@@ -63,11 +63,10 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             fontFamily={`'Noto Sans', sans-serif`}
           >
             {offer.job_type}
-            {/*offer.job_type.gift*/}
           </Box>
           ポイントもらえる
         </Box>
-      </Flex>
+      </Flex> */}
 
       <InternalLink href={`/jobform`} mt={`${10 / 3.75}vw`}>
         <Flex

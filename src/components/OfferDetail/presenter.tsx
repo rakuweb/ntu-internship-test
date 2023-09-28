@@ -83,7 +83,7 @@ export const Presenter: FC<PresenterProps> = () => {
             }}
             mb={{ base: `${13 / 3.75}vw`, md: `${20 / 19.2}vw` }}
           >
-            {offer.createby.firstname}
+            {`会社名が入る`}
             {isNew <= 7 ? (
               <Flex
                 alignItems={`center`}
@@ -227,7 +227,7 @@ export const Presenter: FC<PresenterProps> = () => {
             </Box>
           </Flex>
           <Box>
-            {otherOffers.map((offer, index) => (
+            {otherOffers.slice(0, 2).map((offer, index) => (
               <Box
                 mt={
                   index !== 0

@@ -1,5 +1,6 @@
 // import layer
 import { FC } from 'react';
+import React from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import { Image } from 'components/images/Image';
 import { Image as NImage } from 'components/images/Image';
@@ -16,12 +17,13 @@ import { BreadcrumbOfferId } from '../organisms/BreadcrumbOfferId';
 import { Contact } from '../organisms/Contact';
 import { Applybutton } from './Applybutton';
 import { Atmosphere } from './Atmosphere';
+import { Fixedmenu } from './Fixedmenu';
 import { Jobterms } from './Jobterms';
+import { MobileMinInformation } from './MobileMinInformation';
+
 import { styles } from './styles';
 import 'zenn-content-css';
-import { Fixedmenu } from './Fixedmenu';
-import { MobileMinInformation } from './MobileMinInformation';
-import React from 'react';
+
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
@@ -81,7 +83,7 @@ export const Presenter: FC<PresenterProps> = () => {
             }}
             mb={{ base: `${13 / 3.75}vw`, md: `${20 / 19.2}vw` }}
           >
-            {offer.createby.firstname}
+            {`会社名が入る`}
             {isNew <= 7 ? (
               <Flex
                 alignItems={`center`}
@@ -225,7 +227,7 @@ export const Presenter: FC<PresenterProps> = () => {
             </Box>
           </Flex>
           <Box>
-            {otherOffers.map((offer, index) => (
+            {otherOffers.slice(0, 2).map((offer, index) => (
               <Box
                 mt={
                   index !== 0

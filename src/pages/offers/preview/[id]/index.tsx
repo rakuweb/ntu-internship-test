@@ -74,10 +74,10 @@ export const Index: NextPage<Props> = ({ data, allOffersData }) => {
             description={description}
             openGraph={openGraph}
           />
-          <Head>
-            <meta content="noindex" />
-            <Template />
-          </Head>
+          {/* <Head> */}
+          <meta content="noindex" />
+          <Template />
+          {/* </Head> */}
         </>
       );
     } else {
