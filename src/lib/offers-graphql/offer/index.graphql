@@ -43,7 +43,18 @@ query getOfferById($id: ID) {
         occupation
         job_type
         points
-
+        company {
+          data {
+            id
+            attributes {
+              name
+              representative
+              establishment_date
+              number_of_employees
+              place
+            }
+          }
+        }
         image {
           data {
             id

@@ -8,7 +8,14 @@ export type Point = { id: string; name: string };
 export type Period = { id: string; period: string };
 export type Workingday = { id: string; days: string };
 export type Atmosphere = { title: string; text: string; image: ImageType };
-export type Createby = { id: number; firstname: string; lastname: string };
+export type Company = {
+  id: string;
+  name: string;
+  representative: string;
+  establishment_date: string;
+  number_of_employees: string;
+  place: string;
+};
 
 export type OfferCard = {
   id: string;
@@ -29,6 +36,7 @@ export type OfferCard = {
   min_workingday: string;
   points: string;
   // points: Point[];
+  company: Company;
 };
 
 export type OffersSlice = {
@@ -73,7 +81,7 @@ export type OfferSliceData = {
   points: string;
   // points: Point[];
   image?: ImageType;
-  company_name: string;
+  company: Company;
 };
 
 export type OfferSlice = OfferSliceData & {

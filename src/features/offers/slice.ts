@@ -59,7 +59,14 @@ export const createTargetOfferSlice: StateCreator<
   image: undefined,
   shift: '',
   holiday: '',
-
+  company: {
+    id: '',
+    name: '',
+    representative: '',
+    establishment_date: '',
+    number_of_employees: '',
+    place: '',
+  },
   setTarget: (entity) => {
     const result = parseToTarget(entity);
     set(() => ({ ...result }));
