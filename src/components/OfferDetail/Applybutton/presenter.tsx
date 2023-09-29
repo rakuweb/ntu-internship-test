@@ -10,7 +10,8 @@ export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
-  const offer = useTargetOfferStore(selectTarget);
+  const _offer = useTargetOfferStore(selectTarget);
+
   return (
     <Box
       {...props}

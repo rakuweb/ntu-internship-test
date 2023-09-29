@@ -5,7 +5,6 @@ import { Image } from 'components/images/Image';
 import { useLiff } from 'contexts/LineAuthContextInternship';
 import { useAccountStore, selectSetPrevPath } from 'features/account';
 import { useTargetOfferStore, selectTarget } from 'features/offers';
-import { InternalLink } from '~/components/links/InternalLink';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

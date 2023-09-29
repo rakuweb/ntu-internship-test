@@ -5,8 +5,8 @@ import { useFormContext } from 'react-hook-form';
 
 import { Image } from 'components/images/Image';
 import { useRequestStore } from 'features/requests';
-import { RequestSchema } from '../schema';
 import { NextButton } from '~/components/buttons/NextButton';
+import { RequestSchema } from '../schema';
 
 // type layer
 export type DataProps = {

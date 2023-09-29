@@ -5,16 +5,12 @@ import { Image } from 'components/images/Image';
 // import { useLiff } from 'contexts/LineAuthContextInternship';
 // import { useAccountStore, selectSetPrevPath } from 'features/account';
 import { useTargetOfferStore, selectTarget } from 'features/offers';
-import axios from 'axios';
-import { routes } from '~/constants';
-import { useRouter } from 'next/router';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
-  const router = useRouter();
   const offer = useTargetOfferStore(selectTarget);
   // const { liff } = useLiff();
   // const setPrevPath = useAccountStore(selectSetPrevPath);
@@ -28,22 +24,6 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   //     window.location.href = offer.id + `/jobform`;
   //   }
   // };
-
-  const handleConfirmPublish = async () => {
-    const confirmResult = confirm('求人記事の公開申請をしますか。');
-
-    if (!confirmResult) return;
-
-    try {
-      const _res = await axios.put(routes.apiOffersCheck, { id: offer.id });
-      const id = router.query.id as string;
-      router.push(routes.offerCheckComplete(id));
-    } catch (e) {
-      console.error(e);
-      alert(`公開申請に失敗しました。
-時間が経ってからもう一度お試しください。`);
-    }
-  };
 
   return (
     <Box
@@ -259,9 +239,6 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         color={`white`}
         fontSize={{ base: ``, md: `${16 / 7.68}vw`, lg: `${27 / 19.2}vw` }}
         fontWeight={`bold`}
-        onClick={() => handleConfirmPublish()}
-        transition={`all 0.3s`}
-        _hover={{ cursor: `pointer`, filter: `opacity(50%)` }}
       >
         <Image // eslint-disable-line
           w={{ base: ``, md: `${16 / 7.68}vw`, lg: `${27 / 19.2}vw` }}
@@ -274,7 +251,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             alt: `紙飛行機アイコン`,
           }}
         />
-        公開する
+        応募する
       </Flex>
     </Box>
   );
