@@ -85,7 +85,7 @@ export const Presenter: FC<PresenterProps> = () => {
         fontFamily={"'Noto Sans JP', sans-serif"}
         fontWeight={`800`}
       >
-        新着求人一覧
+        求人一覧
       </Box>
       {/* <Box display={`none`}>
         <Swiper {...swiperProps}>
@@ -146,7 +146,7 @@ export const Presenter: FC<PresenterProps> = () => {
         mx={`auto`}
         pb={{ lg: `${100 / 19.2}vw` }}
       >
-        <SearchButton />
+        {/* <SearchButton /> */}
       </Box>
     </Box>
   );

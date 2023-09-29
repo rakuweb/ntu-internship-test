@@ -145,7 +145,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           </Box>
           {/* //////////////// */}
 
-          <Box
+          {/* <Box
             bg={`#39414E`}
             mx={{ base: `${20 / 3.75}vw`, lg: `0` }}
             w={{ base: `${335 / 3.75}vw`, lg: `${676 / 19.2}vw` }}
@@ -199,7 +199,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 >{`会員登録（無料）はこちら`}</Box>
               </InternalLink>
             </Box>
-          </Box>
+          </Box> */}
         </Box>
       </Flex>
     </Box>

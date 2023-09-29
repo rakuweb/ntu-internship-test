@@ -26,6 +26,18 @@ query getOffersAll {
             }
           }
         }
+        company {
+          data {
+            id
+            attributes {
+              name
+              representative
+              establishment_date
+              number_of_employees
+              place
+            }
+          }
+        }
       }
     }
   }

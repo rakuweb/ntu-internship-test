@@ -123,7 +123,15 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             }}
           />
           <Box ml={{ base: ``, md: `${16 / 19.2}vw` }}>場所</Box>
-          <Box ml={{ base: ``, md: `${53 / 19.2}vw` }}>{offer.place_short}</Box>
+          <Box
+            ml={{ base: ``, md: `${53 / 19.2}vw` }}
+            w={`${170 / 19.2}vw`}
+            overflow="hidden"
+            textOverflow="ellipsis"
+            whiteSpace="nowrap"
+          >
+            {offer.place_short}
+          </Box>
         </Flex>
         <Flex
           mb={{ base: ``, md: `${14 / 19.2}vw` }}

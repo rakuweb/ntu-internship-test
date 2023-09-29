@@ -29,6 +29,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     id,
     image,
     job_type,
+    company,
   } = props;
   const href = `${routes.offers}/${id}`;
   const currentDate = new Date();
@@ -104,7 +105,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 </Flex>
               ) : null}
               <Box mb={`${10 / 19.2}vw`} fontSize={`${18 / 19.2}vw`}>
-                {`会社名が入る`}
+                {company.name}
               </Box>
               <Box
                 fontWeight={`bold`}
@@ -210,7 +211,15 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                         }}
                       />
                       <Box ml={`${12 / 19.2}vw`}>場所</Box>
-                      <Box ml={`${50 / 19.2}vw`}>{place_short}</Box>
+                      <Box
+                        ml={`${50 / 19.2}vw`}
+                        w={`${150 / 19.2}vw`}
+                        overflow="hidden"
+                        textOverflow="ellipsis"
+                        whiteSpace="nowrap"
+                      >
+                        {place_short}
+                      </Box>
                     </Flex>
                   </Box>
                   <Box mt={`${15 / 19.2}vw`} color={`#39414E`}>
@@ -254,14 +263,14 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               color={`white`}
               fontFamily={`'Noto Sans JP', sans-serif`}
             >
-              <Box fontSize={`${15 / 19.2}vw`}>
+              {/* <Box fontSize={`${15 / 19.2}vw`}>
                 お祝い金
                 <Box as={`span`} fontSize={`${25 / 19.2}vw`}>
                   {job_type}
-                  {/*job_type.gift*/}
+                  {/*job_type.gift
                 </Box>
                 ポイントもらえる
-              </Box>
+              </Box> */}
               <Box
                 fontSize={`${18 / 19.2}vw`}
                 fontFamily={`"Josefin Sans"`}
@@ -326,7 +335,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               mb={{ base: `${4 / 3.75}vw`, md: `${4 / 7.68}vw` }}
               fontSize={{ base: `${10 / 3.75}vw`, md: `${10 / 7.68}vw` }}
             >
-              {`会社名`}
+              {company.name}
             </Box>
             <Box
               fontSize={{ base: `${12 / 3.75}vw`, md: `${12 / 7.68}vw` }}
@@ -510,19 +519,18 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             pr={{ base: `${15 / 3.75}vw`, md: `${15 / 7.68}vw` }}
             fontSize={{ base: `${10 / 3.75}vw`, md: `${10 / 7.68}vw` }}
             alignItems={`center`}
-            justify={`space-between`}
+            justify={`flex-end`}
             color={`white`}
             fontWeight={`500`}
             background={`transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box;`}
           >
-            <Box>
+            {/* <Box>
               お祝い金
               <Box as={`span`} fontSize={`${13 / 3.75}vw`} fontWeight={`bold`}>
                 {job_type}
-                {/*job_type.gift*/}
               </Box>
               ポイントもらえる
-            </Box>
+            </Box> */}
             <Box
               mt={{ base: `${8 / 3.75}vw`, md: `${8 / 7.68}vw` }}
               fontFamily={`"Josefin Sans"`}

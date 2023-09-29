@@ -34,7 +34,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     { title: `歓迎`, main: offer.qualification },
     { title: `おすすめポイント`, main: offer.points },
     { title: `選考方法`, main: offer.flow },
-    { title: `会社名`, main: offer.company_name },
+    { title: `会社名`, main: offer.company.name },
     { title: `会社詳細`, main: offer.url },
     { title: `求人番号`, main: offer.id },
   ];
