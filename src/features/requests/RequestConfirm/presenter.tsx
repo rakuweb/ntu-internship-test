@@ -2,8 +2,8 @@
 import { FC } from 'react';
 import { Box, Flex, Checkbox } from '@chakra-ui/react';
 import axios from 'axios';
-import { useFormContext } from 'react-hook-form';
 import { useRouter } from 'next/router';
+import { useFormContext } from 'react-hook-form';
 
 import { Image } from 'components/images/Image';
 import { ExternalLink } from 'components/links/ExternalLink';

@@ -2,7 +2,6 @@
 import { FC } from 'react';
 import { Input, Box, BoxProps, Flex } from '@chakra-ui/react';
 import { UseFormRegisterReturn } from 'react-hook-form';
-import { Span } from '~/components/Span';
 
 // type layer
 export type StyleProps = BoxProps;

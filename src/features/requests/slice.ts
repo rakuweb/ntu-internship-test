@@ -1,5 +1,4 @@
 import { StateCreator } from 'zustand';
-import { holidayList } from './schema';
 
 import { RequestSlice } from './types';
 

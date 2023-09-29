@@ -2,7 +2,6 @@
 import { FC } from 'react';
 import { Button, ButtonProps, Flex } from '@chakra-ui/react';
 
-import { Image } from 'components/images/Image';
 
 // type layer
 export type StyleProps = ButtonProps;
