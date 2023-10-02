@@ -124,24 +124,26 @@ export const Presenter: FC<PresenterProps> = () => {
         />
         <Box mt={`${28 / 9.6}vw`} w={`720px`}>
           <Swiper {...swiperProps}>
-            <SwiperSlide>
-              <Box py={`10px`} px={`10px`}>
-                <OfferCardverSlider
-                  {...offers[0]}
-                  deadline={daysRemaining}
-                  startDate={offers[0].start_at}
-                />
-              </Box>
-            </SwiperSlide>
-            <SwiperSlide>
-              <Box py={`10px`} px={`10px`}>
-                <OfferCardverSlider
-                  {...offers[0]}
-                  deadline={daysRemaining}
-                  startDate={offers[0].start_at}
-                />
-              </Box>
-            </SwiperSlide>
+            {activeOffers.map((offer) => {
+              // const daysRemaining = remainingDays(offer.deadline);
+              return (
+                <div key={offer.id}>
+                  {offer.end_at >= today ? (
+                    <SwiperSlide>
+                      <Box py={`10px`} px={`10px`}>
+                        <OfferCardverSlider
+                          {...offer}
+                          deadline={daysRemaining}
+                          startDate={offer.start_at}
+                        />
+                      </Box>
+                    </SwiperSlide>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+              );
+            })}
           </Swiper>
         </Box>
         <Image // eslint-disable-line

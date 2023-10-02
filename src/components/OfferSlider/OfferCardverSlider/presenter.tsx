@@ -20,17 +20,28 @@ export interface PresenterProps extends DataProps {
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const {
     id,
-    // createby,
+    company,
     startDate,
     title,
     image,
-    // createdByid,
+    hourly_wage,
+    place_short,
+    end_at,
+    job_type,
+    hours_short,
   } = props;
   const href = `${routes.offers}/${id}`;
   const currentDate = new Date();
   const startDateObj = new Date(startDate);
-  const _isNew =
+  const endDate = new Date(end_at);
+  const endDateY = endDate.getFullYear();
+  const endDateM = endDate.getMonth() + 1;
+  const endDateD = endDate.getDate();
+  const isNew =
     (currentDate.getTime() - startDateObj.getTime()) / (1000 * 3600 * 24);
+  const isEnd = Math.ceil(
+    (endDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24)
+  );
 
   return (
     <div>
@@ -41,7 +52,6 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         overflow={`hidden`}
       >
         <InternalLink href={href}>
-          {/* <Box display={'none'}>{createdByid}</Box> */}
           <Box
             transitionProperty={`box-shadow`}
             transitionDuration="0.3s"
@@ -58,25 +68,43 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               fontFamily={`'Noto Sans JP', sans-serif`}
               position={`relative`}
             >
-              <Flex
-                position={`absolute`}
-                top={`${20 / 9.6}vw`}
-                right={`${33 / 9.6}vw`}
-                color={`white`}
-                bg={`#F26601`}
-                border={`1px solid #F26601`}
-                borderRadius={`${3 / 9.6}vw`}
-                w={`${90 / 9.6}vw`}
-                h={`${24 / 9.6}vw`}
-                alignItems={`center`}
-                justify={`center`}
-                fontWeight={`bold`}
-                fontSize={`${14 / 9.6}vw`}
-              >
-                NEW
-              </Flex>
+              {isNew <= 7 ? (
+                <Flex
+                  position={`absolute`}
+                  top={`${20 / 9.6}vw`}
+                  right={`${33 / 9.6}vw`}
+                  color={`white`}
+                  bg={`#F26601`}
+                  border={`1px solid #F26601`}
+                  borderRadius={`${3 / 9.6}vw`}
+                  w={`${90 / 9.6}vw`}
+                  h={`${24 / 9.6}vw`}
+                  alignItems={`center`}
+                  justify={`center`}
+                  fontWeight={`bold`}
+                  fontSize={`${14 / 9.6}vw`}
+                >
+                  NEW
+                </Flex>
+              ) : isEnd <= 10 ? (
+                <Flex
+                  position={`absolute`}
+                  top={`${20 / 9.6}vw`}
+                  right={`${33 / 9.6}vw`}
+                  color={`#F26601`}
+                  alignItems={`end`}
+                  fontWeight={`bold`}
+                  fontSize={`${14 / 9.6}vw`}
+                >
+                  掲載終了まであと
+                  <Box as={`span`} fontSize={`${25 / 9.6}vw`}>
+                    {isEnd}
+                  </Box>
+                  日
+                </Flex>
+              ) : null}
               <Box mb={`${10 / 9.6}vw`} fontSize={`${18 / 9.6}vw`}>
-                {/*createby.firstname*/}
+                {company.name}
               </Box>
               <Box
                 display={`inline`}
@@ -103,7 +131,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     textAlign={`right`}
                     color={`#39414E`}
                   >
-                    {`掲載終了 : 2023年06月23日`}
+                    掲載終了 : {endDateY}年{endDateM}月{endDateD}日
                   </Box>
                   <Box mt={`${15 / 9.6}vw`} color={`#39414E`}>
                     <Flex
@@ -127,7 +155,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                       />
                       <Box ml={`${13 / 9.6}vw`}>時給</Box>
                       <Box ml={`${50 / 9.6}vw`} color={`#F26601`}>
-                        1,000円
+                        {hourly_wage}
                       </Box>
                     </Flex>
                   </Box>
@@ -152,7 +180,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                         }}
                       />
                       <Box ml={`${12 / 9.6}vw`}>職種</Box>
-                      <Box ml={`${50 / 9.6}vw`}>エンジニア</Box>
+                      <Box ml={`${50 / 9.6}vw`}>{job_type}</Box>
                     </Flex>
                   </Box>
                   <Box mt={`${15 / 9.6}vw`} color={`#39414E`}>
@@ -176,7 +204,15 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                         }}
                       />
                       <Box ml={`${12 / 9.6}vw`}>場所</Box>
-                      <Box ml={`${50 / 9.6}vw`}>新潟市中央区天神</Box>
+                      <Box
+                        ml={`${50 / 9.6}vw`}
+                        w={`${150 / 9.6}vw`}
+                        overflow="hidden"
+                        textOverflow="ellipsis"
+                        whiteSpace="nowrap"
+                      >
+                        {place_short}
+                      </Box>
                     </Flex>
                   </Box>
                   <Box mt={`${15 / 9.6}vw`} color={`#39414E`}>
@@ -200,7 +236,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                         }}
                       />
                       <Box ml={`${12 / 9.6}vw`}>時間</Box>
-                      <Box ml={`${50 / 9.6}vw`}>16:00-20:00</Box>
+                      <Box ml={`${50 / 9.6}vw`}>{hours_short}</Box>
                     </Flex>
                   </Box>
                 </Box>
