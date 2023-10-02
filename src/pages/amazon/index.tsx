@@ -4,12 +4,8 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import { selectSetOffers, useOffersStore } from 'features/offers';
-import { initializeApollo, initializeApollo_offer } from 'lib/apollo/client';
+import { initializeApollo_offer } from 'lib/apollo/client';
 import { getTodayString } from 'lib/utils';
-import {
-  GetAdvertisementArticlesQuery,
-  GetAdvertisementArticlesDocument,
-} from 'types/gql/graphql';
 import {
   GetOffersAllQuery,
   GetOffersAllDocument,
@@ -23,7 +19,7 @@ import type { NextPage, InferGetStaticPropsType, GetStaticProps } from 'next';
 // type layer
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-export const Index: NextPage<Props> = ({ data, adData }) => {
+export const Index: NextPage<Props> = ({ data }) => {
   const router = useRouter();
 
   const [isClient, setIsClient] = useState(false);
@@ -34,9 +30,6 @@ export const Index: NextPage<Props> = ({ data, adData }) => {
   }, []);
 
   if (router.isFallback) {
-    return <></>;
-  }
-  if (!adData || !data) {
     return <></>;
   }
 
@@ -64,30 +57,24 @@ export default Index;
 
 export const getStaticProps: GetStaticProps<{
   data: GetOffersAllQuery;
-  adData: GetAdvertisementArticlesQuery;
 }> = async () => {
-  const apolloClient = initializeApollo();
-  const apolloClientOffer = initializeApollo_offer();
+  const apolloClient = initializeApollo_offer();
   try {
-    const { data } = await apolloClientOffer.query<GetOffersAllQuery>({
+    const { data } = await apolloClient.query<GetOffersAllQuery>({
       query: GetOffersAllDocument,
       variables: { today: getTodayString() },
     });
-    const { data: adData } =
-      await apolloClient.query<GetAdvertisementArticlesQuery>({
-        query: GetAdvertisementArticlesDocument,
-      });
 
     return {
-      props: { data, adData },
-      notFound: !data || !adData,
+      props: { data },
+      notFound: !data,
       revalidate: UPDATE_INTERVAL,
     };
   } catch (error) {
     console.error(error);
 
     return {
-      props: { data: undefined, adData: undefined },
+      props: { data: undefined },
       notFound: true,
       revalidate: UPDATE_INTERVAL,
     };
