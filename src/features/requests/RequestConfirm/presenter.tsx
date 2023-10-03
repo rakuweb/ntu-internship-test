@@ -169,7 +169,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
       display={isHidden ? 'none' : `block`}
       {...props}
     >
-      <Box
+      {/* <Box
         mt={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}
         mb={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}
         fontSize={{
@@ -182,7 +182,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
         lineHeight={`1.2em`}
       >
         {`お申し込み情報の確認`}
-      </Box>
+      </Box> */}
       <Flex mb={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}>
         <Image // eslint-disable-line
           ml={{ base: `${10 / 3.75}vw`, md: `${23 / 19.2}vw` }}

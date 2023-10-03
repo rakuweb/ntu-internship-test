@@ -42,14 +42,64 @@ export const Presenter: FC<PresenterProps> = () => {
   const isEnd = Math.ceil(
     (endDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24)
   );
+  const year = currentDate.getFullYear();
+  const monthNum = currentDate.getMonth();
+  const monthMap = [
+    '01',
+    '02',
+    '03',
+    '04',
+    '05',
+    '06',
+    '07',
+    '08',
+    '09',
+    '10',
+    '11',
+    '12',
+  ];
 
-  const _remainingDays = (deadline) => {
-    const currentDate = new Date();
-    const deadlineDate = new Date(deadline);
-    const diffTime = deadlineDate.getTime() - currentDate.getTime();
-    return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-  };
-  // const daysRemaining = remainingDays(offer.deadline);
+  const dayNum = currentDate.getDate();
+  const dayMap = [
+    '00',
+    '01',
+    '02',
+    '03',
+    '04',
+    '05',
+    '06',
+    '07',
+    '08',
+    '09',
+    '10',
+    '11',
+    '12',
+    '13',
+    '14',
+    '15',
+    '16',
+    '17',
+    '18',
+    '19',
+    '20',
+    '21',
+    '22',
+    '23',
+    '24',
+    '25',
+    '26',
+    '27',
+    '28',
+    '29',
+    '30',
+    '31',
+  ];
+
+  const month = monthMap[monthNum];
+  const date = dayMap[dayNum];
+  const today = `${year}-${month}-${date}`;
+
+  const activeOffers = offers.filter((offer) => offer.end_at >= today);
   const selectOffer = (offerId) => {
     const offer = offers.find((item) => item.id === offerId);
     setSelectedOffer(offer);
@@ -142,6 +192,7 @@ export const Presenter: FC<PresenterProps> = () => {
           <Box
             mt={{ base: `${14 / 3.75}vw`, md: `${25 / 19.2}vw` }}
             mb={{ base: `${35 / 3.75}vw`, md: `${54 / 19.2}vw` }}
+            h={{ base: `${196 / 3.75}vw`, md: `${575 / 19.2}vw` }}
             overflow={`hidden`}
             borderRadius={{ base: `${5 / 3.75}vw`, md: `${5 / 19.2}vw` }}
           >
@@ -227,7 +278,7 @@ export const Presenter: FC<PresenterProps> = () => {
             </Box>
           </Flex>
           <Box>
-            {otherOffers.slice(0, 2).map((offer, index) => (
+            {activeOffers.slice(0, 2).map((offer, index) => (
               <Box
                 mt={
                   index !== 0
