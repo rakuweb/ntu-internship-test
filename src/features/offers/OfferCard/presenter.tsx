@@ -32,6 +32,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     image,
     job_type,
     company,
+    company_name,
   } = props;
   const href = `${routes.offers}/${id}`;
   const currentDate = new Date();
@@ -104,7 +105,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           ) : null}
 
           <Box mb={`${10 / 19.2}vw`} fontSize={`${18 / 19.2}vw`}>
-            {company.name}
+            {company_name}
           </Box>
           <Box
             fontWeight={`bold`}
