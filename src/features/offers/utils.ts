@@ -45,12 +45,14 @@ export const parseToOffers = (data: OfferEntity[]): OfferCard[] => {
       //   name: point?.attributes?.name ?? '',
       // })) ?? [],
       company: {
-        id: offer.company.data.id,
-        name: offer.company.data.attributes.name,
-        representative: offer.company.data.attributes.representative,
-        establishment_date: offer.company.data.attributes.establishment_date,
-        number_of_employees: offer.company.data.attributes.number_of_employees,
-        place: offer.company.data.attributes.place,
+        id: offer?.company?.data?.id ?? '',
+        name: offer?.company?.data?.attributes?.name ?? '',
+        representative: offer?.company?.data?.attributes?.representative ?? '',
+        establishment_date:
+          offer?.company?.data?.attributes?.establishment_date ?? '',
+        number_of_employees:
+          offer?.company?.data?.attributes?.number_of_employees ?? '',
+        place: offer?.company?.data?.attributes?.place ?? '',
       },
     };
     return result;
@@ -129,12 +131,14 @@ export const parseToTarget = (entity: OfferEntity): Partial<OfferSliceData> => {
     //   name: point?.attributes?.name ?? '',
     // })) ?? [],
     company: {
-      id: offer.company.data.id,
-      name: offer.company.data.attributes.name,
-      representative: offer.company.data.attributes.representative,
-      establishment_date: offer.company.data.attributes.establishment_date,
-      number_of_employees: offer.company.data.attributes.number_of_employees,
-      place: offer.company.data.attributes.place,
+      id: offer?.company?.data?.id ?? '',
+      name: offer?.company?.data?.attributes?.name ?? '',
+      representative: offer?.company?.data?.attributes?.representative ?? '',
+      establishment_date:
+        offer?.company?.data?.attributes?.establishment_date ?? '',
+      number_of_employees:
+        offer?.company?.data?.attributes?.number_of_employees ?? '',
+      place: offer?.company?.data?.attributes?.place ?? '',
     },
   };
 

@@ -37,6 +37,7 @@ export type OfferCard = {
   points: string;
   // points: Point[];
   company: Company;
+  company_name?: string;
 };
 
 export type OffersSlice = {
@@ -82,6 +83,7 @@ export type OfferSliceData = {
   // points: Point[];
   image?: ImageType;
   company: Company;
+  company_name: string;
 };
 
 export type OfferSlice = OfferSliceData & {
