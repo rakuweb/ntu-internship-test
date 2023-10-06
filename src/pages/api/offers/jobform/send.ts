@@ -1,33 +1,32 @@
 import fetch from 'node-fetch';
 
-import { API_URL, WRITE_API_KEY_OFFER } from 'constants/env';
-import { RECAPTCHA_URL } from 'constants/routes';
-import { parseAuthorization } from 'lib/apollo/parse';
+import { API_URL_OFFER } from 'constants/env';
+import { apiRoutes } from '~/constants';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const method = req.method;
-  const url = `${API_URL}/submissions`;
+  const url = `${API_URL_OFFER}${apiRoutes.submissions}`;
 
   switch (method) {
     case 'POST': {
       try {
-        const { recaptcha, ...data } = req.body;
+        const { ...data } = req.body;
 
-        const recaptchaRes = await fetch(RECAPTCHA_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          body: `secret=${process.env.GOOGLE_RECAPTCHA_SECRET}&response=${recaptcha}`,
-        });
-        const recaptchaResult = await recaptchaRes.json();
-
-        if (!recaptchaResult.success || recaptchaResult < 0.5) {
-          console.log(`ng`);
-          res.status(403).end();
-          return;
-        }
+        // const recaptchaRes = await fetch(RECAPTCHA_URL, {
+        //   method: 'POST',
+        //   headers: {
+        //     'Content-Type': 'application/x-www-form-urlencoded',
+        //   },
+        //   body: `secret=${process.env.GOOGLE_RECAPTCHA_SECRET}&response=${recaptcha}`,
+        // });
+        // const recaptchaResult = await recaptchaRes.json();
+        //
+        // if (!recaptchaResult.success || recaptchaResult < 0.5) {
+        //   console.log(`ng`);
+        //   res.status(403).end();
+        //   return;
+        // }
 
         const body = { data: { ...data } };
         const response = await fetch(url, {
@@ -35,7 +34,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           body: JSON.stringify(body),
           headers: {
             'Content-type': 'application/json',
-            Authorization: parseAuthorization(WRITE_API_KEY_OFFER),
+            // Authorization: parseAuthorization(WRITE_API_KEY_OFFER),
           },
         });
         const result = await response.json();

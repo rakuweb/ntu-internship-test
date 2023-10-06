@@ -1,5 +1,5 @@
 // import layer
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import {
   Box,
   Flex,
@@ -10,12 +10,19 @@ import {
   Textarea,
   Checkbox,
 } from '@chakra-ui/react';
-import { useFormContext } from 'react-hook-form';
+import { useFormContext, Controller } from 'react-hook-form';
 import { SelectForm } from 'components/forms/SelectForm';
 import { Image } from 'components/images/Image';
+import {
+  JobFormSchema,
+  gradeList,
+  genderList,
+  useJobFormStore,
+  selectJobFormFunctions,
+} from 'features/jobForm';
 import { useTargetOfferStore, selectTarget } from 'features/offers';
 import { routes } from '~/constants';
-import { JobFormSchema } from '../../lib/jobForm/schema';
+import { FormButton } from '../buttons/FormButton';
 import { ExternalLink } from '../links/ExternalLink';
 
 // type layer
@@ -25,11 +32,16 @@ export type PresenterProps = DataProps;
 // presenter
 export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
   const offer = useTargetOfferStore(selectTarget);
+  const { isChecked, isSending } = useJobFormStore();
+  const { setIsChecked } = useJobFormStore(selectJobFormFunctions);
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
+    getValues,
   } = useFormContext<JobFormSchema>();
+  console.log(getValues());
 
   const list = [
     { title: `氏名` },
@@ -46,7 +58,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
     'name',
     'furigana',
     'gender',
-    'birthDate',
+    'birthday',
     'phone',
     'grade',
     'email',
@@ -54,20 +66,14 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
     'hopeday1',
     'hopeday2',
     'hopeday3',
-    'agreement',
   ] as const;
-
   const list2 = [
-    { title: `応募先`, text: offer.company.name },
+    { title: `応募先`, text: offer.company_name },
     {
       title: `勤務地・面接地`,
       text: offer.place_short,
     },
   ];
-
-  const [value, setValue1] = useState('1');
-
-  const gradeList = ['大学1年生', '大学2年生', '大学3年生', '大学4年生'];
 
   return (
     <Box
@@ -204,10 +210,14 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                   <Flex pt={{ base: `${15 / 3.75}vw`, md: `${18 / 19.2}vw` }}>
                     {(index === 0 ||
                       index === 1 ||
-                      index === 3 ||
                       index === 4 ||
                       index === 6) && (
-                      <Box>
+                      <Box
+                        mb={{
+                          base: `${19 / 3.75}vw`,
+                          md: `${25 / 19.2}vw`,
+                        }}
+                      >
                         <Input
                           {...register(idlist[index])}
                           borderColor={`#999`}
@@ -232,7 +242,10 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                         {errors?.[idlist[index]]?.message && (
                           <Box
                             mt={{ base: `0.25rem` }}
-                            fontSize={{ base: `0.5rem`, md: `0.75rem` }}
+                            fontSize={{
+                              base: `${10 / 3.75}vw`,
+                              lg: `${12 / 19.2}vw`,
+                            }}
                             ml={{
                               base: `${19 / 3.75}vw`,
                               md: `${70 / 19.2}vw`,
@@ -244,45 +257,96 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                         )}
                       </Box>
                     )}
+
+                    {index === 3 && (
+                      <Box
+                        ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
+                        mb={{
+                          base: `${19 / 3.75}vw`,
+                          md: `${25 / 19.2}vw`,
+                        }}
+                      >
+                        <Input
+                          type={`date`}
+                          {...register(idlist[index])}
+                          borderColor={`#999`}
+                          borderRadius={`0`}
+                          w={{
+                            base: `${190 / 3.75}vw`,
+                            md: `${200 / 7.68}vw`,
+                            lg: `${500 / 19.2}vw`,
+                          }}
+                          h={{
+                            base: `${25 / 3.75}vw`,
+                            md: `${20 / 7.68}vw`,
+                            lg: `${40 / 19.2}vw`,
+                          }}
+                          fontSize={{
+                            base: `${10 / 3.75}vw`,
+                            md: `${12 / 7.68}vw`,
+                            lg: `${19 / 19.2}vw`,
+                          }}
+                        />
+                        {errors?.[idlist[index]]?.message && (
+                          <Box
+                            mt={{ base: `0.25rem` }}
+                            fontSize={{
+                              base: `${10 / 3.75}vw`,
+                              lg: `${12 / 19.2}vw`,
+                            }}
+                            color={`red`}
+                          >
+                            {`日付を入力してください`}
+                          </Box>
+                        )}
+                      </Box>
+                    )}
+
                     {index === 5 && (
                       <Box
                         ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
+                        mb={{
+                          base: `${19 / 3.75}vw`,
+                          md: `${25 / 19.2}vw`,
+                        }}
                         w={{ base: `${160 / 3.75}vw`, md: `initial` }}
                       >
                         <SelectForm
                           selectList={gradeList}
                           placeholder={`学年を選択する`}
-                          {...register('grade')}
+                          registers={register('grade')}
+                          errorMessage={errors?.grade?.message}
                         />
-                        {errors?.grade?.message && (
-                          <Box
-                            mt={{ base: `0.25rem` }}
-                            fontSize={{ base: `0.5rem`, md: `0.75rem` }}
-                            color={`red`}
-                          >
-                            {errors.grade.message}
-                          </Box>
-                        )}
                       </Box>
                     )}
+
                     {index === 2 && (
-                      <RadioGroup
-                        mt={{ base: `${2 / 3.75}vw`, md: `${6 / 19.2}vw` }}
-                        ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
-                        size={{ base: `sm`, lg: `sm`, '2xl': `lg` }}
-                        onChange={setValue1}
-                        value={value}
-                      >
-                        <Stack direction="row">
-                          <Radio color={`#999`} value="1">
-                            男性
-                          </Radio>
-                          <Radio color={`#999`} value="2">
-                            女性
-                          </Radio>
-                        </Stack>
-                      </RadioGroup>
+                      <Controller
+                        name={idlist[index]}
+                        control={control}
+                        render={({ field }) => (
+                          <RadioGroup
+                            mt={{ base: `${2 / 3.75}vw`, md: `${6 / 19.2}vw` }}
+                            ml={{
+                              base: `${19 / 3.75}vw`,
+                              md: `${70 / 19.2}vw`,
+                            }}
+                            size={{ base: `sm`, lg: `sm`, '2xl': `lg` }}
+                            defaultValue={genderList[0]}
+                            {...field}
+                          >
+                            <Stack direction="row">
+                              {genderList.map((item) => (
+                                <Radio key={item} color={`#999`} value={item}>
+                                  {item}
+                                </Radio>
+                              ))}
+                            </Stack>
+                          </RadioGroup>
+                        )}
+                      />
                     )}
+
                     {index === 7 && (
                       <Box
                         mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
@@ -311,7 +375,10 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                         {errors?.reason?.message && (
                           <Box
                             mt={{ base: `0.25rem` }}
-                            fontSize={{ base: `0.5rem`, md: `0.75rem` }}
+                            fontSize={{
+                              base: `${10 / 3.75}vw`,
+                              lg: `${12 / 19.2}vw`,
+                            }}
                             color={`red`}
                             display={index === 7 ? 'block' : 'none'}
                           >
@@ -320,83 +387,108 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                         )}
                       </Box>
                     )}
+
                     {index === 8 && (
                       <Box
                         ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
                       >
-                        <Input
-                          {...register('hopeday1')}
-                          borderColor={`#999`}
-                          borderRadius={`0`}
-                          w={{
-                            base: `${190 / 3.75}vw`,
-                            md: `${200 / 7.68}vw`,
-                            lg: `${500 / 19.2}vw`,
+                        <Box
+                          mb={{
+                            base: `${19 / 3.75}vw`,
+                            md: `${25 / 19.2}vw`,
                           }}
-                          h={{
-                            base: `${25 / 3.75}vw`,
-                            md: `${20 / 7.68}vw`,
-                            lg: `${40 / 19.2}vw`,
+                        >
+                          <Input
+                            type={`date`}
+                            {...register('hopeday1')}
+                            borderColor={`#999`}
+                            borderRadius={`0`}
+                            w={{
+                              base: `${190 / 3.75}vw`,
+                              md: `${200 / 7.68}vw`,
+                              lg: `${500 / 19.2}vw`,
+                            }}
+                            h={{
+                              base: `${25 / 3.75}vw`,
+                              md: `${20 / 7.68}vw`,
+                              lg: `${40 / 19.2}vw`,
+                            }}
+                            fontSize={{
+                              base: `${10 / 3.75}vw`,
+                              md: `${12 / 7.68}vw`,
+                              lg: `${19 / 19.2}vw`,
+                            }}
+                          />
+                          {errors?.hopeday1?.message && (
+                            <Box
+                              mt={{ base: `0.25rem` }}
+                              fontSize={{
+                                base: `${10 / 3.75}vw`,
+                                lg: `${12 / 19.2}vw`,
+                              }}
+                              color={`red`}
+                              display={index === 8 ? 'block' : 'none'}
+                            >
+                              {`日付を入力してください`}
+                            </Box>
+                          )}
+                        </Box>
+                        <Box
+                          mb={{
+                            base: `${19 / 3.75}vw`,
+                            md: `${25 / 19.2}vw`,
                           }}
-                          fontSize={{
-                            base: `${10 / 3.75}vw`,
-                            md: `${12 / 7.68}vw`,
-                            lg: `${19 / 19.2}vw`,
+                        >
+                          <Input
+                            type={`date`}
+                            {...register('hopeday2')}
+                            borderColor={`#999`}
+                            borderRadius={`0`}
+                            w={{
+                              base: `${190 / 3.75}vw`,
+                              md: `${200 / 7.68}vw`,
+                              lg: `${500 / 19.2}vw`,
+                            }}
+                            h={{
+                              base: `${25 / 3.75}vw`,
+                              md: `${20 / 7.68}vw`,
+                              lg: `${40 / 19.2}vw`,
+                            }}
+                            fontSize={{
+                              base: `${10 / 3.75}vw`,
+                              md: `${12 / 7.68}vw`,
+                              lg: `${19 / 19.2}vw`,
+                            }}
+                          />
+                        </Box>
+                        <Box
+                          mb={{
+                            base: `${19 / 3.75}vw`,
+                            md: `${25 / 19.2}vw`,
                           }}
-                          mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
-                        />
-                        {errors?.hopeday1?.message && (
-                          <Box
-                            mt={{ base: `0.25rem` }}
-                            fontSize={{ base: `0.5rem`, md: `0.75rem` }}
-                            color={`red`}
-                            display={index === 8 ? 'block' : 'none'}
-                          >
-                            {errors.hopeday1.message}
-                          </Box>
-                        )}
-                        <Input
-                          {...register('hopeday2')}
-                          borderColor={`#999`}
-                          borderRadius={`0`}
-                          w={{
-                            base: `${190 / 3.75}vw`,
-                            md: `${200 / 7.68}vw`,
-                            lg: `${500 / 19.2}vw`,
-                          }}
-                          h={{
-                            base: `${25 / 3.75}vw`,
-                            md: `${20 / 7.68}vw`,
-                            lg: `${40 / 19.2}vw`,
-                          }}
-                          fontSize={{
-                            base: `${10 / 3.75}vw`,
-                            md: `${12 / 7.68}vw`,
-                            lg: `${19 / 19.2}vw`,
-                          }}
-                          mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
-                        />
-                        <Input
-                          {...register('hopeday3')}
-                          borderColor={`#999`}
-                          borderRadius={`0`}
-                          w={{
-                            base: `${190 / 3.75}vw`,
-                            md: `${200 / 7.68}vw`,
-                            lg: `${500 / 19.2}vw`,
-                          }}
-                          h={{
-                            base: `${25 / 3.75}vw`,
-                            md: `${20 / 7.68}vw`,
-                            lg: `${40 / 19.2}vw`,
-                          }}
-                          fontSize={{
-                            base: `${10 / 3.75}vw`,
-                            md: `${12 / 7.68}vw`,
-                            lg: `${19 / 19.2}vw`,
-                          }}
-                          mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
-                        />
+                        >
+                          <Input
+                            type={`date`}
+                            {...register('hopeday3')}
+                            borderColor={`#999`}
+                            borderRadius={`0`}
+                            w={{
+                              base: `${190 / 3.75}vw`,
+                              md: `${200 / 7.68}vw`,
+                              lg: `${500 / 19.2}vw`,
+                            }}
+                            h={{
+                              base: `${25 / 3.75}vw`,
+                              md: `${20 / 7.68}vw`,
+                              lg: `${40 / 19.2}vw`,
+                            }}
+                            fontSize={{
+                              base: `${10 / 3.75}vw`,
+                              md: `${12 / 7.68}vw`,
+                              lg: `${19 / 19.2}vw`,
+                            }}
+                          />
+                        </Box>
                       </Box>
                     )}
                   </Flex>
@@ -461,7 +553,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
             md: `${2 / 19.2}vw solid rgba(65,164,253,0.25)`,
           }}
         >
-          {list2.map((list, _index) => (
+          {list2.map((list) => (
             <div key={list.title}>
               <Flex
                 borderBottom={{
@@ -522,6 +614,8 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
             size={{ base: `sm`, lg: `sm`, '2xl': `lg` }}
             mr={{ base: `${10 / 3.75}vw`, md: `${20 / 19.2}vw` }}
             isInvalid
+            checked={isChecked}
+            onChange={(e) => setIsChecked(e.target.checked)}
           />
           <ExternalLink href={routes.terms} borderBottom={`2px solid #39414E`}>
             利用規約
@@ -529,63 +623,12 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
           の取り扱いに同意する
         </Flex>
 
-        <Flex
-          w={{
-            base: `${220 / 3.75}vw`,
-            md: `${230 / 7.68}vw`,
-            lg: `${348 / 19.2}vw`,
-          }}
-          borderRadius={{
-            base: `${15 / 3.75}vw`,
-            md: `${10 / 7.68}vw`,
-            lg: `${15 / 19.2}vw`,
-          }}
-          overflow={`hidden`}
-          alignItems={`center`}
-          justify={`center`}
-          py={{
-            base: `${15 / 4.28}vw`,
-            md: `${35 / 19.2}vw`,
-            lg: `${20 / 19.2}vw`,
-          }}
-          mb={{ base: `${60 / 3.75}vw`, md: `${80 / 19.2}vw` }}
-          mx={`auto`}
-          background={`transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box;`}
-          color={`white`}
-          fontSize={{
-            base: `${16 / 3.75}vw`,
-            md: `${16 / 7.68}vw`,
-            lg: `${27 / 19.2}vw`,
-          }}
-          fontWeight={`bold`}
-          as={`button`}
-          transition={`all .3s`}
-          _hover={{
-            cursor: `pointer`,
-            filter: `opacity(50%)`,
-          }}
-        >
-          <Image // eslint-disable-line
-            w={{
-              base: `${16 / 3.75}vw`,
-              md: `${16 / 7.68}vw`,
-              lg: `${27 / 19.2}vw`,
-            }}
-            h={{
-              base: `${16 / 3.75}vw`,
-              md: `${16 / 7.68}vw`,
-              lg: `${27 / 19.2}vw`,
-            }}
-            mr={{ base: `${7 / 3.75}vw`, md: `${15 / 19.2}vw` }}
-            image={{
-              width: 35,
-              height: 35,
-              src: `/svg/paper-plane-solid.svg`,
-              alt: `紙飛行機アイコン`,
-            }}
-          />
-          応募する
-        </Flex>
+        <FormButton
+          type={`submit`}
+          isSending={isSending}
+          isChecking={isChecked}
+          isLoading={isSending}
+        >{`応募する`}</FormButton>
       </form>
     </Box>
   );

@@ -31,6 +31,8 @@ export const routes = {
   applicationComplete: '/application/complete',
   requestComplete: (id: string) => `/companies/${id}/request/complete`,
   offerCheckComplete: (id: string) => `/offers/preview/${id}/complete`,
+  offersJobForm: (id: string) => `/offers/${id}/jobform`,
+  offersJobFormComplete: (id: string) => `/offers/${id}/jobform/complete`,
 
   apiRegister: '/api/register',
   apiAccount: '/api/account',
@@ -60,6 +62,7 @@ export const apiRoutes = {
   offer: `/offers`,
   offerId: (id: string) => `/offers/${id}`,
   agent: `/agents`,
+  submissions: `/submissions`,
 };
 
 export type NavItem = { name: string; link: string; isExternal?: boolean };
