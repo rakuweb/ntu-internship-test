@@ -1,5 +1,6 @@
 import { StateCreator } from 'zustand';
 
+import { genderList } from './schema';
 import { JobFormSlice } from './types';
 
 export const createJobFormSlice: StateCreator<
@@ -13,18 +14,18 @@ export const createJobFormSlice: StateCreator<
   isComplete: false,
   name: '',
   furigana: '',
-  birthDate: '',
+  gender: genderList[0],
+  birthDate: undefined,
   grade: '',
   phone: '',
   email: '',
   reason: '',
-  hopeday1: '',
-  hopeday2: '',
-  hopeday3: '',
-  agreement: false,
+  hopeday1: undefined,
+  hopeday2: undefined,
+  hopeday3: undefined,
 
   updateFormData: (data) => set(() => ({ ...data })),
-  setIsChecked: (isChecked) => set(() => ({ isChecked: isChecked })),
+  setIsChecked: (isChecked) => set(() => ({ isChecked })),
   setIsSending: (isSending) => set(() => ({ isSending })),
   startSending: () => set(() => ({ isSending: true })),
   successSending: () => set(() => ({ isComplete: true })),

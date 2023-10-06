@@ -1,9 +1,8 @@
 // import layer
 import { FC } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
-import { Select, ChakraStylesConfig } from 'chakra-react-select';
+import { ChakraStylesConfig } from 'chakra-react-select';
 
-import { InternalLink } from 'components/links/InternalLink';
 import { Image } from '~/components/Image';
 
 // type layer

@@ -6,7 +6,6 @@ import { Footer } from 'components/footers/Footer';
 import { Header } from 'components/headers/Header';
 import { OfferList } from 'features/offers/OfferList';
 import { Firstview } from '~/features/offers/Firstview';
-import { Taglist } from '~/features/offers/Taglist';
 import { styles } from './styles';
 
 // type layer

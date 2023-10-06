@@ -101,7 +101,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
     return {
       paths,
-      fallback: true,
+      fallback: 'blocking',
     };
   } finally {
     console.log('get pages/offers/[id]/jobform paths');

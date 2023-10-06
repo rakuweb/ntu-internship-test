@@ -5,7 +5,6 @@ import { Box, Grid } from '@chakra-ui/react';
 import { OfferCard } from 'features/offers/OfferCard';
 import { useOffersStore } from 'features/offers/hooks';
 import { selectOfferList } from 'features/offers/selectors';
-import { SearchButton } from '~/components/SearchButton';
 import { styles } from './styles';
 
 // type layer
