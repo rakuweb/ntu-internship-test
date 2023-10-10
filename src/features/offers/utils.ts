@@ -7,6 +7,7 @@ export const parseToOffers = (data: OfferEntity[]): OfferCard[] => {
     const offer = entity.attributes;
     const result: OfferCard = {
       title: offer.title,
+      company_name: offer.company_name,
       // createby: {
       //   id: offer.createdBy.id,
       //   firstname: offer.createdBy.firstname,

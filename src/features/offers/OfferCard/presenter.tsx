@@ -46,7 +46,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const isEnd = Math.ceil(
     (endDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24)
   );
-  console.log(job_type);
+  console.log(company_name);
+  //
   return (
     <InternalLink href={href}>
       {/* <Box display={'none'}>{createdByid}</Box> */}
@@ -153,7 +154,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   />
                   <Box ml={`${13 / 19.2}vw`}>時給</Box>
                   <Box ml={`${50 / 19.2}vw`} color={`#F26601`}>
-                    {hourly_wage}
+                    {hourly_wage}円
                   </Box>
                 </Flex>
               </Box>

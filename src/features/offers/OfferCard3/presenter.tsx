@@ -160,7 +160,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                       />
                       <Box ml={`${13 / 19.2}vw`}>時給</Box>
                       <Box ml={`${50 / 19.2}vw`} color={`#F26601`}>
-                        {hourly_wage}
+                        {hourly_wage}円
                       </Box>
                     </Flex>
                   </Box>

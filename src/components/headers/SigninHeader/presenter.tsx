@@ -124,7 +124,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         </Flex>
 
         <Flex alignItems={'center'}>
-          <Box
+          <InternalLink
+            href={`/`}
             m={{ lg: `0 ${40 / 19.2}vw 0 0` }}
             display={{ base: `none`, lg: `block` }}
             fontWeight="bold"
@@ -132,7 +133,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             fontSize={`12px`}
           >
             採用担当者はこちら
-          </Box>
+          </InternalLink>
           <Box display={{ base: `block`, lg: `none` }}>
             <HeaderMenu isOpen={isOpen} onClick={onOpen} />
           </Box>
