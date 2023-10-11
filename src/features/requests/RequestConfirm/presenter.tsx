@@ -133,6 +133,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
       const _res = await axios.post(url, {
         data: {
           ...others,
+          publishedAt: null,
           image: imageId,
           atmosphere: [
             {
