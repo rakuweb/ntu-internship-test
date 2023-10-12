@@ -74,7 +74,9 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             }}
           />
           <Box ml={{ base: ``, md: `${17 / 19.2}vw` }}>時給</Box>
-          <Box ml={{ base: ``, md: `${53 / 19.2}vw` }}>{offer.hourly_wage}</Box>
+          <Box ml={{ base: ``, md: `${53 / 19.2}vw` }}>
+            {offer.hourly_wage}円
+          </Box>
         </Flex>
         <Flex
           mb={{ base: ``, md: `${14 / 19.2}vw` }}

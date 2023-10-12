@@ -4,6 +4,7 @@ query getOffersAll {
       id
       attributes {
         title
+        company_name
         hourly_wage
         place_short
         hours_short

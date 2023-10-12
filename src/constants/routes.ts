@@ -74,7 +74,7 @@ export const navItems: NavItem[] = [
   { name: `求人一覧`, link: routes.tag },
   { name: `はじめての方へ`, link: routes.beginners },
   { name: `会員登録方法`, link: routes.howToRegister },
-  { name: `お祝い金キャンペーン！`, link: routes.campaign },
+  // { name: `お祝い金キャンペーン！`, link: routes.campaign },
   { name: `利用規約`, link: routes.terms },
   { name: `プライバシーポリシー`, link: routes.privacyPolicy },
   { name: `公式Instagram`, link: INSTAGRAM_URL, isExternal: true },

@@ -20,7 +20,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     { title: `対象`, main: offer.target },
     { title: `雇用形態`, main: offer.job_type },
     // { title: `雇用形態`, main: offer.job_type.name },
-    { title: `給与`, main: offer.hourly_wage },
+    { title: `時給`, main: `${offer.hourly_wage}円` },
     { title: `勤務時間`, main: offer.hours_short },
     // { title: `最低労働時間`, main: offer.min_working_hours },
     { title: `最低勤務日数 `, main: offer.min_workingday },
@@ -28,16 +28,23 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     { title: `最低勤務期間 `, main: offer.min_period },
     // { title: `最低勤務期間 `, main: offer.min_period.period },
     { title: `休日・休暇`, main: offer.holiday },
-    // { title: `シフト詳細`, main: offer.shift },
+    { title: `シフト詳細`, main: offer.shift },
     { title: `勤務場所`, main: offer.place_short },
     { title: `面接場所`, main: offer.interview_location },
     { title: `歓迎`, main: offer.qualification },
     { title: `おすすめポイント`, main: offer.points },
     { title: `選考方法`, main: offer.flow },
-    { title: `会社名`, main: offer.company.name },
+    { title: `会社名`, main: offer.company_name },
     { title: `会社詳細`, main: offer.url },
     { title: `求人番号`, main: offer.id },
   ];
+
+  const convertStringToArray = (str: string) => {
+    const array = str.split(',');
+    return array.map((item) => item.trim());
+  };
+  const pointArray = convertStringToArray(list[13].main);
+  const targetArray = convertStringToArray(list[2].main);
 
   return (
     <Box w={`100%`} fontFamily={`'Noto Sans JP', sans-serif`} {...props}>
@@ -113,30 +120,18 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               </Box>
 
               {Array.isArray(list.main) ? (
-                <Box
-                  pt={{ base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` }}
-                  pl={{ base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` }}
-                  pb={{ base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` }}
-                >
-                  {list.main.map((points) => (
-                    <Box
-                      display={index === 14 ? `block` : `none`}
-                      key={points.name}
-                      fontSize={{
-                        base: `${10 / 3.75}vw`,
-                        md: `${12 / 7.68}vw`,
-                        lg: `${21 / 19.2}vw`,
-                      }}
-                      whiteSpace={`pre-wrap`}
-                    >
-                      ・{points.name}
-                    </Box>
-                  ))}
-                </Box>
+                <></>
               ) : (
                 <div>
                   <Box
-                    display={index === 15 || index === 16 ? `none` : `block`}
+                    display={
+                      index === 2 ||
+                      index === 13 ||
+                      index === 16 ||
+                      index === 17
+                        ? `none`
+                        : `block`
+                    }
                     fontSize={{
                       base: `${10 / 3.75}vw`,
                       md: `${12 / 7.68}vw`,
@@ -149,9 +144,64 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   >
                     {list.main}
                   </Box>
+                  <Box
+                    display={index === 2 ? `block` : `none`}
+                    fontSize={{
+                      base: `${10 / 3.75}vw`,
+                      md: `${12 / 7.68}vw`,
+                      lg: `${21 / 19.2}vw`,
+                    }}
+                    pt={{ base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` }}
+                    pb={{ base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` }}
+                    pl={{ base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` }}
+                    whiteSpace={`pre-wrap`}
+                  >
+                    {targetArray.map((points) => (
+                      <Box
+                        display={index === 2 ? `block` : `none`}
+                        key={points}
+                        fontSize={{
+                          base: `${10 / 3.75}vw`,
+                          md: `${12 / 7.68}vw`,
+                          lg: `${21 / 19.2}vw`,
+                        }}
+                        whiteSpace={`pre-wrap`}
+                      >
+                        ・{points}
+                      </Box>
+                    ))}
+                  </Box>
+                  <Box
+                    display={index === 13 ? `block` : `none`}
+                    fontSize={{
+                      base: `${10 / 3.75}vw`,
+                      md: `${12 / 7.68}vw`,
+                      lg: `${21 / 19.2}vw`,
+                    }}
+                    pt={{ base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` }}
+                    pb={{ base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` }}
+                    pl={{ base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` }}
+                    whiteSpace={`pre-wrap`}
+                  >
+                    {pointArray.map((points) => (
+                      <Box
+                        display={index === 13 ? `block` : `none`}
+                        key={points}
+                        fontSize={{
+                          base: `${10 / 3.75}vw`,
+                          md: `${12 / 7.68}vw`,
+                          lg: `${21 / 19.2}vw`,
+                        }}
+                        whiteSpace={`pre-wrap`}
+                      >
+                        ・{points}
+                      </Box>
+                    ))}
+                  </Box>
+
                   <InternalLink
                     href={`${list.main}`}
-                    display={index === 15 ? `block` : `none`}
+                    display={index === 16 ? `block` : `none`}
                     fontSize={{
                       base: `${10 / 3.75}vw`,
                       md: `${12 / 7.68}vw`,
@@ -165,7 +215,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     {list.main}
                   </InternalLink>
                   <Box
-                    display={index === 16 ? `block` : `none`}
+                    display={index === 17 ? `block` : `none`}
                     fontSize={{
                       base: `${10 / 3.75}vw`,
                       md: `${12 / 7.68}vw`,

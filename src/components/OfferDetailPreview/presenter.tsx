@@ -281,18 +281,24 @@ export const Presenter: FC<PresenterProps> = () => {
             </Box>
           </Flex>
           <Box>
-            {activeOffers.slice(0, 2).map((offer, index) => (
-              <Box
-                mt={
-                  index !== 0
-                    ? { base: `${36 / 3.75}vw`, md: `${50 / 19.2}vw` }
-                    : undefined
-                }
-                key={index}
-              >
-                <OfferCard3 {...offer} onClick={() => selectOffer(offer.id)} />
-              </Box>
-            ))}
+            {otherOffers
+              .filter((offer) => offer.end_at >= today)
+              .slice(0, 2)
+              .map((offer, index) => (
+                <Box
+                  mt={
+                    index !== 0
+                      ? { base: `${36 / 3.75}vw`, md: `${50 / 19.2}vw` }
+                      : undefined
+                  }
+                  key={index}
+                >
+                  <OfferCard3
+                    {...offer}
+                    onClick={() => selectOffer(offer.id)}
+                  />
+                </Box>
+              ))}
           </Box>
         </Box>
         <Box
