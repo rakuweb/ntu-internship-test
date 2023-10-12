@@ -117,7 +117,7 @@ export const Presenter: FC<PresenterProps> = () => {
             borderRadius={0}
             fontSize={{ base: `${24 / 19.2}vw` }}
             onClick={() => handleClick()}
-          >{`掲載を依頼する`}</Button>
+          >{`掲載依頼を完了する`}</Button>
         </Stack>
       </Box>
       <Footer />
