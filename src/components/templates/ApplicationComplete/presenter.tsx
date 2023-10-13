@@ -6,7 +6,7 @@ import { css } from '@emotion/react';
 import { Footer } from 'components/footers/Footer';
 import { Header } from 'components/headers/Header';
 import { InternalLink } from 'components/links/InternalLink';
-import { HP_URL } from 'constants/routes';
+import { HP_URL, routes } from 'constants/routes';
 import { Button } from '~/components/buttons/Button';
 import { mq } from '~/constants/styles';
 
@@ -52,8 +52,8 @@ export const Presenter: FC<PresenterProps> = () => {
               </Box>
             </Box>
             <Box className="form__container__button">
-              <InternalLink href={HP_URL}>
-                <Button>HPに戻る</Button>
+              <InternalLink href={routes.home}>
+                <Button>サイトトップへ戻る</Button>
               </InternalLink>
             </Box>
           </div>

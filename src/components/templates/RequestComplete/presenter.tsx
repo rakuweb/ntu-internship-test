@@ -6,7 +6,7 @@ import { css } from '@emotion/react';
 import { Footer } from 'components/footers/Footer';
 import { Header } from 'components/headers/Header';
 import { InternalLink } from 'components/links/InternalLink';
-import { HP_URL } from 'constants/routes';
+import { HP_URL, routes } from 'constants/routes';
 import { Button } from '~/components/buttons/Button';
 import { mq } from '~/constants/styles';
 
@@ -15,10 +15,12 @@ export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps> = () => {
-  const title = `掲載依頼のお申し込み`;
-  const mainMessage = `掲載依頼のお申し込みを賜りました。ありがとうございました。
-`;
-  const message = `ご入力いただいたメールアドレスに送信完了メールを送信しています。ご確認ください。`;
+  const title = `FORJOB求人掲載　お申し込み`; // eslint-disable-line
+  const mainMessage = `お申し込みを賜りました。ありがとうございました。`;
+  const message = `ご入力いただいたメールアドレスに送信完了メールを送信しています。ご確認ください。
+これより審査に入らせていただきます。
+審査後、FORJOBの担当より改めてご連絡いたします。
+通常5営業日以内にはご連絡を差し上げるようにいたしております。`;
 
   return (
     <>
@@ -50,8 +52,8 @@ export const Presenter: FC<PresenterProps> = () => {
               </Box>
             </Box>
             <Box className="form__container__button">
-              <InternalLink href={HP_URL}>
-                <Button>HPに戻る</Button>
+              <InternalLink href={routes.home}>
+                <Button>サイトトップへ戻る</Button>
               </InternalLink>
             </Box>
           </div>

@@ -78,22 +78,6 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
       display={isHidden ? 'none' : `block`}
       {...props}
     >
-      {/*
-      <Box
-        mt={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}
-        mb={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}
-        fontSize={{
-          base: `${15 / 3.75}vw`,
-          md: `${16 / 7.68}vw`,
-          lg: `${26 / 19.2}vw`,
-        }}
-        whiteSpace={`pre-wrap`}
-        fontWeight={`bold`}
-        lineHeight={`1.2em`}
-      >
-        {`お申し込み情報の入力`}
-      </Box>
-    */}
       <Flex
         mt={{ base: ``, md: `${80 / 19.2}vw` }}
         mb={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}
@@ -132,7 +116,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
           }}
           fontWeight={`bold`}
         >
-          求人原稿の作成
+          FORJOB求人掲載  お申し込み
         </Box>
       </Flex>
       <Box>
