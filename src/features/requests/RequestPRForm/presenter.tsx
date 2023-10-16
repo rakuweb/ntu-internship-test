@@ -116,7 +116,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
           }}
           fontWeight={`bold`}
         >
-          FORJOB求人掲載  お申し込み
+          FORJOB求人掲載 お申し込み
         </Box>
       </Flex>
       <Box>
@@ -337,7 +337,10 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
           <BackButton
             isSending={false}
             isChecking={true}
-            onClick={() => backProgress()}
+            onClick={() => {
+              backProgress();
+              window.scroll({ top: 0 });
+            }}
           >{`戻る`}</BackButton>
           <NextButton
             type={`submit`}

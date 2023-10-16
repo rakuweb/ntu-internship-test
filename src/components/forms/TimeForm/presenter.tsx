@@ -40,7 +40,7 @@ export const Presenter: FC<PresenterProps> = ({
           w={{
             base: `${120 / 3.75}vw`,
             md: `${100 / 7.68}vw`,
-            lg: `${120 / 19.2}vw`,
+            lg: `${140 / 19.2}vw`,
           }}
           h={{
             base: `${25 / 3.75}vw`,
