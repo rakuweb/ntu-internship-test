@@ -34,7 +34,9 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
 
     if (validationCompanyName && validationEmail) {
       proceedProgress();
-    }
+    } else
+      alert(`入力が完了していません。
+入力項目をご確認してください。`);
   };
 
   return (
@@ -88,7 +90,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
           }}
           fontWeight={`bold`}
         >
-          FORJOB求人掲載  お申し込み
+          FORJOB求人掲載 お申し込み
         </Box>
       </Flex>
       <Box>

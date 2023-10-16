@@ -30,6 +30,7 @@ export const Presenter: FC<PresenterProps> = () => {
   const submitHandler = (data: RequestSchema) => {
     updateFormData(data);
     proceedProgress();
+    window.scroll({ top: 0 });
   };
 
   return (

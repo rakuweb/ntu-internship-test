@@ -184,7 +184,10 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
       >
         {`お申し込み情報の確認`}
       </Box> */}
-      <Flex mb={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}>
+      <Flex
+        mt={{ base: ``, md: `${80 / 19.2}vw` }}
+        mb={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}
+      >
         <Image // eslint-disable-line
           ml={{ base: `${10 / 3.75}vw`, md: `${23 / 19.2}vw` }}
           mr={{ base: `${5 / 3.75}vw`, md: `${13 / 19.2}vw` }}
@@ -341,7 +344,10 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
           <BackButton
             isSending={false}
             isChecking={true}
-            onClick={() => backProgress()}
+            onClick={() => {
+              backProgress();
+              window.scroll({ top: 0 });
+            }}
           >{`戻る`}</BackButton>
           <FormButton
             onClick={() => handleClick()}
