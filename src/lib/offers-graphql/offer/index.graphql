@@ -24,6 +24,8 @@ query getOfferById($id: ID) {
         min_working_hours
         min_period
         min_workingday
+        desired_interview_date
+        desired_interview_time
         atmosphere {
           title
           text

@@ -59,6 +59,8 @@ export const createTargetOfferSlice: StateCreator<
   image: undefined,
   shift: '',
   holiday: '',
+  desired_interview_time: '',
+  desired_interview_date: '',
   company: {
     id: '',
     name: '',
