@@ -131,6 +131,8 @@ export const parseToTarget = (entity: OfferEntity): Partial<OfferSliceData> => {
     //   id: point.id,
     //   name: point?.attributes?.name ?? '',
     // })) ?? [],
+    desired_interview_date: offer.desired_interview_date,
+    desired_interview_time: offer.desired_interview_time,
     company: {
       id: offer?.company?.data?.id ?? '',
       name: offer?.company?.data?.attributes?.name ?? '',

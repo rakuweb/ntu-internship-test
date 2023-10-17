@@ -82,6 +82,8 @@ export type OfferSliceData = {
   points: string;
   // points: Point[];
   image?: ImageType;
+  desired_interview_time: string;
+  desired_interview_date: string;
   company: Company;
   company_name: string;
 };

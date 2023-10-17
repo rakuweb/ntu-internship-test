@@ -31,6 +31,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     { title: `シフト詳細`, main: offer.shift },
     { title: `勤務場所`, main: offer.place_short },
     { title: `面接場所`, main: offer.interview_location },
+    { title: `面接可能曜日`, main: offer.desired_interview_date },
+    { title: `面接可能時間`, main: offer.desired_interview_time },
     { title: `歓迎`, main: offer.qualification },
     { title: `おすすめポイント`, main: offer.points },
     { title: `選考方法`, main: offer.flow },
@@ -43,8 +45,11 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     const array = str.split(',');
     return array.map((item) => item.trim());
   };
-  const pointArray = convertStringToArray(list[13].main);
   const targetArray = convertStringToArray(list[2].main);
+  const holidayArray = convertStringToArray(list[8].main);
+  const dateArray = convertStringToArray(list[12].main);
+  const timeArray = convertStringToArray(list[13].main);
+  const pointArray = convertStringToArray(list[15].main);
 
   return (
     <Box w={`100%`} fontFamily={`'Noto Sans JP', sans-serif`} {...props}>
@@ -126,9 +131,12 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   <Box
                     display={
                       index === 2 ||
+                      index === 8 ||
+                      index === 12 ||
                       index === 13 ||
-                      index === 16 ||
-                      index === 17
+                      index === 15 ||
+                      index === 18 ||
+                      index === 19
                         ? `none`
                         : `block`
                     }
@@ -156,10 +164,10 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     pl={{ base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` }}
                     whiteSpace={`pre-wrap`}
                   >
-                    {targetArray.map((points) => (
+                    {targetArray.map((target) => (
                       <Box
                         display={index === 2 ? `block` : `none`}
-                        key={points}
+                        key={target}
                         fontSize={{
                           base: `${10 / 3.75}vw`,
                           md: `${12 / 7.68}vw`,
@@ -167,10 +175,63 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                         }}
                         whiteSpace={`pre-wrap`}
                       >
-                        ・{points}
+                        ・{target}
                       </Box>
                     ))}
                   </Box>
+                  <Box
+                    display={index === 8 ? `block` : `none`}
+                    fontSize={{
+                      base: `${10 / 3.75}vw`,
+                      md: `${12 / 7.68}vw`,
+                      lg: `${21 / 19.2}vw`,
+                    }}
+                    pt={{ base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` }}
+                    pb={{ base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` }}
+                    pl={{ base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` }}
+                    whiteSpace={`pre-wrap`}
+                  >
+                    {holidayArray.map((day) => (
+                      <Box
+                        key={day}
+                        fontSize={{
+                          base: `${10 / 3.75}vw`,
+                          md: `${12 / 7.68}vw`,
+                          lg: `${21 / 19.2}vw`,
+                        }}
+                        whiteSpace={`pre-wrap`}
+                      >
+                        ・{day}
+                      </Box>
+                    ))}
+                  </Box>
+                  <Box
+                    display={index === 12 ? `block` : `none`}
+                    fontSize={{
+                      base: `${10 / 3.75}vw`,
+                      md: `${12 / 7.68}vw`,
+                      lg: `${21 / 19.2}vw`,
+                    }}
+                    pt={{ base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` }}
+                    pb={{ base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` }}
+                    pl={{ base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` }}
+                    whiteSpace={`pre-wrap`}
+                  >
+                    {dateArray.map((date) => (
+                      <Box
+                        key={date}
+                        fontSize={{
+                          base: `${10 / 3.75}vw`,
+                          md: `${12 / 7.68}vw`,
+                          lg: `${21 / 19.2}vw`,
+                        }}
+                        whiteSpace={`pre-wrap`}
+                      >
+                        ・{date}曜日
+                      </Box>
+                    ))}
+                  </Box>
+
                   <Box
                     display={index === 13 ? `block` : `none`}
                     fontSize={{
@@ -183,9 +244,34 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     pl={{ base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` }}
                     whiteSpace={`pre-wrap`}
                   >
+                    {timeArray.map((time) => (
+                      <Box
+                        key={time}
+                        fontSize={{
+                          base: `${10 / 3.75}vw`,
+                          md: `${12 / 7.68}vw`,
+                          lg: `${21 / 19.2}vw`,
+                        }}
+                        whiteSpace={`pre-wrap`}
+                      >
+                        ・{time}
+                      </Box>
+                    ))}
+                  </Box>
+                  <Box
+                    display={index === 15 ? `block` : `none`}
+                    fontSize={{
+                      base: `${10 / 3.75}vw`,
+                      md: `${12 / 7.68}vw`,
+                      lg: `${21 / 19.2}vw`,
+                    }}
+                    pt={{ base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` }}
+                    pb={{ base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` }}
+                    pl={{ base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` }}
+                    whiteSpace={`pre-wrap`}
+                  >
                     {pointArray.map((points) => (
                       <Box
-                        display={index === 13 ? `block` : `none`}
                         key={points}
                         fontSize={{
                           base: `${10 / 3.75}vw`,
@@ -201,7 +287,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
 
                   <InternalLink
                     href={`${list.main}`}
-                    display={index === 16 ? `block` : `none`}
+                    display={index === 18 ? `block` : `none`}
                     fontSize={{
                       base: `${10 / 3.75}vw`,
                       md: `${12 / 7.68}vw`,
@@ -215,7 +301,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     {list.main}
                   </InternalLink>
                   <Box
-                    display={index === 17 ? `block` : `none`}
+                    display={index === 19 ? `block` : `none`}
                     fontSize={{
                       base: `${10 / 3.75}vw`,
                       md: `${12 / 7.68}vw`,
