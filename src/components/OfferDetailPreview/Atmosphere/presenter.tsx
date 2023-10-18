@@ -77,11 +77,16 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               lg: `${168 / 19.2}vw`,
             }}
             borderRadius={{ base: `${5 / 3.75}vw`, md: `${5 / 19.2}vw` }}
-            overflow={`hidden`}
             ml={{ base: `${75 / 3.75}vw`, md: `${70 / 19.2}vw` }}
             mr={{ base: ``, md: `${47 / 19.2}vw` }}
             mb={{ base: `${12.5 / 3.75}vw`, md: `initial` }}
-            image={list.image}
+            image={{
+              ...list.image,
+              width: undefined,
+              height: undefined,
+              fill: true,
+            }}
+            style={{ objectFit: `cover` }}
           />
           <Box
             w={{ base: ``, md: `${250 / 7.68}vw`, lg: `${525 / 19.2}vw` }}

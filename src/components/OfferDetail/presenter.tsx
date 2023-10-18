@@ -189,15 +189,20 @@ export const Presenter: FC<PresenterProps> = () => {
             {offer.title}
           </Box>
           <MobileMinInformation />
-          <Box
+          <NImage
             mt={{ base: `${14 / 3.75}vw`, md: `${25 / 19.2}vw` }}
             mb={{ base: `${35 / 3.75}vw`, md: `${54 / 19.2}vw` }}
             h={{ base: `${196 / 3.75}vw`, md: `${575 / 19.2}vw` }}
-            overflow={`hidden`}
+            // overflow={`hidden`}
             borderRadius={{ base: `${5 / 3.75}vw`, md: `${5 / 19.2}vw` }}
-          >
-            <NImage image={offer.image} />
-          </Box>
+            image={{
+              ...offer.image,
+              width: undefined,
+              height: undefined,
+              fill: true,
+            }}
+            style={{ objectFit: `cover` }}
+          />
           <Applybutton />
           {/* 求人の詳細 */}
           <Box

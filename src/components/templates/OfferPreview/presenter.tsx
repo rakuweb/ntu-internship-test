@@ -84,7 +84,7 @@ export const Presenter: FC<PresenterProps> = () => {
           fontSize={{ lg: `${16 / 19.2}vw` }}
         >
           <Box fontSize={{ lg: `${20 / 19.2}vw` }} textAlign={`center`}>
-            下記の内容を確認後チェックをした後に、「掲載を依頼する」ボタンを押して、記事の入稿は完了となります。
+            下記の内容を確認し、チェックをした後に「掲載依頼を完了する」ボタンを押して、記事の入稿は完了となります。
           </Box>
           <Stack spacing={{ base: `${16 / 19.2}vw` }}>
             <Box>
@@ -104,7 +104,7 @@ export const Presenter: FC<PresenterProps> = () => {
                 onChange={(e) => setIsCheckedConfirm(e.target.checked)}
               />
               <Span ml={{ base: `${8 / 19.2}vw` }}>
-                記事の文章および内容の確認
+                原稿の文章および内容の確認
               </Span>
             </Box>
           </Stack>
