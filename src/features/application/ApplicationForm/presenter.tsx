@@ -292,8 +292,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                             lineHeight={`1.5`}
                             whiteSpace={{ base: `pre-wrap` }}
                           >
-                            {`※契約者は無料でご利用いただけます。
-※月額プランの方は記事作成代行を0円でご利用いただけます。`}
+                          {`※月額プランの方は記事作成代行を0円でご利用いただけます。`}
                           </Box>
                         )}
                       </Box>
