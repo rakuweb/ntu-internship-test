@@ -236,12 +236,12 @@ export const requestSchema = z.object({
   atmosphere_text: z
     .string({ required_error: '入力してください' })
     .min(1, '入力してください'),
-  // atmosphere_title2: z.string({ required_error: '入力してください' }),
-  // atmosphere_image2: z.custom<FileList>().transform((file) => file?.[0]),
-  // atmosphere_text2: z.string({ required_error: '入力してください' }),
-  // atmosphere_title3: z.string({ required_error: '入力してください' }),
-  // atmosphere_image3: z.custom<FileList>().transform((file) => file?.[0]),
-  // atmosphere_text3: z.string({ required_error: '入力してください' }),
+  atmosphere_title2: z.string({ required_error: '入力してください' }),
+  atmosphere_image2: z.custom<FileList>().transform((file) => file?.[0]),
+  atmosphere_text2: z.string({ required_error: '入力してください' }),
+  atmosphere_title3: z.string({ required_error: '入力してください' }),
+  atmosphere_image3: z.custom<FileList>().transform((file) => file?.[0]),
+  atmosphere_text3: z.string({ required_error: '入力してください' }),
 });
 
 export type RequestSchema = z.infer<typeof requestSchema>;

@@ -32,12 +32,12 @@ export type RequestSliceData = {
   atmosphere_title: string;
   atmosphere_image: File;
   atmosphere_text: string;
-  // atmosphere_title2: string;
-  // atmosphere_image2: z.string({ required_error: '入力してください' }),
-  // atmosphere_text2: string;
-  // atmosphere_title3: string;
-  // atmosphere_image3: z.string({ required_error: '入力してください' }),
-  // atmosphere_text3: string;
+  atmosphere_title2: string;
+  atmosphere_image2: File;
+  atmosphere_text2: string;
+  atmosphere_title3: string;
+  atmosphere_image3: File;
+  atmosphere_text3: string;
 
   isSending: boolean;
   isChecking: boolean;
