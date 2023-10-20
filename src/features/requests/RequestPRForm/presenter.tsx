@@ -27,15 +27,15 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
     { title: '求人タイトル' },
     { title: 'メイン写真' },
     { title: '求人の詳細内容' },
-    { title: '職場情報の写真' },
-    { title: '職場情報のタイトル' },
-    { title: '職場情報の詳細' },
-    // { title: '職場の情報の画像②' },
-    // { title: '職場の情報のタイトル②' },
-    // { title: '職場の情報の詳細②' },
-    // { title: '職場の情報の画像③' },
-    // { title: '職場の情報のタイトル③' },
-    // { title: '職場の情報の詳細③' },
+    { title: '職場情報の写真①' },
+    { title: '職場情報のタイトル①' },
+    { title: '職場情報の詳細①' },
+    { title: '職場情報の写真②' },
+    { title: '職場情報のタイトル②' },
+    { title: '職場情報の詳細②' },
+    { title: '職場情報の写真③' },
+    { title: '職場情報のタイトル③' },
+    { title: '職場情報の詳細③' },
   ];
   const idlist = [
     'title',
@@ -44,17 +44,33 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
     'atmosphere_image',
     'atmosphere_title',
     'atmosphere_text',
-    // 'atmosphere_image2',
-    // 'atmosphere_title2',
-    // 'atmosphere_text2',
-    // 'atmosphere_image3',
-    // 'atmosphere_title3',
-    // 'atmosphere_text3',
+    'atmosphere_image2',
+    'atmosphere_title2',
+    'atmosphere_text2',
+    'atmosphere_image3',
+    'atmosphere_title3',
+    'atmosphere_text3',
   ] as const;
   const placeholderlist = [
     `初めてでもOK！人気のイベントで働いてみませんか？`,
     ``,
     ``,
+    ``,
+    `職場の雰囲気`,
+    `私たちの職場は、フレンドリーで協力的な雰囲気が広がっています。
+年齢や性別に関わらず、お互いにサポートし合い、
+協力しあう文化が根付いています。みんなでわいわいと楽しく働きながら、
+お仕事をこなすので、新人さんもすぐに馴染むことができますよ。
+テキパキと動きながらも、のんびりとした雰囲気で、
+お仕事のストレスを感じにくい環境です。`,
+    ``,
+    `職場の雰囲気`,
+    `私たちの職場は、フレンドリーで協力的な雰囲気が広がっています。
+年齢や性別に関わらず、お互いにサポートし合い、
+協力しあう文化が根付いています。みんなでわいわいと楽しく働きながら、
+お仕事をこなすので、新人さんもすぐに馴染むことができますよ。
+テキパキと動きながらも、のんびりとした雰囲気で、
+お仕事のストレスを感じにくい環境です。`,
     ``,
     `職場の雰囲気`,
     `私たちの職場は、フレンドリーで協力的な雰囲気が広がっています。
@@ -163,7 +179,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                     >
                       <Box
                         w={{ base: `${116 / 4.28}vw`, md: `${163 / 19.2}vw` }}
-                        whiteSpace={`pre-wrap`}
+                        whiteSpace={{ base: `pre-wrap`, lg: `nowrap` }}
                       >
                         {list.title}
                       </Box>
@@ -190,7 +206,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                     </Flex>
                   </Box>
 
-                  <Flex pt={{ base: `${15 / 3.75}vw`, md: `${18 / 19.2}vw` }}>
+                  <Flex py={{ base: `${15 / 3.75}vw`, md: `${18 / 19.2}vw` }}>
                     {index < 12 &&
                       index !== 1 &&
                       index !== 2 &&
@@ -242,8 +258,16 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                           )}
                         </Box>
                       )}
-                    {(index === 1 || index === 3) && (
-                      <Box>
+                    {(index === 1 ||
+                      index === 3 ||
+                      index === 6 ||
+                      index === 9) && (
+                      <Box
+                        ml={{
+                          base: `${19 / 3.75}vw`,
+                          md: `${70 / 19.2}vw`,
+                        }}
+                      >
                         <Input
                           placeholder={placeholderlist[index]}
                           type={`file`}
@@ -267,19 +291,26 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                             md: `${12 / 7.68}vw`,
                             lg: `${19 / 19.2}vw`,
                           }}
-                          ml={{
-                            base: `${19 / 3.75}vw`,
-                            md: `${70 / 19.2}vw`,
-                          }}
                         />
+                        <Box
+                          w={{
+                            base: `${190 / 3.75}vw`,
+                            md: `${200 / 7.68}vw`,
+                            lg: `${500 / 19.2}vw`,
+                          }}
+                          mt={{ lg: `${4 / 19.2}vw` }}
+                          fontSize={{ lg: `${13 / 19.2}vw` }}
+                          lineHeight={`1.5`}
+                          whiteSpace={{ base: `pre-wrap` }}
+                        >
+                          {index === 1
+                            ? `※推奨サイズ：1020x600[px]`
+                            : `※推奨サイズ：300x180[px]`}
+                        </Box>
                         {errors?.[idlist[index]]?.message && (
                           <Box
                             mt={{ base: `0.25rem` }}
                             fontSize={{ base: `0.5rem`, md: `0.75rem` }}
-                            ml={{
-                              base: `${19 / 3.75}vw`,
-                              md: `${70 / 19.2}vw`,
-                            }}
                             color={`red`}
                           >
                             {errors[idlist[index]].message}
@@ -288,9 +319,12 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                       </Box>
                     )}
 
-                    {(index === 2 || index === 5) && (
+                    {(index === 2 ||
+                      index === 5 ||
+                      index === 8 ||
+                      index === 11) && (
                       <Box
-                        mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
+                        // mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
                         ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
                       >
                         <Textarea

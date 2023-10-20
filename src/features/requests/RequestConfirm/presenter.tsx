@@ -56,17 +56,17 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
     { title: '締切日' },
 
     { title: '求人タイトル' },
-    { title: '写真' },
-    { title: '求人の詳細情報' },
-    { title: '雰囲気の画像' },
-    { title: '雰囲気のタイトル' },
-    { title: '雰囲気の詳細' },
-    // { title: '雰囲気の画像②' },
-    // { title: '雰囲気のタイトル②' },
-    // { title: '雰囲気の詳細②' },
-    // { title: '雰囲気の画像③' },
-    // { title: '雰囲気のタイトル③' },
-    // { title: '雰囲気の詳細③' },
+    { title: 'メイン写真' },
+    { title: '求人の詳細内容' },
+    { title: '雰囲気情報の写真①' },
+    { title: '雰囲気情報のタイトル①' },
+    { title: '雰囲気情報の詳細①' },
+    { title: '雰囲気情報の写真②' },
+    { title: '雰囲気情報のタイトル②' },
+    { title: '雰囲気情報の詳細②' },
+    { title: '雰囲気情報の写真③' },
+    { title: '雰囲気情報のタイトル③' },
+    { title: '雰囲気情報の詳細③' },
   ];
   const datalist = [
     remain.company_name,
@@ -98,7 +98,14 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
     '画像選択済み', // remain.atmosphere_image,
     remain.atmosphere_title,
     remain.atmosphere_text,
+    remain.atmosphere_image2 ? '画像選択済み' : '', // remain.atmosphere_image2,
+    remain.atmosphere_title2,
+    remain.atmosphere_text2,
+    remain.atmosphere_image3 ? '画像選択済み' : '', // remain.atmosphere_image2,
+    remain.atmosphere_title3,
+    remain.atmosphere_text3,
   ];
+  console.log(remain);
 
   const handleClick = async () => {
     setIsSending(true);
@@ -112,21 +119,54 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
       });
       const jsonImage = await resImage.json();
       const imageId = jsonImage[0].id;
+
       // upload atmosphere image
       const formDataAtmosphere = new FormData();
       formDataAtmosphere.append(`files`, remain.atmosphere_image);
       const resImageAtmosphere = await fetch(`${API_URL_OFFER}/upload`, {
         method: 'post',
-        body: formData,
+        body: formDataAtmosphere,
       });
       const jsonImageAtmosphere = await resImageAtmosphere.json();
       const imageIdAtmosphere = jsonImageAtmosphere[0].id;
+      // upload atmosphere image2
+      const formDataAtmosphere2 = new FormData();
+      remain.atmosphere_image2 &&
+        formDataAtmosphere2.append(`files`, remain.atmosphere_image2);
+      const resImageAtmosphere2 = remain.atmosphere_image2
+        ? await fetch(`${API_URL_OFFER}/upload`, {
+            method: 'post',
+            body: formDataAtmosphere2,
+          })
+        : undefined;
+      const jsonImageAtmosphere2 =
+        (await resImageAtmosphere2?.json()) ?? undefined;
+      const imageIdAtmosphere2 = jsonImageAtmosphere2?.[0]?.id ?? undefined;
+      // upload atmosphere image3
+      const formDataAtmosphere3 = new FormData();
+      remain.atmosphere_image3 &&
+        formDataAtmosphere3.append(`files`, remain.atmosphere_image3);
+      const resImageAtmosphere3 = remain.atmosphere_image3
+        ? await fetch(`${API_URL_OFFER}/upload`, {
+            method: 'post',
+            body: formDataAtmosphere3,
+          })
+        : undefined;
+      const jsonImageAtmosphere3 =
+        (await resImageAtmosphere3?.json()) ?? undefined;
+      const imageIdAtmosphere3 = jsonImageAtmosphere3?.[0]?.id ?? undefined;
 
       const url = `${API_URL_OFFER}${apiRoutes.offer}`;
       const {
         atmosphere_image: _atmosphere_image,
         atmosphere_text,
         atmosphere_title,
+        atmosphere_image2: _atmosphere_image2,
+        atmosphere_text2,
+        atmosphere_title2,
+        atmosphere_image3: _atmosphere_image3,
+        atmosphere_text3,
+        atmosphere_title3,
         image: _image,
         ...others
       } = remain;
@@ -141,7 +181,21 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
               text: atmosphere_text,
               image: imageIdAtmosphere,
             },
-          ],
+            imageIdAtmosphere2
+              ? {
+                  title: atmosphere_title2,
+                  text: atmosphere_text2,
+                  image: imageIdAtmosphere2,
+                }
+              : undefined,
+            imageIdAtmosphere3
+              ? {
+                  title: atmosphere_title3,
+                  text: atmosphere_text3,
+                  image: imageIdAtmosphere3,
+                }
+              : undefined,
+          ].filter((item) => !!item),
         },
       });
       reset();
