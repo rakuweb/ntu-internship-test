@@ -167,7 +167,8 @@ export const requestSchema = z.object({
     .min(1, '入力してください'),
   qualification: z
     .string({ required_error: '入力してください' })
-    .min(1, '入力してください'),
+    .min(1, '入力してください')
+    .max(36, '36文字以内で入力してください'),
   points: z
     .array(z.string({ required_error: '選択してください' }), {
       required_error: '選択してください',
@@ -191,7 +192,8 @@ export const requestSchema = z.object({
     .optional(),
   flow: z
     .string({ required_error: '入力してください' })
-    .min(1, '入力してください'),
+    .min(1, '入力してください')
+    .max(54, '54文字以内で入力してください'),
   url: z
     .string({ required_error: '入力してください' })
     .min(1, '入力してください'),
@@ -208,7 +210,8 @@ export const requestSchema = z.object({
 
   title: z
     .string({ required_error: '入力してください' })
-    .min(1, '入力してください'),
+    .min(1, '入力してください')
+    .max(23, '23文字以内で入力してください'),
   image: z
     .custom<FileList>()
     .transform((file) => file[0])
@@ -220,10 +223,12 @@ export const requestSchema = z.object({
     }, '画像を選択してください'),
   job_description: z
     .string({ required_error: '入力してください' })
-    .min(1, '入力してください'),
+    .min(1, '入力してください')
+    .max(108, '108文字以内で入力してください'),
   atmosphere_title: z
     .string({ required_error: '入力してください' })
-    .min(1, '入力してください'),
+    .min(1, '入力してください')
+    .max(23, '23文字以内で入力してください'),
   atmosphere_image: z
     .custom<FileList>()
     .transform((file) => file[0])
@@ -235,13 +240,22 @@ export const requestSchema = z.object({
     }, '画像を選択してください'),
   atmosphere_text: z
     .string({ required_error: '入力してください' })
-    .min(1, '入力してください'),
-  atmosphere_title2: z.string({ required_error: '入力してください' }),
+    .min(1, '入力してください')
+    .max(54, '54文字以内で入力してください'),
+  atmosphere_title2: z
+    .string({ required_error: '入力してください' })
+    .max(23, '23文字以内で入力してください'),
   atmosphere_image2: z.custom<FileList>().transform((file) => file?.[0]),
-  atmosphere_text2: z.string({ required_error: '入力してください' }),
-  atmosphere_title3: z.string({ required_error: '入力してください' }),
+  atmosphere_text2: z
+    .string({ required_error: '入力してください' })
+    .max(54, '54文字以内で入力してください'),
+  atmosphere_title3: z
+    .string({ required_error: '入力してください' })
+    .max(23, '23文字以内で入力してください'),
   atmosphere_image3: z.custom<FileList>().transform((file) => file?.[0]),
-  atmosphere_text3: z.string({ required_error: '入力してください' }),
+  atmosphere_text3: z
+    .string({ required_error: '入力してください' })
+    .max(54, '54文字以内で入力してください'),
 });
 
 export type RequestSchema = z.infer<typeof requestSchema>;
