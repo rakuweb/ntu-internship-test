@@ -1,4 +1,3 @@
-
 export type JobFormItem = {
   readonly isChecked: boolean;
   readonly isSending: boolean;

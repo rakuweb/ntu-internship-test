@@ -23,7 +23,7 @@ export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps> = () => {
-  const router = useRouter()
+  const router = useRouter();
   const { setIsSending, setIsChecked } = useJobFormStore(
     selectJobFormFunctions
   );

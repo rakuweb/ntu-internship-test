@@ -33,6 +33,7 @@ export const routes = {
   offerCheckComplete: (id: string) => `/offers/preview/${id}/complete`,
   offersJobForm: (id: string) => `/offers/${id}/jobform`,
   offersJobFormComplete: (id: string) => `/offers/${id}/jobform/complete`,
+  publicationCriteria: `/publication-criteria`,
 
   apiRegister: '/api/register',
   apiAccount: '/api/account',
