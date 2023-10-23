@@ -108,16 +108,31 @@ export const Presenter: FC<PresenterProps> = () => {
               </Span>
             </Box>
           </Stack>
-          <Button
-            disabled={!isCheckedTerm || !isCheckedConfirm || isSending}
-            isLoading={isSending}
-            width={{ base: `${600 / 19.2}vw` }}
-            py={{ base: `${40 / 19.2}vw` }}
-            bg={`#ED6038`}
-            borderRadius={0}
-            fontSize={{ base: `${24 / 19.2}vw` }}
-            onClick={() => handleClick()}
-          >{`掲載依頼を完了する`}</Button>
+          <Stack spacing={{ lg: `${32 / 19.2}vw` }} direction={`row`}>
+            <ExternalLink
+              href={`mailto:test@test.test?subject=test&body=ご記入ください`}
+            >
+              <Button
+                // disabled={!isCheckedTerm || !isCheckedConfirm || isSending}
+                isLoading={isSending}
+                width={{ base: `${500 / 19.2}vw` }}
+                py={{ base: `${40 / 19.2}vw` }}
+                bg={`#bdbdbd`}
+                borderRadius={0}
+                fontSize={{ base: `${24 / 19.2}vw` }}
+              >{`修正する`}</Button>
+            </ExternalLink>
+            <Button
+              disabled={!isCheckedTerm || !isCheckedConfirm || isSending}
+              isLoading={isSending}
+              width={{ base: `${500 / 19.2}vw` }}
+              py={{ base: `${40 / 19.2}vw` }}
+              bg={`#ED6038`}
+              borderRadius={0}
+              fontSize={{ base: `${24 / 19.2}vw` }}
+              onClick={() => handleClick()}
+            >{`掲載依頼を完了する`}</Button>
+          </Stack>
         </Stack>
       </Box>
       <Footer />
