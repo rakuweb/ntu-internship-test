@@ -2,7 +2,6 @@
 import { FC } from 'react';
 import { Button, ButtonProps, Flex } from '@chakra-ui/react';
 
-
 // type layer
 export type StyleProps = ButtonProps;
 export type DataProps = { isSending?: boolean; isChecking?: boolean };

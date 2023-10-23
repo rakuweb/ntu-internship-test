@@ -292,7 +292,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                             lineHeight={`1.5`}
                             whiteSpace={{ base: `pre-wrap` }}
                           >
-                          {`※月額プランの方は記事作成代行を0円でご利用いただけます。`}
+                            {`※月額プランの方は記事作成代行を0円でご利用いただけます。`}
                           </Box>
                         )}
                       </Box>
@@ -364,7 +364,10 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
             利用規約
           </ExternalLink>
           ・
-          <ExternalLink href={''} borderBottom={`2px solid #39414E`}>
+          <ExternalLink
+            href={routes.publicationCriteria}
+            borderBottom={`2px solid #39414E`}
+          >
             広告掲載基準
           </ExternalLink>
           ・
