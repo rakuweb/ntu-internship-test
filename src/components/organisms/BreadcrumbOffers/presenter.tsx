@@ -22,7 +22,7 @@ export const Presenter: FC<PresenterProps> = ({ title }) => {
             HOME
             <KeyboardArrowRightIcon className="breadcrumb__icon_container" />
           </InternalLink>
-          <a className="breadcrumb__container__link">{title}</a>
+          <span className="breadcrumb__container__link">{title}</span>
         </p>
       </section>
     </div>
