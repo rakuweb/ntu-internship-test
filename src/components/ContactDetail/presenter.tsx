@@ -133,7 +133,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           >
             プライバシーポリシー
           </ExternalLink>
-          に同意いただき、内容をご確認いただいた上でご送信ください
+          に同意いただき、内容をご確認いただいた上でご送信ください。
         </Flex>
         <SubmitButton
           type={`submit`}
