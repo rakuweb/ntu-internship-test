@@ -113,7 +113,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
           }}
           fontWeight={`bold`}
         >
-          {`FORJOB求人掲載  お申し込み`}
+          {`FORJOB利用申込フォーム`}
         </Box>
       </Flex>
       <form onSubmit={handleSubmit(submitHandler)}>
@@ -351,7 +351,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
             md: `${13 / 7.68}vw`,
             lg: `${22 / 19.2}vw`,
           }}
-          fontWeight={`bold`}
+          // fontWeight={`bold`}
         >
           <Checkbox
             size={{ base: `sm`, lg: `sm`, '2xl': `lg` }}
@@ -377,7 +377,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
           >
             プライバシーポリシー
           </ExternalLink>
-          に同意の上でご送信ください
+          に同意の上でお申し込みください。
         </Flex>
 
         <Button
@@ -437,7 +437,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                 alt: `紙飛行機アイコン`,
               }}
             />
-            申し込む
+            同意して、申し込む
           </Flex>
         </Button>
       </form>
