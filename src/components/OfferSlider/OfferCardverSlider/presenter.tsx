@@ -29,6 +29,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     end_at,
     job_type,
     hours_short,
+    company_name,
   } = props;
   const href = `${routes.offers}/${id}`;
   const currentDate = new Date();
@@ -104,7 +105,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               </Flex>
             ) : null}
             <Box mb={`${10 / 9.6}vw`} fontSize={`${18 / 9.6}vw`}>
-              {company.name}
+              {company_name}
             </Box>
             <Box
               display={`inline`}

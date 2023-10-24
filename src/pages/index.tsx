@@ -22,15 +22,15 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 export const Index: NextPage<Props> = ({ data }) => {
   const router = useRouter();
-  const title = `For job(新大生のための求人サイト) | NOT THE UNIVERSITY`; // eslint-disable-line
-  const description = `For jobは、NOT THE UNIVERSITYがお届けする新大生のための求人サイトです。ワンデーバイトからインターンシップ求人まで、他では体験できない求人や高時給アルバイトをお届けします。`;
+  const title = `FOR JOB(新大生のための求人サイト) | NOT THE UNIVERSITY`; // eslint-disable-line
+  const description = `FOR JOBは、NOT THE UNIVERSITYがお届けする新大生のための求人サイトです。ワンデーバイトからインターンシップ求人まで、他では体験できない求人や高時給アルバイトをお届けします。`;
   const openGraph = {
     type: 'website',
     title: title,
     description: description,
     images: [
       {
-        url: `${ORIGIN_URL}/ogp.jpg`,
+        url: `${ORIGIN_URL}/newogp.png`,
         width: 1200,
         height: 630,
       },
