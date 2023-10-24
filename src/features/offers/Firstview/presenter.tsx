@@ -74,9 +74,9 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         h={`100%`}
         objectFit={`cover`}
         image={{
-          width: 3212,
-          height: 950,
-          src: `/images/offers/firstviewtest.png`,
+          width: 1930,
+          height: 715,
+          src: `/images/offers/firstview.png`,
           alt: `カバー画像`,
         }}
       />
@@ -86,64 +86,40 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         top={`0`}
         left={0}
         w={`100%`}
-        h={`${484 / 3.75}vw`}
+        h={`${396 / 3.75}vw`}
         image={{
           width: 991,
           height: 1126,
-          src: `/images/offers/firstviewtest2.png`,
+          src: `/images/offers/fvmobile.png`,
           alt: `カバー画像`,
         }}
       />
       <Flex
         backgroundColor={{ base: `#ffffff`, lg: 'var(--white)' }}
         w={`100%`}
-        h={{ base: `${424 / 3.75}vw`, lg: `${563 / 19.2}vw` }}
+        h={{ base: `${424 / 3.75}vw`, lg: `${705 / 19.2}vw` }}
         mx={{ lg: `auto` }}
         fontFamily={`'Noto Sans JP', sans-serif`}
       >
         <Box
-          ml={{ lg: `${638 / 19.2}vw` }}
-          mt={{ base: `${40 / 3.75}vw`, lg: `${118 / 19.2}vw` }}
+          mx={{ lg: `auto` }}
+          mt={{ base: `${40 / 3.75}vw`, lg: `${186 / 19.2}vw` }}
           position={`relative`}
         >
-          {/* デスクトップサイズ */}
-          <Flex
-            display={{ base: `none`, lg: `flex` }}
-            color={`white`}
-            letterSpacing={`0`}
-            fontWeight={`800`}
-            fontSize={{ base: `${32 / 3.75}vw`, lg: `${52 / 19.2}vw` }}
-            alignItems={`baseline`}
-            mb={`${30 / 19.2}vw`}
-            textShadow={`0px 3px 6px #00000029`}
-          >
-            新大生
-            <Box fontSize={{ base: `${18 / 3.75}vw`, lg: `${39 / 19.2}vw` }}>
-              のための
-            </Box>
-            <Box fontSize={`${52 / 19.2}vw`}>求人</Box>
-            <Box fontSize={`${39 / 19.2}vw`}>サイト</Box>
-          </Flex>
-          {/* ////////// */}
-
-          {/* モバイルサイズ */}
-          <Box
-            display={{ lg: `none` }}
-            textAlign={`end`}
-            mr={`${20 / 3.75}vw`}
-            color={`white`}
-            letterSpacing={`0`}
-            lineHeight={`1.25em`}
-            fontWeight={`800`}
-            fontSize={`${32 / 3.75}vw`}
-            mb={`${30 / 3.75}vw`}
-            textShadow={`0px 3px 6px #00000029`}
-          >
-            新大生のための
-            <Box fontSize={`${32 / 3.75}vw`}>求人サイト</Box>
-          </Box>
-          {/* //////////////// */}
-
+          <Image // eslint-disable-line
+            display={{ base: `none`, lg: `block` }}
+            top={0}
+            left={0}
+            w={`${1467 / 19.2}vw`}
+            h={`${319 / 19.2}vw`}
+            objectFit={`cover`}
+            image={{
+              width: 1467,
+              height: 319,
+              src: `/images/offers/fvlogo.png`,
+              alt: `カバー画像`,
+            }}
+          />
           {/* <Box
             bg={`#39414E`}
             mx={{ base: `${20 / 3.75}vw`, lg: `0` }}
