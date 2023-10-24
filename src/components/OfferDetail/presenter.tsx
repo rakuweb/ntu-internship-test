@@ -133,7 +133,7 @@ export const Presenter: FC<PresenterProps> = () => {
             }}
             mb={{ base: `${13 / 3.75}vw`, md: `${20 / 19.2}vw` }}
           >
-            {offer.company.name}
+            {offer.company_name}
             {isNew <= 7 ? (
               <Flex
                 alignItems={`center`}

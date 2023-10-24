@@ -149,6 +149,11 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     pb={{ base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` }}
                     pl={{ base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` }}
                     whiteSpace={`pre-wrap`}
+                    w={{
+                      base: `${230 / 3.75}vw`,
+                      md: `${310 / 7.68}vw`,
+                      lg: `${670 / 19.2}vw`,
+                    }}
                   >
                     {list.main}
                   </Box>
@@ -311,6 +316,11 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     pb={{ base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` }}
                     pl={{ base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` }}
                     whiteSpace={`pre-wrap`}
+                    w={{
+                      base: `${230 / 3.75}vw`,
+                      md: `${310 / 7.68}vw`,
+                      lg: `${670 / 19.2}vw`,
+                    }}
                   >
                     {`100`}
                     {list.main}

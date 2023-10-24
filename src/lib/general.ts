@@ -26,7 +26,7 @@ export const parseSeo = (
       description: removeBreakLine(description),
       images: [
         {
-          url: ogp?.src ?? `${ORIGIN_URL}/ogp.jpg`,
+          url: ogp?.src ?? `${ORIGIN_URL}/newogp.png`,
           width: ogp?.width ?? 1200,
           height: ogp?.height ?? 630,
           alt: ogp?.alt ?? '',

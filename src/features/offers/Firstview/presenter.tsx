@@ -89,7 +89,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         h={`${396 / 3.75}vw`}
         image={{
           width: 991,
-          height: 1126,
+          height: 1046,
           src: `/images/offers/fvmobile.png`,
           alt: `カバー画像`,
         }}
@@ -97,7 +97,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       <Flex
         backgroundColor={{ base: `#ffffff`, lg: 'var(--white)' }}
         w={`100%`}
-        h={{ base: `${424 / 3.75}vw`, lg: `${705 / 19.2}vw` }}
+        h={{ base: `${396 / 3.75}vw`, lg: `${705 / 19.2}vw` }}
         mx={{ lg: `auto` }}
         fontFamily={`'Noto Sans JP', sans-serif`}
       >

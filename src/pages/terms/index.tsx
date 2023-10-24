@@ -21,7 +21,7 @@ export const Index: NextPage = () => {
     description: description,
     images: [
       {
-        url: `${ORIGIN_URL}/ogp.jpg`,
+        url: `${ORIGIN_URL}/newogp.png`,
         width: 1200,
         height: 630,
       },

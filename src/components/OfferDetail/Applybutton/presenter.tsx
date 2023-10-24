@@ -69,20 +69,26 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         </Box>
       </Flex> */}
 
-      <InternalLink href={`/jobform`} mt={`${10 / 3.75}vw`}>
+      <InternalLink
+        w={`fit-content`}
+        href={`/jobform`}
+        mt={`${10 / 3.75}vw`}
+        mx={`auto`}
+      >
         <Flex
           alignItems={`center`}
           justify={`center`}
-          py={`${20 / 4.28}vw`}
+          py={`${10 / 4.28}vw`}
           background={`transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box;`}
           color={`white`}
-          fontSize={`${27 / 3.75}vw`}
+          fontSize={`${18 / 3.75}vw`}
           fontWeight={`bold`}
           borderRadius={`${5 / 3.75}vw`}
+          w={`${200 / 3.75}vw`}
         >
           <Image // eslint-disable-line
-            w={`${27 / 3.75}vw`}
-            h={`${27 / 3.75}vw`}
+            w={`${20 / 3.75}vw`}
+            h={`${20 / 3.75}vw`}
             mr={`${15 / 3.75}vw`}
             image={{
               width: 35,

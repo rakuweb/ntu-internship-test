@@ -132,9 +132,7 @@ export const Presenter: FC<PresenterProps> = () => {
           />
         </Flex>
         <Flex
-          // mt={`${28 / 9.6}vw`}
           w={`${750 / 9.6}vw`}
-          // w={`720px`}
           justify={{ base: `center` }}
           align={{ base: `center` }}
         >

@@ -111,7 +111,7 @@ export const Presenter: FC<PresenterProps> = () => {
     setCurrentPage(newPage);
   };
   return (
-    <Box css={styles} w={`100%`} bg={`rgba(65,164,253,0.05)`}>
+    <Box css={styles} w={`100%`}>
       <Flex
         direction={{ base: `column`, md: `initial` }}
         justify={{ md: `space-between` }}
