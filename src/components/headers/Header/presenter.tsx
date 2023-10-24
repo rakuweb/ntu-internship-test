@@ -121,11 +121,21 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
                 lg: `${183 / 19.2}vw`,
               }}
               className="logo"
-              as={isTop ? `h1` : `div`}
             >
               <Image src={`/svg/forjob.svg`} alt={``} />
             </Box>
           </InternalLink>
+          <Box
+            display={{ base: `none`, lg: `block` }}
+            color="#39414E"
+            fontSize={`${17 / 19.2}vw`}
+            ml={{ lg: `${60 / 19.2}vw` }}
+            mt={{ lg: `${2 / 19.2}vw` }}
+            fontFamily={`'Noto Sans JP', sans-serif`}
+            fontWeight={`500`}
+          >
+            新大生のための求人サイト
+          </Box>
         </Flex>
 
         <Flex

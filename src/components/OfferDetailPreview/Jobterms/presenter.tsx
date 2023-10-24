@@ -4,7 +4,7 @@ import { Box, Flex } from '@chakra-ui/react';
 import { Image } from 'components/images/Image';
 
 import { useTargetOfferStore, selectTarget } from 'features/offers';
-import { InternalLink } from '~/components/links/InternalLink';
+import { ExternalLink } from '~/components/links/ExternalLink';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
@@ -120,7 +120,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 pt={{ base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` }}
                 pb={{ base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` }}
                 pl={{ base: `${14 / 3.75}vw`, md: `${40 / 19.2}vw` }}
-                w={{ base: `${116 / 4.28}vw`, md: `${320 / 19.2}vw` }}
+                w={{ base: `${145 / 4.28}vw`, md: `${320 / 19.2}vw` }}
               >
                 {list.title}
               </Box>
@@ -291,7 +291,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     ))}
                   </Box>
 
-                  <InternalLink
+                  <ExternalLink
                     href={`${list.main}`}
                     display={index === 18 ? `block` : `none`}
                     fontSize={{
@@ -305,7 +305,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     whiteSpace={`pre-wrap`}
                   >
                     {list.main}
-                  </InternalLink>
+                  </ExternalLink>
                   <Box
                     display={index === 19 ? `block` : `none`}
                     fontSize={{
