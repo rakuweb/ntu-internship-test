@@ -65,6 +65,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
 
   return (
     <Box w={`100%`} {...props} position={`relative`} overflow={`hidden`}>
+      <Box as={`h1`} display={`none`}>{`新大生のための求人サイトFORJOB`}</Box>
       <Image // eslint-disable-line
         display={{ base: `none`, lg: `block` }}
         position={`absolute`}

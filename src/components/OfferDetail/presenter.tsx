@@ -236,7 +236,7 @@ export const Presenter: FC<PresenterProps> = () => {
             </Box>
           </Box>
           <Atmosphere mb={{ md: `${80 / 19.2}vw` }} />
-          <Applybutton pt={`${35 / 3.75}vw`} mb={`${65 / 3.75}vw`} />
+          <Applybutton pt={`${10 / 3.75}vw`} mb={`${65 / 3.75}vw`} />
           <Jobterms mb={{ base: `${55 / 3.75}vw`, md: `${125 / 19.2}vw` }} />
           <Applybutton mb={`${65 / 3.75}vw`} />
           <Flex
