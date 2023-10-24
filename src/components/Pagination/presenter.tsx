@@ -36,6 +36,7 @@ export const Presenter: FC<PresenterProps> = ({
         onClick={() => {
           if (currentPage !== 1) {
             handlePageChange(currentPage - 1);
+            window.scroll({ top: 0 });
           }
         }}
         // style
@@ -57,7 +58,10 @@ export const Presenter: FC<PresenterProps> = ({
             <Pagecircle
               key={pageNumber}
               pagenumber={pageNumber}
-              onClick={() => handlePageChange(pageNumber)}
+              onClick={() => {
+                handlePageChange(pageNumber);
+                window.scroll({ top: 0 });
+              }}
               border={
                 pageNumber === currentPage ? `1px solid #41A4FD` : undefined
               }
@@ -68,7 +72,10 @@ export const Presenter: FC<PresenterProps> = ({
       {currentPage < totalPages - 1 && <Box>{`…`}</Box>}
 
       <Box
-        onClick={() => handlePageChange(currentPage + 1)}
+        onClick={() => {
+          handlePageChange(currentPage + 1);
+          window.scroll({ top: 0 });
+        }}
         // style
         color={currentPage == totalPages ? 'gray' : 'inherit'}
         cursor={currentPage == totalPages ? 'default' : 'pointer'}

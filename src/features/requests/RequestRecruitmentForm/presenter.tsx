@@ -59,7 +59,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
     { title: 'おすすめポイント' },
     { title: '面談希望日' },
     { title: '面談希望時間' },
-    { title: '面談希望時間（備考）' },
+    { title: '面接について（備考）' },
     { title: '選考について' },
     { title: '会社HP' },
     { title: '掲載開始日' },
