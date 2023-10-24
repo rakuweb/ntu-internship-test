@@ -5,6 +5,7 @@ export const routes = {
   register: '/register',
   registerComplete: '/register/complete',
   offers: '/offers',
+  offerID: (id: string) => `/offers/${id}`,
   companies: '/companies',
   tag: '/offers/tag',
   point: '/offers/point',
