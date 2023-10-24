@@ -33,7 +33,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     { title: `面接場所`, main: offer.interview_location },
     { title: `面接可能曜日`, main: offer.desired_interview_date },
     { title: `面接可能時間`, main: offer.desired_interview_time },
-    { title: `歓迎`, main: offer.qualification },
+    { title: `対象になる方・資格`, main: offer.qualification },
     { title: `おすすめポイント`, main: offer.points },
     { title: `選考方法`, main: offer.flow },
     { title: `会社名`, main: offer.company_name },
@@ -42,7 +42,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   ];
 
   const convertStringToArray = (str: string) => {
-    const array = str.split(',');
+    const array = str?.split(',') ?? '';
+    if (array === '') return [''];
     return array.map((item) => item.trim());
   };
   const targetArray = convertStringToArray(list[2].main);
