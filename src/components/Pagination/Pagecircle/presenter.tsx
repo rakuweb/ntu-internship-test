@@ -7,27 +7,25 @@ export const Presenter: FC<PresenterProps> = ({ pagenumber, ...props }) => {
   return (
     <Flex
       fontSize={{
-        base: `${16 / 3.75}vw`,
+        base: `${11 / 3.75}vw`,
         md: `${12 / 7.68}vw`,
-        lg: `${23 / 19.2}vw`,
+        lg: `${16 / 19.2}vw`,
       }}
-      color={`#39414E`}
+      color={`#222526`}
       bg={`#DEDEDE`}
-      w={{ base: `${30 / 3.75}vw`, md: `${25 / 7.68}vw`, lg: `${50 / 19.2}vw` }}
-      h={{ base: `${30 / 3.75}vw`, md: `${25 / 7.68}vw`, lg: `${50 / 19.2}vw` }}
+      w={{ base: `${35 / 3.75}vw`, md: `${40 / 7.68}vw`, lg: `${63 / 19.2}vw` }}
+      h={{ base: `${35 / 3.75}vw`, md: `${40 / 7.68}vw`, lg: `${63 / 19.2}vw` }}
       borderRadius={`50%`}
       letterSpacing={`0`}
       alignItems={`center`}
       justify={`center`}
-      mr={{
-        base: `${10 / 3.75}vw`,
-        md: `${10 / 7.68}vw`,
-        lg: `${10 / 19.2}vw`,
-      }}
+      mr={{ base: `${8 / 3.75}vw`, md: `${8 / 7.68}vw`, lg: `${10 / 19.2}vw` }}
+      ml={{ base: `${8 / 3.75}vw`, md: `${8 / 7.68}vw`, lg: `${10 / 19.2}vw` }}
+      fontWeight={`bold`}
       _hover={{
         transition: `0.1s`,
         cursor: `pointer`,
-        border: `2px solid #41A4FD`,
+        border: `1px solid #41A4FD`,
       }}
       {...props}
     >

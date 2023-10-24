@@ -1,11 +1,15 @@
 // import layer
-import { FC } from 'react';
-import { Box, Grid } from '@chakra-ui/react';
-
-import { OfferCard } from 'features/offers/OfferCard';
+import { FC, useState } from 'react';
+import { Image } from 'components/images/Image';
+import { Box, Grid, Flex } from '@chakra-ui/react';
+import { Select } from 'chakra-react-select';
+import { OfferCard3 } from 'features/offers/OfferCard3';
+import { OfferCard } from 'features/offers';
 import { useOffersStore } from 'features/offers/hooks';
 import { selectOfferList } from 'features/offers/selectors';
 import { styles } from './styles';
+import { Pagination } from '~/components/Pagination';
+import chakraStyles from '~/components/SeachLook/chakraStyles';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
@@ -73,19 +77,124 @@ export const Presenter: FC<PresenterProps> = () => {
   const today = `${year}-${month}-${date}`;
 
   const activeOffers = offers.filter((offer) => offer.end_at >= today);
+  const Options = [
+    { value: '並び順 : 新着順', label: '並び順 : 新着順' },
+    { value: '並び順 : 締切が近い順', label: '並び順 : 締切が近い順' },
+    { value: '並び順 : 締切が遠い順', label: '並び順 : 締切が遠い順' },
+  ];
+  const [sortOption, setSortOption] = useState<string>('並び順 : 新着順');
+  const sortOffers = (offers: OfferCard[]) => {
+    switch (sortOption) {
+      case '並び順 : 新着順':
+        return offers.sort(
+          (a, b) =>
+            new Date(b.start_at).getTime() - new Date(a.start_at).getTime()
+        );
+      case '並び順 : 締切が近い順':
+        return offers.sort(
+          (a, b) => new Date(a.end_at).getTime() - new Date(b.end_at).getTime()
+        );
+      case '並び順 : 締切が遠い順':
+        return offers.sort(
+          (a, b) => new Date(b.end_at).getTime() - new Date(a.end_at).getTime()
+        );
+      default:
+        return [...offers];
+    }
+  };
+  const sortedOffers = sortOffers([...activeOffers]);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
+
+  const handlePageChange = (newPage: number) => {
+    setCurrentPage(newPage);
+  };
   return (
     <Box css={styles} w={`100%`} bg={`rgba(65,164,253,0.05)`}>
-      <Box
-        ml={{ base: `${20 / 3.75}vw`, lg: `${176 / 19.2}vw` }}
-        pt={{ base: `${24 / 3.75}vw`, lg: `${51 / 19.2}vw` }}
-        mb={{ base: `${24 / 3.75}vw`, lg: `${30 / 19.2}vw` }}
-        fontSize={{ base: `${16 / 3.75}vw`, lg: `${30 / 19.2}vw` }}
-        fontFamily={"'Noto Sans JP', sans-serif"}
-        fontWeight={`800`}
+      <Flex
+        direction={{ base: `column`, md: `initial` }}
+        justify={{ md: `space-between` }}
+        w={{ base: ``, md: `${698 / 7.68}vw`, lg: `${1439 / 19.2}vw` }}
+        ml={{ base: ``, md: `${30 / 7.68}vw`, lg: `${206 / 19.2}vw` }}
+        pt={{ base: ``, md: `${30 / 7.68}vw`, lg: `${130 / 19.2}vw` }}
+        mb={{ base: `${34 / 3.75}vw`, md: `${70 / 19.2}vw` }}
+        color={`#39414E`}
       >
-        求人一覧
-      </Box>
+        <Flex
+          fontFamily={`'Noto Sans JP', sans-serif`}
+          display={{ base: `flex`, md: `flex` }}
+          pt={{ base: `${15 / 3.75}vw`, md: `initial` }}
+          ml={{ base: `${10 / 3.75}vw`, md: `initial` }}
+        >
+          <Image // eslint-disable-line
+            ml={{ base: `${10 / 3.75}vw`, md: `${23 / 19.2}vw` }}
+            mr={{ base: `${10 / 3.75}vw`, md: `${13 / 19.2}vw` }}
+            mb={{
+              base: `${0 / 3.75}vw`,
+              md: `${2 / 7.68}vw`,
+              lg: `${19 / 19.2}vw`,
+            }}
+            w={{
+              base: `${20 / 3.75}vw`,
+              md: `${20 / 7.68}vw`,
+              lg: `${32 / 19.2}vw`,
+            }}
+            h={{
+              base: `${15 / 3.75}vw`,
+              md: `${23 / 7.68}vw`,
+              lg: `${32 / 19.2}vw`,
+            }}
+            image={{
+              width: 32,
+              height: 42,
+              src: `/svg/file-invoice-solid.svg`,
+              alt: `書類のアイコン`,
+            }}
+          />
+          <Box
+            mt={{ base: `${5 / 3.75}vw`, md: `${3 / 19.2}vw` }}
+            fontSize={{
+              base: `${18 / 3.75}vw`,
+              md: `${20 / 7.68}vw`,
+              lg: `${36 / 19.2}vw`,
+            }}
+            fontWeight={`bold`}
+          >
+            求人一覧
+          </Box>
+        </Flex>
+        <Flex
+          display={{ base: `block`, md: `flex` }}
+          mt={{ base: `${15 / 3.75}vw`, md: `${13 / 19.2}vw` }}
+          ml={{ base: `${15 / 3.75}vw`, md: `initial` }}
+          fontSize={{
+            base: `${13 / 3.75}vw`,
+            md: `${14 / 7.68}vw`,
+            lg: `${25 / 19.2}vw`,
+          }}
+          fontWeight={`bold`}
+          fontFamily={`'Noto Sans JP', sans-serif`}
+        >
+          <Box
+            mt={{
+              base: `${14 / 3.75}vw`,
+              md: `${-5 / 7.68}vw`,
+              lg: `${-10 / 19.2}vw`,
+              '2xl': `${-5 / 19.2}vw`,
+            }}
+          >
+            <Select
+              options={Options}
+              chakraStyles={chakraStyles}
+              placeholder={sortOption}
+              onChange={(option: { value: string }) =>
+                setSortOption(option.value)
+              }
+            />
+          </Box>
+        </Flex>
+      </Flex>
       {/* <Box display={`none`}>
         <Swiper {...swiperProps}>
           {sortedOffers.map((offer) => {
@@ -117,35 +226,48 @@ export const Presenter: FC<PresenterProps> = () => {
         mr={{ lg: `${240 / 19.2}vw` }}
         templateColumns={{
           base: `repeat(1,1fr)`,
+          md: `repeat(2,1fr)`,
           lg: `repeat(2,1fr)`,
         }}
-        rowGap={{ lg: `38px` }}
+        rowGap={{
+          base: `${34 / 3.75}vw`,
+          md: `${80 / 19.2}vw`,
+          lg: `${80 / 19.2}vw`,
+        }}
         columnGap={{ lg: `32px` }}
         opacity={`1`}
       >
-        {activeOffers.map((offer) => {
-          // const daysRemaining = remainingDays(offer.deadline);
-          return (
-            <div key={offer.id}>
-              {offer.end_at >= today ? (
-                <Box m={`0 auto`} w={`fit-content`}>
-                  <OfferCard {...offer} />
-                </Box>
-              ) : (
-                <></>
-              )}
-            </div>
-          );
-        })}
+        {sortedOffers
+          .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+          .map((offer) => {
+            // const daysRemaining = remainingDays(offer.deadline);
+            return (
+              <div key={offer.id}>
+                {offer.end_at >= today ? (
+                  <Box m={`0 auto`} w={`fit-content`}>
+                    <OfferCard3 {...offer} />
+                  </Box>
+                ) : (
+                  <></>
+                )}
+              </div>
+            );
+          })}
       </Grid>
+
       <Box
         w={`fit-content`}
-        mt={{ base: `${30 / 3.75}vw`, md: `${80 / 19.2}vw` }}
-        mb={{ base: `${60 / 3.75}vw`, md: `0` }}
+        mt={{ base: `${50 / 3.75}vw`, md: `${130 / 19.2}vw` }}
         mx={`auto`}
-        pb={{ lg: `${100 / 19.2}vw` }}
+        pb={{ base: `${50 / 3.75}vw`, md: `${100 / 19.2}vw` }}
       >
         {/* <SearchButton /> */}
+        <Pagination
+          currentPage={currentPage}
+          totalData={activeOffers ? activeOffers.length : 0}
+          itemsPerPage={8}
+          handlePageChange={handlePageChange}
+        />
       </Box>
     </Box>
   );
