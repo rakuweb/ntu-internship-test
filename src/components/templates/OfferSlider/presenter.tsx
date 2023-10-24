@@ -9,10 +9,17 @@ export type PresenterProps = Record<string, unknown>;
 // presenter
 export const Presenter: FC<PresenterProps> = () => {
   return (
-    <>
-      <Box as={`main`}>
-        <OfferSlider />
+    <Box as={`main`}>
+      <OfferSlider />
+      <Box position={`absolute`} top={`-1000px`} opacity={0}>
+        <video
+          src={`/videos/amazon-background.mp4`}
+          autoPlay
+          muted
+          playsInline
+          loop
+        />
       </Box>
-    </>
+    </Box>
   );
 };
