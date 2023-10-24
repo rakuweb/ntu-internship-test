@@ -62,7 +62,7 @@ const SubmitButton: React.FC<SubmitButtonProps> = ({ ...props }) => {
           alt: `紙飛行機アイコン`,
         }}
       />
-      送信する
+      同意の上、送信する
     </Button>
   );
 };

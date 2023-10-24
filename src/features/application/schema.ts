@@ -9,7 +9,11 @@ export const employeeNumberList = [
   `750~999人`,
   `1000人以上`,
 ];
-export const planList = ['月々らくらく掲載プラン', '採用こだわりプラン'];
+export const planList = [
+  '月々らくらく掲載プラン',
+  '採用こだわりプラン',
+  'COWORK広告プラン',
+];
 
 export const applicationSchema = z.object({
   name: z

@@ -6,7 +6,7 @@ import { css } from '@emotion/react';
 import { Footer } from 'components/footers/Footer';
 import { Header } from 'components/headers/Header';
 import { InternalLink } from 'components/links/InternalLink';
-import { HP_URL, routes } from 'constants/routes';
+import { routes } from 'constants/routes';
 import { Button } from '~/components/buttons/Button';
 import { mq } from '~/constants/styles';
 

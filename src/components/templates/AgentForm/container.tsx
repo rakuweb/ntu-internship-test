@@ -10,4 +10,3 @@ export type ContainerProps = PresenterProps;
 export const Container: VFC<ContainerProps> = ({ ...props }) => {
   return <Presenter {...props} />;
 };
-

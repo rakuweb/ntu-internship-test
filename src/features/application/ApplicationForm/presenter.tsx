@@ -113,7 +113,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
           }}
           fontWeight={`bold`}
         >
-          {`FORJOB求人掲載  お申し込み`}
+          {`FORJOB利用申込フォーム`}
         </Box>
       </Flex>
       <form onSubmit={handleSubmit(submitHandler)}>
@@ -292,7 +292,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                             lineHeight={`1.5`}
                             whiteSpace={{ base: `pre-wrap` }}
                           >
-                          {`※月額プランの方は記事作成代行を0円でご利用いただけます。`}
+                            {`※月額プランの方は記事作成代行を0円でご利用いただけます。`}
                           </Box>
                         )}
                       </Box>
@@ -351,7 +351,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
             md: `${13 / 7.68}vw`,
             lg: `${22 / 19.2}vw`,
           }}
-          fontWeight={`bold`}
+          // fontWeight={`bold`}
         >
           <Checkbox
             size={{ base: `sm`, lg: `sm`, '2xl': `lg` }}
@@ -364,7 +364,10 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
             利用規約
           </ExternalLink>
           ・
-          <ExternalLink href={''} borderBottom={`2px solid #39414E`}>
+          <ExternalLink
+            href={routes.publicationCriteria}
+            borderBottom={`2px solid #39414E`}
+          >
             広告掲載基準
           </ExternalLink>
           ・
@@ -374,7 +377,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
           >
             プライバシーポリシー
           </ExternalLink>
-          に同意の上でご送信ください
+          に同意の上でお申し込みください。
         </Flex>
 
         <Button
@@ -434,7 +437,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                 alt: `紙飛行機アイコン`,
               }}
             />
-            申し込む
+            同意して、申し込む
           </Flex>
         </Button>
       </form>

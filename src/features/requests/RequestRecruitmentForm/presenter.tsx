@@ -55,15 +55,15 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
     { title: '定休日' },
     { title: '勤務地' },
     { title: '面接場所' },
-    { title: '対象となる方・資格' },
+    { title: '対象になる方・資格' },
     { title: 'おすすめポイント' },
     { title: '面談希望日' },
     { title: '面談希望時間' },
     { title: '面談希望時間（備考）' },
     { title: '選考について' },
     { title: '会社HP' },
-    { title: '掲載日' },
-    { title: '締切日' },
+    { title: '掲載開始日' },
+    { title: '掲載終了日' },
   ];
   const idlist = [
     'job_type',
@@ -228,7 +228,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
           }}
           fontWeight={`bold`}
         >
-          FORJOB求人掲載 お申し込み
+          FORJOB求人掲載フォーム
         </Box>
       </Flex>
       <Box>
@@ -275,7 +275,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                     >
                       <Box
                         w={{ base: `${116 / 4.28}vw`, md: `${163 / 19.2}vw` }}
-                        whiteSpace={`pre-wrap`}
+                        whiteSpace={{ lg: `nowrap` }}
                       >
                         {list.title}
                       </Box>

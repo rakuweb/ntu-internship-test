@@ -90,7 +90,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
           }}
           fontWeight={`bold`}
         >
-          FORJOB求人掲載 お申し込み
+          FORJOB求人掲載フォーム
         </Box>
       </Flex>
       <Box>

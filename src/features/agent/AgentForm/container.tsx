@@ -7,6 +7,5 @@ export type ContainerProps = PresenterProps;
 
 // container
 export const Container: FC<ContainerProps> = ({ ...props }) => {
-
   return <Presenter {...props} />;
 };

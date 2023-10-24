@@ -48,8 +48,6 @@ export const Presenter: FC<PresenterProps> = () => {
     }
   };
 
-  console.log(routes.apiAgent);
-
   return (
     <>
       <Header />

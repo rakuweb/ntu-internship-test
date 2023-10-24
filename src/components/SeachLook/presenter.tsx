@@ -130,8 +130,8 @@ export const Presenter: FC<PresenterProps> = () => {
 
   // Then in the filter
   const filteredOffers = sortedOffers.filter((offer) => {
-    if (selectedOccupation && offer.occupation!== selectedOccupation)
-    // if (selectedOccupation && offer.occupation.name !== selectedOccupation)
+    if (selectedOccupation && offer.occupation !== selectedOccupation)
+      // if (selectedOccupation && offer.occupation.name !== selectedOccupation)
       return false;
     if (
       selectedEmploymentTypes.length > 0 &&
