@@ -22,6 +22,14 @@ export const Presenter: FC<PresenterProps> = () => {
   const [isCheckedTerm, setIsCheckedTerm] = useState<boolean>(false);
   const [isCheckedConfirm, setIsCheckedConfirm] = useState<boolean>(false);
   const [isSending, setIsSending] = useState<boolean>(false);
+  const fixMailSubject = (id: string) =>
+    `FORJOB求人原稿修正依頼 | 求人番号:${id}`;
+  const fixMailBody = `原稿プレビューのご確認ありがとうございます。%0D%0A
+原稿に修正がある場合は、%0D%0A
+こちらのメールに修正部分の記載をし、%0D%0A
+送信をお願いいたします。%0D%0A
+%0D%0A
+例：時給1,000円⇒時給：1,200に変更`;
 
   const handleClick = async () => {
     setIsSending(true);
@@ -108,16 +116,33 @@ export const Presenter: FC<PresenterProps> = () => {
               </Span>
             </Box>
           </Stack>
-          <Button
-            disabled={!isCheckedTerm || !isCheckedConfirm || isSending}
-            isLoading={isSending}
-            width={{ base: `${600 / 19.2}vw` }}
-            py={{ base: `${40 / 19.2}vw` }}
-            bg={`#ED6038`}
-            borderRadius={0}
-            fontSize={{ base: `${24 / 19.2}vw` }}
-            onClick={() => handleClick()}
-          >{`掲載依頼を完了する`}</Button>
+          <Stack spacing={{ lg: `${32 / 19.2}vw` }} direction={`row`}>
+            <ExternalLink
+              href={`mailto:test@test.test?subject=${fixMailSubject(
+                offer?.id
+              )}&body=${fixMailBody}`}
+            >
+              <Button
+                // disabled={!isCheckedTerm || !isCheckedConfirm || isSending}
+                isLoading={isSending}
+                width={{ base: `${500 / 19.2}vw` }}
+                py={{ base: `${40 / 19.2}vw` }}
+                bg={`#bdbdbd`}
+                borderRadius={0}
+                fontSize={{ base: `${24 / 19.2}vw` }}
+              >{`修正する`}</Button>
+            </ExternalLink>
+            <Button
+              disabled={!isCheckedTerm || !isCheckedConfirm || isSending}
+              isLoading={isSending}
+              width={{ base: `${500 / 19.2}vw` }}
+              py={{ base: `${40 / 19.2}vw` }}
+              bg={`#ED6038`}
+              borderRadius={0}
+              fontSize={{ base: `${24 / 19.2}vw` }}
+              onClick={() => handleClick()}
+            >{`掲載依頼を完了する`}</Button>
+          </Stack>
         </Stack>
       </Box>
       <Footer />
