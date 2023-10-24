@@ -128,7 +128,13 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   h={`${180 / 19.2}vw`}
                   mt={` ${23 / 19.2}vw`}
                   className={`photo`}
-                  image={{ ...image }}
+                  image={{
+                    ...image,
+                    width: undefined,
+                    height: undefined,
+                    fill: true,
+                  }}
+                  style={{ objectFit: `cover` }}
                 />
                 <Box w={`${283 / 19.2}vw`}>
                   <Flex
