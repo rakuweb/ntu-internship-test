@@ -5,6 +5,8 @@ import { Image } from 'components/images/Image';
 import { useLiff } from 'contexts/LineAuthContextInternship';
 import { useAccountStore, selectSetPrevPath } from 'features/account';
 import { useTargetOfferStore, selectTarget } from 'features/offers';
+import { InternalLink } from '~/components/links/InternalLink';
+import { routes } from '~/constants';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
@@ -209,36 +211,38 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           ポイントもらえる
         </Box> */}
       </Box>
-      <Box
-        onClick={() => {
-          {
-            signin();
-          }
-        }}
-      >
-        <Flex
-          alignItems={`center`}
-          justify={`center`}
-          py={{ base: ``, md: `${40 / 19.2}vw` }}
-          background={`transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box;`}
-          color={`white`}
-          fontSize={{ base: ``, md: `${16 / 7.68}vw`, lg: `${27 / 19.2}vw` }}
-          fontWeight={`bold`}
+      <InternalLink href={routes.offersJobForm(offer.id)}>
+        <Box
+        // onClick={() => {
+        //   {
+        //     signin();
+        //   }
+        // }}
         >
-          <Image // eslint-disable-line
-            w={{ base: ``, md: `${16 / 7.68}vw`, lg: `${27 / 19.2}vw` }}
-            h={{ base: ``, md: `${16 / 7.68}vw`, lg: `${27 / 19.2}vw` }}
-            mr={{ base: ``, md: `${15 / 19.2}vw` }}
-            image={{
-              width: 35,
-              height: 35,
-              src: `/svg/paper-plane-solid.svg`,
-              alt: `紙飛行機アイコン`,
-            }}
-          />
-          応募する
-        </Flex>
-      </Box>
+          <Flex
+            alignItems={`center`}
+            justify={`center`}
+            py={{ base: ``, md: `${40 / 19.2}vw` }}
+            background={`transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box;`}
+            color={`white`}
+            fontSize={{ base: ``, md: `${16 / 7.68}vw`, lg: `${27 / 19.2}vw` }}
+            fontWeight={`bold`}
+          >
+            <Image // eslint-disable-line
+              w={{ base: ``, md: `${16 / 7.68}vw`, lg: `${27 / 19.2}vw` }}
+              h={{ base: ``, md: `${16 / 7.68}vw`, lg: `${27 / 19.2}vw` }}
+              mr={{ base: ``, md: `${15 / 19.2}vw` }}
+              image={{
+                width: 35,
+                height: 35,
+                src: `/svg/paper-plane-solid.svg`,
+                alt: `紙飛行機アイコン`,
+              }}
+            />
+            応募する
+          </Flex>
+        </Box>
+      </InternalLink>
     </Box>
   );
 };
