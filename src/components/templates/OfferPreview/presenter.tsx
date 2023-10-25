@@ -24,7 +24,7 @@ export const Presenter: FC<PresenterProps> = () => {
   const [isSending, setIsSending] = useState<boolean>(false);
   const fixMailTo = `modification-request@nottheuniversity.com`;
   const fixMailSubject = (id: string) =>
-    `FORJOB求人原稿修正依頼 | 求人番号:${id}`;
+    `FORJOB求人原稿修正依頼 | 求人番号（仮）:${id}`;
   const fixMailBody = `原稿プレビューのご確認ありがとうございます。%0D%0A
 原稿に修正がある場合は、%0D%0A
 こちらのメールに修正部分の記載をし、%0D%0A
