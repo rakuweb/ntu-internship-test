@@ -75,8 +75,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         h={`100%`}
         objectFit={`cover`}
         image={{
-          width: 1930,
-          height: 715,
+          width: 2024,
+          height: 743,
           src: `/images/offers/firstview.png`,
           alt: `カバー画像`,
         }}
@@ -115,8 +115,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             h={`${319 / 19.2}vw`}
             objectFit={`cover`}
             image={{
-              width: 1467,
-              height: 319,
+              width: 1546,
+              height: 339,
               src: `/images/offers/fvlogo.png`,
               alt: `カバー画像`,
             }}
