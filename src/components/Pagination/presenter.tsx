@@ -31,6 +31,7 @@ export const Presenter: FC<PresenterProps> = ({
         md: `${12 / 7.68}vw`,
         lg: `${18 / 19.2}vw`,
       }}
+      fontFamily={`'Noto Sans JP', sans-serif`}
     >
       <Box
         onClick={() => {
