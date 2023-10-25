@@ -22,6 +22,7 @@ export const Presenter: FC<PresenterProps> = () => {
   const [isCheckedTerm, setIsCheckedTerm] = useState<boolean>(false);
   const [isCheckedConfirm, setIsCheckedConfirm] = useState<boolean>(false);
   const [isSending, setIsSending] = useState<boolean>(false);
+  const fixMailTo = `modification-request@nottheuniversity.com`;
   const fixMailSubject = (id: string) =>
     `FORJOB求人原稿修正依頼 | 求人番号:${id}`;
   const fixMailBody = `原稿プレビューのご確認ありがとうございます。%0D%0A
@@ -29,7 +30,7 @@ export const Presenter: FC<PresenterProps> = () => {
 こちらのメールに修正部分の記載をし、%0D%0A
 送信をお願いいたします。%0D%0A
 %0D%0A
-例：時給1,000円⇒時給：1,200に変更`;
+例：時給1,000円⇒時給：1,200円に変更`;
 
   const handleClick = async () => {
     setIsSending(true);
@@ -118,7 +119,7 @@ export const Presenter: FC<PresenterProps> = () => {
           </Stack>
           <Stack spacing={{ lg: `${32 / 19.2}vw` }} direction={`row`}>
             <ExternalLink
-              href={`mailto:test@test.test?subject=${fixMailSubject(
+              href={`mailto:${fixMailTo}?subject=${fixMailSubject(
                 offer?.id
               )}&body=${fixMailBody}`}
             >
