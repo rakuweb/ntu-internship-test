@@ -77,7 +77,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       >
         <Flex
           alignItems={`center`}
-          justify={`center`}
+          pl={`${38 / 3.75}vw`}
           py={`${10 / 4.28}vw`}
           background={`transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box;`}
           color={`white`}
