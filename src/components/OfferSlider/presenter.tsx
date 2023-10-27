@@ -109,36 +109,71 @@ export const Presenter: FC<PresenterProps> = () => {
       h={{ base: `100vh` }}
       fontFamily={`'Noto Sans JP', sans-serif`}
       position={`relative`}
+      overflow={{ lg: `hidden` }}
     >
       <Flex w={{ base: `100vw` }} h={{ base: `100%` }} bg={`#E7EFFA`}>
         <Image // eslint-disable-line
+          display={{ lg: `none` }}
           // w={`30%`}
-          w={`${(260 / 960) * 100}%`}
-          h={`100%`}
+          w={{ base: `${(260 / 960) * 100}%`, lg: `auto` }}
+          // w={{ base: `${(260 / 960) * 100}%`, lg: `${(300 / 1280) * 100}%` }}
+          h={{ base: `100%`, lg: `800px` }}
           image={{
             width: 389,
             height: 720,
             src: `/images/amazon/amazon-side1.png`,
             alt: `QR`,
+            style: { objectFit: `cover` },
+          }}
+        />
+        <Image // eslint-disable-line
+          display={{ base: `none`, lg: `block` }}
+          w={{ base: `${(260 / 960) * 100}%`, lg: `${(300 / 1280) * 100}%` }}
+          h={{ base: `100%` }}
+          image={{
+            width: 299,
+            height: 728,
+            src: `/images/amazon/amazon-side1280.jpg`,
+            alt: `QR`,
+            style: { objectFit: `cover` },
           }}
         />
         <Stack
-          w={`${(700 / 960) * 100}%`}
-          // w={{ base: `auto` }}
+          mt={{ lg: `${80 / 12.8}vw` }}
+          justify={{ lg: `center` }}
+          align={{ lg: `center` }}
+          overflow={{ lg: `hidden` }}
+          w={{ base: `${(700 / 960) * 100}%`, lg: `${(980 / 1280) * 100}%` }}
           h={{ base: `100%` }}
+          spacing={{ lg: `${60 / 12.8}vw` }}
         >
-          <Image
-            mt={`${30 / 9.6}vw`}
-            ml={`${115 / 9.6}vw`}
-            w={`${700 / 960}%`}
-            // w={`${502 / 9.6}vw`}
-            image={{
-              width: 504,
-              height: 40,
-              src: `/images/amazon/amazon-text.png`,
-              alt: `text`,
-            }}
-          />
+          <Box
+            mt={{ base: `${30 / 9.6}vw`, lg: `${24 / 12.8}vw` }}
+            ml={{ base: `${115 / 9.6}vw`, lg: `auto` }}
+            mr={{ lg: `auto` }}
+          >
+            <Image
+              display={{ lg: `none` }}
+              w={`100%`}
+              // w={`${700 / 960}%`}
+              image={{
+                width: 504,
+                height: 40,
+                src: `/images/amazon/amazon-text.png`,
+                alt: `text`,
+              }}
+            />
+            <Image
+              display={{ base: `none`, lg: `block` }}
+              w={`${100}%`}
+              image={{
+                width: 740,
+                height: 58,
+                src: `/images/amazon/amazon-text.png`,
+                alt: `text`,
+              }}
+            />
+          </Box>
 
           <Box h={{ base: `100%` }}>
             <Swiper {...swiperProps}>
