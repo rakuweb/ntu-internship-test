@@ -1,6 +1,6 @@
 // import layer
 import { FC } from 'react';
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, Stack } from '@chakra-ui/react';
 import { Autoplay } from 'swiper';
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 
@@ -106,85 +106,60 @@ export const Presenter: FC<PresenterProps> = () => {
   return (
     <Box
       w={{ base: `100vw` }}
-      // w={`960px`}
-      h={{ base: `calc(100vh - min(10vh, 40px))` }}
+      h={{ base: `100vh` }}
       fontFamily={`'Noto Sans JP', sans-serif`}
       position={`relative`}
     >
-      <Flex
-        w={{ base: `95%` }}
-        h={{ base: `100%` }}
-        justify={{ base: `space-between` }}
-        mx={`auto`}
-      >
-        <Flex justify={{ base: `center` }} align={{ base: `center` }}>
-          <Image // eslint-disable-line
-            // mt={`${203 / 9.6}vw`}
-            // ml={`${16 / 9.6}vw`}
-            // mr={`${23 / 9.6}vw`}
-            w={`${80.6 / 9.6}vw`}
-            image={{
-              width: 500,
-              height: 120,
-              src: `/svg/forjob.svg`,
-              alt: `forjob`,
-            }}
-          />
-        </Flex>
-        <Flex
-          w={`${750 / 9.6}vw`}
-          justify={{ base: `center` }}
-          align={{ base: `center` }}
+      <Flex w={{ base: `100vw` }} h={{ base: `100%` }} bg={`#E7EFFA`}>
+        <Image // eslint-disable-line
+          // w={`30%`}
+          w={`${(260 / 960) * 100}%`}
+          h={`100%`}
+          image={{
+            width: 389,
+            height: 720,
+            src: `/images/amazon/amazon-side1.png`,
+            alt: `QR`,
+          }}
+        />
+        <Stack
+          w={`${(700 / 960) * 100}%`}
+          // w={{ base: `auto` }}
+          h={{ base: `100%` }}
         >
-          <Swiper {...swiperProps}>
-            {activeOffers.map((offer) => {
-              // const daysRemaining = remainingDays(offer.deadline);
-              return offer.end_at >= today ? (
-                <SwiperSlide key={offer.id}>
-                  <Box py={`1rem`} px={`1rem`} mx={`auto`}>
-                    <OfferCardverSlider
-                      {...offer}
-                      deadline={daysRemaining}
-                      startDate={offer.start_at}
-                    />
-                  </Box>
-                </SwiperSlide>
-              ) : (
-                <></>
-              );
-            })}
-          </Swiper>
-        </Flex>
-        <Flex justify={{ base: `center` }} align={{ base: `center` }}>
-          <Image // eslint-disable-line
-            // ml={`${17 / 9.6}vw`}
-            // mt={`${169 / 9.6}vw`}
-            w={`${94 / 9.6}vw`}
+          <Image
+            mt={`${30 / 9.6}vw`}
+            ml={`${115 / 9.6}vw`}
+            w={`${700 / 960}%`}
+            // w={`${502 / 9.6}vw`}
             image={{
-              width: 94,
-              height: 94,
-              src: `/images/amazon/QR_088235.png`,
-              alt: `forjob`,
+              width: 504,
+              height: 40,
+              src: `/images/amazon/amazon-text.png`,
+              alt: `text`,
             }}
           />
-        </Flex>
-      </Flex>
 
-      <Flex
-        position={`fixed`}
-        bottom={`0`}
-        left={`0`}
-        h={{ base: `min(10vh, 40px)` }}
-        fontSize={{ base: `min(${20 / 9.6}vw, 1rem)` }}
-        // h={`40px`}
-        w={`100%`}
-        bg={`#41A4FD`}
-        alignItems={`center`}
-        justify={`center`}
-        fontWeight={`bold`}
-        color={`white`}
-      >
-        FROJOBは、ここにしかない高時給バイトや長期インターンの求人掲載を行なっております。
+          <Box h={{ base: `100%` }}>
+            <Swiper {...swiperProps}>
+              {activeOffers.map((offer) => {
+                return offer.end_at >= today ? (
+                  <SwiperSlide key={offer.id}>
+                    <Box py={`1rem`} px={`1rem`} mx={`auto`}>
+                      <OfferCardverSlider
+                        {...offer}
+                        deadline={daysRemaining}
+                        startDate={offer.start_at}
+                      />
+                    </Box>
+                  </SwiperSlide>
+                ) : (
+                  <></>
+                );
+              })}
+            </Swiper>
+          </Box>
+        </Stack>
       </Flex>
     </Box>
   );

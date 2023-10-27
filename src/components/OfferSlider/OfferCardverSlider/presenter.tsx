@@ -20,7 +20,6 @@ export interface PresenterProps extends DataProps {
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const {
     id,
-    company,
     startDate,
     title,
     image,
@@ -46,7 +45,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
 
   return (
     <Box
-      w={`${700 / 9.6}vw`}
+      w={`${589 / 9.6}vw`}
       borderRadius={`${15 / 9.6}vw`}
       boxShadow={`0px 3px 6px #00000029`}
       overflow={`hidden`}
@@ -62,10 +61,10 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         >
           <Box
             bg={`white`}
-            h={`${363 / 9.6}vw`}
-            py={`${30 / 9.6}vw`}
-            pl={`${29 / 9.6}vw`}
-            pr={`${33 / 9.6}vw`}
+            h={`${305 / 9.6}vw`}
+            py={`${25 / 9.6}vw`}
+            pl={`${25 / 9.6}vw`}
+            pr={`${27 / 9.6}vw`}
             fontFamily={`'Noto Sans JP', sans-serif`}
             position={`relative`}
           >
@@ -104,13 +103,13 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 日
               </Flex>
             ) : null}
-            <Box mb={`${10 / 9.6}vw`} fontSize={`${18 / 9.6}vw`}>
+            <Box mb={`${10 / 9.6}vw`} fontSize={`${15 / 9.6}vw`}>
               {company_name}
             </Box>
             <Box
               display={`inline`}
               fontWeight={`bold`}
-              fontSize={`${25 / 9.6}vw`}
+              fontSize={`${21 / 9.6}vw`}
               color={`#41A4FD`}
               borderBottom={`1px solid #41A4FD`}
               lineHeight={`1.5em`}
@@ -119,9 +118,9 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             </Box>
             <Flex justify={`space-between`}>
               <NImage
-                w={`${309 / 9.6}vw`}
-                h={`${180 / 9.6}vw`}
-                mt={` ${23 / 9.6}vw`}
+                w={`${262 / 9.6}vw`}
+                h={`${151 / 9.6}vw`}
+                mt={` ${14 / 9.6}vw`}
                 className={`photo`}
                 image={{
                   ...image,
@@ -130,9 +129,9 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   fill: true,
                 }}
               />
-              <Box w={`${283 / 9.6}vw`}>
+              <Box w={`${238 / 9.6}vw`}>
                 <Box
-                  mt={`${25 / 9.6}vw`}
+                  mt={`${15 / 9.6}vw`}
                   fontSize={`${13 / 9.6}vw`}
                   textAlign={`right`}
                   color={`#39414E`}
@@ -145,7 +144,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     py={`${3 / 9.6}vw`}
                     alignItems={`center`}
                     fontWeight={`bold`}
-                    fontSize={`${17 / 9.6}vw`}
+                    fontSize={`${14 / 9.6}vw`}
                     bg={`rgba(254,207,2,0.1)`}
                     borderRadius={`${26 / 9.6}vw`}
                   >
@@ -160,18 +159,18 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                       }}
                     />
                     <Box ml={`${13 / 9.6}vw`}>時給</Box>
-                    <Box ml={`${50 / 9.6}vw`} color={`#F26601`}>
-                      {hourly_wage}
+                    <Box ml={`${35 / 9.6}vw`} color={`#F26601`}>
+                      {hourly_wage}円
                     </Box>
                   </Flex>
                 </Box>
-                <Box mt={`${15 / 9.6}vw`} color={`#39414E`}>
+                <Box mt={`${10 / 9.6}vw`} color={`#39414E`}>
                   <Flex
                     pl={`${17 / 9.6}vw`}
                     py={`${3 / 9.6}vw`}
                     alignItems={`center`}
                     fontWeight={`bold`}
-                    fontSize={`${17 / 9.6}vw`}
+                    fontSize={`${14 / 9.6}vw`}
                     bg={`rgba(254,207,2,0.1)`}
                     borderRadius={`${26 / 9.6}vw`}
                   >
@@ -186,16 +185,16 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                       }}
                     />
                     <Box ml={`${12 / 9.6}vw`}>職種</Box>
-                    <Box ml={`${50 / 9.6}vw`}>{job_type}</Box>
+                    <Box ml={`${35 / 9.6}vw`}>{job_type}</Box>
                   </Flex>
                 </Box>
-                <Box mt={`${15 / 9.6}vw`} color={`#39414E`}>
+                <Box mt={`${10 / 9.6}vw`} color={`#39414E`}>
                   <Flex
                     pl={`${18 / 9.6}vw`}
                     py={`${3 / 9.6}vw`}
                     alignItems={`center`}
                     fontWeight={`bold`}
-                    fontSize={`${17 / 9.6}vw`}
+                    fontSize={`${14 / 9.6}vw`}
                     bg={`rgba(254,207,2,0.1)`}
                     borderRadius={`${26 / 9.6}vw`}
                   >
@@ -211,8 +210,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     />
                     <Box ml={`${12 / 9.6}vw`}>場所</Box>
                     <Box
-                      ml={`${50 / 9.6}vw`}
-                      w={`${150 / 9.6}vw`}
+                      ml={`${35 / 9.6}vw`}
+                      w={`${130 / 9.6}vw`}
                       overflow="hidden"
                       textOverflow="ellipsis"
                       whiteSpace="nowrap"
@@ -221,13 +220,13 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     </Box>
                   </Flex>
                 </Box>
-                <Box mt={`${15 / 9.6}vw`} color={`#39414E`}>
+                <Box mt={`${10 / 9.6}vw`} color={`#39414E`}>
                   <Flex
                     pl={`${16 / 9.6}vw`}
                     py={`${3 / 9.6}vw`}
                     alignItems={`center`}
                     fontWeight={`bold`}
-                    fontSize={`${17 / 9.6}vw`}
+                    fontSize={`${14 / 9.6}vw`}
                     bg={`rgba(254,207,2,0.1)`}
                     borderRadius={`${26 / 9.6}vw`}
                   >
@@ -242,12 +241,40 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                       }}
                     />
                     <Box ml={`${12 / 9.6}vw`}>時間</Box>
-                    <Box ml={`${50 / 9.6}vw`}>{hours_short}</Box>
+                    <Box ml={`${35 / 9.6}vw`}>{hours_short}</Box>
                   </Flex>
                 </Box>
               </Box>
             </Flex>
           </Box>
+          <Flex
+            background={`transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box;`}
+            w={`${589 / 9.6}vw`}
+            h={`${48 / 9.6}vw`}
+            borderRadius={` 0 0 ${15 / 9.6}vw ${15 / 9.6}vw`}
+            justify={`flex-end`}
+            pl={`${28 / 9.6}vw`}
+            pr={`${23 / 9.6}vw`}
+            pb={`${14 / 9.6}vw`}
+            fontWeight={`bold`}
+            alignItems={`flex-end`}
+            color={`white`}
+            fontFamily={`'Noto Sans JP', sans-serif`}
+          >
+            {/* <Box fontSize={`${15 / 19.2}vw`}>
+                お祝い金
+                <Box as={`span`} fontSize={`${25 / 19.2}vw`}>
+                  {job_type}
+                  {/*job_type.gift
+                </Box>
+                ポイントもらえる
+              </Box> */}
+            <Box
+              fontSize={`${18 / 9.6}vw`}
+              fontFamily={`"Josefin Sans"`}
+              fontStyle={`italic`}
+            >{`CHECK >>`}</Box>
+          </Flex>
         </Box>
       </InternalLink>
     </Box>
