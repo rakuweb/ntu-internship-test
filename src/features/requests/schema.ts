@@ -220,7 +220,16 @@ export const requestSchema = z.object({
         return true;
       }
       return false;
-    }, '画像を選択してください'),
+    }, '画像を選択してください')
+    .refine(
+      (file) => {
+        if (!file) return true;
+        return file.size < 4200000;
+      },
+      {
+        message: 'ファイルサイズは最大4MBです',
+      }
+    ),
   job_description: z
     .string({ required_error: '入力してください' })
     .min(1, '入力してください')
@@ -237,7 +246,16 @@ export const requestSchema = z.object({
         return true;
       }
       return false;
-    }, '画像を選択してください'),
+    }, '画像を選択してください')
+    .refine(
+      (file) => {
+        if (!file) return true;
+        return file.size < 4200000;
+      },
+      {
+        message: 'ファイルサイズは最大4MBです',
+      }
+    ),
   atmosphere_text: z
     .string({ required_error: '入力してください' })
     .min(1, '入力してください')
@@ -245,14 +263,36 @@ export const requestSchema = z.object({
   atmosphere_title2: z
     .string({ required_error: '入力してください' })
     .max(23, '23文字以内で入力してください'),
-  atmosphere_image2: z.custom<FileList>().transform((file) => file?.[0]),
+  atmosphere_image2: z
+    .custom<FileList>()
+    .transform((file) => file?.[0])
+    .refine(
+      (file) => {
+        if (!file) return true;
+        return file.size < 4200000;
+      },
+      {
+        message: 'ファイルサイズは最大4MBです',
+      }
+    ),
   atmosphere_text2: z
     .string({ required_error: '入力してください' })
     .max(54, '54文字以内で入力してください'),
   atmosphere_title3: z
     .string({ required_error: '入力してください' })
     .max(23, '23文字以内で入力してください'),
-  atmosphere_image3: z.custom<FileList>().transform((file) => file?.[0]),
+  atmosphere_image3: z
+    .custom<FileList>()
+    .transform((file) => file?.[0])
+    .refine(
+      (file) => {
+        if (!file) return true;
+        return file.size < 4200000;
+      },
+      {
+        message: 'ファイルサイズは最大4MBです',
+      }
+    ),
   atmosphere_text3: z
     .string({ required_error: '入力してください' })
     .max(54, '54文字以内で入力してください'),

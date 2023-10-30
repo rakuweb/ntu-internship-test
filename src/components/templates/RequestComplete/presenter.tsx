@@ -15,12 +15,12 @@ export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps> = () => {
-  const title = `FORJOB求人掲載　お申し込み`; // eslint-disable-line
-  const mainMessage = `お申し込みを賜りました。ありがとうございました。`;
-  const message = `ご入力いただいたメールアドレスに送信完了メールを送信しています。ご確認ください。
-これより審査に入らせていただきます。
-審査後、FORJOBの担当より改めてご連絡いたします。
-通常5営業日以内にはご連絡を差し上げるようにいたしております。`;
+  const title = `FORJOB求人原稿の作成`; // eslint-disable-line
+  const mainMessage = `原稿の依頼を賜りました。ありがとうございました。`;
+  const message = `ご入力いただいたメールアドレスに依頼完了メールを送信しています。ご確認ください。
+これより確認に入らせていただきます。
+確認後、FORJOBの担当より改めてご連絡いたします。
+通常3営業日以内にはご連絡を差し上げるようにいたしております。`;
 
   return (
     <>
