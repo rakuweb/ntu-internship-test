@@ -139,4 +139,47 @@ const openStyle = css`
   span:nth-child(3) {
     opacity: 0;
   }
+  ${mq[2]} {
+    span:nth-child(1) {
+      -webkit-transform: translateY(5.5px) rotate(-315deg);
+      transform: translateY(5.5px) rotate(-315deg);
+    }
+
+    span:nth-child(2) {
+      -webkit-transform: translateY(0px) rotate(315deg);
+      transform: translateY(0px) rotate(315deg);
+    }
+    span:nth-child(3) {
+      opacity: 0;
+    }
+  }
+  ${mq[3]} {
+    span:nth-child(1) {
+      -webkit-transform: translateY(7px) rotate(-315deg);
+      transform: translateY(7px) rotate(-315deg);
+    }
+
+    span:nth-child(2) {
+      -webkit-transform: translateY(0px) rotate(315deg);
+      transform: translateY(0px) rotate(315deg);
+    }
+    span:nth-child(3) {
+      opacity: 0;
+    }
+  }
+
+  ${mq[4]} {
+    span:nth-child(1) {
+      -webkit-transform: translateY(10px) rotate(-315deg);
+      transform: translateY(10px) rotate(-315deg);
+    }
+
+    span:nth-child(2) {
+      -webkit-transform: translateY(0px) rotate(315deg);
+      transform: translateY(0px) rotate(315deg);
+    }
+    span:nth-child(3) {
+      opacity: 0;
+    }
+  }
 `;

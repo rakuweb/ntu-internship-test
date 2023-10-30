@@ -11,7 +11,11 @@ export type PresenterProps = ChakraLinkProps;
 // presenter
 export const Presenter: VFC<PresenterProps> = ({ children, ...props }) => {
   return (
-    <ChakraLink _hover={{ textDecoration: 'none' }} {...props}>
+    <ChakraLink
+      _hover={{ textDecoration: 'none' }}
+      transition={`all .3s`}
+      {...props}
+    >
       {children}
     </ChakraLink>
   );

@@ -33,6 +33,7 @@ export const Presenter: FC<PresenterProps> = ({
       <Box
         w={`auto`}
         h={`auto`}
+        transition={`all .3s`}
         _hover={{ cursor: 'pointer', color: `gray`, textDecoration: 'none' }}
         {...props}
       >

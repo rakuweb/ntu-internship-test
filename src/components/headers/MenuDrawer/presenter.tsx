@@ -114,9 +114,12 @@ export const Presenter: FC<PresenterProps> = ({
                   w={`fit-content`}
                   h={{ base: `2.5rem` }}
                   background={`transparent linear-gradient(270deg, #0EF4FF 0%, #41A4FD 100%) 0% 0% no-repeat padding-box`}
+                  transition={`all .3s`}
                   _hover={{
-                    bg: `var(--white)`,
-                    '.text': { color: `var(--mandy)` },
+                    // bg: `var(--white)`,
+                    // '.text': { color: `var(--mandy)` },
+                    cursor: 'pointer',
+                    filter: `opacity(50%)`,
                   }}
                 >
                   <Flex align={`center`}>
@@ -135,9 +138,12 @@ export const Presenter: FC<PresenterProps> = ({
                   h={{ base: `2.5rem` }}
                   onClick={signin}
                   background={`transparent linear-gradient(270deg, #0EF4FF 0%, #41A4FD 100%) 0% 0% no-repeat padding-box`}
+                  transition={`all .3s`}
                   _hover={{
-                    bg: `var(--white)`,
-                    '.text': { color: `var(--mandy)` },
+                    // bg: `var(--white)`,
+                    // '.text': { color: `var(--mandy)` },
+                    cursor: 'pointer',
+                    filter: `opacity(50%)`,
                   }}
                 >
                   <Flex align={`center`}>

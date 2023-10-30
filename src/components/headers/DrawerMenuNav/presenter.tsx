@@ -47,6 +47,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
             >
               <Text
                 _hover={{ color: `var(--curious-blue)` }}
+                transition={`all .3s`}
                 w={`fit-content`}
                 fontSize={{ lg: `1rem` }}
                 color={`#444444`}
@@ -64,6 +65,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
             >
               <Text
                 _hover={{ color: `var(--curious-blue)` }}
+                transition={`all .3s`}
                 w={`fit-content`}
                 fontSize={{ lg: `1rem` }}
                 color={`#444444`}
