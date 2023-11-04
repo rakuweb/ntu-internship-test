@@ -458,6 +458,19 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                               lg: `${19 / 19.2}vw`,
                             }}
                           />
+                          {errors?.hopeday2?.message && (
+                            <Box
+                              mt={{ base: `0.25rem` }}
+                              fontSize={{
+                                base: `${10 / 3.75}vw`,
+                                lg: `${12 / 19.2}vw`,
+                              }}
+                              color={`red`}
+                              display={index === 8 ? 'block' : 'none'}
+                            >
+                              {errors.hopeday2?.message}
+                            </Box>
+                          )}
                         </Box>
                         <Box
                           mb={{
@@ -486,6 +499,19 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                               lg: `${19 / 19.2}vw`,
                             }}
                           />
+                          {errors?.hopeday3?.message && (
+                            <Box
+                              mt={{ base: `0.25rem` }}
+                              fontSize={{
+                                base: `${10 / 3.75}vw`,
+                                lg: `${12 / 19.2}vw`,
+                              }}
+                              color={`red`}
+                              display={index === 8 ? 'block' : 'none'}
+                            >
+                              {errors.hopeday3?.message}
+                            </Box>
+                          )}
                         </Box>
                       </Box>
                     )}

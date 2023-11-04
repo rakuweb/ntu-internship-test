@@ -69,9 +69,6 @@ export const Presenter: FC<PresenterProps> = () => {
       methods.reset();
       const _resLine = await axios.post(routes.apiOffersJobformLine, {
         ...remain,
-        // lineid: 'U9fb70816e41a16058f487996e2e19701',
-        // lineid: `Ufb211660bd898efefbfd690e75ae227c`,
-        // lineid: `U24ba9dc6a8ee18ab540103b724203831`,
         lineid: lineId,
         offer: id,
         offer_title: offer.title,
