@@ -50,11 +50,13 @@ export const jobFormSchema = z
       .email('メールアドレスを入力してください')
       .min(1, '入力してください'),
     reason: z.string().min(1, '入力してください'),
-    hopeday1: z.date({
-      invalid_type_error: '入力してください',
-      required_error: '入力してください',
-      coerce: true,
-    }),
+    hopeday1: z
+      .date({
+        invalid_type_error: '入力してください',
+        required_error: '入力してください',
+        coerce: true,
+      })
+      .min(new Date(), '今日以降の日付を入力してください'),
     hopeday2: z
       .date({
         invalid_type_error: '入力してください',
@@ -69,12 +71,19 @@ export const jobFormSchema = z
         required_error: '入力してください',
         coerce: true,
       })
-      .catch(undefined),
-    // .optional(),
+      .catch(undefined)
+      .optional(),
   })
   .superRefine(({ hopeday1, hopeday2, hopeday3 }, ctx) => {
-    if (hopeday2 !== undefined) {
-      if (hopeday2?.getTime() === hopeday1.getTime()) {
+    const todayTime = new Date().getTime();
+    if (hopeday2) {
+      if (hopeday2.getTime() < todayTime) {
+        ctx.addIssue({
+          code: 'custom',
+          message: '今日以降の日付を入力してください',
+          path: ['hopeday2'],
+        });
+      } else if (hopeday2?.getTime() === hopeday1.getTime()) {
         ctx.addIssue({
           code: 'custom',
           message: '面接希望日1と同じです',
@@ -83,7 +92,13 @@ export const jobFormSchema = z
       }
     }
     if (hopeday3) {
-      if (
+      if (hopeday3.getTime() < todayTime) {
+        ctx.addIssue({
+          code: 'custom',
+          message: '今日以降の日付を入力してください',
+          path: ['hopeday3'],
+        });
+      } else if (
         hopeday3?.getTime() === hopeday1.getTime() ||
         hopeday3?.getTime() === hopeday2?.getTime()
       ) {

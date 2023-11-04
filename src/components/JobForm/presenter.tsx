@@ -427,7 +427,9 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                               color={`red`}
                               display={index === 8 ? 'block' : 'none'}
                             >
-                              {`日付を入力してください`}
+                              {errors.hopeday1.message == 'Invalid date'
+                                ? `日付を入力してください`
+                                : errors.hopeday1?.message}
                             </Box>
                           )}
                         </Box>
