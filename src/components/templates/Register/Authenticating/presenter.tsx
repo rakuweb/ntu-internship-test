@@ -1,5 +1,6 @@
 // import layer
 import { FC, useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { Box, Center } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
@@ -7,6 +8,14 @@ import { Footer } from 'components/footers/OldFooter';
 import { SigninHeader as Header } from 'components/headers/SigninHeader';
 import { RegisteredMessage } from '~/components/organisms/RegisteredMessage';
 import { mq } from '~/constants/styles';
+import { Button } from '~/components/buttons/Button';
+import { useLiff } from 'contexts/LineAuthContextInternship';
+import { routes } from '~/constants';
+import {
+  useAccountStore,
+  selectAccount,
+  selectSetPrevPath,
+} from 'features/account';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
@@ -15,9 +24,39 @@ export type PresenterProps = Record<string, unknown>;
 export const Presenter: FC<PresenterProps> = () => {
   const title = `認証中です`;
   const [message, setMessage] = useState<string>('');
+  const { liff } = useLiff();
+  const { username } = useAccountStore(selectAccount);
+  const setPrevPath = useAccountStore(selectSetPrevPath);
+  const router = useRouter();
+
+  const signin = async () => {
+    if (!liff) return;
+    if (!liff.isLoggedIn()) {
+      // const prevPath = router?.asPath;
+      setPrevPath(decodeURI(`https://forjob.nottheuniversity.com`));
+      window.localStorage.setItem(
+        'prevUrl',
+        `https://forjob.nottheuniversity.com`
+      );
+      liff.login(); //{ redirectUri: redirectUri });
+    } else {
+      if (!username) {
+        // const prevPath = router?.asPath;
+        setPrevPath(decodeURI(`https://forjob.nottheuniversity.com`));
+        window.localStorage.setItem(
+          'prevUrl',
+          `https://forjob.nottheuniversity.com`
+        );
+        router.push(routes.signin);
+      }
+    }
+  };
 
   useEffect(() => {
-    const next = `会員情報を照会していいます。しばらくお待ちください。`;
+    const next = `会員情報を照会していいます。しばらくお待ちください。
+
+画面が変わらない場合は、下記のボタンから
+もう一度認証を進めてください。`;
     setMessage(next);
   }, []);
 
@@ -30,8 +69,11 @@ export const Presenter: FC<PresenterProps> = () => {
         css={styles}
         bg={`#f5f5f5`}
       >
-        <Center h={`100%`} as={`section`}>
+        <Center h={`100%`} as={`section`} flexDirection={`column`}>
           <RegisteredMessage title={title} message={message} />
+          <Box>
+            <Button onClick={signin}>認証する</Button>
+          </Box>
         </Center>
       </Box>
       <Footer />

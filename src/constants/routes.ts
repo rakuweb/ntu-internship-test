@@ -46,13 +46,15 @@ export const routes = {
   apiContact: `/api/contact`,
   apiAgent: `/api/agent`,
   apiOffersCheck: `/api/offers/check`,
+  apiOffersJobformLine: `/api/offers/jobform/line`,
 };
 
-export const HP_URL = `https://nottheuniversity.com`;
+export const HP_URL = `https://forjob.nottheuniversity.com`;
 export const TWITTER_URL = `https://twitter.com/nottheuniv`;
 export const INSTAGRAM_URL = `https://www.instagram.com/nottheuniversity`;
 export const RECAPTCHA_URL = `https://www.google.com/recaptcha/api/siteverify`;
 export const FORJOB_LP_URL = `https://aboutforjob.nottheuniversity.com/`;
+export const LINE_MESSAGING_API_PUSH_URL = `https://api.line.me/v2/bot/message/push`;
 
 export const apiRoutes = {
   register: `/auth/local/register`,

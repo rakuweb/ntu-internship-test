@@ -27,6 +27,7 @@
       "contexts/*": ["src/contexts/*"],
       "constants/*": ["src/constants/*"],
       "types/*": ["src/types/*"],
+      "hooks/*": ["src/hooks/*"],
       "tests/*": ["src/__tests__/*"]
     },
     "typeRoots": ["src/types/gql", "node_modules/@types"],

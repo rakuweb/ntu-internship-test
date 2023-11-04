@@ -39,9 +39,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
     handleSubmit,
     control,
     formState: { errors },
-    getValues,
   } = useFormContext<JobFormSchema>();
-  console.log(getValues());
 
   const list = [
     { title: `氏名` },

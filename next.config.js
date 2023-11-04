@@ -23,5 +23,6 @@ module.exports = {
       'management-offers.nottheuniversity.com',
     ],
     disableStaticImages: true, // importした画像の型定義設定を無効にする
+    unoptimized: true,
   },
 };

@@ -4,12 +4,21 @@ import { FC } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 
 import { Image } from '~/components/Image';
+import {
+  useTargetOfferStore,
+  selectTarget,
+  selectBreadCrumbItem,
+  useOffersStore,
+  selectOfferList,
+} from 'features/offers';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps> = () => {
+  const offer = useTargetOfferStore(selectTarget);
+
   return (
     <Box display={{ md: `none` }} mt={`${19 / 3.75}vw`}>
       {/* モバイルサイズ */}
@@ -47,7 +56,7 @@ export const Presenter: FC<PresenterProps> = () => {
           >
             時給
           </Box>
-          1,000円
+          {`${offer.hourly_wage}円`}
         </Flex>
         <Flex
           w={`${181 / 4.28}vw`}
@@ -69,16 +78,26 @@ export const Presenter: FC<PresenterProps> = () => {
               height: 18.3,
               src: `/svg/location-dot-solid.svg`,
               alt: `場所アイコン`,
+              style: { width: `100%`, height: `100%` },
             }}
           />
           <Box
             fontWeight={`bold`}
             mr={`${8 / 3.75}vw`}
             fontSize={`${10 / 3.75}vw`}
+            whiteSpace="nowrap"
           >
             場所
           </Box>
-          新潟市中央区
+          <Box
+            textOverflow="ellipsis"
+            overflow="hidden"
+            whiteSpace="nowrap"
+            w={`60%`}
+            // w={`${90 / 3.75}vw`}
+          >
+            {offer.place_short}
+          </Box>
         </Flex>
         <Flex
           w={`${181 / 4.28}vw`}
@@ -109,7 +128,7 @@ export const Presenter: FC<PresenterProps> = () => {
           >
             職種
           </Box>
-          エンジニア
+          {offer.occupation}
         </Flex>
         <Flex
           // alignItems={`center`}
@@ -141,7 +160,7 @@ export const Presenter: FC<PresenterProps> = () => {
           >
             時間
           </Box>
-          16:00-20:00
+          {offer.hours_short}
         </Flex>
       </Flex>
     </Box>

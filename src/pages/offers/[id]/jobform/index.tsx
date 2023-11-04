@@ -1,5 +1,6 @@
 // import layer
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import {
   NextPage,
   InferGetStaticPropsType,
@@ -8,6 +9,7 @@ import {
 } from 'next/types';
 
 import { selectSetTarget, useTargetOfferStore } from 'features/offers';
+import { useClient } from 'hooks/client';
 import { initializeApollo_offer } from 'lib/apollo/client';
 import { SeoComponent } from 'organisms/SeoComponent';
 import {
@@ -18,9 +20,15 @@ import {
   GetOfferPathsDocument,
 } from 'types/offers-gql/graphql';
 import { JobForm as Template } from '~/components/templates/JobForm';
-import { CANONICAL_URL, ORIGIN_URL } from '~/constants';
+import { CANONICAL_URL, ORIGIN_URL, routes } from '~/constants';
 
 import { UPDATE_INTERVAL } from '~/constants';
+import { useLiff } from '~/contexts/LineAuthContextInternship';
+import {
+  selectAccount,
+  useAccountStore,
+  selectSetPrevPath,
+} from '~/features/account';
 
 // type layer
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
@@ -29,7 +37,6 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 export const Index: NextPage<Props> = ({ data }) => {
   const title = `応募フォーム | NOT THE UNIVERSITY FOR JOB`;
   const description = `NOT THE UNIVERSITY FOR JOBの応募フォームのページです。`;
-
   const openGraph = {
     type: 'website',
     title: title,
@@ -42,12 +49,32 @@ export const Index: NextPage<Props> = ({ data }) => {
       },
     ],
   };
+
+  const { liff } = useLiff();
+  const { isClient } = useClient();
   const setTarget = useTargetOfferStore(selectSetTarget);
-  const [isClient, setIsClient] = useState(false);
+  const { username } = useAccountStore(selectAccount);
+  const router = useRouter();
+  const setPrevPath = useAccountStore(selectSetPrevPath);
 
   useEffect(() => {
-    setIsClient(true);
-  }, []);
+    const prevPath = router?.asPath;
+    window.localStorage.setItem('prevUrl', prevPath);
+    if (!liff) return;
+    if (!liff.isLoggedIn()) {
+      const prevPath = router?.asPath;
+      prevPath && setPrevPath(decodeURI(prevPath));
+      window.localStorage.setItem('prevUrl', prevPath);
+      liff.login();
+    }
+
+    if (!username) {
+      const prevPath = router?.asPath;
+      prevPath && setPrevPath(decodeURI(prevPath));
+      window.localStorage.setItem('prevUrl', prevPath);
+      router.push(routes.signin);
+    }
+  }, [username, liff]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!data) return;
 

@@ -1,5 +1,4 @@
 // import layer
-import { useState, useEffect } from 'react';
 import {
   NextPage,
   InferGetStaticPropsType,
@@ -13,6 +12,7 @@ import {
   useOffersStore,
   useTargetOfferStore,
 } from 'features/offers';
+import { useClient } from 'hooks/client';
 import { initializeApollo_offer } from 'lib/apollo/client';
 import { SeoComponent } from 'organisms/SeoComponent';
 import { Top as Template } from 'templates/OfferId';
@@ -33,9 +33,10 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 // component layer
 export const Index: NextPage<Props> = ({ data, allOffersData }) => {
-  const title = data?.offer?.data?.attributes?.title ?? ``; // eslint-disable-line
-  const description = data?.offer?.data?.attributes?.job_description ?? ``;
-  const imageurl = data?.offer?.data?.attributes?.image?.data?.attributes.url;
+  const offerAttributes = data?.offer?.data?.attributes;
+  const title = offerAttributes?.title ?? ``; // eslint-disable-line
+  const description = offerAttributes?.job_description ?? ``;
+  const imageurl = offerAttributes?.image?.data?.attributes.url;
   const openGraph = {
     type: 'website',
     title: title,
@@ -48,13 +49,9 @@ export const Index: NextPage<Props> = ({ data, allOffersData }) => {
       },
     ],
   };
-  const [isClient, setIsClient] = useState(false);
+  const { isClient } = useClient();
   const setTarget = useTargetOfferStore(selectSetTarget);
   const setOffers = useOffersStore(selectSetOffers);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
 
   if (!data?.offer?.data) {
     return <></>;

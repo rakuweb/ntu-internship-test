@@ -4,13 +4,14 @@ import { Box, Flex } from '@chakra-ui/react';
 import { Image } from 'components/images/Image';
 import { useTargetOfferStore, selectTarget } from 'features/offers';
 import { InternalLink } from '~/components/links/InternalLink';
+import { routes } from '~/constants';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
-  const _offer = useTargetOfferStore(selectTarget);
+  const offer = useTargetOfferStore(selectTarget);
 
   return (
     <Box
@@ -70,8 +71,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       </Flex> */}
 
       <InternalLink
+        href={routes.offersJobForm(offer.id)}
         w={`fit-content`}
-        href={`/jobform`}
         mt={`${10 / 3.75}vw`}
         mx={`auto`}
       >

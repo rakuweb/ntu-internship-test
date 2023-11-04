@@ -4,7 +4,6 @@ import { Global, css } from '@emotion/react';
 import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import { DefaultSeo } from 'next-seo';
-import { RecoilRoot } from 'recoil';
 
 import { LiffProvider, generateEnv } from 'contexts/LineAuthContextInternship';
 import { GoogleAnalytics } from '~/components/GoogleAnalytics';
@@ -31,9 +30,7 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
           `}
         />
         <LiffProvider liffId={liffId} mock={{ enable: mock }}>
-          <RecoilRoot>
-            <Component {...pageProps} />
-          </RecoilRoot>
+          <Component {...pageProps} />
         </LiffProvider>
       </ChakraProvider>
     </>

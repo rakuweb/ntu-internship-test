@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import { NextPage } from 'next/types';
 
 import { Index as Authenticating } from 'components/templates/Register/Authenticating';
-import { ORIGIN_URL } from 'constants/env';
 import { routes } from 'constants/routes';
 import { useLiff } from 'contexts/LineAuthContextInternship';
 import { useAccountStore } from 'features/account/hooks';
@@ -49,13 +48,12 @@ export const Index: NextPage = () => {
 
   useEffect(() => {
     if (!liff || !liff.isLoggedIn()) return;
-    const url = `${ORIGIN_URL}${routes.apiAccount}`;
 
     const handler = async () => {
       try {
         const profile = await liff.getProfile();
 
-        const res = await axios.get(url, {
+        const res = await axios.get(routes.apiAccount, {
           params: {
             lineId: profile.userId,
           },
@@ -121,8 +119,8 @@ export const Index: NextPage = () => {
         nextPath ? router.push(nextPath) : router.push(lsNextPath);
         window.scroll({ top: 0 });
       } else {
-        // それ以外はカードへ
-        router.push(routes.signinMembercard);
+        // それ以外はhomeへ
+        router.push(routes.home);
       }
     }
   }, [liff, liff?.isLoggedIn(), connected]); // eslint-disable-line
