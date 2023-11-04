@@ -51,7 +51,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           messages: [
             {
               type: 'flex',
-              altText: 'This is a Flex Message',
+              altText: 'FORJOB 求人応募いただいた送信内容をご確認ください。',
               contents: {
                 type: 'bubble',
                 hero: {
