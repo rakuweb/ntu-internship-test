@@ -3,9 +3,9 @@
 import { FC } from 'react';
 import { Box } from '@chakra-ui/react';
 
-import { BreadcrumbOffers } from '~/components/organisms/BreadcrumbOffers';
 import { Footer } from '~/components/footers/Footer';
 import { Header } from '~/components/headers/Header';
+import { BreadcrumbOffers } from '~/components/organisms/BreadcrumbOffers';
 import { Privacy } from '~/components/organisms/Privacy';
 
 import 'swiper/css';

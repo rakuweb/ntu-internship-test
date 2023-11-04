@@ -3,12 +3,12 @@ import { FC, useState, useEffect } from 'react';
 import { Box, Center } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
-import { Header } from 'components/headers/Header';
 import { Footer } from 'components/footers/Footer';
-import { mq } from '~/constants/styles';
-import { RegisteredMessage } from '~/components/organisms/RegisteredMessage';
+import { Header } from 'components/headers/Header';
 import { useAccountStore } from 'features/account/hooks';
 import { selectAccount } from 'features/account/selectors';
+import { RegisteredMessage } from '~/components/organisms/RegisteredMessage';
+import { mq } from '~/constants/styles';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

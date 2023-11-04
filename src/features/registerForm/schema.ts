@@ -89,7 +89,7 @@ export const registerGradeFormSchema = yup.object().shape({
     .transform((value, originalValue) =>
       String(originalValue).trim() === '' ? '' : value
     ),
-  reception: yup.bool(),
-  graduation: yup.bool(),
+  // reception: yup.bool(),
+  // graduation: yup.bool(),
   toReceiveJobInfo: yup.bool(),
 });

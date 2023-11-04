@@ -11,10 +11,10 @@ import {
   Box,
 } from '@chakra-ui/react';
 
-import { HeaderMenu } from '../HeaderMenu';
 import { Image } from 'atoms/Image';
 import { HeaderMenuButton } from '../../buttons/HeaderMenuButton';
 import { DrawerMenuNav } from '../DrawerMenuNav';
+import { HeaderMenu } from '../HeaderMenu';
 
 // type layer
 export type PresenterProps = Partial<DrawerProps> & {
@@ -51,6 +51,7 @@ export const Presenter: VFC<PresenterProps> = ({
                       width={66}
                       height={80}
                       src="/dev/img/arrow-@2x.png"
+                      alt={``}
                     />
                   </Box>
                   <Box color={`white`} className={`text`} ml={{ lg: `0.5rem` }}>
@@ -74,6 +75,7 @@ export const Presenter: VFC<PresenterProps> = ({
                       width={66}
                       height={80}
                       src="/dev/img/arrow-@2x.png"
+                      alt={``}
                     />
                   </Box>
                   <Box color={`white`} className={`text`} ml={{ lg: `0.5rem` }}>

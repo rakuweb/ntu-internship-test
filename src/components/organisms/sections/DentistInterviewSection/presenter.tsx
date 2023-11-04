@@ -2,14 +2,14 @@
 import { VFC } from 'react';
 import { Box, Stack } from '@chakra-ui/react';
 
-import { ImageTitle } from '~/components/molecules/titles/ImageTitle';
-import { DentistCard } from '~/components/organisms/cards/DentistCard';
-import { BlueButton } from '~/components/molecules/buttons/BlueButton';
+import { Navigation, Autoplay } from 'swiper';
+import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 import { InternalLink } from 'molecules/links/InternalLink';
 import { Span } from '~/components/atoms/Span';
+import { BlueButton } from '~/components/molecules/buttons/BlueButton';
+import { ImageTitle } from '~/components/molecules/titles/ImageTitle';
+import { DentistCard } from '~/components/organisms/cards/DentistCard';
 
-import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay } from 'swiper';
 import { breakpointsByPx } from '~/constants/styles';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -19,7 +19,7 @@ import 'swiper/css/autoplay';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   const swiperProps: SwiperProps = {
     modules: [Navigation, Autoplay],
     navigation: true,

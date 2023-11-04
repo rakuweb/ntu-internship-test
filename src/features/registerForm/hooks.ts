@@ -1,8 +1,7 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
 
-import { RegisterFormSlice, RegisterGradeFormSlice } from './types';
 import { createRegisterFormSlice, createRegisterGradeFormSlice } from './slice';
+import { RegisterFormSlice, RegisterGradeFormSlice } from './types';
 
 export const useRegisterFormStore = create<RegisterFormSlice>((...a) => ({
   ...createRegisterFormSlice(...a),

@@ -1,5 +1,5 @@
 // import layer
-import { VFC, useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import {
   Drawer,
   DrawerProps,
@@ -14,6 +14,9 @@ import {
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
+import { HeaderMenuButton } from 'components/organisms/buttons/HeaderMenuButton';
+import { ORIGIN_URL } from 'constants/env';
+import { useLiff } from 'contexts/LineAuthContextInternship';
 import {
   useAccountStore,
   selectAccount,
@@ -21,15 +24,10 @@ import {
   selectSetAccount,
   selectSetPrevPath,
 } from 'features/account';
-import { useLiff } from 'contexts/LineAuthContextInternship';
-import { ORIGIN_URL } from 'constants/env';
 
-import { HeaderMenu } from '../HeaderMenu';
-import { Image } from 'atoms/Image';
-import { HeaderMenuButton } from 'components/organisms/buttons/HeaderMenuButton';
-import { DrawerMenuNav } from '../DrawerMenuNav';
-import { InternalLink } from '~/components/links/InternalLink';
 import { routes } from '~/constants';
+import { DrawerMenuNav } from '../DrawerMenuNav';
+import { HeaderMenu } from '../HeaderMenu';
 
 // type layer
 export type PresenterProps = Partial<DrawerProps> & {
@@ -38,12 +36,12 @@ export type PresenterProps = Partial<DrawerProps> & {
 };
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({
+export const Presenter: FC<PresenterProps> = ({
   isOpen,
   onClose,
   ...props
 }) => {
-  const { email, username } = useAccountStore(selectAccount);
+  const { username } = useAccountStore(selectAccount);
   const _signout = useAccountStore(selectSignout);
   const setAccount = useAccountStore(selectSetAccount);
   const setPrevPath = useAccountStore(selectSetPrevPath);
@@ -89,13 +87,18 @@ export const Presenter: VFC<PresenterProps> = ({
 
         const { exist } = res.data;
         if (exist) {
-          const { email, username,grade, studentId } = res.data;
-          setAccount({ email: email as string, username: username as string, grade: grade as string , studentId: studentId as string });
+          const { email, username, grade, studentId } = res.data;
+          setAccount({
+            email: email as string,
+            username: username as string,
+            grade: grade as string,
+            studentId: studentId as string,
+          });
         }
       };
       handler();
     }
-  }, [liff, username, liff?.isLoggedIn()]);
+  }, [liff, username, liff?.isLoggedIn()]); // eslint-disable-line
 
   return (
     <Drawer size={`sm`} isOpen={isOpen} onClose={onClose} {...props}>
@@ -110,10 +113,13 @@ export const Presenter: VFC<PresenterProps> = ({
                   onClick={() => signout()}
                   w={`fit-content`}
                   h={{ base: `2.5rem` }}
-                  backgroundImage={`linear-gradient(19deg, #21d4fd 0%, #b721ff 100%)`}
+                  background={`transparent linear-gradient(270deg, #0EF4FF 0%, #41A4FD 100%) 0% 0% no-repeat padding-box`}
+                  transition={`all .3s`}
                   _hover={{
-                    bg: `var(--white)`,
-                    '.text': { color: `var(--mandy)` },
+                    // bg: `var(--white)`,
+                    // '.text': { color: `var(--mandy)` },
+                    cursor: 'pointer',
+                    filter: `opacity(50%)`,
                   }}
                 >
                   <Flex align={`center`}>
@@ -131,10 +137,13 @@ export const Presenter: VFC<PresenterProps> = ({
                   w={`fit-content`}
                   h={{ base: `2.5rem` }}
                   onClick={signin}
-                  backgroundImage={`linear-gradient(19deg, #21d4fd 0%, #b721ff 100%)`}
+                  background={`transparent linear-gradient(270deg, #0EF4FF 0%, #41A4FD 100%) 0% 0% no-repeat padding-box`}
+                  transition={`all .3s`}
                   _hover={{
-                    bg: `var(--white)`,
-                    '.text': { color: `var(--mandy)` },
+                    // bg: `var(--white)`,
+                    // '.text': { color: `var(--mandy)` },
+                    cursor: 'pointer',
+                    filter: `opacity(50%)`,
                   }}
                 >
                   <Flex align={`center`}>

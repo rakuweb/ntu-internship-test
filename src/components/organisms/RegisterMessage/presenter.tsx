@@ -1,18 +1,17 @@
 // import layer
 import { FC } from 'react';
-import { css } from '@emotion/react';
-import { mq } from '~/constants/styles';
 import { Box } from '@chakra-ui/react';
+import { css } from '@emotion/react';
 
 import { InternalLink } from 'components/links/InternalLink';
-import { routes } from 'constants/routes';
 import { HP_URL } from 'constants/routes';
+import { mq } from '~/constants/styles';
 
 // type layer
 export type PresenterProps = { title: string; message: string };
 
 // presenter
-export const Presenter: FC<PresenterProps> = ({ title, message, ...props }) => {
+export const Presenter: FC<PresenterProps> = ({ title, message }) => {
   return (
     <div css={styles}>
       <section className="form">

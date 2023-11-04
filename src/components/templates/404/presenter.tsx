@@ -3,10 +3,10 @@ import { FC } from 'react';
 import { Box } from '@chakra-ui/react';
 
 import { Header } from 'components/headers/Header';
-import { Footer } from '~/components/footers/Footer';
 
 import { InternalLink } from 'components/links/InternalLink';
 import { TopButton } from '~/components/TopButtom';
+import { Footer } from '~/components/footers/Footer';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

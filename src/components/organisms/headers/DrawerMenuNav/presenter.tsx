@@ -2,10 +2,10 @@
 import { VFC } from 'react';
 import { Stack, StackProps } from '@chakra-ui/react';
 
-import { navItems } from '~/constants';
-import { InternalLink } from '~/components/molecules/links/InternalLink';
-import { ExternalLink } from '~/components/molecules/links/ExternalLink';
 import { SansSerifText as Text } from '~/components/atoms/texts/SansSerifText';
+import { ExternalLink } from '~/components/molecules/links/ExternalLink';
+import { InternalLink } from '~/components/molecules/links/InternalLink';
+import { navItems } from '~/constants';
 
 // type layer
 export type StyleProps = StackProps;

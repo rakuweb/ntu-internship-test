@@ -1,14 +1,14 @@
 // import layer
 import { VFC } from 'react';
+import { Image } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 import { mq } from '~/constants/styles';
-import { Image } from '@chakra-ui/react';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   const list = {
     title: `タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。`,
     date: `2022.12.06`,
@@ -37,7 +37,11 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
             </a>
           </div>
           <hr className="consultation-card-list__card__border" />
-          <Image src="/images/offers/recruit-test.png" className="Img"></Image>
+          <Image
+            src="/images/offers/recruit-test.png"
+            className="Img"
+            alt={``}
+          />
           <p className="consultation-card-list__card__description">
             {list.description}
           </p>

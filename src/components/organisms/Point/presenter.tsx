@@ -1,11 +1,15 @@
 // import layer
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { Box, Flex, Grid, Heading } from '@chakra-ui/react';
+
 import { selectOfferList, useOffersStore } from 'features/offers';
-import { styles } from './styles';
-import 'zenn-content-css';
-import { OfferCard } from '~/features/offers/OfferCard';
-import { BreadcrumbOfferId } from '../BreadcrumbOfferId';
+import {
+  useJobCategorysStore,
+  selectJobCategorys,
+  selectSetJobCategoryItem,
+  useJobCategoryStore,
+} from '~/features/category';
+import { Labeltext } from '~/features/offers/OfferCard/Labeltext';
 import {
   selectPoint,
   selectPoints,
@@ -13,42 +17,37 @@ import {
   usePointStore,
   usePointsStore,
 } from '~/features/point';
-import { OfferCardDead } from '~/features/offers/OfferCardDead';
-import { Labeltext } from '~/features/offers/OfferCard/Labeltext';
+import { BreadcrumbOfferId } from '../BreadcrumbOfferId';
 import { Labeltext2 } from './Labeltext2';
-import {
-  useJobCategorysStore,
-  selectJobCategorys,
-  selectSetJobCategoryItem,
-  useJobCategoryStore,
-} from '~/features/category';
-import { JobCategoryEntity, PointEntity } from '~/types/gql/graphql';
+
+import { styles } from './styles';
+import 'zenn-content-css';
 
 // type layer
 export type PresenterProps = {
   deadline: boolean;
-  jobCategories: JobCategoryEntity[];
-  points: PointEntity[];
+  // jobCategories: JobCategoryEntity[];
+  // points: PointEntity[];
 };
 
 // presenter
-export const Presenter: FC<PresenterProps> = ({ ...props }) => {
+export const Presenter: FC<PresenterProps> = () => {
   const point = usePointStore(selectPoint);
   const jobCategories = useJobCategorysStore(selectJobCategorys);
   const offers = useOffersStore(selectOfferList);
   const points = usePointsStore(selectPoints);
-  const setJobCategoryItem = useJobCategoryStore(selectSetJobCategoryItem);
-  const setPointItem = usePointStore(selectSetPointItem);
+  const _setJobCategoryItem = useJobCategoryStore(selectSetJobCategoryItem);
+  const _setPointItem = usePointStore(selectSetPointItem);
 
-  const filteredOffers = offers
-    .filter((offer) =>
-      offer.points.some((pointsItem) => pointsItem.id === point.id)
-    )
-    .sort((offer1, offer2) => {
-      const endDate1 = new Date(offer1.deadline);
-      const endDate2 = new Date(offer2.deadline);
-      return endDate2.getTime() - endDate1.getTime();
-    });
+  const _filteredOffers = offers;
+  //   offers.filter((offer) =>
+  //   offer.points.some((pointsItem) => pointsItem.id === point.id)
+  // );
+  // .sort((offer1, offer2) => {
+  //   const endDate1 = new Date(offer1.deadline);
+  //   const endDate2 = new Date(offer2.deadline);
+  //   return endDate2.getTime() - endDate1.getTime();
+  // });
   const pageTitles = ['ポイント', point.name];
   return (
     <div css={styles}>
@@ -107,7 +106,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             m={{ base: '30px auto auto' }}
             w={{ base: '300px', md: '700px', lg: '100%' }}
           >
-            {filteredOffers.map((offer) => {
+            {/* {filteredOffers.map((offer) => {
               const currentDate = new Date();
               const endDate = new Date(offer.deadline);
               const isEnd =
@@ -131,7 +130,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   deadline={daysRemaining}
                 />
               );
-            })}
+            })} */}
           </Grid>
         </Box>
       </Box>

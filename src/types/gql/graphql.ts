@@ -140,6 +140,42 @@ export type BooleanFilterInput = {
   startsWith?: InputMaybe<Scalars['Boolean']>;
 };
 
+export type CafeSignage = {
+  __typename?: 'CafeSignage';
+  createdAt?: Maybe<Scalars['DateTime']>;
+  images?: Maybe<UploadFileRelationResponseCollection>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+  videos?: Maybe<UploadFileRelationResponseCollection>;
+};
+
+export type CafeSignageImagesArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type CafeSignageVideosArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type CafeSignageEntity = {
+  __typename?: 'CafeSignageEntity';
+  attributes?: Maybe<CafeSignage>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type CafeSignageEntityResponse = {
+  __typename?: 'CafeSignageEntityResponse';
+  data?: Maybe<CafeSignageEntity>;
+};
+
+export type CafeSignageInput = {
+  images?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  videos?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+};
+
 export type Company = {
   __typename?: 'Company';
   address?: Maybe<Scalars['String']>;
@@ -505,6 +541,7 @@ export type FloatFilterInput = {
 export type GenericMorph =
   | Advertisement
   | AdvertisementArticle
+  | CafeSignage
   | Company
   | ComponentJobSkill
   | EmployeeStatus
@@ -826,6 +863,7 @@ export type Mutation = {
   createVisitCount?: Maybe<VisitCountEntityResponse>;
   deleteAdvertisement?: Maybe<AdvertisementEntityResponse>;
   deleteAdvertisementArticle?: Maybe<AdvertisementArticleEntityResponse>;
+  deleteCafeSignage?: Maybe<CafeSignageEntityResponse>;
   deleteCompany?: Maybe<CompanyEntityResponse>;
   deleteEmployeeStatus?: Maybe<EmployeeStatusEntityResponse>;
   deleteEntry?: Maybe<EntryEntityResponse>;
@@ -857,6 +895,7 @@ export type Mutation = {
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
   updateAdvertisement?: Maybe<AdvertisementEntityResponse>;
   updateAdvertisementArticle?: Maybe<AdvertisementArticleEntityResponse>;
+  updateCafeSignage?: Maybe<CafeSignageEntityResponse>;
   updateCompany?: Maybe<CompanyEntityResponse>;
   updateEmployeeStatus?: Maybe<EmployeeStatusEntityResponse>;
   updateEntry?: Maybe<EntryEntityResponse>;
@@ -1064,6 +1103,10 @@ export type MutationUpdateAdvertisementArticleArgs = {
   id: Scalars['ID'];
 };
 
+export type MutationUpdateCafeSignageArgs = {
+  data: CafeSignageInput;
+};
+
 export type MutationUpdateCompanyArgs = {
   data: CompanyInput;
   id: Scalars['ID'];
@@ -1215,6 +1258,7 @@ export type Offer = {
   deadline: Scalars['Date'];
   description: Scalars['String'];
   end_at?: Maybe<Scalars['Date']>;
+  flow?: Maybe<Scalars['String']>;
   form_url: Scalars['String'];
   gallery?: Maybe<UploadFileRelationResponseCollection>;
   hourly_wage: Scalars['String'];
@@ -1277,6 +1321,7 @@ export type OfferFiltersInput = {
   deadline?: InputMaybe<DateFilterInput>;
   description?: InputMaybe<StringFilterInput>;
   end_at?: InputMaybe<DateFilterInput>;
+  flow?: InputMaybe<StringFilterInput>;
   form_url?: InputMaybe<StringFilterInput>;
   hourly_wage?: InputMaybe<StringFilterInput>;
   id?: InputMaybe<IdFilterInput>;
@@ -1303,6 +1348,7 @@ export type OfferInput = {
   deadline?: InputMaybe<Scalars['Date']>;
   description?: InputMaybe<Scalars['String']>;
   end_at?: InputMaybe<Scalars['Date']>;
+  flow?: InputMaybe<Scalars['String']>;
   form_url?: InputMaybe<Scalars['String']>;
   gallery?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   hourly_wage?: InputMaybe<Scalars['String']>;
@@ -1407,6 +1453,7 @@ export type Query = {
   advertisementArticle?: Maybe<AdvertisementArticleEntityResponse>;
   advertisementArticles?: Maybe<AdvertisementArticleEntityResponseCollection>;
   advertisements?: Maybe<AdvertisementEntityResponseCollection>;
+  cafeSignage?: Maybe<CafeSignageEntityResponse>;
   companies?: Maybe<CompanyEntityResponseCollection>;
   company?: Maybe<CompanyEntityResponse>;
   employeeStatus?: Maybe<EmployeeStatusEntityResponse>;
@@ -2860,7 +2907,6 @@ export type GetAdvertisementsQuery = {
 export type GetPointsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetPointsQuery = {
-  offers: any;
   __typename?: 'Query';
   points?: {
     __typename?: 'PointEntityResponseCollection';

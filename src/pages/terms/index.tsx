@@ -1,11 +1,11 @@
 // import layer
 import { useState, useEffect } from 'react';
-import { NextPage, InferGetStaticPropsType } from 'next/types';
+import { NextPage } from 'next/types';
 
-import { Index as Template } from 'templates/Terms';
 import { SeoComponent } from 'organisms/SeoComponent';
+import { Index as Template } from 'templates/Terms';
 import { CANONICAL_URL, ORIGIN_URL } from '~/constants';
-import { parseSeo } from '~/lib';
+// import { parseSeo } from '~/lib';
 
 // type layer
 // type Props = InferGetStaticPropsType<typeof getStaticProps>;
@@ -14,14 +14,14 @@ import { parseSeo } from '~/lib';
 export const Index: NextPage = () => {
   const title = `利用規約 | NOT THE UNIVERSITY FOR JOB`; // eslint-disable-line
   const description = `NOT THE UNIVERSITY FOR JOBの利用規約です。`;
-  const seo = parseSeo(title, description);
+  // const seo = parseSeo(title, description);
   const openGraph = {
     type: 'website',
     title: title,
     description: description,
     images: [
       {
-        url: `${ORIGIN_URL}/ogp.jpg`,
+        url: `${ORIGIN_URL}/newogp.png`,
         width: 1200,
         height: 630,
       },

@@ -4,22 +4,22 @@ import { Box } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
 import { Header } from 'components/headers/Header';
+import { BreadcrumbWhite } from 'organisms/BreadcrumbWhite';
+import { ClinicsContact } from 'organisms/ClinicsContact';
+import { ClinicsForm } from 'organisms/ClinicsForm';
+import { ClinicsInformation } from 'organisms/ClinicsInformation';
+import { ClinicsSchedule } from 'organisms/ClinicsSchedule';
+import { ClinicsSignUp } from 'organisms/ClinicsSignUp';
+import { ClinicsTitle } from 'organisms/ClinicsTitle';
 import { Footer } from 'organisms/footers/Footer';
 import { ContactSection } from '~/components/organisms/sections/ContactSection';
 import { mq } from '~/constants/styles';
-import { ClinicsTitle } from 'organisms/ClinicsTitle';
-import { ClinicsInformation } from 'organisms/ClinicsInformation';
-import { ClinicsSchedule } from 'organisms/ClinicsSchedule';
-import { ClinicsContact } from 'organisms/ClinicsContact';
-import { ClinicsForm } from 'organisms/ClinicsForm';
-import { ClinicsSignUp } from 'organisms/ClinicsSignUp';
-import { BreadcrumbWhite } from 'organisms/BreadcrumbWhite';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <>
       <Header />
@@ -28,12 +28,27 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
         <ClinicsTitle />
         <section className="clinics-tab">
           <div className="clinics-tab__container">
-            <a href="./top" className="clinics-tab__container__item">医院TOP</a>
-            <a href="./staff" className="clinics-tab__container__item">スタッフ</a>
-            <a href="./vr" className="clinics-tab__container__item">VR院内検索</a>
-            <a href="./map" className="clinics-tab__container__item">マップ</a>
-            <a href="./faq" className="clinics-tab__container__item">相談箱</a>
-            <a href="./comments" className="clinics-tab__container__item active">口コミ</a>
+            <a href="./top" className="clinics-tab__container__item">
+              医院TOP
+            </a>
+            <a href="./staff" className="clinics-tab__container__item">
+              スタッフ
+            </a>
+            <a href="./vr" className="clinics-tab__container__item">
+              VR院内検索
+            </a>
+            <a href="./map" className="clinics-tab__container__item">
+              マップ
+            </a>
+            <a href="./faq" className="clinics-tab__container__item">
+              相談箱
+            </a>
+            <a
+              href="./comments"
+              className="clinics-tab__container__item active"
+            >
+              口コミ
+            </a>
           </div>
         </section>
         <ClinicsForm />
@@ -67,9 +82,9 @@ const styles = css`
 
   .clinics-tab__container__item {
     align-items: center;
-    color: #2194E5;
+    color: #2194e5;
     cursor: pointer;
-    border: 1px solid #2194E5;
+    border: 1px solid #2194e5;
     border-radius: 8px;
     display: flex;
     height: 48px;
@@ -79,7 +94,7 @@ const styles = css`
   }
 
   .clinics-tab__container__item.active {
-    border: 3px solid #2194E5;
+    border: 3px solid #2194e5;
     height: 48px;
   }
 
@@ -89,7 +104,7 @@ const styles = css`
 
   ${mq[2]} {
     .clinics-tab__container {
-      border-bottom: 2px solid #2194E5;
+      border-bottom: 2px solid #2194e5;
       flex-wrap: nowrap;
       justify-content: center;
       width: 1200px;
@@ -105,7 +120,7 @@ const styles = css`
     }
 
     .clinics-tab__container__item.active {
-      border: 2px solid #2194E5;
+      border: 2px solid #2194e5;
       border-bottom: none;
       height: 44px;
     }

@@ -1,15 +1,10 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-import fetch from 'node-fetch';
-import { v4 as uuidv4 } from 'uuid';
-
-import { parseAuthorization } from 'lib/apollo/parse';
-import { API_URL, WRITE_API_KEY } from 'constants/env';
-import { apiRoutes } from 'constants/routes';
+import { initializeApollo } from 'lib/apollo/client';
 import {
   GetUsersByLineIdQuery,
   GetUsersByLineIdDocument,
 } from 'types/gql/graphql';
-import { initializeApollo } from 'lib/apollo/client';
+import type { NextApiRequest, NextApiResponse } from 'next';
+
 
 type Data = {
   exist: boolean;
@@ -45,18 +40,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
         const {
           email,
           username,
-          grade,
           student: {
             data: {
               id,
-              attributes: {
-                line_id,
-                to_receive_job_info,
-                grade_jp,
-                grade_updated_at,
-                name,
-                registered_at,
-              },
+              attributes: { grade_jp, grade_updated_at, registered_at },
             },
           },
         } = data.usersPermissionsUsers.data[0].attributes;
@@ -81,7 +68,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
           gradeUpdatedAt: grade_updated_at,
           registeredAt: registered_at,
         });
-      } catch (err: any) {
+      } catch (err) {
         console.error(err);
         res.status(403).end();
       }

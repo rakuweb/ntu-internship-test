@@ -7,78 +7,62 @@ import { mq } from '~/constants/styles';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <div css={styles}>
       <section className="disease-card-list">
         <div className="disease-card-list__container">
           <a className="disease-card" href="#">
-            <h3 className="disease-card__title">
-              歯周病
-            </h3>
+            <h3 className="disease-card__title">歯周病</h3>
             <p className="disease-card__description">
               歯の周りにある歯周組織に起きる炎症性の病気の総称。プラーク中の細菌が原因となって起きる。歯肉炎と歯周炎の2種類に大別され、前者は...
             </p>
           </a>
 
           <a className="disease-card" href="#">
-            <h3 className="disease-card__title">
-              虫歯（う蝕）
-            </h3>
+            <h3 className="disease-card__title">虫歯（う蝕）</h3>
             <p className="disease-card__description">
               歯の周りにある歯周組織に起きる炎症性の病気の総称。プラーク中の細菌が原因となって起きる。歯肉炎と歯周炎の2種類に大別され、前者は...
             </p>
           </a>
 
           <a className="disease-card" href="#">
-            <h3 className="disease-card__title">
-              口内炎
-            </h3>
+            <h3 className="disease-card__title">口内炎</h3>
             <p className="disease-card__description">
               歯の周りにある歯周組織に起きる炎症性の病気の総称。プラーク中の細菌が原因となって起きる。歯肉炎と歯周炎の2種類に大別され、前者は...
             </p>
           </a>
 
           <a className="disease-card" href="#">
-            <h3 className="disease-card__title">
-              親知らず
-            </h3>
+            <h3 className="disease-card__title">親知らず</h3>
             <p className="disease-card__description">
               歯の周りにある歯周組織に起きる炎症性の病気の総称。プラーク中の細菌が原因となって起きる。歯肉炎と歯周炎の2種類に大別され、前者は...
             </p>
           </a>
 
           <a className="disease-card" href="#">
-            <h3 className="disease-card__title">
-              象牙質知覚過敏症
-            </h3>
+            <h3 className="disease-card__title">象牙質知覚過敏症</h3>
             <p className="disease-card__description">
               歯の周りにある歯周組織に起きる炎症性の病気の総称。プラーク中の細菌が原因となって起きる。歯肉炎と歯周炎の2種類に大別され、前者は...
             </p>
           </a>
 
           <a className="disease-card" href="#">
-            <h3 className="disease-card__title">
-              口唇裂・口蓋裂
-            </h3>
+            <h3 className="disease-card__title">口唇裂・口蓋裂</h3>
             <p className="disease-card__description">
               歯の周りにある歯周組織に起きる炎症性の病気の総称。プラーク中の細菌が原因となって起きる。歯肉炎と歯周炎の2種類に大別され、前者は...
             </p>
           </a>
 
           <a className="disease-card" href="#">
-            <h3 className="disease-card__title">
-              不正咬合
-            </h3>
+            <h3 className="disease-card__title">不正咬合</h3>
             <p className="disease-card__description">
               歯の周りにある歯周組織に起きる炎症性の病気の総称。プラーク中の細菌が原因となって起きる。歯肉炎と歯周炎の2種類に大別され、前者は...
             </p>
           </a>
 
           <a className="disease-card" href="#">
-            <h3 className="disease-card__title">
-              歯ぎしり（ブラキシズム）
-            </h3>
+            <h3 className="disease-card__title">歯ぎしり（ブラキシズム）</h3>
             <p className="disease-card__description">
               歯の周りにある歯周組織に起きる炎症性の病気の総称。プラーク中の細菌が原因となって起きる。歯肉炎と歯周炎の2種類に大別され、前者は...
             </p>
@@ -89,11 +73,10 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
   );
 };
 
-
 // styles
 const styles = css`
   .disease-card-list {
-    background-color: #F0F3F5;
+    background-color: #f0f3f5;
     display: flex;
     justify-content: center;
     padding: 28px 0 2.5rem;
@@ -113,7 +96,7 @@ const styles = css`
   }
 
   .disease-card {
-    background-color: #FFF;
+    background-color: #fff;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     color: #003968;

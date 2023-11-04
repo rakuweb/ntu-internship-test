@@ -1,6 +1,6 @@
+import { useEffect, useState } from 'react';
 import { Box, Heading, Text } from '@chakra-ui/react';
 import { css } from '@emotion/react';
-import { useEffect, useState } from 'react';
 
 import { useStudentStore, selectStudent } from 'features/student';
 
@@ -52,7 +52,7 @@ const Card = ({ noSound = false }: { noSound?: boolean }) => {
       }
     }
     // play();
-  }, [loaded]);
+  }, [loaded]); // eslint-disable-line
 
   useEffect(() => {
     if (!student?.username || !student?.grade || !student?.gradeUpdatedAt)
@@ -62,7 +62,7 @@ const Card = ({ noSound = false }: { noSound?: boolean }) => {
 
     rank && setTarget(rank);
 
-    const timeoutId = setTimeout(function() {
+    const timeoutId = setTimeout(function () {
       setLoaded(true);
     }, 1000 * 1);
 
@@ -113,15 +113,15 @@ const Card = ({ noSound = false }: { noSound?: boolean }) => {
         position={'relative'}
         boxShadow={'0px 4px 1px rgba(0, 0, 0, 0.1)'}
         background={target.background}
-      // background={'#eaeaea'}
-      // #eaeaeaの時のみ名前とGrade,IDを黒にする
+        // background={'#eaeaea'}
+        // #eaeaeaの時のみ名前とGrade,IDを黒にする
 
-      // background={'linear-gradient(#6494ed, #125dea)'}
-      // background={
-      //   'linear-gradient(135deg, #b8751e 0%, #ffce08 37%, #e1ce08 63%, #c0a683 100%)'
-      // }
-      // background={'linear-gradient(#545454, #000000)'}
-      // background={'linear-gradient(135deg,#21D4FD, #B721FF)'}
+        // background={'linear-gradient(#6494ed, #125dea)'}
+        // background={
+        //   'linear-gradient(135deg, #b8751e 0%, #ffce08 37%, #e1ce08 63%, #c0a683 100%)'
+        // }
+        // background={'linear-gradient(#545454, #000000)'}
+        // background={'linear-gradient(135deg,#21D4FD, #B721FF)'}
       >
         <Box h={'195px'} className={'card'}>
           <Text
@@ -163,7 +163,7 @@ const Card = ({ noSound = false }: { noSound?: boolean }) => {
               display={'flex'}
               alignItems={'flex-end'}
               color={target.name}
-            // color={'white'}
+              // color={'white'}
             >
               {student.username}
               <Text as={'span'} fontSize={'12px'} color={target.name}>
@@ -177,7 +177,7 @@ const Card = ({ noSound = false }: { noSound?: boolean }) => {
             left={'18px'}
             lineHeight={'1.4'}
             color={target.name}
-          // color={'white'}
+            // color={'white'}
           >
             <Text fontSize={'9px'} fontFamily={"'Noto Sans JP', sans-serif"}>
               Grade:

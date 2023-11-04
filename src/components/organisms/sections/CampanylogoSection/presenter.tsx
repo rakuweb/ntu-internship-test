@@ -1,20 +1,17 @@
 // import layer
-import { VFC } from 'react';
+import { FC } from 'react';
+import { Box, Stack } from '@chakra-ui/react';
 import { css } from '@emotion/react';
-import { Box, Flex, Stack } from '@chakra-ui/react';
 
-import { ImageTitle } from '~/components/molecules/titles/ImageTitle';
-import { BlueButton } from '~/components/molecules/buttons/BlueButton';
 import { Image } from 'atoms/Image';
-import { InternalLink } from 'molecules/links/InternalLink';
+import { ImageTitle } from '~/components/molecules/titles/ImageTitle';
 import { mq } from '~/constants/styles';
-import { Span } from '~/components/atoms/Span';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: FC<PresenterProps> = () => {
   return (
     <Box
       // w={{ lg: `fit-content` }}
@@ -88,44 +85,109 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
           borderRadius={`10px`}
         >
           <div className="box">
-            <Image maxW={`100%`} maxH={`100%`} src="/dev/img/logo.png" />
+            <Image
+              maxW={`100%`}
+              maxH={`100%`}
+              src="/dev/img/logo.png"
+              alt={``}
+            />
           </div>
           <div className="box">
-            <Image maxW={`100%`} maxH={`100%`} src="/dev/img/logo.png" />
+            <Image
+              maxW={`100%`}
+              maxH={`100%`}
+              src="/dev/img/logo.png"
+              alt={``}
+            />
           </div>
           <div className="box">
-            <Image maxW={`100%`} maxH={`100%`} src="/dev/img/logo.png" />
+            <Image
+              maxW={`100%`}
+              maxH={`100%`}
+              src="/dev/img/logo.png"
+              alt={``}
+            />
           </div>
           <div className="box">
-            <Image maxW={`100%`} maxH={`100%`} src="/dev/img/logo.png" />
+            <Image
+              maxW={`100%`}
+              maxH={`100%`}
+              src="/dev/img/logo.png"
+              alt={``}
+            />
           </div>
           <div className="box">
-            <Image maxW={`100%`} maxH={`100%`} src="/dev/img/logo.png" />
+            <Image
+              maxW={`100%`}
+              maxH={`100%`}
+              src="/dev/img/logo.png"
+              alt={``}
+            />
           </div>
           <div className="box">
-            <Image maxW={`100%`} maxH={`100%`} src="/dev/img/logo.png" />
+            <Image
+              maxW={`100%`}
+              maxH={`100%`}
+              src="/dev/img/logo.png"
+              alt={``}
+            />
           </div>
 
           <div className="box">
-            <Image maxW={`100%`} maxH={`100%`} src="/dev/img/logo.png" />
+            <Image
+              maxW={`100%`}
+              maxH={`100%`}
+              src="/dev/img/logo.png"
+              alt={``}
+            />
           </div>
           <div className="box">
-            <Image maxW={`100%`} maxH={`100%`} src="/dev/img/logo.png" />
+            <Image
+              maxW={`100%`}
+              maxH={`100%`}
+              src="/dev/img/logo.png"
+              alt={``}
+            />
           </div>
           <div className="box">
-            <Image maxW={`100%`} maxH={`100%`} src="/dev/img/logo.png" />
+            <Image
+              maxW={`100%`}
+              maxH={`100%`}
+              src="/dev/img/logo.png"
+              alt={``}
+            />
           </div>
           <div className="box">
-            <Image maxW={`100%`} maxH={`100%`} src="/dev/img/logo.png" />
+            <Image
+              maxW={`100%`}
+              maxH={`100%`}
+              src="/dev/img/logo.png"
+              alt={``}
+            />
           </div>
           <div className="box">
-            <Image maxW={`100%`} maxH={`100%`} src="/dev/img/logo.png" />
+            <Image
+              maxW={`100%`}
+              maxH={`100%`}
+              src="/dev/img/logo.png"
+              alt={``}
+            />
           </div>
           <div className="box">
-            <Image maxW={`100%`} maxH={`100%`} src="/dev/img/logo.png" />
+            <Image
+              maxW={`100%`}
+              maxH={`100%`}
+              src="/dev/img/logo.png"
+              alt={``}
+            />
           </div>
           <div className="box">
-            <Image maxW={`100%`} maxH={`100%`} src="/dev/img/logo.png" />
+            <Image
+              maxW={`100%`}
+              maxH={`100%`}
+              src="/dev/img/logo.png"
+              alt={``}
+            />
           </div>
         </Stack>
       </Box>

@@ -1,15 +1,12 @@
 // import layer
 import { useState, useEffect } from 'react';
-import { NextPage } from 'next/types';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import { NextPage } from 'next/types';
 
-import { SeoComponent } from 'organisms/SeoComponent';
-import { CANONICAL_URL } from 'constants/env';
-import { ORIGIN_URL } from 'constants/env';
-import { parseSeo } from '~/lib';
-import { useLiff } from 'contexts/LineAuthContextInternship';
+import { Index as Authenticating } from 'components/templates/Register/Authenticating';
 import { routes } from 'constants/routes';
+import { useLiff } from 'contexts/LineAuthContextInternship';
 import { useAccountStore } from 'features/account/hooks';
 import {
   selectSetAccount,
@@ -22,14 +19,11 @@ import {
   selectSetStudent,
   selectStudent,
 } from 'features/student';
-import { Index as Authenticating } from 'components/templates/Register/Authenticating';
 
 // type layer
 
 // component layer
 export const Index: NextPage = () => {
-  const title = ``; // eslint-disable-line
-  const description = ``;
   const [isClient, setIsClient] = useState(false);
   const [connected, setConnected] = useState<boolean>(false);
   const { liff } = useLiff();
@@ -54,13 +48,12 @@ export const Index: NextPage = () => {
 
   useEffect(() => {
     if (!liff || !liff.isLoggedIn()) return;
-    const url = `${ORIGIN_URL}${routes.apiAccount}`;
 
     const handler = async () => {
       try {
         const profile = await liff.getProfile();
 
-        const res = await axios.get(url, {
+        const res = await axios.get(routes.apiAccount, {
           params: {
             lineId: profile.userId,
           },
@@ -103,7 +96,7 @@ export const Index: NextPage = () => {
     };
 
     handler();
-  }, [liff, liff?.isLoggedIn()]);
+  }, [liff, liff?.isLoggedIn()]); // eslint-disable-line
 
   useEffect(() => {
     // api接続が完了したら
@@ -126,11 +119,11 @@ export const Index: NextPage = () => {
         nextPath ? router.push(nextPath) : router.push(lsNextPath);
         window.scroll({ top: 0 });
       } else {
-        // それ以外はカードへ
-        router.push(routes.signinMembercard);
+        // それ以外はhomeへ
+        router.push(routes.home);
       }
     }
-  }, [liff, liff?.isLoggedIn(), connected]);
+  }, [liff, liff?.isLoggedIn(), connected]); // eslint-disable-line
 
   const message = () => {
     if (isClient) {

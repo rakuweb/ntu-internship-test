@@ -1,0 +1,45 @@
+query getOffersAll {
+  offers(sort: "publishedAt:desc") {
+    data {
+      id
+      attributes {
+        title
+        company_name
+        hourly_wage
+        place_short
+        hours_short
+        start_at
+        end_at
+        occupation
+        job_type
+        min_period
+        min_workingday
+        points
+        image {
+          data {
+            id
+            attributes {
+              width
+              height
+              url
+              alternativeText
+              formats
+            }
+          }
+        }
+        company {
+          data {
+            id
+            attributes {
+              name
+              representative
+              establishment_date
+              number_of_employees
+              place
+            }
+          }
+        }
+      }
+    }
+  }
+} # Write your query or mutation here

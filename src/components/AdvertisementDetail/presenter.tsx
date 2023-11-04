@@ -4,11 +4,11 @@ import { Box } from '@chakra-ui/react';
 
 import { Image } from 'components/Image';
 
-import { styles } from './styles';
 import {
   useAdvertisementArticleStore,
   selectAdvertisementArticle,
 } from 'features/advertisements';
+import { styles } from './styles';
 
 import 'zenn-content-css';
 
@@ -16,7 +16,7 @@ import 'zenn-content-css';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: FC<PresenterProps> = ({ ...props }) => {
+export const Presenter: FC<PresenterProps> = () => {
   const target = useAdvertisementArticleStore(selectAdvertisementArticle);
 
   return (
@@ -47,7 +47,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         <div className="consultation-card-list__card">
           <h1 className="jobtitle">{target.title}</h1>
 
-          <Image
+          <Image // eslint-disable-line
             mb={{ base: `${16 / 3.75}vw`, lg: `${32 / 19.2}vw` }}
             image={{
               ...target.image,

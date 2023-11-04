@@ -4,10 +4,10 @@ import { Stack, StackProps, Box } from '@chakra-ui/react';
 
 import { useAccountStore, selectAccount } from 'features/account';
 
-import { navItems } from '~/constants';
-import { InternalLink } from '~/components/molecules/links/InternalLink';
-import { ExternalLink } from '~/components/molecules/links/ExternalLink';
 import { SansSerifText as Text } from '~/components/atoms/texts/SansSerifText';
+import { ExternalLink } from '~/components/molecules/links/ExternalLink';
+import { InternalLink } from '~/components/molecules/links/InternalLink';
+import { navItems } from '~/constants';
 
 // type layer
 export type StyleProps = StackProps;
@@ -47,6 +47,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
             >
               <Text
                 _hover={{ color: `var(--curious-blue)` }}
+                transition={`all .3s`}
                 w={`fit-content`}
                 fontSize={{ lg: `1rem` }}
                 color={`#444444`}
@@ -64,6 +65,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
             >
               <Text
                 _hover={{ color: `var(--curious-blue)` }}
+                transition={`all .3s`}
                 w={`fit-content`}
                 fontSize={{ lg: `1rem` }}
                 color={`#444444`}

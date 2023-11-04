@@ -2,12 +2,12 @@
 import { FC } from 'react';
 import { Box } from '@chakra-ui/react';
 
-import { Header } from 'components/headers/Header';
 import { Footer } from 'components/footers/Footer';
+import { Header } from 'components/headers/Header';
+import { useFormProgressStore } from 'features/formProgress/hooks';
 import { RegisterCheck } from '~/components/organisms/RegisterCheck';
 import { StepBar } from '~/components/organisms/StepBar';
 import { styles } from './styles';
-import { useFormProgressStore } from 'features/formProgress/hooks';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

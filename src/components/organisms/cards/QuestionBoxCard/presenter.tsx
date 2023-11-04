@@ -1,7 +1,7 @@
 // import layer
 import { VFC } from 'react';
-import { css } from '@emotion/react';
 import { Box } from '@chakra-ui/react';
+import { css } from '@emotion/react';
 
 import { Image } from 'atoms/Image';
 import { InternalLink } from 'molecules/links/InternalLink';
@@ -12,7 +12,7 @@ import { mq } from '~/constants/styles';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <InternalLink href={`#`}>
       <Box
@@ -32,6 +32,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
             objectFit={`cover`}
             // width={1172}
             // height={400}
+            alt={``}
           />
         </Box>
         <Box py={{ base: `0.5rem`, sm: `1rem` }}>
@@ -99,6 +100,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
                   src="/dev/img/file----574@1x.png"
                   width={9}
                   height={14}
+                  alt={``}
                 />
               </Box>
               <Box

@@ -1,0 +1,2 @@
+schema: 'http://118.27.25.166:1337/graphql'
+documents: 'src/lib/offers-graphql/**/*.graphql'

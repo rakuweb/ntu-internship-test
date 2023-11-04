@@ -1,36 +1,32 @@
 // import layer
-import { VFC } from 'react';
+import { FC } from 'react';
+import { Box, Flex, Grid, Heading } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 import { mq } from '~/constants/styles';
-import { Box, Flex, Grid, Heading } from '@chakra-ui/react';
 import {
   useJobCategorysStore,
   selectJobCategorys,
   JobCategorysCard,
 } from '~/features/category';
 import { Labeltext } from '~/features/offers/OfferCard/Labeltext';
-import { Labeltext2 } from '../Tag/Labeltext2';
 import { selectPoints, usePointsStore } from '~/features/point';
 import { BreadcrumbOffers } from '../BreadcrumbOffers';
-import { OfferCard } from '~/features/offers/OfferCard';
-import { OfferCardDead } from '~/features/offers/OfferCardDead';
-import { useOffersStore, selectOfferList } from '~/features/offers';
+import { Labeltext2 } from '../Tag/Labeltext2';
+
 // type layer
 export type DataProps = JobCategorysCard;
 export type PresenterProps = Record<string, string>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
-  const { list } = props;
+export const Presenter: FC<PresenterProps> = () => {
   const jobCategories = useJobCategorysStore(selectJobCategorys);
   const points = usePointsStore(selectPoints);
-  const offers = useOffersStore(selectOfferList);
 
-  const filteredOffers = offers.sort((offer1, offer2) => {
-    const endDate1 = new Date(offer1.deadline);
-    const endDate2 = new Date(offer2.deadline);
-    return endDate2.getTime() - endDate1.getTime();
-  });
+  // const filteredOffers = offers.sort((offer1, offer2) => {
+  //   const endDate1 = new Date(offer1.deadline);
+  //   const endDate2 = new Date(offer2.deadline);
+  //   return endDate2.getTime() - endDate1.getTime();
+  // });
 
   return (
     <div css={styles}>
@@ -90,7 +86,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
             m={{ base: '30px auto auto' }}
             w={{ base: '300px', md: '700px', lg: '100%' }}
           >
-            {filteredOffers.map((offer) => {
+            {/* {filteredOffers.map((offer) => {
               const currentDate = new Date();
               const endDate = new Date(offer.deadline);
               const isEnd =
@@ -114,7 +110,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
                   deadline={daysRemaining}
                 />
               );
-            })}
+            })} */}
           </Grid>
         </Box>
       </Box>

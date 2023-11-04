@@ -1,25 +1,27 @@
 // import layer
 import { VFC } from 'react';
 import { css } from '@emotion/react';
-import { mq } from '~/constants/styles';
 import { Image } from 'atoms/Image';
+import { mq } from '~/constants/styles';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <div css={styles}>
       <section className="consultation-title">
         <div className="consultation-title__breadcrumb">
-          <a href="#" className="consultation-title__breadcrumb__link">HOME</a>
-          <a href="#" className="consultation-title__breadcrumb__link">新着情報</a>
+          <a href="#" className="consultation-title__breadcrumb__link">
+            HOME
+          </a>
+          <a href="#" className="consultation-title__breadcrumb__link">
+            新着情報
+          </a>
         </div>
         <div className="consultation-title__container">
-          <p className="consultation-title__container__title">
-            歯の悩み相談
-          </p>
+          <p className="consultation-title__container__title">歯の悩み相談</p>
           <p className="consultation-title__container__description">
             みなさんの歯の疑問・質問に歯医者さんがお答えします！
           </p>
@@ -27,8 +29,16 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
             悩みを質問する
           </a>
         </div>
-        <Image src="/dev/img/consultation_1.png" alt="" className="consultation-title__image-left" />
-        <Image src="/dev/img/consultation_2.png" alt="" className="consultation-title__image-right" />
+        <Image
+          src="/dev/img/consultation_1.png"
+          alt=""
+          className="consultation-title__image-left"
+        />
+        <Image
+          src="/dev/img/consultation_2.png"
+          alt=""
+          className="consultation-title__image-right"
+        />
       </section>
 
       <section className="consultation-popular-category">
@@ -36,12 +46,24 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
           よく表⽰されるカテゴリー
         </p>
         <div className="consultation-popular-category__tag-list">
-          <a href="#" className="consultation-popular-category__tag-list__tag">＃虫歯</a>
-          <a href="#" className="consultation-popular-category__tag-list__tag">＃親知らず</a>
-          <a href="#" className="consultation-popular-category__tag-list__tag">＃入れ歯</a>
-          <a href="#" className="consultation-popular-category__tag-list__tag">＃クラウン</a>
-          <a href="#" className="consultation-popular-category__tag-list__tag">＃唾液</a>
-          <a href="#" className="consultation-popular-category__tag-list__tag">＃エナメル質</a>
+          <a href="#" className="consultation-popular-category__tag-list__tag">
+            ＃虫歯
+          </a>
+          <a href="#" className="consultation-popular-category__tag-list__tag">
+            ＃親知らず
+          </a>
+          <a href="#" className="consultation-popular-category__tag-list__tag">
+            ＃入れ歯
+          </a>
+          <a href="#" className="consultation-popular-category__tag-list__tag">
+            ＃クラウン
+          </a>
+          <a href="#" className="consultation-popular-category__tag-list__tag">
+            ＃唾液
+          </a>
+          <a href="#" className="consultation-popular-category__tag-list__tag">
+            ＃エナメル質
+          </a>
         </div>
       </section>
 
@@ -52,29 +74,37 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
           </p>
           <div className="consultation-option__container__sort">
             <p>並び替え :</p>
-            <input type="radio" name="example" value="sample" className="consultation-option__container__sort__radio" /><p>新着相談順</p>
-            <input type="radio" name="example" value="sample" className="consultation-option__container__sort__radio" checked /><p>新着回答順</p>
+            <input
+              type="radio"
+              name="example"
+              value="sample"
+              className="consultation-option__container__sort__radio"
+            />
+            <p>新着相談順</p>
+            <input
+              type="radio"
+              name="example"
+              value="sample"
+              className="consultation-option__container__sort__radio"
+              checked
+            />
+            <p>新着回答順</p>
           </div>
         </div>
       </section>
 
-
       <section className="consultation-card-list">
         <div className="consultation-card-list__card">
-          <p className="consultation-card-list__card__title">
-            親知らず抜歯
-          </p>
+          <p className="consultation-card-list__card__title">親知らず抜歯</p>
           <div className="consultation-card-list__card__info">
             <p className="consultation-card-list__card__info__name">
-              投稿者 :はなさん（50代 / 女性） / 2022.01.14 
+              投稿者 :はなさん（50代 / 女性） / 2022.01.14
             </p>
             <a href="#" className="consultation-card-list__card__info__tag">
               ＃親知らず
             </a>
           </div>
-          <p className="consultation-card-list__card__count">
-            回答数 : 1件
-          </p>
+          <p className="consultation-card-list__card__count">回答数 : 1件</p>
           <hr className="consultation-card-list__card__border" />
           <p className="consultation-card-list__card__description">
             横向き下の難しい親知らず抜歯をしました。大病院の口腔外科で抜いたのですが溶ける糸を使用してる為、次の診察は1ヶ月後でいいそうです。消毒もしない方針とのことです。溶ける糸というのはネットで調べても珍しいらしく衛生的に大丈夫でしょうか？年末までにかかりつけの歯医者に見せた方がい...
@@ -94,20 +124,16 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
         </div>
 
         <div className="consultation-card-list__card">
-          <p className="consultation-card-list__card__title">
-            親知らず抜歯
-          </p>
+          <p className="consultation-card-list__card__title">親知らず抜歯</p>
           <div className="consultation-card-list__card__info">
             <p className="consultation-card-list__card__info__name">
-              投稿者 :はなさん（50代 / 女性） / 2022.01.14 
+              投稿者 :はなさん（50代 / 女性） / 2022.01.14
             </p>
             <a href="#" className="consultation-card-list__card__info__tag">
               ＃親知らず
             </a>
           </div>
-          <p className="consultation-card-list__card__count">
-            回答数 : 1件
-          </p>
+          <p className="consultation-card-list__card__count">回答数 : 1件</p>
           <hr className="consultation-card-list__card__border" />
           <p className="consultation-card-list__card__description">
             横向き下の難しい親知らず抜歯をしました。大病院の口腔外科で抜いたのですが溶ける糸を使用してる為、次の診察は1ヶ月後でいいそうです。消毒もしない方針とのことです。溶ける糸というのはネットで調べても珍しいらしく衛生的に大丈夫でしょうか？年末までにかかりつけの歯医者に見せた方がい...
@@ -155,10 +181,9 @@ const styles = css`
     align-items: center;
   }
 
-
   .consultation-title__container__title {
     font-size: 32px;
-    color: #1978BB;
+    color: #1978bb;
     margin: 16px 0;
     width: calc(100% - 64px);
     text-align: center;
@@ -176,7 +201,7 @@ const styles = css`
   .consultation-title__container__button {
     font-size: 16px;
     color: #fff;
-    background-color: #2194E5;
+    background-color: #2194e5;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -210,7 +235,7 @@ const styles = css`
   //
 
   .consultation-popular-category {
-    background-color: #F0F3F5;
+    background-color: #f0f3f5;
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -239,8 +264,8 @@ const styles = css`
     background-color: #fff;
     margin: 0 4px 8px;
     padding: 4px 8px;
-    color: #2194E5;
-    border: 1px solid #2194E5;
+    color: #2194e5;
+    border: 1px solid #2194e5;
     border-radius: 4px;
     cursor: pointer;
   }
@@ -258,7 +283,7 @@ const styles = css`
     flex-direction: column;
     align-items: center;
     font-family: var(--font-family-yugothic-medium);
-    background-color: #F0F3F5;
+    background-color: #f0f3f5;
   }
 
   .consultation-option__container {
@@ -268,7 +293,7 @@ const styles = css`
     align-items: flex-start;
     justify-content: space-between;
     padding: 48px 0 0;
-    border-top: 1px solid #257FBF;
+    border-top: 1px solid #257fbf;
   }
 
   .consultation-option__container__count {
@@ -296,7 +321,7 @@ const styles = css`
   //
 
   .consultation-card-list {
-    background-color: #F0F3F5;
+    background-color: #f0f3f5;
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -309,7 +334,7 @@ const styles = css`
   .consultation-card-list__card {
     width: calc(100% - 32px);
     padding: 24px;
-    background-color: #FFF;
+    background-color: #fff;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
@@ -322,7 +347,7 @@ const styles = css`
     padding: 32px 0 0;
     width: 100%;
     font-size: 18px;
-    color: #E9495C;
+    color: #e9495c;
   }
 
   .consultation-card-list__card__info {
@@ -346,8 +371,8 @@ const styles = css`
     font-size: 16px;
     margin: 0 8px 0 0;
     padding: 4px 8px;
-    color: #2194E5;
-    border: 1px solid #2194E5;
+    color: #2194e5;
+    border: 1px solid #2194e5;
     border-radius: 4px;
     cursor: pointer;
   }
@@ -396,8 +421,8 @@ const styles = css`
 
   //
   .consultation-card-list__card__anser {
-    background-color: #F0F3F5;
-    border: 1px solid #257FBF;
+    background-color: #f0f3f5;
+    border: 1px solid #257fbf;
     padding: 24px 32px;
     width: 100%;
     display: flex;
@@ -422,7 +447,7 @@ const styles = css`
   }
 
   .clinics-comments__card-list {
-    display: flex; 
+    display: flex;
     width: 100vw;
     flex-direction: column;
     align-items: center;
@@ -433,7 +458,7 @@ const styles = css`
   .clinics-comments__card-list__card {
     display: flex;
     flex-direction: column;
-    border: 1px solid #999999; 
+    border: 1px solid #999999;
     width: calc(100% - 32px);
     padding: 24px;
     border-radius: 8px;
@@ -455,7 +480,7 @@ const styles = css`
   }
 
   .clinics-comments__card-list__card__info__name {
-    color: #E9495C;
+    color: #e9495c;
     font-size: 16px;
   }
 
@@ -466,7 +491,7 @@ const styles = css`
   }
 
   .clinics-comments__card-list__card__info__left__like {
-    color: #E9495C;
+    color: #e9495c;
     font-size: 16px;
     margin: 8px 0 0;
   }
@@ -477,12 +502,12 @@ const styles = css`
   }
 
   .red {
-    color: #E9495C;
+    color: #e9495c;
     font-size: 16px;
   }
 
   .clinics-comments__card-list__card__border {
-    border-top: 1px solid #257FBF;
+    border-top: 1px solid #257fbf;
     width: 100%;
     margin: 20px 0 16px;
   }
@@ -519,9 +544,9 @@ const styles = css`
   }
 
   .clinics-comments__card-list__card__review__button.active {
-    background-color: #2194E5;
+    background-color: #2194e5;
     color: #fff;
-    border: 1px solid #2194E5;
+    border: 1px solid #2194e5;
   }
 
   .clinics-comments__option {
@@ -571,7 +596,7 @@ const styles = css`
     .clinics-comments__option__container__count {
       font-size: 12px;
     }
-  
+
     .clinics-comments__option__container__sort {
       font-size: 12px;
     }
@@ -675,7 +700,7 @@ const styles = css`
     .consultation-card-list__card__title {
       padding: 0 0 0 32px;
     }
-    
+
     .consultation-card-list__card__info {
       padding: 0 0 0 32px;
       margin: 16px 0 0 0;
@@ -698,7 +723,6 @@ const styles = css`
     .consultation-card-list__card__anser__description {
       padding: 0 0 0 32px;
     }
-
 
     //
 

@@ -14,4 +14,3 @@ const Template: Story<PresenterProps> = (args) => <Presenter {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {};
-

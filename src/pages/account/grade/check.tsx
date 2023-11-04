@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { NextPage } from 'next/types';
 
-import { Index as Template } from '~/components/templates/Register/RegisterGradeCheck';
 import { SeoComponent } from 'organisms/SeoComponent';
+import { Index as Template } from '~/components/templates/Register/RegisterGradeCheck';
 import { CANONICAL_URL } from '~/constants';
 import { parseSeo } from '~/lib';
 

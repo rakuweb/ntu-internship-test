@@ -1,29 +1,22 @@
 // import layer
 import { useState, useEffect } from 'react';
-import { NextPage, InferGetStaticPropsType } from 'next/types';
+import { NextPage } from 'next/types';
 
-// import { Index as Template } from 'templates/PrivacyPolicy';
-import { Index as Template } from 'templates/PrivacyPolicy';
 import { SeoComponent } from 'organisms/SeoComponent';
+import { Index as Template } from 'templates/PrivacyPolicy';
 import { CANONICAL_URL, ORIGIN_URL } from '~/constants';
-import { parseSeo } from '~/lib';
-import Head from 'next/head';
-
-// type layer
-// type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 // component layer
 export const Index: NextPage = () => {
   const title = `プライバシーポリシー | NOT THE UNIVERSITY FOR JOB`; // eslint-disable-line
   const description = `NOT THE UNIVERSITY FOR JOBのプライバシーポリシーです。`;
-  const seo = parseSeo(title, description);
   const openGraph = {
     type: 'website',
     title: title,
     description: description,
     images: [
       {
-        url: `${ORIGIN_URL}/ogp.jpg`,
+        url: `${ORIGIN_URL}/newogp.png`,
         width: 1200,
         height: 630,
       },
@@ -50,14 +43,12 @@ export const Index: NextPage = () => {
       );
     } else {
       return (
-        <>
-          <SeoComponent
-            canonical={CANONICAL_URL}
-            title={title}
-            description={description}
-            openGraph={openGraph}
-          />
-        </>
+        <SeoComponent
+          canonical={CANONICAL_URL}
+          title={title}
+          description={description}
+          openGraph={openGraph}
+        />
       );
     }
   };

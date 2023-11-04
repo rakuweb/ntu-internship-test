@@ -1,5 +1,6 @@
-import type { UploadFile } from 'types/gql/graphql';
 import { MEDIA_ROOT_URL } from 'constants/env';
+import type { UploadFile as UploadFile2 } from 'types/gql/graphql';
+import type { UploadFile } from 'types/offers-gql/graphql';
 
 export const parseDate = (stringDate: string): string => {
   const dateFromProp: Date = new Date(stringDate);
@@ -73,7 +74,7 @@ export type ImageType = {
   srcSet: string;
 };
 
-export const parseImage = (image: UploadFile): ImageType => {
+export const parseImage = (image: UploadFile | UploadFile2): ImageType => {
   const res = {
     width: Number(image.width) ?? undefined,
     height: Number(image.height) ?? undefined,
@@ -85,6 +86,7 @@ export const parseImage = (image: UploadFile): ImageType => {
   return res;
 };
 
+// eslint-disable-next-line
 export const parseSrcSet = (formats: any): string =>
   formats
     ? `${formats.xsmall ? `${parseImageUrl(formats.xsmall.url)} 375w,` : ``}${

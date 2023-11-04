@@ -1,7 +1,7 @@
+import { useEffect, useState } from 'react';
 import { Box, Heading, Text } from '@chakra-ui/react';
 
 import { useStudentStore, selectStudent } from 'features/student';
-import { useEffect, useState } from 'react';
 
 const rankList = [
   { color: 'Black', count: 50, next: 0, nextColor: '' },

@@ -5,15 +5,25 @@ export default class Document extends NextDocument {
     return (
       <Html lang={`ja-JP`}>
         <Head>
-          <link rel="apple-touch-icon" sizes="180x180" href="" />
-          <link rel="icon" type="image/png" sizes="32x32" href="" />
-          <link rel="icon" type="image/png" sizes="16x16" href="" />
-          <link rel="manifest" href="/favicons/site.webmanifest" />
           <link
-            rel="mask-icon"
-            href="/favicons/safari-pinned-tab.svg"
-            color="#5bbad5"
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/favicons/apple-touch-icon.png"
           />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicons/favicon.png"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicons/favicon.png"
+          />
+          <link rel="manifest" href="/favicons/site.webmanifest" />
+          <link rel="mask-icon" href="/svg/forjob.svg" color="#5bbad5" />
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#ffffff" />
 

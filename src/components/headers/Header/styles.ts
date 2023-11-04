@@ -148,8 +148,6 @@ export const styles = css`
   }
   ${mq[2]} {
     .logo {
-      height: 70px;
-      vertical-align: middle;
     }
 
     .g-navi {

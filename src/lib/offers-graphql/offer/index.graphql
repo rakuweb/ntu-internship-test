@@ -1,0 +1,82 @@
+query getOfferById($id: ID) {
+  offer(id: $id) {
+    data {
+      id
+      attributes {
+        title
+        hourly_wage
+        hourly_wage_detail
+        place_short
+        hours_short
+        job_description
+        start_at
+        end_at
+        target
+        url
+        qualification
+        people
+        interview_location
+        flow
+        shift
+        holiday
+        company_name
+        email
+        min_working_hours
+        min_period
+        min_workingday
+        desired_interview_date
+        desired_interview_time
+        atmosphere {
+          title
+          text
+          image {
+            data {
+              id
+              attributes {
+                width
+                height
+                url
+                alternativeText
+                formats
+              }
+            }
+          }
+        }
+        occupation
+        job_type
+        points
+        company {
+          data {
+            id
+            attributes {
+              name
+              representative
+              establishment_date
+              number_of_employees
+              place
+            }
+          }
+        }
+        image {
+          data {
+            id
+            attributes {
+              width
+              height
+              url
+              alternativeText
+              formats
+            }
+          }
+        }
+      }
+    }
+  }
+} # Write your query or mutation here
+query getOfferPaths($today: Date) {
+  offers(sort: "publishedAt:desc", filters: { end_at: { gte: $today } }) {
+    data {
+      id
+    }
+  }
+}

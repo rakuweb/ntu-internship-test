@@ -2,12 +2,10 @@
 import { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { Presenter, StyleProps } from './presenter';
-import { RegisterGradeFormSchema } from '~/features/registerForm/schema';
-import {
-  useRegisterGradeFormStore,
-} from 'features/registerForm/hooks';
 import { useFormProgressStore } from 'features/formProgress/hooks';
+import { useRegisterGradeFormStore } from 'features/registerForm/hooks';
+import { RegisterGradeFormSchema } from '~/features/registerForm/schema';
+import { Presenter, StyleProps } from './presenter';
 
 // type layer
 export type ContainerProps = StyleProps;

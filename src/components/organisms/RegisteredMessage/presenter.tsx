@@ -1,14 +1,14 @@
 // import layer
 import { FC } from 'react';
+import { Box } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 import { mq } from '~/constants/styles';
-import { Box } from '@chakra-ui/react';
 
 // type layer
 export type PresenterProps = { title: string; message: string };
 
 // presenter
-export const Presenter: FC<PresenterProps> = ({ title, message, ...props }) => {
+export const Presenter: FC<PresenterProps> = ({ title, message }) => {
   return (
     <div css={styles}>
       <section className="form">

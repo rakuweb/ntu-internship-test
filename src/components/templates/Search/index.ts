@@ -1,3 +1,3 @@
 // export layer
-export { Container as Index } from './container';
-export type { ContainerProps as IndexProps } from './container';
+export { Container as Search } from './container';
+export type { ContainerProps as SearchProps } from './container';

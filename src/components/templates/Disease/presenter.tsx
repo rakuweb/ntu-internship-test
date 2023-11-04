@@ -1,38 +1,20 @@
 // import layer
-import { VFC } from 'react';
-import dynamic from 'next/dynamic';
+import { FC } from 'react';
 import { Box } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
 import { Header } from 'components/headers/Header';
+import { BreadcrumbGray } from 'organisms/BreadcrumbGray';
 import { Footer } from 'organisms/footers/Footer';
+import { DiseaseContentsSection } from 'organisms/sections/DiseaseContentsSection';
 import { ContactSection } from '~/components/organisms/sections/ContactSection';
 import { mq } from '~/constants/styles';
-import { DiseaseContentsSection } from 'organisms/sections/DiseaseContentsSection';
-import { BreadcrumbGray } from 'organisms/BreadcrumbGray';
-
-const TopFirstview = dynamic(
-  () =>
-    import('~/components/organisms/firstviews/TopFirstview').then(
-      (module) => module.TopFirstview
-    ),
-  {
-    ssr: false,
-    // eslint-disable-next-line
-    loading: () => (
-      <Box
-        h={{ base: `100vh`, lg: `480px`, xl: `560px` }}
-        bg={`var(--porcelain)`}
-      />
-    ),
-  }
-);
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: FC<PresenterProps> = () => {
   return (
     <>
       <Header />
@@ -40,12 +22,14 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
         <BreadcrumbGray />
         <section className="page-title">
           <h1 className="page-title__text">
-            病名<span className="page-title__text--small">や</span>症状<span className="page-title__text--small">から</span>知る
-          </h1>  
+            病名<span className="page-title__text--small">や</span>症状
+            <span className="page-title__text--small">から</span>知る
+          </h1>
         </section>
         <section className="contents-count">
           <p className="contents-count__text">
-            表示 1 / 1 ページ :全<span className="contents-count__text--bold">8</span>件
+            表示 1 / 1 ページ :全
+            <span className="contents-count__text--bold">8</span>件
           </p>
         </section>
         <DiseaseContentsSection />
@@ -60,7 +44,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
 const styles = css`
   // page-title
   .page-title {
-    background-color: #F0F3F5;
+    background-color: #f0f3f5;
     display: flex;
     font-family: var(--font-family-yugothic-medium);
     justify-content: center;
@@ -69,11 +53,11 @@ const styles = css`
   }
 
   .page-title__text {
-    color: #1978BB;
+    color: #1978bb;
     font-weight: 700;
     font-size: 24px;
     padding-bottom: 10px;
-    border-bottom: 2px solid #1978BB;
+    border-bottom: 2px solid #1978bb;
   }
 
   .page-title__text--small {
@@ -82,7 +66,7 @@ const styles = css`
 
   //ContentsCount
   .contents-count {
-    background-color: #F0F3F5;
+    background-color: #f0f3f5;
     display: flex;
     font-family: var(--font-family-yugothic-medium);
     justify-content: center;

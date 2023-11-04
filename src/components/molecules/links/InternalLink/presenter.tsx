@@ -1,13 +1,7 @@
 // import layer
 import { FC } from 'react';
+import { Box, BoxProps } from '@chakra-ui/react';
 import NextLink, { LinkProps as NextLinkProps } from 'next/link';
-
-import {
-  Link as ChakraLink,
-  LinkProps as ChakraLinkProps,
-  Box,
-  BoxProps,
-} from '@chakra-ui/react';
 
 // type layer
 export type PresenterProps = BoxProps & NextLinkProps;
@@ -39,6 +33,7 @@ export const Presenter: FC<PresenterProps> = ({
       <Box
         w={`auto`}
         h={`auto`}
+        transition={`all .3s`}
         _hover={{ cursor: 'pointer', color: `gray`, textDecoration: 'none' }}
         {...props}
       >

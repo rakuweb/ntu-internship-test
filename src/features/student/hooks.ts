@@ -1,8 +1,8 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-import { StudentSlice } from './types';
 import { createStudentSlice } from './slice';
+import { StudentSlice } from './types';
 
 export const useStudentStore = create<StudentSlice>()(
   persist(

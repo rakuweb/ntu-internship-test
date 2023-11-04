@@ -1,14 +1,14 @@
 // import layer
 import { VFC } from 'react';
-import { css } from '@emotion/react';
 import { Box, Stack } from '@chakra-ui/react';
+import { css } from '@emotion/react';
 import { ArticleCard } from '../../cards/ArticleCard';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <Box>
       <Box ml={{ lg: `2rem` }} as={`h3`}>

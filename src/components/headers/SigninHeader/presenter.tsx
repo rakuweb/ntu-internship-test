@@ -1,25 +1,22 @@
 // import layer
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { Box, BoxProps, Flex } from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/react';
-import axios from 'axios';
 import { useRouter } from 'next/router';
 
-import { styles } from './styles';
 import { Image } from 'atoms/Image';
 import { InternalLink } from 'components/links/InternalLink';
-import { routes } from '~/constants';
-import { HeaderMenu } from '../HeaderMenu';
-import { MenuDrawer } from '../MenuDrawer';
+import { useLiff } from 'contexts/LineAuthContextInternship';
 import {
   useAccountStore,
   selectAccount,
   selectSignout,
-  selectSetAccount,
   selectSetPrevPath,
 } from 'features/account';
-import { useLiff } from 'contexts/LineAuthContextInternship';
-import { ORIGIN_URL } from 'constants/env';
+import { routes } from '~/constants';
+import { HeaderMenu } from '../HeaderMenu';
+import { MenuDrawer } from '../MenuDrawer';
+import { styles } from './styles';
 
 // type layer
 export type PresenterProps = BoxProps;
@@ -27,9 +24,8 @@ export type PresenterProps = BoxProps;
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { email, username } = useAccountStore(selectAccount);
+  const { username } = useAccountStore(selectAccount);
   const _signout = useAccountStore(selectSignout);
-  const setAccount = useAccountStore(selectSetAccount);
   const setPrevPath = useAccountStore(selectSetPrevPath);
   const { liff } = useLiff();
   const router = useRouter();
@@ -110,6 +106,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 htmlWidth={267}
                 htmlHeight={150}
                 src={`/svg/ntu-job.svg`}
+                alt={``}
               />
             </Box>
           </InternalLink>
@@ -127,7 +124,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         </Flex>
 
         <Flex alignItems={'center'}>
-          <Box
+          <InternalLink
+            href={`/`}
             m={{ lg: `0 ${40 / 19.2}vw 0 0` }}
             display={{ base: `none`, lg: `block` }}
             fontWeight="bold"
@@ -135,7 +133,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             fontSize={`12px`}
           >
             採用担当者はこちら
-          </Box>
+          </InternalLink>
           <Box display={{ base: `block`, lg: `none` }}>
             <HeaderMenu isOpen={isOpen} onClick={onOpen} />
           </Box>

@@ -7,25 +7,40 @@ import { mq } from '~/constants/styles';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <div css={styles}>
       <section className="clinics-information">
         <div className="clinics-information__container">
           <h2 className="clinics-information__container__title">
-            銀座駅 医療法人社団清麗会 銀座T&apos;Sデンタルオフィスインプラントセンター 医院情報
+            銀座駅 医療法人社団清麗会
+            銀座T&apos;Sデンタルオフィスインプラントセンター 医院情報
           </h2>
           <div className="clinics-information__container__item">
-            <p className="clinics-information__container__item__label">電話番号</p>
-            <p className="clinics-information__container__item__text">03-3571-3045</p>
+            <p className="clinics-information__container__item__label">
+              電話番号
+            </p>
+            <p className="clinics-information__container__item__text">
+              03-3571-3045
+            </p>
           </div>
           <div className="clinics-information__container__item">
-            <p className="clinics-information__container__item__label">診療内容</p>
-            <p className="clinics-information__container__item__text">虫歯治療 / クリーニング・定期検診 / 矯正歯科 / セラミック治療 / 口腔外科 / 歯周病治療 / ホワイトニング / インプラント / カウンセリング / 義歯（入れ歯）</p>
+            <p className="clinics-information__container__item__label">
+              診療内容
+            </p>
+            <p className="clinics-information__container__item__text">
+              虫歯治療 / クリーニング・定期検診 / 矯正歯科 / セラミック治療 /
+              口腔外科 / 歯周病治療 / ホワイトニング / インプラント /
+              カウンセリング / 義歯（入れ歯）
+            </p>
           </div>
           <div className="clinics-information__container__item">
-            <p className="clinics-information__container__item__label">医院HP</p>
-            <a href="#" className="clinics-information__container__item__text">https://www.ts-dental.com</a>
+            <p className="clinics-information__container__item__label">
+              医院HP
+            </p>
+            <a href="#" className="clinics-information__container__item__text">
+              https://www.ts-dental.com
+            </a>
           </div>
         </div>
       </section>
@@ -43,7 +58,7 @@ const styles = css`
   }
 
   .clinics-information__container {
-    border-bottom: 1px solid #257FBF;
+    border-bottom: 1px solid #257fbf;
     display: flex;
     flex-direction: column;
     width: calc(100% - 32px);
@@ -57,7 +72,7 @@ const styles = css`
   }
 
   .clinics-information__container__item {
-    border-top: 1px solid #257FBF;
+    border-top: 1px solid #257fbf;
     display: flex;
     padding: 8px 0;
     align-items: flex-start;

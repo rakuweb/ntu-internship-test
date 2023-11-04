@@ -1,19 +1,19 @@
 // import layer
 import { FC } from 'react';
-import { useRouter } from 'next/router';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 import { useFormContext } from 'react-hook-form';
 
-import { Presenter, PresenterProps } from './presenter';
+import { useLiff } from 'contexts/LineAuthContextInternship';
 import { useRegisterFormStore } from 'features/registerForm/hooks';
 import {
   selectRegisterFormItem,
   selectRegisterFormFunctions,
 } from 'features/registerForm/selectors';
-import { RegisterFormSchema } from '~/features/registerForm/schema';
-import { routes } from '~/constants/routes';
 import { ORIGIN_URL } from '~/constants/env';
-import { useLiff } from 'contexts/LineAuthContextInternship';
+import { routes } from '~/constants/routes';
+import { RegisterFormSchema } from '~/features/registerForm/schema';
+import { Presenter, PresenterProps } from './presenter';
 
 // type layer
 export type ContainerProps = PresenterProps;
@@ -37,7 +37,7 @@ export const Container: FC<ContainerProps> = ({ ...props }) => {
         ...formItem,
         lineId: profile.userId,
       };
-      const res = await axios.post(apiUrl, {
+      const _res = await axios.post(apiUrl, {
         ...registerData,
         // recaptcha: token,
       });

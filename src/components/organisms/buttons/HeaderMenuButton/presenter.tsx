@@ -1,6 +1,6 @@
 // import layer
 import { VFC } from 'react';
-import { Button, ButtonProps, Flex } from '@chakra-ui/react';
+import { Button, ButtonProps } from '@chakra-ui/react';
 
 // type layer
 export type StyleProps = ButtonProps;

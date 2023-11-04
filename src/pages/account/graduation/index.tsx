@@ -1,22 +1,16 @@
 import { useState, useEffect } from 'react';
 import { NextPage } from 'next/types';
-import { useRouter } from 'next/router';
 
-import { Graduation as Template } from '~/components/templates/Graduation';
 import { SeoComponent } from 'organisms/SeoComponent';
+import { Graduation as Template } from '~/components/templates/Graduation';
 import { CANONICAL_URL } from '~/constants';
-import { parseSeo } from '~/lib';
-
-// type layer
 
 // component layer
 export const Index: NextPage = () => {
   console.log('account/card');
   const title = ``; // eslint-disable-line
   const description = ``;
-  const seo = parseSeo(title, description);
   const [isClient, setIsClient] = useState(false);
-  const router = useRouter();
 
   useEffect(() => {
     setIsClient(true);
@@ -36,14 +30,11 @@ export const Index: NextPage = () => {
       );
     } else {
       return (
-        <>
-          {' '}
-          <SeoComponent
-            canonical={CANONICAL_URL}
-            title={title}
-            description={description}
-          />
-        </>
+        <SeoComponent
+          canonical={CANONICAL_URL}
+          title={title}
+          description={description}
+        />
       );
     }
   };

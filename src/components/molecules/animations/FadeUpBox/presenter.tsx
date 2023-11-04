@@ -1,5 +1,5 @@
 // import layer
-import { VFC, useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { Box, BoxProps } from '@chakra-ui/react';
 import { useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -12,13 +12,13 @@ export type AnimationProps = { fadeLength?: string | number; isX?: boolean };
 export type PresenterProps = StyleProps & AnimationProps;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({
+export const Presenter: FC<PresenterProps> = ({
   fadeLength,
   children,
   isX,
   ...props
 }) => {
-  const { ref, inView, entry } = useInView();
+  const { ref, inView } = useInView();
   const controls = useAnimation();
 
   const variants = isX

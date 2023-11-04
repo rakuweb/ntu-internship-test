@@ -1,23 +1,23 @@
 // import layer
 import { VFC } from 'react';
-import { css } from '@emotion/react';
 import { Box, Flex, Stack } from '@chakra-ui/react';
+import { css } from '@emotion/react';
 
-import { ImageTitle } from '~/components/molecules/titles/ImageTitle';
-import { BlueButton } from '~/components/molecules/buttons/BlueButton';
-import { FaqCard } from '~/components/organisms/cards/FaqCard';
-import { QuestionBoxCard } from '../../cards/QuestionBoxCard';
-import { OnlineConsultationCard } from '../../cards/OnlineConsultationCard';
 import { Image } from 'atoms/Image';
 import { InternalLink } from 'molecules/links/InternalLink';
-import { mq } from '~/constants/styles';
 import { Span } from '~/components/atoms/Span';
+import { BlueButton } from '~/components/molecules/buttons/BlueButton';
+import { ImageTitle } from '~/components/molecules/titles/ImageTitle';
+import { FaqCard } from '~/components/organisms/cards/FaqCard';
+import { mq } from '~/constants/styles';
+import { OnlineConsultationCard } from '../../cards/OnlineConsultationCard';
+import { QuestionBoxCard } from '../../cards/QuestionBoxCard';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <Box
       // w={{ lg: `fit-content` }}
@@ -67,7 +67,12 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
           right={{ base: `0rem`, md: `0rem`, lg: `2rem`, '2xl': `1rem` }}
           w={{ base: `8rem`, md: `10rem`, lg: `initial` }}
         >
-          <Image width={335} height={302} src={`/dev/img/consul-image.png`} />
+          <Image
+            width={335}
+            height={302}
+            src={`/dev/img/consul-image.png`}
+            alt={``}
+          />
         </Box>
       </Box>
       <Box

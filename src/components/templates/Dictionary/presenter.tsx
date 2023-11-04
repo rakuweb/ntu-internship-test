@@ -1,38 +1,20 @@
 // import layer
 import { VFC } from 'react';
-import dynamic from 'next/dynamic';
 import { Box } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
 import { Header } from 'components/headers/Header';
+import { BreadcrumbGray } from 'organisms/BreadcrumbGray';
 import { Footer } from 'organisms/footers/Footer';
+import { DictionaryContentsSection } from 'organisms/sections/DictionaryContentsSection';
 import { ContactSection } from '~/components/organisms/sections/ContactSection';
 import { mq } from '~/constants/styles';
-import { DictionaryContentsSection } from 'organisms/sections/DictionaryContentsSection';
-import { BreadcrumbGray } from 'organisms/BreadcrumbGray';
-
-const TopFirstview = dynamic(
-  () =>
-    import('~/components/organisms/firstviews/TopFirstview').then(
-      (module) => module.TopFirstview
-    ),
-  {
-    ssr: false,
-    // eslint-disable-next-line
-    loading: () => (
-      <Box
-        h={{ base: `100vh`, lg: `480px`, xl: `560px` }}
-        bg={`var(--porcelain)`}
-      />
-    ),
-  }
-);
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <>
       <Header />
@@ -41,7 +23,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
         <section className="page-title">
           <h1 className="page-title__text">
             歯<span className="page-title__text--small">の</span>辞典
-          </h1>  
+          </h1>
         </section>
         <DictionaryContentsSection />
         <ContactSection />
@@ -55,7 +37,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
 const styles = css`
   // page-title
   .page-title {
-    background-color: #F0F3F5;
+    background-color: #f0f3f5;
     display: flex;
     font-family: var(--font-family-yugothic-medium);
     justify-content: center;
@@ -64,11 +46,11 @@ const styles = css`
   }
 
   .page-title__text {
-    color: #1978BB;
+    color: #1978bb;
     font-weight: 700;
     font-size: 24px;
     padding-bottom: 10px;
-    border-bottom: 2px solid #1978BB;
+    border-bottom: 2px solid #1978bb;
   }
 
   .page-title__text--small {
@@ -77,7 +59,7 @@ const styles = css`
 
   //ContentsCount
   .contents-count {
-    background-color: #F0F3F5;
+    background-color: #f0f3f5;
     display: flex;
     font-family: var(--font-family-yugothic-medium);
     justify-content: center;

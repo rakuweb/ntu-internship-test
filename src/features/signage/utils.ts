@@ -1,4 +1,4 @@
-import {  UploadFileEntity } from 'types/gql/graphql';
+import { UploadFileEntity } from 'types/gql/graphql';
 import { SignageSliceData, Video } from './types';
 
 export const parseToVideos = (

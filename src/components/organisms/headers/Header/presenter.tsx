@@ -2,21 +2,21 @@
 import { VFC } from 'react';
 import { Box, Flex, Icon } from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/react';
-import { BiLogIn } from 'react-icons/bi';
 import { AiOutlineUser } from 'react-icons/ai';
+import { BiLogIn } from 'react-icons/bi';
 
-import { styles } from './styles';
 import { Image } from 'atoms/Image';
 import { InternalLink } from 'molecules/links/InternalLink';
 import { routes } from '~/constants';
 import { HeaderMenu } from '../HeaderMenu';
 import { MenuDrawer } from '../MenuDrawer';
+import { styles } from './styles';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
@@ -35,7 +35,12 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
     >
       <InternalLink href={routes.index}>
         <Box className="logo" as={`h1`}>
-          <Image width={233} height={36} src={`/dev/img/logo@1x.png`} />
+          <Image
+            width={233}
+            height={36}
+            src={`/dev/img/logo@1x.png`}
+            alt={``}
+          />
         </Box>
       </InternalLink>
       <Box

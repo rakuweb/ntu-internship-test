@@ -1,7 +1,7 @@
 // import layer
 import { VFC } from 'react';
-import { css } from '@emotion/react';
 import { Box } from '@chakra-ui/react';
+import { css } from '@emotion/react';
 
 import { Image } from 'atoms/Image';
 import { mq } from '~/constants/styles';
@@ -10,7 +10,7 @@ import { mq } from '~/constants/styles';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <Box
       _hover={{ boxShadow: `2xl` }}
@@ -21,7 +21,12 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
     >
       <div className="x001">
         <div className="photo">
-          <Image width={564} height={564} src={`/dev/img/clip-1@1x.png`} />
+          <Image
+            width={564}
+            height={564}
+            src={`/dev/img/clip-1@1x.png`}
+            alt={``}
+          />
         </div>
         <div className="text">
           <div className="text-2 yugothic-medium-midnight-blue-16px">

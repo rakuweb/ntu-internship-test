@@ -1,7 +1,7 @@
 // import layer
 import { VFC, ElementType, ReactNode } from 'react';
-import { css } from '@emotion/react';
 import { Box } from '@chakra-ui/react';
+import { css } from '@emotion/react';
 
 import { Image, ImageProps } from 'atoms/Image';
 import { mq } from '~/constants/styles';
@@ -18,7 +18,6 @@ export const Presenter: VFC<PresenterProps> = ({
   as = `h2`,
   img,
   children,
-  ...props
 }) => {
   const Tag = as as ElementType;
 
@@ -26,7 +25,7 @@ export const Presenter: VFC<PresenterProps> = ({
     <Box css={styles}>
       <div className="title">
         <Box className={`icon`} position={`relative`} height={`61px`}>
-          <Image {...img} h={`61px`} w={`auto`} />
+          <Image {...img} h={`61px`} w={`auto`} alt={``} />
         </Box>
         <Tag className="text-1 yugothic-bold-navy-blue-32px">{children}</Tag>
       </div>

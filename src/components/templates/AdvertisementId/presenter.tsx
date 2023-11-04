@@ -1,10 +1,10 @@
 // import layer
 import { FC } from 'react';
 
+import { Header } from 'components/headers/Header';
 import { AdvertisementDetail } from '~/components/AdvertisementDetail';
 
 import { Footer } from '~/components/footers/Footer';
-import { Header } from 'components/headers/Header';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

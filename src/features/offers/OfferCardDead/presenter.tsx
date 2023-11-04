@@ -1,17 +1,22 @@
 // import layer
 import { FC } from 'react';
-import { css } from '@emotion/react';
 import { Box, Image, Flex } from '@chakra-ui/react';
+import { css } from '@emotion/react';
 
-import { InternalLink } from '~/components/links/InternalLink';
-import { OfferCard } from '../types';
-import { mq } from '~/constants/styles';
-import { routes } from 'constants/routes';
-import { Labeltext } from './Labeltext';
 import { Image as NImage } from 'components/images/Image';
+import { routes } from 'constants/routes';
+import { InternalLink } from '~/components/links/InternalLink';
+import { mq } from '~/constants/styles';
+import { OfferCard } from '../types';
+import { Labeltext } from './Labeltext';
 
 // type layer
-export type DataProps = OfferCard;
+export type DataProps = OfferCard & {
+  companyName: any; // eslint-disable-line
+  categories: any[]; // eslint-disable-line
+  place: any; // eslint-disable-line
+  hourlyWage: any; // eslint-disable-line
+};
 export type PresenterProps = DataProps;
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
@@ -21,10 +26,10 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     categories,
     place,
     hourlyWage,
-    isNew,
+    // isNew,
     title,
     image,
-    deadline,
+    // deadline,
   } = props;
   const href = `${routes.offers}/${id}`;
 
@@ -84,6 +89,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 width={24}
                 height={24}
                 src={`/svg/map-marker.svg`}
+                alt={``}
               />
               <div className="placetext">{place}</div>
             </div>
@@ -94,6 +100,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 height={24}
                 src={`/svg/money.svg`}
                 // src={`/images/offers/hukuroIkon.png`}
+                alt={``}
               />
               <div className="placetext">{hourlyWage}</div>
             </div>
@@ -106,7 +113,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
 
 // styles
 const styles = css`
-  //モバイルサイズ
+  {/*//モバイルサイズ*/}
   .x001 {
     background-color: var(--white);
     border-radius: 10px;
@@ -272,6 +279,4 @@ const styles = css`
       white-space: pre-wrap;
     }
   }
-}
-
-`;
+}`;

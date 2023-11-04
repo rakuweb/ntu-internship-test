@@ -2,20 +2,20 @@
 import { FC, useEffect, useMemo, useState } from 'react';
 import { Box } from '@chakra-ui/react';
 
+import { CMS_URL } from 'constants/env';
 import { useSignageStore } from 'features/signage/hooks';
 import { selectVideos } from 'features/signage/selectors';
-import { CMS_URL } from 'constants/env';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: FC<PresenterProps> = ({ ...props }) => {
+export const Presenter: FC<PresenterProps> = () => {
   const videos = useSignageStore(selectVideos);
   const [videoUrl, setVideoUrl] = useState<string>(
     `${CMS_URL}${videos[0].url}`
   );
-  const [clock, setClock] = useState(Math.random);
+  const [_clock, setClock] = useState(Math.random);
   const lengthVideos = useMemo(() => {
     return videos.length;
   }, [videos]);
@@ -24,7 +24,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     const now = new Date();
     const hour = now.getHours();
     setVideoUrl(`${CMS_URL}${videos[hour % lengthVideos].url}`);
-  }, [videos]);
+  }, [videos]); // eslint-disable-line
 
   useEffect(() => {
     const intervalId = setInterval(() => {

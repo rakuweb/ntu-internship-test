@@ -7,7 +7,7 @@ import { mq } from '~/constants/styles';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <div css={styles}>
       <section className="clinics-comments__option">
@@ -17,8 +17,21 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
           </p>
           <div className="clinics-comments__option__container__sort">
             <p>並び替え :</p>
-            <input type="radio" name="example" value="sample" className="clinics-comments__option__container__sort__radio" /><p>新着順</p>
-            <input type="radio" name="example" value="sample" className="clinics-comments__option__container__sort__radio" checked /><p>参考になった数順</p>
+            <input
+              type="radio"
+              name="example"
+              value="sample"
+              className="clinics-comments__option__container__sort__radio"
+            />
+            <p>新着順</p>
+            <input
+              type="radio"
+              name="example"
+              value="sample"
+              className="clinics-comments__option__container__sort__radio"
+              checked
+            />
+            <p>参考になった数順</p>
           </div>
         </div>
       </section>
@@ -37,7 +50,10 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
                 5.0いいね！
               </p>
               <p className="clinics-comments__card-list__card__info__left__like-detail">
-                （ 施設 <span className="red">5</span> / 対応 <span className="red">5</span> / 治療 <span className="red">5</span> / 防菌 <span className="red">5</span> ）
+                （ 施設 <span className="red">5</span> / 対応{' '}
+                <span className="red">5</span> / 治療{' '}
+                <span className="red">5</span> / 防菌{' '}
+                <span className="red">5</span> ）
               </p>
             </div>
           </div>
@@ -52,8 +68,9 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
             <span className="gray">対応</span> 人柄・気づかい
           </p>
           <p className="clinics-comments__card-list__card__text">
-            <span className="gray">治療</span> 説明 / 丁寧さ / 痛みへの配慮 / 治療後の経過
-          </p>        
+            <span className="gray">治療</span> 説明 / 丁寧さ / 痛みへの配慮 /
+            治療後の経過
+          </p>
           <hr className="clinics-comments__card-list__card__border" />
           <p className="clinics-comments__card-list__card__text">
             <span className="gray">治療内容</span> 虫歯
@@ -85,7 +102,10 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
                 5.0いいね！
               </p>
               <p className="clinics-comments__card-list__card__info__left__like-detail">
-                （ 施設 <span className="red">5</span> / 対応 <span className="red">5</span> / 治療 <span className="red">5</span> / 防菌 <span className="red">5</span> ）
+                （ 施設 <span className="red">5</span> / 対応{' '}
+                <span className="red">5</span> / 治療{' '}
+                <span className="red">5</span> / 防菌{' '}
+                <span className="red">5</span> ）
               </p>
             </div>
           </div>
@@ -100,8 +120,9 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
             <span className="gray">対応</span> 人柄・気づかい
           </p>
           <p className="clinics-comments__card-list__card__text">
-            <span className="gray">治療</span> 説明 / 丁寧さ / 痛みへの配慮 / 治療後の経過
-          </p>        
+            <span className="gray">治療</span> 説明 / 丁寧さ / 痛みへの配慮 /
+            治療後の経過
+          </p>
           <hr className="clinics-comments__card-list__card__border" />
           <p className="clinics-comments__card-list__card__text">
             <span className="gray">治療内容</span> 虫歯
@@ -133,7 +154,10 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
                 5.0いいね！
               </p>
               <p className="clinics-comments__card-list__card__info__left__like-detail">
-                （ 施設 <span className="red">5</span> / 対応 <span className="red">5</span> / 治療 <span className="red">5</span> / 防菌 <span className="red">5</span> ）
+                （ 施設 <span className="red">5</span> / 対応{' '}
+                <span className="red">5</span> / 治療{' '}
+                <span className="red">5</span> / 防菌{' '}
+                <span className="red">5</span> ）
               </p>
             </div>
           </div>
@@ -148,8 +172,9 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
             <span className="gray">対応</span> 人柄・気づかい
           </p>
           <p className="clinics-comments__card-list__card__text">
-            <span className="gray">治療</span> 説明 / 丁寧さ / 痛みへの配慮 / 治療後の経過
-          </p>        
+            <span className="gray">治療</span> 説明 / 丁寧さ / 痛みへの配慮 /
+            治療後の経過
+          </p>
           <hr className="clinics-comments__card-list__card__border" />
           <p className="clinics-comments__card-list__card__text">
             <span className="gray">治療内容</span> 虫歯
@@ -174,7 +199,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
 // styles
 const styles = css`
   .clinics-comments__card-list {
-    display: flex; 
+    display: flex;
     width: 100vw;
     flex-direction: column;
     align-items: center;
@@ -185,7 +210,7 @@ const styles = css`
   .clinics-comments__card-list__card {
     display: flex;
     flex-direction: column;
-    border: 1px solid #999999; 
+    border: 1px solid #999999;
     width: calc(100% - 32px);
     padding: 24px;
     border-radius: 8px;
@@ -207,7 +232,7 @@ const styles = css`
   }
 
   .clinics-comments__card-list__card__info__name {
-    color: #E9495C;
+    color: #e9495c;
     font-size: 16px;
   }
 
@@ -218,7 +243,7 @@ const styles = css`
   }
 
   .clinics-comments__card-list__card__info__left__like {
-    color: #E9495C;
+    color: #e9495c;
     font-size: 16px;
     margin: 8px 0 0;
   }
@@ -229,12 +254,12 @@ const styles = css`
   }
 
   .red {
-    color: #E9495C;
+    color: #e9495c;
     font-size: 16px;
   }
 
   .clinics-comments__card-list__card__border {
-    border-top: 1px solid #257FBF;
+    border-top: 1px solid #257fbf;
     width: 100%;
     margin: 20px 0 16px;
   }
@@ -271,12 +296,12 @@ const styles = css`
   }
 
   .clinics-comments__card-list__card__review__button.active {
-    background-color: #2194E5;
+    background-color: #2194e5;
     color: #fff;
-    border: 1px solid #2194E5;
+    border: 1px solid #2194e5;
   }
 
-//
+  //
 
   .clinics-comments__option {
     display: flex;
@@ -325,7 +350,7 @@ const styles = css`
     .clinics-comments__option__container__count {
       font-size: 12px;
     }
-  
+
     .clinics-comments__option__container__sort {
       font-size: 12px;
     }

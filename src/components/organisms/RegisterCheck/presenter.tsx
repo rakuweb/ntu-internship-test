@@ -2,22 +2,19 @@
 import { FC, useState, useEffect } from 'react';
 import { Button, Checkbox } from '@chakra-ui/react';
 
-import { styles } from './styles';
-import { useRegisterFormStore } from 'features/registerForm/hooks';
+import { routes } from 'constants/routes';
 import { useFormProgressStore } from 'features/formProgress/hooks';
 import { selectBackProgress } from 'features/formProgress/selectors';
-import { routes } from 'constants/routes';
+import { useRegisterFormStore } from 'features/registerForm/hooks';
 import { InternalLink } from '~/components/links/InternalLink';
+import { styles } from './styles';
 
 // type layer
 export type DataProps = { onClick: () => void };
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: FC<PresenterProps & DataProps> = ({
-  onClick,
-  ...props
-}) => {
+export const Presenter: FC<PresenterProps & DataProps> = ({ onClick }) => {
   const {
     name,
     grade,
@@ -37,7 +34,7 @@ export const Presenter: FC<PresenterProps & DataProps> = ({
 
   useEffect(() => {
     setIsChecked(isCheckedPrivacyPolicy && isCheckedStudent);
-  }, [isCheckedPrivacyPolicy, isCheckedStudent]);
+  }, [isCheckedPrivacyPolicy, isCheckedStudent]); // eslint-disable-line
 
   return (
     <div css={styles}>
@@ -85,9 +82,7 @@ export const Presenter: FC<PresenterProps & DataProps> = ({
             </div>
           </div>
           <div className="form__container__address">
-            <p className="form__container__item__left">
-            バイト情報を受け取る
-            </p>
+            <p className="form__container__item__left">バイト情報を受け取る</p>
             <div className="form__container__item__address__right">
               {toReceiveJobInfo ? `はい` : `いいえ`}
             </div>

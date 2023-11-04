@@ -2,20 +2,20 @@
 import { VFC } from 'react';
 
 import { Heading, Image, Text } from '@chakra-ui/react';
-import { styles } from './styles';
 import { InternalLink } from '~/components/molecules/links/InternalLink';
 import { routes } from '../../../constants/routes';
+import { styles } from './styles';
 // type layer
 export type PresenterProps = Record<string, string>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <div css={styles}>
       <section className="consultation-card-list">
         <div className="consultation-card-list__card">
           <h1 className="jobtitle">はじめての方へ</h1>
-          <Image src="/images/beginners/top.webp" mb={'15px'}></Image>
+          <Image src="/images/beginners/top.webp" mb={'15px'} alt={``} />
           <Heading
             as={'h2'}
             m={'16px 0'}

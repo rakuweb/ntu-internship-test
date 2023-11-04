@@ -7,18 +7,29 @@ import { mq } from '~/constants/styles';
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
+export const Presenter: VFC<PresenterProps> = () => {
   return (
     <div css={styles}>
       <section className="clinics-faq__option">
         <div className="clinics-faq__option__container">
-          <p className="clinics-faq__option__container__count">
-            1〜3件 / 3件
-          </p>
+          <p className="clinics-faq__option__container__count">1〜3件 / 3件</p>
           <div className="clinics-faq__option__container__sort">
             <p>並び替え :</p>
-            <input type="radio" name="example" value="sample" className="clinics-faq__option__container__sort__radio" /><p>新着順</p>
-            <input type="radio" name="example" value="sample" className="clinics-faq__option__container__sort__radio" checked /><p>いいねの多い順</p>
+            <input
+              type="radio"
+              name="example"
+              value="sample"
+              className="clinics-faq__option__container__sort__radio"
+            />
+            <p>新着順</p>
+            <input
+              type="radio"
+              name="example"
+              value="sample"
+              className="clinics-faq__option__container__sort__radio"
+              checked
+            />
+            <p>いいねの多い順</p>
           </div>
         </div>
       </section>
@@ -38,7 +49,8 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
           </div>
           <hr className="clinics-faq__card-list__card__border" />
           <p className="clinics-faq__card-list__card__description">
-            めったにいませんが、20人に1人くらいの割合でひどく痛むという方もいらっしゃいます。その場合、マウスピースをカットするか、切れ込みを入れるなどの対応をさせていただいております。 また、マウスピースは弾力性があり、歯に伝わる力がワイヤーに比べて緩やかなので、つけっぱなしにしておいたほうが効果を実感できます。
+            めったにいませんが、20人に1人くらいの割合でひどく痛むという方もいらっしゃいます。その場合、マウスピースをカットするか、切れ込みを入れるなどの対応をさせていただいております。
+            また、マウスピースは弾力性があり、歯に伝わる力がワイヤーに比べて緩やかなので、つけっぱなしにしておいたほうが効果を実感できます。
           </p>
           <div className="clinics-faq__card-list__card__anser-info">
             <p className="clinics-faq__card-list__card__anser-info__text">
@@ -64,7 +76,8 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
           </div>
           <hr className="clinics-faq__card-list__card__border" />
           <p className="clinics-faq__card-list__card__description">
-            めったにいませんが、20人に1人くらいの割合でひどく痛むという方もいらっしゃいます。その場合、マウスピースをカットするか、切れ込みを入れるなどの対応をさせていただいております。 また、マウスピースは弾力性があり、歯に伝わる力がワイヤーに比べて緩やかなので、つけっぱなしにしておいたほうが効果を実感できます。
+            めったにいませんが、20人に1人くらいの割合でひどく痛むという方もいらっしゃいます。その場合、マウスピースをカットするか、切れ込みを入れるなどの対応をさせていただいております。
+            また、マウスピースは弾力性があり、歯に伝わる力がワイヤーに比べて緩やかなので、つけっぱなしにしておいたほうが効果を実感できます。
           </p>
           <div className="clinics-faq__card-list__card__anser-info">
             <p className="clinics-faq__card-list__card__anser-info__text">
@@ -90,7 +103,8 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
           </div>
           <hr className="clinics-faq__card-list__card__border" />
           <p className="clinics-faq__card-list__card__description">
-            めったにいませんが、20人に1人くらいの割合でひどく痛むという方もいらっしゃいます。その場合、マウスピースをカットするか、切れ込みを入れるなどの対応をさせていただいております。 また、マウスピースは弾力性があり、歯に伝わる力がワイヤーに比べて緩やかなので、つけっぱなしにしておいたほうが効果を実感できます。
+            めったにいませんが、20人に1人くらいの割合でひどく痛むという方もいらっしゃいます。その場合、マウスピースをカットするか、切れ込みを入れるなどの対応をさせていただいております。
+            また、マウスピースは弾力性があり、歯に伝わる力がワイヤーに比べて緩やかなので、つけっぱなしにしておいたほうが効果を実感できます。
           </p>
           <div className="clinics-faq__card-list__card__anser-info">
             <p className="clinics-faq__card-list__card__anser-info__text">
@@ -163,7 +177,7 @@ const styles = css`
   }
 
   .clinics-faq__card-list__card__title {
-    color: #E9495C;
+    color: #e9495c;
     font-size: 20px;
     line-height: 1.6;
   }
@@ -181,11 +195,10 @@ const styles = css`
     line-height: 1.7;
   }
 
-
   .clinics-faq__card-list__card__post-info__tag {
-    color: #2194E5;
+    color: #2194e5;
     font-size: 14px;
-    border: 1px solid #2194E5;
+    border: 1px solid #2194e5;
     border-radius: 4px;
     padding: 4px;
     margin: 8px 0 0;
@@ -218,9 +231,9 @@ const styles = css`
   }
 
   .clinics-faq__card-list__card__anser-info__tag {
-    color: #E9495C;
+    color: #e9495c;
     font-size: 14px;
-    border: 1px solid #E9495C;
+    border: 1px solid #e9495c;
     border-radius: 4px;
     padding: 4px;
     margin: 8px 0 0;
@@ -247,7 +260,7 @@ const styles = css`
     .clinics-faq__option__container__count {
       font-size: 12px;
     }
-  
+
     .clinics-faq__option__container__sort {
       font-size: 12px;
     }

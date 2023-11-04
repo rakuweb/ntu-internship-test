@@ -1,46 +1,42 @@
 // import layer
-import { useState, useEffect } from 'react';
 import {
   NextPage,
   InferGetStaticPropsType,
   GetStaticPaths,
   GetStaticProps,
 } from 'next/types';
-import { Top as Template } from 'templates/OfferId';
-import { SeoComponent } from 'organisms/SeoComponent';
 import { CANONICAL_URL, CMS_URL } from 'constants/env';
-import { UPDATE_INTERVAL } from '~/constants';
-import { parseSeo } from '~/lib';
+import {
+  selectSetOffers,
+  selectSetTarget,
+  useOffersStore,
+  useTargetOfferStore,
+} from 'features/offers';
+import { useClient } from 'hooks/client';
+import { initializeApollo_offer } from 'lib/apollo/client';
+import { SeoComponent } from 'organisms/SeoComponent';
+import { Top as Template } from 'templates/OfferId';
 import {
   GetOfferByIdQuery,
   GetOfferByIdDocument,
-  GetCompaniesQuery,
-  GetCompaniesDocument,
   OfferEntity,
-  CompanyEntity,
   GetOfferPathsQuery,
   GetOfferPathsDocument,
-  UploadFile,
-} from 'types/gql/graphql';
-import { initializeApollo } from 'lib/apollo/client';
-import { selectSetTarget, useTargetOfferStore } from 'features/offers';
-import { selectSetCompanyItem, useCompanyStore } from '~/features/company';
-import { parseImage } from '~/lib/utils';
+  GetOffersAllQuery,
+  GetOffersAllDocument,
+} from 'types/offers-gql/graphql';
+import { UPDATE_INTERVAL } from '~/constants';
+import { getTodayString } from '~/lib/utils';
 
 // type layer
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 // component layer
-export const Index: NextPage<Props> = ({ data, company }) => {
-  const title = data?.offer?.data?.attributes?.title ?? ``; // eslint-disable-line
-  const description = data?.offer?.data?.attributes?.description ?? ``;
-  const ogp = data?.offer?.data?.attributes?.image?.data?.attributes
-    ? parseImage(
-        data.offer.data.attributes.image?.data?.attributes as UploadFile
-      )
-    : undefined;
-  const seo = parseSeo(title, description, undefined, ogp);
-  const imageurl = data?.offer?.data?.attributes?.image?.data?.attributes.url;
+export const Index: NextPage<Props> = ({ data, allOffersData }) => {
+  const offerAttributes = data?.offer?.data?.attributes;
+  const title = offerAttributes?.title ?? ``; // eslint-disable-line
+  const description = offerAttributes?.job_description ?? ``;
+  const imageurl = offerAttributes?.image?.data?.attributes.url;
   const openGraph = {
     type: 'website',
     title: title,
@@ -53,21 +49,17 @@ export const Index: NextPage<Props> = ({ data, company }) => {
       },
     ],
   };
-  const [isClient, setIsClient] = useState(false);
+  const { isClient } = useClient();
   const setTarget = useTargetOfferStore(selectSetTarget);
-  const setComapanyItem = useCompanyStore(selectSetCompanyItem);
+  const setOffers = useOffersStore(selectSetOffers);
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  if (!data?.offer?.data || !company) {
+  if (!data?.offer?.data) {
     return <></>;
   }
 
   setTarget(data?.offer?.data as OfferEntity);
-  company.length > 0 && company[0]?.attributes && setComapanyItem(company[0]);
-
+  allOffersData?.offers?.data &&
+    setOffers(allOffersData.offers.data as OfferEntity[]);
   const message = () => {
     if (isClient) {
       return (
@@ -83,14 +75,12 @@ export const Index: NextPage<Props> = ({ data, company }) => {
       );
     } else {
       return (
-        <>
-          <SeoComponent
-            canonical={CANONICAL_URL}
-            title={title}
-            description={description}
-            openGraph={openGraph}
-          />
-        </>
+        <SeoComponent
+          canonical={CANONICAL_URL}
+          title={title}
+          description={description}
+          openGraph={openGraph}
+        />
       );
     }
   };
@@ -101,7 +91,7 @@ export const Index: NextPage<Props> = ({ data, company }) => {
 export default Index;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const apolloClient = initializeApollo();
+  const apolloClient = initializeApollo_offer();
   try {
     const { data } = await apolloClient.query<GetOfferPathsQuery>({
       query: GetOfferPathsDocument,
@@ -126,29 +116,26 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<{
   data: GetOfferByIdQuery;
-  company: CompanyEntity[];
+  allOffersData: GetOffersAllQuery;
 }> = async ({ params }) => {
   const { id } = params;
-  const apolloClient = initializeApollo();
+  const apolloClient = initializeApollo_offer();
 
   try {
     const { data } = await apolloClient.query<GetOfferByIdQuery>({
       query: GetOfferByIdDocument,
       variables: { id },
     });
-    const { data: companies } = await apolloClient.query<GetCompaniesQuery>({
-      query: GetCompaniesDocument,
+
+    const allOffersResult = await apolloClient.query<GetOffersAllQuery>({
+      query: GetOffersAllDocument,
+      variables: { today: getTodayString() },
     });
-    const company = companies?.companies?.data?.filter(
-      (company) =>
-        company?.attributes?.createdBy?.id ===
-        data?.offer?.data?.attributes?.createdBy?.id
-    ) as CompanyEntity[];
 
     return {
       props: {
         data,
-        company,
+        allOffersData: allOffersResult.data,
       },
       notFound: !data,
       revalidate: UPDATE_INTERVAL,
@@ -157,7 +144,7 @@ export const getStaticProps: GetStaticProps<{
     console.error(err);
 
     return {
-      props: { data: undefined, company: undefined },
+      props: { data: undefined, allOffersData: undefined },
       notFound: true,
       revalidate: UPDATE_INTERVAL,
     };

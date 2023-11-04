@@ -1,18 +1,17 @@
 // import layer
-import { FC, useEffect, useState } from 'react';
-import { Input, Select, Button, Box, Switch, Flex } from '@chakra-ui/react';
+import { FC } from 'react';
+import { Select, Button, Box, Switch, Flex } from '@chakra-ui/react';
 import { useFormContext } from 'react-hook-form';
 
-import { styles } from './styles';
-import { routes } from '~/constants/routes';
-import { InternalLink } from '~/components/molecules/links/InternalLink';
 import {
-  useRegisterGradeFormStore,
   parseGrade,
   gradeList,
   RegisterGradeFormSchema,
 } from 'features/registerForm';
 import { useStudentStore, selectStudent } from 'features/student';
+import { InternalLink } from '~/components/molecules/links/InternalLink';
+import { routes } from '~/constants/routes';
+import { styles } from './styles';
 
 // type layer
 export type DataProps = { onClick: () => void };
@@ -20,11 +19,10 @@ export type StyleProps = Record<string, unknown>;
 export type PresenterProps = DataProps & StyleProps;
 
 // presenter
-export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
+export const Presenter: FC<PresenterProps> = ({ onClick }) => {
   const {
     register,
     watch,
-    setValue,
     formState: { errors },
   } = useFormContext<RegisterGradeFormSchema>();
   const { grade } = useStudentStore(selectStudent);
@@ -83,7 +81,7 @@ export const Presenter: FC<PresenterProps> = ({ onClick, ...props }) => {
                   size="lg"
                   // checked={sendJobInfo}
                   {...register('toReceiveJobInfo')}
-                // onChange={(e) => setSendJobInfo(e.target.checked)}
+                  // onChange={(e) => setSendJobInfo(e.target.checked)}
                 />
                 <label
                   htmlFor="send-job-info"

@@ -5,12 +5,10 @@ import { useDisclosure } from '@chakra-ui/react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
-import { styles } from './styles';
 import { Image } from 'atoms/Image';
 import { InternalLink } from 'components/links/InternalLink';
-import { routes } from '~/constants';
-import { HeaderMenu } from '../HeaderMenu';
-import { MenuDrawer } from '../MenuDrawer';
+import { ORIGIN_URL } from 'constants/env';
+import { useLiff } from 'contexts/LineAuthContextInternship';
 import {
   useAccountStore,
   selectAccount,
@@ -18,8 +16,11 @@ import {
   selectSetAccount,
   selectSetPrevPath,
 } from 'features/account';
-import { useLiff } from 'contexts/LineAuthContextInternship';
-import { ORIGIN_URL } from 'constants/env';
+import { ExternalLink } from '~/components/links/ExternalLink';
+import { FORJOB_LP_URL, routes } from '~/constants';
+import { HeaderMenu } from '../HeaderMenu';
+import { MenuDrawer } from '../MenuDrawer';
+import { styles } from './styles';
 
 // type layer
 export type PresenterProps = BoxProps & { isTop?: boolean };
@@ -27,7 +28,7 @@ export type PresenterProps = BoxProps & { isTop?: boolean };
 // presenter
 export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { email, username } = useAccountStore(selectAccount);
+  const { username } = useAccountStore(selectAccount);
   const _signout = useAccountStore(selectSignout);
   const setAccount = useAccountStore(selectSetAccount);
   const setPrevPath = useAccountStore(selectSetPrevPath);
@@ -84,31 +85,28 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
       };
       handler();
     }
-  }, [liff, username, liff?.isLoggedIn()]);
+  }, [liff, username, liff?.isLoggedIn()]); // eslint-disable-line
 
   return (
     <Box
       w={`100%`}
-      bg={`#f5f5f5`}
-      pt={{ base: `${10 / 3.75}vw`, lg: `${15 / 19.2}vw` }}
-      px={{ base: `${20 / 3.75}vw`, lg: `${40 / 19.2}vw` }}
+      bg={`#fffffff`}
+      pt={{ base: `${10 / 3.75}vw`, lg: `0` }}
+      px={{ base: `${20 / 3.75}vw`, lg: `0` }}
+      position={{ lg: `sticky` }}
+      top={`0rem`}
+      zIndex={`sticky`}
       {...props}
     >
       <Flex
         justify={`space-between`}
         align={`center`}
-        backgroundColor={{ base: `#f5f5f5`, lg: 'var(--white)' }}
-        boxShadow={{ lg: `0px 0px 20px #00000026;` }}
-        borderRadius={{ lg: `${50 / 19.2}vw` }}
+        backgroundColor={{ base: `#ffffff`, lg: 'var(--white)' }}
         css={styles}
         w={`100%`}
-        maxWidth={`1530px`}
-        h={{ base: `80px`, lg: `100px` }}
-        p={{ base: `0`, lg: `0 ${40 / 19.2}vw` }}
+        h={{ base: `80px`, lg: `${124 / 19.2}vw` }}
+        p={{ base: `0`, lg: `${0 / 19.2}vw ${80 / 19.2}vw ${5 / 19.2}vw` }}
         mx={`auto`}
-        position={{ lg: `sticky` }}
-        top={`0rem`}
-        zIndex={`sticky`}
         fontFamily={`'Zen Kaku Gothic New',
         'Hiragino Sans'`}
         as={`header`}
@@ -116,45 +114,53 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
         <Flex alignItems={'center'}>
           <InternalLink href={routes.home}>
             <Box
-              pt={{ lg: `8px` }}
-              w={{ base: `${136 / 16}rem` }}
+              pt={{ lg: `${8 / 19.2}vw` }}
+              w={{
+                base: `${136 / 3.75}vw`,
+                md: `${135 / 7.68}vw`,
+                lg: `${183 / 19.2}vw`,
+              }}
               className="logo"
-              as={isTop ? `h1` : `div`}
             >
-              <Image htmlWidth={136} htmlHeight={59} src={`/svg/forjob.svg`} />
+              <Image src={`/svg/forjob.svg`} alt={``} />
             </Box>
           </InternalLink>
-          <InternalLink href={routes.home}>
-            <Box
-              display={{ base: `none`, lg: `block` }}
-              m={{ lg: `0 0 0 ${40 / 19.2}vw` }}
-              color="#444444"
-              fontWeight={'bold'}
-              fontSize={`14px`}
-            >
-              新大生のための求人サイト
-            </Box>
-          </InternalLink>
-        </Flex>
-
-        <Flex alignItems={'center'}>
           <Box
             display={{ base: `none`, lg: `block` }}
-            fontWeight="bold"
-            color="rgba(153,153, 153, 0.8)"
-            fontSize={`12px`}
-            mr={{ lg: `${40 / 19.2}vw` }}
+            color="#39414E"
+            fontSize={`${17 / 19.2}vw`}
+            ml={{ lg: `${60 / 19.2}vw` }}
             mt={{ lg: `${2 / 19.2}vw` }}
+            fontFamily={`'Noto Sans JP', sans-serif`}
+            fontWeight={`500`}
           >
-            採用担当者はこちら
+            新大生のための求人サイト
           </Box>
+        </Flex>
+
+        <Flex
+          mt={{ lg: `${10 / 19.2}vw` }}
+          alignItems={'center'}
+          letterSpacing={`0`}
+        >
+          <ExternalLink href={FORJOB_LP_URL}>
+            <Box
+              display={{ base: `none`, lg: `block` }}
+              color="#39414E"
+              fontSize={`${17 / 19.2}vw`}
+              mr={{ lg: `${33 / 19.2}vw` }}
+              mt={{ lg: `${2 / 19.2}vw` }}
+            >
+              採用担当者はこちら
+            </Box>
+          </ExternalLink>
           {username ? (
             <Box
               display={{ base: `none`, lg: `block` }}
               mr={{ lg: ` ${30 / 19.2}vw` }}
               color="#444444"
               fontWeight={'bold'}
-              fontSize={`14px`}
+              fontSize={`${14 / 19.2}vw`}
             >
               {username}
               <Box as={`span`} fontWeight={`500`}>
@@ -168,10 +174,14 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
           {username ? (
             <Box
               display={{ base: `none`, lg: `block` }}
-              borderRadius={`20px`}
-              p={`${8 / 19.2}vw ${16 / 19.2}vw`}
+              borderRadius={`${10 / 19.2}vw`}
+              w={`${152 / 19.2}vw`}
+              h={`${44 / 19.2}vw`}
+              fontSize={`${17 / 19.2}vw`}
+              pt={`${13 / 19.2}vw`}
+              textAlign={`center`}
               color="white"
-              backgroundImage={`linear-gradient(19deg, #21D4FD 0%, #B721FF 100%)`}
+              background={`transparent linear-gradient(270deg, #0EF4FF 0%, #41A4FD 100%) 0% 0% no-repeat padding-box`}
               fontWeight={'600'}
               onClick={() => signout()}
               transition={`all .3s`}
@@ -180,17 +190,21 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
                 filter: `opacity(50%)`,
                 textDecoration: 'none',
               }}
-              mr={{ lg: '50px' }}
+              mr={{ lg: `${33 / 19.2}vw` }}
             >
               ログアウト
             </Box>
           ) : (
             <Box
               display={{ base: `none`, lg: `block` }}
-              borderRadius={`20px`}
-              p={`${8 / 19.2}vw ${16 / 19.2}vw`}
+              borderRadius={`${10 / 19.2}vw`}
+              w={`${152 / 19.2}vw`}
+              h={`${44 / 19.2}vw`}
+              fontSize={`${17 / 19.2}vw`}
+              pt={`${13 / 19.2}vw`}
+              textAlign={`center`}
               color="white"
-              backgroundImage={`linear-gradient(19deg, #21D4FD 0%, #B721FF 100%)`}
+              background={`transparent linear-gradient(270deg, #0EF4FF 0%, #41A4FD 100%) 0% 0% no-repeat padding-box`}
               fontWeight={'600'}
               onClick={signin}
               transition={`all .3s`}
@@ -199,7 +213,7 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
                 filter: `opacity(50%)`,
                 textDecoration: 'none',
               }}
-              mr={{ lg: '50px' }}
+              mr={{ lg: `${33 / 19.2}vw` }}
             >
               ログイン
             </Box>
@@ -222,13 +236,24 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
           >
             ログアウト
           </Box> */}
-          <Box display={{ base: `block`, lg: `block` }}>
+          <Box
+            display={{ base: `block`, lg: `block` }}
+            mt={{ base: ``, lg: `${15 / 19.2}vw` }}
+          >
             <HeaderMenu isOpen={isOpen} onClick={onOpen} />
           </Box>
         </Flex>
 
         <MenuDrawer isOpen={isOpen} onClose={onClose} />
       </Flex>
+      {/*
+      <Box
+        display={{ base: `none`, lg: `block` }}
+        w={`100%`}
+        h={`${40 / 19.2}vw`}
+        bg={`#41A4FD`}
+      />
+      */}
     </Box>
   );
 };

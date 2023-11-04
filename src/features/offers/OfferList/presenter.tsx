@@ -1,42 +1,21 @@
 // import layer
 import { FC, useState } from 'react';
-import { Box, Grid, Image } from '@chakra-ui/react';
-import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay, EffectFade, Pagination } from 'swiper';
-
-import { OfferCard } from 'features/offers/OfferCard';
-import { selectOfferList } from 'features/offers/selectors';
+import { Image } from 'components/images/Image';
+import { Box, Grid, Flex } from '@chakra-ui/react';
+import { Select } from 'chakra-react-select';
+import { OfferCard3 } from 'features/offers/OfferCard3';
+import { OfferCard } from 'features/offers';
 import { useOffersStore } from 'features/offers/hooks';
+import { selectOfferList } from 'features/offers/selectors';
 import { styles } from './styles';
-// import { Image } from 'components/Image';
-import { breakpointsByPx } from '~/constants/styles';
-import {
-  selectAdvertisements,
-  useAdvertisementsStore,
-} from 'features/advertisements';
-
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/autoplay';
-import 'swiper/css/effect-fade';
-import { OfferCardDead } from '../OfferCardDead';
-import { InternalLink } from 'components/links/InternalLink';
-import { routes } from '~/constants';
+import { Pagination } from '~/components/Pagination';
+import chakraStyles from '~/components/SeachLook/chakraStyles';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
-const remainingDays = (deadline) => {
-  const currentDate = new Date();
-  const deadlineDate = new Date(deadline);
-  const diffTime = deadlineDate.getTime() - currentDate.getTime();
-  return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-};
-
 // presenter
-export const Presenter: FC<PresenterProps> = ({ ...props }) => {
-  const advertisements = useAdvertisementsStore(selectAdvertisements);
+export const Presenter: FC<PresenterProps> = () => {
   const offers = useOffersStore(selectOfferList);
 
   const currentDate = new Date();
@@ -59,6 +38,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
 
   const dayNum = currentDate.getDate();
   const dayMap = [
+    '00',
     '01',
     '02',
     '03',
@@ -96,137 +76,198 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const date = dayMap[dayNum];
   const today = `${year}-${month}-${date}`;
 
-  const [index, setIndex] = useState<number>(0);
-
-  const swiperProps: SwiperProps = {
-    modules: [Navigation, Autoplay, EffectFade, Pagination],
-    loop: true,
-    speed: 2000,
-    // effect: 'fade',
-    fadeEffect: {
-      crossFade: true,
-    },
-    pagination: {
-      clickable: true,
-    },
-    centeredSlides: false,
-    navigation: true,
-    autoplay: {
-      disableOnInteraction: false,
-    },
-    slidesPerView: 1,
-    spaceBetween: 0,
-    breakpoints: {
-      // [breakpointsByPx[0]]: {},
-      // [breakpointsByPx[1]]: {},
-      [breakpointsByPx[2]]: {
-        centeredSlides: true,
-        slidesPerView: 1,
-        spaceBetween: 0,
-      },
-      // [breakpointsByPx[3]]: {},
-      // [breakpointsByPx[4]]: {},
-    },
-    onSlideChange: (swiper) => {
-      setIndex(swiper.realIndex);
-    },
+  const activeOffers = offers.filter((offer) => offer.end_at >= today);
+  const Options = [
+    { value: '並び順 : 新着順', label: '並び順 : 新着順' },
+    { value: '並び順 : 締切が近い順', label: '並び順 : 締切が近い順' },
+    { value: '並び順 : 締切が遠い順', label: '並び順 : 締切が遠い順' },
+  ];
+  const [sortOption, setSortOption] = useState<string>('並び順 : 新着順');
+  const sortOffers = (offers: OfferCard[]) => {
+    switch (sortOption) {
+      case '並び順 : 新着順':
+        return offers.sort(
+          (a, b) =>
+            new Date(b.start_at).getTime() - new Date(a.start_at).getTime()
+        );
+      case '並び順 : 締切が近い順':
+        return offers.sort(
+          (a, b) => new Date(a.end_at).getTime() - new Date(b.end_at).getTime()
+        );
+      case '並び順 : 締切が遠い順':
+        return offers.sort(
+          (a, b) => new Date(b.end_at).getTime() - new Date(a.end_at).getTime()
+        );
+      default:
+        return [...offers];
+    }
   };
-  const activeOffers = offers.filter((offer) => offer.deadline >= today);
-  const expiredOffers = offers.filter((offer) => offer.deadline < today);
+  const sortedOffers = sortOffers([...activeOffers]);
 
-  const sortedOffers = [...activeOffers, ...expiredOffers];
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
+
+  const handlePageChange = (newPage: number) => {
+    setCurrentPage(newPage);
+  };
   return (
-    <Box css={styles}>
-      <Box
-        // pb={{ base: `${80 / 3.75}vw`, lg: `${120 / 19.2}vw` }}
-        className="search"
+    <Box css={styles} w={`100%`}>
+      <Flex
+        direction={{ base: `column`, md: `initial` }}
+        justify={{ md: `space-between` }}
+        w={{ base: ``, md: `${698 / 7.68}vw`, lg: `${1439 / 19.2}vw` }}
+        ml={{ base: ``, md: `${30 / 7.68}vw`, lg: `${206 / 19.2}vw` }}
+        pt={{ base: ``, md: `${30 / 7.68}vw`, lg: `${130 / 19.2}vw` }}
+        mb={{ base: `${34 / 3.75}vw`, md: `${70 / 19.2}vw` }}
+        color={`#39414E`}
       >
-        <Box className="search__container" position={`relative`}>
+        <Flex
+          fontFamily={`'Noto Sans JP', sans-serif`}
+          display={{ base: `flex`, md: `flex` }}
+          pt={{ base: `${15 / 3.75}vw`, md: `initial` }}
+          ml={{ base: `${10 / 3.75}vw`, md: `initial` }}
+        >
+          <Image // eslint-disable-line
+            ml={{ base: `${10 / 3.75}vw`, md: `${23 / 19.2}vw` }}
+            mr={{ base: `${10 / 3.75}vw`, md: `${13 / 19.2}vw` }}
+            mb={{
+              base: `${0 / 3.75}vw`,
+              md: `${2 / 7.68}vw`,
+              lg: `${19 / 19.2}vw`,
+            }}
+            w={{
+              base: `${20 / 3.75}vw`,
+              md: `${20 / 7.68}vw`,
+              lg: `${32 / 19.2}vw`,
+            }}
+            h={{
+              base: `${15 / 3.75}vw`,
+              md: `${23 / 7.68}vw`,
+              lg: `${32 / 19.2}vw`,
+            }}
+            image={{
+              width: 32,
+              height: 42,
+              src: `/svg/file-invoice-solid.svg`,
+              alt: `書類のアイコン`,
+            }}
+          />
           <Box
-            mx={`auto`}
-            borderRadius={{ base: `${20 / 3.75}vw`, lg: `${50 / 19.2}vw` }}
-            overflow={`hidden`}
-            // position={`relative`}
-            // zIndex={`1`}
-            mt={`30px`}
-            w={`100%`}
+            mt={{ base: `${5 / 3.75}vw`, md: `${3 / 19.2}vw` }}
+            fontSize={{
+              base: `${18 / 3.75}vw`,
+              md: `${20 / 7.68}vw`,
+              lg: `${36 / 19.2}vw`,
+            }}
+            fontWeight={`bold`}
           >
-            <Swiper {...swiperProps}>
-              <SwiperSlide>
-                <InternalLink href={routes.campaign}>
-                  <Image src="/images/campaign/slider.webp"></Image>
-                </InternalLink>
-              </SwiperSlide>
-              <SwiperSlide>
-                <InternalLink href={routes.howToRegister}>
-                  {' '}
-                  <Image src="/images/register/slider.webp"></Image>
-                </InternalLink>
-              </SwiperSlide>
-              <SwiperSlide>
-                <InternalLink href={routes.beginners}>
-                  {' '}
-                  <Image src="/images/beginners/slider.webp"></Image>
-                </InternalLink>
-              </SwiperSlide>
-              {/* {advertisements.map((ad) => (
-                <SwiperSlide key={ad.id}>
-                  <InternalLink href={`${routes.advertisements}/${ad.id}`}>
-                    <Box>
-                      <Image
-                        w={`100%`}
-                        image={{
-                          ...ad.image,
-                          layout: `responsive`,
-                        }}
-                      />
-                    </Box>
-                  </InternalLink>
-                </SwiperSlide>
-              ))} */}
-            </Swiper>
+            求人一覧
           </Box>
-          {/*<OfferSidebar />*/}
-          <div className="search-title__container">
-            <p className="search-title__container__title">求人一覧</p>
-          </div>
-
-          <section className="recruit-card-area">
-            {/* <div className="recruit-card-container"> */}
-            <Grid
-              templateColumns={{
-                base: `repeat(1,1fr)`,
-                md: `repeat(2,1fr)`,
-                lg: `repeat(3,1fr)`,
-              }}
-              rowGap={{ lg: `38px` }}
-              columnGap={{ lg: `32px` }}
-            >
-              {sortedOffers.map((offer) => {
-                const daysRemaining = remainingDays(offer.deadline);
-                return (
-                  <div key={offer.id}>
-                    {offer.deadline >= today ? (
-                      <Box m={`0 auto`} w={`fit-content`}>
-                        <OfferCard
-                          {...offer}
-                          deadline={daysRemaining}
-                          startDate={offer.createdAt}
-                        />
-                      </Box>
-                    ) : (
-                      <Box m={`0 auto`} w={`fit-content`}>
-                        <OfferCardDead {...offer} deadline={daysRemaining} />
-                      </Box>
-                    )}
-                  </div>
-                );
-              })}
-            </Grid>
-
-            {/* </div> */}
-          </section>
+        </Flex>
+        <Flex
+          display={{ base: `block`, md: `flex` }}
+          mt={{ base: `${15 / 3.75}vw`, md: `${13 / 19.2}vw` }}
+          ml={{ base: `${15 / 3.75}vw`, md: `initial` }}
+          fontSize={{
+            base: `${13 / 3.75}vw`,
+            md: `${14 / 7.68}vw`,
+            lg: `${25 / 19.2}vw`,
+          }}
+          fontWeight={`bold`}
+          fontFamily={`'Noto Sans JP', sans-serif`}
+        >
+          <Box
+            mt={{
+              base: `${14 / 3.75}vw`,
+              md: `${-5 / 7.68}vw`,
+              lg: `${-10 / 19.2}vw`,
+              '2xl': `${-5 / 19.2}vw`,
+            }}
+          >
+            <Select
+              options={Options}
+              chakraStyles={chakraStyles}
+              placeholder={sortOption}
+              onChange={(option: { value: string }) =>
+                setSortOption(option.value)
+              }
+            />
+          </Box>
+        </Flex>
+      </Flex>
+      {/* <Box display={`none`}>
+        <Swiper {...swiperProps}>
+          {sortedOffers.map((offer) => {
+            const daysRemaining = remainingDays(offer.deadline);
+            return (
+              <SwiperSlide key={offer.id}>
+                {offer.deadline >= today ? (
+                  <Box m={`0 auto`} w={`fit-content`}>
+                    <OfferCard
+                      {...offer}
+                      deadline={daysRemaining}
+                      startDate={offer.createdAt}
+                    />
+                  </Box>
+                ) : (
+                  <Box display={`none`}></Box>
+                )}
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+        <Box pt={`${20 / 3.75}vw`} pb={`${40 / 3.75}vw`}>
+          <SearchButton />
         </Box>
+      </Box> */}
+
+      <Grid
+        ml={{ lg: `${206 / 19.2}vw` }}
+        mr={{ lg: `${240 / 19.2}vw` }}
+        templateColumns={{
+          base: `repeat(1,1fr)`,
+          md: `repeat(2,1fr)`,
+          lg: `repeat(2,1fr)`,
+        }}
+        rowGap={{
+          base: `${34 / 3.75}vw`,
+          md: `${80 / 19.2}vw`,
+          lg: `${80 / 19.2}vw`,
+        }}
+        columnGap={{ lg: `32px` }}
+        opacity={`1`}
+      >
+        {sortedOffers
+          .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+          .map((offer) => {
+            // const daysRemaining = remainingDays(offer.deadline);
+            return (
+              <div key={offer.id}>
+                {offer.end_at >= today ? (
+                  <Box m={`0 auto`} w={`fit-content`}>
+                    <OfferCard3 {...offer} />
+                  </Box>
+                ) : (
+                  <></>
+                )}
+              </div>
+            );
+          })}
+      </Grid>
+
+      <Box
+        w={`fit-content`}
+        mt={{ base: `${50 / 3.75}vw`, md: `${130 / 19.2}vw` }}
+        mx={`auto`}
+        pb={{ base: `${50 / 3.75}vw`, md: `${100 / 19.2}vw` }}
+      >
+        {/* <SearchButton /> */}
+        <Pagination
+          currentPage={currentPage}
+          totalData={activeOffers ? activeOffers.length : 0}
+          itemsPerPage={8}
+          handlePageChange={handlePageChange}
+        />
       </Box>
     </Box>
   );

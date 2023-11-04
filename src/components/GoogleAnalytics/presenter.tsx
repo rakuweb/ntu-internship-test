@@ -2,8 +2,8 @@
 import { FC } from 'react';
 import Script from 'next/script';
 
-import { existsGaId } from 'lib/gtag';
 import { GA_ID } from 'constants/parameters';
+import { existsGaId } from 'lib/gtag';
 
 // type layer
 export type StyleProps = Record<string, unknown>;

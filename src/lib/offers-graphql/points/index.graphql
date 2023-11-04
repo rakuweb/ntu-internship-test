@@ -1,0 +1,10 @@
+query getPointById($id: ID) {
+  point(id: $id) {
+    data {
+      id
+      attributes {
+        name
+      }
+    }
+  }
+}

@@ -2,9 +2,9 @@
 import { FC } from 'react';
 import { Box } from '@chakra-ui/react';
 
-import { BreadcrumbOffers } from '~/components/organisms/BreadcrumbOffers';
 import { Footer } from '~/components/footers/Footer';
 import { Header } from '~/components/headers/Header';
+import { BreadcrumbOfferId } from '~/components/organisms/BreadcrumbOfferId';
 import { CampaignContent } from '~/components/organisms/CampaignContent';
 
 import 'swiper/css';
@@ -20,7 +20,7 @@ export const Presenter: FC<PresenterProps> = () => {
     <>
       <Header />
       <Box as={`main`}>
-        <BreadcrumbOffers title={`キャンペーン`} />
+        <BreadcrumbOfferId titles={[`キャンペーン`]} />
         <CampaignContent />
       </Box>
       <Footer />

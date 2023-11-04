@@ -2,22 +2,19 @@
 import { FC, useState, useEffect } from 'react';
 import { Button, Checkbox } from '@chakra-ui/react';
 
-import { styles } from './styles';
-import { useRegisterGradeFormStore } from 'features/registerForm/hooks';
+import { routes } from 'constants/routes';
 import { useFormProgressStore } from 'features/formProgress/hooks';
 import { selectBackProgress } from 'features/formProgress/selectors';
-import { routes } from 'constants/routes';
+import { useRegisterGradeFormStore } from 'features/registerForm/hooks';
 import { InternalLink } from '~/components/links/InternalLink';
+import { styles } from './styles';
 
 // type layer
 export type DataProps = { onClick: () => void };
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: FC<PresenterProps & DataProps> = ({
-  onClick,
-  ...props
-}) => {
+export const Presenter: FC<PresenterProps & DataProps> = ({ onClick }) => {
   const { grade, setIsChecked, toReceiveJobInfo, isChecked } =
     useRegisterGradeFormStore();
   const backProgress = useFormProgressStore(selectBackProgress);
@@ -25,7 +22,7 @@ export const Presenter: FC<PresenterProps & DataProps> = ({
 
   useEffect(() => {
     setIsChecked(isCheckedPrivacyPolicy);
-  }, [isCheckedPrivacyPolicy]);
+  }, [isCheckedPrivacyPolicy]); // eslint-disable-line
 
   // useEffect(() => {
   //   const postData = async () => {
