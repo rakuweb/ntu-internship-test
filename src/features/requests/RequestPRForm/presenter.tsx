@@ -243,6 +243,30 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                               md: `${70 / 19.2}vw`,
                             }}
                           />
+                          <Box
+                            w={{
+                              base: `${190 / 3.75}vw`,
+                              md: `${200 / 7.68}vw`,
+                              lg: `${500 / 19.2}vw`,
+                            }}
+                            mt={{ lg: `${4 / 19.2}vw` }}
+                            ml={{
+                              base: `${19 / 3.75}vw`,
+                              md: `${70 / 19.2}vw`,
+                            }}
+                            fontSize={{ lg: `${13 / 19.2}vw` }}
+                            lineHeight={`1.5`}
+                            whiteSpace={{ base: `pre-wrap` }}
+                          >
+                            {index === 0 ||
+                            index === 4 ||
+                            index === 7 ||
+                            index === 10
+                              ? `※23文字以内`
+                              : index === 2
+                              ? `※108文字以内`
+                              : ``}
+                          </Box>
                           {errors?.[idlist[index]]?.message && (
                             <Box
                               mt={{ base: `0.25rem` }}
@@ -349,6 +373,19 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                           // eslint-disable-next-line
                           {...register(idlist[index] as any)}
                         />
+                        <Box
+                          w={{
+                            base: `${190 / 3.75}vw`,
+                            md: `${200 / 7.68}vw`,
+                            lg: `${500 / 19.2}vw`,
+                          }}
+                          mt={{ lg: `${4 / 19.2}vw` }}
+                          fontSize={{ lg: `${13 / 19.2}vw` }}
+                          lineHeight={`1.5`}
+                          whiteSpace={{ base: `pre-wrap` }}
+                        >
+                          {index === 2 ? `※108文字以内` : `※104文字以内`}
+                        </Box>
                         {errors?.[idlist[index]]?.message && (
                           <Box
                             mt={{ base: `0.25rem` }}
