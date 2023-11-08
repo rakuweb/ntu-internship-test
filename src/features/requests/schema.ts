@@ -259,7 +259,7 @@ export const requestSchema = z.object({
   atmosphere_text: z
     .string({ required_error: '入力してください' })
     .min(1, '入力してください')
-    .max(54, '54文字以内で入力してください'),
+    .max(104, '104文字以内で入力してください'),
   atmosphere_title2: z
     .string({ required_error: '入力してください' })
     .max(23, '23文字以内で入力してください'),
@@ -277,7 +277,7 @@ export const requestSchema = z.object({
     ),
   atmosphere_text2: z
     .string({ required_error: '入力してください' })
-    .max(54, '54文字以内で入力してください'),
+    .max(104, '104文字以内で入力してください'),
   atmosphere_title3: z
     .string({ required_error: '入力してください' })
     .max(23, '23文字以内で入力してください'),
@@ -295,7 +295,7 @@ export const requestSchema = z.object({
     ),
   atmosphere_text3: z
     .string({ required_error: '入力してください' })
-    .max(54, '54文字以内で入力してください'),
+    .max(104, '104文字以内で入力してください'),
 });
 
 export type RequestSchema = z.infer<typeof requestSchema>;
