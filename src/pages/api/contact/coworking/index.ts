@@ -6,7 +6,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const method = req.method;
-  const url = `${API_URL_OFFER}/contacts`;
+  const url = `${API_URL_OFFER}${apiRoutes.coworkingContacts}`;
 
   switch (method) {
     case 'POST': {
