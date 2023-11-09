@@ -28,7 +28,9 @@ export const routes = {
   howToRegister: '/how-to-register',
   campaign: '/campaign',
   contact: '/contact',
+  coworkingContact: '/contact/coworking',
   contactComplete: '/contact/complete',
+  coworkingContactComplete: '/contact/coworking/complete',
   applicationComplete: '/application/complete',
   requestComplete: (id: string) => `/companies/${id}/request/complete`,
   offerCheckComplete: (id: string) => `/offers/preview/${id}/complete`,
@@ -44,6 +46,7 @@ export const routes = {
   apiCompaniesRequest: '/api/companies/request',
   apiJobform: `/api/offers/jobform/send`,
   apiContact: `/api/contact`,
+  apiCoworkingContact: `/api/contact/coworking`,
   apiAgent: `/api/agent`,
   apiOffersCheck: `/api/offers/check`,
   apiOffersJobformLine: `/api/offers/jobform/line`,
@@ -67,6 +70,8 @@ export const apiRoutes = {
   offerId: (id: string) => `/offers/${id}`,
   agent: `/agents`,
   submissions: `/submissions`,
+  contacts: `/contacts`,
+  coworkingContacts: `/coworking-contacts`,
 };
 
 export type NavItem = { name: string; link: string; isExternal?: boolean };
