@@ -301,7 +301,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                       )}
                     </Flex>
                   </Box>
-                  <Flex pt={{ base: `${15 / 3.75}vw`, md: `${18 / 19.2}vw` }}>
+                  <Flex py={{ base: `${15 / 3.75}vw`, md: `${18 / 19.2}vw` }}>
                     {index < 19 &&
                       index !== 0 &&
                       index !== 1 &&
@@ -345,6 +345,25 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                               md: `${70 / 19.2}vw`,
                             }}
                           />
+                          <Box
+                            w={{
+                              base: `${190 / 3.75}vw`,
+                              md: `${200 / 7.68}vw`,
+                              lg: `${500 / 19.2}vw`,
+                            }}
+                            mt={{ lg: `${4 / 19.2}vw` }}
+                            ml={{
+                              base: `${19 / 3.75}vw`,
+                              md: `${70 / 19.2}vw`,
+                            }}
+                            fontSize={{ lg: `${13 / 19.2}vw` }}
+                            lineHeight={`1.5`}
+                            whiteSpace={{ base: `pre-wrap` }}
+                          >
+                            {index === 12
+                              ? `※文字以内`
+                              : ``}
+                          </Box>
                           {errors?.[idlist[index]]?.message && (
                             <Box
                               mt={{ base: `0.25rem` }}
@@ -454,7 +473,6 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                       index === 14 ||
                       index === 15) && (
                       <Box
-                        mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
                         ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
                       >
                         <CheckboxForm
@@ -481,7 +499,6 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                       index === 6 ||
                       index === 7) && (
                       <Box
-                        mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
                         ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
                       >
                         <SelectForm
@@ -508,7 +525,6 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
 
                     {(index === 8 || index === 16 || index === 17) && (
                       <Box
-                        mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
                         ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
                       >
                         <Textarea
@@ -533,6 +549,21 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                           // eslint-disable-next-line
                           {...register(idlist[index] as any)}
                         />
+                          <Box
+                            w={{
+                              base: `${190 / 3.75}vw`,
+                              md: `${200 / 7.68}vw`,
+                              lg: `${500 / 19.2}vw`,
+                            }}
+                            mt={{ lg: `${4 / 19.2}vw` }}
+                            fontSize={{ lg: `${13 / 19.2}vw` }}
+                            lineHeight={`1.5`}
+                            whiteSpace={{ base: `pre-wrap` }}
+                          >
+                            {index === 17
+                              ? `※54文字以内`
+                              : ``}
+                          </Box>
                         {errors?.[idlist[index]]?.message && (
                           <Box
                             mt={{ base: `0.25rem` }}
