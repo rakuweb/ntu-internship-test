@@ -42,7 +42,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
     { title: 'シフト詳細' },
     { title: `勤務期間` },
     { title: '勤務可能日数' },
-    { title: '定休日' },
+    { title: '休日' },
     { title: '勤務地' },
     { title: '面接場所' },
     { title: '対象になる方・資格' },

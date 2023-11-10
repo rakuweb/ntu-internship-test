@@ -415,7 +415,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     >
                       時給
                     </Box>
-                    {hourly_wage}
+                    {hourly_wage}円
                   </Flex>
                   <Flex
                     fontSize={{ base: `${10 / 3.75}vw`, md: `${10 / 7.68}vw` }}

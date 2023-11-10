@@ -52,7 +52,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
     { title: `勤務期間` },
     { title: '勤務可能日数' },
     { title: 'シフト詳細' },
-    { title: '定休日' },
+    { title: '休日' },
     { title: '勤務地' },
     { title: '面接場所' },
     { title: '対象になる方・資格' },
@@ -360,9 +360,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                             lineHeight={`1.5`}
                             whiteSpace={{ base: `pre-wrap` }}
                           >
-                            {index === 12
-                              ? `※文字以内`
-                              : ``}
+                            {index === 12 ? `※文字以内` : ``}
                           </Box>
                           {errors?.[idlist[index]]?.message && (
                             <Box
@@ -549,21 +547,19 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                           // eslint-disable-next-line
                           {...register(idlist[index] as any)}
                         />
-                          <Box
-                            w={{
-                              base: `${190 / 3.75}vw`,
-                              md: `${200 / 7.68}vw`,
-                              lg: `${500 / 19.2}vw`,
-                            }}
-                            mt={{ lg: `${4 / 19.2}vw` }}
-                            fontSize={{ lg: `${13 / 19.2}vw` }}
-                            lineHeight={`1.5`}
-                            whiteSpace={{ base: `pre-wrap` }}
-                          >
-                            {index === 17
-                              ? `※54文字以内`
-                              : ``}
-                          </Box>
+                        <Box
+                          w={{
+                            base: `${190 / 3.75}vw`,
+                            md: `${200 / 7.68}vw`,
+                            lg: `${500 / 19.2}vw`,
+                          }}
+                          mt={{ lg: `${4 / 19.2}vw` }}
+                          fontSize={{ lg: `${13 / 19.2}vw` }}
+                          lineHeight={`1.5`}
+                          whiteSpace={{ base: `pre-wrap` }}
+                        >
+                          {index === 17 ? `※54文字以内` : ``}
+                        </Box>
                         {errors?.[idlist[index]]?.message && (
                           <Box
                             mt={{ base: `0.25rem` }}
