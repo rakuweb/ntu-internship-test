@@ -1,9 +1,8 @@
 // import layer
 import { FC } from 'react';
-import { Box, Flex } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { Image } from 'components/images/Image';
 import { InternalLink } from '~/components/links/InternalLink';
-import { routes } from '~/constants';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
@@ -23,31 +22,21 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       color={`white`}
       {...props}
     >
-      <Image // eslint-disable-line
-        w={{
-          base: `${134 / 3.75}vw`,
-          md: `${200 / 7.68}vw`,
-          lg: `${355 / 19.2}vw`,
-        }}
-        mb={{ base: ``, md: `${30 / 19.2}vw` }}
-        image={{
-          width: 500,
-          height: 120,
-          src: `/svg/forjob.svg`,
-          alt: `forjob`,
-        }}
-      />
-      <InternalLink href={`/`} display={`none`}>
-        <Flex
-          w={`100%`}
-          alignItems={`center`}
-          justify={`center`}
-          bg={`#39414E`}
-          px={{ base: ``, md: `${86 / 7.68}vw`, lg: `${86 / 19.2}vw` }}
-          py={{ base: ``, md: `${11 / 7.68}vw`, lg: `${11 / 19.2}vw` }}
-        >
-          CONTACT
-        </Flex>
+      <InternalLink href={`/`}>
+        <Image // eslint-disable-line
+          w={{
+            base: `${134 / 3.75}vw`,
+            md: `${200 / 7.68}vw`,
+            lg: `${355 / 19.2}vw`,
+          }}
+          mb={{ base: ``, md: `${30 / 19.2}vw` }}
+          image={{
+            width: 500,
+            height: 120,
+            src: `/svg/forjob.svg`,
+            alt: `forjob`,
+          }}
+        />
       </InternalLink>
     </Box>
   );
