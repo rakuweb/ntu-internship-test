@@ -70,13 +70,13 @@ export const minWorkingdayList = [
   '週4日以上',
 ];
 export const holidayList = [
-  '日曜日',
   '月曜日',
   '火曜日',
   '水曜日',
   '木曜日',
   '金曜日',
   '土曜日',
+  '日曜日',
   '祝祭日',
   '不定休',
   'なし',
@@ -101,6 +101,8 @@ export const desiredInterviewDateList = [
   `金`,
   `土`,
   `日`,
+  `面接なし`,
+  `その他`,
 ];
 export const desiredInterviewTimeList = [
   `10:00−11:00`,
@@ -109,6 +111,7 @@ export const desiredInterviewTimeList = [
   `14:00−15:00`,
   `15:00−16:00`,
   `16:00−17:00`,
+  `面接なし`,
 ];
 
 export const requestSchema = z.object({

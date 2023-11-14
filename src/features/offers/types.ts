@@ -84,6 +84,7 @@ export type OfferSliceData = {
   image?: ImageType;
   desired_interview_time: string;
   desired_interview_date: string;
+  interview_remarks?: string;
   company: Company;
   company_name: string;
 };
