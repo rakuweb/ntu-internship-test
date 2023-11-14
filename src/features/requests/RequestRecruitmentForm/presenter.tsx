@@ -47,7 +47,8 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
     { title: '職種' },
     { title: '募集する学生の学年' },
     { title: '募集人数' },
-    { title: '時給' },
+    { title: '給与形態' },
+    // { title: '時給' },
     { title: '勤務時間' },
     { title: `勤務期間` },
     { title: '勤務可能日数' },
@@ -93,7 +94,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
     '',
     '大学1年生〜修士1年生',
     '3人',
-    '1,000円',
+    '時給 1,000',
     '15:00〜19:00',
     ``,
     '',
@@ -380,7 +381,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
 
                     {index === 4 && (
                       <AmountForm
-                        placeholder={`1000`}
+                        placeholder={placeholderList[index]}
                         registers={register(idlist[index])}
                         errorMessage={errors?.[idlist[index]]?.message}
                       />

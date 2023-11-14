@@ -60,6 +60,10 @@ export const Index: NextPage<Props> = ({ data, allOffersData }) => {
     return <></>;
   }
 
+  if (data?.offer?.data?.attributes?.check) {
+    return <></>;
+  }
+
   setTarget(data?.offer?.data as OfferEntity);
   allOffersData?.offers?.data &&
     setOffers(allOffersData.offers.data as OfferEntity[]);

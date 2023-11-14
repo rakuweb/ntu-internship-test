@@ -3,6 +3,7 @@ query getOfferById($id: ID) {
     data {
       id
       attributes {
+        check
         title
         hourly_wage
         hourly_wage_detail

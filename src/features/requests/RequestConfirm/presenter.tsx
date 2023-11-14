@@ -37,7 +37,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
     { title: '職種' },
     { title: '募集する学生の学年' },
     { title: '募集人数' },
-    { title: '時給' },
+    { title: '給与形態' },
     { title: '勤務時間' },
     { title: 'シフト詳細' },
     { title: `勤務期間` },

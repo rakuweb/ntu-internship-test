@@ -19,11 +19,11 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     { title: `募集人数`, main: offer.people },
     { title: `対象`, main: offer.target },
     { title: `雇用形態`, main: offer.job_type },
-    { title: `時給`, main: `${offer.hourly_wage}円` },
+    { title: `給与形態`, main: `${offer.hourly_wage}円` },
     { title: `勤務時間`, main: offer.hours_short },
     { title: `最低勤務日数 `, main: offer.min_workingday },
     { title: `最低勤務期間 `, main: offer.min_period },
-    { title: `休日・休暇`, main: offer.holiday },
+    { title: `休日`, main: offer.holiday },
     { title: `シフト詳細`, main: offer.shift },
     { title: `勤務場所`, main: offer.place_short },
     { title: `面接場所`, main: offer.interview_location },
@@ -35,9 +35,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           ? offer.desired_interview_time
           : undefined,
     },
-    //
     { title: `面接について（備考）`, main: offer.interview_remarks },
-    //
     { title: `対象になる方・資格`, main: offer.qualification },
     { title: `おすすめポイント`, main: offer.points },
     { title: `選考方法`, main: offer.flow },

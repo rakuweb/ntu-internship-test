@@ -139,7 +139,7 @@ export const requestSchema = z.object({
     .min(1, '選択してください'),
   hourly_wage: z
     .string({ required_error: '入力してください' })
-    .regex(new RegExp(/^[0-9]+$/), '半角数字を入力してください')
+    // .regex(new RegExp(/^[0-9]+$/), '半角数字を入力してください')
     .min(1, '入力してください'),
   hours_short_start: z
     .string({ required_error: '入力してください' })
