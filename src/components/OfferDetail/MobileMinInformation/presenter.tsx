@@ -3,10 +3,7 @@ import { FC } from 'react';
 
 import { Box, Flex } from '@chakra-ui/react';
 
-import {
-  useTargetOfferStore,
-  selectTarget,
-} from 'features/offers';
+import { useTargetOfferStore, selectTarget } from 'features/offers';
 import { Image } from '~/components/Image';
 
 // type layer
@@ -26,6 +23,7 @@ export const Presenter: FC<PresenterProps> = () => {
       >
         <Flex
           w={`${181 / 4.28}vw`}
+          h={`auto`}
           color={`#39414E`}
           fontWeight={`bold`}
           fontSize={`${10 / 3.75}vw`}
@@ -38,7 +36,8 @@ export const Presenter: FC<PresenterProps> = () => {
             ml={`${11 / 3.75}vw`}
             mr={`${10 / 3.75}vw`}
             w={`${7 / 3.75}vw`}
-            h={`${10 / 3.75}vw`}
+            h={`auto`}
+            // h={`${10 / 3.75}vw`}
             image={{
               width: 24,
               height: 30,
@@ -98,6 +97,7 @@ export const Presenter: FC<PresenterProps> = () => {
         </Flex>
         <Flex
           w={`${181 / 4.28}vw`}
+          h={`auto`}
           color={`#39414E`}
           fontWeight={`bold`}
           fontSize={`${10 / 3.75}vw`}
@@ -110,7 +110,8 @@ export const Presenter: FC<PresenterProps> = () => {
             ml={`${10 / 3.75}vw`}
             mr={`${8 / 3.75}vw`}
             w={`${10 / 3.75}vw`}
-            h={`${12 / 3.75}vw`}
+            h={`auto`}
+            // h={`${12 / 3.75}vw`}
             image={{
               width: 16,
               height: 18.5,

@@ -1,4 +1,5 @@
 // import layer
+import { useEffect } from 'react';
 import {
   NextPage,
   InferGetStaticPropsType,
@@ -53,13 +54,19 @@ export const Index: NextPage<Props> = ({ data, allOffersData }) => {
   const setTarget = useTargetOfferStore(selectSetTarget);
   const setOffers = useOffersStore(selectSetOffers);
 
+  useEffect(() => {
+    data?.offer?.data && setTarget(data?.offer?.data as OfferEntity);
+  }, [data]);
+
+  useEffect(() => {
+    allOffersData?.offers?.data &&
+      setOffers(allOffersData.offers.data as OfferEntity[]);
+  }, [allOffersData]);
+
   if (!data?.offer?.data) {
     return <></>;
   }
 
-  setTarget(data?.offer?.data as OfferEntity);
-  allOffersData?.offers?.data &&
-    setOffers(allOffersData.offers.data as OfferEntity[]);
   const message = () => {
     if (isClient) {
       return (

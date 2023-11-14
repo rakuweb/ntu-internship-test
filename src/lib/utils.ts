@@ -92,7 +92,7 @@ export const parseSrcSet = (formats: any): string =>
     ? `${formats.xsmall ? `${parseImageUrl(formats.xsmall.url)} 375w,` : ``}${
         formats.small ? `${parseImageUrl(formats.small.url)} 500w,` : ``
       }${formats.medium ? `${parseImageUrl(formats.medium.url)} 768w,` : ``}${
-        formats.large ? `${parseImageUrl(formats.large.url)} 1000w` : ``
+        formats.large ? `${parseImageUrl(formats.large.url)} 1000w,` : ``
       }${formats.xlarge ? `${parseImageUrl(formats.xlarge.url)} 3000w` : ``}`
     : ``;
 

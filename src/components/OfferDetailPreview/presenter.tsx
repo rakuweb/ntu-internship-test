@@ -2,10 +2,9 @@
 import { FC } from 'react';
 import React from 'react';
 import { Box, Flex } from '@chakra-ui/react';
+import dynamic from 'next/dynamic';
 import { Image } from 'components/images/Image';
 import { RemoteImage } from 'components/images/RemoteImage';
-import { Image as NImage } from 'components/images/Image';
-import dynamic from 'next/dynamic';
 
 import {
   useTargetOfferStore,

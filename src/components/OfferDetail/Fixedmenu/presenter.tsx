@@ -67,7 +67,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         >
           <Image // eslint-disable-line
             w={{ base: ``, md: `${8 / 7.68}vw`, lg: `${13 / 19.2}vw` }}
-            h={{ base: ``, md: `${12 / 7.68}vw`, lg: `${19 / 19.2}vw` }}
+            h={{ base: `auto` }}
+            // h={{ base: ``, md: `${12 / 7.68}vw`, lg: `${19 / 19.2}vw` }}
             image={{
               width: 17,
               height: 22,
@@ -91,7 +92,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         >
           <Image // eslint-disable-line
             w={{ base: ``, md: `${10 / 7.68}vw`, lg: `${19 / 19.2}vw` }}
-            h={{ base: ``, md: `${10 / 7.68}vw`, lg: `${21 / 19.2}vw` }}
+            h={{ base: `auto` }}
+            // h={{ base: ``, md: `${10 / 7.68}vw`, lg: `${21 / 19.2}vw` }}
             image={{
               width: 25,
               height: 24,
@@ -116,7 +118,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         >
           <Image // eslint-disable-line
             w={{ base: ``, md: `${9 / 7.68}vw`, lg: `${16 / 19.2}vw` }}
-            h={{ base: ``, md: `${10 / 7.68}vw`, lg: `${21 / 19.2}vw` }}
+            h={{ base: `auto` }}
+            // h={{ base: ``, md: `${10 / 7.68}vw`, lg: `${21 / 19.2}vw` }}
             image={{
               width: 22,
               height: 26,
@@ -149,7 +152,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         >
           <Image // eslint-disable-line
             w={{ base: ``, md: `${11 / 7.68}vw`, lg: `${20 / 19.2}vw` }}
-            h={{ base: ``, md: `${11 / 7.68}vw`, lg: `${20 / 19.2}vw` }}
+            h={{ base: `auto` }}
+            // h={{ base: ``, md: `${11 / 7.68}vw`, lg: `${20 / 19.2}vw` }}
             image={{
               width: 24,
               height: 24,

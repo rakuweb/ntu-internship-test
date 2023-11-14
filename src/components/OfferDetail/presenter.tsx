@@ -2,9 +2,9 @@
 import { FC } from 'react';
 import React from 'react';
 import { Box, Flex } from '@chakra-ui/react';
+import dynamic from 'next/dynamic';
 import { Image } from 'components/images/Image';
 import { RemoteImage } from 'components/images/RemoteImage';
-import dynamic from 'next/dynamic';
 
 import {
   useTargetOfferStore,
@@ -22,11 +22,21 @@ import { Fixedmenu } from './Fixedmenu';
 // import { Jobterms } from './Jobterms';
 // import { MobileMinInformation } from './MobileMinInformation';
 
-const Atmosphere = dynamic(() => import('./Atmosphere').then((mod) => mod.Atmosphere) );
-const MobileMinInformation = dynamic(() => import('./MobileMinInformation').then((mod) => mod.MobileMinInformation) );
-const Jobterms = dynamic(() => import('./Jobterms').then((mod) => mod.Jobterms) );
-const OfferCard3 = dynamic(() => import('~/features/offers/OfferCard3').then((mod) => mod.OfferCard3) );
-const Contact = dynamic(() => import('../organisms/Contact').then((mod) => mod.Contact) );
+const Atmosphere = dynamic(() =>
+  import('./Atmosphere').then((mod) => mod.Atmosphere)
+);
+const MobileMinInformation = dynamic(() =>
+  import('./MobileMinInformation').then((mod) => mod.MobileMinInformation)
+);
+const Jobterms = dynamic(() =>
+  import('./Jobterms').then((mod) => mod.Jobterms)
+);
+const OfferCard3 = dynamic(() =>
+  import('~/features/offers/OfferCard3').then((mod) => mod.OfferCard3)
+);
+const Contact = dynamic(() =>
+  import('../organisms/Contact').then((mod) => mod.Contact)
+);
 
 import { styles } from './styles';
 import 'zenn-content-css';
@@ -38,7 +48,6 @@ export type PresenterProps = Record<string, unknown>;
 export const Presenter: FC<PresenterProps> = () => {
   const offer = useTargetOfferStore(selectTarget);
   const offers = useOffersStore(selectOfferList);
-  const [_selectedOffer, setSelectedOffer] = React.useState(null);
   const { jobTitle } = useTargetOfferStore(selectBreadCrumbItem);
   const pageTitles = [jobTitle];
   const currentDate = new Date();
@@ -107,10 +116,6 @@ export const Presenter: FC<PresenterProps> = () => {
   const today = `${year}-${month}-${date}`;
 
   const activeOffers = offers.filter((offer) => offer.end_at >= today);
-  const selectOffer = (offerId) => {
-    const offer = offers.find((item) => item.id === offerId);
-    setSelectedOffer(offer);
-  };
 
   const otherOffers = offers.filter((item) => item.id !== offer.id);
 
@@ -305,8 +310,8 @@ export const Presenter: FC<PresenterProps> = () => {
                   key={index}
                 >
                   <OfferCard3
+                    // onClick={() => window.scroll(0, 0)}
                     {...offer}
-                    onClick={() => selectOffer(offer.id)}
                   />
                 </Box>
               ))}

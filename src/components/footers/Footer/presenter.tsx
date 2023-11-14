@@ -55,9 +55,9 @@ export const Presenter: FC<PresenterProps> = () => {
           <Flex
             justifyContent={`center`}
             color={`white`}
-            font-weight={500}
-            letter-spacing={`0.6px`}
-            white-space={`nowrap`}
+            fontWeight={500}
+            letterSpacing={`0.6px`}
+            whiteSpace={`nowrap`}
             fontSize={`12px`}
             m={`0 auto`}
           >

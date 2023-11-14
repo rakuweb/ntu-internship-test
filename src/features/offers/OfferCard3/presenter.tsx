@@ -31,8 +31,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     job_type,
     company,
     company_name,
+    ...remain
   } = props;
-  const href = `${routes.offers}/${id}`;
   const currentDate = new Date();
   const startDateObj = new Date(start_at);
   const endDate = new Date(end_at);
@@ -53,8 +53,9 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         borderRadius={{ lg: `${15 / 19.2}vw` }}
         boxShadow={`0px 3px 6px #00000029`}
         overflow={`hidden`}
+        {...remain}
       >
-        <InternalLink href={href}>
+        <InternalLink href={routes.offerID(id)}>
           {/* <Box display={'none'}>{createdByid}</Box> */}
           <Box
             transitionProperty={`box-shadow`}
@@ -304,7 +305,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         boxShadow={`0px ${3 / 3.75}vw ${6 / 3.75}vw #00000029`}
         css={styles}
       >
-        <InternalLink href={href}>
+        <InternalLink href={routes.offerID(id)}>
           <Box bg={`white`} fontFamily={`'Noto Sans JP', sans-serif`}>
             {isNew <= 7 ? (
               <Flex

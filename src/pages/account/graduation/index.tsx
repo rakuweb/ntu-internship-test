@@ -7,7 +7,6 @@ import { CANONICAL_URL } from '~/constants';
 
 // component layer
 export const Index: NextPage = () => {
-  console.log('account/card');
   const title = ``; // eslint-disable-line
   const description = ``;
   const [isClient, setIsClient] = useState(false);

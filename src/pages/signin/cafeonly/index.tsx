@@ -35,7 +35,6 @@ export const Index: NextPage = () => {
     setQuery((router?.query?.cafeonly as string) ?? '');
     setIsClient(true);
   }, [router, router?.query?.cafeonly]);
-  console.log('aaaa: ', query);
 
   useEffect(() => {
     if (!isClient) return;
