@@ -155,7 +155,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                       alt: `お金アイコン`,
                     }}
                   />
-                  <Box ml={`${13 / 9.6}vw`}>時給</Box>
+                  <Box ml={`${13 / 9.6}vw`}>給与</Box>
                   <Box ml={`${35 / 9.6}vw`} color={`#F26601`}>
                     {hourly_wage}円
                   </Box>

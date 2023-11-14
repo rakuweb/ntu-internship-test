@@ -12,18 +12,6 @@ export type PresenterProps = Record<string, unknown>;
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const offer = useTargetOfferStore(selectTarget);
-  // const { liff } = useLiff();
-  // const setPrevPath = useAccountStore(selectSetPrevPath);
-  // const signin = () => {
-  //   if (!liff) return;
-  //   if (!liff.isLoggedIn()) {
-  //     offer?.id + `/jobform` && setPrevPath(decodeURI(offer.id + `/jobform`));
-  //     window.localStorage.setItem('prevUrl', offer?.id + `/jobform`);
-  //     liff.login(); //{ redirectUri: redirectUri });
-  //   } else {
-  //     window.location.href = offer.id + `/jobform`;
-  //   }
-  // };
 
   return (
     <Box
@@ -73,7 +61,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               alt: `お金アイコン`,
             }}
           />
-          <Box ml={{ base: ``, md: `${17 / 19.2}vw` }}>時給</Box>
+          <Box ml={{ base: ``, md: `${17 / 19.2}vw` }}>給与</Box>
           <Box ml={{ base: ``, md: `${53 / 19.2}vw` }}>
             {offer.hourly_wage}円
           </Box>

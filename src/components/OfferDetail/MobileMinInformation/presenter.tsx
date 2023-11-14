@@ -50,7 +50,7 @@ export const Presenter: FC<PresenterProps> = () => {
             mr={`${8 / 3.75}vw`}
             fontSize={`${10 / 3.75}vw`}
           >
-            時給
+            給与
           </Box>
           {`${offer.hourly_wage}円`}
         </Flex>

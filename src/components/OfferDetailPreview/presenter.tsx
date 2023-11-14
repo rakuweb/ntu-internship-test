@@ -13,7 +13,6 @@ import {
   useOffersStore,
   selectOfferList,
 } from 'features/offers';
-// import { OfferCard3 } from '~/features/offers/OfferCard3';
 import { BreadcrumbOfferId } from '../organisms/BreadcrumbOfferId';
 // import { Contact } from '../organisms/Contact';
 import { Applybutton } from './Applybutton';
@@ -22,11 +21,18 @@ import { Fixedmenu } from './Fixedmenu';
 // import { Jobterms } from './Jobterms';
 // import { MobileMinInformation } from './MobileMinInformation';
 
-const Atmosphere = dynamic(() => import('./Atmosphere').then((mod) => mod.Atmosphere) );
-const MobileMinInformation = dynamic(() => import('./MobileMinInformation').then((mod) => mod.MobileMinInformation) );
-const Jobterms = dynamic(() => import('./Jobterms').then((mod) => mod.Jobterms) );
-const OfferCard3 = dynamic(() => import('~/features/offers/OfferCard3').then((mod) => mod.OfferCard3) );
-const Contact = dynamic(() => import('../organisms/Contact').then((mod) => mod.Contact) );
+const Atmosphere = dynamic(() =>
+  import('./Atmosphere').then((mod) => mod.Atmosphere)
+);
+const MobileMinInformation = dynamic(() =>
+  import('./MobileMinInformation').then((mod) => mod.MobileMinInformation)
+);
+const Jobterms = dynamic(() =>
+  import('./Jobterms').then((mod) => mod.Jobterms)
+);
+const Contact = dynamic(() =>
+  import('../organisms/Contact').then((mod) => mod.Contact)
+);
 
 import { styles } from './styles';
 import 'zenn-content-css';
@@ -246,6 +252,7 @@ export const Presenter: FC<PresenterProps> = () => {
           <Applybutton pt={`${10 / 3.75}vw`} mb={`${65 / 3.75}vw`} />
           <Jobterms mb={{ base: `${55 / 3.75}vw`, md: `${125 / 19.2}vw` }} />
           <Applybutton mb={`${65 / 3.75}vw`} />
+          {/*
           <Flex
             mb={{ base: `${25 / 3.75}vw`, md: `${55 / 19.2}vw` }}
             borderBottom={{
@@ -290,6 +297,8 @@ export const Presenter: FC<PresenterProps> = () => {
               募集求人
             </Box>
           </Flex>
+          */}
+          {/*
           <Box>
             {otherOffers
               .filter((offer) => offer.end_at >= today)
@@ -310,6 +319,7 @@ export const Presenter: FC<PresenterProps> = () => {
                 </Box>
               ))}
           </Box>
+            */}
         </Box>
         <Box
           ml={{ base: ``, md: `${35 / 7.68}vw`, lg: `${135 / 19.2}vw` }}

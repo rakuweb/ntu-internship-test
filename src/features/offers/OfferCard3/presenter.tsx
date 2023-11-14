@@ -170,7 +170,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                           alt: `お金アイコン`,
                         }}
                       />
-                      <Box ml={`${13 / 19.2}vw`}>時給</Box>
+                      <Box ml={`${13 / 19.2}vw`}>給与</Box>
                       <Box ml={`${50 / 19.2}vw`} color={`#F26601`}>
                         {hourly_wage}円
                       </Box>
@@ -425,7 +425,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                       fontWeight={`500`}
                       mr={{ base: `${8 / 3.75}vw`, md: `${8 / 7.68}vw` }}
                     >
-                      時給
+                      給与
                     </Box>
                     {hourly_wage}円
                   </Flex>

@@ -76,7 +76,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               alt: `お金アイコン`,
             }}
           />
-          <Box ml={{ base: ``, md: `${17 / 19.2}vw` }}>時給</Box>
+          <Box ml={{ base: ``, md: `${17 / 19.2}vw` }}>給与</Box>
           <Box ml={{ base: ``, md: `${53 / 19.2}vw` }}>
             {offer.hourly_wage}円
           </Box>

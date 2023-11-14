@@ -69,9 +69,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         </Box>
       </Flex> */}
 
-      <InternalLink
+      <Box
         w={`fit-content`}
-        href={`/jobform`}
         mt={`${10 / 3.75}vw`}
         mx={`auto`}
       >
@@ -99,7 +98,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           />
           応募する
         </Flex>
-      </InternalLink>
+      </Box>
     </Box>
   );
 };
