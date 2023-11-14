@@ -2,14 +2,24 @@
 import { FC, useState } from 'react';
 import { Box, Grid, Flex } from '@chakra-ui/react';
 import { Select } from 'chakra-react-select';
+import dynamic from 'next/dynamic';
+
 import { Image } from 'components/images/Image';
 import { OfferCard } from 'features/offers';
-import { OfferCard3 } from 'features/offers/OfferCard3';
+// import { OfferCard3 } from 'features/offers/OfferCard3';
 import { useOffersStore } from 'features/offers/hooks';
 import { selectOfferList } from 'features/offers/selectors';
-import { Pagination } from '~/components/Pagination';
+// import { Pagination } from '~/components/Pagination';
+
 import chakraStyles from '~/components/SeachLook/chakraStyles';
 import { styles } from './styles';
+
+const OfferCard3 = dynamic(
+  import('features/offers/OfferCard3').then((mod) => mod.OfferCard3)
+);
+const Pagination = dynamic(
+  import('~/components/Pagination').then((mod) => mod.Pagination)
+);
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

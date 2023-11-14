@@ -15,7 +15,12 @@ export const Presenter: FC<PresenterProps> = ({ image, style, ...props }) => {
   const { fill, ..._image } = image;
   return (
     <Box position={`relative`} {...props}>
-      <Image loading={`lazy`} sizes={`100vw`} {..._image} style={style} />
+      <Image
+        loading={`lazy`}
+        sizes={`(max-width:1280px) 100vw, 60vw`}
+        {..._image}
+        style={style}
+      />
     </Box>
   );
 };

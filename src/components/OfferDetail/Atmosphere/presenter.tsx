@@ -84,6 +84,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             overflow={`hidden`}
             image={{
               ...list.image,
+              htmlWidth: list.image.width,
+              htmlHeight: list.image.height,
               width: undefined,
               height: undefined,
               fill: true,

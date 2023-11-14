@@ -5,13 +5,10 @@ import dynamic from 'next/dynamic';
 
 // import { Footer } from 'components/footers/Footer';
 import { Header } from 'components/headers/Header';
-// import { OfferList } from 'features/offers/OfferList';
 import { Firstview } from 'features/offers/Firstview';
+import { OfferList } from 'features/offers/OfferList';
 import { styles } from './styles';
 
-const OfferList = dynamic(
-  import('features/offers/OfferList').then((mod) => mod.OfferList)
-);
 const Footer = dynamic(
   import('components/footers/Footer').then((mod) => mod.Footer)
 );

@@ -210,6 +210,8 @@ export const Presenter: FC<PresenterProps> = () => {
             borderRadius={{ base: `${5 / 3.75}vw`, md: `${5 / 19.2}vw` }}
             image={{
               ...offer.image,
+              htmlWidth: offer.image.width,
+              htmlHeight: offer.image.height,
               width: undefined,
               height: undefined,
               fill: true,
