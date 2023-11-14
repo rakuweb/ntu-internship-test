@@ -1,7 +1,6 @@
 import fetch from 'node-fetch';
 
 import { API_URL_OFFER } from 'constants/env';
-import { apiRoutes } from 'constants/routes';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {

@@ -45,3 +45,4 @@ public/sitemap-0.xml
 .yarn/install-state.gz
 
 .firebase
+/analyze/

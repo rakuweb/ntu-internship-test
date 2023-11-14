@@ -3,9 +3,9 @@ import { ErrorMessage } from '@hookform/error-message';
 import { SelectForm } from 'components/forms/SelectForm';
 import { itemList } from 'features/contact/coworking';
 import InputForm from './Input';
+import { InquiryItemContainer } from './InquiryItemContainer';
 import TextareaForm from './TextareaForm';
 import Message from './message';
-import { InquiryItemContainer } from './InquiryItemContainer';
 
 const InquiryItem = ({ control, errors, register }) => {
   return (

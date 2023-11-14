@@ -22,6 +22,7 @@ export const parseToOffers = (data: OfferEntity[]): OfferCard[] => {
       image: offer?.image?.data?.attributes?.url
         ? parseImage(offer?.image?.data?.attributes)
         : undefined,
+
       occupation: offer.occupation,
       min_period: offer.min_period,
       //   {

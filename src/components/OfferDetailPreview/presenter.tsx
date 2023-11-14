@@ -3,7 +3,9 @@ import { FC } from 'react';
 import React from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import { Image } from 'components/images/Image';
+import { RemoteImage } from 'components/images/RemoteImage';
 import { Image as NImage } from 'components/images/Image';
+import dynamic from 'next/dynamic';
 
 import {
   useTargetOfferStore,
@@ -12,14 +14,20 @@ import {
   useOffersStore,
   selectOfferList,
 } from 'features/offers';
-import { OfferCard3 } from '~/features/offers/OfferCard3';
+// import { OfferCard3 } from '~/features/offers/OfferCard3';
 import { BreadcrumbOfferId } from '../organisms/BreadcrumbOfferId';
-import { Contact } from '../organisms/Contact';
+// import { Contact } from '../organisms/Contact';
 import { Applybutton } from './Applybutton';
-import { Atmosphere } from './Atmosphere';
+// import { Atmosphere } from './Atmosphere';
 import { Fixedmenu } from './Fixedmenu';
-import { Jobterms } from './Jobterms';
-import { MobileMinInformation } from './MobileMinInformation';
+// import { Jobterms } from './Jobterms';
+// import { MobileMinInformation } from './MobileMinInformation';
+
+const Atmosphere = dynamic(() => import('./Atmosphere').then((mod) => mod.Atmosphere) );
+const MobileMinInformation = dynamic(() => import('./MobileMinInformation').then((mod) => mod.MobileMinInformation) );
+const Jobterms = dynamic(() => import('./Jobterms').then((mod) => mod.Jobterms) );
+const OfferCard3 = dynamic(() => import('~/features/offers/OfferCard3').then((mod) => mod.OfferCard3) );
+const Contact = dynamic(() => import('../organisms/Contact').then((mod) => mod.Contact) );
 
 import { styles } from './styles';
 import 'zenn-content-css';
@@ -189,10 +197,11 @@ export const Presenter: FC<PresenterProps> = () => {
             {offer.title}
           </Box>
           <MobileMinInformation />
-          <NImage
+          <RemoteImage
             mt={{ base: `${14 / 3.75}vw`, md: `${25 / 19.2}vw` }}
             mb={{ base: `${35 / 3.75}vw`, md: `${54 / 19.2}vw` }}
             h={{ base: `${196 / 3.75}vw`, md: `${575 / 19.2}vw` }}
+            overflow={`hidden`}
             borderRadius={{ base: `${5 / 3.75}vw`, md: `${5 / 19.2}vw` }}
             image={{
               ...offer.image,

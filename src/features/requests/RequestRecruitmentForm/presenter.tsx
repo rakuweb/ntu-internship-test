@@ -360,7 +360,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                             lineHeight={`1.5`}
                             whiteSpace={{ base: `pre-wrap` }}
                           >
-                            {index === 12 ? `※文字以内` : ``}
+                            {index === 12 ? `※36文字以内` : ``}
                           </Box>
                           {errors?.[idlist[index]]?.message && (
                             <Box

@@ -3,9 +3,9 @@ import fetch from 'node-fetch';
 import { LINE_MESSAGING_ACCESS_TOKEN } from 'constants/env';
 import { LINE_MESSAGING_API_PUSH_URL } from '~/constants/routes';
 
-import type { NextApiRequest, NextApiResponse } from 'next';
 import { parseAuthorization } from '~/lib';
 import { parseDate } from '~/lib/utils';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const method = req.method;

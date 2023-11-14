@@ -1,4 +1,8 @@
-module.exports = {
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+module.exports = withBundleAnalyzer({
   reactStrictMode: true,
   compiler: {
     emotion: true,
@@ -23,6 +27,6 @@ module.exports = {
       'management-offers.nottheuniversity.com',
     ],
     disableStaticImages: true, // importした画像の型定義設定を無効にする
-    unoptimized: true,
+    // unoptimized: true,
   },
-};
+});

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { NextPage } from 'next/types';
 
 import { SeoComponent } from 'organisms/SeoComponent';
-import { ContactComplete } from '~/components/templates/ContactComplete';
+import { CoworkingContactComplete } from '~/components/templates/CoworkingContactComplete';
 import { CANONICAL_URL } from '~/constants';
 
 // component layer
@@ -24,7 +24,7 @@ export const Index: NextPage = () => {
             title={title}
             description={description}
           />
-          <ContactComplete />
+          <CoworkingContactComplete />
         </>
       );
     } else {

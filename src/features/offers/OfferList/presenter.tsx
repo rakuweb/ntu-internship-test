@@ -1,15 +1,15 @@
 // import layer
 import { FC, useState } from 'react';
-import { Image } from 'components/images/Image';
 import { Box, Grid, Flex } from '@chakra-ui/react';
 import { Select } from 'chakra-react-select';
-import { OfferCard3 } from 'features/offers/OfferCard3';
+import { Image } from 'components/images/Image';
 import { OfferCard } from 'features/offers';
+import { OfferCard3 } from 'features/offers/OfferCard3';
 import { useOffersStore } from 'features/offers/hooks';
 import { selectOfferList } from 'features/offers/selectors';
-import { styles } from './styles';
 import { Pagination } from '~/components/Pagination';
 import chakraStyles from '~/components/SeachLook/chakraStyles';
+import { styles } from './styles';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
@@ -110,6 +110,7 @@ export const Presenter: FC<PresenterProps> = () => {
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage);
   };
+
   return (
     <Box css={styles} w={`100%`}>
       <Flex

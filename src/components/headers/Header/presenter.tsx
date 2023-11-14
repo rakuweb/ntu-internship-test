@@ -1,11 +1,12 @@
 // import layer
-import { FC, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { Box, BoxProps, Flex } from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/react';
 import axios from 'axios';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 
-import { Image } from 'atoms/Image';
+import { Image as NImage } from 'components/images/Image';
 import { InternalLink } from 'components/links/InternalLink';
 import { ORIGIN_URL } from 'constants/env';
 import { useLiff } from 'contexts/LineAuthContextInternship';
@@ -19,8 +20,12 @@ import {
 import { ExternalLink } from '~/components/links/ExternalLink';
 import { FORJOB_LP_URL, routes } from '~/constants';
 import { HeaderMenu } from '../HeaderMenu';
-import { MenuDrawer } from '../MenuDrawer';
+// import { MenuDrawer } from '../MenuDrawer';
 import { styles } from './styles';
+
+const MenuDrawer = dynamic(
+  import('../MenuDrawer').then((mod) => mod.MenuDrawer)
+);
 
 // type layer
 export type PresenterProps = BoxProps & { isTop?: boolean };
@@ -34,13 +39,13 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
   const setPrevPath = useAccountStore(selectSetPrevPath);
   const { liff } = useLiff();
   const router = useRouter();
+  const [show, setShow] = useState<boolean>(false);
 
   const signout = () => {
     _signout();
     window.localStorage.removeItem('prevUrl');
     liff.logout();
   };
-
   const signin = async () => {
     if (!liff) return;
     if (!liff.isLoggedIn()) {
@@ -56,6 +61,10 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
         router.push(routes.signin);
       }
     }
+  };
+  const handleOpen = () => {
+    !show && setShow(true);
+    onOpen();
   };
 
   useEffect(() => {
@@ -122,7 +131,17 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
               }}
               className="logo"
             >
-              <Image src={`/svg/forjob.svg`} alt={``} />
+              <NImage
+                // src={`/svg/forjob.svg`}
+                image={{
+                  src: `/svg/forjob.svg`,
+                  width: 300,
+                  height: 95,
+                  alt: ``,
+                  loading: `eager`,
+                  priority: true,
+                }}
+              />
             </Box>
           </InternalLink>
           <Box
@@ -240,11 +259,11 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
             display={{ base: `block`, lg: `block` }}
             mt={{ base: ``, lg: `${15 / 19.2}vw` }}
           >
-            <HeaderMenu isOpen={isOpen} onClick={onOpen} />
+            <HeaderMenu isOpen={isOpen} onClick={handleOpen} />
           </Box>
         </Flex>
 
-        <MenuDrawer isOpen={isOpen} onClose={onClose} />
+        {show && <MenuDrawer isOpen={isOpen} onClose={onClose} />}
       </Flex>
       {/*
       <Box

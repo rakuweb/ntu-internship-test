@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import { ChakraStylesConfig } from 'chakra-react-select';
 
-import { Image } from '~/components/Image';
+import { Image as NImage } from '~/components/images/Image';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
@@ -66,7 +66,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   return (
     <Box w={`100%`} {...props} position={`relative`} overflow={`hidden`}>
       <Box as={`h1`} display={`none`}>{`新大生のための求人サイトFORJOB`}</Box>
-      <Image // eslint-disable-line
+      <NImage // eslint-disable-line
         display={{ base: `none`, lg: `block` }}
         position={`absolute`}
         top={0}
@@ -77,11 +77,14 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         image={{
           width: 2024,
           height: 743,
-          src: `/images/offers/firstview.png`,
+          src: `/images/offers/firstview.webp`,
           alt: `カバー画像`,
+          loading: `eager`,
+          priority: true,
+          unoptimized: true,
         }}
       />
-      <Image // eslint-disable-line
+      <NImage // eslint-disable-line
         display={{ lg: `none` }}
         position={`absolute`}
         top={`0`}
@@ -93,6 +96,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           height: 1046,
           src: `/images/offers/fvmobile.png`,
           alt: `カバー画像`,
+          loading: `eager`,
+          priority: true,
         }}
       />
       <Flex
@@ -107,7 +112,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           mt={{ base: `${40 / 3.75}vw`, lg: `${186 / 19.2}vw` }}
           position={`relative`}
         >
-          <Image // eslint-disable-line
+          <NImage // eslint-disable-line
             display={{ base: `none`, lg: `block` }}
             top={0}
             left={0}
@@ -119,6 +124,9 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               height: 339,
               src: `/images/offers/fvlogo.png`,
               alt: `カバー画像`,
+              loading: `eager`,
+              priority: true,
+              unoptimized: true,
             }}
           />
           {/* <Box

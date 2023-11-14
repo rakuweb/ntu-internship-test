@@ -3,14 +3,11 @@ import { FC } from 'react';
 
 import { Box, Flex } from '@chakra-ui/react';
 
-import { Image } from '~/components/Image';
 import {
   useTargetOfferStore,
   selectTarget,
-  selectBreadCrumbItem,
-  useOffersStore,
-  selectOfferList,
 } from 'features/offers';
+import { Image } from '~/components/Image';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

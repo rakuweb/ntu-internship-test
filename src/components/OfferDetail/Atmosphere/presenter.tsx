@@ -2,6 +2,7 @@
 import { FC } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import { Image } from 'components/images/Image';
+import { RemoteImage } from 'components/images/RemoteImage';
 
 import { useTargetOfferStore, selectTarget } from 'features/offers';
 
@@ -65,7 +66,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           mb={{ base: `${20 / 3.75}vw`, md: `${48 / 19.2}vw` }}
           key={list.title}
         >
-          <Image // eslint-disable-line
+          <RemoteImage // eslint-disable-line
             w={{
               base: `${173 / 3.75}vw`,
               md: `${120 / 7.68}vw`,
@@ -80,6 +81,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
             ml={{ base: `${75 / 3.75}vw`, md: `${70 / 19.2}vw` }}
             mr={{ base: ``, md: `${47 / 19.2}vw` }}
             mb={{ base: `${12.5 / 3.75}vw`, md: `initial` }}
+            overflow={`hidden`}
             image={{
               ...list.image,
               width: undefined,

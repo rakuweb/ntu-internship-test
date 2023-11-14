@@ -3,9 +3,8 @@ import fetch from 'node-fetch';
 import { LINE_MESSAGING_ACCESS_TOKEN, ORIGIN_URL } from 'constants/env';
 import { lineAPIRoutes, routes } from '~/constants/routes';
 
-import type { NextApiRequest, NextApiResponse } from 'next';
 import { parseAuthorization } from '~/lib';
-import { parseDate } from '~/lib/utils';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const method = req.method;

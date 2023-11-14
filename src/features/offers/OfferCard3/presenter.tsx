@@ -3,9 +3,9 @@ import { FC } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
-import { Image as NImage } from 'components/images/Image';
 import { routes } from 'constants/routes';
 import { Image } from '~/components/Image';
+import { RemoteImage } from '~/components/images/RemoteImage';
 import { InternalLink } from '~/components/links/InternalLink';
 import { mq } from '~/constants/styles';
 import { OfferCard } from '../types';
@@ -44,6 +44,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const isEnd = Math.ceil(
     (endDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24)
   );
+
   return (
     <div>
       <Box
@@ -123,16 +124,19 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 {title}
               </Box>
               <Flex justify={`space-between`}>
-                <NImage
+                <RemoteImage
                   w={`${309 / 19.2}vw`}
                   h={`${180 / 19.2}vw`}
                   mt={` ${23 / 19.2}vw`}
                   className={`photo`}
                   image={{
                     ...image,
+                    htmlWidth: image.width,
+                    htmlHeight: image.height,
                     width: undefined,
                     height: undefined,
                     fill: true,
+                    loading: `eager`,
                   }}
                   style={{ objectFit: `cover` }}
                 />
@@ -366,12 +370,19 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 mt={{ base: `${8 / 3.75}vw`, md: `${8 / 7.68}vw` }}
                 justify={`space-between`}
               >
-                <NImage
+                <RemoteImage
                   w={{ base: `${148 / 3.75}vw`, md: `${148 / 7.68}vw` }}
                   h={{ base: `${86.2 / 3.75}vw`, md: `${86.2 / 7.68}vw` }}
                   mt={{ base: `${5 / 3.75}vw`, md: `${5 / 7.68}vw` }}
                   className={`photo`}
-                  image={{ ...image }}
+                  image={{
+                    ...image,
+                    htmlWidth: image.width,
+                    htmlHeight: image.height,
+                    width: undefined,
+                    height: undefined,
+                  }}
+                  style={{ objectFit: `cover` }}
                 />
                 <Flex direction={`column`} fontWeight={`500`}>
                   <Flex
