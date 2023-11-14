@@ -140,9 +140,9 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                         index === 8 ||
                         index === 12 ||
                         index === 13 ||
-                        index === 15 ||
-                        index === 18 ||
-                        index === 19
+                        index === 16 ||
+                        index === 19 ||
+                        index === 20
                           ? `none`
                           : `block`
                       }
@@ -270,7 +270,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                       ))}
                     </Box>
                     <Box
-                      display={index === 15 ? `block` : `none`}
+                      display={index === 16 ? `block` : `none`}
                       fontSize={{
                         base: `${10 / 3.75}vw`,
                         md: `${12 / 7.68}vw`,
@@ -298,7 +298,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
 
                     <ExternalLink
                       href={`${list.main}`}
-                      display={index === 18 ? `block` : `none`}
+                      display={index === 19 ? `block` : `none`}
                       fontSize={{
                         base: `${10 / 3.75}vw`,
                         md: `${12 / 7.68}vw`,
@@ -317,7 +317,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                       {list.main}
                     </ExternalLink>
                     <Box
-                      display={index === 19 ? `block` : `none`}
+                      display={index === 20 ? `block` : `none`}
                       fontSize={{
                         base: `${10 / 3.75}vw`,
                         md: `${12 / 7.68}vw`,
