@@ -5,7 +5,10 @@ import { Image } from 'components/images/Image';
 
 import { useTargetOfferStore, selectTarget } from 'features/offers';
 import { ExternalLink } from '~/components/links/ExternalLink';
-import { desiredInterviewTimeList } from '~/features/requests';
+import {
+  desiredInterviewDateList,
+  desiredInterviewTimeList,
+} from '~/features/requests';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
@@ -237,7 +240,11 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                           }}
                           whiteSpace={`pre-wrap`}
                         >
-                          ・{date}曜日
+                          ・{date}
+                          {date == desiredInterviewDateList[7] ||
+                          date == desiredInterviewDateList[8]
+                            ? ``
+                            : `曜日`}
                         </Box>
                       ))}
                     </Box>
