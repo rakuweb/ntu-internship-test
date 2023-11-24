@@ -329,7 +329,7 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
                         >
                           {index === 1
                             ? `※推奨サイズ：1020x600[px]`
-                            : `※推奨サイズ：300x180[px]`}
+                            : `※推奨サイズ：600x360[px]`}
                         </Box>
                         {errors?.[idlist[index]]?.message && (
                           <Box

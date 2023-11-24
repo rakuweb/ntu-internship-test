@@ -108,7 +108,14 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   日
                 </Flex>
               ) : null}
-              <Box mb={`${10 / 19.2}vw`} fontSize={`${18 / 19.2}vw`}>
+              <Box
+                mb={`${10 / 19.2}vw`}
+                fontSize={`${18 / 19.2}vw`}
+                w={`${520 / 19.2}vw`}
+                overflow="hidden"
+                textOverflow="ellipsis"
+                whiteSpace="nowrap"
+              >
                 {company_name}
               </Box>
               <Box
@@ -171,7 +178,14 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                         }}
                       />
                       <Box ml={`${13 / 19.2}vw`}>給与</Box>
-                      <Box ml={`${50 / 19.2}vw`} color={`#F26601`}>
+                      <Box
+                        ml={`${50 / 19.2}vw`}
+                        color={`#F26601`}
+                        w={`${150 / 19.2}vw`}
+                        overflow="hidden"
+                        textOverflow="ellipsis"
+                        whiteSpace="nowrap"
+                      >
                         {hourly_wage}円
                       </Box>
                     </Flex>
@@ -351,6 +365,10 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               <Box
                 mb={{ base: `${4 / 3.75}vw`, md: `${4 / 7.68}vw` }}
                 fontSize={{ base: `${10 / 3.75}vw`, md: `${10 / 7.68}vw` }}
+                w={{ base: `${250 / 3.75}vw`, md: `${250 / 7.68}vw` }}
+                overflow="hidden"
+                textOverflow="ellipsis"
+                whiteSpace="nowrap"
               >
                 {company_name}
               </Box>
@@ -427,7 +445,14 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                     >
                       給与
                     </Box>
-                    {hourly_wage}円
+                    <Box
+                      overflow={`hidden`}
+                      textOverflow={`ellipsis`}
+                      whiteSpace={`nowrap`}
+                      w={{ base: `${90 / 3.75}vw`, md: `${90 / 7.68}vw` }}
+                    >
+                      {hourly_wage}円
+                    </Box>
                   </Flex>
                   <Flex
                     fontSize={{ base: `${10 / 3.75}vw`, md: `${10 / 7.68}vw` }}
