@@ -227,10 +227,10 @@ export const requestSchema = z.object({
     .refine(
       (file) => {
         if (!file) return true;
-        return file.size < 4200000;
+        return file.size < 1000000;
       },
       {
-        message: 'ファイルサイズは最大4MBです',
+        message: 'ファイルサイズは最大1MBです',
       }
     ),
   job_description: z
@@ -253,10 +253,10 @@ export const requestSchema = z.object({
     .refine(
       (file) => {
         if (!file) return true;
-        return file.size < 4200000;
+        return file.size < 1000000;
       },
       {
-        message: 'ファイルサイズは最大4MBです',
+        message: 'ファイルサイズは最大1MBです',
       }
     ),
   atmosphere_text: z
@@ -272,10 +272,10 @@ export const requestSchema = z.object({
     .refine(
       (file) => {
         if (!file) return true;
-        return file.size < 4200000;
+        return file.size < 1000000;
       },
       {
-        message: 'ファイルサイズは最大4MBです',
+        message: 'ファイルサイズは最大1MBです',
       }
     ),
   atmosphere_text2: z
@@ -290,10 +290,10 @@ export const requestSchema = z.object({
     .refine(
       (file) => {
         if (!file) return true;
-        return file.size < 4200000;
+        return file.size < 1000000;
       },
       {
-        message: 'ファイルサイズは最大4MBです',
+        message: 'ファイルサイズは最大1MBです',
       }
     ),
   atmosphere_text3: z
