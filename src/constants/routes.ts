@@ -92,4 +92,6 @@ export const navItems: NavItem[] = [
 
 export const lineAPIRoutes = {
   messagePush: `https://api.line.me/v2/bot/message/push`,
+  multicast: `https://api.line.me/v2/bot/message/multicast`,
+  validateMulticast: `https://api.line.me/v2/bot/message/validate/multicast`,
 };
