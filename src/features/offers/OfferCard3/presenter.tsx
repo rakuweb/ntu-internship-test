@@ -92,21 +92,37 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   NEW
                 </Flex>
               ) : isEnd <= 10 ? (
-                <Flex
-                  position={`absolute`}
-                  top={`${20 / 19.2}vw`}
-                  right={`${33 / 19.2}vw`}
-                  color={`#F26601`}
-                  alignItems={`end`}
-                  fontWeight={`bold`}
-                  fontSize={`${15 / 19.2}vw`}
-                >
-                  掲載終了まであと
-                  <Box as={`span`} fontSize={`${25 / 19.2}vw`}>
-                    {isEnd}
-                  </Box>
-                  日
-                </Flex>
+                isEnd === 0 ? (
+                  <Flex
+                    position={`absolute`}
+                    top={`${20 / 19.2}vw`}
+                    right={`${33 / 19.2}vw`}
+                    color={`#F26601`}
+                    alignItems={`end`}
+                    fontWeight={`bold`}
+                    fontSize={`${15 / 19.2}vw`}
+                  >
+                    <Box as={`span`} fontSize={`${25 / 19.2}vw`}>
+                      本日掲載終了
+                    </Box>
+                  </Flex>
+                ) : (
+                  <Flex
+                    position={`absolute`}
+                    top={`${20 / 19.2}vw`}
+                    right={`${33 / 19.2}vw`}
+                    color={`#F26601`}
+                    alignItems={`end`}
+                    fontWeight={`bold`}
+                    fontSize={`${15 / 19.2}vw`}
+                  >
+                    掲載終了まであと
+                    <Box as={`span`} fontSize={`${25 / 19.2}vw`}>
+                      {isEnd}
+                    </Box>
+                    日
+                  </Flex>
+                )
               ) : null}
               <Box
                 mb={`${10 / 19.2}vw`}
@@ -339,24 +355,43 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                 NEW
               </Flex>
             ) : isEnd <= 10 ? (
-              <Flex
-                position={`absolute`}
-                top={{ base: `${10 / 3.75}vw`, md: `${10 / 7.68}vw` }}
-                right={{ base: `${10 / 3.75}vw`, md: `${10 / 7.68}vw` }}
-                color={`#F26601`}
-                alignItems={`end`}
-                fontWeight={`bold`}
-                fontSize={{ base: `${10 / 3.75}vw`, md: `${10 / 7.68}vw` }}
-              >
-                掲載終了まであと
-                <Box
-                  as={`span`}
-                  fontSize={{ base: `${13 / 3.75}vw`, md: `${13 / 7.68}vw` }}
+              isEnd === 0 ? (
+                <Flex
+                  position={`absolute`}
+                  top={{ base: `${10 / 3.75}vw`, md: `${10 / 7.68}vw` }}
+                  right={{ base: `${10 / 3.75}vw`, md: `${10 / 7.68}vw` }}
+                  color={`#F26601`}
+                  alignItems={`end`}
+                  fontWeight={`bold`}
+                  fontSize={{ base: `${10 / 3.75}vw`, md: `${10 / 7.68}vw` }}
                 >
-                  {isEnd}
-                </Box>
-                日
-              </Flex>
+                  <Box
+                    as={`span`}
+                    fontSize={{ base: `${13 / 3.75}vw`, md: `${13 / 7.68}vw` }}
+                  >
+                    本日掲載終了
+                  </Box>
+                </Flex>
+              ) : (
+                <Flex
+                  position={`absolute`}
+                  top={{ base: `${10 / 3.75}vw`, md: `${10 / 7.68}vw` }}
+                  right={{ base: `${10 / 3.75}vw`, md: `${10 / 7.68}vw` }}
+                  color={`#F26601`}
+                  alignItems={`end`}
+                  fontWeight={`bold`}
+                  fontSize={{ base: `${8 / 3.75}vw`, md: `${10 / 7.68}vw` }}
+                >
+                  掲載終了まであと
+                  <Box
+                    as={`span`}
+                    fontSize={{ base: `${13 / 3.75}vw`, md: `${13 / 7.68}vw` }}
+                  >
+                    {isEnd}
+                  </Box>
+                  日
+                </Flex>
+              )
             ) : null}
             <Box
               p={{ base: `${16 / 3.75}vw`, md: `${16 / 7.68}vw` }}
@@ -365,7 +400,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               <Box
                 mb={{ base: `${4 / 3.75}vw`, md: `${4 / 7.68}vw` }}
                 fontSize={{ base: `${10 / 3.75}vw`, md: `${10 / 7.68}vw` }}
-                w={{ base: `${250 / 3.75}vw`, md: `${250 / 7.68}vw` }}
+                w={{ base: `${220 / 3.75}vw`, md: `${250 / 7.68}vw` }}
                 overflow="hidden"
                 textOverflow="ellipsis"
                 whiteSpace="nowrap"
