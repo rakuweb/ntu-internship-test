@@ -36,44 +36,27 @@ export const Index: NextPage<Props> = ({ data }) => {
       },
     ],
   };
-  const [isClient, setIsClient] = useState(false);
   const setOffers = useOffersStore(selectSetOffers);
+
   useEffect(() => {
-    setIsClient(true);
-  }, []);
+    data?.offers?.data && setOffers(data.offers.data as OfferEntity[]);
+  }, [data?.offers?.data]);
 
   if (router.isFallback) {
     return <></>;
   }
 
-  data?.offers?.data && setOffers(data.offers.data as OfferEntity[]);
-
-  const message = () => {
-    if (isClient) {
-      return (
-        <>
-          <SeoComponent
-            canonical={CANONICAL_URL}
-            title={title}
-            description={description}
-            openGraph={openGraph}
-          />
-          <Template />
-        </>
-      );
-    } else {
-      return (
-        <SeoComponent
-          canonical={CANONICAL_URL}
-          title={title}
-          description={description}
-          openGraph={openGraph}
-        />
-      );
-    }
-  };
-
-  return <>{message()}</>;
+  return (
+    <>
+      <SeoComponent
+        canonical={CANONICAL_URL}
+        title={title}
+        description={description}
+        openGraph={openGraph}
+      />
+      <Template />
+    </>
+  );
 };
 
 export default Index;
