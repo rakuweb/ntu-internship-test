@@ -36,7 +36,8 @@ export const Presenter: FC<PresenterProps> = ({
         transition={`all .3s`}
         _hover={{
           cursor: 'pointer',
-          filter: `opacity(50%)`,
+          opacity: 0.5,
+          // filter: `opacity(50%)`,
           textDecoration: 'none',
         }}
         {...props}
