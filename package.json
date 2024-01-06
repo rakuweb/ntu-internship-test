@@ -92,6 +92,7 @@
     "file-loader": "^6.2.0",
     "firebase-tools": "^11.24.0",
     "hygen": "^6.1.0",
+    "lefthook": "^1.5.5",
     "lint-staged": "^13.0.4",
     "local-ssl-proxy": "^2.0.5",
     "next-sitemap": "^3.1.32",
