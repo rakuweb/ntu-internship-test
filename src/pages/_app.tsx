@@ -12,6 +12,8 @@ import { global, guide } from '~/constants/styles';
 import theme from '~/lib/theme';
 // import usePageView from '~/hooks/usePageView';
 
+import 'src/css/globals.css';
+
 // component layer
 const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
   const { liffId, mock } = generateEnv();
