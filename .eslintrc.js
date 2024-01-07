@@ -27,6 +27,7 @@ module.exports = {
     'next/core-web-vitals',
     'plugin:storybook/recommended',
     'prettier',
+    'plugin:storybook/recommended',
   ],
   rules: {
     'react/prop-types': 'off',
