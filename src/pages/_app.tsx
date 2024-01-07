@@ -13,6 +13,7 @@ import theme from '~/lib/theme';
 // import usePageView from '~/hooks/usePageView';
 
 import 'src/css/globals.css';
+import 'src/styles/globals.css';
 
 // component layer
 const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {

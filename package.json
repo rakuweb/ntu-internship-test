@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "panda codegen",
     "dev": "next dev",
     "dev:proxy": "next dev & local-ssl-proxy --key localhost-key.pem --cert localhost.pem --source 3001 --target 3000",
     "build": "next build",
@@ -73,6 +74,7 @@
     "@graphql-codegen/typescript-react-apollo": "^3.3.7",
     "@liff/liff-types": "^2.22.0",
     "@next/bundle-analyzer": "^14.0.2",
+    "@pandacss/dev": "^0.25.0",
     "@storybook/addon-essentials": "^7.6.7",
     "@storybook/addon-interactions": "^7.6.7",
     "@storybook/addon-links": "^7.6.7",
