@@ -80,6 +80,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
                 registered_at: result.user.createdAt,
                 grade_updated_at: createdAt,
                 to_receive_job_info: data.toReceiveJobInfo,
+                birthplace: data.birthplace,
+                corse: data.corse,
               },
             });
         }
