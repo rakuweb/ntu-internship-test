@@ -31,6 +31,96 @@ export const departmentList = [
   '養護教諭特別別科',
 ];
 
+export const courseList = [
+  {
+    department: '人文学部',
+    corses: [
+      '心理・人間学プログラム',
+      '社会文化学プログラム',
+      '言語文化学プログラム',
+    ],
+  },
+  {
+    department: '教育学部',
+    corses: ['学校教員養成プログラム'],
+  },
+  {
+    department: '法学部',
+    corses: ['法学プログラム', '法曹養成プログラム'],
+  },
+  {
+    department: '経済科学部',
+    corses: [
+      '経済学プログラム',
+      '経営学プログラム',
+      '学際日本学プログラム',
+      '地域リーダープログラム',
+    ],
+  },
+  {
+    department: '理学部',
+    corses: [
+      '数学プログラム',
+      '物理学プログラム',
+      '化学プログラム',
+      '生物学プログラム',
+      '地質科学プログラム',
+      '自然環境科学プログラム',
+      'フィールド科学人材育成プログラム',
+    ],
+  },
+  {
+    department: '医学部医学科',
+    corses: ['医学教育プログラム'],
+  },
+  {
+    department: '医学部保健学科',
+    corses: [
+      '看護学プログラム',
+      '放射線技術科学プログラム',
+      '検査技術科学プログラム',
+    ],
+  },
+  {
+    department: '歯学部',
+    corses: ['歯学科', '口腔生命福祉学科'],
+  },
+  {
+    department: '工学部',
+    corses: [
+      '機械システム工学プログラム',
+      '社会基盤工学プログラム',
+      '電子情報通信プログラム',
+      '知能情報システムプログラム',
+      '化学システム工学プログラム',
+      '材料科学プログラム',
+      '建築学プログラム',
+      '人間支援感性科学プログラム',
+      '協創経営プログラム',
+    ],
+  },
+  {
+    department: '農学部',
+    corses: [
+      '応用生命科学プログラム',
+      '食品科学プログラム',
+      '生物資源科学プログラム',
+      '流域環境学プログラム',
+      'フィールド科学人材育成プログラム',
+    ],
+  },
+  {
+    department: '創生学部',
+    corses: ['創生学修課程'],
+  },
+  {
+    department: '養護教諭特別別科',
+    corses: ['なし'],
+  },
+];
+
+export const birthplaceList = ['新潟県内', '新潟県外', '海外'];
+
 export type RegisterFormSchema = {
   name: string;
   grade: string;
@@ -40,6 +130,8 @@ export type RegisterFormSchema = {
   willStartWorking: boolean;
   isInterestedInInternship: boolean;
   toReceiveJobInfo: boolean;
+  birthplace: string;
+  corse: string;
 };
 
 export const registerFormSchema = yup.object().shape({
@@ -75,10 +167,24 @@ export const registerFormSchema = yup.object().shape({
   reception: yup.bool(),
   graduation: yup.bool(),
   toReceiveJobInfo: yup.bool(),
+  birthplace: yup
+    .string()
+    .oneOf([...birthplaceList], '選択してください。')
+    .transform((value, originalValue) =>
+      String(originalValue).trim() === '' ? '' : value
+    ),
+  corse: yup
+    .string()
+    .oneOf([...courseList.flatMap((item) => item.corses)], '選択してください。')
+    .transform((value, originalValue) =>
+      String(originalValue).trim() === '' ? '' : value
+    ),
 });
 
 export type RegisterGradeFormSchema = {
   grade: string;
+  corse: string;
+  birthplace: string;
   toReceiveJobInfo: boolean;
 };
 
@@ -89,7 +195,17 @@ export const registerGradeFormSchema = yup.object().shape({
     .transform((value, originalValue) =>
       String(originalValue).trim() === '' ? '' : value
     ),
-  // reception: yup.bool(),
-  // graduation: yup.bool(),
+  birthplace: yup
+    .string()
+    .oneOf([...birthplaceList], '選択してください。')
+    .transform((value, originalValue) =>
+      String(originalValue).trim() === '' ? '' : value
+    ),
+  corse: yup
+    .string()
+    .oneOf([...courseList.flatMap((item) => item.corses)], '選択してください。')
+    .transform((value, originalValue) =>
+      String(originalValue).trim() === '' ? '' : value
+    ),
   toReceiveJobInfo: yup.bool(),
 });

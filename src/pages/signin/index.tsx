@@ -19,6 +19,7 @@ import {
   selectSetStudent,
   selectStudent,
 } from 'features/student';
+import { ORIGIN_URL } from '~/constants';
 
 // type layer
 
@@ -29,9 +30,9 @@ export const Index: NextPage = () => {
   const { liff } = useLiff();
   const router = useRouter();
   const setAccount = useAccountStore(selectSetAccount);
+  const account = useAccountStore((state) => ({ lineId: state.lineId }));
   const setLineId = useAccountStore(selectSetLineId);
   const setStudent = useStudentStore(selectSetStudent);
-  const student = useStudentStore(selectStudent);
   const prevPath = useAccountStore(selectPrevPath);
   const setPrevPath = useAccountStore(selectSetPrevPath);
 
@@ -69,6 +70,7 @@ export const Index: NextPage = () => {
             studentId,
             gradeUpdatedAt,
             registeredAt,
+            department,
           } = res.data;
           setAccount({
             email: email as string,
@@ -82,6 +84,7 @@ export const Index: NextPage = () => {
             grade: grade,
             gradeUpdatedAt: gradeUpdatedAt ? new Date(gradeUpdatedAt) : null,
             registeredAt: registeredAt ? new Date(registeredAt) : null,
+            department,
           });
 
           setConnected(true);
@@ -102,27 +105,44 @@ export const Index: NextPage = () => {
     // api接続が完了したら
     if (!connected) return;
 
-    if (student?.id && !student?.gradeUpdatedAt) {
-      router.push(`${routes.accountGrade}`);
-    }
-
-    const nextPath = prevPath.slice();
-    setPrevPath('');
-    const lsNextPath = window.localStorage.getItem('prevUrl')?.slice();
-    window.localStorage.removeItem('prevUrl');
-
-    if (lsNextPath?.startsWith('https')) {
-      // 下のページへ移動
-      window.location.href = lsNextPath;
-    } else {
-      if (nextPath) {
-        nextPath ? router.push(nextPath) : router.push(lsNextPath);
-        window.scroll({ top: 0 });
-      } else {
-        // それ以外はhomeへ
-        router.push(routes.home);
+    // 学年更新をしているか確認
+    const handler = async () => {
+      const url = `${ORIGIN_URL}${routes.apiIsUpdated}`;
+      const res = await axios
+        .get(url, { params: { lineId: account.lineId } })
+        .catch((err) => {
+          console.error(err);
+          return null;
+        });
+      if (res === null) {
+        alert('更新済みアカウントか確認できませんでした。');
+        return;
       }
-    }
+      const resData = res.data;
+      if (!resData.isUpdated) {
+        router.push(`${routes.accountGrade}`);
+        return;
+      }
+
+      const nextPath = prevPath.slice();
+      setPrevPath('');
+      const lsNextPath = window.localStorage.getItem('prevUrl')?.slice();
+      window.localStorage.removeItem('prevUrl');
+
+      if (lsNextPath?.startsWith('https')) {
+        // 下のページへ移動
+        window.location.href = lsNextPath;
+      } else {
+        if (nextPath) {
+          nextPath ? router.push(nextPath) : router.push(lsNextPath);
+          window.scroll({ top: 0 });
+        } else {
+          // それ以外はhomeへ
+          router.push(routes.home);
+        }
+      }
+    };
+    handler();
   }, [liff, liff?.isLoggedIn(), connected]); // eslint-disable-line
 
   const message = () => {

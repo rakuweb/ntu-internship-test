@@ -6,6 +6,7 @@ export type StudentSlice = {
   totalVisitCount: number;
   visitCountOfMonth: number;
   registeredAt?: Date;
+  department: string;
 
   setStudent: (props: {
     username: string;
@@ -15,6 +16,7 @@ export type StudentSlice = {
     totalVisitCount?: number;
     visitCountOfMonth?: number;
     registeredAt?: Date;
+    department: string;
   }) => void;
   setStudentId: (id: string) => void;
   setVisitCounts: (props: {

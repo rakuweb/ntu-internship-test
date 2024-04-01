@@ -7,6 +7,8 @@ import {
   parseGrade,
   gradeList,
   RegisterGradeFormSchema,
+  birthplaceList,
+  courseList,
 } from 'features/registerForm';
 import { useStudentStore, selectStudent } from 'features/student';
 import { InternalLink } from '~/components/molecules/links/InternalLink';
@@ -25,7 +27,7 @@ export const Presenter: FC<PresenterProps> = ({ onClick }) => {
     watch,
     formState: { errors },
   } = useFormContext<RegisterGradeFormSchema>();
-  const { grade } = useStudentStore(selectStudent);
+  const { grade, department } = useStudentStore(selectStudent);
   const { toReceiveJobInfo } = watch();
 
   // setValue('toReceiveJobInfo', true)
@@ -35,6 +37,30 @@ export const Presenter: FC<PresenterProps> = ({ onClick }) => {
       <section className="form">
         <form className="form__container" onSubmit={onClick}>
           <h1 className="h1">学年変更フォーム</h1>
+
+          <div className="form__container__item">
+            <p className="form__container__item__left">
+              出身地<span className="red"> * </span>
+            </p>
+            <div className="form__container__item__right">
+              <Select placeholder="--" {...register('birthplace')}>
+                {birthplaceList.map((grade) => (
+                  <option key={grade} value={grade}>
+                    {grade}
+                  </option>
+                ))}
+              </Select>
+              {errors?.birthplace?.message && (
+                <Box
+                  mt={{ base: `0.25rem` }}
+                  fontSize={{ base: `0.75rem` }}
+                  color={`red`}
+                >
+                  {errors.birthplace.message}
+                </Box>
+              )}
+            </div>
+          </div>
 
           {/* 学年 */}
           <div className="form__container__item">
@@ -65,6 +91,34 @@ export const Presenter: FC<PresenterProps> = ({ onClick }) => {
             <p className="form__container__item__left__grade">現在の学年:</p>
             <div className="form__container__item__right__grade">
               {parseGrade(grade)}
+            </div>
+          </div>
+
+          <div className="form__container__item">
+            <p className="form__container__item__left">
+              学科・プログラム等<span className="red"> * </span>
+            </p>
+            <div className="form__container__item__right">
+              <Select placeholder="--" {...register('corse')}>
+                {courseList
+                  .filter(
+                    (departments) => departments.department == department
+                  )[0]
+                  .corses.map((corse) => (
+                    <option key={corse} value={corse}>
+                      {corse}
+                    </option>
+                  ))}
+              </Select>
+              {errors?.corse?.message && (
+                <Box
+                  mt={{ base: `0.25rem` }}
+                  fontSize={{ base: `0.75rem` }}
+                  color={`red`}
+                >
+                  {errors.corse.message}
+                </Box>
+              )}
             </div>
           </div>
 

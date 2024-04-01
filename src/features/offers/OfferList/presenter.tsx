@@ -14,8 +14,8 @@ import { selectOfferList } from 'features/offers/selectors';
 import chakraStyles from '~/components/SeachLook/chakraStyles';
 import { styles } from './styles';
 
-const OfferCard3 = dynamic(
-  import('features/offers/OfferCard3').then((mod) => mod.OfferCard3)
+const OfferCard = dynamic(
+  import('new-components/cards/OfferCard').then((mod) => mod.OfferCard)
 );
 const Pagination = dynamic(
   import('~/components/Pagination').then((mod) => mod.Pagination)
@@ -256,7 +256,7 @@ export const Presenter: FC<PresenterProps> = () => {
               <div key={offer.id}>
                 {offer.end_at >= today ? (
                   <Box m={`0 auto`} w={`fit-content`}>
-                    <OfferCard3 {...offer} />
+                    <OfferCard {...offer} />
                   </Box>
                 ) : (
                   <></>

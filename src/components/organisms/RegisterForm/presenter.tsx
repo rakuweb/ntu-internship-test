@@ -8,7 +8,11 @@ import { useRegisterFormStore } from 'features/registerForm/hooks';
 import { selectSetEmail } from 'features/registerForm/selectors';
 import { InternalLink } from '~/components/molecules/links/InternalLink';
 import { routes } from '~/constants/routes';
-import { RegisterFormSchema } from '~/features/registerForm/schema';
+import {
+  birthplaceList,
+  courseList,
+  RegisterFormSchema,
+} from '~/features/registerForm/schema';
 import { gradeList, departmentList } from '~/features/registerForm/schema';
 import { styles } from './styles';
 
@@ -22,11 +26,13 @@ export const Presenter: FC<PresenterProps> = ({ onClick }) => {
   const {
     register,
     setValue,
+    watch,
     formState: { errors },
   } = useFormContext<RegisterFormSchema>();
   const { liff } = useLiff();
   const setEmail = useRegisterFormStore(selectSetEmail);
   const [inputDisabled, setInputDisabled] = useState<boolean>(false);
+  const { department } = watch();
 
   useEffect(() => {
     if (liff?.isLoggedIn()) {
@@ -39,8 +45,8 @@ export const Presenter: FC<PresenterProps> = ({ onClick }) => {
     }
   }, [liff?.isLoggedIn, liff]); // eslint-disable-line
 
-  setValue('toReceiveJobInfo', true);
-  setValue('isInterestedInInternship', true);
+  // setValue('toReceiveJobInfo', true);
+  // setValue('isInterestedInInternship', true);
 
   return (
     <div css={styles}>
@@ -67,6 +73,30 @@ export const Presenter: FC<PresenterProps> = ({ onClick }) => {
                   color={`red`}
                 >
                   {errors.name.message}
+                </Box>
+              )}
+            </div>
+          </div>
+
+          <div className="form__container__item">
+            <p className="form__container__item__left">
+              出身地<span className="red"> * </span>
+            </p>
+            <div className="form__container__item__right">
+              <Select placeholder="--" {...register('birthplace')}>
+                {birthplaceList.map((grade) => (
+                  <option key={grade} value={grade}>
+                    {grade}
+                  </option>
+                ))}
+              </Select>
+              {errors?.birthplace?.message && (
+                <Box
+                  mt={{ base: `0.25rem` }}
+                  fontSize={{ base: `0.75rem` }}
+                  color={`red`}
+                >
+                  {errors.birthplace.message}
                 </Box>
               )}
             </div>
@@ -119,6 +149,35 @@ export const Presenter: FC<PresenterProps> = ({ onClick }) => {
               )}
             </div>
           </div>
+          {department && (
+            <div className="form__container__item">
+              <p className="form__container__item__left">
+                学科・プログラム等<span className="red"> * </span>
+              </p>
+              <div className="form__container__item__right">
+                <Select placeholder="--" {...register('corse')}>
+                  {courseList
+                    .filter(
+                      (departments) => departments.department == department
+                    )[0]
+                    .corses.map((corse) => (
+                      <option key={corse} value={corse}>
+                        {corse}
+                      </option>
+                    ))}
+                </Select>
+                {errors?.corse?.message && (
+                  <Box
+                    mt={{ base: `0.25rem` }}
+                    fontSize={{ base: `0.75rem` }}
+                    color={`red`}
+                  >
+                    {errors.corse.message}
+                  </Box>
+                )}
+              </div>
+            </div>
+          )}
 
           <div className="form__container__item">
             <p className="form__container__item__left">

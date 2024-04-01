@@ -6,6 +6,8 @@ import { UpdpateGradeMutation, UpdpateGradeDocument } from 'types/gql/graphql';
 export type RequestProps = {
   grade: string;
   to_receive_job_info: boolean;
+  birthplace: string;
+  corse: string;
   line_id: string;
   id: string;
 };
@@ -17,7 +19,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   switch (method) {
     case 'POST': {
       try {
-        const { id, grade, to_receive_job_info } = body as RequestProps;
+        const { id, grade, to_receive_job_info, birthplace, corse } =
+          body as RequestProps;
         const now = new Date();
         const updatedAt = `${now.getFullYear()}-${(now.getMonth() + 1)
           .toString()
@@ -35,6 +38,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             grade,
             to_receive_job_info,
             updated_at: updatedAt,
+            birthplace,
+            corse,
           },
         });
 
@@ -42,6 +47,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           exist: true,
           // grade: resp.data.grade_jp,
           grade: data?.updateStudent?.data?.attributes?.grade_jp,
+          department: data?.updateStudent?.data?.attributes?.department_jp,
           // studentId: resp.data?.id,
           studentId: data?.updateStudent?.data?.id,
           gradeUpdatedAt:

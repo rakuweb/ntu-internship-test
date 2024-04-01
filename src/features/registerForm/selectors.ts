@@ -8,6 +8,8 @@ export const selectRegisterFormItem = (state: RegisterFormSlice) => ({
   phone: state.phone,
   isInterestedInInternship: state.isInterestedInInternship,
   willStartWorking: state.willStartWorking,
+  birthplace: state.birthplace,
+  corse: state.corse,
 });
 
 export const selectRegisterFormFunctions = (state: RegisterFormSlice) => ({
@@ -23,6 +25,8 @@ export const selectSetEmail = (state: RegisterFormSlice) => state.setEmail;
 export const selectRegisterGradeFormItem = (state: RegisterGradeFormSlice) => ({
   grade: state.grade,
   toReceiveJobInfo: state.toReceiveJobInfo,
+  birthplace: state.birthplace,
+  corse: state.corse,
 });
 
 export const selectRegisterGradeFormFunctions = (

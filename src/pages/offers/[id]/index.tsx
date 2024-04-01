@@ -1,5 +1,6 @@
 // import layer
 import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import {
   NextPage,
   InferGetStaticPropsType,
@@ -13,10 +14,9 @@ import {
   useOffersStore,
   useTargetOfferStore,
 } from 'features/offers';
-import { useClient } from 'hooks/client';
 import { initializeApollo_offer } from 'lib/apollo/client';
-import { SeoComponent } from 'organisms/SeoComponent';
-import { Top as Template } from 'templates/OfferId';
+import { OfferID as Template } from 'new-components/templates/OfferId';
+import { SeoComponent } from 'new-components/seo/SeoComponent';
 import {
   GetOfferByIdQuery,
   GetOfferByIdDocument,
@@ -35,6 +35,7 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 // component layer
 export const Index: NextPage<Props> = ({ data, allOffersData }) => {
   const offerAttributes = data?.offer?.data?.attributes;
+  const router = useRouter();
   const title = offerAttributes?.title ?? ``; // eslint-disable-line
   const description = offerAttributes?.job_description ?? ``;
   const imageurl = offerAttributes?.image?.data?.attributes.url;
@@ -50,7 +51,6 @@ export const Index: NextPage<Props> = ({ data, allOffersData }) => {
       },
     ],
   };
-  const { isClient } = useClient();
   const setTarget = useTargetOfferStore(selectSetTarget);
   const setOffers = useOffersStore(selectSetOffers);
 
@@ -63,36 +63,21 @@ export const Index: NextPage<Props> = ({ data, allOffersData }) => {
       setOffers(allOffersData.offers.data as OfferEntity[]);
   }, [allOffersData]);
 
-  if (!data?.offer?.data) {
+  if (router.isFallback) {
     return <></>;
   }
 
-  const message = () => {
-    if (isClient) {
-      return (
-        <>
-          <SeoComponent
-            canonical={CANONICAL_URL}
-            title={title}
-            description={description}
-            openGraph={openGraph}
-          />
-          <Template />
-        </>
-      );
-    } else {
-      return (
-        <SeoComponent
-          canonical={CANONICAL_URL}
-          title={title}
-          description={description}
-          openGraph={openGraph}
-        />
-      );
-    }
-  };
-
-  return <>{message()}</>;
+  return (
+    <>
+      <SeoComponent
+        canonical={CANONICAL_URL}
+        title={title}
+        description={description}
+        openGraph={openGraph}
+      />
+      <Template />
+    </>
+  );
 };
 
 export default Index;

@@ -3,9 +3,6 @@ import { css } from '@emotion/react';
 
 // constant layer
 export const global = css`
-  @import url('https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css');
-
-  @import url('https://fonts.googleapis.com/css?family=Roboto:400,400italic');
   @font-face {
     font-family: 'YuGothic-Bold';
     font-style: normal;

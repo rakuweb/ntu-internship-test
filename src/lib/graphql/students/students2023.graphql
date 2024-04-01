@@ -1,0 +1,41 @@
+query getStudents2023sByLineID($lineId: String) {
+  students2023S(filters: {line_id: {eq: $lineId }}) {
+    data {
+      id
+      attributes {
+        name
+        grade_updated_at
+        createdAt
+      }
+    }
+  }
+}
+
+mutation postPreviousStudent(
+  $grade: String!
+  $department: String
+  $name: String!
+  $line_id: String!
+  $grade_updated_at: Date!
+  $registered_at: DateTime
+) {
+  createStudents2023(
+    data: {
+      grade_jp: $grade
+      department_jp: $department
+      name: $name
+      line_id: $line_id
+      grade_updated_at: $grade_updated_at
+      registered_at: $registered_at
+    }
+  ) {
+    data {
+      id
+      attributes {
+        grade_jp
+        grade_updated_at
+        name
+      }
+    }
+  }
+}

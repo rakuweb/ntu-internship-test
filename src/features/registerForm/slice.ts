@@ -19,6 +19,8 @@ export const createRegisterFormSlice: StateCreator<
   willStartWorking: false,
   isInterestedInInternship: false,
   toReceiveJobInfo: true,
+  birthplace: '',
+  corse: '',
 
   updateFormData: (data) => set(() => ({ ...data })),
   setIsChecked: (isChecked) => set(() => ({ isChecked: isChecked })),
@@ -40,6 +42,8 @@ export const createRegisterGradeFormSlice: StateCreator<
   isComplete: false,
   grade: '',
   toReceiveJobInfo: true,
+  birthplace: '',
+  corse: '',
 
   updateFormData: (data) => set(() => ({ ...data })),
   setIsChecked: (isChecked) => set(() => ({ isChecked: isChecked })),

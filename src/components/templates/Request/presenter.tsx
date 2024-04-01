@@ -4,15 +4,15 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { FormProvider, useForm } from 'react-hook-form';
 // import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
-import { Header } from 'components/headers/Header';
 import {
   RequestSchema,
   requestSchema,
   useRequestStore,
 } from 'features/requests';
 import { RequestCompanyForm } from 'features/requests/RequestCompanyForm';
-import { RequestRecruitmentForm } from 'features/requests/RequestRecruitmentForm';
 import { StepBar } from 'features/requests/StepBar';
+import { RequestRecruitmentForm } from 'new-components/forms/request/RequestRecruitmentForm';
+import { Header } from 'new-components/headers/Header';
 import { Footer } from '~/components/footers/Footer';
 import { RequestConfirm } from '~/features/requests/RequestConfirm';
 import { RequestPRForm } from '~/features/requests/RequestPRForm';

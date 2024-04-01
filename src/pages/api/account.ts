@@ -5,7 +5,6 @@ import {
 } from 'types/gql/graphql';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-
 type Data = {
   exist: boolean;
   email?: string;
@@ -14,6 +13,7 @@ type Data = {
   studentId?: string;
   gradeUpdatedAt?: string;
   registeredAt?: string;
+  department?: string;
 };
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
@@ -43,7 +43,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
           student: {
             data: {
               id,
-              attributes: { grade_jp, grade_updated_at, registered_at },
+              attributes: {
+                grade_jp,
+                grade_updated_at,
+                registered_at,
+                department_jp,
+              },
             },
           },
         } = data.usersPermissionsUsers.data[0].attributes;
@@ -57,6 +62,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
             studentId: id,
             gradeUpdatedAt: grade_updated_at,
             registeredAt: registered_at,
+            department: department_jp,
           });
         }
         res.status(200).json({
@@ -67,6 +73,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
           studentId: id,
           gradeUpdatedAt: grade_updated_at,
           registeredAt: registered_at,
+          department: department_jp,
         });
       } catch (err) {
         console.error(err);

@@ -17,7 +17,7 @@ const FormName = () => {
         }}
         fontWeight={`bold`}
       >
-      COWORKINGに関するお問い合わせ
+        COWORKINGに関するお問い合わせ
       </Box>
     </Flex>
   );

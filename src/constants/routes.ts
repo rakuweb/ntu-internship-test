@@ -50,6 +50,8 @@ export const routes = {
   apiAgent: `/api/agent`,
   apiOffersCheck: `/api/offers/check`,
   apiOffersJobformLine: `/api/offers/jobform/line`,
+  apiIsUpdated: '/api/update/is-updated',
+  apiSavePrevious: '/api/update/save-previous',
 };
 
 export const HP_URL = `https://forjob.nottheuniversity.com`;

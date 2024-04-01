@@ -40,10 +40,12 @@ export default class Document extends NextDocument {
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
             rel="stylesheet"
           ></link>
+          {/*
           <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
           ></link>
+          */}
         </Head>
         <body>
           <Main />

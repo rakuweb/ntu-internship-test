@@ -10,7 +10,7 @@ import {
   selectRegisterGradeFormItem,
   RegisterGradeFormSchema,
 } from 'features/registerForm';
-import { useStudentStore } from 'features/student';
+import { selectStudent, useStudentStore } from 'features/student';
 import { CAFE_ENTRY_QUERY } from '~/constants';
 import { ORIGIN_URL } from '~/constants/env';
 import { routes } from '~/constants/routes';
@@ -25,20 +25,37 @@ export const Container: FC<ContainerProps> = ({ ...props }) => {
   const apiUrl = `${ORIGIN_URL}${routes.apiUpdateGrade}`;
   const { setIsChecked, setIsSending, startSending, successSending } =
     useRegisterGradeFormStore(selectRegisterGradeFormFunctions);
-  const { grade, toReceiveJobInfo } = useRegisterGradeFormStore(
-    selectRegisterGradeFormItem
-  );
+  const { grade, toReceiveJobInfo, birthplace, corse } =
+    useRegisterGradeFormStore(selectRegisterGradeFormItem);
   const { studentId, lineId } = useAccountStore(selectAccount);
   const { reset } = useFormContext<RegisterGradeFormSchema>();
   const router = useRouter();
+  const student = useStudentStore(selectStudent);
+  const account = useAccountStore(selectAccount);
   const { setStudent } = useStudentStore();
 
   const handleClick = async () => {
     startSending();
     try {
+      // 昨年度の情報をstudents2023へ保存
+      const prevData = {
+        grade: student.grade,
+        name: student.username,
+        line_id: account.lineId,
+        department: student.department,
+        grade_updated_at: student.gradeUpdatedAt,
+        registered_at: student.registeredAt,
+      };
+      const _res2023 = await axios.post(
+        `${ORIGIN_URL}${routes.apiSavePrevious}`,
+        { ...prevData }
+      );
+
       const registerData = {
         grade,
         to_receive_job_info: toReceiveJobInfo,
+        birthplace,
+        corse,
         lineId: lineId,
         id: studentId,
       };
@@ -49,6 +66,7 @@ export const Container: FC<ContainerProps> = ({ ...props }) => {
       const studentData = response.data;
       setStudent({
         grade: studentData.grade,
+        department: studentData.department,
         id: studentData.id,
         gradeUpdatedAt: new Date(studentData.gradeUpdatedAt),
         username: studentData.username,

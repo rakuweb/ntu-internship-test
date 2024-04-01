@@ -15,27 +15,20 @@ export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps & DataProps> = ({ onClick }) => {
-  const { grade, setIsChecked, toReceiveJobInfo, isChecked } =
-    useRegisterGradeFormStore();
+  const {
+    grade,
+    setIsChecked,
+    toReceiveJobInfo,
+    isChecked,
+    corse,
+    birthplace,
+  } = useRegisterGradeFormStore();
   const backProgress = useFormProgressStore(selectBackProgress);
   const [isCheckedPrivacyPolicy, setIsCheckedPrivacyPolicy] = useState(false);
 
   useEffect(() => {
     setIsChecked(isCheckedPrivacyPolicy);
   }, [isCheckedPrivacyPolicy]); // eslint-disable-line
-
-  // useEffect(() => {
-  //   const postData = async () => {
-  //     const data = { grade };
-  //     try {
-  //       await axios.post('/api/update', data);
-  //       alert('送信が完了しました。');
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-  //   postData();
-  // }, []);
 
   return (
     <div css={styles}>
@@ -44,8 +37,16 @@ export const Presenter: FC<PresenterProps & DataProps> = ({ onClick }) => {
           <h1 className="h1">送信内容の確認</h1>
 
           <div className="form__container__item">
+            <p className="form__container__item__left">出身地:</p>
+            <div className="form__container__item__right">{birthplace}</div>
+          </div>
+          <div className="form__container__item">
             <p className="form__container__item__left">学年:</p>
             <div className="form__container__item__right">{grade}</div>
+          </div>
+          <div className="form__container__item">
+            <p className="form__container__item__left">学科・プログラム等:</p>
+            <div className="form__container__item__right">{corse}</div>
           </div>
 
           <div className="form__container__item__address">

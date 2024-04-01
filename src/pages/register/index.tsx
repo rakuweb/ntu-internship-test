@@ -26,7 +26,11 @@ export const Index: NextPage = () => {
   const title = ``; // eslint-disable-line
   const description = ``;
   const methods = useForm<RegisterFormSchema>({
-    defaultValues: { willStartWorking: false, isInterestedInInternship: false },
+    defaultValues: {
+      willStartWorking: true,
+      isInterestedInInternship: true,
+      toReceiveJobInfo: true,
+    },
     // resolver: yupResolver(registerFormSchema),
   });
   const progress = useFormProgressStore((state) => state.progress);
@@ -69,6 +73,7 @@ export const Index: NextPage = () => {
           studentId,
           gradeUpdatedAt,
           registeredAt,
+          department,
         } = res.data;
         setAccount({
           email: email as string,
@@ -82,6 +87,7 @@ export const Index: NextPage = () => {
           grade: grade,
           gradeUpdatedAt: gradeUpdatedAt ? new Date(gradeUpdatedAt) : null,
           registeredAt: registeredAt ? new Date(registeredAt) : null,
+          department: department,
         });
 
         // router.push(routes.signin);

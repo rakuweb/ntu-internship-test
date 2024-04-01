@@ -4,8 +4,8 @@ import { Box, Flex } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 
 import { Image } from '~/components/Image';
-import { RemoteImage } from '../../images/RemoteImage';
 import { OfferCard } from '~/features/offers/types';
+import { RemoteImage } from '../../images/RemoteImage';
 
 // type layer
 export type DataProps = OfferCard;

@@ -1,14 +1,14 @@
 // import layer
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-import { SeoComponent } from 'components/seo/SeoComponent';
 import { CANONICAL_URL, ORIGIN_URL } from 'constants/env';
 import { selectSetOffers, useOffersStore } from 'features/offers';
 import { initializeApollo_offer } from 'lib/apollo/client';
 
 import { getTodayString } from 'lib/utils';
-import { Offers as Template } from 'templates/Offers';
+import { SeoComponent } from 'new-components/seo/SeoComponent';
+import { Home as Template } from 'new-components/templates/Home';
 import {
   GetOffersAllQuery,
   GetOffersAllDocument,
@@ -40,7 +40,7 @@ export const Index: NextPage<Props> = ({ data }) => {
 
   useEffect(() => {
     data?.offers?.data && setOffers(data.offers.data as OfferEntity[]);
-  }, [data?.offers?.data]);
+  }, [data?.offers?.data, setOffers]);
 
   if (router.isFallback) {
     return <></>;

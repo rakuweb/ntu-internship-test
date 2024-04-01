@@ -27,6 +27,8 @@ export const Presenter: FC<PresenterProps & DataProps> = ({ onClick }) => {
     isChecked,
     setIsChecked,
     toReceiveJobInfo,
+    birthplace,
+    corse,
   } = useRegisterFormStore();
   const backProgress = useFormProgressStore(selectBackProgress);
   const [isCheckedPrivacyPolicy, setIsCheckedPrivacyPolicy] = useState(false);
@@ -45,6 +47,10 @@ export const Presenter: FC<PresenterProps & DataProps> = ({ onClick }) => {
             <p className="form__container__item__left">名前:</p>
             <div className="form__container__item__right">{name}</div>
           </div>
+          <div className="form__container__item">
+            <p className="form__container__item__left">出身地:</p>
+            <div className="form__container__item__right">{birthplace}</div>
+          </div>
 
           <div className="form__container__item">
             <p className="form__container__item__left">学年:</p>
@@ -54,6 +60,10 @@ export const Presenter: FC<PresenterProps & DataProps> = ({ onClick }) => {
           <div className="form__container__item">
             <p className="form__container__item__left">学部:</p>
             <div className="form__container__item__right">{department}</div>
+          </div>
+          <div className="form__container__item">
+            <p className="form__container__item__left">学科・プログラム等:</p>
+            <div className="form__container__item__right">{corse}</div>
           </div>
 
           <div className="form__container__item__address">

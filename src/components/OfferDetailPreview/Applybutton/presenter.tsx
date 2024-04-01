@@ -3,7 +3,6 @@ import { FC } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
 import { Image } from 'components/images/Image';
 import { useTargetOfferStore, selectTarget } from 'features/offers';
-import { InternalLink } from '~/components/links/InternalLink';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
@@ -69,11 +68,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         </Box>
       </Flex> */}
 
-      <Box
-        w={`fit-content`}
-        mt={`${10 / 3.75}vw`}
-        mx={`auto`}
-      >
+      <Box w={`fit-content`} mt={`${10 / 3.75}vw`} mx={`auto`}>
         <Flex
           alignItems={`center`}
           pl={`${38 / 3.75}vw`}

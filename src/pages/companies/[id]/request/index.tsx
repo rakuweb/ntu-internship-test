@@ -1,5 +1,4 @@
 // import layer
-import { useState, useEffect } from 'react';
 import { NextPage, GetStaticPaths, GetStaticProps } from 'next/types';
 
 import { SeoComponent } from 'organisms/SeoComponent';
@@ -22,38 +21,18 @@ export const Index: NextPage = () => {
       },
     ],
   };
-  const [isClient, setIsClient] = useState(false);
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  const message = () => {
-    if (isClient) {
-      return (
-        <>
-          <SeoComponent
-            canonical={CANONICAL_URL}
-            title={title}
-            description={description}
-            openGraph={openGraph}
-          />
-          <Template />
-        </>
-      );
-    } else {
-      return (
-        <SeoComponent
-          canonical={CANONICAL_URL}
-          title={title}
-          description={description}
-          openGraph={openGraph}
-        />
-      );
-    }
-  };
-
-  return <>{message()}</>;
+  return (
+    <>
+      <SeoComponent
+        canonical={CANONICAL_URL}
+        title={title}
+        description={description}
+        openGraph={openGraph}
+      />
+      <Template />
+    </>
+  );
 };
 
 export default Index;

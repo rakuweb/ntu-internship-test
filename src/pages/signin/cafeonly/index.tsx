@@ -23,6 +23,7 @@ export const Index: NextPage = () => {
   const { liff } = useLiff();
   const router = useRouter();
   const setAccount = useAccountStore(selectSetAccount);
+  const account = useAccountStore((state) => ({ lineId: state.lineId }));
   const setLineId = useAccountStore(selectSetLineId);
   const setStudent = useStudentStore(selectSetStudent);
   const student = useStudentStore(selectStudent);
@@ -81,6 +82,7 @@ export const Index: NextPage = () => {
             studentId,
             gradeUpdatedAt,
             registeredAt,
+            department,
           } = res.data;
           setAccount({
             email: email as string,
@@ -94,6 +96,7 @@ export const Index: NextPage = () => {
             grade: grade,
             gradeUpdatedAt: gradeUpdatedAt ? new Date(gradeUpdatedAt) : null,
             registeredAt: registeredAt ? new Date(registeredAt) : null,
+            department: department,
           });
 
           setConnected(true);
@@ -112,17 +115,47 @@ export const Index: NextPage = () => {
     // api接続が完了したら
     if (!connected) return;
     // 学年更新をしているか確認
-    if (student?.id && !student?.gradeUpdatedAt) {
-      router.push(`${routes.accountGrade}?cafeonly=${CAFE_ENTRY_QUERY}`);
-    } else if (student?.id && student?.gradeUpdatedAt) {
-      if (query === CAFE_ENTRY_QUERY) {
-        // QRコード経由だったら
-        router.push(routes.accountCard);
-      } else {
-        // それ以外
-        router.push(routes.signinMembercard);
+    const handler = async () => {
+      const url = `${ORIGIN_URL}${routes.apiIsUpdated}`;
+      const res = await axios
+        .get(url, { params: { lineId: account.lineId } })
+        .catch((err) => {
+          console.error(err);
+          return null;
+        });
+      if (res === null) {
+        alert('更新済みアカウントか確認できませんでした。');
+        return;
       }
-    }
+      const resData = res.data;
+      if (!resData.isUpdated) {
+        // QRコード経由だったら
+        if (query === CAFE_ENTRY_QUERY) {
+          router.push(`${routes.accountGrade}?cafeonly=${CAFE_ENTRY_QUERY}`);
+        } else {
+          if (query === CAFE_ENTRY_QUERY) {
+            router.push(routes.accountCard);
+          } else {
+            // それ以外
+            router.push(routes.signinMembercard);
+          }
+        }
+      }
+
+      if (student?.id && !student?.gradeUpdatedAt) {
+        router.push(`${routes.accountGrade}?cafeonly=${CAFE_ENTRY_QUERY}`);
+      } else if (student?.id && student?.gradeUpdatedAt) {
+        if (query === CAFE_ENTRY_QUERY) {
+          // QRコード経由だったら
+          router.push(routes.accountCard);
+        } else {
+          // それ以外
+          router.push(routes.signinMembercard);
+        }
+      }
+    };
+
+    handler();
   }, [liff, liff?.isLoggedIn(), connected]); // eslint-disable-line
 
   const message = () => {

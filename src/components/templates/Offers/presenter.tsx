@@ -1,9 +1,7 @@
 // import layer
-import { FC } from 'react';
 import { Box } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
 
-// import { Footer } from 'components/footers/Footer';
 import { Header } from 'components/headers/Header';
 import { Firstview } from 'features/offers/Firstview';
 import { OfferList } from 'features/offers/OfferList';
@@ -17,7 +15,7 @@ const Footer = dynamic(
 export type PresenterProps = Record<string, unknown>;
 
 // presenter
-export const Presenter: FC<PresenterProps> = () => {
+export function Presenter() {
   return (
     <>
       <Header isTop />
@@ -31,4 +29,4 @@ export const Presenter: FC<PresenterProps> = () => {
       <Footer />
     </>
   );
-};
+}

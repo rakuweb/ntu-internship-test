@@ -42,6 +42,16 @@ export const Container: FC<ContainerProps> = ({ ...props }) => {
         // recaptcha: token,
       });
 
+      const now = new Date();
+      const updatedAt = `${now.getFullYear()}-${(now.getMonth() + 1)
+        .toString()
+        .padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')}`;
+      await axios.post(`${ORIGIN_URL}${routes.apiSavePrevious}`, {
+        ...registerData,
+        grade_updated_at: updatedAt,
+        line_id: profile.userId,
+      });
+
       reset();
       successSending();
 

@@ -15,6 +15,7 @@ export const createStudentSlice: StateCreator<
   visitCountOfMonth: 0,
   totalVisitCount: 0,
   registeredAt: new Date(),
+  department: '',
 
   setStudent: (props) => set(() => ({ ...props })),
   setStudentId: (id: string) => set(() => ({ id })),

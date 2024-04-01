@@ -29,6 +29,7 @@ export const Index: NextPage = () => {
   const seo = parseSeo(title, description);
   const methods = useForm<RegisterGradeFormSchema>({
     // resolver: yupResolver(registerGradeFormSchema),
+    defaultValues: { toReceiveJobInfo: true },
   });
   const progress = useFormProgressStore((state) => state.progress);
   const [isClient, setIsClient] = useState(false);
