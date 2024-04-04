@@ -1,60 +1,68 @@
 // import layer
 import { useState, useEffect } from 'react';
+import { NextPage } from 'next/types';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import { NextPage } from 'next/types';
 
-import { Index as Authenticating } from 'components/templates/Register/Authenticating';
-import { routes } from 'constants/routes';
+import { ORIGIN_URL } from 'constants/env';
 import { useLiff } from 'contexts/LineAuthContextInternship';
+import { routes } from 'constants/routes';
 import { useAccountStore } from 'features/account/hooks';
-import {
-  selectSetAccount,
-  selectPrevPath,
-  selectSetPrevPath,
-  selectSetLineId,
-} from 'features/account/selectors';
-import {
-  useStudentStore,
-  selectSetStudent,
-  selectStudent,
-} from 'features/student';
-import { ORIGIN_URL } from '~/constants';
+import { selectSetAccount, selectSetLineId } from 'features/account/selectors';
+import { Index as Authenticating } from 'components/templates/Register/Authenticating';
+import { useStudentStore, selectSetStudent } from 'features/student';
+import { CAFE_ENTRY_QUERY } from '~/constants';
 
 // type layer
 
 // component layer
 export const Index: NextPage = () => {
   const [isClient, setIsClient] = useState(false);
-  const [connected, setConnected] = useState<boolean>(false);
   const { liff } = useLiff();
   const router = useRouter();
   const setAccount = useAccountStore(selectSetAccount);
   const account = useAccountStore((state) => ({ lineId: state.lineId }));
   const setLineId = useAccountStore(selectSetLineId);
   const setStudent = useStudentStore(selectSetStudent);
-  const prevPath = useAccountStore(selectPrevPath);
-  const setPrevPath = useAccountStore(selectSetPrevPath);
+  const [connected, setConnected] = useState<boolean>(false);
+  const [query, setQuery] = useState<string>(null);
 
   useEffect(() => {
+    if (!router?.query) return;
+
+    setQuery((router?.query?.cafeonly as string) ?? '');
     setIsClient(true);
-  }, []);
+  }, [router, router?.query?.cafeonly]);
 
   useEffect(() => {
-    if (!liff) return;
-    if (!liff.isLoggedIn()) {
-      liff.login(); //{ redirectUri: redirectUri });
-    }
-  }, [liff]);
+    if (!isClient) return;
+    if (query === null) return;
 
+    const signin = async () => {
+      if (!liff) return;
+      if (!liff.isLoggedIn()) {
+        liff.login();
+      }
+    };
+
+    signin();
+  }, [isClient, liff, query]);
+
+  // アカウント確認
   useEffect(() => {
+    // line ログイン
     if (!liff || !liff.isLoggedIn()) return;
+    if (!isClient) return;
+    // if (query === null) return;
+    // if (!query) router.push(routes.signin);
 
+    const url = `${ORIGIN_URL}${routes.apiAccount}`;
+    // 非同期関数 useEffect対策
     const handler = async () => {
       try {
         const profile = await liff.getProfile();
-
-        const res = await axios.get(routes.apiAccount, {
+        // strapiへユーザアカウント確認
+        const res = await axios.get(url, {
           params: {
             lineId: profile.userId,
           },
@@ -62,6 +70,7 @@ export const Index: NextPage = () => {
         setLineId(profile.userId);
 
         const { exist } = res.data;
+        // アカウント作成済みか
         if (exist) {
           const {
             email,
@@ -84,7 +93,7 @@ export const Index: NextPage = () => {
             grade: grade,
             gradeUpdatedAt: gradeUpdatedAt ? new Date(gradeUpdatedAt) : null,
             registeredAt: registeredAt ? new Date(registeredAt) : null,
-            department,
+            department: department,
           });
 
           setConnected(true);
@@ -93,18 +102,15 @@ export const Index: NextPage = () => {
         }
       } catch (err) {
         console.error(err);
-        router.push(routes.signinFailed);
-        window.scroll({ top: 0 });
       }
     };
 
     handler();
-  }, [liff, liff?.isLoggedIn()]); // eslint-disable-line
+  }, [liff, liff?.isLoggedIn(), query]); // eslint-disable-line
 
   useEffect(() => {
     // api接続が完了したら
     if (!connected) return;
-
     // 学年更新をしているか確認
     const handler = async () => {
       const url = `${ORIGIN_URL}${routes.apiIsUpdated}`;
@@ -121,30 +127,11 @@ export const Index: NextPage = () => {
       const resData = res.data;
       if (!resData.isUpdated) {
         router.push(`${routes.accountGrade}`);
-        return;
-      }
-
-      const nextPath = prevPath.slice();
-      setPrevPath('');
-      const lsNextPath = window.localStorage.getItem('prevUrl')?.slice();
-      window.localStorage.removeItem('prevUrl');
-
-      if (lsNextPath?.startsWith('https')) {
-        // 下のページへ移動
-        window.location.href = lsNextPath;
       } else {
-        if (nextPath) {
-          nextPath ? router.push(nextPath) : router.push(lsNextPath);
-          window.scroll({ top: 0 });
-        } else {
-          if (window?.location?.href?.includes('liff')) {
-            router.push(routes.signinMembercard);
-          }
-          // それ以外はhomeへ
-          router.push(routes.home);
-        }
+        router.push(routes.signinMembercard);
       }
     };
+
     handler();
   }, [liff, liff?.isLoggedIn(), connected]); // eslint-disable-line
 
