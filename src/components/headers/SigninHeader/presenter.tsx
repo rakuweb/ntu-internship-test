@@ -126,11 +126,11 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         <Flex alignItems={'center'}>
           <InternalLink
             href={`/`}
-            m={{ lg: `0 ${40 / 19.2}vw 0 0` }}
-            display={{ base: `none`, lg: `block` }}
-            fontWeight="bold"
-            color="rgba(153,153, 153, 0.8)"
-            fontSize={`12px`}
+            // m={{ lg: `0 ${40 / 19.2}vw 0 0` }}
+            // display={{ base: `none`, lg: `block` }}
+            // fontWeight="bold"
+            // color="rgba(153,153, 153, 0.8)"
+            // fontSize={`12px`}
           >
             採用担当者はこちら
           </InternalLink>

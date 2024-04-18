@@ -1,19 +1,14 @@
 // import layer
 import { useEffect, useState } from 'react';
-import { Grid } from '@chakra-ui/react';
-import { Select } from 'chakra-react-select';
 import dynamic from 'next/dynamic';
 
 import { useRouter } from 'next/router';
 import { useOffersStore } from 'features/offers/hooks';
 import { selectOfferList } from 'features/offers/selectors';
 
-import { Image } from 'new-components/images/Image';
 import { css } from 'styled-system/css';
 import { flex } from 'styled-system/patterns';
-import chakraStyles from '~/components/SeachLook/chakraStyles';
 import { routes } from '~/constants';
-// import { styles } from './styles'; FIX:
 import type { OfferCard } from 'features/offers';
 
 const OfferCard = dynamic(
@@ -137,7 +132,6 @@ export function Presenter() {
       className={css({
         w: `100%`,
       })}
-      // css={styles}
     >
       <div
         className={flex({
@@ -158,7 +152,8 @@ export function Presenter() {
             ml: { base: `${10 / 3.75}vw`, md: `initial` },
           })}
         >
-          <Image // eslint-disable-line
+          <img
+            src="/svg/file-invoice-solid.svg"
             className={css({
               ml: { base: `${10 / 3.75}vw`, md: `${23 / 19.2}vw` },
               mr: { base: `${10 / 3.75}vw`, md: `${13 / 19.2}vw` },
@@ -178,12 +173,6 @@ export function Presenter() {
                 lg: `${32 / 19.2}vw`,
               },
             })}
-            image={{
-              width: 32,
-              height: 42,
-              src: `/svg/file-invoice-solid.svg`,
-              alt: `書類のアイコン`,
-            }}
           />
           <div
             className={css({
@@ -204,6 +193,7 @@ export function Presenter() {
             display: { base: `block`, md: `flex` },
             mt: { base: `${15 / 3.75}vw`, md: `${13 / 19.2}vw` },
             ml: { base: `${15 / 3.75}vw`, md: `initial` },
+            mr: { base: `${15 / 3.75}vw`, md: `initial` },
             fontSize: {
               base: `${13 / 3.75}vw`,
               md: `${14 / 7.68}vw`,
@@ -223,38 +213,53 @@ export function Presenter() {
               },
             })}
           >
-            <Select
-              options={Options}
-              chakraStyles={chakraStyles}
-              placeholder={sortOption}
-              onChange={(option: { value: string }) =>
-                setSortOption(option.value)
-              }
-            />
+            <select
+              value={sortOption}
+              onChange={(e) => setSortOption(e.target.value)}
+              style={{
+                padding: '0.5rem 1rem',
+                fontSize: '1rem',
+                borderRadius: '0.5rem',
+                border: '1px solid #ccc',
+              }}
+              className={css({
+                w: { base: `100%`, md: `auto` },
+                m: { base: `auto `, md: `0` },
+              })}
+            >
+              {Options.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
       </div>
 
-      <Grid
-        ml={{ lg: `${206 / 19.2}vw` }}
-        mr={{ lg: `${240 / 19.2}vw` }}
-        templateColumns={{
-          base: `repeat(1,1fr)`,
-          md: `repeat(2,1fr)`,
-          lg: `repeat(2,1fr)`,
-        }}
-        rowGap={{
-          base: `${34 / 3.75}vw`,
-          md: `${80 / 19.2}vw`,
-          lg: `${80 / 19.2}vw`,
-        }}
-        columnGap={{ lg: `32px` }}
-        opacity={`1`}
+      <div
+        className={css({
+          ml: { base: ``, md: `${30 / 7.68}vw`, lg: `${206 / 19.2}vw` },
+          mr: { base: ``, md: `${30 / 7.68}vw`, lg: `${240 / 19.2}vw` },
+          display: `grid`,
+          justifyContent: `speace-around`,
+          rowGap: {
+            base: `${34 / 3.75}vw`,
+            md: `${80 / 19.2}vw`,
+            lg: `${80 / 19.2}vw`,
+          },
+          columnGap: { lg: `32px` },
+          opacity: `1`,
+          gridTemplateColumns: {
+            base: `repeat(1,1fr)`,
+            md: `repeat(2,1fr)`,
+            lg: `repeat(2,1fr)`,
+          },
+        })}
       >
         {sortedOffers
           .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
           .map((offer) => {
-            // const daysRemaining = remainingDays(offer.deadline);
             return (
               <div key={offer.id}>
                 {offer.end_at >= today ? (
@@ -272,7 +277,7 @@ export function Presenter() {
               </div>
             );
           })}
-      </Grid>
+      </div>
 
       <div
         className={css({

@@ -72,9 +72,9 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
 
       <InternalLink
         href={routes.offersJobForm(offer.id)}
-        w={`fit-content`}
-        mt={`${10 / 3.75}vw`}
-        mx={`auto`}
+        // w={`fit-content`}
+        // mt={`${10 / 3.75}vw`}
+        // mx={`auto`}
       >
         <Flex
           alignItems={`center`}

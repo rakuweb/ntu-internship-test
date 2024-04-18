@@ -99,7 +99,7 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
   return (
     <Box
       w={`100%`}
-      bg={`#fffffff`}
+      bg={`#ffffff`}
       pt={{ base: `${10 / 3.75}vw`, lg: `0` }}
       px={{ base: `${20 / 3.75}vw`, lg: `0` }}
       position={{ lg: `sticky` }}
@@ -238,23 +238,6 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
             </Box>
           )}
 
-          {/* <Box
-            display={{ base: `none`, lg: `block` }}
-            borderRadius={`20px`}
-            p={`${8 / 19.2}vw ${16 / 19.2}vw`}
-            color="white"
-            backgroundImage={`linear-gradient(19deg, #21D4FD 0%, #B721FF 100%)`}
-            fontWeight={'600'}
-            onClick={() => signout()}
-            transition={`all .3s`}
-            _hover={{
-              cursor: 'pointer',
-              filter: `opacity(50%)`,
-              textDecoration: 'none',
-            }}
-          >
-            ログアウト
-          </Box> */}
           <Box
             display={{ base: `block`, lg: `block` }}
             mt={{ base: ``, lg: `${15 / 19.2}vw` }}
@@ -265,14 +248,6 @@ export const Presenter: FC<PresenterProps> = ({ isTop, ...props }) => {
 
         {show && <MenuDrawer isOpen={isOpen} onClose={onClose} />}
       </Flex>
-      {/*
-      <Box
-        display={{ base: `none`, lg: `block` }}
-        w={`100%`}
-        h={`${40 / 19.2}vw`}
-        bg={`#41A4FD`}
-      />
-      */}
     </Box>
   );
 };

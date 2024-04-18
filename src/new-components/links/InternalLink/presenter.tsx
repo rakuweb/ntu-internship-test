@@ -1,6 +1,6 @@
 // import layer
 import { FC, ReactNode } from 'react';
-import { Box } from '@chakra-ui/react';
+// import { Box } from '@chakra-ui/react';
 import NextLink, { LinkProps as NextLinkProps } from 'next/link';
 
 import { css, cx } from 'styled-system/css';
@@ -36,7 +36,7 @@ export const Presenter: FC<PresenterProps> = ({
       prefetch={prefetch}
       locale={locale}
     >
-      <Box
+      <div
         className={cx(
           css(
             {
@@ -53,7 +53,7 @@ export const Presenter: FC<PresenterProps> = ({
         )}
       >
         {children}
-      </Box>
+      </div>
     </NextLink>
   );
 };

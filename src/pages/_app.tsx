@@ -1,3 +1,5 @@
+// src/pages/_app.tsx
+
 // import layer
 import { ChakraProvider } from '@chakra-ui/react';
 import { NextPage } from 'next';
@@ -14,6 +16,14 @@ import 'src/css/globals.css';
 // import 'src/styles/globals.css';
 import 'src/css/home/index.css';
 import 'src/css/home/offerlist.css';
+import { Noto_Sans_JP } from '@next/font/google';
+
+export const notoSansJP = Noto_Sans_JP({
+  weight: ['400', '500', '600', '700', '800', '900'],
+  display: 'swap',
+  preload: false,
+  variable: '--font-noto-sans-jp',
+});
 
 // component layer
 const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
@@ -27,7 +37,12 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
       <DefaultSeo {...SEO} />
       <ChakraProvider theme={theme}>
         <LiffProvider liffId={liffId} mock={{ enable: mock }}>
-          <Component {...pageProps} />
+          <div
+            id={`root`}
+            className={`${notoSansJP.variable} ${notoSansJP.variable}}`}
+          >
+            <Component {...pageProps} />
+          </div>
         </LiffProvider>
       </ChakraProvider>
     </>

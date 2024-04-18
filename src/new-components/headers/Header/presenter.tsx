@@ -102,7 +102,7 @@ export function Presenter({ isTop, ...props }: PresenterProps) {
       className={css(
         {
           w: `100%`,
-          bg: `#fffffff`,
+          bg: `#ffffff`,
           pt: { base: `${10 / 3.75}vw`, lg: `0` },
           px: { base: `${20 / 3.75}vw`, lg: `0` },
           position: { lg: `sticky` },
@@ -161,7 +161,7 @@ export function Presenter({ isTop, ...props }: PresenterProps) {
               ml: { lg: `${60 / 19.2}vw` },
               mt: { lg: `${2 / 19.2}vw` },
               fontFamily: `'Noto Sans JP', sans-serif`,
-              fontWeight: `500`,
+              fontWeight: `600 !important`,
             })}
           >
             新大生のための求人サイト

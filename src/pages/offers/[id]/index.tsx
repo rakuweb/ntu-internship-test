@@ -36,7 +36,8 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 export const Index: NextPage<Props> = ({ data, allOffersData }) => {
   const offerAttributes = data?.offer?.data?.attributes;
   const router = useRouter();
-  const title = offerAttributes?.title ?? ``; // eslint-disable-line
+  const title = offerAttributes?.title ?? ``;
+  const company_name = offerAttributes?.company_name ?? ``;
   const description = offerAttributes?.job_description ?? ``;
   const imageurl = offerAttributes?.image?.data?.attributes.url;
   const openGraph = {
@@ -71,11 +72,18 @@ export const Index: NextPage<Props> = ({ data, allOffersData }) => {
     <>
       <SeoComponent
         canonical={CANONICAL_URL}
-        title={title}
+        title={
+          title + ` | FOR JOB(新大生のための求人サイト) | NOT THE UNIVERSITY`
+        }
         description={description}
         openGraph={openGraph}
       />
-      <Template />
+
+      <Template
+        title={title}
+        description={description}
+        company_name={company_name}
+      />
     </>
   );
 };

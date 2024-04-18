@@ -1,3 +1,4 @@
+// src/new-components/templates/OfferId/presenter.tsx
 // import layer
 import { FC } from 'react';
 import dynamic from 'next/dynamic';
@@ -14,14 +15,26 @@ import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
 
 // type layer
-export type PresenterProps = Record<string, unknown>;
+export type PresenterProps = {
+  title: string;
+  description: string;
+  company_name: string;
+};
 
 // presenter
-export const Presenter: FC<PresenterProps> = () => {
+export const Presenter: FC<PresenterProps> = ({
+  title,
+  description,
+  company_name,
+}) => {
   return (
     <>
       <Header />
-      <OfferDetail />
+      <OfferDetail
+        title={title}
+        description={description}
+        company_name={company_name}
+      />
       <Footer />
     </>
   );

@@ -29,8 +29,8 @@ export const Presenter: FC<PresenterProps> = () => {
         >
           <InternalLink
             href={routes.home}
-            position={`relative`}
-            w={{ base: `${160 / 3.75}vw`, lg: `${180 / 19.2}vw` }}
+            // position={`relative`}
+            // w={{ base: `${160 / 3.75}vw`, lg: `${180 / 19.2}vw` }}
           >
             <Image // eslint-disable-line
               mx={{ lg: `auto` }}

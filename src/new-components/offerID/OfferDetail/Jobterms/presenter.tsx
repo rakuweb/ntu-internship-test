@@ -1,15 +1,15 @@
 // import layer
 import { FC } from 'react';
 import { Box, Flex } from '@chakra-ui/react';
-import { Image } from 'components/images/Image';
-
+import Image from 'next/image';
 import { useTargetOfferStore, selectTarget } from 'features/offers';
 import { ExternalLink } from '~/components/links/ExternalLink';
 import {
   desiredInterviewDateList,
   desiredInterviewTimeList,
 } from '~/features/requests';
-
+import { css } from 'styled-system/css';
+import { flex } from 'styled-system/patterns';
 // type layer
 export type PresenterProps = Record<string, unknown>;
 
@@ -59,294 +59,378 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const pointArray = convertStringToArray(list[16].main);
 
   return (
-    <Box w={`100%`} fontFamily={`'Noto Sans JP', sans-serif`} {...props}>
-      <Flex
-        mb={{ base: `${12 / 3.75}vw`, md: `${40 / 19.2}vw` }}
-        borderBottom={{
-          base: `${2 / 3.75}vw solid #41A4FD`,
-          md: `${4 / 19.2}vw solid #41A4FD`,
-        }}
+    <div
+      className={css({ w: `100%`, fontFamily: `'Noto Sans JP', sans-serif` })}
+      {...props}
+    >
+      <div
+        className={css({
+          display: `flex`,
+          mb: { base: `${12 / 3.75}vw`, md: `${40 / 19.2}vw` },
+          borderBottom: {
+            base: `${2 / 3.75}vw solid #41A4FD !important`,
+            md: `${4 / 19.2}vw solid #41A4FD !important`,
+          },
+        })}
       >
-        <Image // eslint-disable-line
-          ml={{ base: `${10 / 3.75}vw`, md: `${23 / 19.2}vw` }}
-          mr={{ base: `${5 / 3.75}vw`, md: `${13 / 19.2}vw` }}
-          mb={{
-            base: `${0 / 3.75}vw`,
-            md: `${2 / 7.68}vw`,
-            lg: `${19 / 19.2}vw`,
-          }}
-          w={{
-            base: `${14 / 3.75}vw`,
-            md: `${15 / 7.68}vw`,
-            lg: `${32 / 19.2}vw`,
-          }}
-          h={{
-            base: `${21 / 3.75}vw`,
-            md: `${22 / 7.68}vw`,
-            lg: `${32 / 19.2}vw`,
-          }}
-          image={{
-            width: 32,
-            height: 42,
-            src: `/svg/file-invoice-solid.svg`,
-            alt: `書類のアイコン`,
-          }}
+        <Image
+          src={`/svg/file-invoice-solid.svg`}
+          className={css({
+            ml: { base: `${10 / 3.75}vw`, md: `${23 / 19.2}vw` },
+            mr: { base: `${5 / 3.75}vw`, md: `${13 / 19.2}vw` },
+            mb: {
+              base: `${0 / 3.75}vw`,
+              md: `${2 / 7.68}vw`,
+              lg: `${19 / 19.2}vw`,
+            },
+            w: {
+              base: `${14 / 3.75}vw`,
+              md: `${15 / 7.68}vw`,
+              lg: `${32 / 19.2}vw`,
+            },
+            h: {
+              base: `${21 / 3.75}vw`,
+              md: `${22 / 7.68}vw`,
+              lg: `${32 / 19.2}vw`,
+            },
+          })}
+          alt={''}
+          width={32}
+          height={42}
         />
-        <Box
-          mt={{ base: ``, md: `${3 / 19.2}vw` }}
-          fontSize={{
-            base: `${15 / 3.75}vw`,
-            md: `${16 / 7.68}vw`,
-            lg: `${36 / 19.2}vw`,
-          }}
-          fontWeight={`bold`}
+        <div
+          className={css({
+            mt: { base: ``, md: `${3 / 19.2}vw` },
+            fontSize: {
+              base: `${15 / 3.75}vw`,
+              md: `${16 / 7.68}vw`,
+              lg: `${36 / 19.2}vw`,
+            },
+            fontWeight: `bold`,
+          })}
         >
           募集求人
-        </Box>
-      </Flex>
+        </div>
+      </div>
       {list.map((list, index) =>
         list.main ? (
           <div key={list.title}>
-            <Flex
-              borderBottom={{
-                base: `${2 / 3.75}vw solid rgba(65,164,253,0.25)`,
-                md: `${2 / 19.2}vw solid rgba(65,164,253,0.25)`,
-              }}
-              fontSize={{
-                base: `${12 / 3.75}vw`,
-                md: `${13 / 7.68}vw`,
-                lg: `${22 / 19.2}vw`,
-              }}
-              // fontWeight={`bold`}
-              lineHeight={`1.4em`}
+            <div
+              className={css({
+                display: `flex`,
+
+                fontSize: {
+                  base: `${12 / 3.75}vw !important`,
+                  md: `${13 / 7.68}vw !important`,
+                  lg: `${22 / 19.2}vw !important`,
+                },
+                lineHeight: `1.4em`,
+              })}
             >
-              <Flex>
-                <Box
-                  fontWeight={`bold`}
-                  bg={`#F9FCFE`}
-                  pt={{ base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` }}
-                  pb={{ base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` }}
-                  pl={{ base: `${14 / 3.75}vw`, md: `${40 / 19.2}vw` }}
-                  w={{ base: `${145 / 4.28}vw`, md: `${320 / 19.2}vw` }}
-                  whiteSpace={{ lg: `nowrap` }}
+              <div
+                className={css({
+                  display: `flex`,
+                  borderBottom: {
+                    base: `${
+                      2 / 3.75
+                    }vw solid rgba(65,164,253,0.25) !important`,
+                    md: `${2 / 19.2}vw solid rgba(65,164,253,0.25) !important`,
+                  },
+                  w: `100%`,
+                })}
+              >
+                <div
+                  className={css({
+                    fontWeight: `bold`,
+                    bg: `#F9FCFE`,
+                    pt: { base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` },
+                    pb: { base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` },
+                    pl: { base: `${14 / 3.75}vw`, md: `${40 / 19.2}vw` },
+                    w: { base: `${145 / 4.28}vw`, md: `${320 / 19.2}vw` },
+                    whiteSpace: { lg: `nowrap` },
+                  })}
                 >
                   {list.title}
-                </Box>
+                </div>
 
                 {Array.isArray(list.main) ? (
                   <></>
                 ) : (
                   <div>
-                    <Box
-                      display={
-                        index === 2 ||
-                        index === 8 ||
-                        index === 12 ||
-                        index === 13 ||
-                        index === 16 ||
-                        index === 19 ||
-                        index === 20
-                          ? `none`
-                          : `block`
-                      }
-                      fontSize={{
-                        base: `${10 / 3.75}vw`,
-                        md: `${12 / 7.68}vw`,
-                        lg: `${21 / 19.2}vw`,
-                      }}
-                      pt={{ base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` }}
-                      pb={{ base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` }}
-                      pl={{ base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` }}
-                      whiteSpace={`pre-wrap`}
-                      w={{
-                        base: `${200 / 3.75}vw`,
-                        md: `${310 / 7.68}vw`,
-                        lg: `${670 / 19.2}vw`,
-                      }}
+                    <div
+                      className={css({
+                        display:
+                          index === 2 ||
+                          index === 8 ||
+                          index === 12 ||
+                          index === 13 ||
+                          index === 16 ||
+                          index === 19 ||
+                          index === 20
+                            ? `none`
+                            : `block`,
+                        fontSize: {
+                          base: `${10 / 3.75}vw`,
+                          md: `${12 / 7.68}vw`,
+                          lg: `${21 / 19.2}vw`,
+                        },
+                        pt: { base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` },
+                        pb: { base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` },
+                        pl: { base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` },
+                        whiteSpace: `pre-wrap`,
+
+                        w: {
+                          base: `${200 / 3.75}vw`,
+                          md: `${310 / 7.68}vw`,
+                          lg: `${670 / 19.2}vw`,
+                        },
+                      })}
                     >
                       {list.main}
-                    </Box>
-                    <Box
-                      display={index === 2 ? `block` : `none`}
-                      fontSize={{
-                        base: `${10 / 3.75}vw`,
-                        md: `${12 / 7.68}vw`,
-                        lg: `${21 / 19.2}vw`,
-                      }}
-                      pt={{ base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` }}
-                      pb={{ base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` }}
-                      pl={{ base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` }}
-                      whiteSpace={`pre-wrap`}
+                    </div>
+                    <div
+                      className={css({
+                        display: index === 2 ? `block` : `none`,
+                        fontSize: {
+                          base: `${10 / 3.75}vw`,
+                          md: `${12 / 7.68}vw`,
+                          lg: `${21 / 19.2}vw`,
+                        },
+                        pt: { base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` },
+                        pb: { base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` },
+                        pl: { base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` },
+                        whiteSpace: `pre-wrap`,
+                        w: {
+                          base: `${200 / 3.75}vw`,
+                          md: `${310 / 7.68}vw`,
+                          lg: `${670 / 19.2}vw`,
+                        },
+                      })}
                     >
                       {targetArray.map((target) => (
-                        <Box
-                          display={index === 2 ? `block` : `none`}
+                        <div
+                          className={css({
+                            display: index === 2 ? `block` : `none`,
+                            fontSize: {
+                              base: `${10 / 3.75}vw`,
+                              md: `${12 / 7.68}vw`,
+                              lg: `${21 / 19.2}vw`,
+                            },
+                            whiteSpace: `pre-wrap`,
+                            w: {
+                              base: `${145 / 4.28}vw`,
+                              md: `${320 / 19.2}vw !important`,
+                            },
+                          })}
                           key={target}
-                          fontSize={{
-                            base: `${10 / 3.75}vw`,
-                            md: `${12 / 7.68}vw`,
-                            lg: `${21 / 19.2}vw`,
-                          }}
-                          whiteSpace={`pre-wrap`}
                         >
                           ・{target}
-                        </Box>
+                        </div>
                       ))}
-                    </Box>
-                    <Box
-                      display={index === 8 ? `block` : `none`}
-                      fontSize={{
-                        base: `${10 / 3.75}vw`,
-                        md: `${12 / 7.68}vw`,
-                        lg: `${21 / 19.2}vw`,
-                      }}
-                      pt={{ base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` }}
-                      pb={{ base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` }}
-                      pl={{ base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` }}
-                      whiteSpace={`pre-wrap`}
+                    </div>
+                    <div
+                      className={css({
+                        display: index === 8 ? `block` : `none`,
+                        fontSize: {
+                          base: `${10 / 3.75}vw`,
+                          md: `${12 / 7.68}vw`,
+                          lg: `${21 / 19.2}vw`,
+                        },
+                        whiteSpace: `pre-wrap`,
+                        pt: { base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` },
+                        pb: { base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` },
+                        pl: { base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` },
+                        w: {
+                          base: `${200 / 3.75}vw`,
+                          md: `${310 / 7.68}vw`,
+                          lg: `${670 / 19.2}vw`,
+                        },
+                      })}
                     >
                       {holidayArray.map((day) => (
-                        <Box
+                        <div
+                          className={css({
+                            fontSize: {
+                              base: `${10 / 3.75}vw`,
+                              md: `${12 / 7.68}vw`,
+                              lg: `${21 / 19.2}vw`,
+                            },
+                            whiteSpace: `pre-wrap`,
+                          })}
                           key={day}
-                          fontSize={{
-                            base: `${10 / 3.75}vw`,
-                            md: `${12 / 7.68}vw`,
-                            lg: `${21 / 19.2}vw`,
-                          }}
-                          whiteSpace={`pre-wrap`}
                         >
                           ・{day}
-                        </Box>
+                        </div>
                       ))}
-                    </Box>
-                    <Box
-                      display={index === 12 ? `block` : `none`}
-                      fontSize={{
-                        base: `${10 / 3.75}vw`,
-                        md: `${12 / 7.68}vw`,
-                        lg: `${21 / 19.2}vw`,
-                      }}
-                      pt={{ base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` }}
-                      pb={{ base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` }}
-                      pl={{ base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` }}
-                      whiteSpace={`pre-wrap`}
+                    </div>
+                    <div
+                      className={css({
+                        display: index === 12 ? `block` : `none`,
+                        fontSize: {
+                          base: `${10 / 3.75}vw`,
+                          md: `${12 / 7.68}vw`,
+                          lg: `${21 / 19.2}vw`,
+                        },
+                        pt: { base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` },
+                        pb: { base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` },
+                        pl: { base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` },
+                        whiteSpace: `pre-wrap`,
+                        w: {
+                          base: `${200 / 3.75}vw`,
+                          md: `${310 / 7.68}vw`,
+                          lg: `${670 / 19.2}vw`,
+                        },
+                      })}
                     >
                       {dateArray.map((date) => (
-                        <Box
+                        <div
+                          className={css({
+                            fontSize: {
+                              base: `${10 / 3.75}vw`,
+                              md: `${12 / 7.68}vw`,
+                              lg: `${21 / 19.2}vw`,
+                            },
+                            whiteSpace: `pre-wrap`,
+                          })}
                           key={date}
-                          fontSize={{
-                            base: `${10 / 3.75}vw`,
-                            md: `${12 / 7.68}vw`,
-                            lg: `${21 / 19.2}vw`,
-                          }}
-                          whiteSpace={`pre-wrap`}
                         >
                           ・{date}
                           {date == desiredInterviewDateList[7] ||
                           date == desiredInterviewDateList[8]
                             ? ``
                             : `曜日`}
-                        </Box>
+                        </div>
                       ))}
-                    </Box>
+                    </div>
 
-                    <Box
-                      display={index === 13 ? `block` : `none`}
-                      fontSize={{
-                        base: `${10 / 3.75}vw`,
-                        md: `${12 / 7.68}vw`,
-                        lg: `${21 / 19.2}vw`,
-                      }}
-                      pt={{ base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` }}
-                      pb={{ base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` }}
-                      pl={{ base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` }}
-                      whiteSpace={`pre-wrap`}
+                    <div
+                      className={css({
+                        display: index === 13 ? `block` : `none`,
+                        fontSize: {
+                          base: `${10 / 3.75}vw`,
+                          md: `${12 / 7.68}vw`,
+                          lg: `${21 / 19.2}vw`,
+                        },
+                        pt: { base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` },
+                        pb: { base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` },
+                        pl: { base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` },
+                        whiteSpace: `pre-wrap`,
+                        w: {
+                          base: `${200 / 3.75}vw`,
+                          md: `${310 / 7.68}vw`,
+                          lg: `${670 / 19.2}vw`,
+                        },
+                      })}
                     >
                       {timeArray.map((time) => (
-                        <Box
+                        <div
+                          className={css({
+                            fontSize: {
+                              base: `${10 / 3.75}vw`,
+                              md: `${12 / 7.68}vw`,
+                              lg: `${21 / 19.2}vw`,
+                            },
+                            whiteSpace: `pre-wrap`,
+                          })}
                           key={time}
-                          fontSize={{
-                            base: `${10 / 3.75}vw`,
-                            md: `${12 / 7.68}vw`,
-                            lg: `${21 / 19.2}vw`,
-                          }}
-                          whiteSpace={`pre-wrap`}
                         >
                           ・{time}
-                        </Box>
+                        </div>
                       ))}
-                    </Box>
-                    <Box
-                      display={index === 16 ? `block` : `none`}
-                      fontSize={{
-                        base: `${10 / 3.75}vw`,
-                        md: `${12 / 7.68}vw`,
-                        lg: `${21 / 19.2}vw`,
-                      }}
-                      pt={{ base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` }}
-                      pb={{ base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` }}
-                      pl={{ base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` }}
-                      whiteSpace={`pre-wrap`}
+                    </div>
+                    <div
+                      className={css({
+                        display: index === 16 ? `block` : `none`,
+
+                        fontSize: {
+                          base: `${10 / 3.75}vw`,
+                          md: `${12 / 7.68}vw`,
+                          lg: `${21 / 19.2}vw`,
+                        },
+                        pt: { base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` },
+                        pb: { base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` },
+                        pl: { base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` },
+                        whiteSpace: `pre-wrap`,
+                        w: {
+                          base: `${200 / 3.75}vw`,
+                          md: `${310 / 7.68}vw`,
+                          lg: `${670 / 19.2}vw`,
+                        },
+                      })}
                     >
                       {pointArray.map((points) => (
-                        <Box
+                        <div
+                          className={css({
+                            fontSize: {
+                              base: `${10 / 3.75}vw`,
+                              md: `${12 / 7.68}vw`,
+                              lg: `${21 / 19.2}vw`,
+                            },
+                            whiteSpace: `pre-wrap`,
+                          })}
                           key={points}
-                          fontSize={{
-                            base: `${10 / 3.75}vw`,
-                            md: `${12 / 7.68}vw`,
-                            lg: `${21 / 19.2}vw`,
-                          }}
-                          whiteSpace={`pre-wrap`}
                         >
                           ・{points}
-                        </Box>
+                        </div>
                       ))}
-                    </Box>
+                    </div>
 
-                    <ExternalLink
+                    <a
+                      className={css({
+                        display: index === 19 ? `block` : `none`,
+
+                        fontSize: {
+                          base: `${10 / 3.75}vw`,
+                          md: `${12 / 7.68}vw`,
+                          lg: `${21 / 19.2}vw`,
+                        },
+                        pt: { base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` },
+                        pb: { base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` },
+                        pl: { base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` },
+                        whiteSpace: `pre-wrap`,
+                        w: {
+                          base: `${200 / 3.75}vw`,
+                          md: `${310 / 7.68}vw`,
+                          lg: `${670 / 19.2}vw`,
+                        },
+
+                        _hover: { opacity: 0.8, transition: `0.6s` },
+                      })}
                       href={`${list.main}`}
-                      display={index === 19 ? `block` : `none`}
-                      fontSize={{
-                        base: `${10 / 3.75}vw`,
-                        md: `${12 / 7.68}vw`,
-                        lg: `${21 / 19.2}vw`,
-                      }}
-                      pt={{ base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` }}
-                      pb={{ base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` }}
-                      pl={{ base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` }}
-                      whiteSpace={`pre-wrap`}
-                      w={{
-                        base: `${200 / 3.75}vw`,
-                        md: `${310 / 7.68}vw`,
-                        lg: `${670 / 19.2}vw`,
-                      }}
                     >
                       {list.main}
-                    </ExternalLink>
-                    <Box
-                      display={index === 20 ? `block` : `none`}
-                      fontSize={{
-                        base: `${10 / 3.75}vw`,
-                        md: `${12 / 7.68}vw`,
-                        lg: `${21 / 19.2}vw`,
-                      }}
-                      pt={{ base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` }}
-                      pb={{ base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` }}
-                      pl={{ base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` }}
-                      whiteSpace={`pre-wrap`}
+                    </a>
+                    <div
+                      className={css({
+                        display: index === 20 ? `block` : `none`,
+                        fontSize: {
+                          base: `${10 / 3.75}vw`,
+                          md: `${12 / 7.68}vw`,
+                          lg: `${21 / 19.2}vw`,
+                        },
+                        pt: { base: `${8 / 3.75}vw`, md: `${24 / 19.2}vw` },
+                        pb: { base: `${11 / 3.75}vw`, md: `${27 / 19.2}vw` },
+                        pl: { base: `${19 / 3.75}vw`, md: `${35 / 19.2}vw` },
+                        whiteSpace: `pre-wrap`,
+                        w: {
+                          base: `${200 / 3.75}vw`,
+                          md: `${310 / 7.68}vw`,
+                          lg: `${670 / 19.2}vw`,
+                        },
+                      })}
                     >
                       {`100`}
                       {list.main}
-                    </Box>
+                    </div>
                   </div>
                 )}
-              </Flex>
-            </Flex>
+              </div>
+            </div>
           </div>
         ) : (
           <></>
         )
       )}
-    </Box>
+    </div>
   );
 };
