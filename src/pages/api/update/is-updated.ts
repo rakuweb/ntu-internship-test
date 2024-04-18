@@ -1,7 +1,6 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-
-import { GetStudentByIdQuery, GetStudentByIdDocument } from 'types/gql/graphql';
 import { initializeApollo } from 'lib/apollo/client';
+import { GetStudentByIdQuery, GetStudentByIdDocument } from 'types/gql/graphql';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 type Data = {
   isUpdated: boolean;

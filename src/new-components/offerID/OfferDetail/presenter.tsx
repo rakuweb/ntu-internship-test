@@ -4,9 +4,7 @@ import { FC } from 'react';
 import dynamic from 'next/dynamic';
 
 import Image from 'next/image';
-import { RemoteImage } from 'new-components/images/RemoteImage';
 
-import { BreadcrumbOfferId } from 'new-components/offerID/BreadcrumbOfferId';
 import {
   useTargetOfferStore,
   selectTarget,
@@ -14,6 +12,9 @@ import {
   useOffersStore,
   selectOfferList,
 } from 'features/offers';
+import { BreadcrumbOfferId } from 'new-components/offerID/BreadcrumbOfferId';
+import { css } from 'styled-system/css';
+import { flex } from 'styled-system/patterns';
 import { Applybutton } from './Applybutton';
 import { Fixedmenu } from './Fixedmenu';
 
@@ -35,8 +36,6 @@ const Contact = dynamic(() =>
 
 // import { styles } from './styles';
 import 'zenn-content-css';
-import { flex } from 'styled-system/patterns';
-import { css } from 'styled-system/css';
 
 // type layer
 export type PresenterProps = {
@@ -229,7 +228,8 @@ export const Presenter: FC<PresenterProps> = ({
             {offer.image && (
               <>
                 <link rel="preload" href={offer.image.src} as="image" />
-                <img
+                <img // eslint-disable-line
+                  // WARN:
                   src={offer.image.src}
                   className={css({
                     h: {

@@ -13,12 +13,7 @@ export type PresenterProps = StyleProps & {
 export type Presenter = VFC<PresenterProps>;
 
 // presenter
-export function Presenter({
-  children,
-  onClick,
-  className,
-  ...props
-}: PresenterProps) {
+export function Presenter({ children, onClick, className }: PresenterProps) {
   return (
     <button
       className={cx(

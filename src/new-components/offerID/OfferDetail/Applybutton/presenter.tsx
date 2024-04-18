@@ -1,10 +1,8 @@
 // import layer
-import { FC } from 'react';
 import Image from 'next/image';
 import { useTargetOfferStore, selectTarget } from 'features/offers';
-import { InternalLink } from '~/components/links/InternalLink';
-import { routes } from '~/constants';
 import { css } from 'styled-system/css';
+import { routes } from '~/constants';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;

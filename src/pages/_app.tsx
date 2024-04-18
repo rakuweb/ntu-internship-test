@@ -2,6 +2,7 @@
 
 // import layer
 import { ChakraProvider } from '@chakra-ui/react';
+import { Noto_Sans_JP } from '@next/font/google';
 import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import { DefaultSeo } from 'next-seo';
@@ -16,7 +17,6 @@ import 'src/css/globals.css';
 // import 'src/styles/globals.css';
 import 'src/css/home/index.css';
 import 'src/css/home/offerlist.css';
-import { Noto_Sans_JP } from '@next/font/google';
 
 export const notoSansJP = Noto_Sans_JP({
   weight: ['400', '500', '600', '700', '800', '900'],

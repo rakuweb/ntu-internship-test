@@ -2,7 +2,7 @@
 import { VFC } from 'react';
 // import { css } from '@emotion/react';
 // import { mq } from '~/constants/styles';
-import { css, cx } from 'styled-system/css';
+import { css } from 'styled-system/css';
 // type layer
 export type PresenterProps = Record<string, string>;
 

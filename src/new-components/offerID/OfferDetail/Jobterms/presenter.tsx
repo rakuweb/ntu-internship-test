@@ -1,15 +1,12 @@
 // import layer
 import { FC } from 'react';
-import { Box, Flex } from '@chakra-ui/react';
 import Image from 'next/image';
 import { useTargetOfferStore, selectTarget } from 'features/offers';
-import { ExternalLink } from '~/components/links/ExternalLink';
+import { css } from 'styled-system/css';
 import {
   desiredInterviewDateList,
   desiredInterviewTimeList,
 } from '~/features/requests';
-import { css } from 'styled-system/css';
-import { flex } from 'styled-system/patterns';
 // type layer
 export type PresenterProps = Record<string, unknown>;
 

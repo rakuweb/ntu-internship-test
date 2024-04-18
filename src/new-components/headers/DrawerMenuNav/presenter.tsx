@@ -14,7 +14,7 @@ export type StyleProps = StackProps;
 export type PresenterProps = StyleProps;
 
 // presenter
-export function Presenter({ ...props }: PresenterProps) {
+export function Presenter({ ..._props }: PresenterProps) {
   return (
     <div
       className={stack({

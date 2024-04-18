@@ -1,6 +1,6 @@
 // import layer
-import { useTargetOfferStore, selectTarget } from 'features/offers';
 import Image from 'next/image';
+import { useTargetOfferStore, selectTarget } from 'features/offers';
 import { css } from 'styled-system/css';
 import { flex } from 'styled-system/patterns';
 

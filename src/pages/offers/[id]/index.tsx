@@ -15,8 +15,8 @@ import {
   useTargetOfferStore,
 } from 'features/offers';
 import { initializeApollo_offer } from 'lib/apollo/client';
-import { OfferID as Template } from 'new-components/templates/OfferId';
 import { SeoComponent } from 'new-components/seo/SeoComponent';
+import { OfferID as Template } from 'new-components/templates/OfferId';
 import {
   GetOfferByIdQuery,
   GetOfferByIdDocument,
@@ -57,12 +57,12 @@ export const Index: NextPage<Props> = ({ data, allOffersData }) => {
 
   useEffect(() => {
     data?.offer?.data && setTarget(data?.offer?.data as OfferEntity);
-  }, [data]);
+  }, [data]); // eslint-disable-line
 
   useEffect(() => {
     allOffersData?.offers?.data &&
       setOffers(allOffersData.offers.data as OfferEntity[]);
-  }, [allOffersData]);
+  }, [allOffersData]); // eslint-disable-line
 
   if (router.isFallback) {
     return <></>;

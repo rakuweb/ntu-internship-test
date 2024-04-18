@@ -1,10 +1,9 @@
 // import layer
 import { FC } from 'react';
 import { routes } from 'constants/routes';
-import { InternalLink } from 'new-components/links/InternalLink';
-import type { OfferCard } from 'features/offers/types';
 import { css, cx } from 'styled-system/css';
 import { flex } from 'styled-system/patterns';
+import type { OfferCard } from 'features/offers/types';
 
 // type layer
 export type DataProps = OfferCard;
@@ -24,8 +23,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     occupation,
     id,
     image,
-    job_type,
-    company,
+    job_type: _job_type,
+    company: _company,
     company_name,
     ...remain
   } = props;
@@ -175,7 +174,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   justify: `space-between`,
                 })}
               >
-                <img
+                <img // eslint-disable-line
+                  // WARN:
                   src={image.src}
                   className={cx(
                     css({
@@ -227,7 +227,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                       },
                     })}
                   >
-                    <img
+                    <img // eslint-disable-line
+                      // WARN:
                       src="/svg/yen-sign-solid.svg"
                       className={css({
                         ml: { base: `${10 / 3.75}vw`, md: `${10 / 7.68}vw` },
@@ -274,7 +275,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                       lineHeight: `1em!`,
                     })}
                   >
-                    <img
+                    <img // eslint-disable-line
+                      // WARN:
                       src="/svg/user-solid.svg"
                       className={css({
                         ml: { base: `${9 / 3.75}vw`, md: `${9 / 7.68}vw` },
@@ -320,7 +322,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                       lineHeight: `1em!`,
                     })}
                   >
-                    <img
+                    <img // eslint-disable-line
+                      // WARN:
                       src="/svg/location-dot-solid.svg"
                       className={css({
                         ml: { base: `${10 / 3.75}vw`, md: `${10 / 7.68}vw` },
@@ -366,7 +369,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                       lineHeight: `1em!`,
                     })}
                   >
-                    <img
+                    <img // eslint-disable-line
+                      // WARN:
                       src="/svg/clock-solid.svg"
                       className={css({
                         mt: { base: `${1 / 3.75}vw`, md: `${1 / 7.68}vw` },
@@ -560,7 +564,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                   justify: `space-between`,
                 })}
               >
-                <img
+                <img // eslint-disable-line
+                  // WARN:
                   src={image.src}
                   className={cx(
                     css({
@@ -607,7 +612,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                         borderRadius: `${26 / 19.2}vw`,
                       })}
                     >
-                      <img
+                      <img // eslint-disable-line
+                        // WARN:
                         src="/svg/yen-sign-solid.svg"
                         className={css({
                           w: `${11.5 / 19.2}vw`,
@@ -652,7 +658,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                         borderRadius: `${26 / 19.2}vw`,
                       })}
                     >
-                      <img
+                      <img // eslint-disable-line
+                        // WARN:
                         src="/svg/user-solid.svg"
                         className={css({
                           w: `${16 / 19.2}vw`,
@@ -692,8 +699,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                         borderRadius: `${26 / 19.2}vw`,
                       })}
                     >
-                      <img
-                        // eslint-disable-line
+                      <img // eslint-disable-line
+                        // WARN:
                         src="/svg/location-dot-solid.svg"
                         className={css({
                           w: `${13.7 / 19.2}vw`,
@@ -737,7 +744,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
                         borderRadius: `${26 / 19.2}vw`,
                       })}
                     >
-                      <img
+                      <img // eslint-disable-line
+                        // WARN:
                         src="/svg/clock-solid.svg"
                         className={css({
                           w: `${16 / 19.2}vw`,

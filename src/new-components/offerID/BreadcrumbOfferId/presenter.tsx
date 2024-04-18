@@ -1,5 +1,4 @@
 // import layer
-import { FC } from 'react';
 import { css as ECss } from '@emotion/react';
 
 import { InternalLink } from 'new-components/links/InternalLink';

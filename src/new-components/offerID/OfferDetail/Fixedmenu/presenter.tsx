@@ -5,10 +5,8 @@ import Image from 'next/image';
 import { useLiff } from 'contexts/LineAuthContextInternship';
 import { useAccountStore, selectSetPrevPath } from 'features/account';
 import { useTargetOfferStore, selectTarget } from 'features/offers';
-import { InternalLink } from '~/components/links/InternalLink';
-import { routes } from '~/constants';
 import { css } from 'styled-system/css';
-import { flex } from 'styled-system/patterns';
+import { routes } from '~/constants';
 
 // type layer
 export type PresenterProps = Record<string, unknown>;
@@ -18,7 +16,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const offer = useTargetOfferStore(selectTarget);
   const { liff } = useLiff();
   const setPrevPath = useAccountStore(selectSetPrevPath);
-  const signin = () => {
+  const _signin = () => {
     if (!liff) return;
     if (!liff.isLoggedIn()) {
       offer?.id + `/jobform` && setPrevPath(decodeURI(offer.id + `/jobform`));

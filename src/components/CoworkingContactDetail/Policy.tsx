@@ -1,6 +1,6 @@
 import { Checkbox, Flex } from '@chakra-ui/react';
-import { InternalLink } from '../links/InternalLink';
 import { css } from 'styled-system/css';
+import { InternalLink } from '../links/InternalLink';
 
 const Policy = () => {
   return (

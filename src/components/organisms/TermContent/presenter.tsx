@@ -1,6 +1,6 @@
 // import layer
 import { VFC } from 'react';
-import { css, cx } from 'styled-system/css';
+import { css } from 'styled-system/css';
 // type layer
 export type PresenterProps = Record<string, string>;
 

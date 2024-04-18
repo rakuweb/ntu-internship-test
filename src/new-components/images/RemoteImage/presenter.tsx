@@ -21,7 +21,7 @@ export function Presenter({
   style,
   ...props
 }: PresenterProps) {
-  const { fill, ..._image } = image;
+  const { fill: _fill, ..._image } = image;
   return (
     <div
       className={cx(

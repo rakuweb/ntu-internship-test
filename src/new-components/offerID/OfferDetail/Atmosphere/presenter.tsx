@@ -28,7 +28,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           },
         })}
       >
-        <img
+        <img // eslint-disable-line
+          // WARN:
           src={`/svg/building-solid.svg`}
           loading="lazy"
           className={css({
@@ -75,7 +76,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           key={list.title}
         >
           {list.image && (
-            <img
+            <img // eslint-disable-line
+              // WARN:
               loading="lazy"
               src={list.image.src}
               className={css({

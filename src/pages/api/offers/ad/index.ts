@@ -13,7 +13,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   switch (method) {
     case 'POST': {
       try {
-        const { lineid, offerid, ...data } = req.body;
+        const { lineid, offerid } = req.body;
 
         const promises = offerid.map(async (id) => {
           const response = await fetch(

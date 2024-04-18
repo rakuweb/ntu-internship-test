@@ -28,8 +28,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
     occupation,
     id,
     image,
-    job_type,
-    company,
+    job_type: _job_type,
+    company: _company,
     company_name,
     ...remain
   } = props;

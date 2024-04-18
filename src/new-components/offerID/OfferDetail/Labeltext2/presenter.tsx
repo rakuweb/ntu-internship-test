@@ -1,9 +1,7 @@
 // import layer
 import { FC } from 'react';
-import { Box } from '@chakra-ui/react';
 
 import { routes } from 'constants/routes';
-import { InternalLink } from '~/components/links/InternalLink';
 import { css } from 'styled-system/css';
 
 // type layer

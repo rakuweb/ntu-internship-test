@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { FC } from 'react';
-import { Pagecircle } from './Pagecircle';
 import { css } from 'styled-system/css';
+import { Pagecircle } from './Pagecircle';
 
 export type PresenterProps = {
   currentPage: number;

@@ -6,13 +6,6 @@ export type PresenterProps = Record<string, unknown>;
 
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
-  const Options = [
-    { value: 'アルバイト', label: 'アルバイト' },
-    { value: 'インターンバイト', label: 'インターンバイト' },
-    { value: 'SNS運用', label: 'SNS運用' },
-    { value: 'マーケティング', label: 'マーケティング' },
-  ];
-
   return (
     <div
       className={css({ w: `100%`, position: `relative`, overflow: `hidden` })}
@@ -21,7 +14,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       <h1 className={css({ display: `none` })}>
         {`新大生のための求人サイトFORJOB`}
       </h1>
-      <img
+      <img // eslint-disable-line
+        // WARN:
         src="/images/offers/firstview.webp"
         className={css({
           display: { base: `none`, lg: `block` },
@@ -33,7 +27,8 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           objectFit: `cover`,
         })}
       />
-      <img
+      <img // eslint-disable-line
+        // WARN:
         src="/images/offers/fvmobile.png"
         className={css({
           display: { lg: `none !important` },

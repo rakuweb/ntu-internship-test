@@ -16,7 +16,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const offer = useTargetOfferStore(selectTarget);
   const { liff } = useLiff();
   const setPrevPath = useAccountStore(selectSetPrevPath);
-  const signin = () => {
+  const _signin = () => {
     if (!liff) return;
     if (!liff.isLoggedIn()) {
       offer?.id + `/jobform` && setPrevPath(decodeURI(offer.id + `/jobform`));

@@ -152,7 +152,8 @@ export function Presenter() {
             ml: { base: `${10 / 3.75}vw`, md: `initial` },
           })}
         >
-          <img
+          <img // eslint-disable-line
+            // WARN:
             src="/svg/file-invoice-solid.svg"
             className={css({
               ml: { base: `${10 / 3.75}vw`, md: `${23 / 19.2}vw` },

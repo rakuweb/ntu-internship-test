@@ -1,11 +1,10 @@
 // import layer
 import { FC } from 'react';
-import { css } from 'styled-system/css';
 import { Image as NImage } from 'components/images/Image';
 import { routes } from 'constants/routes';
+import { css } from 'styled-system/css';
 import { Image } from '~/components/Image';
 import { InternalLink } from '~/components/links/InternalLink';
-import { mq } from '~/constants/styles';
 import { OfferCard } from '../types';
 
 // type layer

@@ -32,7 +32,7 @@ const MenuDrawer = dynamic(
 export type PresenterProps = SystemStyleObject & { isTop?: boolean };
 
 // presenter
-export function Presenter({ isTop, ...props }: PresenterProps) {
+export function Presenter({ isTop: _isTop, ...props }: PresenterProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { username } = useAccountStore(selectAccount);
   const _signout = useAccountStore(selectSignout);
