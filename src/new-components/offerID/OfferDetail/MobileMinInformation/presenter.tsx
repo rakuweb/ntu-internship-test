@@ -1,6 +1,6 @@
 // import layer
 import { useTargetOfferStore, selectTarget } from 'features/offers';
-import { Image } from 'new-components/images/Image';
+import Image from 'next/image';
 import { css } from 'styled-system/css';
 import { flex } from 'styled-system/patterns';
 
@@ -39,19 +39,17 @@ export function Presenter() {
             borderRadius: `${26 / 3.75}vw`,
           })}
         >
-          <Image // eslint-disable-line
+          <Image
+            src="/svg/yen-sign-solid.svg"
             className={css({
               ml: `${11 / 3.75}vw`,
               mr: `${10 / 3.75}vw`,
               w: `${7 / 3.75}vw`,
               h: `auto`,
             })}
-            image={{
-              width: 24,
-              height: 30,
-              src: `/svg/yen-sign-solid.svg`,
-              alt: `お金アイコン`,
-            }}
+            alt={''}
+            width={24}
+            height={30}
           />
           <div
             className={css({
@@ -76,20 +74,17 @@ export function Presenter() {
             borderRadius: `${26 / 3.75}vw`,
           })}
         >
-          <Image // eslint-disable-line
+          <Image
+            src="/svg/location-dot-solid.svg"
             className={css({
               ml: `${11 / 3.75}vw`,
               mr: `${10 / 3.75}vw`,
               w: `${9 / 3.75}vw`,
               h: `${12 / 3.75}vw`,
             })}
-            image={{
-              width: 13.7,
-              height: 18.3,
-              src: `/svg/location-dot-solid.svg`,
-              alt: `場所アイコン`,
-              style: { width: `100%`, height: `100%` },
-            }}
+            alt={''}
+            width={13.7}
+            height={18.3}
           />
           <div
             className={css({
@@ -125,19 +120,17 @@ export function Presenter() {
             borderRadius: `${26 / 3.75}vw`,
           })}
         >
-          <Image // eslint-disable-line
+          <Image
+            src="/svg/user-solid.svg"
             className={css({
               ml: `${10 / 3.75}vw`,
               mr: `${8 / 3.75}vw`,
               w: `${10 / 3.75}vw`,
               h: `auto`,
             })}
-            image={{
-              width: 16,
-              height: 18.5,
-              src: `/svg/user-solid.svg`,
-              alt: `人型アイコン`,
-            }}
+            alt={''}
+            width={16}
+            height={18.5}
           />
           <div
             className={css({
@@ -162,19 +155,17 @@ export function Presenter() {
             borderRadius: `${26 / 3.75}vw`,
           })}
         >
-          <Image // eslint-disable-line
+          <Image
+            src="/svg/clock-solid.svg"
             className={css({
               ml: `${10 / 3.75}vw`,
               mr: `${8 / 3.75}vw`,
               w: `${11.6 / 3.75}vw`,
               h: `${11.6 / 3.75}vw`,
             })}
-            image={{
-              width: 16,
-              height: 16,
-              src: `/svg/clock-solid.svg`,
-              alt: `時間アイコン`,
-            }}
+            alt={''}
+            width={16}
+            height={16}
           />
           <div
             className={css({

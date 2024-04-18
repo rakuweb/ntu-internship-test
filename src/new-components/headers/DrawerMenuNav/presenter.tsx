@@ -32,7 +32,7 @@ export function Presenter({ ...props }: PresenterProps) {
             key={navItem.name}
           >
             <Text
-              _hover={{ color: `var(--curious-blue)` }}
+              _hover={{ color: `#2194e5 !importat` }}
               w={`fit-content`}
               fontSize={{ lg: `1rem` }}
               // color={`white`}
@@ -50,7 +50,7 @@ export function Presenter({ ...props }: PresenterProps) {
             {...navItem}
           >
             <Text
-              _hover={{ color: `var(--curious-blue)` }}
+              _hover={{ color: `#2194e5 !importat` }}
               w={`fit-content`}
               fontSize={{ lg: `1rem` }}
               // color={`white`}

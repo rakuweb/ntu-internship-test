@@ -12,8 +12,12 @@ export type PresenterProps = StyleProps & DataProps;
 // presenter
 export const Presenter: FC<PresenterProps> = ({ image, style, ...props }) => {
   return (
-    <Box position={`relative`} {...props}>
-      <NextImage loading={`lazy`} {...image} style={style} />
+    <Box {...props}>
+      <NextImage
+        loading={`lazy`}
+        {...image}
+        // style={style}
+      />
     </Box>
   );
 };

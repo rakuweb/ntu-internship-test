@@ -1,0 +1,23 @@
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 1;
+}
+
+@media (min-width: 768px) {
+  .offers-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .offers-grid {
+    grid-template-columns: repeat(2, 1fr);
+    margin-left: calc(206px / 19.2);
+    margin-right: calc(240px / 19.2);
+    gap: calc(80px / 19.2);
+  }
+}

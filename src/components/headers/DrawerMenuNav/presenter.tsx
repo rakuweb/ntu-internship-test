@@ -21,7 +21,7 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
     <div>
       {username ? (
         <Text
-          _hover={{ color: `var(--curious-blue)` }}
+          _hover={{ color: `#2194e5` }}
           w={`fit-content`}
           p={` 0 0 8px 16px`}
           fontSize={{ lg: `1rem` }}
@@ -46,11 +46,12 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
               isExternal
             >
               <Text
-                _hover={{ color: `var(--curious-blue)` }}
+                _hover={{ color: `#2194e5 !important` }}
                 transition={`all .3s`}
                 w={`fit-content`}
                 fontSize={{ lg: `1rem` }}
                 color={`#444444`}
+                fontWeight={`bold`}
                 className="menu-text yugothic-bold-white-14px"
               >
                 {navItem.name}
@@ -64,11 +65,12 @@ export const Presenter: VFC<PresenterProps> = ({ ...props }) => {
               {...navItem}
             >
               <Text
-                _hover={{ color: `var(--curious-blue)` }}
+                _hover={{ color: `#2194e5 !important` }}
                 transition={`all .3s`}
                 w={`fit-content`}
                 fontSize={{ lg: `1rem` }}
                 color={`#444444`}
+                fontWeight={`bold`}
                 className="menu-text yugothic-bold-white-14px"
               >
                 {navItem.name}

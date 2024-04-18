@@ -1,9 +1,9 @@
 // import layer
 import { FC } from 'react';
-import { Box, Flex } from '@chakra-ui/react';
+// import { Box, Flex } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
 
-import { Image } from 'new-components/images/Image';
+import Image from 'next/image';
 import { RemoteImage } from 'new-components/images/RemoteImage';
 
 import { BreadcrumbOfferId } from 'new-components/offerID/BreadcrumbOfferId';
@@ -33,16 +33,24 @@ const Contact = dynamic(() =>
   import('new-components/offerID/Contact').then((mod) => mod.Contact)
 );
 
-import { styles } from './styles';
+// import { styles } from './styles';
 import 'zenn-content-css';
 import { flex } from 'styled-system/patterns';
 import { css } from 'styled-system/css';
 
 // type layer
-export type PresenterProps = Record<string, unknown>;
+export type PresenterProps = {
+  title: string;
+  description: string;
+  company_name: string;
+};
 
 // presenter
-export const Presenter: FC<PresenterProps> = () => {
+export const Presenter: FC<PresenterProps> = ({
+  title,
+  description,
+  company_name,
+}) => {
   const offer = useTargetOfferStore(selectTarget);
   const offers = useOffersStore(selectOfferList);
   const { jobTitle } = useTargetOfferStore(selectBreadCrumbItem);
@@ -115,7 +123,7 @@ export const Presenter: FC<PresenterProps> = () => {
   const otherOffers = offers.filter((item) => item.id !== offer.id);
 
   return (
-    <div css={styles}>
+    <div>
       <BreadcrumbOfferId titles={pageTitles} />
       <div
         className={flex({
@@ -147,7 +155,7 @@ export const Presenter: FC<PresenterProps> = () => {
               mb: { base: `${13 / 3.75}vw`, md: `${20 / 19.2}vw` },
             })}
           >
-            {offer.company_name}
+            <h2>{company_name}</h2>
             {isNew <= 7 ? (
               <div
                 className={flex({
@@ -204,72 +212,117 @@ export const Presenter: FC<PresenterProps> = () => {
               lineHeight: `1.4em!`,
             })}
           >
-            {offer.title}
+            {title}
           </h1>
           <MobileMinInformation />
-          <RemoteImage
+          <div
             className={css({
               mt: { base: `${14 / 3.75}vw`, md: `${25 / 19.2}vw` },
               mb: { base: `${35 / 3.75}vw`, md: `${54 / 19.2}vw` },
-              h: { base: `${196 / 3.75}vw`, md: `${575 / 19.2}vw` },
-              overflow: `hidden`,
-              borderRadius: { base: `${5 / 3.75}vw`, md: `${5 / 19.2}vw` },
+              h: {
+                base: `${196 / 3.75}vw !important`,
+                md: `${575 / 19.2}vw !important`,
+              },
+              w: `auto`,
             })}
-            image={{
-              ...offer.image,
-              htmlWidth: offer?.image?.width,
-              htmlHeight: offer?.image?.height,
-              width: undefined,
-              height: undefined,
-              fill: true,
-              loading: `eager`,
-            }}
-            style={{ objectFit: `cover` }}
-          />
+          >
+            {offer.image && (
+              <>
+                <link rel="preload" href={offer.image.src} as="image" />
+                <img
+                  src={offer.image.src}
+                  className={css({
+                    h: {
+                      base: `${196 / 3.75}vw !important`,
+                      md: `${575 / 19.2}vw !important`,
+                    },
+                    w: `100%`,
+                    overflow: `hidden`,
+                    objectFit: `cover`,
+                    borderRadius: {
+                      base: `${5 / 3.75}vw`,
+                      md: `${5 / 19.2}vw`,
+                    },
+                  })}
+                  alt="Important image"
+                  loading="eager"
+                />
+              </>
+            )}
+          </div>
           <Applybutton />
           {/* 求人の詳細 */}
-          <Box
-            bg={`#F4FAFE`}
-            w={`100%`}
-            mt={{ base: `${35 / 3.75}vw`, md: `initial` }}
-            mb={{ base: `${35 / 3.75}vw`, md: `${80 / 19.2}vw` }}
-            pt={{ base: `${17 / 3.75}vw`, md: `${42 / 19.2}vw` }}
-            pb={{ base: `${16 / 3.75}vw`, md: `${47 / 19.2}vw` }}
-            pl={{ base: `${16 / 3.75}vw`, md: `${45 / 19.2}vw` }}
-            pr={{ base: `${15 / 3.75}vw`, md: `${45 / 19.2}vw` }}
+          <div
+            className={css({
+              bg: `#F4FAFE`,
+              w: `100%`,
+              mt: { base: `${35 / 3.75}vw`, md: `initial` },
+              mb: { base: `${35 / 3.75}vw`, md: `${80 / 19.2}vw` },
+              pt: { base: `${17 / 3.75}vw`, md: `${42 / 19.2}vw` },
+              pb: { base: `${16 / 3.75}vw`, md: `${47 / 19.2}vw` },
+              pl: { base: `${16 / 3.75}vw`, md: `${45 / 19.2}vw` },
+              pr: { base: `${15 / 3.75}vw`, md: `${45 / 19.2}vw` },
+            })}
           >
-            <Box
-              display={{ base: `none`, md: `block` }}
-              fontSize={{
-                md: `${12 / 7.68}vw`,
-                lg: `${25 / 19.2}vw`,
-              }}
-              fontWeight={`bold`}
+            <div
+              className={css({
+                display: { base: `none`, md: `block` },
+                fontSize: { md: `${12 / 7.68}vw`, lg: `${25 / 19.2}vw` },
+                fontWeight: `bold`,
+              })}
             >
               求人の詳細
-            </Box>
-            <Box
-              mt={{ base: ``, md: `${19 / 19.2}vw` }}
-              mx={{ base: ``, md: `${20 / 19.2}vw` }}
-              fontSize={{ base: `${11 / 3.75}vw`, md: `${20 / 19.2}vw` }}
-              lineHeight={{ base: `1.2em`, md: `1.5em` }}
-              whiteSpace={`pre-wrap`}
+            </div>
+            <h3
+              className={css({
+                mt: { base: ``, md: `${19 / 19.2}vw !important` },
+                mx: { base: ``, md: `${20 / 19.2}vw` },
+                fontSize: {
+                  base: `${11 / 3.75}vw !important`,
+                  md: `${20 / 19.2}vw !important`,
+                },
+                lineHeight: { base: `1.2em`, md: `1.5em` },
+                whiteSpace: `pre-wrap`,
+              })}
             >
-              {offer.job_description}
-            </Box>
-          </Box>
-          <Atmosphere mb={{ md: `${80 / 19.2}vw` }} />
-          <Applybutton pt={`${10 / 3.75}vw`} mb={`${65 / 3.75}vw`} />
-          <Jobterms mb={{ base: `${55 / 3.75}vw`, md: `${125 / 19.2}vw` }} />
-          <Applybutton mb={`${65 / 3.75}vw`} />
-          <Flex
-            mb={{ base: `${25 / 3.75}vw`, md: `${55 / 19.2}vw` }}
-            borderBottom={{
-              base: `${2 / 3.75}vw solid #41A4FD`,
-              md: `${4 / 19.2}vw solid #41A4FD`,
-            }}
+              {description}
+            </h3>
+          </div>
+          <div className={css({ mb: { md: `${80 / 19.2}vw` } })}>
+            <Atmosphere />
+          </div>
+          <div
+            className={css({
+              pt: {
+                base: `${10 / 3.75}vw`,
+                md: `0`,
+              },
+              mb: { base: `${65 / 3.75}vw`, md: `0` },
+            })}
           >
-            <Image // eslint-disable-line
+            <Applybutton />
+          </div>
+          <div
+            className={css({
+              mb: { base: `${55 / 3.75}vw`, md: `${125 / 19.2}vw` },
+            })}
+          >
+            <Jobterms />
+          </div>
+          <div className={css({ mb: { base: `${65 / 3.75}vw`, md: `0` } })}>
+            <Applybutton />
+          </div>
+          <div
+            className={css({
+              display: `flex`,
+              borderBottom: {
+                base: `${2 / 3.75}vw solid #41A4FD !important`,
+                md: `${4 / 19.2}vw solid #41A4FD !important`,
+              },
+            })}
+          >
+            <Image
+              src={`/svg/building-solid.svg`}
               className={css({
                 ml: { base: `${10 / 3.75}vw`, md: `${23 / 19.2}vw` },
                 mr: { base: `${5 / 3.75}vw`, md: `${13 / 19.2}vw` },
@@ -289,52 +342,48 @@ export const Presenter: FC<PresenterProps> = () => {
                   lg: `${32 / 19.2}vw`,
                 },
               })}
-              image={{
-                width: 32,
-                height: 42,
-                src: `/svg/file-invoice-solid.svg`,
-                alt: `書類のアイコン`,
-              }}
+              alt={''}
+              width={32}
+              height={42}
             />
-            <Box
-              mt={{ base: ``, md: `${3 / 19.2}vw` }}
-              fontSize={{
-                base: `${15 / 3.75}vw`,
-                md: `${16 / 7.68}vw`,
-                lg: `${36 / 19.2}vw`,
-              }}
-              fontWeight={`bold`}
+            <div
+              className={css({
+                mt: { base: ``, md: `${0 / 19.2}vw` },
+                fontSize: {
+                  base: `${15 / 3.75}vw`,
+                  md: `${16 / 7.68}vw`,
+                  lg: `${36 / 19.2}vw`,
+                },
+                fontWeight: `bold`,
+              })}
             >
               新着求人
-            </Box>
-          </Flex>
-          <Box>
+            </div>
+          </div>
+          <div>
             {otherOffers
               .filter((offer) => offer.end_at >= today)
               .slice(0, 2)
               .map((offer, index) => (
-                <Box
-                  mt={
-                    index !== 0
-                      ? { base: `${36 / 3.75}vw`, md: `${50 / 19.2}vw` }
-                      : undefined
-                  }
+                <div
+                  className={css({
+                    mt: { base: `${36 / 3.75}vw`, md: `${50 / 19.2}vw` },
+                  })}
                   key={index}
                 >
-                  <OfferCard
-                    // onClick={() => window.scroll(0, 0)}
-                    {...offer}
-                  />
-                </Box>
+                  <OfferCard {...offer} />
+                </div>
               ))}
-          </Box>
+          </div>
         </div>
-        <Box
-          ml={{ base: ``, md: `${35 / 7.68}vw`, lg: `${135 / 19.2}vw` }}
-          display={{ base: `none`, md: `block` }}
+        <div
+          className={css({
+            ml: { base: ``, md: `${35 / 7.68}vw`, lg: `${135 / 19.2}vw` },
+            display: { base: `none`, md: `block` },
+          })}
         >
           <Fixedmenu />
-        </Box>
+        </div>
       </div>
       <Contact
         mt={{ base: `${100 / 3.75}vw`, md: `${380 / 19.2}vw` }}

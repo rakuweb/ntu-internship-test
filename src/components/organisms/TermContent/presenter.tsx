@@ -1,8 +1,6 @@
 // import layer
 import { VFC } from 'react';
-import { css } from '@emotion/react';
-import { mq } from '~/constants/styles';
-
+import { css, cx } from 'styled-system/css';
 // type layer
 export type PresenterProps = Record<string, string>;
 
@@ -138,130 +136,25 @@ export const Presenter: VFC<PresenterProps> = () => {
 \u3000\u3000 株式会社ラクウェブ`;
 
   return (
-    <div css={styles}>
-      <section className="container">
-        <div className="xlcontainer">
-          <h1 className="h1Style">利用規約</h1>
-          <p className="FirstSentence">{firstsentence}</p>
-          <div className="listStyle">
-            {list.map((list) => (
-              <div key={list.title}>
-                <h2 className="h2Style">{list.title}</h2>
-                <p className="stateStyle">{list.statements}</p>
+    <div style={{ backgroundColor: '#f5f5f5' }}>
+      <div className="max-w-4xl mx-auto p-5 ">
+        <section className={css({ fontFamily: 'Noto Sans JP' })}>
+          <h1 className="text-3xl font-bold mb-4 text-center">利用規約</h1>
+          <p className="mb-8">{firstsentence}</p>
+          <div>
+            {list.map((item) => (
+              <div key={item.title} className="mb-6">
+                <h2 className="text-2xl font-semibold mb-2">{item.title}</h2>
+                <p className="text-gray-700">{item.statements}</p>
               </div>
             ))}
-            <p className="addressStyle">{address}</p>
-            <p className="dateStyle ">最終更新日: 2023年2月10日</p>
+            <p className="mt-6 text-gray-600">{address}</p>
+            <p className="text-right text-gray-600">
+              最終更新日: 2023年2月10日
+            </p>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 };
-// styles
-const styles = css`
-  .container {
-    background-color: #f5f5f5;
-    width: 100vw;
-    align-items: center;
-    font-family: 'Noto Sans JP', sans-serif;
-    margin: 0 0 -20px 0;
-    padding: 32px 10px 64px;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .h1Style {
-    font-size: ${26 / 3.75}vw;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: ${32 / 3.75}vw;
-  }
-
-  .FirstSentence {
-    white-space: pre-wrap;
-    line-height: 2em;
-    font-size: ${12 / 3.75}vw;
-  }
-
-  .listStyle {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .h2Style {
-    margin-top: 10vw;
-    font-size: ${20 / 3.75}vw;
-    line-height: 1.2em;
-    font-weight: bold;
-  }
-  .stateStyle {
-    margin: 5vw 0 0 0;
-    font-size: ${12 / 3.75}vw;
-    line-height: 2em;
-    letter-spacing: 0.2em;
-    white-space: pre-wrap;
-  }
-
-  .addressStyle {
-    margin-top: 5vw;
-    font-size: ${12 / 3.75}vw;
-    line-height: 2em;
-    letter-spacing: 0.2em;
-    white-space: pre-wrap;
-  }
-
-  .dateStyle {
-    text-align: right;
-    font-size: ${12 / 3.75}vw;
-    line-height: 2em;
-    letter-spacing: 0.2em;
-  }
-
-  ${mq[2]} {
-    .container {
-      // padding: 32px 0px 64px;
-    }
-    .xlcontainer {
-      width: ${1180 / 19.2}vw;
-    }
-
-    .h1Style {
-      font-size: ${40 / 19.2}vw;
-      margin-bottom: ${32 / 19.2}vw;
-    }
-
-    .FirstSentence {
-      margin-top: 5vw;
-      font-size: ${22 / 19.2}vw;
-    }
-
-    .h2Style {
-      margin-top: 5vw;
-      font-size: ${32 / 19.2}vw;
-    }
-
-    .stateStyle {
-      margin-top: 2vw;
-      font-size: ${22 / 19.2}vw;
-      line-height: 2em;
-      letter-spacing: 0.2em;
-      white-space: pre-wrap;
-    }
-
-    .addressStyle {
-      margin-top: 5vw;
-      font-size: ${22 / 19.2}vw;
-      line-height: 2em;
-      letter-spacing: 0.2em;
-      white-space: pre-wrap;
-    }
-
-    .dateStyle {
-      text-align: right;
-      font-size: ${22 / 19.2}vw;
-      line-height: 2em;
-      letter-spacing: 0.2em;
-    }
-  }
-`;

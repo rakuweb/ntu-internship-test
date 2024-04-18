@@ -1,5 +1,6 @@
 import { Checkbox, Flex } from '@chakra-ui/react';
 import { InternalLink } from '../links/InternalLink';
+import { css } from 'styled-system/css';
 
 const Policy = () => {
   return (
@@ -21,8 +22,10 @@ const Policy = () => {
         mr={{ base: `${10 / 3.75}vw`, md: `${20 / 19.2}vw` }}
         isInvalid
       />
-      <InternalLink href={`/`} as={`span`} borderBottom={`2px solid #39414E`}>
-        プライバシーポリシー
+      <InternalLink href={`/`}>
+        <span className={css({ borderBottom: `2px solid #39414E` })}>
+          プライバシーポリシー
+        </span>
       </InternalLink>
       に同意する
     </Flex>
