@@ -52,3 +52,5 @@ storybook-static/
 ## Panda
 styled-system
 styled-system-studio
+
+ecosystem.config.js
