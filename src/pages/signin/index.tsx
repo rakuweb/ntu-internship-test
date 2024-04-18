@@ -14,11 +14,7 @@ import {
   selectSetPrevPath,
   selectSetLineId,
 } from 'features/account/selectors';
-import {
-  useStudentStore,
-  selectSetStudent,
-  selectStudent,
-} from 'features/student';
+import { useStudentStore, selectSetStudent } from 'features/student';
 import { ORIGIN_URL } from '~/constants';
 
 // type layer
@@ -30,7 +26,10 @@ export const Index: NextPage = () => {
   const { liff } = useLiff();
   const router = useRouter();
   const setAccount = useAccountStore(selectSetAccount);
-  const account = useAccountStore((state) => ({ lineId: state.lineId }));
+  const account = useAccountStore((state) => ({
+    lineId: state.lineId,
+    id: state.studentId,
+  }));
   const setLineId = useAccountStore(selectSetLineId);
   const setStudent = useStudentStore(selectSetStudent);
   const prevPath = useAccountStore(selectPrevPath);
@@ -109,7 +108,7 @@ export const Index: NextPage = () => {
     const handler = async () => {
       const url = `${ORIGIN_URL}${routes.apiIsUpdated}`;
       const res = await axios
-        .get(url, { params: { lineId: account.lineId } })
+        .get(url, { params: { id: account.id } })
         .catch((err) => {
           console.error(err);
           return null;

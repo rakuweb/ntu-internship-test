@@ -23,7 +23,10 @@ export const Index: NextPage = () => {
   const { liff } = useLiff();
   const router = useRouter();
   const setAccount = useAccountStore(selectSetAccount);
-  const account = useAccountStore((state) => ({ lineId: state.lineId }));
+  const account = useAccountStore((state) => ({
+    lineId: state.lineId,
+    id: state.studentId,
+  }));
   const setLineId = useAccountStore(selectSetLineId);
   const setStudent = useStudentStore(selectSetStudent);
   const student = useStudentStore(selectStudent);
