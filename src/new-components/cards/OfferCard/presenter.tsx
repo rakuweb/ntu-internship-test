@@ -420,7 +420,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               <div
                 className={css({
                   mt: { base: `${8 / 3.75}vw`, md: `${8 / 7.68}vw` },
-                  fontFamily: `"Josefin Sans"`,
+                  fontFamily: `'Josefin Sans', sans-serif`,
                   fontStyle: `italic`,
                   fontWeight: `bold`,
                 })}
@@ -791,7 +791,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               <div
                 className={css({
                   fontSize: `${18 / 19.2}vw`,
-                  fontFamily: `"Josefin Sans"`,
+                  fontFamily: `'Josefin Sans', sans-serif`,
                   fontStyle: `italic`,
                 })}
               >{`CHECK >>`}</div>

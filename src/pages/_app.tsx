@@ -2,7 +2,7 @@
 
 // import layer
 import { ChakraProvider } from '@chakra-ui/react';
-import { Noto_Sans_JP } from '@next/font/google';
+import { Noto_Sans_JP, Josefin_Sans } from '@next/font/google';
 import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import { DefaultSeo } from 'next-seo';
@@ -25,6 +25,13 @@ export const notoSansJP = Noto_Sans_JP({
   variable: '--font-noto-sans-jp',
 });
 
+export const josefinSans = Josefin_Sans({
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+  preload: false,
+  variable: '--font-josefin-sans',
+});
+
 // component layer
 const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
   const { liffId, mock } = generateEnv();
@@ -39,7 +46,7 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
         <LiffProvider liffId={liffId} mock={{ enable: mock }}>
           <div
             id={`root`}
-            className={`${notoSansJP.variable} ${notoSansJP.variable}}`}
+            className={`${notoSansJP.variable} ${josefinSans.variable}`}
           >
             <Component {...pageProps} />
           </div>
