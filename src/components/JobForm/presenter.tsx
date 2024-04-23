@@ -49,6 +49,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
     { title: `電話番号` },
     { title: `学年` },
     { title: `メールアドレス` },
+    { title: `どこで知しりましたか？` },
     { title: `応募理由` },
     { title: `面接希望日` },
   ];
@@ -60,6 +61,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
     'phone',
     'grade',
     'email',
+    'where',
     'reason',
     'hopeday1',
     'hopeday2',
@@ -209,7 +211,8 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                     {(index === 0 ||
                       index === 1 ||
                       index === 4 ||
-                      index === 6) && (
+                      index === 6 ||
+                      index === 7) && (
                       <Box
                         mb={{
                           base: `${19 / 3.75}vw`,
@@ -345,7 +348,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                       />
                     )}
 
-                    {index === 7 && (
+                    {index === 8 && (
                       <Box
                         mb={{ base: `${19 / 3.75}vw`, md: `${25 / 19.2}vw` }}
                         ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
@@ -378,7 +381,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                               lg: `${12 / 19.2}vw`,
                             }}
                             color={`red`}
-                            display={index === 7 ? 'block' : 'none'}
+                            display={index === 8 ? 'block' : 'none'}
                           >
                             {errors.reason.message}
                           </Box>
@@ -386,7 +389,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                       </Box>
                     )}
 
-                    {index === 8 && (
+                    {index === 9 && (
                       <Box
                         ml={{ base: `${19 / 3.75}vw`, md: `${70 / 19.2}vw` }}
                       >
@@ -425,7 +428,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                                 lg: `${12 / 19.2}vw`,
                               }}
                               color={`red`}
-                              display={index === 8 ? 'block' : 'none'}
+                              display={index === 9 ? 'block' : 'none'}
                             >
                               {errors.hopeday1.message == 'Invalid date'
                                 ? `日付を入力してください`
@@ -468,7 +471,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                                 lg: `${12 / 19.2}vw`,
                               }}
                               color={`red`}
-                              display={index === 8 ? 'block' : 'none'}
+                              display={index === 9 ? 'block' : 'none'}
                             >
                               {errors.hopeday2?.message}
                             </Box>
@@ -509,7 +512,7 @@ export const Presenter: FC<PresenterProps> = ({ submitHandler, ...props }) => {
                                 lg: `${12 / 19.2}vw`,
                               }}
                               color={`red`}
-                              display={index === 8 ? 'block' : 'none'}
+                              display={index === 9 ? 'block' : 'none'}
                             >
                               {errors.hopeday3?.message}
                             </Box>

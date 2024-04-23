@@ -49,6 +49,9 @@ export const jobFormSchema = z
       .string()
       .email('メールアドレスを入力してください')
       .min(1, '入力してください'),
+    where: z
+      .string({ required_error: '入力してください' })
+      .min(1, '入力してください'),
     reason: z.string().min(1, '入力してください'),
     hopeday1: z
       .date({

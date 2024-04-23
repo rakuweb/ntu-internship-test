@@ -20,6 +20,7 @@ export const createJobFormSlice: StateCreator<
   phone: '',
   email: '',
   reason: '',
+  where: '',
   hopeday1: undefined,
   hopeday2: undefined,
   hopeday3: undefined,
