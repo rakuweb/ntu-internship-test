@@ -79,7 +79,7 @@ export const holidayList = [
   '日曜日',
   '祝祭日',
   '不定休',
-  'なし',
+  'その他',
 ];
 export const pointList = [
   '未経験者OK',
