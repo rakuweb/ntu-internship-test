@@ -176,7 +176,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               >
                 <img // eslint-disable-line
                   // WARN:
-                  src={image.src}
+                  src={image?.src || 'none'}
                   className={cx(
                     css({
                       w: { base: `${148 / 3.75}vw`, md: `${148 / 7.68}vw` },
@@ -566,7 +566,7 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
               >
                 <img // eslint-disable-line
                   // WARN:
-                  src={image.src}
+                  src={image?.src || 'none'}
                   className={cx(
                     css({
                       w: `${309 / 19.2}vw`,

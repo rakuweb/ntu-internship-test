@@ -14,7 +14,6 @@ import { apiRoutes, routes } from '~/constants';
 import { API_URL_OFFER } from '~/constants/env';
 import { parseDate } from '~/lib/utils';
 import { RequestSchema } from '../schema';
-
 // type layer
 export type DataProps = {
   isHidden: boolean;
@@ -155,6 +154,73 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
       const jsonImageAtmosphere3 =
         (await resImageAtmosphere3?.json()) ?? undefined;
       const imageIdAtmosphere3 = jsonImageAtmosphere3?.[0]?.id ?? undefined;
+      //
+      const customOrder = {
+        月曜日: 0,
+        火曜日: 1,
+        水曜日: 2,
+        木曜日: 3,
+        金曜日: 4,
+        土曜日: 5,
+        日曜日: 6,
+        祝祭日: 7,
+        不定休: 8,
+        その他: 9,
+      };
+      const targetOrder = {
+        大学1年生: 0,
+        大学2年生: 1,
+        大学3年生: 2,
+        大学4年生: 3,
+        修士1年生: 4,
+        修士2年生: 5,
+        博士1年生: 6,
+        博士2年生: 7,
+        博士3年生: 8,
+        博士4年生: 9,
+        博士5年生: 10,
+      };
+      const dateOrder = {
+        月: 0,
+        火: 1,
+        水: 2,
+        木: 3,
+        金: 4,
+        土: 5,
+        日: 6,
+        面接なし: 7,
+        その他: 8,
+      };
+
+      const timeOrder = {
+        '10:00−11:00': 0,
+        '11:00−12:00': 1,
+        '13:00−14:00': 2,
+        '14:00−15:00': 3,
+        '15:00−16:00': 4,
+        '16:00−17:00': 5,
+        面接なし: 6,
+      };
+      const sortedHolidays = remain.holiday
+        .split(', ')
+        .sort((a, b) => customOrder[a] - customOrder[b])
+        .join(', ');
+      //
+
+      const sortedTargets = remain.target
+        .split(', ')
+        .sort((a, b) => targetOrder[a] - targetOrder[b])
+        .join(', ');
+
+      const sortedDates = remain.desired_interview_date
+        .split(', ')
+        .sort((a, b) => dateOrder[a] - dateOrder[b])
+        .join(', ');
+
+      const sortedTimes = remain.desired_interview_time
+        .split(', ')
+        .sort((a, b) => timeOrder[a] - timeOrder[b])
+        .join(', ');
 
       const url = `${API_URL_OFFER}${apiRoutes.offer}`;
       const {
@@ -168,36 +234,22 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
         atmosphere_text3,
         atmosphere_title3,
         image: _image,
+        holiday,
+        target,
+        desired_interview_date,
+        desired_interview_time,
         ...others
       } = remain;
-      const _res = await axios.post(url, {
-        data: {
-          ...others,
-          publishedAt: null,
-          image: imageId,
-          atmosphere: [
-            {
-              title: atmosphere_title,
-              text: atmosphere_text,
-              image: imageIdAtmosphere,
-            },
-            imageIdAtmosphere2
-              ? {
-                  title: atmosphere_title2,
-                  text: atmosphere_text2,
-                  image: imageIdAtmosphere2,
-                }
-              : undefined,
-            imageIdAtmosphere3
-              ? {
-                  title: atmosphere_title3,
-                  text: atmosphere_text3,
-                  image: imageIdAtmosphere3,
-                }
-              : undefined,
-          ].filter((item) => !!item),
-        },
-      });
+
+      const postData = {
+        ...others,
+        holiday: sortedHolidays,
+        target: sortedTargets,
+        desired_interview_date: sortedDates,
+        desired_interview_time: sortedTimes,
+      };
+
+      await axios.post(url, { data: postData });
       reset();
       setProgress(0);
 
@@ -224,20 +276,6 @@ export const Presenter: FC<PresenterProps> = ({ isHidden, ...props }) => {
       display={isHidden ? 'none' : `block`}
       {...props}
     >
-      {/* <Box
-        mt={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}
-        mb={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}
-        fontSize={{
-          base: `${15 / 3.75}vw`,
-          md: `${16 / 7.68}vw`,
-          lg: `${26 / 19.2}vw`,
-        }}
-        whiteSpace={`pre-wrap`}
-        fontWeight={`bold`}
-        lineHeight={`1.2em`}
-      >
-        {`お申し込み情報の確認`}
-      </Box> */}
       <Flex
         mt={{ base: ``, md: `${80 / 19.2}vw` }}
         mb={{ base: `${12 / 3.75}vw`, md: `${20 / 19.2}vw` }}
