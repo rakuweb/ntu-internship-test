@@ -26,7 +26,63 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
       window.location.href = offer.id + `/jobform`;
     }
   };
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const monthNum = currentDate.getMonth();
+  const monthMap = [
+    '01',
+    '02',
+    '03',
+    '04',
+    '05',
+    '06',
+    '07',
+    '08',
+    '09',
+    '10',
+    '11',
+    '12',
+  ];
 
+  const dayNum = currentDate.getDate();
+  const dayMap = [
+    '00',
+    '01',
+    '02',
+    '03',
+    '04',
+    '05',
+    '06',
+    '07',
+    '08',
+    '09',
+    '10',
+    '11',
+    '12',
+    '13',
+    '14',
+    '15',
+    '16',
+    '17',
+    '18',
+    '19',
+    '20',
+    '21',
+    '22',
+    '23',
+    '24',
+    '25',
+    '26',
+    '27',
+    '28',
+    '29',
+    '30',
+    '31',
+  ];
+
+  const month = monthMap[monthNum];
+  const date = dayMap[dayNum];
+  const today = `${year}-${month}-${date}`;
   return (
     <Box
       position={{ base: `relative`, md: `sticky` }}
@@ -221,38 +277,57 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           ポイントもらえる
         </Box> */}
       </Box>
-      <InternalLink href={routes.offersJobForm(offer.id)}>
-        <Box
-        // onClick={() => {
-        //   {
-        //     signin();
-        //   }
-        // }}
-        >
+
+      {today < offer.end_at ? (
+        <InternalLink href={routes.offersJobForm(offer.id)}>
+          <Box>
+            <Flex
+              alignItems={`center`}
+              justify={`center`}
+              py={{ base: ``, md: `${40 / 19.2}vw` }}
+              background={`transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box;`}
+              color={`white`}
+              fontSize={{
+                base: ``,
+                md: `${16 / 7.68}vw`,
+                lg: `${27 / 19.2}vw`,
+              }}
+              fontWeight={`bold`}
+            >
+              <Image // eslint-disable-line
+                w={{ base: ``, md: `${16 / 7.68}vw`, lg: `${27 / 19.2}vw` }}
+                h={{ base: ``, md: `${16 / 7.68}vw`, lg: `${27 / 19.2}vw` }}
+                mr={{ base: ``, md: `${15 / 19.2}vw` }}
+                image={{
+                  width: 35,
+                  height: 35,
+                  src: `/svg/paper-plane-solid.svg`,
+                  alt: `紙飛行機アイコン`,
+                }}
+              />
+              応募する
+            </Flex>
+          </Box>
+        </InternalLink>
+      ) : (
+        <Box>
           <Flex
             alignItems={`center`}
             justify={`center`}
             py={{ base: ``, md: `${40 / 19.2}vw` }}
-            background={`transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box;`}
+            background={`#d9d9d9`}
             color={`white`}
-            fontSize={{ base: ``, md: `${16 / 7.68}vw`, lg: `${27 / 19.2}vw` }}
+            fontSize={{
+              base: ``,
+              md: `${16 / 7.68}vw`,
+              lg: `${27 / 19.2}vw`,
+            }}
             fontWeight={`bold`}
           >
-            <Image // eslint-disable-line
-              w={{ base: ``, md: `${16 / 7.68}vw`, lg: `${27 / 19.2}vw` }}
-              h={{ base: ``, md: `${16 / 7.68}vw`, lg: `${27 / 19.2}vw` }}
-              mr={{ base: ``, md: `${15 / 19.2}vw` }}
-              image={{
-                width: 35,
-                height: 35,
-                src: `/svg/paper-plane-solid.svg`,
-                alt: `紙飛行機アイコン`,
-              }}
-            />
-            応募する
+            応募できません
           </Flex>
         </Box>
-      </InternalLink>
+      )}
     </Box>
   );
 };

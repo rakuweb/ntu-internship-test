@@ -12,6 +12,63 @@ export type PresenterProps = Record<string, unknown>;
 // presenter
 export const Presenter: FC<PresenterProps> = ({ ...props }) => {
   const offer = useTargetOfferStore(selectTarget);
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const monthNum = currentDate.getMonth();
+  const monthMap = [
+    '01',
+    '02',
+    '03',
+    '04',
+    '05',
+    '06',
+    '07',
+    '08',
+    '09',
+    '10',
+    '11',
+    '12',
+  ];
+
+  const dayNum = currentDate.getDate();
+  const dayMap = [
+    '00',
+    '01',
+    '02',
+    '03',
+    '04',
+    '05',
+    '06',
+    '07',
+    '08',
+    '09',
+    '10',
+    '11',
+    '12',
+    '13',
+    '14',
+    '15',
+    '16',
+    '17',
+    '18',
+    '19',
+    '20',
+    '21',
+    '22',
+    '23',
+    '24',
+    '25',
+    '26',
+    '27',
+    '28',
+    '29',
+    '30',
+    '31',
+  ];
+
+  const month = monthMap[monthNum];
+  const date = dayMap[dayNum];
+  const today = `${year}-${month}-${date}`;
 
   return (
     <Box
@@ -70,37 +127,55 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
         </Box>
       </Flex> */}
 
-      <InternalLink
-        href={routes.offersJobForm(offer.id)}
-        // w={`fit-content`}
-        // mt={`${10 / 3.75}vw`}
-        // mx={`auto`}
-      >
-        <Flex
-          alignItems={`center`}
-          pl={`${38 / 3.75}vw`}
-          py={`${10 / 4.28}vw`}
-          background={`transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box;`}
-          color={`white`}
-          fontSize={`${18 / 3.75}vw`}
-          fontWeight={`bold`}
-          borderRadius={`${5 / 3.75}vw`}
-          w={`${200 / 3.75}vw`}
+      {today < offer.end_at ? (
+        <InternalLink
+          href={routes.offersJobForm(offer.id)}
+          // w={`fit-content`}
+          // mt={`${10 / 3.75}vw`}
+          // mx={`auto`}
         >
-          <Image // eslint-disable-line
-            w={`${20 / 3.75}vw`}
-            h={`${20 / 3.75}vw`}
-            mr={`${15 / 3.75}vw`}
-            image={{
-              width: 35,
-              height: 35,
-              src: `/svg/paper-plane-solid.svg`,
-              alt: `紙飛行機アイコン`,
-            }}
-          />
-          応募する
-        </Flex>
-      </InternalLink>
+          <Flex
+            alignItems={`center`}
+            pl={`${38 / 3.75}vw`}
+            py={`${10 / 4.28}vw`}
+            background={`transparent linear-gradient(270deg, #0EDAFFBC 0%, #41A4FD 100%) 0% 0% no-repeat padding-box;`}
+            color={`white`}
+            fontSize={`${18 / 3.75}vw`}
+            fontWeight={`bold`}
+            borderRadius={`${5 / 3.75}vw`}
+            w={`${200 / 3.75}vw`}
+          >
+            <Image // eslint-disable-line
+              w={`${20 / 3.75}vw`}
+              h={`${20 / 3.75}vw`}
+              mr={`${15 / 3.75}vw`}
+              image={{
+                width: 35,
+                height: 35,
+                src: `/svg/paper-plane-solid.svg`,
+                alt: `紙飛行機アイコン`,
+              }}
+            />
+            応募する
+          </Flex>
+        </InternalLink>
+      ) : (
+        <Box>
+          <Flex
+            alignItems={`center`}
+            pl={`${38 / 3.75}vw`}
+            py={`${10 / 4.28}vw`}
+            background={`#d9d9d9`}
+            color={`white`}
+            fontSize={`${18 / 3.75}vw`}
+            fontWeight={`bold`}
+            borderRadius={`${5 / 3.75}vw`}
+            w={`${200 / 3.75}vw`}
+          >
+            応募できません
+          </Flex>
+        </Box>
+      )}
     </Box>
   );
 };
