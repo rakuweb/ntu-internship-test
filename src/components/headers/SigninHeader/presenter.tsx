@@ -103,9 +103,9 @@ export const Presenter: FC<PresenterProps> = ({ ...props }) => {
           <InternalLink href={routes.home}>
             <Box w={{ base: `${136 / 16}rem` }} className="logo" as={`h1`}>
               <Image
-                htmlWidth={267}
-                htmlHeight={150}
-                src={`/svg/ntu-job.svg`}
+                htmlWidth={300}
+                htmlHeight={90}
+                src={`/svg/forjob.svg`}
                 alt={``}
               />
             </Box>

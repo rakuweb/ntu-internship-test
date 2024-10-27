@@ -53,7 +53,7 @@ export const Presenter: FC<PresenterProps> = () => {
   };
 
   useEffect(() => {
-    const next = `会員情報を照会していいます。しばらくお待ちください。
+    const next = `会員情報を照会しています。しばらくお待ちください。
 
 画面が変わらない場合は、下記のボタンから
 もう一度認証を進めてください。`;
