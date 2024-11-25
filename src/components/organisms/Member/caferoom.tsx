@@ -4,16 +4,18 @@ import { Box, Heading, Text } from '@chakra-ui/react';
 import { useStudentStore, selectStudent } from 'features/student';
 
 const rankList = [
-  { color: 'Black', count: 50, next: 0, nextColor: '' },
-  { color: 'Gold', count: 10, next: 50, nextColor: 'Black' },
-  { color: 'Blue', count: 3, next: 10, nextColor: 'Gold' },
-  { color: 'White', count: 1, next: 3, nextColor: 'Blue' },
+  // { color: 'Black', count: 50, next: 0, nextColor: '' },
+  { color: 'Gold', count: 3, next: 0, nextColor: '' },
+  // { color: 'Gold', count: 10, next: 50, nextColor: 'Black' },
+  // { color: 'Blue', count: 3, next: 10, nextColor: 'Gold' },
+  { color: 'White', count: 1, next: 3, nextColor: 'Gold' },
+  // { color: 'White', count: 1, next: 3, nextColor: 'Blue' },
 ];
 
 const Caferoom = () => {
   const student = useStudentStore(selectStudent);
   const [remainCount, setRemainCount] = useState<number>(0);
-  const [target, setTarget] = useState(rankList[3]);
+  const [target, setTarget] = useState(rankList[1]);
 
   useEffect(() => {
     if (!student?.id) return;
