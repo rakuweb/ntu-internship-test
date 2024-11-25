@@ -59,8 +59,8 @@ export const Index: NextPage = () => {
     // line ログイン
     if (!liff || !liff.isLoggedIn()) return;
     if (!isClient) return;
-    if (query === null) return;
-    if (!query) router.push(routes.signin);
+    // if (query === null) return;
+    // if (!query) router.push(routes.signin);
 
     const url = `${ORIGIN_URL}${routes.apiAccount}`;
     // 非同期関数 useEffect対策
