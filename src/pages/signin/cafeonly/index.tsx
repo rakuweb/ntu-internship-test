@@ -132,27 +132,9 @@ export const Index: NextPage = () => {
       }
       const resData = res.data;
       if (!resData.isUpdated) {
-        // QRコード経由だったら
-        if (query === CAFE_ENTRY_QUERY) {
-          router.push(`${routes.accountGrade}?cafeonly=${CAFE_ENTRY_QUERY}`);
-        } else {
-          if (query === CAFE_ENTRY_QUERY) {
-            router.push(routes.accountCard);
-          } else {
-            // それ以外
-            router.push(routes.signinMembercard);
-          }
-        }
-      }
-
-      if (student?.id && !student?.gradeUpdatedAt) {
         router.push(`${routes.accountGrade}?cafeonly=${CAFE_ENTRY_QUERY}`);
-      } else if (student?.id && student?.gradeUpdatedAt) {
-        if (query === CAFE_ENTRY_QUERY) {
-          router.push(routes.accountCard);
-        } else {
-          router.push(routes.signinMembercard);
-        }
+      } else {
+        router.push(routes.accountCard);
       }
     };
 
