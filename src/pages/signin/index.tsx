@@ -129,18 +129,16 @@ export const Index: NextPage = () => {
       window.localStorage.removeItem('prevUrl');
 
       if (lsNextPath?.startsWith('https')) {
-        // 下のページへ移動
         window.location.href = lsNextPath;
       } else {
         if (nextPath) {
           nextPath ? router.push(nextPath) : router.push(lsNextPath);
           window.scroll({ top: 0 });
         } else {
-          if (window?.location?.href?.includes('liff')) {
-            router.push(routes.signinMembercard);
-          }
-          // それ以外はhomeへ
-          router.push(routes.home);
+          // if (window?.location?.href?.includes('liff')) {
+          router.push(routes.signinMembercard);
+          // }
+          // router.push(routes.home);
         }
       }
     };

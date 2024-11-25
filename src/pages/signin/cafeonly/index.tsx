@@ -149,10 +149,8 @@ export const Index: NextPage = () => {
         router.push(`${routes.accountGrade}?cafeonly=${CAFE_ENTRY_QUERY}`);
       } else if (student?.id && student?.gradeUpdatedAt) {
         if (query === CAFE_ENTRY_QUERY) {
-          // QRコード経由だったら
           router.push(routes.accountCard);
         } else {
-          // それ以外
           router.push(routes.signinMembercard);
         }
       }

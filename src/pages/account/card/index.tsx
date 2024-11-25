@@ -86,12 +86,15 @@ export const Index: NextPage = () => {
     if (isClient) {
       return (
         <>
+          {/*
           <SeoComponent
             canonical={CANONICAL_URL}
             title={title}
             description={description}
           />
           <Template />
+          */}
+          <div>会員証（カフェ）</div>
         </>
       );
     } else {
