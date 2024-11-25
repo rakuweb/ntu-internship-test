@@ -15,14 +15,12 @@ export type PresenterProps = Record<string, unknown>;
 export const Presenter: FC<PresenterProps> = () => {
   return (
     <>
-      <Header />
       <Box as={`main`}>
         <BreadcrumbOffers title={`会員証`} />
         <Box mt={{ base: `2.5rem` }}>
           <Card noSound />
         </Box>
       </Box>
-      <Footer />
     </>
   );
 };
