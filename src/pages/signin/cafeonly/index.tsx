@@ -121,7 +121,7 @@ export const Index: NextPage = () => {
     const handler = async () => {
       const url = `${ORIGIN_URL}${routes.apiIsUpdated}`;
       const res = await axios
-        .get(url, { params: { lineId: account.lineId } })
+        .get(url, { params: { id: account.id } })
         .catch((err) => {
           console.error(err);
           return null;
